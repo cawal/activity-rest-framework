@@ -138,6 +138,12 @@
       <details key="documentation" value="A File consists of some parameter that is passed by reference to the&#xA;tool (its file path)."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediaType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passedBy" lowerBound="1"
+        eType="#//FileDescriptorReferenceType" defaultValueLiteral="FILE_PATHS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FileDescriptorReferenceType" serializable="false">
+    <eLiterals name="FILE_PATHS"/>
+    <eLiterals name="DIRECTORY_PATH"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommandLineArgument">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
