@@ -13,6 +13,7 @@
 	</parent>
 
 	<modules>
-		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</module>
+        <module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</module>
+        <module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivity</module>
 	</modules>
 </project>
