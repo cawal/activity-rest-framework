@@ -132,14 +132,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int ANALYSIS_ACTIVITY_DESCRIPTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl <em>Parameter Properties</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl <em>Parameter Description</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterDescription()
 	 * @generated
 	 */
-	int PARAMETER_PROPERTIES = 1;
+	int PARAMETER_DESCRIPTION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -148,7 +148,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_PROPERTIES__NAME = 0;
+	int PARAMETER_DESCRIPTION__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Kind</b></em>' attribute.
@@ -157,7 +157,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_PROPERTIES__PARAMETER_KIND = 1;
+	int PARAMETER_DESCRIPTION__PARAMETER_KIND = 1;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Type</b></em>' attribute.
@@ -166,7 +166,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_PROPERTIES__PARAMETER_TYPE = 2;
+	int PARAMETER_DESCRIPTION__PARAMETER_TYPE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' attribute list.
@@ -175,35 +175,35 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_PROPERTIES__DEFAULT_VALUE = 3;
+	int PARAMETER_DESCRIPTION__DEFAULT_VALUE = 3;
 
 	/**
-	 * The number of structural features of the '<em>Parameter Properties</em>' class.
+	 * The number of structural features of the '<em>Parameter Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_PROPERTIES_FEATURE_COUNT = 4;
+	int PARAMETER_DESCRIPTION_FEATURE_COUNT = 4;
 
 	/**
-	 * The number of operations of the '<em>Parameter Properties</em>' class.
+	 * The number of operations of the '<em>Parameter Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_PROPERTIES_OPERATION_COUNT = 0;
+	int PARAMETER_DESCRIPTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl <em>Dataset Properties</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl <em>Dataset Description</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetDescription()
 	 * @generated
 	 */
-	int DATASET_PROPERTIES = 2;
+	int DATASET_DESCRIPTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -212,7 +212,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_PROPERTIES__NAME = 0;
+	int DATASET_DESCRIPTION__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -221,7 +221,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_PROPERTIES__MIMETYPE = 1;
+	int DATASET_DESCRIPTION__MIMETYPE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Dataset Kind</b></em>' attribute.
@@ -230,35 +230,35 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_PROPERTIES__DATASET_KIND = 2;
+	int DATASET_DESCRIPTION__DATASET_KIND = 2;
 
 	/**
-	 * The number of structural features of the '<em>Dataset Properties</em>' class.
+	 * The number of structural features of the '<em>Dataset Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_PROPERTIES_FEATURE_COUNT = 3;
+	int DATASET_DESCRIPTION_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of operations of the '<em>Dataset Properties</em>' class.
+	 * The number of operations of the '<em>Dataset Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_PROPERTIES_OPERATION_COUNT = 0;
+	int DATASET_DESCRIPTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntriesImpl <em>Command Line Entries</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl <em>Command Line Entry List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntriesImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntryList()
 	 * @generated
 	 */
-	int COMMAND_LINE_ENTRIES = 3;
+	int COMMAND_LINE_ENTRY_LIST = 3;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -267,35 +267,35 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_ENTRIES__MANIPULATORS = 0;
+	int COMMAND_LINE_ENTRY_LIST__MANIPULATORS = 0;
 
 	/**
-	 * The number of structural features of the '<em>Command Line Entries</em>' class.
+	 * The number of structural features of the '<em>Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_ENTRIES_FEATURE_COUNT = 1;
+	int COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Command Line Entries</em>' class.
+	 * The number of operations of the '<em>Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_ENTRIES_OPERATION_COUNT = 0;
+	int COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntriesImpl <em>Literal Command Line Entries</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntriesImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntryList()
 	 * @generated
 	 */
-	int LITERAL_COMMAND_LINE_ENTRIES = 4;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST = 4;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -304,7 +304,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_COMMAND_LINE_ENTRIES__MANIPULATORS = COMMAND_LINE_ENTRIES__MANIPULATORS;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST__MANIPULATORS = COMMAND_LINE_ENTRY_LIST__MANIPULATORS;
 
 	/**
 	 * The feature id for the '<em><b>Literals</b></em>' attribute list.
@@ -313,35 +313,35 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_COMMAND_LINE_ENTRIES__LITERALS = COMMAND_LINE_ENTRIES_FEATURE_COUNT + 0;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Literal Command Line Entries</em>' class.
+	 * The number of structural features of the '<em>Literal Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_COMMAND_LINE_ENTRIES_FEATURE_COUNT = COMMAND_LINE_ENTRIES_FEATURE_COUNT + 1;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Literal Command Line Entries</em>' class.
+	 * The number of operations of the '<em>Literal Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_COMMAND_LINE_ENTRIES_OPERATION_COUNT = COMMAND_LINE_ENTRIES_OPERATION_COUNT + 0;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntriesImpl <em>Dataset Command Line Entries</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl <em>Dataset Command Line Entry List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntriesImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntryList()
 	 * @generated
 	 */
-	int DATASET_COMMAND_LINE_ENTRIES = 5;
+	int DATASET_COMMAND_LINE_ENTRY_LIST = 5;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -350,7 +350,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_COMMAND_LINE_ENTRIES__MANIPULATORS = COMMAND_LINE_ENTRIES__MANIPULATORS;
+	int DATASET_COMMAND_LINE_ENTRY_LIST__MANIPULATORS = COMMAND_LINE_ENTRY_LIST__MANIPULATORS;
 
 	/**
 	 * The feature id for the '<em><b>Dataset</b></em>' reference.
@@ -359,35 +359,35 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_COMMAND_LINE_ENTRIES__DATASET = COMMAND_LINE_ENTRIES_FEATURE_COUNT + 0;
+	int DATASET_COMMAND_LINE_ENTRY_LIST__DATASET = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Dataset Command Line Entries</em>' class.
+	 * The number of structural features of the '<em>Dataset Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_COMMAND_LINE_ENTRIES_FEATURE_COUNT = COMMAND_LINE_ENTRIES_FEATURE_COUNT + 1;
+	int DATASET_COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Dataset Command Line Entries</em>' class.
+	 * The number of operations of the '<em>Dataset Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_COMMAND_LINE_ENTRIES_OPERATION_COUNT = COMMAND_LINE_ENTRIES_OPERATION_COUNT + 0;
+	int DATASET_COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntriesImpl <em>Parameter Command Line Entries</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl <em>Parameter Command Line Entry List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntriesImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntryList()
 	 * @generated
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRIES = 6;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 6;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -396,7 +396,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRIES__MANIPULATORS = COMMAND_LINE_ENTRIES__MANIPULATORS;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST__MANIPULATORS = COMMAND_LINE_ENTRY_LIST__MANIPULATORS;
 
 	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' reference.
@@ -405,25 +405,25 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER = COMMAND_LINE_ENTRIES_FEATURE_COUNT + 0;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Parameter Command Line Entries</em>' class.
+	 * The number of structural features of the '<em>Parameter Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRIES_FEATURE_COUNT = COMMAND_LINE_ENTRIES_FEATURE_COUNT + 1;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Parameter Command Line Entries</em>' class.
+	 * The number of operations of the '<em>Parameter Command Line Entry List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRIES_OPERATION_COUNT = COMMAND_LINE_ENTRIES_OPERATION_COUNT + 0;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl <em>Readiness Constraint</em>}' class.
@@ -620,14 +620,106 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER_CONSTRAINT_OPERATION_COUNT = READINESS_CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds <em>Parameter Kinds</em>}' enum.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl <em>Minimun Parameter Cardinality Constraint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterKinds()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunParameterCardinalityConstraint()
 	 * @generated
 	 */
-	int PARAMETER_KINDS = 12;
+	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__PARAMETER = PARAMETER_CONSTRAINT__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = PARAMETER_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Minimun Parameter Cardinality Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT_FEATURE_COUNT = PARAMETER_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Minimun Parameter Cardinality Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT_OPERATION_COUNT = PARAMETER_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl <em>Maximun Parameter Cardinality Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunParameterCardinalityConstraint()
+	 * @generated
+	 */
+	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__PARAMETER = PARAMETER_CONSTRAINT__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = PARAMETER_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Maximun Parameter Cardinality Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT_FEATURE_COUNT = PARAMETER_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Maximun Parameter Cardinality Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT_OPERATION_COUNT = PARAMETER_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind <em>Parameter Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterKind()
+	 * @generated
+	 */
+	int PARAMETER_KIND = 14;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType <em>Parameter Type</em>}' enum.
@@ -637,18 +729,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterType()
 	 * @generated
 	 */
-	int PARAMETER_TYPE = 13;
+	int PARAMETER_TYPE = 15;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds <em>Dataset Kinds</em>}' enum.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind <em>Dataset Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetKinds()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetKind()
 	 * @generated
 	 */
-	int DATASET_KINDS = 14;
-
+	int DATASET_KIND = 16;
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription <em>Analysis Activity Description</em>}'.
@@ -716,185 +807,185 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EReference getAnalysisActivityDescription_ReadinessContraints();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties <em>Parameter Properties</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription <em>Parameter Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameter Properties</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties
+	 * @return the meta object for class '<em>Parameter Description</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription
 	 * @generated
 	 */
-	EClass getParameterProperties();
+	EClass getParameterDescription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getName()
-	 * @see #getParameterProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getName()
+	 * @see #getParameterDescription()
 	 * @generated
 	 */
-	EAttribute getParameterProperties_Name();
+	EAttribute getParameterDescription_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterKind <em>Parameter Kind</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterKind <em>Parameter Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Parameter Kind</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterKind()
-	 * @see #getParameterProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterKind()
+	 * @see #getParameterDescription()
 	 * @generated
 	 */
-	EAttribute getParameterProperties_ParameterKind();
+	EAttribute getParameterDescription_ParameterKind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterType <em>Parameter Type</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterType <em>Parameter Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Parameter Type</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterType()
-	 * @see #getParameterProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterType()
+	 * @see #getParameterDescription()
 	 * @generated
 	 */
-	EAttribute getParameterProperties_ParameterType();
+	EAttribute getParameterDescription_ParameterType();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getDefaultValue <em>Default Value</em>}'.
+	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getDefaultValue <em>Default Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Default Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getDefaultValue()
-	 * @see #getParameterProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getDefaultValue()
+	 * @see #getParameterDescription()
 	 * @generated
 	 */
-	EAttribute getParameterProperties_DefaultValue();
+	EAttribute getParameterDescription_DefaultValue();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties <em>Dataset Properties</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription <em>Dataset Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dataset Properties</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties
+	 * @return the meta object for class '<em>Dataset Description</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription
 	 * @generated
 	 */
-	EClass getDatasetProperties();
+	EClass getDatasetDescription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getName()
-	 * @see #getDatasetProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getName()
+	 * @see #getDatasetDescription()
 	 * @generated
 	 */
-	EAttribute getDatasetProperties_Name();
+	EAttribute getDatasetDescription_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getMimetype <em>Mimetype</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getMimetype <em>Mimetype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Mimetype</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getMimetype()
-	 * @see #getDatasetProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getMimetype()
+	 * @see #getDatasetDescription()
 	 * @generated
 	 */
-	EAttribute getDatasetProperties_Mimetype();
+	EAttribute getDatasetDescription_Mimetype();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getDatasetKind <em>Dataset Kind</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getDatasetKind <em>Dataset Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Dataset Kind</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getDatasetKind()
-	 * @see #getDatasetProperties()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getDatasetKind()
+	 * @see #getDatasetDescription()
 	 * @generated
 	 */
-	EAttribute getDatasetProperties_DatasetKind();
+	EAttribute getDatasetDescription_DatasetKind();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries <em>Command Line Entries</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList <em>Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Command Line Entries</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries
+	 * @return the meta object for class '<em>Command Line Entry List</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList
 	 * @generated
 	 */
-	EClass getCommandLineEntries();
+	EClass getCommandLineEntryList();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries#getManipulators <em>Manipulators</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList#getManipulators <em>Manipulators</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Manipulators</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries#getManipulators()
-	 * @see #getCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList#getManipulators()
+	 * @see #getCommandLineEntryList()
 	 * @generated
 	 */
-	EReference getCommandLineEntries_Manipulators();
+	EReference getCommandLineEntryList_Manipulators();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries <em>Literal Command Line Entries</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList <em>Literal Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Literal Command Line Entries</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries
+	 * @return the meta object for class '<em>Literal Command Line Entry List</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList
 	 * @generated
 	 */
-	EClass getLiteralCommandLineEntries();
+	EClass getLiteralCommandLineEntryList();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries#getLiterals <em>Literals</em>}'.
+	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList#getLiterals <em>Literals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Literals</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries#getLiterals()
-	 * @see #getLiteralCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList#getLiterals()
+	 * @see #getLiteralCommandLineEntryList()
 	 * @generated
 	 */
-	EAttribute getLiteralCommandLineEntries_Literals();
+	EAttribute getLiteralCommandLineEntryList_Literals();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries <em>Dataset Command Line Entries</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList <em>Dataset Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dataset Command Line Entries</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries
+	 * @return the meta object for class '<em>Dataset Command Line Entry List</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList
 	 * @generated
 	 */
-	EClass getDatasetCommandLineEntries();
+	EClass getDatasetCommandLineEntryList();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries#getDataset <em>Dataset</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList#getDataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Dataset</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries#getDataset()
-	 * @see #getDatasetCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList#getDataset()
+	 * @see #getDatasetCommandLineEntryList()
 	 * @generated
 	 */
-	EReference getDatasetCommandLineEntries_Dataset();
+	EReference getDatasetCommandLineEntryList_Dataset();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries <em>Parameter Command Line Entries</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList <em>Parameter Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameter Command Line Entries</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries
+	 * @return the meta object for class '<em>Parameter Command Line Entry List</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList
 	 * @generated
 	 */
-	EClass getParameterCommandLineEntries();
+	EClass getParameterCommandLineEntryList();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList#getParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Parameter</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries#getParameter()
-	 * @see #getParameterCommandLineEntries()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList#getParameter()
+	 * @see #getParameterCommandLineEntryList()
 	 * @generated
 	 */
-	EReference getParameterCommandLineEntries_Parameter();
+	EReference getParameterCommandLineEntryList_Parameter();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint <em>Readiness Constraint</em>}'.
@@ -991,14 +1082,56 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EReference getParameterConstraint_Parameter();
 
 	/**
-	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds <em>Parameter Kinds</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint <em>Minimun Parameter Cardinality Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Parameter Kinds</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds
+	 * @return the meta object for class '<em>Minimun Parameter Cardinality Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint
 	 * @generated
 	 */
-	EEnum getParameterKinds();
+	EClass getMinimunParameterCardinalityConstraint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint#getValue()
+	 * @see #getMinimunParameterCardinalityConstraint()
+	 * @generated
+	 */
+	EAttribute getMinimunParameterCardinalityConstraint_Value();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint <em>Maximun Parameter Cardinality Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Maximun Parameter Cardinality Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint
+	 * @generated
+	 */
+	EClass getMaximunParameterCardinalityConstraint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint#getValue()
+	 * @see #getMaximunParameterCardinalityConstraint()
+	 * @generated
+	 */
+	EAttribute getMaximunParameterCardinalityConstraint_Value();
+
+	/**
+	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind <em>Parameter Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Parameter Kind</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
+	 * @generated
+	 */
+	EEnum getParameterKind();
 
 	/**
 	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType <em>Parameter Type</em>}'.
@@ -1011,14 +1144,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EEnum getParameterType();
 
 	/**
-	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds <em>Dataset Kinds</em>}'.
+	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind <em>Dataset Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Dataset Kinds</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds
+	 * @return the meta object for enum '<em>Dataset Kind</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
 	 * @generated
 	 */
-	EEnum getDatasetKinds();
+	EEnum getDatasetKind();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1094,14 +1227,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EReference ANALYSIS_ACTIVITY_DESCRIPTION__READINESS_CONTRAINTS = eINSTANCE.getAnalysisActivityDescription_ReadinessContraints();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl <em>Parameter Properties</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl <em>Parameter Description</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterProperties()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterDescription()
 		 * @generated
 		 */
-		EClass PARAMETER_PROPERTIES = eINSTANCE.getParameterProperties();
+		EClass PARAMETER_DESCRIPTION = eINSTANCE.getParameterDescription();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1109,7 +1242,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_PROPERTIES__NAME = eINSTANCE.getParameterProperties_Name();
+		EAttribute PARAMETER_DESCRIPTION__NAME = eINSTANCE.getParameterDescription_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameter Kind</b></em>' attribute feature.
@@ -1117,7 +1250,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_PROPERTIES__PARAMETER_KIND = eINSTANCE.getParameterProperties_ParameterKind();
+		EAttribute PARAMETER_DESCRIPTION__PARAMETER_KIND = eINSTANCE.getParameterDescription_ParameterKind();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameter Type</b></em>' attribute feature.
@@ -1125,7 +1258,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_PROPERTIES__PARAMETER_TYPE = eINSTANCE.getParameterProperties_ParameterType();
+		EAttribute PARAMETER_DESCRIPTION__PARAMETER_TYPE = eINSTANCE.getParameterDescription_ParameterType();
 
 		/**
 		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute list feature.
@@ -1133,17 +1266,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_PROPERTIES__DEFAULT_VALUE = eINSTANCE.getParameterProperties_DefaultValue();
+		EAttribute PARAMETER_DESCRIPTION__DEFAULT_VALUE = eINSTANCE.getParameterDescription_DefaultValue();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl <em>Dataset Properties</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl <em>Dataset Description</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetProperties()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetDescription()
 		 * @generated
 		 */
-		EClass DATASET_PROPERTIES = eINSTANCE.getDatasetProperties();
+		EClass DATASET_DESCRIPTION = eINSTANCE.getDatasetDescription();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1151,7 +1284,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATASET_PROPERTIES__NAME = eINSTANCE.getDatasetProperties_Name();
+		EAttribute DATASET_DESCRIPTION__NAME = eINSTANCE.getDatasetDescription_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Mimetype</b></em>' attribute feature.
@@ -1159,7 +1292,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATASET_PROPERTIES__MIMETYPE = eINSTANCE.getDatasetProperties_Mimetype();
+		EAttribute DATASET_DESCRIPTION__MIMETYPE = eINSTANCE.getDatasetDescription_Mimetype();
 
 		/**
 		 * The meta object literal for the '<em><b>Dataset Kind</b></em>' attribute feature.
@@ -1167,17 +1300,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATASET_PROPERTIES__DATASET_KIND = eINSTANCE.getDatasetProperties_DatasetKind();
+		EAttribute DATASET_DESCRIPTION__DATASET_KIND = eINSTANCE.getDatasetDescription_DatasetKind();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntriesImpl <em>Command Line Entries</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl <em>Command Line Entry List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntriesImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntries()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntryList()
 		 * @generated
 		 */
-		EClass COMMAND_LINE_ENTRIES = eINSTANCE.getCommandLineEntries();
+		EClass COMMAND_LINE_ENTRY_LIST = eINSTANCE.getCommandLineEntryList();
 
 		/**
 		 * The meta object literal for the '<em><b>Manipulators</b></em>' containment reference list feature.
@@ -1185,17 +1318,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMMAND_LINE_ENTRIES__MANIPULATORS = eINSTANCE.getCommandLineEntries_Manipulators();
+		EReference COMMAND_LINE_ENTRY_LIST__MANIPULATORS = eINSTANCE.getCommandLineEntryList_Manipulators();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntriesImpl <em>Literal Command Line Entries</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntriesImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntries()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntryList()
 		 * @generated
 		 */
-		EClass LITERAL_COMMAND_LINE_ENTRIES = eINSTANCE.getLiteralCommandLineEntries();
+		EClass LITERAL_COMMAND_LINE_ENTRY_LIST = eINSTANCE.getLiteralCommandLineEntryList();
 
 		/**
 		 * The meta object literal for the '<em><b>Literals</b></em>' attribute list feature.
@@ -1203,17 +1336,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LITERAL_COMMAND_LINE_ENTRIES__LITERALS = eINSTANCE.getLiteralCommandLineEntries_Literals();
+		EAttribute LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS = eINSTANCE.getLiteralCommandLineEntryList_Literals();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntriesImpl <em>Dataset Command Line Entries</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl <em>Dataset Command Line Entry List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntriesImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntries()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntryList()
 		 * @generated
 		 */
-		EClass DATASET_COMMAND_LINE_ENTRIES = eINSTANCE.getDatasetCommandLineEntries();
+		EClass DATASET_COMMAND_LINE_ENTRY_LIST = eINSTANCE.getDatasetCommandLineEntryList();
 
 		/**
 		 * The meta object literal for the '<em><b>Dataset</b></em>' reference feature.
@@ -1221,17 +1354,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATASET_COMMAND_LINE_ENTRIES__DATASET = eINSTANCE.getDatasetCommandLineEntries_Dataset();
+		EReference DATASET_COMMAND_LINE_ENTRY_LIST__DATASET = eINSTANCE.getDatasetCommandLineEntryList_Dataset();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntriesImpl <em>Parameter Command Line Entries</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl <em>Parameter Command Line Entry List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntriesImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntries()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntryList()
 		 * @generated
 		 */
-		EClass PARAMETER_COMMAND_LINE_ENTRIES = eINSTANCE.getParameterCommandLineEntries();
+		EClass PARAMETER_COMMAND_LINE_ENTRY_LIST = eINSTANCE.getParameterCommandLineEntryList();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameter</b></em>' reference feature.
@@ -1239,7 +1372,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER = eINSTANCE.getParameterCommandLineEntries_Parameter();
+		EReference PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER = eINSTANCE.getParameterCommandLineEntryList_Parameter();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl <em>Readiness Constraint</em>}' class.
@@ -1324,14 +1457,50 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EReference PARAMETER_CONSTRAINT__PARAMETER = eINSTANCE.getParameterConstraint_Parameter();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds <em>Parameter Kinds</em>}' enum.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl <em>Minimun Parameter Cardinality Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterKinds()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunParameterCardinalityConstraint()
 		 * @generated
 		 */
-		EEnum PARAMETER_KINDS = eINSTANCE.getParameterKinds();
+		EClass MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT = eINSTANCE.getMinimunParameterCardinalityConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMinimunParameterCardinalityConstraint_Value();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl <em>Maximun Parameter Cardinality Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunParameterCardinalityConstraint()
+		 * @generated
+		 */
+		EClass MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT = eINSTANCE.getMaximunParameterCardinalityConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMaximunParameterCardinalityConstraint_Value();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind <em>Parameter Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterKind()
+		 * @generated
+		 */
+		EEnum PARAMETER_KIND = eINSTANCE.getParameterKind();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType <em>Parameter Type</em>}' enum.
@@ -1344,14 +1513,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EEnum PARAMETER_TYPE = eINSTANCE.getParameterType();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds <em>Dataset Kinds</em>}' enum.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind <em>Dataset Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetKinds()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetKind()
 		 * @generated
 		 */
-		EEnum DATASET_KINDS = eINSTANCE.getDatasetKinds();
+		EEnum DATASET_KIND = eINSTANCE.getDatasetKind();
 
 	}
 

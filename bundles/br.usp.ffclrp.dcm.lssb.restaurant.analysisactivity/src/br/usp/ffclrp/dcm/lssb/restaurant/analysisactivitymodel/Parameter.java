@@ -2,8 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -18,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getProperties <em>Properties</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getDescription <em>Description</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getValues <em>Values</em>}</li>
  * </ul>
  *
@@ -54,30 +53,30 @@ public interface Parameter extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Properties</b></em>' reference.
+	 * Returns the value of the '<em><b>Description</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Properties</em>' reference isn't clear,
+	 * If the meaning of the '<em>Description</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Properties</em>' reference.
-	 * @see #setProperties(ParameterProperties)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getParameter_Properties()
+	 * @return the value of the '<em>Description</em>' reference.
+	 * @see #setDescription(ParameterDescription)
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getParameter_Description()
 	 * @model required="true"
 	 * @generated
 	 */
-	ParameterProperties getProperties();
+	ParameterDescription getDescription();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getProperties <em>Properties</em>}' reference.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getDescription <em>Description</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Properties</em>' reference.
-	 * @see #getProperties()
+	 * @param value the new value of the '<em>Description</em>' reference.
+	 * @see #getDescription()
 	 * @generated
 	 */
-	void setProperties(ParameterProperties value);
+	void setDescription(ParameterDescription value);
 
 	/**
 	 * Returns the value of the '<em><b>Values</b></em>' attribute list.

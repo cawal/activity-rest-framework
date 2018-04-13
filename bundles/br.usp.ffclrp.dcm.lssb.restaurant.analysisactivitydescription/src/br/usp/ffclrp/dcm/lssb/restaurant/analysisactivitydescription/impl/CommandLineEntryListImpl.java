@@ -3,7 +3,9 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
+
+import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator;
 
 import java.util.Collection;
 
@@ -21,18 +23,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Command Line Entries</b></em>'.
+ * An implementation of the model object '<em><b>Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntriesImpl#getManipulators <em>Manipulators</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl#getManipulators <em>Manipulators</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Container implements CommandLineEntries {
+public abstract class CommandLineEntryListImpl extends MinimalEObjectImpl.Container implements CommandLineEntryList {
 	/**
 	 * The cached value of the '{@link #getManipulators() <em>Manipulators</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -41,14 +43,14 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator> manipulators;
+	protected EList<StringListManipulator> manipulators;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CommandLineEntriesImpl() {
+	protected CommandLineEntryListImpl() {
 		super();
 	}
 
@@ -59,7 +61,7 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_ENTRIES;
+		return AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_ENTRY_LIST;
 	}
 
 	/**
@@ -67,9 +69,9 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator> getManipulators() {
+	public EList<StringListManipulator> getManipulators() {
 		if (manipulators == null) {
-			manipulators = new EObjectContainmentEList<br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator>(br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator.class, this, AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES__MANIPULATORS);
+			manipulators = new EObjectContainmentEList<StringListManipulator>(StringListManipulator.class, this, AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS);
 		}
 		return manipulators;
 	}
@@ -82,7 +84,7 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES__MANIPULATORS:
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS:
 				return ((InternalEList<?>)getManipulators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -96,7 +98,7 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES__MANIPULATORS:
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS:
 				return getManipulators();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -111,9 +113,9 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES__MANIPULATORS:
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS:
 				getManipulators().clear();
-				getManipulators().addAll((Collection<? extends br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator>)newValue);
+				getManipulators().addAll((Collection<? extends StringListManipulator>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,7 +129,7 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES__MANIPULATORS:
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS:
 				getManipulators().clear();
 				return;
 		}
@@ -142,10 +144,10 @@ public abstract class CommandLineEntriesImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES__MANIPULATORS:
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS:
 				return manipulators != null && !manipulators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CommandLineEntriesImpl
+} //CommandLineEntryListImpl

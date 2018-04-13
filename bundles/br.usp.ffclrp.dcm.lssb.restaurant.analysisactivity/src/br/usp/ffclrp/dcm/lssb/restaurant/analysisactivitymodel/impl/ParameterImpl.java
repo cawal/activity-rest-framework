@@ -2,8 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 
@@ -30,7 +29,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl#getValues <em>Values</em>}</li>
  * </ul>
  *
@@ -58,14 +57,14 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' reference.
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProperties()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterProperties properties;
+	protected ParameterDescription description;
 
 	/**
 	 * The cached value of the '{@link #getValues() <em>Values</em>}' attribute list.
@@ -122,16 +121,16 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties getProperties() {
-		if (properties != null && properties.eIsProxy()) {
-			InternalEObject oldProperties = (InternalEObject)properties;
-			properties = (ParameterProperties)eResolveProxy(oldProperties);
-			if (properties != oldProperties) {
+	public ParameterDescription getDescription() {
+		if (description != null && description.eIsProxy()) {
+			InternalEObject oldDescription = (InternalEObject)description;
+			description = (ParameterDescription)eResolveProxy(oldDescription);
+			if (description != oldDescription) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.PARAMETER__PROPERTIES, oldProperties, properties));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.PARAMETER__DESCRIPTION, oldDescription, description));
 			}
 		}
-		return properties;
+		return description;
 	}
 
 	/**
@@ -139,8 +138,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties basicGetProperties() {
-		return properties;
+	public ParameterDescription basicGetDescription() {
+		return description;
 	}
 
 	/**
@@ -148,11 +147,11 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProperties(ParameterProperties newProperties) {
-		ParameterProperties oldProperties = properties;
-		properties = newProperties;
+	public void setDescription(ParameterDescription newDescription) {
+		ParameterDescription oldDescription = description;
+		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.PARAMETER__PROPERTIES, oldProperties, properties));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.PARAMETER__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -177,9 +176,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		switch (featureID) {
 			case AnalysisActivityModelPackage.PARAMETER__NAME:
 				return getName();
-			case AnalysisActivityModelPackage.PARAMETER__PROPERTIES:
-				if (resolve) return getProperties();
-				return basicGetProperties();
+			case AnalysisActivityModelPackage.PARAMETER__DESCRIPTION:
+				if (resolve) return getDescription();
+				return basicGetDescription();
 			case AnalysisActivityModelPackage.PARAMETER__VALUES:
 				return getValues();
 		}
@@ -198,8 +197,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			case AnalysisActivityModelPackage.PARAMETER__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityModelPackage.PARAMETER__PROPERTIES:
-				setProperties((ParameterProperties)newValue);
+			case AnalysisActivityModelPackage.PARAMETER__DESCRIPTION:
+				setDescription((ParameterDescription)newValue);
 				return;
 			case AnalysisActivityModelPackage.PARAMETER__VALUES:
 				getValues().clear();
@@ -220,8 +219,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			case AnalysisActivityModelPackage.PARAMETER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityModelPackage.PARAMETER__PROPERTIES:
-				setProperties((ParameterProperties)null);
+			case AnalysisActivityModelPackage.PARAMETER__DESCRIPTION:
+				setDescription((ParameterDescription)null);
 				return;
 			case AnalysisActivityModelPackage.PARAMETER__VALUES:
 				getValues().clear();
@@ -240,8 +239,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		switch (featureID) {
 			case AnalysisActivityModelPackage.PARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityModelPackage.PARAMETER__PROPERTIES:
-				return properties != null;
+			case AnalysisActivityModelPackage.PARAMETER__DESCRIPTION:
+				return description != null;
 			case AnalysisActivityModelPackage.PARAMETER__VALUES:
 				return values != null && !values.isEmpty();
 		}

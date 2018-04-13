@@ -3,8 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 
 import java.util.Collection;
@@ -22,21 +22,21 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter Properties</b></em>'.
+ * An implementation of the model object '<em><b>Parameter Description</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl#getParameterKind <em>Parameter Kind</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl#getParameterType <em>Parameter Type</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterPropertiesImpl#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl#getParameterKind <em>Parameter Kind</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl#getParameterType <em>Parameter Type</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implements ParameterProperties {
+public class ParameterDescriptionImpl extends MinimalEObjectImpl.Container implements ParameterDescription {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ParameterKinds PARAMETER_KIND_EDEFAULT = ParameterKinds.SINGLE_VALUE;
+	protected static final ParameterKind PARAMETER_KIND_EDEFAULT = ParameterKind.SINGLE_VALUE;
 
 	/**
 	 * The cached value of the '{@link #getParameterKind() <em>Parameter Kind</em>}' attribute.
@@ -75,7 +75,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterKinds parameterKind = PARAMETER_KIND_EDEFAULT;
+	protected ParameterKind parameterKind = PARAMETER_KIND_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getParameterType() <em>Parameter Type</em>}' attribute.
@@ -112,7 +112,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ParameterPropertiesImpl() {
+	protected ParameterDescriptionImpl() {
 		super();
 	}
 
@@ -123,7 +123,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.PARAMETER_PROPERTIES;
+		return AnalysisActivityDescriptionPackage.Literals.PARAMETER_DESCRIPTION;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__NAME, oldName, name));
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterKinds getParameterKind() {
+	public ParameterKind getParameterKind() {
 		return parameterKind;
 	}
 
@@ -161,11 +161,11 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameterKind(ParameterKinds newParameterKind) {
-		ParameterKinds oldParameterKind = parameterKind;
+	public void setParameterKind(ParameterKind newParameterKind) {
+		ParameterKind oldParameterKind = parameterKind;
 		parameterKind = newParameterKind == null ? PARAMETER_KIND_EDEFAULT : newParameterKind;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_KIND, oldParameterKind, parameterKind));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_KIND, oldParameterKind, parameterKind));
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 		ParameterType oldParameterType = parameterType;
 		parameterType = newParameterType == null ? PARAMETER_TYPE_EDEFAULT : newParameterType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_TYPE, oldParameterType, parameterType));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_TYPE, oldParameterType, parameterType));
 	}
 
 	/**
@@ -196,7 +196,7 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	 */
 	public EList<String> getDefaultValue() {
 		if (defaultValue == null) {
-			defaultValue = new EDataTypeUniqueEList<String>(String.class, this, AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__DEFAULT_VALUE);
+			defaultValue = new EDataTypeUniqueEList<String>(String.class, this, AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__DEFAULT_VALUE);
 		}
 		return defaultValue;
 	}
@@ -209,13 +209,13 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__NAME:
 				return getName();
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_KIND:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_KIND:
 				return getParameterKind();
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_TYPE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_TYPE:
 				return getParameterType();
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__DEFAULT_VALUE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__DEFAULT_VALUE:
 				return getDefaultValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -230,16 +230,16 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_KIND:
-				setParameterKind((ParameterKinds)newValue);
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_KIND:
+				setParameterKind((ParameterKind)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_TYPE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_TYPE:
 				setParameterType((ParameterType)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__DEFAULT_VALUE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__DEFAULT_VALUE:
 				getDefaultValue().clear();
 				getDefaultValue().addAll((Collection<? extends String>)newValue);
 				return;
@@ -255,16 +255,16 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_KIND:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_KIND:
 				setParameterKind(PARAMETER_KIND_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_TYPE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_TYPE:
 				setParameterType(PARAMETER_TYPE_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__DEFAULT_VALUE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__DEFAULT_VALUE:
 				getDefaultValue().clear();
 				return;
 		}
@@ -279,13 +279,13 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_KIND:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_KIND:
 				return parameterKind != PARAMETER_KIND_EDEFAULT;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__PARAMETER_TYPE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__PARAMETER_TYPE:
 				return parameterType != PARAMETER_TYPE_EDEFAULT;
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES__DEFAULT_VALUE:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION__DEFAULT_VALUE:
 				return defaultValue != null && !defaultValue.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -313,4 +313,4 @@ public class ParameterPropertiesImpl extends MinimalEObjectImpl.Container implem
 		return result.toString();
 	}
 
-} //ParameterPropertiesImpl
+} //ParameterDescriptionImpl

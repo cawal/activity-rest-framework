@@ -2,8 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 
@@ -32,8 +31,8 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl#getDatasets <em>Datasets</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl#getFiles <em>Files</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,24 +59,24 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' reference.
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProperties()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected DatasetProperties properties;
+	protected DatasetDescription description;
 
 	/**
-	 * The cached value of the '{@link #getDatasets() <em>Datasets</em>}' attribute list.
+	 * The cached value of the '{@link #getFiles() <em>Files</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDatasets()
+	 * @see #getFiles()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<File> datasets;
+	protected EList<File> files;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,16 +123,16 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties getProperties() {
-		if (properties != null && properties.eIsProxy()) {
-			InternalEObject oldProperties = (InternalEObject)properties;
-			properties = (DatasetProperties)eResolveProxy(oldProperties);
-			if (properties != oldProperties) {
+	public DatasetDescription getDescription() {
+		if (description != null && description.eIsProxy()) {
+			InternalEObject oldDescription = (InternalEObject)description;
+			description = (DatasetDescription)eResolveProxy(oldDescription);
+			if (description != oldDescription) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.DATASET__PROPERTIES, oldProperties, properties));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.DATASET__DESCRIPTION, oldDescription, description));
 			}
 		}
-		return properties;
+		return description;
 	}
 
 	/**
@@ -141,8 +140,8 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties basicGetProperties() {
-		return properties;
+	public DatasetDescription basicGetDescription() {
+		return description;
 	}
 
 	/**
@@ -150,11 +149,11 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProperties(DatasetProperties newProperties) {
-		DatasetProperties oldProperties = properties;
-		properties = newProperties;
+	public void setDescription(DatasetDescription newDescription) {
+		DatasetDescription oldDescription = description;
+		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.DATASET__PROPERTIES, oldProperties, properties));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.DATASET__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -162,11 +161,11 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<File> getDatasets() {
-		if (datasets == null) {
-			datasets = new EDataTypeUniqueEList<File>(File.class, this, AnalysisActivityModelPackage.DATASET__DATASETS);
+	public EList<File> getFiles() {
+		if (files == null) {
+			files = new EDataTypeUniqueEList<File>(File.class, this, AnalysisActivityModelPackage.DATASET__FILES);
 		}
-		return datasets;
+		return files;
 	}
 
 	/**
@@ -179,11 +178,11 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 		switch (featureID) {
 			case AnalysisActivityModelPackage.DATASET__NAME:
 				return getName();
-			case AnalysisActivityModelPackage.DATASET__PROPERTIES:
-				if (resolve) return getProperties();
-				return basicGetProperties();
-			case AnalysisActivityModelPackage.DATASET__DATASETS:
-				return getDatasets();
+			case AnalysisActivityModelPackage.DATASET__DESCRIPTION:
+				if (resolve) return getDescription();
+				return basicGetDescription();
+			case AnalysisActivityModelPackage.DATASET__FILES:
+				return getFiles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -200,12 +199,12 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 			case AnalysisActivityModelPackage.DATASET__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityModelPackage.DATASET__PROPERTIES:
-				setProperties((DatasetProperties)newValue);
+			case AnalysisActivityModelPackage.DATASET__DESCRIPTION:
+				setDescription((DatasetDescription)newValue);
 				return;
-			case AnalysisActivityModelPackage.DATASET__DATASETS:
-				getDatasets().clear();
-				getDatasets().addAll((Collection<? extends File>)newValue);
+			case AnalysisActivityModelPackage.DATASET__FILES:
+				getFiles().clear();
+				getFiles().addAll((Collection<? extends File>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -222,11 +221,11 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 			case AnalysisActivityModelPackage.DATASET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityModelPackage.DATASET__PROPERTIES:
-				setProperties((DatasetProperties)null);
+			case AnalysisActivityModelPackage.DATASET__DESCRIPTION:
+				setDescription((DatasetDescription)null);
 				return;
-			case AnalysisActivityModelPackage.DATASET__DATASETS:
-				getDatasets().clear();
+			case AnalysisActivityModelPackage.DATASET__FILES:
+				getFiles().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -242,10 +241,10 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 		switch (featureID) {
 			case AnalysisActivityModelPackage.DATASET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityModelPackage.DATASET__PROPERTIES:
-				return properties != null;
-			case AnalysisActivityModelPackage.DATASET__DATASETS:
-				return datasets != null && !datasets.isEmpty();
+			case AnalysisActivityModelPackage.DATASET__DESCRIPTION:
+				return description != null;
+			case AnalysisActivityModelPackage.DATASET__FILES:
+				return files != null && !files.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -262,8 +261,8 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", datasets: ");
-		result.append(datasets);
+		result.append(", files: ");
+		result.append(files);
 		result.append(')');
 		return result.toString();
 	}

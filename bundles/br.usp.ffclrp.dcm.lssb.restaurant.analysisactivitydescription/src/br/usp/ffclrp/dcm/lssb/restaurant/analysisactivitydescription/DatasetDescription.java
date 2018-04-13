@@ -6,23 +6,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Dataset Properties</b></em>'.
+ * A representation of the model object '<em><b>Dataset Description</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getMimetype <em>Mimetype</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getDatasetKind <em>Dataset Kind</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getMimetype <em>Mimetype</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getDatasetKind <em>Dataset Kind</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetProperties()
+ * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetDescription()
  * @model
  * @generated
  */
-public interface DatasetProperties extends EObject {
+public interface DatasetDescription extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -33,14 +33,14 @@ public interface DatasetProperties extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetProperties_Name()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetDescription_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -59,14 +59,14 @@ public interface DatasetProperties extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mimetype</em>' attribute.
 	 * @see #setMimetype(String)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetProperties_Mimetype()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetDescription_Mimetype()
 	 * @model
 	 * @generated
 	 */
 	String getMimetype();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getMimetype <em>Mimetype</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getMimetype <em>Mimetype</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Mimetype</em>' attribute.
@@ -77,7 +77,7 @@ public interface DatasetProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Dataset Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds}.
+	 * The literals are from the enumeration {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Dataset Kind</em>' attribute isn't clear,
@@ -85,23 +85,23 @@ public interface DatasetProperties extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dataset Kind</em>' attribute.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds
-	 * @see #setDatasetKind(DatasetKinds)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetProperties_DatasetKind()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
+	 * @see #setDatasetKind(DatasetKind)
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetDescription_DatasetKind()
 	 * @model required="true"
 	 * @generated
 	 */
-	DatasetKinds getDatasetKind();
+	DatasetKind getDatasetKind();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties#getDatasetKind <em>Dataset Kind</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getDatasetKind <em>Dataset Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Dataset Kind</em>' attribute.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
 	 * @see #getDatasetKind()
 	 * @generated
 	 */
-	void setDatasetKind(DatasetKinds value);
+	void setDatasetKind(DatasetKind value);
 
-} // DatasetProperties
+} // DatasetDescription

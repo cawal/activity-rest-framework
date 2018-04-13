@@ -4,9 +4,9 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
 
 import java.util.Collection;
@@ -49,7 +49,7 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterProperties> parameters;
+	protected EList<ParameterDescription> parameters;
 
 	/**
 	 * The cached value of the '{@link #getInputDatasets() <em>Input Datasets</em>}' containment reference list.
@@ -59,7 +59,7 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DatasetProperties> inputDatasets;
+	protected EList<DatasetDescription> inputDatasets;
 
 	/**
 	 * The cached value of the '{@link #getOutputDatasets() <em>Output Datasets</em>}' containment reference list.
@@ -69,7 +69,7 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DatasetProperties> outputDatasets;
+	protected EList<DatasetDescription> outputDatasets;
 
 	/**
 	 * The cached value of the '{@link #getCommandLineTemplate() <em>Command Line Template</em>}' containment reference list.
@@ -79,7 +79,7 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CommandLineEntries> commandLineTemplate;
+	protected EList<CommandLineEntryList> commandLineTemplate;
 
 	/**
 	 * The cached value of the '{@link #getReadinessContraints() <em>Readiness Contraints</em>}' containment reference list.
@@ -115,9 +115,9 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ParameterProperties> getParameters() {
+	public EList<ParameterDescription> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<ParameterProperties>(ParameterProperties.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__PARAMETERS);
+			parameters = new EObjectContainmentEList<ParameterDescription>(ParameterDescription.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -127,9 +127,9 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DatasetProperties> getInputDatasets() {
+	public EList<DatasetDescription> getInputDatasets() {
 		if (inputDatasets == null) {
-			inputDatasets = new EObjectContainmentEList<DatasetProperties>(DatasetProperties.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__INPUT_DATASETS);
+			inputDatasets = new EObjectContainmentEList<DatasetDescription>(DatasetDescription.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__INPUT_DATASETS);
 		}
 		return inputDatasets;
 	}
@@ -139,9 +139,9 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DatasetProperties> getOutputDatasets() {
+	public EList<DatasetDescription> getOutputDatasets() {
 		if (outputDatasets == null) {
-			outputDatasets = new EObjectContainmentEList<DatasetProperties>(DatasetProperties.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__OUTPUT_DATASETS);
+			outputDatasets = new EObjectContainmentEList<DatasetDescription>(DatasetDescription.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__OUTPUT_DATASETS);
 		}
 		return outputDatasets;
 	}
@@ -151,9 +151,9 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CommandLineEntries> getCommandLineTemplate() {
+	public EList<CommandLineEntryList> getCommandLineTemplate() {
 		if (commandLineTemplate == null) {
-			commandLineTemplate = new EObjectContainmentEList<CommandLineEntries>(CommandLineEntries.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__COMMAND_LINE_TEMPLATE);
+			commandLineTemplate = new EObjectContainmentEList<CommandLineEntryList>(CommandLineEntryList.class, this, AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__COMMAND_LINE_TEMPLATE);
 		}
 		return commandLineTemplate;
 	}
@@ -225,19 +225,19 @@ public class AnalysisActivityDescriptionImpl extends MinimalEObjectImpl.Containe
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__PARAMETERS:
 				getParameters().clear();
-				getParameters().addAll((Collection<? extends ParameterProperties>)newValue);
+				getParameters().addAll((Collection<? extends ParameterDescription>)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__INPUT_DATASETS:
 				getInputDatasets().clear();
-				getInputDatasets().addAll((Collection<? extends DatasetProperties>)newValue);
+				getInputDatasets().addAll((Collection<? extends DatasetDescription>)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__OUTPUT_DATASETS:
 				getOutputDatasets().clear();
-				getOutputDatasets().addAll((Collection<? extends DatasetProperties>)newValue);
+				getOutputDatasets().addAll((Collection<? extends DatasetDescription>)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__COMMAND_LINE_TEMPLATE:
 				getCommandLineTemplate().clear();
-				getCommandLineTemplate().addAll((Collection<? extends CommandLineEntries>)newValue);
+				getCommandLineTemplate().addAll((Collection<? extends CommandLineEntryList>)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION__READINESS_CONTRAINTS:
 				getReadinessContraints().clear();

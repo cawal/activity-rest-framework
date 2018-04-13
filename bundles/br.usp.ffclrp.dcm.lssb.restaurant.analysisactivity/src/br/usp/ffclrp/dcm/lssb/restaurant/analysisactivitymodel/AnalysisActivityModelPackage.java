@@ -188,22 +188,22 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int DATASET__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' reference.
+	 * The feature id for the '<em><b>Description</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET__PROPERTIES = 1;
+	int DATASET__DESCRIPTION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Datasets</b></em>' attribute list.
+	 * The feature id for the '<em><b>Files</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET__DATASETS = 2;
+	int DATASET__FILES = 2;
 
 	/**
 	 * The number of structural features of the '<em>Dataset</em>' class.
@@ -243,13 +243,13 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int PARAMETER__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' reference.
+	 * The feature id for the '<em><b>Description</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__PROPERTIES = 1;
+	int PARAMETER__DESCRIPTION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' attribute list.
@@ -417,26 +417,26 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	EAttribute getDataset_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Properties</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getProperties()
+	 * @return the meta object for the reference '<em>Description</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription()
 	 * @see #getDataset()
 	 * @generated
 	 */
-	EReference getDataset_Properties();
+	EReference getDataset_Description();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDatasets <em>Datasets</em>}'.
+	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getFiles <em>Files</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Datasets</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDatasets()
+	 * @return the meta object for the attribute list '<em>Files</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getFiles()
 	 * @see #getDataset()
 	 * @generated
 	 */
-	EAttribute getDataset_Datasets();
+	EAttribute getDataset_Files();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter <em>Parameter</em>}'.
@@ -460,15 +460,15 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	EAttribute getParameter_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Properties</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getProperties()
+	 * @return the meta object for the reference '<em>Description</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getDescription()
 	 * @see #getParameter()
 	 * @generated
 	 */
-	EReference getParameter_Properties();
+	EReference getParameter_Description();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getValues <em>Values</em>}'.
@@ -616,20 +616,20 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EAttribute DATASET__NAME = eINSTANCE.getDataset_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATASET__PROPERTIES = eINSTANCE.getDataset_Properties();
+		EReference DATASET__DESCRIPTION = eINSTANCE.getDataset_Description();
 
 		/**
-		 * The meta object literal for the '<em><b>Datasets</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Files</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATASET__DATASETS = eINSTANCE.getDataset_Datasets();
+		EAttribute DATASET__FILES = eINSTANCE.getDataset_Files();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -650,12 +650,12 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARAMETER__PROPERTIES = eINSTANCE.getParameter_Properties();
+		EReference PARAMETER__DESCRIPTION = eINSTANCE.getParameter_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.

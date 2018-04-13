@@ -2,27 +2,29 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Command Line Entries</b></em>'.
+ * A representation of the model object '<em><b>Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries#getManipulators <em>Manipulators</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList#getManipulators <em>Manipulators</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getCommandLineEntries()
+ * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getCommandLineEntryList()
  * @model abstract="true"
  * @generated
  */
-public interface CommandLineEntries extends EObject {
+public interface CommandLineEntryList extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Manipulators</b></em>' containment reference list.
 	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator}.
@@ -33,11 +35,11 @@ public interface CommandLineEntries extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Manipulators</em>' containment reference list.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getCommandLineEntries_Manipulators()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getCommandLineEntryList_Manipulators()
 	 * @model containment="true"
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator> getManipulators();
+	EList<StringListManipulator> getManipulators();
 
-} // CommandLineEntries
+} // CommandLineEntryList

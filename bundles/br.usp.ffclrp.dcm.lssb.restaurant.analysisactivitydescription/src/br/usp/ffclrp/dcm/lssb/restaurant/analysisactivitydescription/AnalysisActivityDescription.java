@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface AnalysisActivityDescription extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
@@ -42,11 +42,11 @@ public interface AnalysisActivityDescription extends EObject {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<ParameterProperties> getParameters();
+	EList<ParameterDescription> getParameters();
 
 	/**
 	 * Returns the value of the '<em><b>Input Datasets</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Input Datasets</em>' containment reference list isn't clear,
@@ -59,11 +59,11 @@ public interface AnalysisActivityDescription extends EObject {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<DatasetProperties> getInputDatasets();
+	EList<DatasetDescription> getInputDatasets();
 
 	/**
 	 * Returns the value of the '<em><b>Output Datasets</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Output Datasets</em>' containment reference list isn't clear,
@@ -76,11 +76,11 @@ public interface AnalysisActivityDescription extends EObject {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<DatasetProperties> getOutputDatasets();
+	EList<DatasetDescription> getOutputDatasets();
 
 	/**
 	 * Returns the value of the '<em><b>Command Line Template</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Command Line Template</em>' containment reference list isn't clear,
@@ -93,7 +93,7 @@ public interface AnalysisActivityDescription extends EObject {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<CommandLineEntries> getCommandLineTemplate();
+	EList<CommandLineEntryList> getCommandLineTemplate();
 
 	/**
 	 * Returns the value of the '<em><b>Readiness Contraints</b></em>' containment reference list.

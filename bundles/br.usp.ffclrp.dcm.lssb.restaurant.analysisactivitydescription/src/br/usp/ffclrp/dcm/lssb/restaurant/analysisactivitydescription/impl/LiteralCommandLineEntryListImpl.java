@@ -3,7 +3,7 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
 
 import java.util.Collection;
 
@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Literal Command Line Entries</b></em>'.
+ * An implementation of the model object '<em><b>Literal Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntriesImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl#getLiterals <em>Literals</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implements LiteralCommandLineEntries {
+public class LiteralCommandLineEntryListImpl extends CommandLineEntryListImpl implements LiteralCommandLineEntryList {
 	/**
 	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -42,7 +42,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LiteralCommandLineEntriesImpl() {
+	protected LiteralCommandLineEntryListImpl() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.LITERAL_COMMAND_LINE_ENTRIES;
+		return AnalysisActivityDescriptionPackage.Literals.LITERAL_COMMAND_LINE_ENTRY_LIST;
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 */
 	public EList<String> getLiterals() {
 		if (literals == null) {
-			literals = new EDataTypeUniqueEList<String>(String.class, this, AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES__LITERALS);
+			literals = new EDataTypeUniqueEList<String>(String.class, this, AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS);
 		}
 		return literals;
 	}
@@ -76,7 +76,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES__LITERALS:
+			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS:
 				return getLiterals();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -91,7 +91,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES__LITERALS:
+			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS:
 				getLiterals().clear();
 				getLiterals().addAll((Collection<? extends String>)newValue);
 				return;
@@ -107,7 +107,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES__LITERALS:
+			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS:
 				getLiterals().clear();
 				return;
 		}
@@ -122,7 +122,7 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES__LITERALS:
+			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS:
 				return literals != null && !literals.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -144,4 +144,4 @@ public class LiteralCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 		return result.toString();
 	}
 
-} //LiteralCommandLineEntriesImpl
+} //LiteralCommandLineEntryListImpl

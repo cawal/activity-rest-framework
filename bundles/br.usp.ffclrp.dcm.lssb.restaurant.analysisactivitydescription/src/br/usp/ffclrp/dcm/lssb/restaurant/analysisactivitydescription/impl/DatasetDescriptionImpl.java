@@ -3,8 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,20 +15,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Dataset Properties</b></em>'.
+ * An implementation of the model object '<em><b>Dataset Description</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl#getMimetype <em>Mimetype</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetPropertiesImpl#getDatasetKind <em>Dataset Kind</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl#getMimetype <em>Mimetype</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl#getDatasetKind <em>Dataset Kind</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implements DatasetProperties {
+public class DatasetDescriptionImpl extends MinimalEObjectImpl.Container implements DatasetDescription {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -77,7 +77,7 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DatasetKinds DATASET_KIND_EDEFAULT = DatasetKinds.STANDARD_INPUT;
+	protected static final DatasetKind DATASET_KIND_EDEFAULT = DatasetKind.STANDARD_INPUT;
 
 	/**
 	 * The cached value of the '{@link #getDatasetKind() <em>Dataset Kind</em>}' attribute.
@@ -87,14 +87,14 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected DatasetKinds datasetKind = DATASET_KIND_EDEFAULT;
+	protected DatasetKind datasetKind = DATASET_KIND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DatasetPropertiesImpl() {
+	protected DatasetDescriptionImpl() {
 		super();
 	}
 
@@ -105,7 +105,7 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.DATASET_PROPERTIES;
+		return AnalysisActivityDescriptionPackage.Literals.DATASET_DESCRIPTION;
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__NAME, oldName, name));
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 		String oldMimetype = mimetype;
 		mimetype = newMimetype;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__MIMETYPE, oldMimetype, mimetype));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__MIMETYPE, oldMimetype, mimetype));
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetKinds getDatasetKind() {
+	public DatasetKind getDatasetKind() {
 		return datasetKind;
 	}
 
@@ -164,11 +164,11 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDatasetKind(DatasetKinds newDatasetKind) {
-		DatasetKinds oldDatasetKind = datasetKind;
+	public void setDatasetKind(DatasetKind newDatasetKind) {
+		DatasetKind oldDatasetKind = datasetKind;
 		datasetKind = newDatasetKind == null ? DATASET_KIND_EDEFAULT : newDatasetKind;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__DATASET_KIND, oldDatasetKind, datasetKind));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__DATASET_KIND, oldDatasetKind, datasetKind));
 	}
 
 	/**
@@ -179,11 +179,11 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__NAME:
 				return getName();
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__MIMETYPE:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__MIMETYPE:
 				return getMimetype();
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__DATASET_KIND:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__DATASET_KIND:
 				return getDatasetKind();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -197,14 +197,14 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__MIMETYPE:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__MIMETYPE:
 				setMimetype((String)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__DATASET_KIND:
-				setDatasetKind((DatasetKinds)newValue);
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__DATASET_KIND:
+				setDatasetKind((DatasetKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,13 +218,13 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__MIMETYPE:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__MIMETYPE:
 				setMimetype(MIMETYPE_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__DATASET_KIND:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__DATASET_KIND:
 				setDatasetKind(DATASET_KIND_EDEFAULT);
 				return;
 		}
@@ -239,11 +239,11 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__NAME:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__MIMETYPE:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__MIMETYPE:
 				return MIMETYPE_EDEFAULT == null ? mimetype != null : !MIMETYPE_EDEFAULT.equals(mimetype);
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES__DATASET_KIND:
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION__DATASET_KIND:
 				return datasetKind != DATASET_KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -269,4 +269,4 @@ public class DatasetPropertiesImpl extends MinimalEObjectImpl.Container implemen
 		return result.toString();
 	}
 
-} //DatasetPropertiesImpl
+} //DatasetDescriptionImpl

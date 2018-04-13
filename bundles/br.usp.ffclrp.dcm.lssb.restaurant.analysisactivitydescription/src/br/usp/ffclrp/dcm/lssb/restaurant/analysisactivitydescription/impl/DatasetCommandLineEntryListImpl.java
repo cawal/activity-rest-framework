@@ -3,8 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Dataset Command Line Entries</b></em>'.
+ * An implementation of the model object '<em><b>Dataset Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntriesImpl#getDataset <em>Dataset</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl#getDataset <em>Dataset</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implements DatasetCommandLineEntries {
+public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl implements DatasetCommandLineEntryList {
 	/**
 	 * The cached value of the '{@link #getDataset() <em>Dataset</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -35,14 +35,14 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 * @generated
 	 * @ordered
 	 */
-	protected DatasetProperties dataset;
+	protected DatasetDescription dataset;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DatasetCommandLineEntriesImpl() {
+	protected DatasetCommandLineEntryListImpl() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.DATASET_COMMAND_LINE_ENTRIES;
+		return AnalysisActivityDescriptionPackage.Literals.DATASET_COMMAND_LINE_ENTRY_LIST;
 	}
 
 	/**
@@ -61,13 +61,13 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties getDataset() {
+	public DatasetDescription getDataset() {
 		if (dataset != null && dataset.eIsProxy()) {
 			InternalEObject oldDataset = (InternalEObject)dataset;
-			dataset = (DatasetProperties)eResolveProxy(oldDataset);
+			dataset = (DatasetDescription)eResolveProxy(oldDataset);
 			if (dataset != oldDataset) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES__DATASET, oldDataset, dataset));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET, oldDataset, dataset));
 			}
 		}
 		return dataset;
@@ -78,7 +78,7 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties basicGetDataset() {
+	public DatasetDescription basicGetDataset() {
 		return dataset;
 	}
 
@@ -87,11 +87,11 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataset(DatasetProperties newDataset) {
-		DatasetProperties oldDataset = dataset;
+	public void setDataset(DatasetDescription newDataset) {
+		DatasetDescription oldDataset = dataset;
 		dataset = newDataset;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES__DATASET, oldDataset, dataset));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET, oldDataset, dataset));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES__DATASET:
+			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET:
 				if (resolve) return getDataset();
 				return basicGetDataset();
 		}
@@ -117,8 +117,8 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES__DATASET:
-				setDataset((DatasetProperties)newValue);
+			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET:
+				setDataset((DatasetDescription)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,8 +132,8 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES__DATASET:
-				setDataset((DatasetProperties)null);
+			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET:
+				setDataset((DatasetDescription)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -147,10 +147,10 @@ public class DatasetCommandLineEntriesImpl extends CommandLineEntriesImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES__DATASET:
+			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET:
 				return dataset != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //DatasetCommandLineEntriesImpl
+} //DatasetCommandLineEntryListImpl

@@ -3,8 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter Command Line Entries</b></em>'.
+ * An implementation of the model object '<em><b>Parameter Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntriesImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl implements ParameterCommandLineEntries {
+public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl implements ParameterCommandLineEntryList {
 	/**
 	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -35,14 +35,14 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterProperties parameter;
+	protected ParameterDescription parameter;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ParameterCommandLineEntriesImpl() {
+	protected ParameterCommandLineEntryListImpl() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.PARAMETER_COMMAND_LINE_ENTRIES;
+		return AnalysisActivityDescriptionPackage.Literals.PARAMETER_COMMAND_LINE_ENTRY_LIST;
 	}
 
 	/**
@@ -61,13 +61,13 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties getParameter() {
+	public ParameterDescription getParameter() {
 		if (parameter != null && parameter.eIsProxy()) {
 			InternalEObject oldParameter = (InternalEObject)parameter;
-			parameter = (ParameterProperties)eResolveProxy(oldParameter);
+			parameter = (ParameterDescription)eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER, oldParameter, parameter));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER, oldParameter, parameter));
 			}
 		}
 		return parameter;
@@ -78,7 +78,7 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties basicGetParameter() {
+	public ParameterDescription basicGetParameter() {
 		return parameter;
 	}
 
@@ -87,11 +87,11 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameter(ParameterProperties newParameter) {
-		ParameterProperties oldParameter = parameter;
+	public void setParameter(ParameterDescription newParameter) {
+		ParameterDescription oldParameter = parameter;
 		parameter = newParameter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER, oldParameter, parameter));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER, oldParameter, parameter));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER:
+			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER:
 				if (resolve) return getParameter();
 				return basicGetParameter();
 		}
@@ -117,8 +117,8 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER:
-				setParameter((ParameterProperties)newValue);
+			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER:
+				setParameter((ParameterDescription)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,8 +132,8 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER:
-				setParameter((ParameterProperties)null);
+			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER:
+				setParameter((ParameterDescription)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -147,10 +147,10 @@ public class ParameterCommandLineEntriesImpl extends CommandLineEntriesImpl impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER:
+			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER:
 				return parameter != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ParameterCommandLineEntriesImpl
+} //ParameterCommandLineEntryListImpl

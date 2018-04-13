@@ -40,9 +40,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dataset">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" lowerBound="1"
-        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//DatasetProperties"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasets" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
+        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//DatasetDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="files" upperBound="-1"
         eType="#//File">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
@@ -51,8 +51,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" lowerBound="1"
-        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//ParameterProperties"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
+        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//ParameterDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" ordered="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">

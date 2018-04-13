@@ -5,21 +5,21 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Dataset Constraint</b></em>'.
+ * A representation of the model object '<em><b>Dataset Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint#getDataset <em>Dataset</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList#getDataset <em>Dataset</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetConstraint()
- * @model abstract="true"
+ * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetCommandLineEntryList()
+ * @model
  * @generated
  */
-public interface DatasetConstraint extends ReadinessConstraint {
+public interface DatasetCommandLineEntryList extends CommandLineEntryList {
 	/**
 	 * Returns the value of the '<em><b>Dataset</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -30,14 +30,14 @@ public interface DatasetConstraint extends ReadinessConstraint {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dataset</em>' reference.
 	 * @see #setDataset(DatasetDescription)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetConstraint_Dataset()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetCommandLineEntryList_Dataset()
 	 * @model required="true"
 	 * @generated
 	 */
 	DatasetDescription getDataset();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint#getDataset <em>Dataset</em>}' reference.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList#getDataset <em>Dataset</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Dataset</em>' reference.
@@ -46,4 +46,4 @@ public interface DatasetConstraint extends ReadinessConstraint {
 	 */
 	void setDataset(DatasetDescription value);
 
-} // DatasetConstraint
+} // DatasetCommandLineEntryList

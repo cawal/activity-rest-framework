@@ -8,24 +8,24 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Parameter Properties</b></em>'.
+ * A representation of the model object '<em><b>Parameter Description</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterKind <em>Parameter Kind</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterType <em>Parameter Type</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterKind <em>Parameter Kind</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterType <em>Parameter Type</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterProperties()
+ * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterDescription()
  * @model annotation="http://www.obeo.fr/dsl/dnc/archetype archetype='Thing'"
  * @generated
  */
-public interface ParameterProperties extends EObject {
+public interface ParameterDescription extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -36,14 +36,14 @@ public interface ParameterProperties extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterProperties_Name()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterDescription_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -54,7 +54,7 @@ public interface ParameterProperties extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Parameter Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds}.
+	 * The literals are from the enumeration {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameter Kind</em>' attribute isn't clear,
@@ -62,24 +62,24 @@ public interface ParameterProperties extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter Kind</em>' attribute.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds
-	 * @see #setParameterKind(ParameterKinds)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterProperties_ParameterKind()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
+	 * @see #setParameterKind(ParameterKind)
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterDescription_ParameterKind()
 	 * @model required="true"
 	 * @generated
 	 */
-	ParameterKinds getParameterKind();
+	ParameterKind getParameterKind();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterKind <em>Parameter Kind</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterKind <em>Parameter Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Parameter Kind</em>' attribute.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
 	 * @see #getParameterKind()
 	 * @generated
 	 */
-	void setParameterKind(ParameterKinds value);
+	void setParameterKind(ParameterKind value);
 
 	/**
 	 * Returns the value of the '<em><b>Parameter Type</b></em>' attribute.
@@ -93,14 +93,14 @@ public interface ParameterProperties extends EObject {
 	 * @return the value of the '<em>Parameter Type</em>' attribute.
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType
 	 * @see #setParameterType(ParameterType)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterProperties_ParameterType()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterDescription_ParameterType()
 	 * @model required="true"
 	 * @generated
 	 */
 	ParameterType getParameterType();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties#getParameterType <em>Parameter Type</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterType <em>Parameter Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Parameter Type</em>' attribute.
@@ -120,11 +120,11 @@ public interface ParameterProperties extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default Value</em>' attribute list.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterProperties_DefaultValue()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterDescription_DefaultValue()
 	 * @model ordered="false"
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
 	EList<String> getDefaultValue();
 
-} // ParameterProperties
+} // ParameterDescription

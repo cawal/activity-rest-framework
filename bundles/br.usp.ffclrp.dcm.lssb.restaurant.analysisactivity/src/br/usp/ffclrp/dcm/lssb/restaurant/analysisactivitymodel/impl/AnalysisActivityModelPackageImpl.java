@@ -234,7 +234,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataset_Properties() {
+	public EReference getDataset_Description() {
 		return (EReference)datasetEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -243,7 +243,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataset_Datasets() {
+	public EAttribute getDataset_Files() {
 		return (EAttribute)datasetEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -270,7 +270,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getParameter_Properties() {
+	public EReference getParameter_Description() {
 		return (EReference)parameterEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -333,12 +333,12 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 
 		datasetEClass = createEClass(DATASET);
 		createEAttribute(datasetEClass, DATASET__NAME);
-		createEReference(datasetEClass, DATASET__PROPERTIES);
-		createEAttribute(datasetEClass, DATASET__DATASETS);
+		createEReference(datasetEClass, DATASET__DESCRIPTION);
+		createEAttribute(datasetEClass, DATASET__FILES);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__NAME);
-		createEReference(parameterEClass, PARAMETER__PROPERTIES);
+		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
 		createEAttribute(parameterEClass, PARAMETER__VALUES);
 
 		// Create data types
@@ -397,12 +397,12 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 
 		initEClass(datasetEClass, Dataset.class, "Dataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataset_Name(), ecorePackage.getEString(), "name", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataset_Properties(), theAnalysisActivityDescriptionPackage.getDatasetProperties(), null, "properties", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataset_Datasets(), this.getFile(), "datasets", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDataset_Description(), theAnalysisActivityDescriptionPackage.getDatasetDescription(), null, "description", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataset_Files(), this.getFile(), "files", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getParameter_Properties(), theAnalysisActivityDescriptionPackage.getParameterProperties(), null, "properties", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Description(), theAnalysisActivityDescriptionPackage.getParameterDescription(), null, "description", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Values(), ecorePackage.getEString(), "values", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		// Initialize data types
@@ -430,7 +430,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		  (this, 
 		   source, 
 		   new String[] {
-			 "aad", "analysis-activity-description.ecore#/"
+			 "aad", "../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/"
 		   });
 	}
 
@@ -461,7 +461,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  (getDataset_Datasets(), 
+		  (getDataset_Files(), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"
