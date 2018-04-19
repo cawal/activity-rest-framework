@@ -1,5 +1,5 @@
 # RESTaurant
-[![CircleCI](https://circleci.com/gh/cawal/RESTaurant.svg?style=svg&circle-token=d46d2bd65967ed544920081f6851cdcdd72211ba)](https://circleci.com/gh/cawal/RESTaurant)
+[![CircleCI](https://circleci.com/gh/cawal/RESTaurant.svg?style=shield&circle-token=d46d2bd65967ed544920081f6851cdcdd72211ba)](https://circleci.com/gh/cawal/RESTaurant)
 
 ## Build
 
