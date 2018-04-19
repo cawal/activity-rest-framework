@@ -112,7 +112,7 @@ public class FileSystemDao {
 		if (analysisRoot.exists()) {
 			try {
 				
-				getParameters(analysis);
+				// getParameters(analysis);
 				getInputDatasets(analysis);
 				getOutputDatasets(analysis);
 				getErrorReport(analysis);
@@ -120,7 +120,10 @@ public class FileSystemDao {
 				return analysis;
 				
 			} catch (Exception e) {
-				throw new AnalysisActivityNotFoundException(analysisId);
+				AnalysisActivityNotFoundException aux =
+						new AnalysisActivityNotFoundException(analysisId);
+				aux.setStackTrace(e.getStackTrace());
+				throw aux;
 			}
 		} else {
 			throw new AnalysisActivityNotFoundException(analysisId);
