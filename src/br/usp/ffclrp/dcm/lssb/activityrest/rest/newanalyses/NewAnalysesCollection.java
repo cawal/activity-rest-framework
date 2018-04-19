@@ -61,6 +61,7 @@ public class NewAnalysesCollection {
 			
 		} catch (AnalysisActivityCreationFailedException
 				| AnalysisActivityNotFoundException e) {
+			e.printStackTrace();
 			throw new ServerErrorException(500,e);
 		}
 	}
