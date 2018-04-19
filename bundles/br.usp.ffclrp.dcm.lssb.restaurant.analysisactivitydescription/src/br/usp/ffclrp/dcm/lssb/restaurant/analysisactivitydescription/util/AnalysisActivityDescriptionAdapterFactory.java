@@ -72,28 +72,28 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 				return createAnalysisActivityDescriptionAdapter();
 			}
 			@Override
-			public Adapter caseParameterProperties(ParameterProperties object) {
-				return createParameterPropertiesAdapter();
+			public Adapter caseParameterDescription(ParameterDescription object) {
+				return createParameterDescriptionAdapter();
 			}
 			@Override
-			public Adapter caseDatasetProperties(DatasetProperties object) {
-				return createDatasetPropertiesAdapter();
+			public Adapter caseDatasetDescription(DatasetDescription object) {
+				return createDatasetDescriptionAdapter();
 			}
 			@Override
-			public Adapter caseCommandLineEntries(CommandLineEntries object) {
-				return createCommandLineEntriesAdapter();
+			public Adapter caseCommandLineEntryList(CommandLineEntryList object) {
+				return createCommandLineEntryListAdapter();
 			}
 			@Override
-			public Adapter caseLiteralCommandLineEntries(LiteralCommandLineEntries object) {
-				return createLiteralCommandLineEntriesAdapter();
+			public Adapter caseLiteralCommandLineEntryList(LiteralCommandLineEntryList object) {
+				return createLiteralCommandLineEntryListAdapter();
 			}
 			@Override
-			public Adapter caseDatasetCommandLineEntries(DatasetCommandLineEntries object) {
-				return createDatasetCommandLineEntriesAdapter();
+			public Adapter caseDatasetCommandLineEntryList(DatasetCommandLineEntryList object) {
+				return createDatasetCommandLineEntryListAdapter();
 			}
 			@Override
-			public Adapter caseParameterCommandLineEntries(ParameterCommandLineEntries object) {
-				return createParameterCommandLineEntriesAdapter();
+			public Adapter caseParameterCommandLineEntryList(ParameterCommandLineEntryList object) {
+				return createParameterCommandLineEntryListAdapter();
 			}
 			@Override
 			public Adapter caseReadinessConstraint(ReadinessConstraint object) {
@@ -114,6 +114,14 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 			@Override
 			public Adapter caseParameterConstraint(ParameterConstraint object) {
 				return createParameterConstraintAdapter();
+			}
+			@Override
+			public Adapter caseMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint object) {
+				return createMinimunParameterCardinalityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseMaximunParameterCardinalityConstraint(MaximunParameterCardinalityConstraint object) {
+				return createMaximunParameterCardinalityConstraintAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -150,86 +158,86 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties <em>Parameter Properties</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription <em>Parameter Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription
 	 * @generated
 	 */
-	public Adapter createParameterPropertiesAdapter() {
+	public Adapter createParameterDescriptionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties <em>Dataset Properties</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription <em>Dataset Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription
 	 * @generated
 	 */
-	public Adapter createDatasetPropertiesAdapter() {
+	public Adapter createDatasetDescriptionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries <em>Command Line Entries</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList <em>Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList
 	 * @generated
 	 */
-	public Adapter createCommandLineEntriesAdapter() {
+	public Adapter createCommandLineEntryListAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries <em>Literal Command Line Entries</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList <em>Literal Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList
 	 * @generated
 	 */
-	public Adapter createLiteralCommandLineEntriesAdapter() {
+	public Adapter createLiteralCommandLineEntryListAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries <em>Dataset Command Line Entries</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList <em>Dataset Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList
 	 * @generated
 	 */
-	public Adapter createDatasetCommandLineEntriesAdapter() {
+	public Adapter createDatasetCommandLineEntryListAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries <em>Parameter Command Line Entries</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList <em>Parameter Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList
 	 * @generated
 	 */
-	public Adapter createParameterCommandLineEntriesAdapter() {
+	public Adapter createParameterCommandLineEntryListAdapter() {
 		return null;
 	}
 
@@ -300,6 +308,34 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 	 * @generated
 	 */
 	public Adapter createParameterConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint <em>Minimun Parameter Cardinality Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint
+	 * @generated
+	 */
+	public Adapter createMinimunParameterCardinalityConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint <em>Maximun Parameter Cardinality Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint
+	 * @generated
+	 */
+	public Adapter createMaximunParameterCardinalityConstraintAdapter() {
 		return null;
 	}
 

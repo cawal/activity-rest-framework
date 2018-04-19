@@ -29,12 +29,12 @@ public interface DatasetConstraint extends ReadinessConstraint {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dataset</em>' reference.
-	 * @see #setDataset(DatasetProperties)
+	 * @see #setDataset(DatasetDescription)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetConstraint_Dataset()
 	 * @model required="true"
 	 * @generated
 	 */
-	DatasetProperties getDataset();
+	DatasetDescription getDataset();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint#getDataset <em>Dataset</em>}' reference.
@@ -44,6 +44,6 @@ public interface DatasetConstraint extends ReadinessConstraint {
 	 * @see #getDataset()
 	 * @generated
 	 */
-	void setDataset(DatasetProperties value);
+	void setDataset(DatasetDescription value);
 
 } // DatasetConstraint

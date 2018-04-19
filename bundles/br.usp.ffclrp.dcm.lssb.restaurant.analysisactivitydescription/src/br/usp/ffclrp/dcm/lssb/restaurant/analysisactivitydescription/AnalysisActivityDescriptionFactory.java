@@ -31,49 +31,49 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	AnalysisActivityDescription createAnalysisActivityDescription();
 
 	/**
-	 * Returns a new object of class '<em>Parameter Properties</em>'.
+	 * Returns a new object of class '<em>Parameter Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter Properties</em>'.
+	 * @return a new object of class '<em>Parameter Description</em>'.
 	 * @generated
 	 */
-	ParameterProperties createParameterProperties();
+	ParameterDescription createParameterDescription();
 
 	/**
-	 * Returns a new object of class '<em>Dataset Properties</em>'.
+	 * Returns a new object of class '<em>Dataset Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Dataset Properties</em>'.
+	 * @return a new object of class '<em>Dataset Description</em>'.
 	 * @generated
 	 */
-	DatasetProperties createDatasetProperties();
+	DatasetDescription createDatasetDescription();
 
 	/**
-	 * Returns a new object of class '<em>Literal Command Line Entries</em>'.
+	 * Returns a new object of class '<em>Literal Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal Command Line Entries</em>'.
+	 * @return a new object of class '<em>Literal Command Line Entry List</em>'.
 	 * @generated
 	 */
-	LiteralCommandLineEntries createLiteralCommandLineEntries();
+	LiteralCommandLineEntryList createLiteralCommandLineEntryList();
 
 	/**
-	 * Returns a new object of class '<em>Dataset Command Line Entries</em>'.
+	 * Returns a new object of class '<em>Dataset Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Dataset Command Line Entries</em>'.
+	 * @return a new object of class '<em>Dataset Command Line Entry List</em>'.
 	 * @generated
 	 */
-	DatasetCommandLineEntries createDatasetCommandLineEntries();
+	DatasetCommandLineEntryList createDatasetCommandLineEntryList();
 
 	/**
-	 * Returns a new object of class '<em>Parameter Command Line Entries</em>'.
+	 * Returns a new object of class '<em>Parameter Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter Command Line Entries</em>'.
+	 * @return a new object of class '<em>Parameter Command Line Entry List</em>'.
 	 * @generated
 	 */
-	ParameterCommandLineEntries createParameterCommandLineEntries();
+	ParameterCommandLineEntryList createParameterCommandLineEntryList();
 
 	/**
 	 * Returns a new object of class '<em>Minimun Dataset Cardinality Constraint</em>'.
@@ -92,6 +92,24 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	 * @generated
 	 */
 	MaximunDatasetCardinalityConstraint createMaximunDatasetCardinalityConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Minimun Parameter Cardinality Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Minimun Parameter Cardinality Constraint</em>'.
+	 * @generated
+	 */
+	MinimunParameterCardinalityConstraint createMinimunParameterCardinalityConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Maximun Parameter Cardinality Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Maximun Parameter Cardinality Constraint</em>'.
+	 * @generated
+	 */
+	MaximunParameterCardinalityConstraint createMaximunParameterCardinalityConstraint();
 
 	/**
 	 * Returns the package supported by this factory.

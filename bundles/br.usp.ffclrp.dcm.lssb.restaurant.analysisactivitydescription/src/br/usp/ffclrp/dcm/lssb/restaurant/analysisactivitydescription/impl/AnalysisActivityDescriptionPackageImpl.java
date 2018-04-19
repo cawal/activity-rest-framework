@@ -5,18 +5,20 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntries;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntries;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKinds;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntries;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntries;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKinds;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
 
@@ -49,42 +51,42 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass parameterPropertiesEClass = null;
+	private EClass parameterDescriptionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass datasetPropertiesEClass = null;
+	private EClass datasetDescriptionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass commandLineEntriesEClass = null;
+	private EClass commandLineEntryListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass literalCommandLineEntriesEClass = null;
+	private EClass literalCommandLineEntryListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass datasetCommandLineEntriesEClass = null;
+	private EClass datasetCommandLineEntryListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass parameterCommandLineEntriesEClass = null;
+	private EClass parameterCommandLineEntryListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,7 +128,21 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum parameterKindsEEnum = null;
+	private EClass minimunParameterCardinalityConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass maximunParameterCardinalityConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum parameterKindEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,7 +156,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum datasetKindsEEnum = null;
+	private EEnum datasetKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -267,8 +283,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getParameterProperties() {
-		return parameterPropertiesEClass;
+	public EClass getParameterDescription() {
+		return parameterDescriptionEClass;
 	}
 
 	/**
@@ -276,8 +292,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameterProperties_Name() {
-		return (EAttribute)parameterPropertiesEClass.getEStructuralFeatures().get(0);
+	public EAttribute getParameterDescription_Name() {
+		return (EAttribute)parameterDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -285,8 +301,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameterProperties_ParameterKind() {
-		return (EAttribute)parameterPropertiesEClass.getEStructuralFeatures().get(1);
+	public EAttribute getParameterDescription_ParameterKind() {
+		return (EAttribute)parameterDescriptionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -294,8 +310,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameterProperties_ParameterType() {
-		return (EAttribute)parameterPropertiesEClass.getEStructuralFeatures().get(2);
+	public EAttribute getParameterDescription_ParameterType() {
+		return (EAttribute)parameterDescriptionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -303,8 +319,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameterProperties_DefaultValue() {
-		return (EAttribute)parameterPropertiesEClass.getEStructuralFeatures().get(3);
+	public EAttribute getParameterDescription_DefaultValue() {
+		return (EAttribute)parameterDescriptionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -312,8 +328,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDatasetProperties() {
-		return datasetPropertiesEClass;
+	public EClass getDatasetDescription() {
+		return datasetDescriptionEClass;
 	}
 
 	/**
@@ -321,8 +337,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDatasetProperties_Name() {
-		return (EAttribute)datasetPropertiesEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDatasetDescription_Name() {
+		return (EAttribute)datasetDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -330,8 +346,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDatasetProperties_Mimetype() {
-		return (EAttribute)datasetPropertiesEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDatasetDescription_Mimetype() {
+		return (EAttribute)datasetDescriptionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -339,8 +355,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDatasetProperties_DatasetKind() {
-		return (EAttribute)datasetPropertiesEClass.getEStructuralFeatures().get(2);
+	public EAttribute getDatasetDescription_DatasetKind() {
+		return (EAttribute)datasetDescriptionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -348,8 +364,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCommandLineEntries() {
-		return commandLineEntriesEClass;
+	public EClass getCommandLineEntryList() {
+		return commandLineEntryListEClass;
 	}
 
 	/**
@@ -357,8 +373,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCommandLineEntries_Manipulators() {
-		return (EReference)commandLineEntriesEClass.getEStructuralFeatures().get(0);
+	public EReference getCommandLineEntryList_Manipulators() {
+		return (EReference)commandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -366,8 +382,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLiteralCommandLineEntries() {
-		return literalCommandLineEntriesEClass;
+	public EClass getLiteralCommandLineEntryList() {
+		return literalCommandLineEntryListEClass;
 	}
 
 	/**
@@ -375,8 +391,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLiteralCommandLineEntries_Literals() {
-		return (EAttribute)literalCommandLineEntriesEClass.getEStructuralFeatures().get(0);
+	public EAttribute getLiteralCommandLineEntryList_Literals() {
+		return (EAttribute)literalCommandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -384,8 +400,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDatasetCommandLineEntries() {
-		return datasetCommandLineEntriesEClass;
+	public EClass getDatasetCommandLineEntryList() {
+		return datasetCommandLineEntryListEClass;
 	}
 
 	/**
@@ -393,8 +409,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDatasetCommandLineEntries_Dataset() {
-		return (EReference)datasetCommandLineEntriesEClass.getEStructuralFeatures().get(0);
+	public EReference getDatasetCommandLineEntryList_Dataset() {
+		return (EReference)datasetCommandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -402,8 +418,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getParameterCommandLineEntries() {
-		return parameterCommandLineEntriesEClass;
+	public EClass getParameterCommandLineEntryList() {
+		return parameterCommandLineEntryListEClass;
 	}
 
 	/**
@@ -411,8 +427,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getParameterCommandLineEntries_Parameter() {
-		return (EReference)parameterCommandLineEntriesEClass.getEStructuralFeatures().get(0);
+	public EReference getParameterCommandLineEntryList_Parameter() {
+		return (EReference)parameterCommandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -501,8 +517,44 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getParameterKinds() {
-		return parameterKindsEEnum;
+	public EClass getMinimunParameterCardinalityConstraint() {
+		return minimunParameterCardinalityConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMinimunParameterCardinalityConstraint_Value() {
+		return (EAttribute)minimunParameterCardinalityConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMaximunParameterCardinalityConstraint() {
+		return maximunParameterCardinalityConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMaximunParameterCardinalityConstraint_Value() {
+		return (EAttribute)maximunParameterCardinalityConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getParameterKind() {
+		return parameterKindEEnum;
 	}
 
 	/**
@@ -519,8 +571,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getDatasetKinds() {
-		return datasetKindsEEnum;
+	public EEnum getDatasetKind() {
+		return datasetKindEEnum;
 	}
 
 	/**
@@ -558,28 +610,28 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		createEReference(analysisActivityDescriptionEClass, ANALYSIS_ACTIVITY_DESCRIPTION__COMMAND_LINE_TEMPLATE);
 		createEReference(analysisActivityDescriptionEClass, ANALYSIS_ACTIVITY_DESCRIPTION__READINESS_CONTRAINTS);
 
-		parameterPropertiesEClass = createEClass(PARAMETER_PROPERTIES);
-		createEAttribute(parameterPropertiesEClass, PARAMETER_PROPERTIES__NAME);
-		createEAttribute(parameterPropertiesEClass, PARAMETER_PROPERTIES__PARAMETER_KIND);
-		createEAttribute(parameterPropertiesEClass, PARAMETER_PROPERTIES__PARAMETER_TYPE);
-		createEAttribute(parameterPropertiesEClass, PARAMETER_PROPERTIES__DEFAULT_VALUE);
+		parameterDescriptionEClass = createEClass(PARAMETER_DESCRIPTION);
+		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__NAME);
+		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__PARAMETER_KIND);
+		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__PARAMETER_TYPE);
+		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__DEFAULT_VALUE);
 
-		datasetPropertiesEClass = createEClass(DATASET_PROPERTIES);
-		createEAttribute(datasetPropertiesEClass, DATASET_PROPERTIES__NAME);
-		createEAttribute(datasetPropertiesEClass, DATASET_PROPERTIES__MIMETYPE);
-		createEAttribute(datasetPropertiesEClass, DATASET_PROPERTIES__DATASET_KIND);
+		datasetDescriptionEClass = createEClass(DATASET_DESCRIPTION);
+		createEAttribute(datasetDescriptionEClass, DATASET_DESCRIPTION__NAME);
+		createEAttribute(datasetDescriptionEClass, DATASET_DESCRIPTION__MIMETYPE);
+		createEAttribute(datasetDescriptionEClass, DATASET_DESCRIPTION__DATASET_KIND);
 
-		commandLineEntriesEClass = createEClass(COMMAND_LINE_ENTRIES);
-		createEReference(commandLineEntriesEClass, COMMAND_LINE_ENTRIES__MANIPULATORS);
+		commandLineEntryListEClass = createEClass(COMMAND_LINE_ENTRY_LIST);
+		createEReference(commandLineEntryListEClass, COMMAND_LINE_ENTRY_LIST__MANIPULATORS);
 
-		literalCommandLineEntriesEClass = createEClass(LITERAL_COMMAND_LINE_ENTRIES);
-		createEAttribute(literalCommandLineEntriesEClass, LITERAL_COMMAND_LINE_ENTRIES__LITERALS);
+		literalCommandLineEntryListEClass = createEClass(LITERAL_COMMAND_LINE_ENTRY_LIST);
+		createEAttribute(literalCommandLineEntryListEClass, LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS);
 
-		datasetCommandLineEntriesEClass = createEClass(DATASET_COMMAND_LINE_ENTRIES);
-		createEReference(datasetCommandLineEntriesEClass, DATASET_COMMAND_LINE_ENTRIES__DATASET);
+		datasetCommandLineEntryListEClass = createEClass(DATASET_COMMAND_LINE_ENTRY_LIST);
+		createEReference(datasetCommandLineEntryListEClass, DATASET_COMMAND_LINE_ENTRY_LIST__DATASET);
 
-		parameterCommandLineEntriesEClass = createEClass(PARAMETER_COMMAND_LINE_ENTRIES);
-		createEReference(parameterCommandLineEntriesEClass, PARAMETER_COMMAND_LINE_ENTRIES__PARAMETER);
+		parameterCommandLineEntryListEClass = createEClass(PARAMETER_COMMAND_LINE_ENTRY_LIST);
+		createEReference(parameterCommandLineEntryListEClass, PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER);
 
 		readinessConstraintEClass = createEClass(READINESS_CONSTRAINT);
 
@@ -595,10 +647,16 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		parameterConstraintEClass = createEClass(PARAMETER_CONSTRAINT);
 		createEReference(parameterConstraintEClass, PARAMETER_CONSTRAINT__PARAMETER);
 
+		minimunParameterCardinalityConstraintEClass = createEClass(MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT);
+		createEAttribute(minimunParameterCardinalityConstraintEClass, MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE);
+
+		maximunParameterCardinalityConstraintEClass = createEClass(MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT);
+		createEAttribute(maximunParameterCardinalityConstraintEClass, MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE);
+
 		// Create enums
-		parameterKindsEEnum = createEEnum(PARAMETER_KINDS);
+		parameterKindEEnum = createEEnum(PARAMETER_KIND);
 		parameterTypeEEnum = createEEnum(PARAMETER_TYPE);
-		datasetKindsEEnum = createEEnum(DATASET_KINDS);
+		datasetKindEEnum = createEEnum(DATASET_KIND);
 	}
 
 	/**
@@ -632,49 +690,51 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		literalCommandLineEntriesEClass.getESuperTypes().add(this.getCommandLineEntries());
-		datasetCommandLineEntriesEClass.getESuperTypes().add(this.getCommandLineEntries());
-		parameterCommandLineEntriesEClass.getESuperTypes().add(this.getCommandLineEntries());
+		literalCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
+		datasetCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
+		parameterCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
 		datasetConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
 		minimunDatasetCardinalityConstraintEClass.getESuperTypes().add(this.getDatasetConstraint());
 		maximunDatasetCardinalityConstraintEClass.getESuperTypes().add(this.getDatasetConstraint());
 		parameterConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
+		minimunParameterCardinalityConstraintEClass.getESuperTypes().add(this.getParameterConstraint());
+		maximunParameterCardinalityConstraintEClass.getESuperTypes().add(this.getParameterConstraint());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(analysisActivityDescriptionEClass, AnalysisActivityDescription.class, "AnalysisActivityDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnalysisActivityDescription_Parameters(), this.getParameterProperties(), null, "parameters", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getAnalysisActivityDescription_InputDatasets(), this.getDatasetProperties(), null, "inputDatasets", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnalysisActivityDescription_OutputDatasets(), this.getDatasetProperties(), null, "outputDatasets", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnalysisActivityDescription_CommandLineTemplate(), this.getCommandLineEntries(), null, "commandLineTemplate", null, 1, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnalysisActivityDescription_Parameters(), this.getParameterDescription(), null, "parameters", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getAnalysisActivityDescription_InputDatasets(), this.getDatasetDescription(), null, "inputDatasets", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnalysisActivityDescription_OutputDatasets(), this.getDatasetDescription(), null, "outputDatasets", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnalysisActivityDescription_CommandLineTemplate(), this.getCommandLineEntryList(), null, "commandLineTemplate", null, 1, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAnalysisActivityDescription_ReadinessContraints(), this.getReadinessConstraint(), null, "readinessContraints", null, 0, -1, AnalysisActivityDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(parameterPropertiesEClass, ParameterProperties.class, "ParameterProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterProperties_Name(), ecorePackage.getEString(), "name", null, 1, 1, ParameterProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameterProperties_ParameterKind(), this.getParameterKinds(), "parameterKind", null, 1, 1, ParameterProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameterProperties_ParameterType(), this.getParameterType(), "parameterType", null, 1, 1, ParameterProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameterProperties_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, -1, ParameterProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(parameterDescriptionEClass, ParameterDescription.class, "ParameterDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameterDescription_Name(), ecorePackage.getEString(), "name", null, 1, 1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterDescription_ParameterKind(), this.getParameterKind(), "parameterKind", null, 1, 1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterDescription_ParameterType(), this.getParameterType(), "parameterType", null, 1, 1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterDescription_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, -1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(datasetPropertiesEClass, DatasetProperties.class, "DatasetProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDatasetProperties_Name(), ecorePackage.getEString(), "name", null, 1, 1, DatasetProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDatasetProperties_Mimetype(), ecorePackage.getEString(), "mimetype", null, 0, 1, DatasetProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDatasetProperties_DatasetKind(), this.getDatasetKinds(), "datasetKind", null, 1, 1, DatasetProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(datasetDescriptionEClass, DatasetDescription.class, "DatasetDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDatasetDescription_Name(), ecorePackage.getEString(), "name", null, 1, 1, DatasetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatasetDescription_Mimetype(), ecorePackage.getEString(), "mimetype", null, 0, 1, DatasetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatasetDescription_DatasetKind(), this.getDatasetKind(), "datasetKind", null, 1, 1, DatasetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(commandLineEntriesEClass, CommandLineEntries.class, "CommandLineEntries", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCommandLineEntries_Manipulators(), theStringListManipulatorsPackage.getStringListManipulator(), null, "manipulators", null, 0, -1, CommandLineEntries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(commandLineEntryListEClass, CommandLineEntryList.class, "CommandLineEntryList", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCommandLineEntryList_Manipulators(), theStringListManipulatorsPackage.getStringListManipulator(), null, "manipulators", null, 0, -1, CommandLineEntryList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(literalCommandLineEntriesEClass, LiteralCommandLineEntries.class, "LiteralCommandLineEntries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralCommandLineEntries_Literals(), ecorePackage.getEString(), "literals", null, 0, -1, LiteralCommandLineEntries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(literalCommandLineEntryListEClass, LiteralCommandLineEntryList.class, "LiteralCommandLineEntryList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralCommandLineEntryList_Literals(), ecorePackage.getEString(), "literals", null, 0, -1, LiteralCommandLineEntryList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(datasetCommandLineEntriesEClass, DatasetCommandLineEntries.class, "DatasetCommandLineEntries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDatasetCommandLineEntries_Dataset(), this.getDatasetProperties(), null, "dataset", null, 1, 1, DatasetCommandLineEntries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(datasetCommandLineEntryListEClass, DatasetCommandLineEntryList.class, "DatasetCommandLineEntryList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDatasetCommandLineEntryList_Dataset(), this.getDatasetDescription(), null, "dataset", null, 1, 1, DatasetCommandLineEntryList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(parameterCommandLineEntriesEClass, ParameterCommandLineEntries.class, "ParameterCommandLineEntries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameterCommandLineEntries_Parameter(), this.getParameterProperties(), null, "parameter", null, 1, 1, ParameterCommandLineEntries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(parameterCommandLineEntryListEClass, ParameterCommandLineEntryList.class, "ParameterCommandLineEntryList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParameterCommandLineEntryList_Parameter(), this.getParameterDescription(), null, "parameter", null, 1, 1, ParameterCommandLineEntryList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(readinessConstraintEClass, ReadinessConstraint.class, "ReadinessConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(datasetConstraintEClass, DatasetConstraint.class, "DatasetConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDatasetConstraint_Dataset(), this.getDatasetProperties(), null, "dataset", null, 1, 1, DatasetConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDatasetConstraint_Dataset(), this.getDatasetDescription(), null, "dataset", null, 1, 1, DatasetConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(minimunDatasetCardinalityConstraintEClass, MinimunDatasetCardinalityConstraint.class, "MinimunDatasetCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMinimunDatasetCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MinimunDatasetCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -683,23 +743,29 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEAttribute(getMaximunDatasetCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MaximunDatasetCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterConstraintEClass, ParameterConstraint.class, "ParameterConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameterConstraint_Parameter(), this.getParameterProperties(), null, "parameter", null, 1, 1, ParameterConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameterConstraint_Parameter(), this.getParameterDescription(), null, "parameter", null, 1, 1, ParameterConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(minimunParameterCardinalityConstraintEClass, MinimunParameterCardinalityConstraint.class, "MinimunParameterCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMinimunParameterCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MinimunParameterCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(maximunParameterCardinalityConstraintEClass, MaximunParameterCardinalityConstraint.class, "MaximunParameterCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMaximunParameterCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MaximunParameterCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(parameterKindsEEnum, ParameterKinds.class, "ParameterKinds");
-		addEEnumLiteral(parameterKindsEEnum, ParameterKinds.SINGLE_VALUE);
-		addEEnumLiteral(parameterKindsEEnum, ParameterKinds.LIST);
+		initEEnum(parameterKindEEnum, ParameterKind.class, "ParameterKind");
+		addEEnumLiteral(parameterKindEEnum, ParameterKind.SINGLE_VALUE);
+		addEEnumLiteral(parameterKindEEnum, ParameterKind.LIST);
 
 		initEEnum(parameterTypeEEnum, ParameterType.class, "ParameterType");
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.STRING);
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.INTEGER);
 
-		initEEnum(datasetKindsEEnum, DatasetKinds.class, "DatasetKinds");
-		addEEnumLiteral(datasetKindsEEnum, DatasetKinds.STANDARD_INPUT);
-		addEEnumLiteral(datasetKindsEEnum, DatasetKinds.STANDARD_OUTPUT);
-		addEEnumLiteral(datasetKindsEEnum, DatasetKinds.STANDARD_ERROR);
-		addEEnumLiteral(datasetKindsEEnum, DatasetKinds.SINGLE_FILE);
-		addEEnumLiteral(datasetKindsEEnum, DatasetKinds.FILE_COLLECTION);
+		initEEnum(datasetKindEEnum, DatasetKind.class, "DatasetKind");
+		addEEnumLiteral(datasetKindEEnum, DatasetKind.STANDARD_INPUT);
+		addEEnumLiteral(datasetKindEEnum, DatasetKind.STANDARD_OUTPUT);
+		addEEnumLiteral(datasetKindEEnum, DatasetKind.STANDARD_ERROR);
+		addEEnumLiteral(datasetKindEEnum, DatasetKind.SINGLE_FILE);
+		addEEnumLiteral(datasetKindEEnum, DatasetKind.FILE_COLLECTION);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -768,19 +834,19 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  (getParameterProperties_DefaultValue(), 
+		  (getParameterDescription_DefaultValue(), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  (getCommandLineEntries_Manipulators(), 
+		  (getCommandLineEntryList_Manipulators(), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  (getLiteralCommandLineEntries_Literals(), 
+		  (getLiteralCommandLineEntryList_Literals(), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"
@@ -796,7 +862,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	protected void createArchetypeAnnotations() {
 		String source = "http://www.obeo.fr/dsl/dnc/archetype";	
 		addAnnotation
-		  (parameterPropertiesEClass, 
+		  (parameterDescriptionEClass, 
 		   source, 
 		   new String[] {
 			 "archetype", "Thing"

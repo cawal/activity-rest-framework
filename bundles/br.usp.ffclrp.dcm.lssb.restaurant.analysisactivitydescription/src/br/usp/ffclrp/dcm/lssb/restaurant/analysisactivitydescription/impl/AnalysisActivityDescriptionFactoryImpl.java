@@ -58,13 +58,15 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION: return createAnalysisActivityDescription();
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES: return createParameterProperties();
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES: return createDatasetProperties();
-			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES: return createLiteralCommandLineEntries();
-			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES: return createDatasetCommandLineEntries();
-			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES: return createParameterCommandLineEntries();
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION: return createParameterDescription();
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION: return createDatasetDescription();
+			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST: return createLiteralCommandLineEntryList();
+			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST: return createDatasetCommandLineEntryList();
+			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST: return createParameterCommandLineEntryList();
 			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT: return createMinimunDatasetCardinalityConstraint();
 			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT: return createMaximunDatasetCardinalityConstraint();
+			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT: return createMinimunParameterCardinalityConstraint();
+			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT: return createMaximunParameterCardinalityConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -78,12 +80,12 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_KINDS:
-				return createParameterKindsFromString(eDataType, initialValue);
+			case AnalysisActivityDescriptionPackage.PARAMETER_KIND:
+				return createParameterKindFromString(eDataType, initialValue);
 			case AnalysisActivityDescriptionPackage.PARAMETER_TYPE:
 				return createParameterTypeFromString(eDataType, initialValue);
-			case AnalysisActivityDescriptionPackage.DATASET_KINDS:
-				return createDatasetKindsFromString(eDataType, initialValue);
+			case AnalysisActivityDescriptionPackage.DATASET_KIND:
+				return createDatasetKindFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -97,12 +99,12 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_KINDS:
-				return convertParameterKindsToString(eDataType, instanceValue);
+			case AnalysisActivityDescriptionPackage.PARAMETER_KIND:
+				return convertParameterKindToString(eDataType, instanceValue);
 			case AnalysisActivityDescriptionPackage.PARAMETER_TYPE:
 				return convertParameterTypeToString(eDataType, instanceValue);
-			case AnalysisActivityDescriptionPackage.DATASET_KINDS:
-				return convertDatasetKindsToString(eDataType, instanceValue);
+			case AnalysisActivityDescriptionPackage.DATASET_KIND:
+				return convertDatasetKindToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -123,9 +125,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties createParameterProperties() {
-		ParameterPropertiesImpl parameterProperties = new ParameterPropertiesImpl();
-		return parameterProperties;
+	public ParameterDescription createParameterDescription() {
+		ParameterDescriptionImpl parameterDescription = new ParameterDescriptionImpl();
+		return parameterDescription;
 	}
 
 	/**
@@ -133,9 +135,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties createDatasetProperties() {
-		DatasetPropertiesImpl datasetProperties = new DatasetPropertiesImpl();
-		return datasetProperties;
+	public DatasetDescription createDatasetDescription() {
+		DatasetDescriptionImpl datasetDescription = new DatasetDescriptionImpl();
+		return datasetDescription;
 	}
 
 	/**
@@ -143,9 +145,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LiteralCommandLineEntries createLiteralCommandLineEntries() {
-		LiteralCommandLineEntriesImpl literalCommandLineEntries = new LiteralCommandLineEntriesImpl();
-		return literalCommandLineEntries;
+	public LiteralCommandLineEntryList createLiteralCommandLineEntryList() {
+		LiteralCommandLineEntryListImpl literalCommandLineEntryList = new LiteralCommandLineEntryListImpl();
+		return literalCommandLineEntryList;
 	}
 
 	/**
@@ -153,9 +155,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetCommandLineEntries createDatasetCommandLineEntries() {
-		DatasetCommandLineEntriesImpl datasetCommandLineEntries = new DatasetCommandLineEntriesImpl();
-		return datasetCommandLineEntries;
+	public DatasetCommandLineEntryList createDatasetCommandLineEntryList() {
+		DatasetCommandLineEntryListImpl datasetCommandLineEntryList = new DatasetCommandLineEntryListImpl();
+		return datasetCommandLineEntryList;
 	}
 
 	/**
@@ -163,9 +165,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterCommandLineEntries createParameterCommandLineEntries() {
-		ParameterCommandLineEntriesImpl parameterCommandLineEntries = new ParameterCommandLineEntriesImpl();
-		return parameterCommandLineEntries;
+	public ParameterCommandLineEntryList createParameterCommandLineEntryList() {
+		ParameterCommandLineEntryListImpl parameterCommandLineEntryList = new ParameterCommandLineEntryListImpl();
+		return parameterCommandLineEntryList;
 	}
 
 	/**
@@ -193,8 +195,28 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterKinds createParameterKindsFromString(EDataType eDataType, String initialValue) {
-		ParameterKinds result = ParameterKinds.get(initialValue);
+	public MinimunParameterCardinalityConstraint createMinimunParameterCardinalityConstraint() {
+		MinimunParameterCardinalityConstraintImpl minimunParameterCardinalityConstraint = new MinimunParameterCardinalityConstraintImpl();
+		return minimunParameterCardinalityConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MaximunParameterCardinalityConstraint createMaximunParameterCardinalityConstraint() {
+		MaximunParameterCardinalityConstraintImpl maximunParameterCardinalityConstraint = new MaximunParameterCardinalityConstraintImpl();
+		return maximunParameterCardinalityConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterKind createParameterKindFromString(EDataType eDataType, String initialValue) {
+		ParameterKind result = ParameterKind.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -204,7 +226,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertParameterKindsToString(EDataType eDataType, Object instanceValue) {
+	public String convertParameterKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -233,8 +255,8 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetKinds createDatasetKindsFromString(EDataType eDataType, String initialValue) {
-		DatasetKinds result = DatasetKinds.get(initialValue);
+	public DatasetKind createDatasetKindFromString(EDataType eDataType, String initialValue) {
+		DatasetKind result = DatasetKind.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -244,7 +266,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertDatasetKindsToString(EDataType eDataType, Object instanceValue) {
+	public String convertDatasetKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

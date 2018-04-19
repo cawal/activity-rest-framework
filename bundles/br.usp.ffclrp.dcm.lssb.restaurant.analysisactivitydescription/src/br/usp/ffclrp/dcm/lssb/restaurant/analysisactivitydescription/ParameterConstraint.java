@@ -29,12 +29,12 @@ public interface ParameterConstraint extends ReadinessConstraint {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference.
-	 * @see #setParameter(ParameterProperties)
+	 * @see #setParameter(ParameterDescription)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterConstraint_Parameter()
 	 * @model required="true"
 	 * @generated
 	 */
-	ParameterProperties getParameter();
+	ParameterDescription getParameter();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint#getParameter <em>Parameter</em>}' reference.
@@ -44,6 +44,6 @@ public interface ParameterConstraint extends ReadinessConstraint {
 	 * @see #getParameter()
 	 * @generated
 	 */
-	void setParameter(ParameterProperties value);
+	void setParameter(ParameterDescription value);
 
 } // ParameterConstraint

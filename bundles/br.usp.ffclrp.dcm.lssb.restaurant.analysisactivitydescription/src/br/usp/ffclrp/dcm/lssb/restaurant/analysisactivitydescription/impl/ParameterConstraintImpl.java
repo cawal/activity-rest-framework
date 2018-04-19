@@ -4,8 +4,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterProperties;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +34,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterProperties parameter;
+	protected ParameterDescription parameter;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,10 +60,10 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties getParameter() {
+	public ParameterDescription getParameter() {
 		if (parameter != null && parameter.eIsProxy()) {
 			InternalEObject oldParameter = (InternalEObject)parameter;
-			parameter = (ParameterProperties)eResolveProxy(oldParameter);
+			parameter = (ParameterDescription)eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER, oldParameter, parameter));
@@ -78,7 +77,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterProperties basicGetParameter() {
+	public ParameterDescription basicGetParameter() {
 		return parameter;
 	}
 
@@ -87,8 +86,8 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameter(ParameterProperties newParameter) {
-		ParameterProperties oldParameter = parameter;
+	public void setParameter(ParameterDescription newParameter) {
+		ParameterDescription oldParameter = parameter;
 		parameter = newParameter;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER, oldParameter, parameter));
@@ -118,7 +117,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER:
-				setParameter((ParameterProperties)newValue);
+				setParameter((ParameterDescription)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,7 +132,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER:
-				setParameter((ParameterProperties)null);
+				setParameter((ParameterDescription)null);
 				return;
 		}
 		super.eUnset(featureID);

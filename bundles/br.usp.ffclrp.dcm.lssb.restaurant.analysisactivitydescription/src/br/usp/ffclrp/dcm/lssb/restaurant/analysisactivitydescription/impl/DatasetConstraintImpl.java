@@ -4,8 +4,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetProperties;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +34,7 @@ public abstract class DatasetConstraintImpl extends ReadinessConstraintImpl impl
 	 * @generated
 	 * @ordered
 	 */
-	protected DatasetProperties dataset;
+	protected DatasetDescription dataset;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,10 +60,10 @@ public abstract class DatasetConstraintImpl extends ReadinessConstraintImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties getDataset() {
+	public DatasetDescription getDataset() {
 		if (dataset != null && dataset.eIsProxy()) {
 			InternalEObject oldDataset = (InternalEObject)dataset;
-			dataset = (DatasetProperties)eResolveProxy(oldDataset);
+			dataset = (DatasetDescription)eResolveProxy(oldDataset);
 			if (dataset != oldDataset) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT__DATASET, oldDataset, dataset));
@@ -78,7 +77,7 @@ public abstract class DatasetConstraintImpl extends ReadinessConstraintImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetProperties basicGetDataset() {
+	public DatasetDescription basicGetDataset() {
 		return dataset;
 	}
 
@@ -87,8 +86,8 @@ public abstract class DatasetConstraintImpl extends ReadinessConstraintImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataset(DatasetProperties newDataset) {
-		DatasetProperties oldDataset = dataset;
+	public void setDataset(DatasetDescription newDataset) {
+		DatasetDescription oldDataset = dataset;
 		dataset = newDataset;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT__DATASET, oldDataset, dataset));
@@ -118,7 +117,7 @@ public abstract class DatasetConstraintImpl extends ReadinessConstraintImpl impl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT__DATASET:
-				setDataset((DatasetProperties)newValue);
+				setDataset((DatasetDescription)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,7 +132,7 @@ public abstract class DatasetConstraintImpl extends ReadinessConstraintImpl impl
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT__DATASET:
-				setDataset((DatasetProperties)null);
+				setDataset((DatasetDescription)null);
 				return;
 		}
 		super.eUnset(featureID);

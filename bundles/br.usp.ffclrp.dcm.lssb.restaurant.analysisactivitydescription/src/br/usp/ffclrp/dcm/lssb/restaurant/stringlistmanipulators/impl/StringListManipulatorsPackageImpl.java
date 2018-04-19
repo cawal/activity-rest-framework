@@ -2,6 +2,8 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.AppendEach;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.AppendListWith;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.Join;
@@ -113,11 +115,16 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		AnalysisActivityDescriptionPackageImpl theAnalysisActivityDescriptionPackage = (AnalysisActivityDescriptionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI) instanceof AnalysisActivityDescriptionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI) : AnalysisActivityDescriptionPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theStringListManipulatorsPackage.createPackageContents();
+		theAnalysisActivityDescriptionPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theStringListManipulatorsPackage.initializePackageContents();
+		theAnalysisActivityDescriptionPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theStringListManipulatorsPackage.freeze();

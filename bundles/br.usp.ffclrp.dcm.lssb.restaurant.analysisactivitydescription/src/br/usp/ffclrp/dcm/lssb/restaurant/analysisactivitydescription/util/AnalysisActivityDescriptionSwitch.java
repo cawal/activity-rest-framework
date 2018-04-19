@@ -72,42 +72,42 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_PROPERTIES: {
-				ParameterProperties parameterProperties = (ParameterProperties)theEObject;
-				T result = caseParameterProperties(parameterProperties);
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION: {
+				ParameterDescription parameterDescription = (ParameterDescription)theEObject;
+				T result = caseParameterDescription(parameterDescription);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.DATASET_PROPERTIES: {
-				DatasetProperties datasetProperties = (DatasetProperties)theEObject;
-				T result = caseDatasetProperties(datasetProperties);
+			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION: {
+				DatasetDescription datasetDescription = (DatasetDescription)theEObject;
+				T result = caseDatasetDescription(datasetDescription);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRIES: {
-				CommandLineEntries commandLineEntries = (CommandLineEntries)theEObject;
-				T result = caseCommandLineEntries(commandLineEntries);
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST: {
+				CommandLineEntryList commandLineEntryList = (CommandLineEntryList)theEObject;
+				T result = caseCommandLineEntryList(commandLineEntryList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRIES: {
-				LiteralCommandLineEntries literalCommandLineEntries = (LiteralCommandLineEntries)theEObject;
-				T result = caseLiteralCommandLineEntries(literalCommandLineEntries);
-				if (result == null) result = caseCommandLineEntries(literalCommandLineEntries);
+			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST: {
+				LiteralCommandLineEntryList literalCommandLineEntryList = (LiteralCommandLineEntryList)theEObject;
+				T result = caseLiteralCommandLineEntryList(literalCommandLineEntryList);
+				if (result == null) result = caseCommandLineEntryList(literalCommandLineEntryList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRIES: {
-				DatasetCommandLineEntries datasetCommandLineEntries = (DatasetCommandLineEntries)theEObject;
-				T result = caseDatasetCommandLineEntries(datasetCommandLineEntries);
-				if (result == null) result = caseCommandLineEntries(datasetCommandLineEntries);
+			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST: {
+				DatasetCommandLineEntryList datasetCommandLineEntryList = (DatasetCommandLineEntryList)theEObject;
+				T result = caseDatasetCommandLineEntryList(datasetCommandLineEntryList);
+				if (result == null) result = caseCommandLineEntryList(datasetCommandLineEntryList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRIES: {
-				ParameterCommandLineEntries parameterCommandLineEntries = (ParameterCommandLineEntries)theEObject;
-				T result = caseParameterCommandLineEntries(parameterCommandLineEntries);
-				if (result == null) result = caseCommandLineEntries(parameterCommandLineEntries);
+			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST: {
+				ParameterCommandLineEntryList parameterCommandLineEntryList = (ParameterCommandLineEntryList)theEObject;
+				T result = caseParameterCommandLineEntryList(parameterCommandLineEntryList);
+				if (result == null) result = caseCommandLineEntryList(parameterCommandLineEntryList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -147,6 +147,22 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT: {
+				MinimunParameterCardinalityConstraint minimunParameterCardinalityConstraint = (MinimunParameterCardinalityConstraint)theEObject;
+				T result = caseMinimunParameterCardinalityConstraint(minimunParameterCardinalityConstraint);
+				if (result == null) result = caseParameterConstraint(minimunParameterCardinalityConstraint);
+				if (result == null) result = caseReadinessConstraint(minimunParameterCardinalityConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT: {
+				MaximunParameterCardinalityConstraint maximunParameterCardinalityConstraint = (MaximunParameterCardinalityConstraint)theEObject;
+				T result = caseMaximunParameterCardinalityConstraint(maximunParameterCardinalityConstraint);
+				if (result == null) result = caseParameterConstraint(maximunParameterCardinalityConstraint);
+				if (result == null) result = caseReadinessConstraint(maximunParameterCardinalityConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -167,92 +183,92 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter Properties</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter Properties</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Description</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseParameterProperties(ParameterProperties object) {
+	public T caseParameterDescription(ParameterDescription object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dataset Properties</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Dataset Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dataset Properties</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Dataset Description</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDatasetProperties(DatasetProperties object) {
+	public T caseDatasetDescription(DatasetDescription object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Command Line Entries</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Command Line Entries</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Command Line Entry List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCommandLineEntries(CommandLineEntries object) {
+	public T caseCommandLineEntryList(CommandLineEntryList object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Literal Command Line Entries</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Literal Command Line Entries</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Command Line Entry List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLiteralCommandLineEntries(LiteralCommandLineEntries object) {
+	public T caseLiteralCommandLineEntryList(LiteralCommandLineEntryList object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dataset Command Line Entries</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Dataset Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dataset Command Line Entries</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Dataset Command Line Entry List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDatasetCommandLineEntries(DatasetCommandLineEntries object) {
+	public T caseDatasetCommandLineEntryList(DatasetCommandLineEntryList object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter Command Line Entries</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter Command Line Entries</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Command Line Entry List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseParameterCommandLineEntries(ParameterCommandLineEntries object) {
+	public T caseParameterCommandLineEntryList(ParameterCommandLineEntryList object) {
 		return null;
 	}
 
@@ -328,6 +344,36 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParameterConstraint(ParameterConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Minimun Parameter Cardinality Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Minimun Parameter Cardinality Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Maximun Parameter Cardinality Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Maximun Parameter Cardinality Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMaximunParameterCardinalityConstraint(MaximunParameterCardinalityConstraint object) {
 		return null;
 	}
 
