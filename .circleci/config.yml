@@ -24,6 +24,17 @@ jobs:
       - checkout
       - run: echo "building"
       - run: pwd
+      - run:
+	   command: git clone https://github.com/cawal/RESTaurant.git
+	   working_directory: ~/
+
+      - run:
+           command: mvn clean install
+           working_directory: ~/RESTaurant
+
+      - run:
+           command: mvn -DskipTests clean verify 
+
 #      # Download and cache dependencies
 #      - restore_cache:
 #          keys:
