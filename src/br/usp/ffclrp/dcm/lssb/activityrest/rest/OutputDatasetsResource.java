@@ -10,7 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
@@ -25,14 +25,14 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	boolean allowUpdate;
 	
 	private AnalysisActivity aa;
-	private FileSystemDao analysisActivityDao;
+	private AnalysisActivityDao analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public OutputDatasetsResource(
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull FileSystemDao analysisActivityDao,
+			@Nonnull AnalysisActivityDao analysisActivityDao,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;

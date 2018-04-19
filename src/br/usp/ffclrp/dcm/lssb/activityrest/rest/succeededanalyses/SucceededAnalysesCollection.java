@@ -9,7 +9,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -21,12 +21,12 @@ public class SucceededAnalysesCollection {
 	@Context
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
-	FileSystemDao analysisActivityDao;
+	AnalysisActivityDao analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public SucceededAnalysesCollection(AnalysisActivityDescription aaDesc,
 			UriInfo uriInfo,
-			FileSystemDao succeededAnalysisActivityDao) {
+			AnalysisActivityDao succeededAnalysisActivityDao) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
 		this.aaDesc = aaDesc;

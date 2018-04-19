@@ -33,8 +33,10 @@ public class AnalysisActivityValidation {
 			}
 			
 			if (c instanceof ParameterConstraint) {
+				System.out.println(c.toString());
 				ParameterDescription pp =
 						((ParameterConstraint) c).getParameter();
+				System.out.println(pp);
 				Parameter parameter = aa.parameterForName(pp.getName());
 				
 				if (!isReadyProperty(parameter, (ParameterConstraint) c))

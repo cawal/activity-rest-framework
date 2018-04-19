@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
+import javax.json.bind.JsonbConfig;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.io.FileUtils;
@@ -30,9 +31,10 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityM
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 
-public class FileSystemDao {
+public class FileSystemDao implements AnalysisActivityDao {
 	
-	private static final String SINGLE_FILE_DATASETS_DIR_PATH = "SINGLE_FILE_DATASETS";
+	private static final String SINGLE_FILE_DATASETS_DIR_PATH =
+			"SINGLE_FILE_DATASETS";
 	File localStorage;
 	final protected AnalysisActivityDescription aaDesc;
 	final String parametersSubpath = "/parameters.json";
@@ -42,9 +44,13 @@ public class FileSystemDao {
 	final String analysisStateFileSubpath = "/metadata/state";
 	final String errorReportSubpath = "/errorReport";
 	
+	JsonbConfig jsonConfig;
+	Jsonb jsonb;
+	
 	public FileSystemDao(
 			@NotNull File localStorage,
 			@NotNull AnalysisActivityDescription aaDesc) {
+		
 		this.localStorage = localStorage;
 		this.aaDesc = aaDesc;
 		
@@ -52,14 +58,18 @@ public class FileSystemDao {
 			localStorage.mkdirs();
 		}
 		
+		jsonConfig = new JsonbConfig()
+				.withFormatting(true)
+				.withNullValues(true);
+		jsonb = JsonbBuilder.create(jsonConfig);
 	}
 	
-	/**
-	 * Creates a new AnalysisActivity.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @return the ID of the created analysis activity.
-	 * @throws AnalysisActivityCreationFailedException
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#create()
 	 */
+	@Override
 	public String create() throws AnalysisActivityCreationFailedException {
 		
 		UUID newAnalysisId = UUID.randomUUID();
@@ -89,14 +99,14 @@ public class FileSystemDao {
 		}
 	}
 	
-	/**
-	 * Gets the analysis activity by its id.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param analysisId
-	 *            the string id of the analysis activity
-	 * @return an analysis activity instance if found
-	 * @throws AnalysisActivityNotFoundException
+	 * @see
+	 * br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#get(java.lang
+	 * .String)
 	 */
+	@Override
 	public AnalysisActivity get(String analysisId)
 			throws AnalysisActivityNotFoundException {
 		
@@ -112,7 +122,7 @@ public class FileSystemDao {
 		if (analysisRoot.exists()) {
 			try {
 				
-				// getParameters(analysis);
+				getParameters(analysis);
 				getInputDatasets(analysis);
 				getOutputDatasets(analysis);
 				getErrorReport(analysis);
@@ -130,12 +140,14 @@ public class FileSystemDao {
 		}
 	}
 	
-	/**
-	 * Updates the analysis activity in the persistent storage.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param aa
-	 * @throws AnalysisActivityNotFoundException
+	 * @see
+	 * br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#update(br.usp
+	 * .ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity)
 	 */
+	@Override
 	public void update(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
 		
@@ -155,13 +167,14 @@ public class FileSystemDao {
 		
 	}
 	
-	/**
-	 * Deletes the analysis activity from the storage.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param analysisId
-	 *            the string id of the analysis activity to be deleted.
-	 * @throws AnalysisActivityNotFoundException
+	 * @see
+	 * br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#delete(java.
+	 * lang.String)
 	 */
+	@Override
 	public void delete(String analysisId)
 			throws AnalysisActivityNotFoundException {
 		File analysisRoot = new File(localStorage, analysisId);
@@ -178,8 +191,7 @@ public class FileSystemDao {
 		return analysisRoot;
 	}
 	
-	
-	public AnalysisActivity moveFrom(String analysisId, FileSystemDao from) 
+	public AnalysisActivity moveFrom(String analysisId, FileSystemDao from)
 			throws AnalysisActivityNotFoundException {
 		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
 		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);
@@ -187,8 +199,6 @@ public class FileSystemDao {
 		System.out.println(toDir.exists());
 		return this.get(analysisId);
 	}
-	
-	
 	
 	private void setDescriptionForAnalysis(AnalysisActivity aa) {
 		AnalysisActivityDescription descCopy = EcoreUtil.copy(aaDesc);
@@ -219,16 +229,19 @@ public class FileSystemDao {
 			parametersFile.createNewFile();
 			
 			// save parameters
-			Map<String,Object> parametersMap = 
-					ParametersUtil.parameterDescriptionsToMap(aaDesc.getParameters());
+			Map<String, Object> parametersMap =
+					ParametersUtil
+							.parameterDescriptionsToMap(aaDesc.getParameters());
 			
 			FileWriter parametersStream = new FileWriter(parametersFile);
-			Jsonb jsonb = JsonbBuilder.create();
+			
 			jsonb.toJson(parametersMap, parametersStream);
 			parametersStream.close();
 			
-			/*String json = "{ }";
-			FileUtils.write(parametersFile, json, "utf-8");*/
+			/*
+			 * String json = "{ }";
+			 * FileUtils.write(parametersFile, json, "utf-8");
+			 */
 		}
 	}
 	
@@ -239,14 +252,13 @@ public class FileSystemDao {
 				new File(analysisRoot, parametersSubpath);
 		
 		// save parameters
-		Map<String,Object> parametersMap = ParametersUtil.toMap(aa.getParameters());
+		Map<String, Object> parametersMap =
+				ParametersUtil.toMap(aa.getParameters());
 		
 		FileWriter parametersStream = new FileWriter(parametersFile);
-		Jsonb jsonb = JsonbBuilder.create();
 		jsonb.toJson(parametersMap, parametersStream);
 		parametersStream.close();
 	}
-	
 	
 	private void getParameters(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
@@ -254,41 +266,45 @@ public class FileSystemDao {
 		File parametersFile =
 				new File(analysisRoot, parametersSubpath);
 		
+		
 		// create parameters with default values
 		// TODO: move for better place
 		aa.getParameters().clear();
-		for(ParameterDescription pp : aa.getDescription().getParameters()) {
-			Parameter p = AnalysisActivityModelFactory.eINSTANCE.createParameter();
+		for (ParameterDescription pp : aa.getDescription().getParameters()) {
+			Parameter p =
+					AnalysisActivityModelFactory.eINSTANCE.createParameter();
 			p.setName(pp.getName());
 			p.getValues().addAll(pp.getDefaultValue());
 			p.setDescription(pp);
 			aa.getParameters().add(p);
 		}
 		
-		ParametersUtil.getParameterByName(aa, "email").get().getValues().add("asdasd@asdas.s");
+		System.out.println("chegou aqui");
+		
+		ParametersUtil.getParameterByName(aa, "email").get().getValues()
+				.add("asdasd@asdas.s");
 		
 		try {
-
+			
 			Jsonb jsonb = JsonbBuilder.create();
-			Map<String,Object> parametersSet = jsonb
+			
+			@SuppressWarnings("unchecked")
+			Map<String, Object> parametersSet = jsonb
 					.fromJson(new FileReader(parametersFile),
 							Map.class);
 			
 			ParametersUtil.setParametersFromMap(aa, parametersSet);
 			
-			for(String k : parametersSet.keySet()) {
+			for (String k : parametersSet.keySet()) {
 				System.out.println(k);
 				System.out.println(parametersSet.get(k));
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new AnalysisActivityNotFoundException(e.getLocalizedMessage());
+			throw new AnalysisActivityNotFoundException(
+					e.getLocalizedMessage());
 		}
-		
-		
-		
 		
 	}
 	
@@ -304,21 +320,24 @@ public class FileSystemDao {
 		for (DatasetDescription dp : aaDesc.getInputDatasets()) {
 			
 			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset name
+			case FILE_COLLECTION: // files are inside a dir with the dataset
+									// name
 				File datasetSubdirectory =
-				new File(inputSubdirectory, dp.getName());
-						datasetSubdirectory.mkdirs();
+						new File(inputSubdirectory, dp.getName());
+				datasetSubdirectory.mkdirs();
 				break;
-				
-			case SINGLE_FILE:  // file has the dataset name
-				File singleFileDatasetDir = 
-				new File(inputSubdirectory,SINGLE_FILE_DATASETS_DIR_PATH);
+			
+			case SINGLE_FILE: // file has the dataset name
+				File singleFileDatasetDir =
+						new File(inputSubdirectory,
+								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
 				break;
 			default:
-				throw new NotImplementedException("Must provide implementation for " 
-						+ dp.getDatasetKind()
-						+ " at " + Thread.currentThread());
+				throw new NotImplementedException(
+						"Must provide implementation for "
+								+ dp.getDatasetKind()
+								+ " at " + Thread.currentThread());
 			}
 		}
 	}
@@ -332,56 +351,62 @@ public class FileSystemDao {
 				new File(getAnalysisDirectoryInLocalStorage(aa.getId()),
 						inputDatasetsSubpath);
 		
-		for(DatasetDescription dp : aa.getDescription().getInputDatasets()) {
+		for (DatasetDescription dp : aa.getDescription().getInputDatasets()) {
 			Dataset dataset = aa.inputDatasetForName(dp.getName());
 			
 			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset name
+			case FILE_COLLECTION: // files are inside a dir with the dataset
+									// name
 				File[] files = new File(inputDatasetsDirectory, dp.getName())
-					.listFiles();
+						.listFiles();
 				dataset.getFiles().addAll(Arrays.asList(files));
 				break;
-				
+			
 			case SINGLE_FILE: // file has the dataset name
-				File singleFileDatasetDir = 
-				new File(inputDatasetsDirectory,SINGLE_FILE_DATASETS_DIR_PATH);
-				File datasetFile = new File(singleFileDatasetDir,dataset.getName());
+				File singleFileDatasetDir =
+						new File(inputDatasetsDirectory,
+								SINGLE_FILE_DATASETS_DIR_PATH);
+				File datasetFile =
+						new File(singleFileDatasetDir, dataset.getName());
 				dataset.getFiles().add(datasetFile);
 				break;
 			default:
-				System.err.println("Must provide implementation for " 
+				System.err.println("Must provide implementation for "
 						+ dp.getDatasetKind()
-						+ " at " + Thread.currentThread().getStackTrace().toString() );
+						+ " at "
+						+ Thread.currentThread().getStackTrace().toString());
 				break;
 			}
 		}
 		
 	}
 	
-
-
 	private void saveInputDatasets(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
-		try {	
+		try {
 			File analysisRoot = getAnalysisDirectoryInLocalStorage(aa.getId());
 			
 			createInputDatasetsDirectories(analysisRoot);
-			File inputSubdirectory = new File(analysisRoot, inputDatasetsSubpath);
+			File inputSubdirectory =
+					new File(analysisRoot, inputDatasetsSubpath);
 			
 			for (DatasetDescription dp : aaDesc.getInputDatasets()) {
 				
 				Dataset dataset = aa.inputDatasetForName(dp.getName());
 				
 				switch (dp.getDatasetKind()) {
-				case FILE_COLLECTION: // files are inside a dir with the dataset name
+				case FILE_COLLECTION: // files are inside a dir with the dataset
+										// name
 					File datasetSubdirectory =
-					new File(inputSubdirectory, dp.getName());
-					for(int i = 0; i < dataset.getFiles().size(); i++) {
+							new File(inputSubdirectory, dp.getName());
+					for (int i = 0; i < dataset.getFiles().size(); i++) {
 						File f = dataset.getFiles().get(i);
-						File expectedFile = new File(datasetSubdirectory, f.getName());
+						File expectedFile =
+								new File(datasetSubdirectory, f.getName());
 						
 						if (!f.getAbsolutePath()
-								.equalsIgnoreCase(expectedFile.getAbsolutePath())) {
+								.equalsIgnoreCase(
+										expectedFile.getAbsolutePath())) {
 							Files.move(f.toPath(), expectedFile.toPath());
 							dataset.getFiles().remove(i);
 							dataset.getFiles().add(expectedFile);
@@ -389,32 +414,36 @@ public class FileSystemDao {
 						}
 					}
 					break;
-					
-				case SINGLE_FILE:  // file has the dataset name
-					File singleFileDatasetDir = 
-					new File(inputSubdirectory,SINGLE_FILE_DATASETS_DIR_PATH);
+				
+				case SINGLE_FILE: // file has the dataset name
+					File singleFileDatasetDir =
+							new File(inputSubdirectory,
+									SINGLE_FILE_DATASETS_DIR_PATH);
 					File singleFile = dataset.getFiles().get(0);
-					if(singleFile != null) {
-						File expectedFile = 
+					if (singleFile != null) {
+						File expectedFile =
 								new File(singleFileDatasetDir, dp.getName());
 						if (!singleFile.getAbsolutePath()
-								.equalsIgnoreCase(expectedFile.getAbsolutePath())) {
-							Files.move(singleFile.toPath(), expectedFile.toPath());
+								.equalsIgnoreCase(
+										expectedFile.getAbsolutePath())) {
+							Files.move(singleFile.toPath(),
+									expectedFile.toPath());
 						}
 						dataset.getFiles().remove(0);
 						dataset.getFiles().add(expectedFile);
 					}
 					break;
 				default:
-					System.err.println("Must provide implementation for " 
+					System.err.println("Must provide implementation for "
 							+ dp.getDatasetKind()
-							+ " at " + Thread.currentThread().getStackTrace().toString() );
+							+ " at " + Thread.currentThread().getStackTrace()
+									.toString());
 					break;
 				}
 				
 			}
-
-			//reloadInputDatasetsFiles(aa);
+			
+			// reloadInputDatasetsFiles(aa);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -424,15 +453,14 @@ public class FileSystemDao {
 	}
 	
 	private void clearDatasetsFiles(EList<Dataset> datasets) {
-		for(Dataset d : datasets) {
+		for (Dataset d : datasets) {
 			d.getFiles().clear();
 		}
 		
 	}
 	
-
 	// OUTPUT DATASETS ---------------------------------------------------------
-		
+	
 	private void getOutputDatasets(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
 		
@@ -440,40 +468,42 @@ public class FileSystemDao {
 				new File(getAnalysisDirectoryInLocalStorage(aa.getId()),
 						outputDatasetsSubpath);
 		
-
 		clearDatasetsFiles(aa.getOutputs());
 		
-		for(DatasetDescription dp : aa.getDescription().getOutputDatasets()) {
+		for (DatasetDescription dp : aa.getDescription().getOutputDatasets()) {
 			
 			Dataset dataset = aa.outputDatasetForName(dp.getName());
-
+			
 			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset name
-				File datasetDir = new File(outputDatasetsDirectory, dp.getName());
+			case FILE_COLLECTION: // files are inside a dir with the dataset
+									// name
+				File datasetDir =
+						new File(outputDatasetsDirectory, dp.getName());
 				datasetDir.mkdirs();
 				File[] files = datasetDir.listFiles();
 				dataset.getFiles().addAll(Arrays.asList(files));
 				break;
-				
+			
 			case SINGLE_FILE: // file has the dataset name
-
-				File singleFileDatasetDir = 
-				new File(outputDatasetsDirectory,SINGLE_FILE_DATASETS_DIR_PATH);
+				
+				File singleFileDatasetDir =
+						new File(outputDatasetsDirectory,
+								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
-				File datasetFile = new File(singleFileDatasetDir,dataset.getName());
+				File datasetFile =
+						new File(singleFileDatasetDir, dataset.getName());
 				dataset.getFiles().add(datasetFile);
 				break;
 			
 			default:
-				throw new NotImplementedException("Must provide implementation for " 
-						+ dp.getDatasetKind()
-						+ " at " + Thread.currentThread());
+				throw new NotImplementedException(
+						"Must provide implementation for "
+								+ dp.getDatasetKind()
+								+ " at " + Thread.currentThread());
 			}
 		}
 		
 	}
-	
-
 	
 	private void createOutputDatasetsDirectories(File analysisRoot) {
 		File outputSubdirectory =
@@ -485,48 +515,54 @@ public class FileSystemDao {
 		for (DatasetDescription dp : aaDesc.getOutputDatasets()) {
 			
 			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset name
+			case FILE_COLLECTION: // files are inside a dir with the dataset
+									// name
 				File datasetSubdirectory =
-				new File(outputSubdirectory, dp.getName());
-						datasetSubdirectory.mkdirs();
+						new File(outputSubdirectory, dp.getName());
+				datasetSubdirectory.mkdirs();
 				break;
-				
-			case SINGLE_FILE:  // file has the dataset name
-				File singleFileDatasetDir = 
-				new File(outputSubdirectory,SINGLE_FILE_DATASETS_DIR_PATH);
+			
+			case SINGLE_FILE: // file has the dataset name
+				File singleFileDatasetDir =
+						new File(outputSubdirectory,
+								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
 				break;
 			default:
-				throw new NotImplementedException("Must provide implementation for " 
-						+ dp.getDatasetKind()
-						+ " at " + Thread.currentThread());
+				throw new NotImplementedException(
+						"Must provide implementation for "
+								+ dp.getDatasetKind()
+								+ " at " + Thread.currentThread());
 			}
 		}
 	}
 	
-	
 	private void saveOutputDatasets(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
-		try {	
+		try {
 			File analysisRoot = getAnalysisDirectoryInLocalStorage(aa.getId());
 			
 			createOutputDatasetsDirectories(analysisRoot);
-			File outputSubdirectory = new File(analysisRoot, outputDatasetsSubpath);
+			File outputSubdirectory =
+					new File(analysisRoot, outputDatasetsSubpath);
 			
 			for (DatasetDescription dp : aaDesc.getOutputDatasets()) {
 				
 				Dataset dataset = aa.outputDatasetForName(dp.getName());
 				
 				switch (dp.getDatasetKind()) {
-				case FILE_COLLECTION: // files are inside a dir with the dataset name
+				case FILE_COLLECTION: // files are inside a dir with the dataset
+										// name
 					File datasetSubdirectory =
-					new File(outputSubdirectory, dp.getName());
-					for(int i = 0; i < dataset.getFiles().size(); i++) {
+							new File(outputSubdirectory, dp.getName());
+					for (int i = 0; i < dataset.getFiles().size(); i++) {
 						File f = dataset.getFiles().get(i);
-						File expectedFile = new File(datasetSubdirectory, f.getName());
+						File expectedFile =
+								new File(datasetSubdirectory, f.getName());
 						
 						if (!f.getAbsolutePath()
-								.equalsIgnoreCase(expectedFile.getAbsolutePath())) {
+								.equalsIgnoreCase(
+										expectedFile.getAbsolutePath())) {
 							Files.move(f.toPath(), expectedFile.toPath());
 							dataset.getFiles().remove(i);
 							dataset.getFiles().add(expectedFile);
@@ -534,34 +570,38 @@ public class FileSystemDao {
 						}
 					}
 					break;
-					
-				case SINGLE_FILE:  // file has the dataset name
-					File singleFileDatasetDir = 
-					new File(outputSubdirectory,SINGLE_FILE_DATASETS_DIR_PATH);
+				
+				case SINGLE_FILE: // file has the dataset name
+					File singleFileDatasetDir =
+							new File(outputSubdirectory,
+									SINGLE_FILE_DATASETS_DIR_PATH);
 					File singleFile = dataset.getFiles().get(0);
-					if(singleFile != null) {
-						File expectedFile = 
+					if (singleFile != null) {
+						File expectedFile =
 								new File(singleFileDatasetDir, dp.getName());
 						if (singleFile.exists()
-							&& !singleFile.getAbsolutePath()
-								.equalsIgnoreCase(expectedFile.getAbsolutePath())) {
+								&& !singleFile.getAbsolutePath()
+										.equalsIgnoreCase(expectedFile
+												.getAbsolutePath())) {
 							
-							Files.move(singleFile.toPath(), expectedFile.toPath());
+							Files.move(singleFile.toPath(),
+									expectedFile.toPath());
 						}
 						dataset.getFiles().remove(0);
 						dataset.getFiles().add(expectedFile);
 					}
 					break;
 				default:
-					System.err.println("Must provide implementation for " 
+					System.err.println("Must provide implementation for "
 							+ dp.getDatasetKind()
-							+ " at " + Thread.currentThread().getStackTrace().toString() );
+							+ " at " + Thread.currentThread().getStackTrace()
+									.toString());
 					break;
 				}
 				
 			}
-
-			//reloadInputDatasetsFiles(aa);
+			
+			// reloadInputDatasetsFiles(aa);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -570,29 +610,29 @@ public class FileSystemDao {
 		
 	}
 	
-	
-	// ERROR REPORT --------------------------------------------------------------
+	// ERROR REPORT
+	// --------------------------------------------------------------
 	private void createErrorReport(File analysisRoot) throws IOException {
 		
-		File errorReportFile = new File(analysisRoot,errorReportSubpath);
-		if(!errorReportFile.exists()) 
+		File errorReportFile = new File(analysisRoot, errorReportSubpath);
+		if (!errorReportFile.exists())
 			errorReportFile.createNewFile();
 	}
 	
-	private void getErrorReport(AnalysisActivity aa) 
+	private void getErrorReport(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException, IOException {
 		
 		File analysisRoot = this.getAnalysisDirectoryInLocalStorage(aa.getId());
-		File errorReportFile = new File(analysisRoot,errorReportSubpath);
+		File errorReportFile = new File(analysisRoot, errorReportSubpath);
 		aa.setErrorReport(errorReportFile);
 		
 	}
 	
-	private void saveErrorReport(AnalysisActivity aa) 
+	private void saveErrorReport(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException, IOException {
-
+		
 		File analysisRoot = this.getAnalysisDirectoryInLocalStorage(aa.getId());
-		File expectedFile = new File(analysisRoot,errorReportSubpath);
+		File expectedFile = new File(analysisRoot, errorReportSubpath);
 		
 		if (!aa.getErrorReport().getAbsolutePath()
 				.equalsIgnoreCase(expectedFile.getAbsolutePath())) {

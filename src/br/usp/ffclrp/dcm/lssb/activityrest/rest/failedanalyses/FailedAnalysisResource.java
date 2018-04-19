@@ -18,7 +18,7 @@ import javax.ws.rs.core.UriInfo;
 import org.apache.commons.io.FileUtils;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation.AnalysisActivityValidation;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ParameterSetResource;
@@ -37,14 +37,14 @@ public class FailedAnalysisResource {
 	URI absolutePathURI;
 	
 	AnalysisActivity aa;
-	FileSystemDao analysisActivityDao;
+	AnalysisActivityDao analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public FailedAnalysisResource(
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull FileSystemDao analysisActivityDao) {
+			@Nonnull AnalysisActivityDao analysisActivityDao) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.aa = aa;

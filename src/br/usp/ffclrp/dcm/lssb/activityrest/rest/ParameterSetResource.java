@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ParametersUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
@@ -32,7 +32,7 @@ public class ParameterSetResource {
 	URI absolutePathURI;
 	
 	private AnalysisActivity aa;
-	private FileSystemDao analysisActivityDao;
+	private AnalysisActivityDao analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	boolean allowUpdates;
 	
@@ -40,7 +40,7 @@ public class ParameterSetResource {
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull FileSystemDao analysisActivityDao,
+			@Nonnull AnalysisActivityDao analysisActivityDao,
 			boolean allowUpdates) {
 		this.aaDesc = aaDesc;
 		this.aa = aa;
