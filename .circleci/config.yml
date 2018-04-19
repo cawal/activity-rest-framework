@@ -25,8 +25,8 @@ jobs:
       - run: echo "building"
       - run: pwd
       - run:
-	   command: git clone https://github.com/cawal/RESTaurant.git
-	   working_directory: ~/
+           command: git clone https://github.com/cawal/RESTaurant.git
+           working_directory: ~/
 
       - run:
            command: mvn clean install
