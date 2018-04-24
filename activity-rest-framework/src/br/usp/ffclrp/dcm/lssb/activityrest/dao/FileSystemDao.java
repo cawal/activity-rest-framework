@@ -225,24 +225,20 @@ public class FileSystemDao implements AnalysisActivityDao {
 	private void createParametersFile(File analysisRoot) throws IOException {
 		File parametersFile =
 				new File(analysisRoot, parametersSubpath);
+		
 		if (!parametersFile.exists()) {
 			parametersFile.createNewFile();
-			
-			// save parameters
-			Map<String, Object> parametersMap =
-					ParametersUtil
-							.parameterDescriptionsToMap(aaDesc.getParameters());
-			
-			FileWriter parametersStream = new FileWriter(parametersFile);
-			
-			jsonb.toJson(parametersMap, parametersStream);
-			parametersStream.close();
-			
-			/*
-			 * String json = "{ }";
-			 * FileUtils.write(parametersFile, json, "utf-8");
-			 */
 		}
+		
+		// save/overwrite parameters
+		Map<String, Object> parametersMap =
+				ParametersUtil
+						.parameterDescriptionsToMap(aaDesc.getParameters());
+		
+		FileWriter parametersStream = new FileWriter(parametersFile);
+		
+		jsonb.toJson(parametersMap, parametersStream);
+		parametersStream.close();
 	}
 	
 	private void saveParameters(AnalysisActivity aa)
@@ -266,7 +262,6 @@ public class FileSystemDao implements AnalysisActivityDao {
 		File parametersFile =
 				new File(analysisRoot, parametersSubpath);
 		
-		
 		// create parameters with default values
 		// TODO: move for better place
 		aa.getParameters().clear();
@@ -279,11 +274,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 			aa.getParameters().add(p);
 		}
 		
-		System.out.println("chegou aqui");
-		
-		ParametersUtil.getParameterByName(aa, "email").get().getValues()
-				.add("asdasd@asdas.s");
-		
+		// get values from file
 		try {
 			
 			Jsonb jsonb = JsonbBuilder.create();
