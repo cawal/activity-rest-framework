@@ -53,8 +53,9 @@ public class Job implements Runnable {
 			// If the process was not successfully finished
 			default:
 				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(),
-						provideErrorReport(jobConfig, process.exitValue()));
-				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile(), "FAILED");
+						provideErrorReport(jobConfig, process.exitValue()),true);
+				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile()
+						, "FAILED");
 				break;
 			}
 			
@@ -62,7 +63,7 @@ public class Job implements Runnable {
 			e.printStackTrace();
 			try {
 				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile(), "FAILED");
-				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(), e.getMessage());
+				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(), e.getMessage(),true);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

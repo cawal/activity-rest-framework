@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.core.MediaType;
@@ -17,6 +21,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.IllegalParameterException;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ParametersUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -78,10 +83,11 @@ public class ParameterSetResource {
 	 * @exception BadRequestException if 
 	 * 	- the object contains a property not found as a parameter
 	 *  - a parameter should be a list but the user is trying 
-	 *  to send a sinple value (not an array) or vice versa.
+	 *  to send a simple value (not an array) or vice versa.
 	 */
 	@PUT
 	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response putAllParameters(Map<String,Object> map) {
 		
 		if(ParametersUtil.setParametersFromMap(aa, map)) {
@@ -114,20 +120,21 @@ public class ParameterSetResource {
 	 * @param parameters
 	 * @return
 	 */
-	/*@GET
-	@Path("/{parameterName}")
+	@GET
+	@Path("/{parameterName : [A-Za-z0-9-.]+}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getParameterByName(
-			@PathParam("parameterName") String parameterName) {
-		
-		try {
-			Object parameter = aa.getParameters().getParameter(parameterName);
-						
-			return Response.ok(parameter).build();
-		} catch (IllegalParameterException e) {
-			throw new NotFoundException();
-		} 
-	}*/
+			@NotNull @PathParam("parameterName") String parameterName) {
+			List<Parameter> parameterList = aa.getParameters();
+			Map<String, Object> map = ParametersUtil.toMap(parameterList);
+			
+			if(map.containsKey(parameterName)) {
+				return Response.ok(map.get(parameterName)).build();
+			} else {
+				throw new NotFoundException();
+			}
+ 
+	}
 	
 
 	
@@ -136,24 +143,23 @@ public class ParameterSetResource {
 	 * 
 	 * @param analysisID
 	 * @param parameterName
-	 * @param parameter
+	 * @param parameterValue
 	 * @return
 	 */
-/*	@PUT
-	@Path("/{parameterName}")
+	@PUT
+	@Path("/{parameterName  : [A-Za-z0-9-.]+}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response putParameterByName(
-			@PathParam("analysisID") String analysisID,
 			@NotNull @PathParam("parameterName") String parameterName,
-			Object parameter) {		
+			Object parameterValue) {		
 		try {
 
-			ParameterSet parameters = aa.getParameters();
-			parameters.setParameter(parameterName, parameter);
-			
+			Parameter p = aa.parameterForName(parameterName);
+			set(p,parameterValue);
 			analysisActivityDao.update(aa);
-			
 			return Response.ok().build();
+			
+
 		} catch (IllegalParameterException e) {
 			e.printStackTrace();
 			throw new BadRequestException();
@@ -161,5 +167,37 @@ public class ParameterSetResource {
 			throw new NotFoundException();
 		}
 		
-	}*/
+	}
+
+
+	private void set(Parameter p, Object value) throws IllegalParameterException{
+		//TODO: copy in the AnalysisActivity class
+		if(p != null) {
+			switch (p.getDescription().getParameterKind()) {
+			case SINGLE_VALUE:
+				if((value instanceof List)) {
+					throw new IllegalParameterException();
+				} else {
+					p.getValues().clear();
+					p.getValues().add((String)value);
+				}
+				
+				break;
+			case LIST:
+				if(! (value instanceof List)) {
+					throw new IllegalParameterException();
+				} else {
+					p.getValues().clear();
+					@SuppressWarnings("unchecked")
+					List<String> stringValues = ((List<String>)value);
+					stringValues.forEach(v -> p.getValues().add(v.toString()));
+				}
+				break;
+			
+			default:
+				break;
+			}
+		} 
+		
+	}
 }

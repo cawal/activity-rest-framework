@@ -3,7 +3,9 @@ package br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
@@ -39,7 +41,7 @@ public class AnalysisActivityValidation {
 				System.out.println(pp);
 				Parameter parameter = aa.parameterForName(pp.getName());
 				
-				if (!isReadyProperty(parameter, (ParameterConstraint) c))
+				if (!isReadyParameter(parameter, (ParameterConstraint) c))
 					return false;
 			}
 		}
@@ -48,9 +50,23 @@ public class AnalysisActivityValidation {
 		
 	}
 	
-	private static boolean isReadyProperty(Parameter parameter,
+	private static boolean isReadyParameter(Parameter parameter,
 			ParameterConstraint c) {
 		// TODO Auto-generated method stub
+		if (c instanceof MinimunParameterCardinalityConstraint) {
+			return parameter.getValues()
+					.size() >= ((MinimunParameterCardinalityConstraint) c)
+							.getValue()
+							.intValue();
+			
+		} else if (c instanceof MaximunParameterCardinalityConstraint) {
+			return parameter.getValues()
+					.size() <= ((MaximunParameterCardinalityConstraint) c)
+							.getValue()
+							.intValue();
+		}
+		
+		
 		return false;
 	}
 	
