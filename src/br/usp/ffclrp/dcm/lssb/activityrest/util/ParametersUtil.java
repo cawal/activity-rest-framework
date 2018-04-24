@@ -1,5 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,8 +87,8 @@ public class ParametersUtil {
 					value = map.get(parameterName);
 					
 					if (value instanceof List) {
-						List<? extends String> values =
-								(List<? extends String>) value;
+						List<? extends String> values = new ArrayList<>();
+						values.addAll((List)value);
 						p.getValues().clear();
 						p.getValues().addAll(values);
 						
