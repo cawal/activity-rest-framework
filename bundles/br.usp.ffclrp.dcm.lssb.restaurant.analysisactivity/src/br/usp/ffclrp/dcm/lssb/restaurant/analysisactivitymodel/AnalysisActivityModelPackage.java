@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import aad='../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/'"
+ *        annotation="http://www.eclipse.org/OCL/Import aad='../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/' aae='activity-exceptions.ecore#/'"
  * @generated
  */
 public interface AnalysisActivityModelPackage extends EPackage {
@@ -270,13 +270,50 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int PARAMETER_FEATURE_COUNT = 3;
 
 	/**
+	 * The operation id for the '<em>Set Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___SET_VALUE__STRING = 0;
+
+	/**
+	 * The operation id for the '<em>Set Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___SET_VALUE__BIGINTEGER = 1;
+
+	/**
+	 * The operation id for the '<em>Set Values</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___SET_VALUES__ELIST = 2;
+
+	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_OPERATION_COUNT = 0;
+	int PARAMETER_OPERATION_COUNT = 3;
+
+	/**
+	 * The meta object id for the '<em>Object</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Object
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
+	 * @generated
+	 */
+	int OBJECT = 3;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -286,7 +323,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 3;
+	int FILE = 4;
 
 
 	/**
@@ -482,6 +519,47 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	EAttribute getParameter_Values();
 
 	/**
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValue(java.lang.String) <em>Set Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Value</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValue(java.lang.String)
+	 * @generated
+	 */
+	EOperation getParameter__SetValue__String();
+
+	/**
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValue(java.math.BigInteger) <em>Set Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Value</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValue(java.math.BigInteger)
+	 * @generated
+	 */
+	EOperation getParameter__SetValue__BigInteger();
+
+	/**
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValues(org.eclipse.emf.common.util.EList) <em>Set Values</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Values</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValues(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getParameter__SetValues__EList();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Object <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Object</em>'.
+	 * @see java.lang.Object
+	 * @model instanceClass="java.lang.Object" serializeable="false"
+	 * @generated
+	 */
+	EDataType getObject();
+
+	/**
 	 * Returns the meta object for data type '{@link java.io.File <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -664,6 +742,40 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__VALUES = eINSTANCE.getParameter_Values();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARAMETER___SET_VALUE__STRING = eINSTANCE.getParameter__SetValue__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARAMETER___SET_VALUE__BIGINTEGER = eINSTANCE.getParameter__SetValue__BigInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Values</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARAMETER___SET_VALUES__ELIST = eINSTANCE.getParameter__SetValues__EList();
+
+		/**
+		 * The meta object literal for the '<em>Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Object
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
+		 * @generated
+		 */
+		EDataType OBJECT = eINSTANCE.getObject();
 
 		/**
 		 * The meta object literal for the '<em>File</em>' data type.

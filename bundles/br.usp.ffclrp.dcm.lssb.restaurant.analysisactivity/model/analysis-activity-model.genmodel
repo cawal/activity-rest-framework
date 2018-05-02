@@ -9,6 +9,7 @@
   <foreignModel>analysis-activity-model.ecore</foreignModel>
   <genPackages prefix="AnalysisActivityModel" basePackage="br.usp.ffclrp.dcm.lssb.restaurant"
       disposableProviderFactory="true" ecorePackage="analysis-activity-model.ecore#/">
+    <genDataTypes ecoreDataType="analysis-activity-model.ecore#//Object"/>
     <genDataTypes ecoreDataType="analysis-activity-model.ecore#//File"/>
     <genClasses ecoreClass="analysis-activity-model.ecore#//AnalysisActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//AnalysisActivity/id"/>
@@ -36,6 +37,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//Parameter/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-model.ecore#//Parameter/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//Parameter/values"/>
+      <genOperations ecoreOperation="analysis-activity-model.ecore#//Parameter/setValue">
+        <genParameters ecoreParameter="analysis-activity-model.ecore#//Parameter/setValue/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="analysis-activity-model.ecore#//Parameter/setValue.1">
+        <genParameters ecoreParameter="analysis-activity-model.ecore#//Parameter/setValue.1/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="analysis-activity-model.ecore#//Parameter/setValues">
+        <genParameters ecoreParameter="analysis-activity-model.ecore#//Parameter/setValues/value"/>
+      </genOperations>
     </genClasses>
+  </genPackages>
+  <genPackages prefix="Analysisactivityexceptions" ecorePackage="activity-exceptions.ecore#/">
+    <genDataTypes ecoreDataType="activity-exceptions.ecore#//ParameterUpdateException"/>
   </genPackages>
 </genmodel:GenModel>

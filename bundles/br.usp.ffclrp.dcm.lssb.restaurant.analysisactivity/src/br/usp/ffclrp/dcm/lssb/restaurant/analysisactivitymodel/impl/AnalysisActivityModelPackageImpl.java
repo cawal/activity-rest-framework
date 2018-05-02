@@ -2,6 +2,8 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
+import analysisactivityexceptions.AnalysisactivityexceptionsPackage;
+import analysisactivityexceptions.impl.AnalysisactivityexceptionsPackageImpl;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
@@ -48,6 +50,13 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * @generated
 	 */
 	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType objectEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,11 +115,16 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
 		StringListManipulatorsPackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		AnalysisactivityexceptionsPackageImpl theAnalysisactivityexceptionsPackage = (AnalysisactivityexceptionsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI) instanceof AnalysisactivityexceptionsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI) : AnalysisactivityexceptionsPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theAnalysisActivityModelPackage.createPackageContents();
+		theAnalysisactivityexceptionsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theAnalysisActivityModelPackage.initializePackageContents();
+		theAnalysisactivityexceptionsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theAnalysisActivityModelPackage.freeze();
@@ -288,6 +302,42 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getParameter__SetValue__String() {
+		return parameterEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getParameter__SetValue__BigInteger() {
+		return parameterEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getParameter__SetValues__EList() {
+		return parameterEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getObject() {
+		return objectEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getFile() {
 		return fileEDataType;
 	}
@@ -340,8 +390,12 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		createEAttribute(parameterEClass, PARAMETER__NAME);
 		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
 		createEAttribute(parameterEClass, PARAMETER__VALUES);
+		createEOperation(parameterEClass, PARAMETER___SET_VALUE__STRING);
+		createEOperation(parameterEClass, PARAMETER___SET_VALUE__BIGINTEGER);
+		createEOperation(parameterEClass, PARAMETER___SET_VALUES__ELIST);
 
 		// Create data types
+		objectEDataType = createEDataType(OBJECT);
 		fileEDataType = createEDataType(FILE);
 	}
 
@@ -370,6 +424,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 
 		// Obtain other dependent packages
 		AnalysisActivityDescriptionPackage theAnalysisActivityDescriptionPackage = (AnalysisActivityDescriptionPackage)EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI);
+		AnalysisactivityexceptionsPackage theAnalysisactivityexceptionsPackage = (AnalysisactivityexceptionsPackage)EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -405,7 +460,20 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		initEReference(getParameter_Description(), theAnalysisActivityDescriptionPackage.getParameterDescription(), null, "description", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Values(), ecorePackage.getEString(), "values", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
+		op = initEOperation(getParameter__SetValue__String(), null, "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
+
+		op = initEOperation(getParameter__SetValue__BigInteger(), null, "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBigInteger(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
+
+		op = initEOperation(getParameter__SetValues__EList(), null, "setValues", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObject(), "value", 0, -1, IS_UNIQUE, !IS_ORDERED);
+		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
+
 		// Initialize data types
+		initEDataType(objectEDataType, Object.class, "Object", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
@@ -430,7 +498,8 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		  (this, 
 		   source, 
 		   new String[] {
-			 "aad", "../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/"
+			 "aad", "../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/",
+			 "aae", "activity-exceptions.ecore#/"
 		   });
 	}
 
@@ -462,6 +531,12 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		   });	
 		addAnnotation
 		  (getDataset_Files(), 
+		   source, 
+		   new String[] {
+			 "nullFree", "false"
+		   });	
+		addAnnotation
+		  ((getParameter__SetValues__EList()).getEParameters().get(0), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"

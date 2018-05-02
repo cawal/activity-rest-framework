@@ -4,6 +4,7 @@
     nsPrefix="aam">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="aad" value="../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/"/>
+    <details key="aae" value="activity-exceptions.ecore#/"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AnalysisActivity">
     <eOperations name="inputDatasetForName" eType="#//Dataset">
@@ -50,6 +51,19 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    </eOperations>
+    <eOperations name="setValues" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
+      <eParameters name="value" ordered="false" upperBound="-1" eType="#//Object">
+        <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+          <details key="nullFree" value="false"/>
+        </eAnnotations>
+      </eParameters>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
         eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//ParameterDescription"/>
@@ -60,5 +74,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"
+      serializable="false"/>
   <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
 </ecore:EPackage>
