@@ -89,8 +89,10 @@ public class ParameterSetResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response putAllParameters(Map<String,Object> map) {
-		
-		if(ParametersUtil.setParametersFromMap(aa, map)) {
+		System.out.println("Received Map:");
+		System.out.println(map);
+		try {
+			ParametersUtil.setParametersFromMap(aa, map);
 			try {
 				analysisActivityDao.update(aa);
 			} catch (AnalysisActivityNotFoundException e) {
@@ -101,8 +103,12 @@ public class ParameterSetResource {
 			
 			return Response.ok(map).build();
 			
-		} else {
-			throw new BadRequestException();
+		} catch (IllegalParameterException e) {
+			e.printStackTrace();
+			System.out.println("Parameter:");
+			System.out.println(e.getParameterName());
+			System.out.println(e.getNewValue());
+			throw new BadRequestException(e);
 		}
 		
 	}
@@ -162,6 +168,9 @@ public class ParameterSetResource {
 
 		} catch (IllegalParameterException e) {
 			e.printStackTrace();
+			System.out.println("Parameter:");
+			System.out.println(e.getParameterName());
+			System.out.println(e.getNewValue());
 			throw new BadRequestException();
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
@@ -176,7 +185,7 @@ public class ParameterSetResource {
 			switch (p.getDescription().getParameterKind()) {
 			case SINGLE_VALUE:
 				if((value instanceof List)) {
-					throw new IllegalParameterException();
+					throw new IllegalParameterException(p.getName(),value);
 				} else {
 					p.getValues().clear();
 					p.getValues().add((String)value);
@@ -185,7 +194,7 @@ public class ParameterSetResource {
 				break;
 			case LIST:
 				if(! (value instanceof List)) {
-					throw new IllegalParameterException();
+					throw new IllegalParameterException(p.getName(),value);
 				} else {
 					p.getValues().clear();
 					@SuppressWarnings("unchecked")

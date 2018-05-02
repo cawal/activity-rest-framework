@@ -1,11 +1,13 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.IllegalParameterException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
@@ -60,29 +62,36 @@ public class ParametersUtil {
 				.findFirst();
 	}
 	
-	public static boolean setParametersFromMap(AnalysisActivity aa, Map<String,Object> map) {
+	public static void setParametersFromMap(AnalysisActivity aa, Map<String,Object> map) 
+			throws IllegalParameterException {
 		for(String parameterName : map.keySet()) {
+			if(parameterName == null) System.out.println("ParameterName is null!!!!");
+				
 			Optional<Parameter> pOpt = ParametersUtil.getParameterByName(aa,parameterName);
 			if(! pOpt.isPresent()) {
-				return false;
+				System.out.println("Parameter \"" + parameterName + "\" not exists!:");
+				throw new IllegalParameterException(parameterName,map.get(parameterName));
 			} else {
 				Parameter p = pOpt.get();
 				Object value = null;
+				
 				switch (p.getDescription().getParameterKind()) {
 				case SINGLE_VALUE:
 					value = map.get(parameterName);
-					if (value instanceof String) {
-						p.getValues().clear();
-						p.getValues().add((String) value);
-						
-					} else if (value == null) {
-						p.getValues().clear();
+					if (value instanceof Collection ) {
+						throw new IllegalParameterException(parameterName,map.get(parameterName));
 						
 					} else {
-						return false;
+							p.getValues().clear();
+							if(value instanceof String) {
+								p.getValues().add((String) value);
+							} else {
+								p.getValues().add(Integer.toString(value));
+							}
 					}
 					
 					break;
+					
 				case LIST:
 					value = map.get(parameterName);
 					
@@ -93,7 +102,8 @@ public class ParametersUtil {
 						p.getValues().addAll(values);
 						
 					} else {
-						return false;
+						System.out.println("Should be list: " + parameterName);
+						throw new IllegalParameterException(parameterName,map.get(parameterName));
 					}
 					
 					break;
@@ -103,8 +113,6 @@ public class ParametersUtil {
 			}
 			
 		}
-		
-		return true;
 	}
 	
 }

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.IllegalParameterException;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ParametersUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
@@ -196,7 +197,6 @@ public class FileSystemDao implements AnalysisActivityDao {
 		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
 		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);
 		fromDir.renameTo(toDir);
-		System.out.println(toDir.exists());
 		return this.get(analysisId);
 	}
 	
@@ -286,12 +286,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 			
 			ParametersUtil.setParametersFromMap(aa, parametersSet);
 			
-			for (String k : parametersSet.keySet()) {
-				System.out.println(k);
-				System.out.println(parametersSet.get(k));
-			}
-			
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException | IllegalParameterException e) {
 			e.printStackTrace();
 			throw new AnalysisActivityNotFoundException(
 					e.getLocalizedMessage());
