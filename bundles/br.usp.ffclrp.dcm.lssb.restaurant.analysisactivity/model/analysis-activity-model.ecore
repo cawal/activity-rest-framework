@@ -51,18 +51,10 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-    <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
-    </eOperations>
-    <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
+    <eOperations name="checkAndSetValues" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
       <eTypeParameters name="A"/>
       <eParameters name="value">
-        <eGenericType eClassifier="#//List">
-          <eTypeArguments eTypeParameter="#//Parameter/setValue.2/A"/>
-        </eGenericType>
+        <eGenericType eTypeParameter="#//Parameter/checkAndSetValues/A"/>
       </eParameters>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -79,7 +71,5 @@
       serializable="false">
     <eTypeParameters name="A"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"
-      serializable="false"/>
   <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
 </ecore:EPackage>

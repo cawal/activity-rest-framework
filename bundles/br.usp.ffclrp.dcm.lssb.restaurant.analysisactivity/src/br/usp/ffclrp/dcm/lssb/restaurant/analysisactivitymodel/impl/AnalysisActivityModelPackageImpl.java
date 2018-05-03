@@ -66,13 +66,6 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType objectEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType fileEDataType = null;
 
 	/**
@@ -312,26 +305,8 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getParameter__SetValue__String() {
+	public EOperation getParameter__CheckAndSetValues__Object() {
 		return parameterEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getParameter__SetValue__BigInteger() {
-		return parameterEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getParameter__SetValue__EList() {
-		return parameterEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -341,15 +316,6 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 */
 	public EDataType getList() {
 		return listEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getObject() {
-		return objectEDataType;
 	}
 
 	/**
@@ -409,13 +375,10 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		createEAttribute(parameterEClass, PARAMETER__NAME);
 		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
 		createEAttribute(parameterEClass, PARAMETER__VALUES);
-		createEOperation(parameterEClass, PARAMETER___SET_VALUE__STRING);
-		createEOperation(parameterEClass, PARAMETER___SET_VALUE__BIGINTEGER);
-		createEOperation(parameterEClass, PARAMETER___SET_VALUE__ELIST);
+		createEOperation(parameterEClass, PARAMETER___CHECK_AND_SET_VALUES__OBJECT);
 
 		// Create data types
 		listEDataType = createEDataType(LIST);
-		objectEDataType = createEDataType(OBJECT);
 		fileEDataType = createEDataType(FILE);
 	}
 
@@ -481,25 +444,14 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		initEReference(getParameter_Description(), theAnalysisActivityDescriptionPackage.getParameterDescription(), null, "description", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Values(), ecorePackage.getEString(), "values", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		op = initEOperation(getParameter__SetValue__String(), null, "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
-
-		op = initEOperation(getParameter__SetValue__BigInteger(), null, "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBigInteger(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
-
-		op = initEOperation(getParameter__SetValue__EList(), null, "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getParameter__CheckAndSetValues__Object(), null, "checkAndSetValues", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "A");
-		EGenericType g1 = createEGenericType(this.getList());
-		EGenericType g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
+		EGenericType g1 = createEGenericType(t1);
 		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
 
 		// Initialize data types
 		initEDataType(listEDataType, List.class, "List", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(objectEDataType, Object.class, "Object", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource

@@ -9,8 +9,8 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -175,6 +175,34 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public <A> void checkAndSetValues(A value) throws ParameterUpdateException {
+		List list = new ArrayList();
+		if(value instanceof Collection) {
+			list.addAll((Collection) value);
+		} else {
+			list.add(value);
+		}
+		
+		if(this.getDescription().isValidValue(list)){
+			this.getValues().clear();
+			this.getValues().addAll( (List<String>)
+					list.stream()
+					.map(s -> s.toString())
+					.collect(Collectors.toList())
+			);
+			
+			return;
+		} else {
+			throw new ParameterUpdateException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * 
 	 */
 	public void setValue(String value) throws ParameterUpdateException {
@@ -200,22 +228,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		}
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <A> void setValue(List<A> value) throws ParameterUpdateException {
-		if(this.description.isValidValue(value)) {
-			this.getValues().clear();
-			this.getValues().addAll(
-					value.stream().map(s -> s.toString()).collect(Collectors.toList())
-			);
-		} else {
-			throw new ParameterUpdateException();
-		}
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,25 +318,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AnalysisActivityModelPackage.PARAMETER___SET_VALUE__STRING:
+			case AnalysisActivityModelPackage.PARAMETER___CHECK_AND_SET_VALUES__OBJECT:
 				try {
-					setValue((String)arguments.get(0));
-					return null;
-				}
-				catch (Throwable throwable) {
-					throw new InvocationTargetException(throwable);
-				}
-			case AnalysisActivityModelPackage.PARAMETER___SET_VALUE__BIGINTEGER:
-				try {
-					setValue((BigInteger)arguments.get(0));
-					return null;
-				}
-				catch (Throwable throwable) {
-					throw new InvocationTargetException(throwable);
-				}
-			case AnalysisActivityModelPackage.PARAMETER___SET_VALUE__ELIST:
-				try {
-					setValue((List)arguments.get(0));
+					checkAndSetValues(arguments.get(0));
 					return null;
 				}
 				catch (Throwable throwable) {

@@ -5,8 +5,6 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException;
-import java.math.BigInteger;
-import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -105,23 +103,7 @@ public interface Parameter extends EObject {
 	 * @model exceptions="analysisactivityexceptions.ParameterUpdateException"
 	 * @generated
 	 */
-	void setValue(String value) throws ParameterUpdateException;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model exceptions="analysisactivityexceptions.ParameterUpdateException"
-	 * @generated
-	 */
-	void setValue(BigInteger value) throws ParameterUpdateException;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model exceptions="analysisactivityexceptions.ParameterUpdateException" valueDataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.List&lt;A&gt;" valueMany="false"
-	 * @generated
-	 */
-	<A> void setValue(List<A> value) throws ParameterUpdateException;
+	<A> void checkAndSetValues(A value) throws ParameterUpdateException;
 
 
 	
