@@ -75,6 +75,8 @@ public class ParametersUtil {
 				Parameter p = pOpt.get();
 				Object value = null;
 				
+				p.setValue(map.get(p.getName()));
+				
 				switch (p.getDescription().getParameterKind()) {
 				case SINGLE_VALUE:
 					value = map.get(parameterName);
