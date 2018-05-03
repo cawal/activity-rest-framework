@@ -175,7 +175,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public <A> void checkAndSetValues(A value) throws ParameterUpdateException {
@@ -195,34 +194,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			);
 			
 			return;
-		} else {
-			throw new ParameterUpdateException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
-	 */
-	public void setValue(String value) throws ParameterUpdateException {
-		if(this.description.isValidValue(value)) {
-			this.getValues().clear();
-			this.getValues().add(value);
-		} else {
-			throw new ParameterUpdateException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
-	 */
-	public void setValue(BigInteger value) throws ParameterUpdateException {
-		if(this.description.isValidValue(value)) {
-			this.getValues().clear();
-			this.getValues().add(value.toString());
 		} else {
 			throw new ParameterUpdateException();
 		}
