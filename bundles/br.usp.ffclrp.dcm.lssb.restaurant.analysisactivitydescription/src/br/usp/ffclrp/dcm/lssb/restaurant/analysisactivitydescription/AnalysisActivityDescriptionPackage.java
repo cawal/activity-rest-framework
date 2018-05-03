@@ -195,7 +195,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__BIGINTEGER = 0;
+	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST = 0;
 
 	/**
 	 * The operation id for the '<em>Is Valid Value</em>' operation.
@@ -907,7 +907,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(org.eclipse.emf.common.util.EList)
 	 * @generated
 	 */
-	EOperation getParameterDescription__IsValidValue__BigInteger();
+	EOperation getParameterDescription__IsValidValue__EList();
 
 	/**
 	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.lang.Object) <em>Is Valid Value</em>}' operation.
@@ -1354,7 +1354,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__BIGINTEGER = eINSTANCE.getParameterDescription__IsValidValue__BigInteger();
+		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST = eINSTANCE.getParameterDescription__IsValidValue__EList();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.

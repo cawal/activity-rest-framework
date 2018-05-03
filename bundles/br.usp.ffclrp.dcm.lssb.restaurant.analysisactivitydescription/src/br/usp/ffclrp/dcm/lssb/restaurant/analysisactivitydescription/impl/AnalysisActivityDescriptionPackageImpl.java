@@ -340,7 +340,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getParameterDescription__IsValidValue__BigInteger() {
+	public EOperation getParameterDescription__IsValidValue__EList() {
 		return parameterDescriptionEClass.getEOperations().get(0);
 	}
 
@@ -663,7 +663,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__PARAMETER_KIND);
 		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__PARAMETER_TYPE);
 		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__DEFAULT_VALUE);
-		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__BIGINTEGER);
+		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST);
 		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT);
 		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST);
 
@@ -769,7 +769,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEAttribute(getParameterDescription_ParameterType(), this.getParameterType(), "parameterType", null, 1, 1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameterDescription_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, -1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		EOperation op = initEOperation(getParameterDescription__IsValidValue__BigInteger(), ecorePackage.getEBoolean(), "isValidValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getParameterDescription__IsValidValue__EList(), ecorePackage.getEBoolean(), "isValidValue", 1, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "A");
 		EGenericType g1 = createEGenericType(t1);
 		addEParameter(op, g1, "value", 0, -1, IS_UNIQUE, !IS_ORDERED);
@@ -831,6 +831,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEEnum(parameterTypeEEnum, ParameterType.class, "ParameterType");
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.STRING);
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.INTEGER);
+		addEEnumLiteral(parameterTypeEEnum, ParameterType.REAL);
 
 		initEEnum(datasetKindEEnum, DatasetKind.class, "DatasetKind");
 		addEEnumLiteral(datasetKindEEnum, DatasetKind.STANDARD_INPUT);
@@ -909,7 +910,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  ((getParameterDescription__IsValidValue__BigInteger()).getEParameters().get(0), 
+		  ((getParameterDescription__IsValidValue__EList()).getEParameters().get(0), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"

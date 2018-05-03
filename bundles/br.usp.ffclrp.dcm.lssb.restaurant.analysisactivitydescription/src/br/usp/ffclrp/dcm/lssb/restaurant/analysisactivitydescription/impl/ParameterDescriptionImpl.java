@@ -263,8 +263,10 @@ public class ParameterDescriptionImpl extends MinimalEObjectImpl.Container imple
 			isAssignable = values.stream().allMatch(a -> a instanceof String);
 			break;
 		case INTEGER:
-			
 			isAssignable = allElementsAreInteger(values);
+			break;
+		case REAL:
+			isAssignable = allElementsAreReal(values);
 			break;
 		}
 		
@@ -295,6 +297,32 @@ public class ParameterDescriptionImpl extends MinimalEObjectImpl.Container imple
 			return false;
 		}
 	}
+	
+	private <A> boolean allElementsAreReal(List<A> values) {
+		try {
+			// Lists can not have primitive values as its items
+			// if can create a Integer instance w/o exceptions, is  a integer
+			return values.stream().allMatch(i -> {
+				return (i instanceof Double) 
+						|| (i instanceof String && representsDouble((String) i));
+			});
+		} catch (NumberFormatException | ClassCastException e) {
+			return false;
+		}
+		
+	}
+
+	private boolean representsDouble(String i) {
+		try {
+			// if can create a Integer instance w/o exceptions, 
+			// it is  a integer in a string
+			new Double(i);
+			return true;
+		} catch (NumberFormatException | ClassCastException e) {
+			return false;
+		}
+	}
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -395,7 +423,7 @@ public class ParameterDescriptionImpl extends MinimalEObjectImpl.Container imple
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION___IS_VALID_VALUE__BIGINTEGER:
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST:
 				return isValidValue(arguments.get(0));
 			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT:
 				return isValidValue(arguments.get(0));

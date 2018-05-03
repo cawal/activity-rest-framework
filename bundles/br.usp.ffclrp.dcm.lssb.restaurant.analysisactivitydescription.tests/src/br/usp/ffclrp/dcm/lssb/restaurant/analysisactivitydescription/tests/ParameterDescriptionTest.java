@@ -228,5 +228,57 @@ public class ParameterDescriptionTest extends TestCase {
 		
 		assertFalse(description.isValidValue(newList));
 	}
+	
+	
+	public void testIsValidValue__InvalidIfDoubleWhereShouldBeInt() {
+		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		
+		description.setName("myStringList");
+		description.setParameterKind(ParameterKind.SINGLE_VALUE);
+		description.setParameterType(ParameterType.INTEGER);
+		
+		List<Object> newList = new ArrayList<>();
+
+		newList.add("1.0");
+		newList.add(2);
+		newList.add(3);
+	
+		System.out.println(newList);
+		
+		assertFalse(description.isValidValue(newList));
+	}
+	
+	public void testIsValidValue__ValidIfFloatList() {
+		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		
+		description.setName("myParameter");
+		description.setParameterKind(ParameterKind.LIST);
+		description.setParameterType(ParameterType.REAL);
+		
+		List<Double> newList = new ArrayList<>();
+
+		newList.add(1.0);
+		newList.add(1.2);
+		newList.add(2.2);
+		
+		assertTrue(description.isValidValue(newList));
+	}
+	
+	public void testIsValidValue__ValidIfFloatStringList() {
+		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		
+		description.setName("myParameter");
+		description.setParameterKind(ParameterKind.LIST);
+		description.setParameterType(ParameterType.REAL);
+		
+		List<String> newList = new ArrayList<>();
+
+		newList.add("1.0");
+		newList.add("1.2");
+		newList.add("2.2");
+		
+		assertTrue(description.isValidValue(newList));
+	}
+
 
 } //ParameterDescriptionTest
