@@ -111,7 +111,7 @@ public class ParameterTest extends TestCase {
 
 
 
-	public void testIsValidValue__EmptyListOfStrings() throws ParameterUpdateException {
+	public void testCheckAndSetValues__EmptyListOfStrings() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -130,7 +130,7 @@ public class ParameterTest extends TestCase {
 		
 	}
 	
-	public void testIsValidValue__SimpleListOfString() throws ParameterUpdateException {
+	public void testCheckAndSetValues__SimpleListOfString() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -151,7 +151,7 @@ public class ParameterTest extends TestCase {
 		
 	}
 	
-	public void testIsValidValue__SingleString() throws ParameterUpdateException {
+	public void testCheckAndSetValues__SingleString() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("mySingleString");
@@ -172,7 +172,7 @@ public class ParameterTest extends TestCase {
 	}
 	
 	
-	public void testIsValidValue__SingleStringNotList() throws ParameterUpdateException {
+	public void testCheckAndSetValues__SingleStringNotList() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -193,7 +193,7 @@ public class ParameterTest extends TestCase {
 	 	}
 	}
 
-	public void testIsValidValue__SingleInt() throws ParameterUpdateException {
+	public void testCheckAndSetValues__SingleInt() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -212,7 +212,7 @@ public class ParameterTest extends TestCase {
 		assertTrue(parameter.getValues().size() == 1);
 	}
 	
-	public void testIsValidValue__SingleIntAsString() throws ParameterUpdateException {
+	public void testCheckAndSetValues__SingleIntAsString() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -231,7 +231,7 @@ public class ParameterTest extends TestCase {
 		assertTrue(parameter.getValues().size() == 1);
 	}
 	
-	public void testIsValidValue__InvalidIfNonIntAsString() {
+	public void testCheckAndSetValues__InvalidIfNonIntAsString() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -252,7 +252,7 @@ public class ParameterTest extends TestCase {
 	 	}
 	}
 	
-	public void testIsValidValue__ValidIfIntAsStringList() throws ParameterUpdateException {
+	public void testCheckAndSetValues__ValidIfIntAsStringList() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -273,7 +273,7 @@ public class ParameterTest extends TestCase {
 		assertTrue(parameter.getValues().size() == 3);
 	}
 	
-	public void testIsValidValue__InvalidIfMoreThanSingleIntInStringList() {
+	public void testCheckAndSetValues__InvalidIfMoreThanSingleIntInStringList() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
@@ -297,10 +297,10 @@ public class ParameterTest extends TestCase {
 	}
 
 	
-	public void testIsValidValue__ValidIfIntegerAsInt() throws ParameterUpdateException {
+	public void testCheckAndSetValues__ValidIfIntegerAsInt() throws ParameterUpdateException {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		System.out.println(
-				"ParameterTest.testIsValidValue__ValidIfIntegerAsInt()");
+				"ParameterTest.testCheckAndSetValues__ValidIfIntegerAsInt()");
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
 		description.setParameterType(ParameterType.INTEGER);
