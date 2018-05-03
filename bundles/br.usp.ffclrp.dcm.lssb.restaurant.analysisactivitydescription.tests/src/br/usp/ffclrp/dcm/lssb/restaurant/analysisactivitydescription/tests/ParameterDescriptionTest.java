@@ -1,18 +1,17 @@
+/**
+ */
+package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.tests;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 /**
@@ -23,29 +22,84 @@ import junit.textui.TestRunner;
  * The following operations are tested:
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(org.eclipse.emf.common.util.EList) <em>Is Valid Value</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.lang.Object) <em>Is Valid Value</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.util.List) <em>Is Valid Value</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
-public class ParameterDescriptionTest {
-	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+public class ParameterDescriptionTest extends TestCase {
+
+	/**
+	 * The fixture for this Parameter Description test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterDescription fixture = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(ParameterDescriptionTest.class);
 	}
-	
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+
+	/**
+	 * Constructs a new Parameter Description test case with the given name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterDescriptionTest(String name) {
+		super(name);
 	}
-	
-	@Before
-	public void setUp() throws Exception {
+
+	/**
+	 * Sets the fixture for this Parameter Description test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(ParameterDescription fixture) {
+		this.fixture = fixture;
 	}
-	
-	@After
-	public void tearDown() throws Exception {
+
+	/**
+	 * Returns the fixture for this Parameter Description test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterDescription getFixture() {
+		return fixture;
 	}
-	
-	@Test
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
+	@Override
+	protected void setUp() throws Exception {
+		setFixture(AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
+	@Override
+	protected void tearDown() throws Exception {
+		setFixture(null);
+	}
+
+
 	public void testIsValidValue__EmptyListOfStrings() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -53,12 +107,11 @@ public class ParameterDescriptionTest {
 		description.setParameterKind(ParameterKind.LIST);
 		description.setParameterType(ParameterType.STRING);
 		
-		List<String> newList = Collections.emptyList();
+		List<Object> newList = Collections.emptyList();
 		
 		assertTrue(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__SimpleListOfString() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -72,8 +125,7 @@ public class ParameterDescriptionTest {
 		
 		assertTrue(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__SingleString() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -87,8 +139,7 @@ public class ParameterDescriptionTest {
 		
 		assertTrue(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__SingleStringNotList() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -104,7 +155,6 @@ public class ParameterDescriptionTest {
 		assertFalse(description.isValidValue(newList));
 	}
 
-	@Test
 	public void testIsValidValue__SingleInt() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -118,8 +168,7 @@ public class ParameterDescriptionTest {
 		
 		assertTrue(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__SingleIntAsString() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -133,8 +182,7 @@ public class ParameterDescriptionTest {
 		
 		assertTrue(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__InvalidIfNonIntAsString() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -148,8 +196,7 @@ public class ParameterDescriptionTest {
 		
 		assertFalse(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__ValidIfIntAsStringList() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -165,8 +212,7 @@ public class ParameterDescriptionTest {
 		
 		assertTrue(description.isValidValue(newList));
 	}
-
-	@Test
+	
 	public void testIsValidValue__InvalidIfMoreThanSingleIntInStringList() {
 		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
 		
@@ -182,5 +228,5 @@ public class ParameterDescriptionTest {
 		
 		assertFalse(description.isValidValue(newList));
 	}
-	
+
 } //ParameterDescriptionTest
