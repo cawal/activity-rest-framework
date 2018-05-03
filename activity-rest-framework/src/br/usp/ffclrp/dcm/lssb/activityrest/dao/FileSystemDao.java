@@ -284,9 +284,12 @@ public class FileSystemDao implements AnalysisActivityDao {
 					.fromJson(new FileReader(parametersFile),
 							Map.class);
 			
-			ParametersUtil.setParametersFromMap(aa, parametersSet);
+			System.out.println(parametersSet);
 			
+			ParametersUtil.setParametersFromMap(aa, parametersSet);
+
 		} catch (FileNotFoundException | IllegalParameterException e) {
+//		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			throw new AnalysisActivityNotFoundException(
 					e.getLocalizedMessage());

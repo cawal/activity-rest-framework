@@ -12,6 +12,8 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDe
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException;
+
 public class ParametersUtil {
 	
 	public static Map<String, Object> toMap(List<Parameter> parameterList) {
@@ -72,43 +74,14 @@ public class ParametersUtil {
 				System.out.println("Parameter \"" + parameterName + "\" not exists!:");
 				throw new IllegalParameterException(parameterName,map.get(parameterName));
 			} else {
+				
 				Parameter p = pOpt.get();
-				Object value = null;
+				Object value = map.get(p.getName());
 				
-				p.setValue(map.get(p.getName()));
-				
-				switch (p.getDescription().getParameterKind()) {
-				case SINGLE_VALUE:
-					value = map.get(parameterName);
-					if (value instanceof Collection ) {
-						throw new IllegalParameterException(parameterName,map.get(parameterName));
-						
-					} else {
-							p.getValues().clear();
-							if(value instanceof String) {
-								p.getValues().add((String) value);
-							} else {
-								p.getValues().add(Integer.toString(value));
-							}
-					}
-					
-					break;
-					
-				case LIST:
-					value = map.get(parameterName);
-					
-					if (value instanceof List) {
-						List<? extends String> values = new ArrayList<>();
-						values.addAll((List)value);
-						p.getValues().clear();
-						p.getValues().addAll(values);
-						
-					} else {
-						System.out.println("Should be list: " + parameterName);
-						throw new IllegalParameterException(parameterName,map.get(parameterName));
-					}
-					
-					break;
+				try {
+					p.checkAndSetValues(value);
+				} catch (ParameterUpdateException e) {
+					throw new IllegalParameterException(p.getName(), value);
 				}
 				
 				System.out.println(map.get(parameterName));
