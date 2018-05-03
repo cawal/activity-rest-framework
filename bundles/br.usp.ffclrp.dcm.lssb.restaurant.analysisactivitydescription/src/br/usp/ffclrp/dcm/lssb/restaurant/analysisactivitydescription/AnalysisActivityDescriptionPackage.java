@@ -4,7 +4,9 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -187,13 +189,40 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER_DESCRIPTION_FEATURE_COUNT = 4;
 
 	/**
+	 * The operation id for the '<em>Is Valid Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__BIGINTEGER = 0;
+
+	/**
+	 * The operation id for the '<em>Is Valid Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT = 1;
+
+	/**
+	 * The operation id for the '<em>Is Valid Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST = 2;
+
+	/**
 	 * The number of operations of the '<em>Parameter Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION_OPERATION_COUNT = 0;
+	int PARAMETER_DESCRIPTION_OPERATION_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl <em>Dataset Description</em>}' class.
@@ -742,6 +771,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int DATASET_KIND = 16;
 
 	/**
+	 * The meta object id for the '<em>List</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 17;
+
+	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription <em>Analysis Activity Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -859,6 +898,36 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParameterDescription_DefaultValue();
+
+	/**
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(org.eclipse.emf.common.util.EList) <em>Is Valid Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Valid Value</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getParameterDescription__IsValidValue__BigInteger();
+
+	/**
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.lang.Object) <em>Is Valid Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Valid Value</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.lang.Object)
+	 * @generated
+	 */
+	EOperation getParameterDescription__IsValidValue__Object();
+
+	/**
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.util.List) <em>Is Valid Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Valid Value</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.util.List)
+	 * @generated
+	 */
+	EOperation getParameterDescription__IsValidValue__List();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription <em>Dataset Description</em>}'.
@@ -1154,6 +1223,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EEnum getDatasetKind();
 
 	/**
+	 * Returns the meta object for data type '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" serializeable="false" typeParameters="A"
+	 * @generated
+	 */
+	EDataType getList();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1267,6 +1347,30 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER_DESCRIPTION__DEFAULT_VALUE = eINSTANCE.getParameterDescription_DefaultValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__BIGINTEGER = eINSTANCE.getParameterDescription__IsValidValue__BigInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT = eINSTANCE.getParameterDescription__IsValidValue__Object();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST = eINSTANCE.getParameterDescription__IsValidValue__List();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl <em>Dataset Description</em>}' class.
@@ -1521,6 +1625,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum DATASET_KIND = eINSTANCE.getDatasetKind();
+
+		/**
+		 * The meta object literal for the '<em>List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getList()
+		 * @generated
+		 */
+		EDataType LIST = eINSTANCE.getList();
 
 	}
 

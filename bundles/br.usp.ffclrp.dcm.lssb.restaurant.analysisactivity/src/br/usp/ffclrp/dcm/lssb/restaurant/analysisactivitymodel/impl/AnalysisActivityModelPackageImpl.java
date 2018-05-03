@@ -14,13 +14,16 @@ import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipu
 
 import java.io.File;
 
+import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -50,6 +53,13 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * @generated
 	 */
 	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType listEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,8 +330,17 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getParameter__SetValues__EList() {
+	public EOperation getParameter__SetValue__EList() {
 		return parameterEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getList() {
+		return listEDataType;
 	}
 
 	/**
@@ -392,9 +411,10 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		createEAttribute(parameterEClass, PARAMETER__VALUES);
 		createEOperation(parameterEClass, PARAMETER___SET_VALUE__STRING);
 		createEOperation(parameterEClass, PARAMETER___SET_VALUE__BIGINTEGER);
-		createEOperation(parameterEClass, PARAMETER___SET_VALUES__ELIST);
+		createEOperation(parameterEClass, PARAMETER___SET_VALUE__ELIST);
 
 		// Create data types
+		listEDataType = createEDataType(LIST);
 		objectEDataType = createEDataType(OBJECT);
 		fileEDataType = createEDataType(FILE);
 	}
@@ -427,6 +447,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		AnalysisactivityexceptionsPackage theAnalysisactivityexceptionsPackage = (AnalysisactivityexceptionsPackage)EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(listEDataType, "A");
 
 		// Set bounds for type parameters
 
@@ -468,11 +489,16 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		addEParameter(op, ecorePackage.getEBigInteger(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
 
-		op = initEOperation(getParameter__SetValues__EList(), null, "setValues", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getObject(), "value", 0, -1, IS_UNIQUE, !IS_ORDERED);
+		op = initEOperation(getParameter__SetValue__EList(), null, "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "A");
+		EGenericType g1 = createEGenericType(this.getList());
+		EGenericType g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theAnalysisactivityexceptionsPackage.getParameterUpdateException());
 
 		// Initialize data types
+		initEDataType(listEDataType, List.class, "List", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(objectEDataType, Object.class, "Object", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -531,12 +557,6 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		   });	
 		addAnnotation
 		  (getDataset_Files(), 
-		   source, 
-		   new String[] {
-			 "nullFree", "false"
-		   });	
-		addAnnotation
-		  ((getParameter__SetValues__EList()).getEParameters().get(0), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"

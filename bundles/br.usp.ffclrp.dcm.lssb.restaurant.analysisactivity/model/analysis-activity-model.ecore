@@ -57,11 +57,12 @@
     <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
     </eOperations>
-    <eOperations name="setValues" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
-      <eParameters name="value" ordered="false" upperBound="-1" eType="#//Object">
-        <eAnnotations source="http://www.eclipse.org/OCL/Collection">
-          <details key="nullFree" value="false"/>
-        </eAnnotations>
+    <eOperations name="setValue" eExceptions="ecore:EDataType activity-exceptions.ecore#//ParameterUpdateException">
+      <eTypeParameters name="A"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//List">
+          <eTypeArguments eTypeParameter="#//Parameter/setValue.2/A"/>
+        </eGenericType>
       </eParameters>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -73,6 +74,10 @@
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List"
+      serializable="false">
+    <eTypeParameters name="A"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"
       serializable="false"/>

@@ -2,6 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -126,5 +127,30 @@ public interface ParameterDescription extends EObject {
 	 * @generated
 	 */
 	EList<String> getDefaultValue();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueMany="true" valueOrdered="false"
+	 *        valueAnnotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
+	 * @generated
+	 */
+	<A> boolean isValidValue(EList<A> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	<A> boolean isValidValue(A value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueDataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.List&lt;A&gt;" valueMany="false"
+	 * @generated
+	 */
+	<A> boolean isValidValue(List<A> value);
 
 } // ParameterDescription

@@ -11,6 +11,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
 import java.util.Collection;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -172,35 +175,45 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
 	 */
 	public void setValue(String value) throws ParameterUpdateException {
-		if(this.des)
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if(this.description.isValidValue(value)) {
+			this.getValues().clear();
+			this.getValues().add(value);
+		} else {
+			throw new ParameterUpdateException();
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
 	 */
 	public void setValue(BigInteger value) throws ParameterUpdateException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if(this.description.isValidValue(value)) {
+			this.getValues().clear();
+			this.getValues().add(value.toString());
+		} else {
+			throw new ParameterUpdateException();
+		}
 	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValues(EList<Object> value) throws ParameterUpdateException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public <A> void setValue(List<A> value) throws ParameterUpdateException {
+		if(this.description.isValidValue(value)) {
+			this.getValues().clear();
+			this.getValues().addAll(
+					value.stream().map(s -> s.toString()).collect(Collectors.toList())
+			);
+		} else {
+			throw new ParameterUpdateException();
+		}
 	}
 
 	/**
@@ -290,6 +303,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case AnalysisActivityModelPackage.PARAMETER___SET_VALUE__STRING:
@@ -308,9 +322,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 				catch (Throwable throwable) {
 					throw new InvocationTargetException(throwable);
 				}
-			case AnalysisActivityModelPackage.PARAMETER___SET_VALUES__ELIST:
+			case AnalysisActivityModelPackage.PARAMETER___SET_VALUE__ELIST:
 				try {
-					setValues((EList<Object>)arguments.get(0));
+					setValue((List)arguments.get(0));
 					return null;
 				}
 				catch (Throwable throwable) {

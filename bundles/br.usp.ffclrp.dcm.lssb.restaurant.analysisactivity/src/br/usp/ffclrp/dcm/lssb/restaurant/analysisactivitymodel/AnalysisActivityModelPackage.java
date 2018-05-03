@@ -288,13 +288,13 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int PARAMETER___SET_VALUE__BIGINTEGER = 1;
 
 	/**
-	 * The operation id for the '<em>Set Values</em>' operation.
+	 * The operation id for the '<em>Set Value</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER___SET_VALUES__ELIST = 2;
+	int PARAMETER___SET_VALUE__ELIST = 2;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -306,6 +306,16 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int PARAMETER_OPERATION_COUNT = 3;
 
 	/**
+	 * The meta object id for the '<em>List</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 3;
+
+	/**
 	 * The meta object id for the '<em>Object</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,7 +323,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 3;
+	int OBJECT = 4;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -323,7 +333,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 4;
+	int FILE = 5;
 
 
 	/**
@@ -539,14 +549,25 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	EOperation getParameter__SetValue__BigInteger();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValues(org.eclipse.emf.common.util.EList) <em>Set Values</em>}' operation.
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValue(java.util.List) <em>Set Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Set Values</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValues(org.eclipse.emf.common.util.EList)
+	 * @return the meta object for the '<em>Set Value</em>' operation.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#setValue(java.util.List)
 	 * @generated
 	 */
-	EOperation getParameter__SetValues__EList();
+	EOperation getParameter__SetValue__EList();
+
+	/**
+	 * Returns the meta object for data type '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" serializeable="false" typeParameters="A"
+	 * @generated
+	 */
+	EDataType getList();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Object <em>Object</em>}'.
@@ -760,12 +781,22 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EOperation PARAMETER___SET_VALUE__BIGINTEGER = eINSTANCE.getParameter__SetValue__BigInteger();
 
 		/**
-		 * The meta object literal for the '<em><b>Set Values</b></em>' operation.
+		 * The meta object literal for the '<em><b>Set Value</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PARAMETER___SET_VALUES__ELIST = eINSTANCE.getParameter__SetValues__EList();
+		EOperation PARAMETER___SET_VALUE__ELIST = eINSTANCE.getParameter__SetValue__EList();
+
+		/**
+		 * The meta object literal for the '<em>List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getList()
+		 * @generated
+		 */
+		EDataType LIST = eINSTANCE.getList();
 
 		/**
 		 * The meta object literal for the '<em>Object</em>' data type.

@@ -6,6 +6,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDe
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException;
 import java.math.BigInteger;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -117,11 +118,12 @@ public interface Parameter extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="analysisactivityexceptions.ParameterUpdateException" valueDataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Object" valueMany="true" valueOrdered="false"
-	 *        valueAnnotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
+	 * @model exceptions="analysisactivityexceptions.ParameterUpdateException" valueDataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.List&lt;A&gt;" valueMany="false"
 	 * @generated
 	 */
-	void setValues(EList<Object> value) throws ParameterUpdateException;
+	<A> void setValue(List<A> value) throws ParameterUpdateException;
+
+
 	
 	
 
