@@ -6,8 +6,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.json.bind.Jsonb;
@@ -80,6 +84,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 		
 		analysis.setId(newAnalysisId.toString());
 		File analysisRoot = new File(localStorage, analysis.getId());
+		
 		
 		try {
 			analysisRoot.mkdirs();
@@ -278,21 +283,20 @@ public class FileSystemDao implements AnalysisActivityDao {
 		try {
 			
 			Jsonb jsonb = JsonbBuilder.create();
-			
+			System.out.println(parametersFile);
 			@SuppressWarnings("unchecked")
 			Map<String, Object> parametersSet = jsonb
 					.fromJson(new FileReader(parametersFile),
 							Map.class);
 			
 			System.out.println(parametersSet);
-			
+			System.out.println("chamando função");
 			ParametersUtil.setParametersFromMap(aa, parametersSet);
 
 		} catch (FileNotFoundException | IllegalParameterException e) {
 //		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			throw new AnalysisActivityNotFoundException(
-					e.getLocalizedMessage());
+			throw new AnalysisActivityNotFoundException(aa.getId());
 		}
 		
 	}
@@ -629,4 +633,6 @@ public class FileSystemDao implements AnalysisActivityDao {
 			aa.setErrorReport(expectedFile);
 		}
 	}
+	
+	
 }

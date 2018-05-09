@@ -66,8 +66,10 @@ public class ParametersUtil {
 	
 	public static void setParametersFromMap(AnalysisActivity aa, Map<String,Object> map) 
 			throws IllegalParameterException {
+		System.out.println("MAP");
+		System.out.println(map);
 		for(String parameterName : map.keySet()) {
-			if(parameterName == null) System.out.println("ParameterName is null!!!!");
+			if(parameterName == null) System.out.println("Parameter name is null!!!!");
 				
 			Optional<Parameter> pOpt = ParametersUtil.getParameterByName(aa,parameterName);
 			if(! pOpt.isPresent()) {
@@ -79,8 +81,11 @@ public class ParametersUtil {
 				Object value = map.get(p.getName());
 				
 				try {
+					System.out.println("chamando checkandset value");
 					p.checkAndSetValues(value);
 				} catch (ParameterUpdateException e) {
+					System.out.println("HERE");
+					e.printStackTrace();
 					throw new IllegalParameterException(p.getName(), value);
 				}
 				
