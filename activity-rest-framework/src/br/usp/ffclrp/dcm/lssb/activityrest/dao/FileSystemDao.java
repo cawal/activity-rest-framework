@@ -35,6 +35,8 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl;
 
 public class FileSystemDao implements AnalysisActivityDao {
 	
@@ -236,11 +238,17 @@ public class FileSystemDao implements AnalysisActivityDao {
 		}
 		
 		// save/overwrite parameters
-		Map<String, Object> parametersMap =
+		/*Map<String, Object> parametersMap =
 				ParametersUtil
-						.parameterDescriptionsToMap(aaDesc.getParameters());
+						.parameterDescriptionsToMap(aaDesc.getParameters());*/
 		
 		FileWriter parametersStream = new FileWriter(parametersFile);
+		ParameterMap parametersMap = 
+				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
+		
+		parametersMap.getDescriptions().addAll(aaDesc.getParameters());
+		((ParameterMapImpl)  parametersMap).setDefaultValues();
+		
 		
 		jsonb.toJson(parametersMap, parametersStream);
 		parametersStream.close();
@@ -289,8 +297,21 @@ public class FileSystemDao implements AnalysisActivityDao {
 					.fromJson(new FileReader(parametersFile),
 							Map.class);
 			
+
 			System.out.println(parametersSet);
+			
+			ParameterMap parametersMap = 
+					AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
+			
+			parametersMap.getDescriptions().addAll(aaDesc.getParameters());
+			((ParameterMapImpl)  parametersMap).setDefaultValues();
+			
+			parametersMap.putAll(parametersSet);
+			
+			System.out.println(jsonb.toJson(parametersMap));
+			
 			System.out.println("chamando função");
+			
 			ParametersUtil.setParametersFromMap(aa, parametersSet);
 
 		} catch (FileNotFoundException | IllegalParameterException e) {
