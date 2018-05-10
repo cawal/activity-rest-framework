@@ -4,6 +4,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -80,6 +81,14 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 				return createParameterAdapter();
 			}
 			@Override
+			public <k, v> Adapter caseJavaMap(Map<k, v> object) {
+				return createJavaMapAdapter();
+			}
+			@Override
+			public Adapter caseParameterMap(ParameterMap object) {
+				return createParameterMapAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -138,6 +147,34 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map <em>Java Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map
+	 * @generated
+	 */
+	public Adapter createJavaMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap <em>Parameter Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap
+	 * @generated
+	 */
+	public Adapter createParameterMapAdapter() {
 		return null;
 	}
 

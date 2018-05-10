@@ -4,6 +4,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -84,6 +85,19 @@ public class AnalysisActivityModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AnalysisActivityModelPackage.JAVA_MAP: {
+				Map<?, ?> javaMap = (Map<?, ?>)theEObject;
+				T result = caseJavaMap(javaMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityModelPackage.PARAMETER_MAP: {
+				ParameterMap parameterMap = (ParameterMap)theEObject;
+				T result = caseParameterMap(parameterMap);
+				if (result == null) result = caseJavaMap(parameterMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -130,6 +144,36 @@ public class AnalysisActivityModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParameter(Parameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Java Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Java Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <k, v> T caseJavaMap(Map<k, v> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterMap(ParameterMap object) {
 		return null;
 	}
 

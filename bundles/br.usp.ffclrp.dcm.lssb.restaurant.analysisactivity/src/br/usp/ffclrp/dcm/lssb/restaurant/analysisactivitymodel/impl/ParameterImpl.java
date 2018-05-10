@@ -8,7 +8,6 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException;
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
