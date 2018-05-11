@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getDescription <em>Description</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getInputs <em>Inputs</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getParameters <em>Parameters</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getParameterMap <em>Parameter Map</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getErrorReport <em>Error Report</em>}</li>
  * </ul>
@@ -103,47 +102,30 @@ public interface AnalysisActivity extends EObject {
 	EList<Dataset> getInputs();
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter}.
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @return the value of the '<em>Parameters</em>' containment reference.
+	 * @see #setParameters(ParameterMap)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getAnalysisActivity_Parameters()
 	 * @model containment="true"
-	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<Parameter> getParameters();
+	ParameterMap getParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Parameter Map</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameter Map</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter Map</em>' containment reference.
-	 * @see #setParameterMap(ParameterMap)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getAnalysisActivity_ParameterMap()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ParameterMap getParameterMap();
-
-	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getParameterMap <em>Parameter Map</em>}' containment reference.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getParameters <em>Parameters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parameter Map</em>' containment reference.
-	 * @see #getParameterMap()
+	 * @param value the new value of the '<em>Parameters</em>' containment reference.
+	 * @see #getParameters()
 	 * @generated
 	 */
-	void setParameterMap(ParameterMap value);
+	void setParameters(ParameterMap value);
 
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.

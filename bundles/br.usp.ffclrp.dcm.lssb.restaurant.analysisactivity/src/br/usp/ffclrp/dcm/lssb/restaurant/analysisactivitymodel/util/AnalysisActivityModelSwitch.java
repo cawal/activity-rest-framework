@@ -98,6 +98,12 @@ public class AnalysisActivityModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AnalysisActivityModelPackage.VALIDATION_RESULT: {
+				ValidationResult validationResult = (ValidationResult)theEObject;
+				T result = caseValidationResult(validationResult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -174,6 +180,21 @@ public class AnalysisActivityModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParameterMap(ParameterMap object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Validation Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Validation Result</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValidationResult(ValidationResult object) {
 		return null;
 	}
 

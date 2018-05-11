@@ -3,10 +3,11 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -62,8 +63,6 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	 */
 	protected ParameterMapImpl() {
 		super();
-		m = new HashMap<>();
-		setDefaultValues();
 	}
 	
 	/**
@@ -90,6 +89,35 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 					AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS);
 		}
 		return descriptions;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->=
+	 */
+	public ValidationResult validateParameters(Map<String, Object> map) {
+		
+		List<ValidationResult> individualResults = 
+				map.entrySet().stream()
+					.map(e -> this.validateParameter(e.getKey(),e.getValue()))
+					.collect(Collectors.toList());
+		
+		ValidationResult r =
+				AnalysisActivityModelFactory.eINSTANCE.createValidationResult();
+		
+		r.setIsValid(true);
+		
+		
+		return r;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	@SuppressWarnings("serial")
+	public ValidationResult validateParameter(String name, Object value) {
+		return false;
 	}
 	
 	/**
@@ -155,6 +183,29 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 			return descriptions != null && !descriptions.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+		case AnalysisActivityModelPackage.PARAMETER_MAP___VALIDATE_PARAMETERS__MAP:
+			return validateParameters((Map<String, Object>) arguments.get(0));
+		case AnalysisActivityModelPackage.PARAMETER_MAP___VALIDATE_PARAMETER__STRING_OBJECT:
+			return validateParameter((String) arguments.get(0),
+					arguments.get(1));
+		case AnalysisActivityModelPackage.PARAMETER_MAP___SET_DEFAULT_VALUES:
+			setDefaultValues();
+			return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 	
 	@Override
@@ -233,7 +284,6 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 			this.put(d.getName(), sanitize(d, d.getDefaultValue()));
 		}
 	}
-	
 	
 	protected Object sanitize(ParameterDescription description, Object value) {
 		switch (description.getParameterKind()) {

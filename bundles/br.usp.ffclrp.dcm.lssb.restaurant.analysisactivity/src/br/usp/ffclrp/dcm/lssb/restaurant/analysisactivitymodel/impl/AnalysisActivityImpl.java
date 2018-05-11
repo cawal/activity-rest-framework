@@ -39,7 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getParameterMap <em>Parameter Map</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getErrorReport <em>Error Report</em>}</li>
  * </ul>
@@ -89,25 +88,15 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	protected EList<Dataset> inputs;
 	
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> parameters;
+	protected ParameterMap parameters;
 	
-	/**
-	 * The cached value of the '{@link #getParameterMap() <em>Parameter Map</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameterMap()
-	 * @generated
-	 * @ordered
-	 */
-	protected ParameterMap parameterMap;
-
 	/**
 	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -233,10 +222,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS);
-		}
+	public ParameterMap getParameters() {
 		return parameters;
 	}
 	
@@ -245,20 +231,11 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterMap getParameterMap() {
-		return parameterMap;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetParameterMap(ParameterMap newParameterMap, NotificationChain msgs) {
-		ParameterMap oldParameterMap = parameterMap;
-		parameterMap = newParameterMap;
+	public NotificationChain basicSetParameters(ParameterMap newParameters, NotificationChain msgs) {
+		ParameterMap oldParameters = parameters;
+		parameters = newParameters;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP, oldParameterMap, newParameterMap);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS, oldParameters, newParameters);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -269,18 +246,18 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameterMap(ParameterMap newParameterMap) {
-		if (newParameterMap != parameterMap) {
+	public void setParameters(ParameterMap newParameters) {
+		if (newParameters != parameters) {
 			NotificationChain msgs = null;
-			if (parameterMap != null)
-				msgs = ((InternalEObject)parameterMap).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP, null, msgs);
-			if (newParameterMap != null)
-				msgs = ((InternalEObject)newParameterMap).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP, null, msgs);
-			msgs = basicSetParameterMap(newParameterMap, msgs);
+			if (parameters != null)
+				msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS, null, msgs);
+			if (newParameters != null)
+				msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS, null, msgs);
+			msgs = basicSetParameters(newParameters, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP, newParameterMap, newParameterMap));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS, newParameters, newParameters));
 	}
 
 	/**
@@ -359,13 +336,13 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * 
 	 */
 	public Parameter parameterForName(String name) {
-		for (Parameter p : this.getParameters()) {
+		/*for (Parameter p : this.getParameters()) {
 			if (p.getName().equalsIgnoreCase(name)) {
 				return p;
 			}
 		}
-		
-		return null;
+		*/
+		throw new UnsupportedOperationException();
 	}
 	
 	/**
@@ -380,9 +357,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__INPUTS:
 				return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP:
-				return basicSetParameterMap(null, msgs);
+				return basicSetParameters(null, msgs);
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__OUTPUTS:
 				return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
 		}
@@ -406,8 +381,6 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 				return getInputs();
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS:
 				return getParameters();
-			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP:
-				return getParameterMap();
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__OUTPUTS:
 				return getOutputs();
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__ERROR_REPORT:
@@ -436,11 +409,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 				getInputs().addAll((Collection<? extends Dataset>)newValue);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends Parameter>)newValue);
-				return;
-			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP:
-				setParameterMap((ParameterMap)newValue);
+				setParameters((ParameterMap)newValue);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__OUTPUTS:
 				getOutputs().clear();
@@ -471,10 +440,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 				getInputs().clear();
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS:
-				getParameters().clear();
-				return;
-			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP:
-				setParameterMap((ParameterMap)null);
+				setParameters((ParameterMap)null);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__OUTPUTS:
 				getOutputs().clear();
@@ -501,9 +467,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__INPUTS:
 				return inputs != null && !inputs.isEmpty();
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
-			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__PARAMETER_MAP:
-				return parameterMap != null;
+				return parameters != null;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__OUTPUTS:
 				return outputs != null && !outputs.isEmpty();
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__ERROR_REPORT:

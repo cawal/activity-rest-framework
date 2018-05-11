@@ -35,6 +35,8 @@ import junit.textui.TestRunner;
  */
 public class ParameterMapTest extends TestCase {
 
+	private static final AnalysisActivityDescriptionFactory AADP_INSTANCE =
+			AnalysisActivityDescriptionFactory.eINSTANCE;
 	/**
 	 * The fixture for this Parameter test case.
 	 * <!-- begin-user-doc -->
@@ -115,13 +117,15 @@ public class ParameterMapTest extends TestCase {
 
 
 
-	public void testCheckAndSetValues__EmptyListOfStrings() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+	public void testCreateDefaultValues() throws ParameterUpdateException {
+		ParameterDescription description = 
+				AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.LIST);
 		description.setParameterType(ParameterType.STRING);
 		
+		fixture.getDescriptions().clear();
 		fixture.getDescriptions().add(description);
 		
 		fixture.put("myStringList", Arrays.asList("test", "test1"));
@@ -141,7 +145,7 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	public void testCheckAndSetValues__SimpleListOfString() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.LIST);
@@ -162,7 +166,7 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	public void testCheckAndSetValues__SingleString() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("mySingleString");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
@@ -183,7 +187,7 @@ public class ParameterMapTest extends TestCase {
 	
 	
 	public void testCheckAndSetValues__SingleStringNotList() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
@@ -204,7 +208,7 @@ public class ParameterMapTest extends TestCase {
 	}
 
 	public void testCheckAndSetValues__SingleInt() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
@@ -223,7 +227,7 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	public void testCheckAndSetValues__SingleIntAsString() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
@@ -237,7 +241,7 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	public void testCheckAndSetValues__InvalidIfNonIntAsString() {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
@@ -258,7 +262,7 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	public void testCheckAndSetValues__ValidIfIntAsStringList() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.LIST);
@@ -279,7 +283,7 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	public void testCheckAndSetValues__InvalidIfMoreThanSingleIntInStringList() {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		
 		description.setName("myStringList");
 		description.setParameterKind(ParameterKind.SINGLE_VALUE);
@@ -303,7 +307,7 @@ public class ParameterMapTest extends TestCase {
 
 	
 	public void testCheckAndSetValues__ValidIfIntegerAsInt() throws ParameterUpdateException {
-		ParameterDescription description = AnalysisActivityDescriptionFactory.eINSTANCE.createParameterDescription();
+		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
 		System.out.println(
 				"ParameterTest.testCheckAndSetValues__ValidIfIntegerAsInt()");
 		description.setName("myStringList");

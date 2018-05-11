@@ -43,4 +43,28 @@ public interface ParameterMap extends EObject, Map<String, Object> {
 	 */
 	EList<ParameterDescription> getDescriptions();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" mapType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.JavaMap&lt;org.eclipse.emf.ecore.EString, br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Object&gt;"
+	 * @generated
+	 */
+	ValidationResult validateParameters(Map<String, Object> map);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueDataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Object"
+	 * @generated
+	 */
+	ValidationResult validateParameter(String name, Object value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void setDefaultValues();
+
 } // ParameterMap

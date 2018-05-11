@@ -62,6 +62,7 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 			case AnalysisActivityModelPackage.DATASET: return createDataset();
 			case AnalysisActivityModelPackage.PARAMETER: return createParameter();
 			case AnalysisActivityModelPackage.PARAMETER_MAP: return createParameterMap();
+			case AnalysisActivityModelPackage.VALIDATION_RESULT: return createValidationResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -139,6 +140,16 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 	public ParameterMap createParameterMap() {
 		ParameterMapImpl parameterMap = new ParameterMapImpl();
 		return parameterMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValidationResult createValidationResult() {
+		ValidationResultImpl validationResult = new ValidationResultImpl();
+		return validationResult;
 	}
 
 	/**

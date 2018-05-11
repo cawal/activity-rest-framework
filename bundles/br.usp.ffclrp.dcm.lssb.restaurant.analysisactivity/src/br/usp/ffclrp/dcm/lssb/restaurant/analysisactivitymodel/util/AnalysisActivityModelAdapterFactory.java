@@ -89,6 +89,10 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 				return createParameterMapAdapter();
 			}
 			@Override
+			public Adapter caseValidationResult(ValidationResult object) {
+				return createValidationResultAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -175,6 +179,20 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult <em>Validation Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult
+	 * @generated
+	 */
+	public Adapter createValidationResultAdapter() {
 		return null;
 	}
 
