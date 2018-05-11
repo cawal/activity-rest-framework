@@ -77,10 +77,6 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 				return createDatasetAdapter();
 			}
 			@Override
-			public Adapter caseParameter(Parameter object) {
-				return createParameterAdapter();
-			}
-			@Override
 			public <k, v> Adapter caseJavaMap(Map<k, v> object) {
 				return createJavaMapAdapter();
 			}
@@ -137,20 +133,6 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDatasetAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter
-	 * @generated
-	 */
-	public Adapter createParameterAdapter() {
 		return null;
 	}
 

@@ -40,15 +40,6 @@ public interface AnalysisActivityModelFactory extends EFactory {
 	Dataset createDataset();
 
 	/**
-	 * Returns a new object of class '<em>Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter</em>'.
-	 * @generated
-	 */
-	Parameter createParameter();
-
-	/**
 	 * Returns a new object of class '<em>Parameter Map</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

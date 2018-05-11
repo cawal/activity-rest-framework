@@ -61,10 +61,10 @@ public interface ValidationResult extends EObject {
 	 * @return the value of the '<em>Invalid Values</em>' reference.
 	 * @see #setInvalidValues(Map)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getValidationResult_InvalidValues()
-	 * @model type="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.JavaMap" required="true"
+	 * @model type="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.JavaMap&lt;org.eclipse.emf.ecore.EString, br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Object&gt;" required="true"
 	 * @generated
 	 */
-	Map getInvalidValues();
+	Map<String, Object> getInvalidValues();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult#getInvalidValues <em>Invalid Values</em>}' reference.
@@ -74,6 +74,6 @@ public interface ValidationResult extends EObject {
 	 * @see #getInvalidValues()
 	 * @generated
 	 */
-	void setInvalidValues(Map value);
+	void setInvalidValues(Map<String, Object> value);
 
 } // ValidationResult

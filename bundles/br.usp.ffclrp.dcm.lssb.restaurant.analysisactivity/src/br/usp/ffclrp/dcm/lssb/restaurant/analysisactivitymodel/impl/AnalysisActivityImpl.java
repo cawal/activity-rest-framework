@@ -2,30 +2,26 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -220,9 +216,11 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
 	 */
 	public ParameterMap getParameters() {
+		if(this.parameters == null) 
+			this.parameters = AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
 		return parameters;
 	}
 	
@@ -328,22 +326,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 		return null;
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * 
-	 * @return null if parameter not found
-	 *         <!-- end-user-doc -->
-	 * 
-	 */
-	public Parameter parameterForName(String name) {
-		/*for (Parameter p : this.getParameters()) {
-			if (p.getName().equalsIgnoreCase(name)) {
-				return p;
-			}
-		}
-		*/
-		throw new UnsupportedOperationException();
-	}
+
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -489,8 +472,6 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 				return inputDatasetForName((String)arguments.get(0));
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY___OUTPUT_DATASET_FOR_NAME__STRING:
 				return outputDatasetForName((String)arguments.get(0));
-			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY___PARAMETER_FOR_NAME__STRING:
-				return parameterForName((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

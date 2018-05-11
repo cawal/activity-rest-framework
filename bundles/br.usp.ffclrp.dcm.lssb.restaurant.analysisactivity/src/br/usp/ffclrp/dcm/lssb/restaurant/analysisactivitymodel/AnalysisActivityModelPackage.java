@@ -151,22 +151,13 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int ANALYSIS_ACTIVITY___OUTPUT_DATASET_FOR_NAME__STRING = 1;
 
 	/**
-	 * The operation id for the '<em>Parameter For Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANALYSIS_ACTIVITY___PARAMETER_FOR_NAME__STRING = 2;
-
-	/**
 	 * The number of operations of the '<em>Analysis Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_OPERATION_COUNT = 3;
+	int ANALYSIS_ACTIVITY_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl <em>Dataset</em>}' class.
@@ -224,70 +215,6 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int DATASET_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl <em>Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getParameter()
-	 * @generated
-	 */
-	int PARAMETER = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__DESCRIPTION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Values</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__VALUES = 2;
-
-	/**
-	 * The number of structural features of the '<em>Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_FEATURE_COUNT = 3;
-
-	/**
-	 * The operation id for the '<em>Check And Set Values</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER___CHECK_AND_SET_VALUES__OBJECT = 0;
-
-	/**
-	 * The number of operations of the '<em>Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_OPERATION_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl <em>Parameter Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -295,7 +222,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getParameterMap()
 	 * @generated
 	 */
-	int PARAMETER_MAP = 4;
+	int PARAMETER_MAP = 3;
 
 	/**
 	 * The meta object id for the '<em>List</em>' data type.
@@ -305,7 +232,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getList()
 	 * @generated
 	 */
-	int LIST = 6;
+	int LIST = 5;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -315,7 +242,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 7;
+	int FILE = 6;
 
 
 	/**
@@ -326,7 +253,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getJavaMap()
 	 * @generated
 	 */
-	int JAVA_MAP = 3;
+	int JAVA_MAP = 2;
 
 	/**
 	 * The number of structural features of the '<em>Java Map</em>' class.
@@ -408,7 +335,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getValidationResult()
 	 * @generated
 	 */
-	int VALIDATION_RESULT = 5;
+	int VALIDATION_RESULT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Is Valid</b></em>' attribute.
@@ -454,7 +381,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 8;
+	int OBJECT = 7;
 
 
 	/**
@@ -554,16 +481,6 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	EOperation getAnalysisActivity__OutputDatasetForName__String();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#parameterForName(java.lang.String) <em>Parameter For Name</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Parameter For Name</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#parameterForName(java.lang.String)
-	 * @generated
-	 */
-	EOperation getAnalysisActivity__ParameterForName__String();
-
-	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -605,59 +522,6 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataset_Files();
-
-	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameter</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter
-	 * @generated
-	 */
-	EClass getParameter();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getName()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Name();
-
-	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getDescription()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EReference getParameter_Description();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getValues <em>Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Values</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#getValues()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Values();
-
-	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#checkAndSetValues(java.lang.Object) <em>Check And Set Values</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Check And Set Values</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#checkAndSetValues(java.lang.Object)
-	 * @generated
-	 */
-	EOperation getParameter__CheckAndSetValues__Object();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap <em>Parameter Map</em>}'.
@@ -884,14 +748,6 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EOperation ANALYSIS_ACTIVITY___OUTPUT_DATASET_FOR_NAME__STRING = eINSTANCE.getAnalysisActivity__OutputDatasetForName__String();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter For Name</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ANALYSIS_ACTIVITY___PARAMETER_FOR_NAME__STRING = eINSTANCE.getAnalysisActivity__ParameterForName__String();
-
-		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl <em>Dataset</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -924,48 +780,6 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATASET__FILES = eINSTANCE.getDataset_Files();
-
-		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl <em>Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getParameter()
-		 * @generated
-		 */
-		EClass PARAMETER = eINSTANCE.getParameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARAMETER__DESCRIPTION = eINSTANCE.getParameter_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__VALUES = eINSTANCE.getParameter_Values();
-
-		/**
-		 * The meta object literal for the '<em><b>Check And Set Values</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation PARAMETER___CHECK_AND_SET_VALUES__OBJECT = eINSTANCE.getParameter__CheckAndSetValues__Object();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl <em>Parameter Map</em>}' class.

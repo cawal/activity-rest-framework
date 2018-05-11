@@ -65,7 +65,7 @@ public interface Dataset extends EObject {
 	 * @return the value of the '<em>Description</em>' reference.
 	 * @see #setDescription(DatasetDescription)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getDataset_Description()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	DatasetDescription getDescription();

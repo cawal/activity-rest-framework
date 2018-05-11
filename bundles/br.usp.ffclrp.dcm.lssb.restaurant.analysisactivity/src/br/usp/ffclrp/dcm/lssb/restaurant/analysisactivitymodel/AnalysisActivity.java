@@ -69,7 +69,7 @@ public interface AnalysisActivity extends EObject {
 	 * @return the value of the '<em>Description</em>' reference.
 	 * @see #setDescription(AnalysisActivityDescription)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getAnalysisActivity_Description()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	AnalysisActivityDescription getDescription();
@@ -112,7 +112,7 @@ public interface AnalysisActivity extends EObject {
 	 * @return the value of the '<em>Parameters</em>' containment reference.
 	 * @see #setParameters(ParameterMap)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getAnalysisActivity_Parameters()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ParameterMap getParameters();
@@ -185,13 +185,5 @@ public interface AnalysisActivity extends EObject {
 	 * @generated
 	 */
 	Dataset outputDatasetForName(String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	Parameter parameterForName(String name);
 
 } // AnalysisActivity

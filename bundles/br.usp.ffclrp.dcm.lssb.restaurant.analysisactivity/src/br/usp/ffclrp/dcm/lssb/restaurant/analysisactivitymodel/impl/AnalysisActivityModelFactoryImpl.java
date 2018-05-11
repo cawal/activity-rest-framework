@@ -60,7 +60,6 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 		switch (eClass.getClassifierID()) {
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY: return createAnalysisActivity();
 			case AnalysisActivityModelPackage.DATASET: return createDataset();
-			case AnalysisActivityModelPackage.PARAMETER: return createParameter();
 			case AnalysisActivityModelPackage.PARAMETER_MAP: return createParameterMap();
 			case AnalysisActivityModelPackage.VALIDATION_RESULT: return createValidationResult();
 			default:
@@ -120,16 +119,6 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 	public Dataset createDataset() {
 		DatasetImpl dataset = new DatasetImpl();
 		return dataset;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Parameter createParameter() {
-		ParameterImpl parameter = new ParameterImpl();
-		return parameter;
 	}
 
 	/**

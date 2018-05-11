@@ -2,23 +2,25 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.tests;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.swing.event.ListSelectionEvent;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException;
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**
@@ -37,6 +39,12 @@ public class ParameterMapTest extends TestCase {
 
 	private static final AnalysisActivityDescriptionFactory AADP_INSTANCE =
 			AnalysisActivityDescriptionFactory.eINSTANCE;
+
+	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI = "./AnalysisActivityDescription.xmi";
+	
+	
+	private static AnalysisActivityDescription aaDesc;
+	
 	/**
 	 * The fixture for this Parameter test case.
 	 * <!-- begin-user-doc -->
@@ -92,7 +100,18 @@ public class ParameterMapTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AnalysisActivityModelFactory.eINSTANCE.createParameterMap());
+		initializeEcoreResources();
+		ParameterMap parameterMap = 
+				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
+
+		setFixture(parameterMap);
+		parameterMap.getDescriptions().clear();
+		parameterMap.getDescriptions().addAll(aaDesc.getParameters());
+		System.out.println(fixture.entrySet());
+		parameterMap.setDefaultValues();
+		System.out.println(fixture.entrySet());
+
+		
 	}
 
 	/**
@@ -106,6 +125,41 @@ public class ParameterMapTest extends TestCase {
 		setFixture(null);
 	}
 
+	private void initializeEcoreResources() throws Exception {
+		// Initialize the model
+        AnalysisActivityModelPackage.eINSTANCE.eClass();
+        AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
+
+        // Register the XMI resource factory for the extension
+
+        Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+        Map<String, Object> m = reg.getExtensionToFactoryMap();
+        m.put("xmi", new XMIResourceFactoryImpl());
+
+        // Obtain a new resource set
+        ResourceSetImpl resSet = new ResourceSetImpl();
+        
+        
+        URI uri = URI
+                .createURI(ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI);
+        try {
+			resSet.createResource(uri).load(this.getClass()
+					.getResource(uri.toString())
+					.openStream(), null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
+        // Get the resource
+        Resource resource = resSet.getResource(uri, true);
+        // Get the first model element and cast it to the right type, in my
+        // example everything is hierarchical included in this first node
+        aaDesc = (AnalysisActivityDescription) resource.getContents().get(0);
+        
+        if(aaDesc == null) 
+        	throw new Exception(uri.toString() + " not found!");
+	}
+	
 	/**
 	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#checkAndSetValues(java.lang.Object) <em>Check And Set Values</em>}' operation.
 	 * <!-- begin-user-doc -->
@@ -118,209 +172,45 @@ public class ParameterMapTest extends TestCase {
 
 
 	public void testCreateDefaultValues() throws ParameterUpdateException {
-		ParameterDescription description = 
-				AADP_INSTANCE.createParameterDescription();
 		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.LIST);
-		description.setParameterType(ParameterType.STRING);
 		
-		fixture.getDescriptions().clear();
-		fixture.getDescriptions().add(description);
+		assertEquals(2.0, (double) fixture.get("threshold"),0.01);
+		assertEquals(5, (int) fixture.get("count"));
+		assertNull(fixture.get("gene-identifier-type"));
+		assertTrue(((List)fixture.get("categories-in-result")).isEmpty());
+	}
+	
+	public void testPutAll() throws ParameterUpdateException {
 		
-		fixture.put("myStringList", Arrays.asList("test", "test1"));
+		Map<String,Object> updateMap = new HashMap<>();
 		
-		System.out.println(fixture.get("myStringList"));
-		
-		List<Object> newList = Collections.emptyList();
-		
-		Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-		parameter.setDescription(description);
-		parameter.checkAndSetValues(newList);
-		
+		String email = "ricardo.cawal@gmail.com";
+		List<String> categoriesInResult = Arrays.asList("cat1","cat2","cat3");
+		String geneIdType = "myGeneIdType";
 
-		System.out.println(parameter.getValues());
-		assertTrue(parameter.getValues().size() == 0);
+		updateMap.put("email", email);
+		updateMap.put("gene-identifier-type", geneIdType);
+		updateMap.put("categories-in-result", categoriesInResult);
+		updateMap.put("count", 4);
+		updateMap.put("threshold", 5.5);
+		
+		fixture.putAll(updateMap);
+		
+		assertTrue(email.equalsIgnoreCase(fixture.get("email").toString()));
+		
+		List<String> fixturesCategoriesInResult = (List<String>)fixture.get("categories-in-result");
+		assertEquals(categoriesInResult.size(), 
+				fixturesCategoriesInResult.size());
+
+		assertEquals(4, fixture.get("count"));
+		assertEquals(5.5, (double) fixture.get("threshold"),0.01);
+		
+		System.out.println(fixture instanceof Map);
+		System.out.println(fixture.entrySet());
 		
 	}
 	
-	public void testCheckAndSetValues__SimpleListOfString() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.LIST);
-		description.setParameterType(ParameterType.STRING);
-		
-		List<Object> newList = new ArrayList<>();
-			
-		newList.add("test");
-		
-		Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-		parameter.setDescription(description);
-		parameter.checkAndSetValues(newList);
-		
 
-		System.out.println(parameter.getValues());
-		assertTrue(parameter.getValues().size() == 1);
-		
-	}
-	
-	public void testCheckAndSetValues__SingleString() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("mySingleString");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.STRING);
-		
-		List<Object> newList = new ArrayList<>();
-			
-		newList.add("test");
-		
-		Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-		parameter.setDescription(description);
-		parameter.checkAndSetValues(newList);
-		
-
-		System.out.println(parameter.getValues());
-		assertTrue(parameter.getValues().size() == 1);
-	}
-	
-	
-	public void testCheckAndSetValues__SingleStringNotList() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.STRING);
-		
-		List<Object> newList = new ArrayList<>();
-
-		newList.add("test");
-		newList.add("test2");
-		try {
-			Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-			parameter.setDescription(description);
-			parameter.checkAndSetValues(newList);
-			fail("Missing exception");
-		} catch (ParameterUpdateException e) {
-			
-	 	}
-	}
-
-	public void testCheckAndSetValues__SingleInt() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.INTEGER);
-		
-		List<Integer> newList = new ArrayList<>();
-
-		newList.add(1);
-		
-		Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-		parameter.setDescription(description);
-		parameter.checkAndSetValues(newList);
-		
-		System.out.println(parameter.getValues());
-		assertTrue(parameter.getValues().size() == 1);
-	}
-	
-	public void testCheckAndSetValues__SingleIntAsString() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.INTEGER);
-		
-		fixture.getDescriptions().add(description);
-		System.out.println("aqui");
-		fixture.put("myStringList", "a");
-		
-		System.out.println(fixture.get("myStringList"));
-	}
-	
-	public void testCheckAndSetValues__InvalidIfNonIntAsString() {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.INTEGER);
-		
-		List<String> newList = new ArrayList<>();
-
-		newList.add("1a");
-		
-		try {
-			Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-			parameter.setDescription(description);
-			parameter.checkAndSetValues(newList);
-			fail("Missing exception");
-		} catch (ParameterUpdateException e) {
-			
-	 	}
-	}
-	
-	public void testCheckAndSetValues__ValidIfIntAsStringList() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.LIST);
-		description.setParameterType(ParameterType.INTEGER);
-		
-		List<String> newList = new ArrayList<>();
-
-		newList.add("1");
-		newList.add("2");
-		newList.add("3");
-
-		
-		Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-		parameter.setDescription(description);
-		parameter.checkAndSetValues(newList);
-		
-		assertTrue(parameter.getValues().size() == 3);
-	}
-	
-	public void testCheckAndSetValues__InvalidIfMoreThanSingleIntInStringList() {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.INTEGER);
-		
-		List<String> newList = new ArrayList<>();
-
-		newList.add("1");
-		newList.add("2");
-		newList.add("3");
-		
-		try {
-			Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-			parameter.setDescription(description);
-			parameter.checkAndSetValues(newList);
-			fail("Missing exception");
-		} catch (ParameterUpdateException e) {
-			
-	 	}
-	}
-
-	
-	public void testCheckAndSetValues__ValidIfIntegerAsInt() throws ParameterUpdateException {
-		ParameterDescription description = AADP_INSTANCE.createParameterDescription();
-		System.out.println(
-				"ParameterTest.testCheckAndSetValues__ValidIfIntegerAsInt()");
-		description.setName("myStringList");
-		description.setParameterKind(ParameterKind.SINGLE_VALUE);
-		description.setParameterType(ParameterType.INTEGER);
-		
-		Parameter parameter = AnalysisActivityModelFactory.eINSTANCE.createParameter();
-		parameter.setDescription(description);
-		parameter.checkAndSetValues(1);
-		
-		System.out.println(parameter.getValues());
-		assertTrue(parameter.getValues().size() == 1);
-	}
 	
 	
 } //ParameterTest

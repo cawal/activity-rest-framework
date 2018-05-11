@@ -59,7 +59,7 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected Map invalidValues;
+	protected Map<String, Object> invalidValues;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,10 +106,11 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map getInvalidValues() {
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getInvalidValues() {
 		if (invalidValues != null && ((EObject)invalidValues).eIsProxy()) {
 			InternalEObject oldInvalidValues = (InternalEObject)invalidValues;
-			invalidValues = (Map)eResolveProxy(oldInvalidValues);
+			invalidValues = (Map<String, Object>)eResolveProxy(oldInvalidValues);
 			if (invalidValues != oldInvalidValues) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.VALIDATION_RESULT__INVALID_VALUES, oldInvalidValues, invalidValues));
@@ -123,7 +124,7 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map basicGetInvalidValues() {
+	public Map<String, Object> basicGetInvalidValues() {
 		return invalidValues;
 	}
 
@@ -132,8 +133,8 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInvalidValues(Map newInvalidValues) {
-		Map oldInvalidValues = invalidValues;
+	public void setInvalidValues(Map<String, Object> newInvalidValues) {
+		Map<String, Object> oldInvalidValues = invalidValues;
 		invalidValues = newInvalidValues;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.VALIDATION_RESULT__INVALID_VALUES, oldInvalidValues, invalidValues));
@@ -161,6 +162,7 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -168,7 +170,7 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 				setIsValid((Boolean)newValue);
 				return;
 			case AnalysisActivityModelPackage.VALIDATION_RESULT__INVALID_VALUES:
-				setInvalidValues((Map)newValue);
+				setInvalidValues((Map<String, Object>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -186,7 +188,7 @@ public class ValidationResultImpl extends MinimalEObjectImpl.Container implement
 				setIsValid(IS_VALID_EDEFAULT);
 				return;
 			case AnalysisActivityModelPackage.VALIDATION_RESULT__INVALID_VALUES:
-				setInvalidValues((Map)null);
+				setInvalidValues((Map<String, Object>)null);
 				return;
 		}
 		super.eUnset(featureID);
