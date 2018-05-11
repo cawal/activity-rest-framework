@@ -26,12 +26,12 @@ import br.usp.ffclrp.dcm.lssb.activityrest.util.ParametersUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import io.swagger.annotations.Api;
 
 @Api()
 public class ParameterSetResource {
-
-
+	
 	UriInfo uriInfo;
 	URI baseApplicationURI;
 	URI absolutePathURI;
@@ -50,13 +50,12 @@ public class ParameterSetResource {
 		this.aaDesc = aaDesc;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
-
+		
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
 		this.allowUpdates = allowUpdates;
 	}
 	
-
 	/**
 	 * Returns all parameters for a activity.
 	 * 
@@ -67,57 +66,39 @@ public class ParameterSetResource {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getAllParameters() {
-		List<Parameter> parameterList = aa.getParameters();
-		Map<String, Object> map = ParametersUtil.toMap(parameterList);
+		Map<String, Object> map = aa.getParameters();
+		;
 		return Response.ok(map).build();
 	}
-
-
-
-	
 	
 	/**
-	 * Modifies all parameters at once. 
+	 * Modifies all parameters at once.
 	 * 
 	 * @return
-	 * @exception BadRequestException if 
-	 * 	- the object contains a property not found as a parameter
-	 *  - a parameter should be a list but the user is trying 
-	 *  to send a simple value (not an array) or vice versa.
+	 * @exception BadRequestException
+	 *                if
+	 *                - the object contains a property not found as a parameter
+	 *                - a parameter should be a list but the user is trying
+	 *                to send a simple value (not an array) or vice versa.
 	 */
 	@PUT
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response putAllParameters(Map<String,Object> map) {
+	public Response putAllParameters(Map<String, Object> map) {
 		System.out.println("Received Map:");
 		System.out.println(map);
+		aa.getParameters().putAll(map);
 		try {
-			ParametersUtil.setParametersFromMap(aa, map);
-			try {
-				analysisActivityDao.update(aa);
-			} catch (AnalysisActivityNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw new ServerErrorException(500);
-			}
-			
-			return Response.ok(map).build();
-			
-		} catch (IllegalParameterException e) {
+			analysisActivityDao.update(aa);
+		} catch (AnalysisActivityNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Parameter:");
-			System.out.println(e.getParameterName());
-			System.out.println(e.getNewValue());
-			throw new BadRequestException(e);
+			throw new ServerErrorException(500);
 		}
 		
+		return Response.ok(map).build();
+		
 	}
-
-
-
-	
-	
-	
 	
 	/**
 	 * Returns one parameters for a activity.
@@ -131,18 +112,15 @@ public class ParameterSetResource {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getParameterByName(
 			@NotNull @PathParam("parameterName") String parameterName) {
-			List<Parameter> parameterList = aa.getParameters();
-			Map<String, Object> map = ParametersUtil.toMap(parameterList);
-			
-			if(map.containsKey(parameterName)) {
-				return Response.ok(map.get(parameterName)).build();
-			} else {
-				throw new NotFoundException();
-			}
- 
+		ParameterMap parameters = aa.getParameters();
+		
+		if (parameters.containsKey(parameterName)) {
+			return Response.ok(parameters.get(parameterName)).build();
+		} else {
+			throw new NotFoundException();
+		}
+		
 	}
-	
-
 	
 	/**
 	 * Receives a object containing only the parameter name and the value
@@ -157,15 +135,18 @@ public class ParameterSetResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response putParameterByName(
 			@NotNull @PathParam("parameterName") String parameterName,
-			Object parameterValue) {		
+			Object parameterValue) {
 		try {
-
-			Parameter p = aa.parameterForName(parameterName);
-			set(p,parameterValue);
+			
+			aa.getParameters().put(parameterName, parameterValue);
+			
+			if(aa.getParameters().get(parameterName) != parameterValue) {
+				throw new IllegalParameterException(parameterName,parameterValue);
+			}
+			
 			analysisActivityDao.update(aa);
 			return Response.ok().build();
 			
-
 		} catch (IllegalParameterException e) {
 			e.printStackTrace();
 			System.out.println("Parameter:");
@@ -175,38 +156,6 @@ public class ParameterSetResource {
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
 		}
-		
-	}
-
-
-	private void set(Parameter p, Object value) throws IllegalParameterException{
-		//TODO: copy in the AnalysisActivity class
-		if(p != null) {
-			switch (p.getDescription().getParameterKind()) {
-			case SINGLE_VALUE:
-				if((value instanceof List)) {
-					throw new IllegalParameterException(p.getName(),value);
-				} else {
-					p.getValues().clear();
-					p.getValues().add((String)value);
-				}
-				
-				break;
-			case LIST:
-				if(! (value instanceof List)) {
-					throw new IllegalParameterException(p.getName(),value);
-				} else {
-					p.getValues().clear();
-					@SuppressWarnings("unchecked")
-					List<String> stringValues = ((List<String>)value);
-					stringValues.forEach(v -> p.getValues().add(v.toString()));
-				}
-				break;
-			
-			default:
-				break;
-			}
-		} 
 		
 	}
 }

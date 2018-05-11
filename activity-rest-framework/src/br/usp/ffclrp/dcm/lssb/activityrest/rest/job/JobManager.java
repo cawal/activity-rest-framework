@@ -38,6 +38,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDesc
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator;
@@ -214,7 +215,8 @@ public class JobManager {
 				}
 
 			} else if (e instanceof ParameterCommandLineEntryList) {
-				// TODO
+				ParameterDescription pp = ((ParameterCommandLineEntryList) e).getParameter();
+				
 			}
 			
 			for(StringListManipulator m : e.getManipulators()) {

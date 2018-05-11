@@ -1,5 +1,7 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation;
 
+import java.util.Collection;
+
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint;
@@ -38,10 +40,9 @@ public class AnalysisActivityValidation {
 				System.out.println(c.toString());
 				ParameterDescription pp =
 						((ParameterConstraint) c).getParameter();
-				System.out.println(pp);
-				Parameter parameter = aa.parameterForName(pp.getName());
+				Object value = aa.getParameters().get(pp.getName());
 				
-				if (!isReadyParameter(parameter, (ParameterConstraint) c))
+				if (!isReadyParameter(value, (ParameterConstraint) c))
 					return false;
 			}
 		}
@@ -50,22 +51,24 @@ public class AnalysisActivityValidation {
 		
 	}
 	
-	private static boolean isReadyParameter(Parameter parameter,
+	private static boolean isReadyParameter(Object value,
 			ParameterConstraint c) {
-		// TODO Auto-generated method stub
-		if (c instanceof MinimunParameterCardinalityConstraint) {
-			return parameter.getValues()
-					.size() >= ((MinimunParameterCardinalityConstraint) c)
-							.getValue()
-							.intValue();
-			
-		} else if (c instanceof MaximunParameterCardinalityConstraint) {
-			return parameter.getValues()
-					.size() <= ((MaximunParameterCardinalityConstraint) c)
-							.getValue()
-							.intValue();
+		if(value instanceof Collection<?>) {
+			if (c instanceof MinimunParameterCardinalityConstraint) {
+				return ((Collection<?>)value).size() 
+						>= ((MinimunParameterCardinalityConstraint) c)
+								.getValue()
+								.intValue();
+				
+			} else if (c instanceof MaximunParameterCardinalityConstraint) {
+				return ((Collection<?>)value).size() 
+						<= ((MaximunParameterCardinalityConstraint) c)
+								.getValue()
+								.intValue();
+			}
+		} else {
+			return value != null;
 		}
-		
 		
 		return false;
 	}

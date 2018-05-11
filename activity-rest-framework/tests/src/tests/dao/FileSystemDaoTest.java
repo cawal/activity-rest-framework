@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.WebApplicationException;
@@ -23,6 +25,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 
 public class FileSystemDaoTest {
@@ -32,7 +35,14 @@ public class FileSystemDaoTest {
 	static AnalysisActivityDescription aaDesc;
 	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI = "./AnalysisActivityDescription.xmi";
 	
-	
+	static List<String> keys = Arrays.asList(
+			"email",
+			"count",
+			"threshold", 
+			"gene-ids",
+			"categories-in-result",
+			"gene-identifier-type"
+		);
 	
 	private void initializeEcoreResources() {
 		// Initialize the model
@@ -80,7 +90,12 @@ public class FileSystemDaoTest {
 	@Before
 	public void setUp() throws Exception {
 		initializeEcoreResources();
-		localStorage = java.nio.file.Files.createTempDirectory("dao_test").toFile();
+		
+
+		
+		localStorage = new File("/tmp/dao_test_root");
+		localStorage.mkdirs();
+		///java.nio.file.Files.createTempDirectory("dao_test").toFile();
 		dao = new FileSystemDao(localStorage, aaDesc);
 	}
 	
@@ -89,10 +104,36 @@ public class FileSystemDaoTest {
 	}
 	
 	@Test
-	public void test() throws Exception {
+	public void testCreateAndRetrieve_Parameters() throws Exception {
 		String id = dao.create();
 		System.out.println(id);
-		dao.get(id);
+		AnalysisActivity aa = dao.get(id);
+		
+		boolean containAllKeys = keys.stream()
+				.map(k -> aa.getParameters().containsKey(k))
+				.allMatch(b->b);
+		
+		assertTrue("There are keys that are not in  the parameters map!",containAllKeys);
 	}
+	
+	@Test
+	public void testCreateUpdateAndRetrieve_Parameters() throws Exception {
+		String id = dao.create();
+		System.out.println(id);
+		AnalysisActivity aa = dao.get(id);
+
+		String email = "test@email.net";
+		aa.getParameters().put("email", email);
+		aa.getParameters().put("count", "5");
+		
+		dao.update(aa);
+		
+		AnalysisActivity aa2 = dao.get(aa.getId());
+
+		assertEquals(5, aa2.getParameters().get("count"));
+		assertTrue(email.equalsIgnoreCase(aa2.getParameters().get("email").toString()));
+		
+	}
+	
 	
 }

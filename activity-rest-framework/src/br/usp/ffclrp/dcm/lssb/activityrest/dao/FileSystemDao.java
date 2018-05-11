@@ -247,9 +247,9 @@ public class FileSystemDao implements AnalysisActivityDao {
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
 		
 		parametersMap.getDescriptions().addAll(aaDesc.getParameters());
-		((ParameterMapImpl)  parametersMap).setDefaultValues();
+		parametersMap.setDefaultValues();
 		
-		
+		System.out.println(jsonb.toJson(parametersMap));
 		jsonb.toJson(parametersMap, parametersStream);
 		parametersStream.close();
 	}
@@ -261,11 +261,8 @@ public class FileSystemDao implements AnalysisActivityDao {
 				new File(analysisRoot, parametersSubpath);
 		
 		// save parameters
-		Map<String, Object> parametersMap =
-				ParametersUtil.toMap(aa.getParameters());
-		
 		FileWriter parametersStream = new FileWriter(parametersFile);
-		jsonb.toJson(parametersMap, parametersStream);
+		jsonb.toJson(aa.getParameters(), parametersStream);
 		parametersStream.close();
 	}
 	
@@ -277,44 +274,24 @@ public class FileSystemDao implements AnalysisActivityDao {
 		
 		// create parameters with default values
 		// TODO: move for better place
+		System.out.println("aqui");
 		aa.getParameters().clear();
-		for (ParameterDescription pp : aa.getDescription().getParameters()) {
-			Parameter p =
-					AnalysisActivityModelFactory.eINSTANCE.createParameter();
-			p.setName(pp.getName());
-			p.getValues().addAll(pp.getDefaultValue());
-			p.setDescription(pp);
-			aa.getParameters().add(p);
-		}
-		
+		aa.getParameters().getDescriptions().clear();
+		aa.getParameters().getDescriptions().addAll(aa.getDescription().getParameters());
+		aa.getParameters().setDefaultValues();
+		System.out.println("passou");
 		// get values from file
 		try {
 			
-			Jsonb jsonb = JsonbBuilder.create();
 			System.out.println(parametersFile);
 			@SuppressWarnings("unchecked")
 			Map<String, Object> parametersSet = jsonb
 					.fromJson(new FileReader(parametersFile),
 							Map.class);
 			
+			aa.getParameters().putAll(parametersSet);
 
-			System.out.println(parametersSet);
-			
-			ParameterMap parametersMap = 
-					AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
-			
-			parametersMap.getDescriptions().addAll(aaDesc.getParameters());
-			((ParameterMapImpl)  parametersMap).setDefaultValues();
-			
-			parametersMap.putAll(parametersSet);
-			
-			System.out.println(jsonb.toJson(parametersMap));
-			
-			System.out.println("chamando função");
-			
-			ParametersUtil.setParametersFromMap(aa, parametersSet);
-
-		} catch (FileNotFoundException | IllegalParameterException e) {
+		} catch (FileNotFoundException e) {
 //		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			throw new AnalysisActivityNotFoundException(aa.getId());
