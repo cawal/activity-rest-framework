@@ -45,7 +45,7 @@ public class NewAnalysesCollection {
 	 * @return
 	 */
 	@POST
-	@Produces({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response postNewAnalysis() {
 		
 		try {
