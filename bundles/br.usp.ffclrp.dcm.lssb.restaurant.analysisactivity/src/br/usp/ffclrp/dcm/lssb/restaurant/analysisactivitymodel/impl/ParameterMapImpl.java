@@ -99,8 +99,13 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 		ValidationResult r =
 				AnalysisActivityModelFactory.eINSTANCE.createValidationResult();
 		
-		r.setIsValid(true);
+		r.setIsValid(individualResults.stream().allMatch(i -> i.getIsValid()));
 		
+		for(ValidationResult i : individualResults) {
+			for(String key : i.getInvalidValues().keySet()) {
+				r.getInvalidValues().put(key, i.getInvalidValues().get(key));
+			}
+		}
 		
 		return r;
 	}
