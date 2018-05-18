@@ -7,10 +7,12 @@ import javax.annotation.Nonnull;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
@@ -48,6 +50,7 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	 * @return The datasets links for the analysis.
 	 */
 	@GET
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response getOutputDatasets() {
 		
 		List<Dataset> datasetList = aa.getOutputs();
