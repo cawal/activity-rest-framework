@@ -271,23 +271,18 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	}
 	
 	public void setDefaultValues() {
-		System.out.println("ParameterMapImpl.setDefaultValues()");
 		this.internalMap.clear();
 		for (ParameterDescription d : this.getDescriptions()) {
-			System.out.println(d.getDefaultValue());
 			this.put(d.getName(), sanitize(d, d.getDefaultValue()));
 		}
 	}
 	
 	
 	protected Object sanitize(ParameterDescription description, Object value) {
-		System.out.println("ParameterMapImpl.sanitize()");
-		System.out.println(description.getName());
 		boolean valueIsCollection = value instanceof Collection;
 		ParameterKind expectedParameterKind = description.getParameterKind();
 		
 		if(valueIsCollection && (expectedParameterKind == ParameterKind.LIST)) {
-			System.out.println("is collection expecting collection");
 			@SuppressWarnings("unchecked")
 			List<Object> sanitizedList = (List<Object>) ((Collection) value).stream()
 					.map(v -> sanitizeSingleValue(description,v))
@@ -321,7 +316,6 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	
 	private List<Object> sanitizeList(ParameterDescription description,
 			Object value) {
-		System.out.println("ParameterMapImpl.sanitizeList()");
 		List<Object> list;
 		
 		if (value instanceof Collection) {
@@ -339,9 +333,6 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	
 	private Object sanitizeSingleValue(ParameterDescription description,
 			Object value) {
-		System.out.println("ParameterMapImpl.sanitizeSingleValue()");
-		System.out.println(description.getName());
-		System.out.println(value);
 				
 		if (value == null) 
 			return null; // nothing to do
@@ -358,7 +349,6 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 					break;
 					
 				case REAL:
-						System.out.println(description.getName());
 					sanitized = Double.parseDouble(value.toString());
 					break;
 					
