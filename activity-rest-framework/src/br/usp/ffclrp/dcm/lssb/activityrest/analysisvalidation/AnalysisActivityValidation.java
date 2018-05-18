@@ -13,7 +13,6 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDe
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 
 // TODO Refactor the validation engine
 public class AnalysisActivityValidation {

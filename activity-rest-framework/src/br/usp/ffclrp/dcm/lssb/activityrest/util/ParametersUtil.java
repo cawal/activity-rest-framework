@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 
 public class ParametersUtil {
 	
-	public static Map<String, Object> toMap(List<Parameter> parameterList) {
+/*	public static Map<String, Object> toMap(List<Parameter> parameterList) {
 		Map<String, Object> map = new HashMap<>();
 		
 		for (Parameter p : parameterList) {
@@ -27,7 +26,7 @@ public class ParametersUtil {
 			}
 		}
 		return map;
-	}
+	}*/
 	
 	public static Map<String, Object> parameterDescriptionsToMap(
 			List<ParameterDescription> descriptionList) {

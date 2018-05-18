@@ -6,12 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -27,17 +23,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.IllegalParameterException;
-import br.usp.ffclrp.dcm.lssb.activityrest.util.ParametersUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl;
 
 public class FileSystemDao implements AnalysisActivityDao {
 	

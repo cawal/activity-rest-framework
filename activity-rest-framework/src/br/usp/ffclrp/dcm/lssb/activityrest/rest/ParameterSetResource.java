@@ -1,7 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
@@ -22,10 +21,8 @@ import javax.ws.rs.core.UriInfo;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.IllegalParameterException;
-import br.usp.ffclrp.dcm.lssb.activityrest.util.ParametersUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import io.swagger.annotations.Api;
 
