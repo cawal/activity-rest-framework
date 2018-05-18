@@ -32,7 +32,7 @@ public class HalJsonFromObjectMessageBodyWriter implements MessageBodyWriter<Obj
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType,
 			Annotation[] annotations, MediaType mediaType) {
-		// TODO Auto-generated method stub
+		// TODO validate type?
 		return true;
 	}
 
@@ -42,7 +42,6 @@ public class HalJsonFromObjectMessageBodyWriter implements MessageBodyWriter<Obj
 	@Override
 	public long getSize(Object entity, Class<?> type, Type genericType,
 			Annotation[] annotations, MediaType mediaType) {
-		// TODO Auto-generated method stub
 		return -1;
 	}
 
@@ -55,7 +54,7 @@ public class HalJsonFromObjectMessageBodyWriter implements MessageBodyWriter<Obj
 			MultivaluedMap<String, Object> httpHeaders,
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
-		// TODO Auto-generated method stub
+		// TODO  implement writeTo()
 		
 		ObjectMapper mapper = new HALMapper(); // create once, reuse
 		String halJson = mapper.writeValueAsString(entity);

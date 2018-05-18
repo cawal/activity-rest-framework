@@ -57,7 +57,7 @@ public class XMLFromAnalysisActivityMessageBodyWriter implements MessageBodyWrit
 			MultivaluedMap<String, Object> httpHeaders,
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
-		// TODO Auto-generated method stub
+		// TODO implement writeTo()
 		
 		
 /*		this.self = new HALLink.Builder(analysisBaseUri).build();

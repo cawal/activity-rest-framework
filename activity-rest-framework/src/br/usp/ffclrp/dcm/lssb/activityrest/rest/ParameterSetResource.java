@@ -91,7 +91,6 @@ public class ParameterSetResource {
 		try {
 			analysisActivityDao.update(aa);
 		} catch (AnalysisActivityNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ServerErrorException(500);
 		}

@@ -65,7 +65,6 @@ public class Job implements Runnable {
 				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile(), "FAILED");
 				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(), e.getMessage(),true);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -75,7 +74,7 @@ public class Job implements Runnable {
 
 
 	private String provideErrorReport(JobConfig jobConfig, int exitValue) {
-		// TODO Auto-generated method stub
+		// TODO Better handling of the error report
 		return "Failure code:" + exitValue;
 	}
 }

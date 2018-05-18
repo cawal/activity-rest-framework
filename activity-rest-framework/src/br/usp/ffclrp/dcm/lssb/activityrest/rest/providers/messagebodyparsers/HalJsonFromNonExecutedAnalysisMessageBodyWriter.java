@@ -57,7 +57,6 @@ public class HalJsonFromNonExecutedAnalysisMessageBodyWriter implements MessageB
 			MultivaluedMap<String, Object> httpHeaders,
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
-		// TODO Auto-generated method stub
 		
 		
 /*		this.self = new HALLink.Builder(analysisBaseUri).build();

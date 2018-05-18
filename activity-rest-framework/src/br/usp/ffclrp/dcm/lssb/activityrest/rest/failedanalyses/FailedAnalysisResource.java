@@ -147,7 +147,6 @@ public class FailedAnalysisResource {
 		try {
 			return Response.ok(FileUtils.readFileToString(aa.getErrorReport())).build();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ServerErrorException(500);
 		}

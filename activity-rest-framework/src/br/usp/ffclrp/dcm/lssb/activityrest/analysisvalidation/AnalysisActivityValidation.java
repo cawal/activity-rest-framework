@@ -88,7 +88,6 @@ public class AnalysisActivityValidation {
 							.intValue();
 		}
 		
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

@@ -66,7 +66,6 @@ public class FileSystemDaoTest {
 					.getResource(uri.toString())
 					.openStream(), null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		};
         // Get the resource

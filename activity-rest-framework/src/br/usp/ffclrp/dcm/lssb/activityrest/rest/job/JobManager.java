@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.GET;
@@ -217,6 +219,19 @@ public class JobManager {
 			} else if (e instanceof ParameterCommandLineEntryList) {
 				ParameterDescription pp = ((ParameterCommandLineEntryList) e).getParameter();
 				
+				Object parameterValue = analysis.getParameters().get(pp.getName());
+				
+				if(parameterValue instanceof Collection) {
+					List<String> values = 
+							((Collection<Object>) parameterValue).stream()
+							.map(Object::toString)
+							.collect(Collectors.toList());
+							
+					stringList.addAll(values);
+				} else {
+					stringList.add(parameterValue.toString());
+				}
+				
 			}
 			
 			for(StringListManipulator m : e.getManipulators()) {
@@ -225,6 +240,7 @@ public class JobManager {
 			commandLine.addAll(stringList);
 		}
 		
+		System.out.println("COMMAND LINE");
 		commandLine.stream().forEach(System.out::println);
 		
 		return commandLine;

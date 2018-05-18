@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
@@ -53,6 +54,11 @@ public class FileSystemDao implements AnalysisActivityDao {
 	
 	JsonbConfig jsonConfig;
 	Jsonb jsonb;
+	
+	
+	private final static Logger LOGGER 
+		= Logger.getLogger(FileSystemDao.class.getName());
+	
 	
 	public FileSystemDao(
 			@NotNull File localStorage,
@@ -249,7 +255,6 @@ public class FileSystemDao implements AnalysisActivityDao {
 		parametersMap.getDescriptions().addAll(aaDesc.getParameters());
 		parametersMap.setDefaultValues();
 		
-		System.out.println(jsonb.toJson(parametersMap));
 		jsonb.toJson(parametersMap, parametersStream);
 		parametersStream.close();
 	}
@@ -274,16 +279,13 @@ public class FileSystemDao implements AnalysisActivityDao {
 		
 		// create parameters with default values
 		// TODO: move for better place
-		System.out.println("aqui");
 		aa.getParameters().clear();
 		aa.getParameters().getDescriptions().clear();
 		aa.getParameters().getDescriptions().addAll(aa.getDescription().getParameters());
 		aa.getParameters().setDefaultValues();
-		System.out.println("passou");
+
 		// get values from file
 		try {
-			
-			System.out.println(parametersFile);
 			@SuppressWarnings("unchecked")
 			Map<String, Object> parametersSet = jsonb
 					.fromJson(new FileReader(parametersFile),
