@@ -36,7 +36,15 @@ public enum ParameterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INTEGER(0, "INTEGER", "INTEGER");
+	INTEGER(0, "INTEGER", "INTEGER"), /**
+	 * The '<em><b>REAL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REAL(0, "REAL", "REAL");
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
@@ -69,6 +77,21 @@ public enum ParameterType implements Enumerator {
 	public static final int INTEGER_VALUE = 0;
 
 	/**
+	 * The '<em><b>REAL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>REAL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #REAL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REAL_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Parameter Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +101,7 @@ public enum ParameterType implements Enumerator {
 		new ParameterType[] {
 			STRING,
 			INTEGER,
+			REAL,
 		};
 
 	/**

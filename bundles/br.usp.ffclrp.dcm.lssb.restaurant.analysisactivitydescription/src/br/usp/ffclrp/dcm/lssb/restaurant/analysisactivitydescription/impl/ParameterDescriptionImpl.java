@@ -7,10 +7,12 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDe
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -201,6 +203,127 @@ public class ParameterDescriptionImpl extends MinimalEObjectImpl.Container imple
 		return defaultValue;
 	}
 
+
+
+	
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 */
+	public <A> boolean isValidValue(EList<A> value) {
+		return isValidListValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * d
+	 */
+	@SuppressWarnings("unchecked")
+	public <A> boolean isValidValue(A value) {
+		if(value instanceof List) {
+			return this.isValidListValue((List) value);
+		} else {
+			List<A> list = new BasicEList<>();
+			list.add(value);
+			return this.isValidListValue(list);
+		}
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 */
+	public <A> boolean isValidValue(List<A> value) {
+		return isValidListValue(value);
+	}
+
+	private <A> Boolean isValidListValue(List<A> values) {
+		boolean isValid = true;
+		
+		isValid = isValid && checkSize(values);
+		isValid = isValid && checkAssignability(values);
+		
+		return isValid;
+	}
+	
+	private <A> boolean checkSize(List<A> values) {
+		return (this.getParameterKind() == ParameterKind.SINGLE_VALUE)?
+				values.size() == 0 || values.size() == 1 
+				: true;  
+	}
+	
+	private <A> boolean checkAssignability(List<A> values) {
+		boolean isAssignable = true;
+		switch (this.getParameterType()) {
+		case STRING:
+			isAssignable = values.stream().allMatch(a -> a instanceof String);
+			break;
+		case INTEGER:
+			isAssignable = allElementsAreInteger(values);
+			break;
+		case REAL:
+			isAssignable = allElementsAreReal(values);
+			break;
+		}
+		
+		return isAssignable;
+	}
+	
+	private <A> boolean allElementsAreInteger(List<A> values) {
+		try {
+			// Lists can not have primitive values as its items
+			// if can create a Integer instance w/o exceptions, is  a integer
+			return values.stream().allMatch(i -> {
+				return (i instanceof Integer) 
+						|| (i instanceof String && representsInteger((String) i));
+			});
+		} catch (NumberFormatException | ClassCastException e) {
+			return false;
+		}
+		
+	}
+
+	private boolean representsInteger(String i) {
+		try {
+			// if can create a Integer instance w/o exceptions, 
+			// it is  a integer in a string
+			new Integer(i);
+			return true;
+		} catch (NumberFormatException | ClassCastException e) {
+			return false;
+		}
+	}
+	
+	private <A> boolean allElementsAreReal(List<A> values) {
+		try {
+			// Lists can not have primitive values as its items
+			// if can create a Integer instance w/o exceptions, is  a integer
+			return values.stream().allMatch(i -> {
+				return (i instanceof Double) 
+						|| (i instanceof String && representsDouble((String) i));
+			});
+		} catch (NumberFormatException | ClassCastException e) {
+			return false;
+		}
+		
+	}
+
+	private boolean representsDouble(String i) {
+		try {
+			// if can create a Integer instance w/o exceptions, 
+			// it is  a integer in a string
+			new Double(i);
+			return true;
+		} catch (NumberFormatException | ClassCastException e) {
+			return false;
+		}
+	}
+	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -289,6 +412,25 @@ public class ParameterDescriptionImpl extends MinimalEObjectImpl.Container imple
 				return defaultValue != null && !defaultValue.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST:
+				return isValidValue(arguments.get(0));
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT:
+				return isValidValue(arguments.get(0));
+			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST:
+				return isValidValue((List)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

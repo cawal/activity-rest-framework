@@ -5,7 +5,6 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
 
 import java.io.File;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -61,7 +60,8 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 		switch (eClass.getClassifierID()) {
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY: return createAnalysisActivity();
 			case AnalysisActivityModelPackage.DATASET: return createDataset();
-			case AnalysisActivityModelPackage.PARAMETER: return createParameter();
+			case AnalysisActivityModelPackage.PARAMETER_MAP: return createParameterMap();
+			case AnalysisActivityModelPackage.VALIDATION_RESULT: return createValidationResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -77,6 +77,8 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 		switch (eDataType.getClassifierID()) {
 			case AnalysisActivityModelPackage.FILE:
 				return createFileFromString(eDataType, initialValue);
+			case AnalysisActivityModelPackage.OBJECT:
+				return createObjectFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +94,8 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 		switch (eDataType.getClassifierID()) {
 			case AnalysisActivityModelPackage.FILE:
 				return convertFileToString(eDataType, instanceValue);
+			case AnalysisActivityModelPackage.OBJECT:
+				return convertObjectToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -122,9 +126,19 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Parameter createParameter() {
-		ParameterImpl parameter = new ParameterImpl();
-		return parameter;
+	public ParameterMap createParameterMap() {
+		ParameterMapImpl parameterMap = new ParameterMapImpl();
+		return parameterMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValidationResult createValidationResult() {
+		ValidationResultImpl validationResult = new ValidationResultImpl();
+		return validationResult;
 	}
 
 	/**
@@ -142,6 +156,24 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 	 * @generated
 	 */
 	public String convertFileToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object createObjectFromString(EDataType eDataType, String initialValue) {
+		return super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertObjectToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

@@ -4,6 +4,7 @@
     nsPrefix="aam">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="aad" value="../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/"/>
+    <details key="aae" value="activity-exceptions.ecore#/"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AnalysisActivity">
     <eOperations name="inputDatasetForName" eType="#//Dataset">
@@ -12,24 +13,16 @@
     <eOperations name="outputDatasetForName" eType="#//Dataset">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="parameterForName" eType="#//Parameter">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
-        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//AnalysisActivityDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//AnalysisActivityDescription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
         eType="#//Dataset" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//Parameter" containment="true">
-      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
-        <details key="nullFree" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
+        eType="#//ParameterMap" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Dataset" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
@@ -40,8 +33,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dataset">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
-        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//DatasetDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//DatasetDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="files" upperBound="-1"
         eType="#//File">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
@@ -49,16 +41,52 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
-        eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//ParameterDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" ordered="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List"
+      serializable="false">
+    <eTypeParameters name="A"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaMap" instanceClassName="java.util.Map"
+      abstract="true" interface="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="class ParametersMap : 'java.util.Map$Entry' {&#xA;attribute key : String;&#xA;attribute value : Object;&#xA;}"/>
+    </eAnnotations>
+    <eTypeParameters name="k"/>
+    <eTypeParameters name="v"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterMap">
+    <eOperations name="validateParameters" lowerBound="1" eType="#//ValidationResult">
+      <eParameters name="map">
+        <eGenericType eClassifier="#//JavaMap">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eTypeArguments eClassifier="#//Object"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="validateParameter" lowerBound="1" eType="#//ValidationResult">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" eType="#//Object"/>
+    </eOperations>
+    <eOperations name="setDefaultValues"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptions" ordered="false"
+        upperBound="-1" eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//ParameterDescription">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eGenericSuperTypes eClassifier="#//JavaMap">
+      <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eTypeArguments eClassifier="#//Object"/>
+    </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidationResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isValid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="invalidValues" lowerBound="1">
+      <eGenericType eClassifier="#//JavaMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eTypeArguments eClassifier="#//Object"/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
 </ecore:EPackage>

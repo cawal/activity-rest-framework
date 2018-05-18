@@ -14,4 +14,12 @@
             genModel="model/analysis-activity-model.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysis-activity-model -->
+      <package
+            uri="http://dcm.ffclrp.usp.br/lssb/metamodels/activity-exceptions.ecore"
+            class="analysisactivityexceptions.AnalysisactivityexceptionsPackage"
+            genModel="model/analysis-activity-model.genmodel"/>
+   </extension>
+
 </plugin>

@@ -2,23 +2,28 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
+import analysisactivityexceptions.AnalysisactivityexceptionsPackage;
+import analysisactivityexceptions.impl.AnalysisactivityexceptionsPackageImpl;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
 
 import java.io.File;
 
+import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -47,7 +52,28 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass parameterEClass = null;
+	private EClass javaMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parameterMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass validationResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType listEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,6 +81,13 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * @generated
 	 */
 	private EDataType fileEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType objectEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -106,11 +139,16 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
 		StringListManipulatorsPackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		AnalysisactivityexceptionsPackageImpl theAnalysisactivityexceptionsPackage = (AnalysisactivityexceptionsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI) instanceof AnalysisactivityexceptionsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI) : AnalysisactivityexceptionsPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theAnalysisActivityModelPackage.createPackageContents();
+		theAnalysisactivityexceptionsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theAnalysisActivityModelPackage.initializePackageContents();
+		theAnalysisactivityexceptionsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theAnalysisActivityModelPackage.freeze();
@@ -207,15 +245,6 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAnalysisActivity__ParameterForName__String() {
-		return analysisActivityEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDataset() {
 		return datasetEClass;
 	}
@@ -252,8 +281,8 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getParameter() {
-		return parameterEClass;
+	public EClass getParameterMap() {
+		return parameterMapEClass;
 	}
 
 	/**
@@ -261,8 +290,8 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Name() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
+	public EReference getParameterMap_Descriptions() {
+		return (EReference)parameterMapEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -270,8 +299,8 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getParameter_Description() {
-		return (EReference)parameterEClass.getEStructuralFeatures().get(1);
+	public EOperation getParameterMap__ValidateParameters__Map() {
+		return parameterMapEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -279,8 +308,53 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Values() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(2);
+	public EOperation getParameterMap__ValidateParameter__String_Object() {
+		return parameterMapEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getParameterMap__SetDefaultValues() {
+		return parameterMapEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getValidationResult() {
+		return validationResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getValidationResult_IsValid() {
+		return (EAttribute)validationResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getValidationResult_InvalidValues() {
+		return (EReference)validationResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getList() {
+		return listEDataType;
 	}
 
 	/**
@@ -290,6 +364,24 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 */
 	public EDataType getFile() {
 		return fileEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaMap() {
+		return javaMapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getObject() {
+		return objectEDataType;
 	}
 
 	/**
@@ -329,20 +421,28 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		createEAttribute(analysisActivityEClass, ANALYSIS_ACTIVITY__ERROR_REPORT);
 		createEOperation(analysisActivityEClass, ANALYSIS_ACTIVITY___INPUT_DATASET_FOR_NAME__STRING);
 		createEOperation(analysisActivityEClass, ANALYSIS_ACTIVITY___OUTPUT_DATASET_FOR_NAME__STRING);
-		createEOperation(analysisActivityEClass, ANALYSIS_ACTIVITY___PARAMETER_FOR_NAME__STRING);
 
 		datasetEClass = createEClass(DATASET);
 		createEAttribute(datasetEClass, DATASET__NAME);
 		createEReference(datasetEClass, DATASET__DESCRIPTION);
 		createEAttribute(datasetEClass, DATASET__FILES);
 
-		parameterEClass = createEClass(PARAMETER);
-		createEAttribute(parameterEClass, PARAMETER__NAME);
-		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
-		createEAttribute(parameterEClass, PARAMETER__VALUES);
+		javaMapEClass = createEClass(JAVA_MAP);
+
+		parameterMapEClass = createEClass(PARAMETER_MAP);
+		createEReference(parameterMapEClass, PARAMETER_MAP__DESCRIPTIONS);
+		createEOperation(parameterMapEClass, PARAMETER_MAP___VALIDATE_PARAMETERS__MAP);
+		createEOperation(parameterMapEClass, PARAMETER_MAP___VALIDATE_PARAMETER__STRING_OBJECT);
+		createEOperation(parameterMapEClass, PARAMETER_MAP___SET_DEFAULT_VALUES);
+
+		validationResultEClass = createEClass(VALIDATION_RESULT);
+		createEAttribute(validationResultEClass, VALIDATION_RESULT__IS_VALID);
+		createEReference(validationResultEClass, VALIDATION_RESULT__INVALID_VALUES);
 
 		// Create data types
+		listEDataType = createEDataType(LIST);
 		fileEDataType = createEDataType(FILE);
+		objectEDataType = createEDataType(OBJECT);
 	}
 
 	/**
@@ -372,17 +472,26 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		AnalysisActivityDescriptionPackage theAnalysisActivityDescriptionPackage = (AnalysisActivityDescriptionPackage)EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(javaMapEClass, "k");
+		addETypeParameter(javaMapEClass, "v");
+		addETypeParameter(listEDataType, "A");
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		EGenericType g1 = createEGenericType(this.getJavaMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		parameterMapEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(analysisActivityEClass, AnalysisActivity.class, "AnalysisActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnalysisActivity_Id(), ecorePackage.getEString(), "id", null, 1, 1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnalysisActivity_Description(), theAnalysisActivityDescriptionPackage.getAnalysisActivityDescription(), null, "description", null, 1, 1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnalysisActivity_Description(), theAnalysisActivityDescriptionPackage.getAnalysisActivityDescription(), null, "description", null, 0, 1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAnalysisActivity_Inputs(), this.getDataset(), null, "inputs", null, 0, -1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnalysisActivity_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnalysisActivity_Parameters(), this.getParameterMap(), null, "parameters", null, 1, 1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAnalysisActivity_Outputs(), this.getDataset(), null, "outputs", null, 0, -1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnalysisActivity_ErrorReport(), this.getFile(), "errorReport", null, 0, 1, AnalysisActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -392,21 +501,43 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		op = initEOperation(getAnalysisActivity__OutputDatasetForName__String(), this.getDataset(), "outputDatasetForName", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getAnalysisActivity__ParameterForName__String(), this.getParameter(), "parameterForName", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(datasetEClass, Dataset.class, "Dataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataset_Name(), ecorePackage.getEString(), "name", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataset_Description(), theAnalysisActivityDescriptionPackage.getDatasetDescription(), null, "description", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataset_Description(), theAnalysisActivityDescriptionPackage.getDatasetDescription(), null, "description", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_Files(), this.getFile(), "files", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getParameter_Description(), theAnalysisActivityDescriptionPackage.getParameterDescription(), null, "description", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Values(), ecorePackage.getEString(), "values", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(javaMapEClass, Map.class, "JavaMap", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(parameterMapEClass, ParameterMap.class, "ParameterMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParameterMap_Descriptions(), theAnalysisActivityDescriptionPackage.getParameterDescription(), null, "descriptions", null, 0, -1, ParameterMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		op = initEOperation(getParameterMap__ValidateParameters__Map(), this.getValidationResult(), "validateParameters", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getJavaMap());
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "map", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getParameterMap__ValidateParameter__String_Object(), this.getValidationResult(), "validateParameter", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObject(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getParameterMap__SetDefaultValues(), null, "setDefaultValues", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(validationResultEClass, ValidationResult.class, "ValidationResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getValidationResult_IsValid(), ecorePackage.getEBooleanObject(), "isValid", null, 0, 1, ValidationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getJavaMap());
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getObject());
+		g1.getETypeArguments().add(g2);
+		initEReference(getValidationResult_InvalidValues(), g1, null, "invalidValues", null, 1, 1, ValidationResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
+		initEDataType(listEDataType, List.class, "List", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -430,7 +561,8 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		  (this, 
 		   source, 
 		   new String[] {
-			 "aad", "../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/"
+			 "aad", "../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/",
+			 "aae", "activity-exceptions.ecore#/"
 		   });
 	}
 
@@ -449,12 +581,6 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  (getAnalysisActivity_Parameters(), 
-		   source, 
-		   new String[] {
-			 "nullFree", "false"
-		   });	
-		addAnnotation
 		  (getAnalysisActivity_Outputs(), 
 		   source, 
 		   new String[] {
@@ -467,7 +593,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 			 "nullFree", "false"
 		   });	
 		addAnnotation
-		  (getParameter_Values(), 
+		  (getParameterMap_Descriptions(), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"

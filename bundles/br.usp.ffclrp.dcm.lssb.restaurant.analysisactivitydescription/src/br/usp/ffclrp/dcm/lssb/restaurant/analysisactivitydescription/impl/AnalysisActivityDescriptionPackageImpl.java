@@ -24,12 +24,17 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessCo
 
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.StringListManipulatorsPackageImpl;
+import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -157,6 +162,13 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * @generated
 	 */
 	private EEnum datasetKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType listEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -321,6 +333,33 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 */
 	public EAttribute getParameterDescription_DefaultValue() {
 		return (EAttribute)parameterDescriptionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getParameterDescription__IsValidValue__EList() {
+		return parameterDescriptionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getParameterDescription__IsValidValue__Object() {
+		return parameterDescriptionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getParameterDescription__IsValidValue__List() {
+		return parameterDescriptionEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -580,6 +619,15 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getList() {
+		return listEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AnalysisActivityDescriptionFactory getAnalysisActivityDescriptionFactory() {
 		return (AnalysisActivityDescriptionFactory)getEFactoryInstance();
 	}
@@ -615,6 +663,9 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__PARAMETER_KIND);
 		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__PARAMETER_TYPE);
 		createEAttribute(parameterDescriptionEClass, PARAMETER_DESCRIPTION__DEFAULT_VALUE);
+		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST);
+		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT);
+		createEOperation(parameterDescriptionEClass, PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST);
 
 		datasetDescriptionEClass = createEClass(DATASET_DESCRIPTION);
 		createEAttribute(datasetDescriptionEClass, DATASET_DESCRIPTION__NAME);
@@ -657,6 +708,9 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		parameterKindEEnum = createEEnum(PARAMETER_KIND);
 		parameterTypeEEnum = createEEnum(PARAMETER_TYPE);
 		datasetKindEEnum = createEEnum(DATASET_KIND);
+
+		// Create data types
+		listEDataType = createEDataType(LIST);
 	}
 
 	/**
@@ -686,6 +740,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		StringListManipulatorsPackage theStringListManipulatorsPackage = (StringListManipulatorsPackage)EPackage.Registry.INSTANCE.getEPackage(StringListManipulatorsPackage.eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(listEDataType, "A");
 
 		// Set bounds for type parameters
 
@@ -713,6 +768,23 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEAttribute(getParameterDescription_ParameterKind(), this.getParameterKind(), "parameterKind", null, 1, 1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameterDescription_ParameterType(), this.getParameterType(), "parameterType", null, 1, 1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameterDescription_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, -1, ParameterDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		EOperation op = initEOperation(getParameterDescription__IsValidValue__EList(), ecorePackage.getEBoolean(), "isValidValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "A");
+		EGenericType g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, -1, IS_UNIQUE, !IS_ORDERED);
+
+		op = initEOperation(getParameterDescription__IsValidValue__Object(), ecorePackage.getEBoolean(), "isValidValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "A");
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getParameterDescription__IsValidValue__List(), ecorePackage.getEBoolean(), "isValidValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "A");
+		g1 = createEGenericType(this.getList());
+		EGenericType g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(datasetDescriptionEClass, DatasetDescription.class, "DatasetDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDatasetDescription_Name(), ecorePackage.getEString(), "name", null, 1, 1, DatasetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -759,6 +831,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEEnum(parameterTypeEEnum, ParameterType.class, "ParameterType");
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.STRING);
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.INTEGER);
+		addEEnumLiteral(parameterTypeEEnum, ParameterType.REAL);
 
 		initEEnum(datasetKindEEnum, DatasetKind.class, "DatasetKind");
 		addEEnumLiteral(datasetKindEEnum, DatasetKind.STANDARD_INPUT);
@@ -766,6 +839,9 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		addEEnumLiteral(datasetKindEEnum, DatasetKind.STANDARD_ERROR);
 		addEEnumLiteral(datasetKindEEnum, DatasetKind.SINGLE_FILE);
 		addEEnumLiteral(datasetKindEEnum, DatasetKind.FILE_COLLECTION);
+
+		// Initialize data types
+		initEDataType(listEDataType, List.class, "List", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -829,6 +905,12 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		   });	
 		addAnnotation
 		  (getAnalysisActivityDescription_ReadinessContraints(), 
+		   source, 
+		   new String[] {
+			 "nullFree", "false"
+		   });	
+		addAnnotation
+		  ((getParameterDescription__IsValidValue__EList()).getEParameters().get(0), 
 		   source, 
 		   new String[] {
 			 "nullFree", "false"

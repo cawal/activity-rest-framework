@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+	<artifactId>restaurant-tests</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+		<artifactId>restaurant-root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+       	<relativePath>..</relativePath>
+	</parent>
+  <modules>
+    <!-- <module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.tests</module>-->
+  </modules>
+</project>

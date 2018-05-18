@@ -41,6 +41,29 @@
     <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
       <details key="archetype" value="Thing"/>
     </eAnnotations>
+    <eOperations name="isValidValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eTypeParameters name="A"/>
+      <eParameters name="value" ordered="false" upperBound="-1">
+        <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+          <details key="nullFree" value="false"/>
+        </eAnnotations>
+        <eGenericType eTypeParameter="#//ParameterDescription/isValidValue/A"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="isValidValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eTypeParameters name="A"/>
+      <eParameters name="value">
+        <eGenericType eTypeParameter="#//ParameterDescription/isValidValue.1/A"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="isValidValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eTypeParameters name="A"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//List">
+          <eTypeArguments eTypeParameter="#//ParameterDescription/isValidValue.2/A"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterKind" lowerBound="1"
         eType="#//ParameterKind"/>
@@ -60,6 +83,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterType">
     <eLiterals name="STRING"/>
     <eLiterals name="INTEGER"/>
+    <eLiterals name="REAL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -128,5 +152,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="MaximunParameterCardinalityConstraint"
       eSuperTypes="#//ParameterConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List"
+      serializable="false">
+    <eTypeParameters name="A"/>
   </eClassifiers>
 </ecore:EPackage>

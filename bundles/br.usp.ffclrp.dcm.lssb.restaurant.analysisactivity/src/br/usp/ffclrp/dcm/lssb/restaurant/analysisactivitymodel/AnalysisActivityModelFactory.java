@@ -40,13 +40,22 @@ public interface AnalysisActivityModelFactory extends EFactory {
 	Dataset createDataset();
 
 	/**
-	 * Returns a new object of class '<em>Parameter</em>'.
+	 * Returns a new object of class '<em>Parameter Map</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter</em>'.
+	 * @return a new object of class '<em>Parameter Map</em>'.
 	 * @generated
 	 */
-	Parameter createParameter();
+	ParameterMap createParameterMap();
+
+	/**
+	 * Returns a new object of class '<em>Validation Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Validation Result</em>'.
+	 * @generated
+	 */
+	ValidationResult createValidationResult();
 
 	/**
 	 * Returns the package supported by this factory.
