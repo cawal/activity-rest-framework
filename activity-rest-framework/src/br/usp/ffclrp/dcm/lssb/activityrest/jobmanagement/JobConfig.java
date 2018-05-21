@@ -1,9 +1,12 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.job;
+package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement;
 
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.Builder;
+
+@Builder(builderClassName = "Builder")
 public class JobConfig {
 
 	private final List<String> commandLine;
@@ -11,7 +14,6 @@ public class JobConfig {
 	private final File standardOutputPipedFile;
 	private final File standardErrorPipedFile;
 	private final File workingDirectory;
-	private final File processingStateFile;
 	private final File errorReportFile;
 	
 	public JobConfig(List<String> commandLine, 
@@ -19,7 +21,6 @@ public class JobConfig {
 			File standardOutputPipe, 
 			File standardErrorPipe,
 			File workingDirectory,
-			File analysisStateFile,
 			File errorReportFile) {
 		super();
 		this.commandLine = Collections.unmodifiableList(commandLine);
@@ -27,7 +28,6 @@ public class JobConfig {
 		this.standardOutputPipedFile = standardOutputPipe;
 		this.standardErrorPipedFile = standardErrorPipe;
 		this.workingDirectory = workingDirectory;
-		this.processingStateFile = analysisStateFile;
 		this.errorReportFile = errorReportFile;
 	}
 	
@@ -60,13 +60,6 @@ public class JobConfig {
 	 */
 	public File getWorkingDirectory() {
 		return workingDirectory;
-	}
-
-	/**
-	 * @return the processingStateFile
-	 */
-	public File getProcessingStateFile() {
-		return processingStateFile;
 	}
 
 	/**

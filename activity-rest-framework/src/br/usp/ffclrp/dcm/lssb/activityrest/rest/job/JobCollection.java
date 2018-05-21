@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
@@ -19,7 +20,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriBuilderException;
 import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
@@ -31,8 +31,10 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.InvalidCommandLineDefinition;
 import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.JobCantStartException;
-import br.usp.ffclrp.dcm.lssb.activityrest.job.Job;
-import br.usp.ffclrp.dcm.lssb.activityrest.job.JobConfig;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManagerImpl;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
@@ -47,9 +49,8 @@ import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipu
 import io.swagger.annotations.Api;
 
 @Api
-public class JobManager {
+public class JobCollection {
 	
-	private static final String PROCESSING_STATE_FILE = ".pstate";
 	@Context
 	UriInfo uriInfo;
 	AnalysisActivityDescription aaDesc;
@@ -58,15 +59,16 @@ public class JobManager {
 	FileSystemDao runningDao;
 	FileSystemDao succeededDAO;
 	FileSystemDao failedDAO;
-
+	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
+			new JobManagerImpl();
 	
-	public JobManager(AnalysisActivityDescription aaDesc, 
+	public JobCollection(AnalysisActivityDescription aaDesc,
 			UriInfo uriInfo,
 			FileSystemDao nonExecutedAnalysisActivityDao,
 			FileSystemDao runningAnalysisActivityDao,
 			FileSystemDao succeededAnalysisActivityDao,
 			FileSystemDao failedAnalysisActivityDao) {
-
+		
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.nonExecutedDao = nonExecutedAnalysisActivityDao;
@@ -74,7 +76,6 @@ public class JobManager {
 		this.succeededDAO = succeededAnalysisActivityDao;
 		this.failedDAO = failedAnalysisActivityDao;
 	}
-
 	
 	@POST
 	@Path("{analysisID}")
@@ -83,26 +84,21 @@ public class JobManager {
 		try {
 			AnalysisActivity analysis =
 					nonExecutedDao.get(analysisId);
-
+			
 			if (AnalysisActivityValidation.isReady(analysis)) {
 				// if analysis is ready, move it for the directory of executing
-				analysis = runningDao.moveFrom(analysis.getId(), nonExecutedDao);
-				
-				analysis.getInputs().forEach(d -> System.out.println(d));
-				
+				analysis =
+						runningDao.moveFrom(analysis.getId(), nonExecutedDao);
 				
 				// get the new location
 				analysis = runningDao.get(analysisId);
 				// create the job configuration
-				JobConfig jc = getJobConfigForAnalysis(analysis, runningDao); 
+				JobConfig jc = getJobConfigForAnalysis(analysis, runningDao);
 				
 				// start the analysis job or send a batch job and return the
 				// link for polling
-				Job job = new Job(jc);
-				Thread t = new Thread(job);
-				t.setName(analysisId);
-				t.start();
-								
+				jobManager.submit(analysisId, jc);
+				
 				URI jobURI = uriInfo.getAbsolutePath();
 				
 				return Response.created(jobURI).build();
@@ -111,7 +107,8 @@ public class JobManager {
 				Throwable t = new JobCantStartException(analysis);
 				throw new BadRequestException(t);
 			}
-		} catch (AnalysisActivityNotFoundException e) {
+		} catch (AnalysisActivityNotFoundException
+				| br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCantStartException e) {
 			throw new BadRequestException(e);
 		} catch (IOException | InvalidCommandLineDefinition e) {
 			e.printStackTrace();
@@ -130,103 +127,172 @@ public class JobManager {
 	public Response
 			poolProcessing(@PathParam("analysisID") String analysisId) {
 		
+		JobState jobState;
 		try {
-			AnalysisActivity analysis = runningDao.get(analysisId);
+			jobState = jobManager.getState(analysisId);
 			
-			File processingStateFile = getProcessingStateFile(analysis);
+			switch (jobState) {
+			case RUNNING:
+				return responseForExecutingJob();
+			case SUCCEEDED:
+				return responseForSucceededJob(analysisId);
+			case FAILED:
+				return responseForFailedJob(analysisId);
 			
-			String state;
-			state = FileUtils.readFileToString(processingStateFile);
-			
-			switch (state.replace("\n", "")) {
-			case "SUCCEEDED":
-				analysis = succeededDAO.moveFrom(analysis.getId(), runningDao);
-				
-				URI succeededURI = uriInfo.getBaseUriBuilder()
-						.path("succeeded-analyses")
-						.path(analysisId)
-						.build();
-				
-				return Response.seeOther(succeededURI).build();
-			
-			case "FAILED":
-
-				analysis = failedDAO.moveFrom(analysis.getId(), runningDao);
-				
-				File errorReportFile = analysis.getErrorReport();
-				String errorReport =
-						FileUtils.readFileToString(errorReportFile);
-				
-				URI failedURI = uriInfo.getBaseUriBuilder()
-						.path("failed-analyses")
-						.path(analysisId)
-						.build();
-				
-				Link failedLink = Link.fromUri(failedURI)
-						.rel("failedAnalysis")
-						.type("GET")
-						.build();
-				
-				return Response.status(Status.GONE).links(failedLink)
-						.entity(errorReport).build();
 			default:
-				return Response.ok().links().build();
+				throw new NotFoundException();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new NotFoundException();
-		} catch (UriBuilderException | SecurityException e) {
-			throw new ServerErrorException(e.getLocalizedMessage(), 500);
-		} catch (AnalysisActivityNotFoundException e) {
+			
+		} catch (JobNotFoundException e) {
 			throw new NotFoundException();
 		}
 	}
 	
-
-	private List<String> produceCommandLine(AnalysisActivity analysis) 
-			throws  InvalidCommandLineDefinition {
+	@DELETE
+	@Path("{analysisID}")
+	public Response
+			cancelProcessing(@PathParam("analysisID") String analysisId) {
+		JobState jobState;
+		try {
+			jobState = jobManager.getState(analysisId);
+			switch (jobState) {
+			case RUNNING:
+				return tryToCancelAndReturnResponse(analysisId);
+			default:
+				throw new NotFoundException();
+			}
+		} catch (JobNotFoundException e) {
+			e.printStackTrace();
+			throw new NotFoundException();
+		}
+	}
+	
+	private Response tryToCancelAndReturnResponse(String analysisId) {
+		
+		try {
+			jobManager.cancel(analysisId);
+			nonExecutedDao.moveFrom(analysisId, runningDao);
+			URI analysisURI = uriInfo.getBaseUriBuilder()
+					.path("new-analyses")
+					.path(analysisId)
+					.build();
+			
+			return Response.seeOther(analysisURI).build();
+		} catch (Throwable e) {
+			throw new ServerErrorException(500);
+		}
+	}
+	
+	private Response responseForSucceededJob(String analysisId) {
+		
+		moveAnalysisActivityForSuceeededCollection(analysisId);
+		
+		URI succeededURI = uriInfo.getBaseUriBuilder()
+				.path("succeeded-analyses")
+				.path(analysisId)
+				.build();
+		
+		return Response.seeOther(succeededURI).build();
+	}
+	
+	private void moveAnalysisActivityForSuceeededCollection(String analysisId) {
+		try {
+			AnalysisActivity analysis = runningDao.get(analysisId);
+			analysis = succeededDAO.moveFrom(analysis.getId(), runningDao);
+		} catch (AnalysisActivityNotFoundException e) {
+			// already moved? do nothing
+		}
+	}
+	
+	private Response responseForFailedJob(String analysisId) {
+		
+		moveAnalysisActivityForFailedCollection(analysisId);
+		
+		try {
+			AnalysisActivity analysis = failedDAO.get(analysisId);
+			File errorReportFile = analysis.getErrorReport();
+			String errorReport =
+					FileUtils.readFileToString(errorReportFile);
+			
+			URI failedURI = uriInfo.getBaseUriBuilder()
+					.path("failed-analyses")
+					.path(analysisId)
+					.build();
+			
+			Link failedLink = Link.fromUri(failedURI)
+					.rel("failedAnalysis")
+					.type("GET")
+					.build();
+			
+			return Response.status(Status.GONE).links(failedLink)
+					.entity(errorReport).build();
+		} catch (Exception e) {
+			throw new ServerErrorException(500);
+		}
+		
+	}
+	
+	private void moveAnalysisActivityForFailedCollection(String analysisId) {
+		try {
+			AnalysisActivity analysis = runningDao.get(analysisId);
+			analysis = failedDAO.moveFrom(analysis.getId(), runningDao);
+			
+		} catch (AnalysisActivityNotFoundException e) {
+			// already moved, do nothing
+		}
+	}
+	
+	private Response responseForExecutingJob() {
+		return Response.ok().links().build();
+	}
+	
+	private List<String> produceCommandLine(AnalysisActivity analysis)
+			throws InvalidCommandLineDefinition {
 		
 		List<String> commandLine = new ArrayList<>();
 		AnalysisActivityDescription description = analysis.getDescription();
-		List<CommandLineEntryList> entries = description.getCommandLineTemplate();
+		List<CommandLineEntryList> entries =
+				description.getCommandLineTemplate();
 		
-		for(CommandLineEntryList e : entries) {
+		for (CommandLineEntryList e : entries) {
 			
 			EList<String> stringList = new BasicEList<>();
 			
-			if(e instanceof LiteralCommandLineEntryList) {
-				stringList.addAll(((LiteralCommandLineEntryList) e).getLiterals());
+			if (e instanceof LiteralCommandLineEntryList) {
+				stringList.addAll(
+						((LiteralCommandLineEntryList) e).getLiterals());
 				
 			} else if (e instanceof DatasetCommandLineEntryList) {
-				DatasetDescription dp = ((DatasetCommandLineEntryList) e).getDataset();
+				DatasetDescription dp =
+						((DatasetCommandLineEntryList) e).getDataset();
 				
-				
-				if(dp.getDatasetKind() == DatasetKind.STANDARD_INPUT
+				if (dp.getDatasetKind() == DatasetKind.STANDARD_INPUT
 						|| dp.getDatasetKind() == DatasetKind.STANDARD_OUTPUT
 						|| dp.getDatasetKind() == DatasetKind.STANDARD_ERROR)
-					throw new InvalidCommandLineDefinition(dp.getName(),dp.getDatasetKind());
+					throw new InvalidCommandLineDefinition(dp.getName(),
+							dp.getDatasetKind());
 				
 				Dataset dataset = analysis.inputDatasetForName(dp.getName());
-				dataset = (dataset != null) ? 
-						dataset 
+				dataset = (dataset != null) ? dataset
 						: analysis.outputDatasetForName(dp.getName());
-	
 				
-				for(File f : dataset.getFiles()) {
+				for (File f : dataset.getFiles()) {
 					stringList.add(f.getAbsolutePath());
 				}
-
+				
 			} else if (e instanceof ParameterCommandLineEntryList) {
-				ParameterDescription pp = ((ParameterCommandLineEntryList) e).getParameter();
+				ParameterDescription pp =
+						((ParameterCommandLineEntryList) e).getParameter();
 				
-				Object parameterValue = analysis.getParameters().get(pp.getName());
+				Object parameterValue =
+						analysis.getParameters().get(pp.getName());
 				
-				if(parameterValue instanceof Collection) {
-					List<String> values = 
+				if (parameterValue instanceof Collection) {
+					List<String> values =
 							((Collection<Object>) parameterValue).stream()
-							.map(Object::toString)
-							.collect(Collectors.toList());
-							
+									.map(Object::toString)
+									.collect(Collectors.toList());
+					
 					stringList.addAll(values);
 				} else {
 					stringList.add(parameterValue.toString());
@@ -234,7 +300,7 @@ public class JobManager {
 				
 			}
 			
-			for(StringListManipulator m : e.getManipulators()) {
+			for (StringListManipulator m : e.getManipulators()) {
 				stringList = m.transform(stringList);
 			}
 			commandLine.addAll(stringList);
@@ -246,47 +312,39 @@ public class JobManager {
 		return commandLine;
 	}
 	
-	private JobConfig getJobConfigForAnalysis(AnalysisActivity aa, FileSystemDao runningDao)
-			throws InvalidCommandLineDefinition, 
-					AnalysisActivityNotFoundException, IOException {
+	private JobConfig getJobConfigForAnalysis(AnalysisActivity aa,
+			FileSystemDao runningDao)
+			throws InvalidCommandLineDefinition,
+			AnalysisActivityNotFoundException, IOException {
 		
 		List<String> commandLine = produceCommandLine(aa);
 		File standardInput = getStandardInputPipedFile(aa);
 		File standardOutput = getStandardOutputPipedFile(aa);
 		File standardError = getStandardErrorPipedFile(aa);
-		File workingDirectory = runningDao.getAnalysisDirectoryInLocalStorage(aa.getId());
-		File analysisStateFile = getProcessingStateFile(aa);
+		File workingDirectory =
+				runningDao.getAnalysisDirectoryInLocalStorage(aa.getId());
 		File errorReportFile = aa.getErrorReport();
 		
-		JobConfig jb = new JobConfig(
-				commandLine, 
-				standardInput, 
-				standardOutput, 
-				standardError, 
-				workingDirectory,
-				analysisStateFile,
-				errorReportFile
-		);
+		JobConfig jb = JobConfig.builder()
+				.commandLine(commandLine)
+				.standardInputPipedFile(standardInput)
+				.standardOutputPipedFile(standardOutput)
+				.standardErrorPipedFile(standardError)
+				.workingDirectory(workingDirectory)
+				.errorReportFile(errorReportFile)
+				.build();
+		
 		return jb;
 	}
-
-	private File getProcessingStateFile(AnalysisActivity aa) throws AnalysisActivityNotFoundException, IOException {
-		File workingDirectory = this.runningDao.getAnalysisDirectoryInLocalStorage(aa.getId());
-		File processingStateFile = new File(workingDirectory,PROCESSING_STATE_FILE);
-		if(!processingStateFile.exists()) {
-			processingStateFile.createNewFile();
-		}
-		return processingStateFile;
-	}
-
-
-	private File getStandardInputPipedFile(AnalysisActivity aa) 
+	
+	
+	private File getStandardInputPipedFile(AnalysisActivity aa)
 			throws IOException {
 		
-		for(DatasetDescription pr : aa.getDescription().getInputDatasets()) {
-			if(pr.getDatasetKind() != DatasetKind.STANDARD_INPUT) {
+		for (DatasetDescription pr : aa.getDescription().getInputDatasets()) {
+			if (pr.getDatasetKind() != DatasetKind.STANDARD_INPUT) {
 				Dataset d = aa.inputDatasetForName(pr.getName());
-				if(d != null && d.getFiles().size() > 0) {
+				if (d != null && d.getFiles().size() > 0) {
 					return d.getFiles().get(0);
 				}
 			}
@@ -295,41 +353,36 @@ public class JobManager {
 		return temp;
 	}
 	
-	
-	private File getStandardOutputPipedFile(AnalysisActivity aa) 
+	private File getStandardOutputPipedFile(AnalysisActivity aa)
 			throws IOException {
 		
-		for(DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
-			if(pr.getDatasetKind() == DatasetKind.STANDARD_OUTPUT) { 
+		for (DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
+			if (pr.getDatasetKind() == DatasetKind.STANDARD_OUTPUT) {
 				Dataset d = aa.outputDatasetForName(pr.getName());
-				if(d != null && d.getFiles().size() > 0) {
+				if (d != null && d.getFiles().size() > 0) {
 					return d.getFiles().get(0);
 				}
 			}
 		}
 		
-
 		File temp = File.createTempFile("job-manager-output", aa.getId());
 		return temp;
 	}
 	
-	private File getStandardErrorPipedFile(AnalysisActivity aa) 
+	private File getStandardErrorPipedFile(AnalysisActivity aa)
 			throws IOException {
 		
-		for(DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
-			if(pr.getDatasetKind() == DatasetKind.STANDARD_ERROR) {
+		for (DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
+			if (pr.getDatasetKind() == DatasetKind.STANDARD_ERROR) {
 				Dataset d = aa.outputDatasetForName(pr.getName());
-				if(d != null && d.getFiles().size() > 0) {
+				if (d != null && d.getFiles().size() > 0) {
 					return d.getFiles().get(0);
 				}
 			}
 		}
 		
-
 		File temp = File.createTempFile("job-manager-error", aa.getId());
 		return temp;
 	}
-	
-	
 	
 }

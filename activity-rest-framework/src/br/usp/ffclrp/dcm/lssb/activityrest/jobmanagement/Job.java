@@ -1,29 +1,29 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.job;
+package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
+import lombok.Builder;
+import lombok.Singular;
 
+@Builder(builderClassName="Builder")
 public class Job implements Runnable {
+	final String id;
 	final JobConfig jobConfig; 
 	
 	
+	@Singular private List<JobObserver> observers;
 	
-	public Job(JobConfig jobConfig) {
-		super();
-		this.jobConfig = jobConfig;
-	}
 
 
 
 	public void run() {
 		try {
-			
-			FileUtils.writeStringToFile(jobConfig.getProcessingStateFile(), "RUNNING");
+			notifyStarted();
 			
 			
 			// Create a process builder with the command line
@@ -47,23 +47,22 @@ public class Job implements Runnable {
 			switch (process.exitValue()) {
 			// If the process was successfully finished
 			case 0:
-				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile(), "SUCCEEDED");
+				notifySuccess();
 				break;
 			
 			// If the process was not successfully finished
 			default:
 				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(),
 						provideErrorReport(jobConfig, process.exitValue()),true);
-				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile()
-						, "FAILED");
+				notifyFailure();
 				break;
 			}
 			
 		} catch (IOException | InterruptedException  e) {
 			e.printStackTrace();
 			try {
-				FileUtils.writeStringToFile(jobConfig.getProcessingStateFile(), "FAILED");
 				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(), e.getMessage(),true);
+				notifyFailure();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -72,9 +71,60 @@ public class Job implements Runnable {
 	}
 
 
-
 	private String provideErrorReport(JobConfig jobConfig, int exitValue) {
 		// TODO Better handling of the error report
 		return "Failure code:" + exitValue;
 	}
+	
+
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+
+
+	/**
+	 * @return the jobConfig
+	 */
+	public JobConfig getJobConfig() {
+		return jobConfig;
+	}
+	
+	
+	public void addObserver(JobObserver observer) {
+		if(this.observers == null) {
+			this.observers = new ArrayList<>();
+		}
+		
+		if(observer != null) {
+			this.observers.add(observer);
+		}
+	}
+
+	
+	
+	
+	
+	private void notifyStarted() {
+		observers.forEach(o -> o.notifyStarted(this));
+	}
+
+
+
+	private void notifySuccess() {
+		this.observers.forEach( o -> o.notifySuccess(this));
+	}
+
+
+
+	private void notifyFailure() {
+		this.observers.forEach(o -> o.notifyFailure(this));
+	}
+
+
+
 }

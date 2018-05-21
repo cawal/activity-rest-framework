@@ -6,12 +6,16 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 import javax.ws.rs.Produces;
+import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,7 +31,7 @@ import io.openapitools.jackson.dataformat.hal.HALMapper;
 
 @Provider
 @Produces(MediaType.APPLICATION_XML)
-public class XMLFromAnalysisActivityMessageBodyWriter implements MessageBodyWriter<Object>{
+public class AnalysisActivityXMLMessageBodyWriter implements MessageBodyWriter<Object>{
 
 	/**
 	* MessageBodyWriter supports the particular type?
@@ -58,19 +62,25 @@ public class XMLFromAnalysisActivityMessageBodyWriter implements MessageBodyWrit
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
 		// TODO implement writeTo()
+		AnalysisActivityRepresentation representation = 
+				new AnalysisActivityRepresentation();
+		AnalysisActivity analysisActivity = (AnalysisActivity) entity;
+		representation.id = analysisActivity.getId();
+		representation.state = "RUNNING";
 		
+		JAXBContext jaxbContext;
+		try {
+			jaxbContext = JAXBContext.newInstance(AnalysisActivityRepresentation.class);
+			Marshaller marshaler = jaxbContext.createMarshaller();
+			
+			marshaler.marshal(representation, entityStream);
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw  new ServerErrorException(500);
+		}
 		
-/*		this.self = new HALLink.Builder(analysisBaseUri).build();
-		this.parameters = new HALLink.Builder(
-				UriBuilder.fromUri(analysisBaseUri)
-					.path("/parameters")
-					.build(aa.getId())
-				).build();
-		*/
-		ObjectMapper mapper = new HALMapper(); // create once, reuse
-		String halJson = mapper.writeValueAsString(entity);
-		
-		entityStream.write(halJson.getBytes());
+		//entityStream.write(halJson.getBytes());
 	}
 	
 }

@@ -17,7 +17,7 @@ public class BasicApplicationJAXRSConfig extends Application {
 		Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
 		// add here all classes with JAX-RS annotations
 		resources.add(
-				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.XMLFromAnalysisActivityMessageBodyWriter.class);
+				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.AnalysisActivityXMLMessageBodyWriter.class);
 		
 		// Filter for allowing Cross-Origin Resource Sharing
 		resources.add(
