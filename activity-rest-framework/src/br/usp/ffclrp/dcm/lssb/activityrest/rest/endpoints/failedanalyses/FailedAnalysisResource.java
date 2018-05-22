@@ -1,5 +1,6 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.succeededanalyses;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses;
 
+import java.io.IOException;
 import java.net.URI;
 
 import javax.annotation.Nonnull;
@@ -14,14 +15,14 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
+import org.apache.commons.io.FileUtils;
+
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.AbstractDatasetResource;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.InputDatasetsResource;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.OutputDatasetsResource;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.ParameterSetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -29,7 +30,7 @@ import io.swagger.annotations.Api;
 
 @Api
 @Path("/new-analyses/{analysisID}")
-public class SucceededAnalysisResource {
+public class FailedAnalysisResource {
 	
 	UriInfo uriInfo;
 	URI baseApplicationURI;
@@ -39,7 +40,7 @@ public class SucceededAnalysisResource {
 	AnalysisActivityDao analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
-	public SucceededAnalysisResource(
+	public FailedAnalysisResource(
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
@@ -80,9 +81,9 @@ public class SucceededAnalysisResource {
 					.type("GET")
 					.build();
 
-			Link outputDatasetsLink =
-					Link.fromUri(getUriForOutputDatasets())
-					.rel(ResourceRelations.ANALYSYS_OUTPUT_DATASETS_COLLECTION)
+			Link errorReportLink =
+					Link.fromUri(getUriForErrorReport())
+					.rel(ResourceRelations.ANALYSYS_ERROR_REPORT)
 					.type("GET")
 					.build();
 
@@ -92,7 +93,7 @@ public class SucceededAnalysisResource {
 					.links(deleteLink)
 					.links(parameterSetLink)
 					.links(inputDatasetsLink)
-					.links(outputDatasetsLink);
+					.links(errorReportLink);
 			
 			if (AnalysisActivityValidation.isReady(aa)) {
 				URI jobURI = getJobInstanceUri();
@@ -140,11 +141,16 @@ public class SucceededAnalysisResource {
 		return new InputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
 	}
 	
-	@Path("/outputs/")
-	public AbstractDatasetResource getOutputDatasetsResource() {
-		return new OutputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
-	}
 	
+	@Path("/error-report")
+	public Response getErrorReportResource() {
+		try {
+			return Response.ok(FileUtils.readFileToString(aa.getErrorReport())).build();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new ServerErrorException(500);
+		}
+	}
 	
 	// local auxiliary methods -------------------------------------------------
 	private URI getUriForSelf() {
@@ -159,11 +165,10 @@ public class SucceededAnalysisResource {
 		return UriBuilder.fromUri(getUriForSelf()).path("/inputs/").build();
 	}
 	
-	
-	private URI getUriForOutputDatasets() {
-		return UriBuilder.fromUri(getUriForSelf()).path("/outputs/").build();
+
+	private URI getUriForErrorReport() {
+		return UriBuilder.fromUri(getUriForSelf()).path("/error-report").build();
 	}
-	
 	
 	private URI getJobManagerUri() {
 		return UriBuilder.fromUri(this.baseApplicationURI).path("/instances/").build();

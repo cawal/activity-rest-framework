@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 

@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.job.exceptions;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 

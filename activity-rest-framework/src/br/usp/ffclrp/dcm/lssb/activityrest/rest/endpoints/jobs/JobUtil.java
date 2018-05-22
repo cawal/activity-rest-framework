@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.job;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.eclipse.emf.common.util.EList;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.job.exceptions.InvalidCommandLineDefinition;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.InvalidCommandLineDefinition;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;

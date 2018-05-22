@@ -4,7 +4,7 @@ import java.net.URI;
 
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.newanalyses.NewAnalysesCollection;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.newanalyses.NewAnalysesCollection;
 import io.openapitools.jackson.dataformat.hal.HALLink;
 
 public class ServiceResourcesHalBuilder {

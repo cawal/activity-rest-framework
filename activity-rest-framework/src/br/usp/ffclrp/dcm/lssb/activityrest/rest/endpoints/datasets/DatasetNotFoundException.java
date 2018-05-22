@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets;
 
 public class DatasetNotFoundException extends Exception {
 

@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.newanalyses;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.newanalyses;
 
 import java.net.URI;
 

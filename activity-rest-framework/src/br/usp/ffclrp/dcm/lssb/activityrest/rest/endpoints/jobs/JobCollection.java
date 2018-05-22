@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.job;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,8 +27,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManagerImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.job.exceptions.InvalidCommandLineDefinition;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.job.exceptions.JobCantStartException;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.InvalidCommandLineDefinition;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;

@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.failedanalyses;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses;
 
 import javax.annotation.Nonnull;
 import javax.ws.rs.NotFoundException;

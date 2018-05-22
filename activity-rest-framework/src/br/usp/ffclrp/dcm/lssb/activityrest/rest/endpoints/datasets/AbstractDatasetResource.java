@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets;
 
 import java.io.File;
 import java.net.URI;
@@ -12,6 +12,7 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
