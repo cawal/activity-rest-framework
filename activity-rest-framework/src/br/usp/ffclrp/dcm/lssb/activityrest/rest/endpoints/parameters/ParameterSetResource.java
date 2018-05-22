@@ -60,10 +60,10 @@ public class ParameterSetResource {
 	 * @return
 	 */
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response getAllParameters() {
 		Map<String, Object> map = aa.getParameters();
-		;
+		
 		return Response.ok(map).build();
 	}
 	

@@ -4,19 +4,25 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
+import io.openapitools.jackson.dataformat.hal.HALLink;
+import io.openapitools.jackson.dataformat.hal.HALMapper;
 
 /**
  * This MessageBodyWriter can be registered in order to provide support for 
@@ -26,7 +32,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 
 @Provider
 @Produces(MediaType.APPLICATION_XML)
-public class AnalysisActivityXMLMessageBodyWriter implements MessageBodyWriter<Object>{
+public class ParameterMapXMLMessageBodyWriter implements MessageBodyWriter<Object>{
 
 	/**
 	* MessageBodyWriter supports the particular type?
@@ -34,7 +40,7 @@ public class AnalysisActivityXMLMessageBodyWriter implements MessageBodyWriter<O
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType,
 			Annotation[] annotations, MediaType mediaType) {
-		return AnalysisActivity.class.isAssignableFrom(type);
+		return Map.class.isAssignableFrom(type);
 	}
 
 	/**

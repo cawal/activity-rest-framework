@@ -4,13 +4,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="AnalysisActivity")
-public class AnalysisActivityRepresentation {
+class AnalysisActivityRepresentation {
 	
 	@XmlAttribute
-	String id;
+	public String id;
 	
 	@XmlAttribute
-	String state;
+	public String state;
 	
 	
 }
