@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.exceptions;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 

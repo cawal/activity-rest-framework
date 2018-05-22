@@ -19,7 +19,7 @@ import org.apache.commons.io.FileUtils;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
-import br.usp.ffclrp.dcm.lssb.activityrest.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ParameterSetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
