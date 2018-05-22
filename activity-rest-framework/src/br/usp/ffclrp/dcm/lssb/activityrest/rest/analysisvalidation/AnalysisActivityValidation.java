@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation;
+package br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation;
 
 import java.util.Collection;
 

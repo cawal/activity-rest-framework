@@ -3,10 +3,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.job;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.DELETE;
@@ -23,29 +19,18 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManagerImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.job.exceptions.InvalidCommandLineDefinition;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.job.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator;
 import io.swagger.annotations.Api;
 
 @Api

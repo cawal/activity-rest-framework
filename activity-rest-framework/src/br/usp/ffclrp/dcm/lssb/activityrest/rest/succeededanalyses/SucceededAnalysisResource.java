@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.AbstractDatasetResource;
@@ -22,6 +21,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.OutputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ParameterSetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
