@@ -63,15 +63,15 @@ public class ParameterMapXMLMessageBodyWriter implements MessageBodyWriter<Objec
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
 		// TODO implement writeTo()
-		AnalysisActivityRepresentation representation = 
-				new AnalysisActivityRepresentation();
+		JAXBAnalysisActivityRepresentation representation = 
+				new JAXBAnalysisActivityRepresentation();
 		AnalysisActivity analysisActivity = (AnalysisActivity) entity;
 		representation.id = analysisActivity.getId();
 		representation.state = "RUNNING";
 		
 		JAXBContext jaxbContext;
 		try {
-			jaxbContext = JAXBContext.newInstance(AnalysisActivityRepresentation.class);
+			jaxbContext = JAXBContext.newInstance(JAXBAnalysisActivityRepresentation.class);
 			Marshaller marshaler = jaxbContext.createMarshaller();
 			
 			marshaler.marshal(representation, entityStream);

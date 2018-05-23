@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="AnalysisActivity")
-class AnalysisActivityRepresentation {
+class JAXBAnalysisActivityRepresentation {
 	
 	@XmlAttribute
 	public String id;

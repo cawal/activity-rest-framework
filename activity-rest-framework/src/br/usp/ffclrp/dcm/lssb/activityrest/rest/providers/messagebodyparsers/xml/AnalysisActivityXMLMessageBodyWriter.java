@@ -16,6 +16,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 
 /**
@@ -34,7 +35,7 @@ public class AnalysisActivityXMLMessageBodyWriter implements MessageBodyWriter<O
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType,
 			Annotation[] annotations, MediaType mediaType) {
-		return AnalysisActivity.class.isAssignableFrom(type);
+		return AnalysisActivityRepresentation.class.isAssignableFrom(type);
 	}
 
 	/**
@@ -57,18 +58,19 @@ public class AnalysisActivityXMLMessageBodyWriter implements MessageBodyWriter<O
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
 		// TODO implement writeTo()
-		AnalysisActivityRepresentation representation = 
-				new AnalysisActivityRepresentation();
-		AnalysisActivity analysisActivity = (AnalysisActivity) entity;
-		representation.id = analysisActivity.getId();
-		representation.state = "RUNNING";
+		JAXBAnalysisActivityRepresentation xmlRepresentation = 
+				new JAXBAnalysisActivityRepresentation();
+		AnalysisActivityRepresentation analysisActivity = 
+				(AnalysisActivityRepresentation) entity;
+		xmlRepresentation.id = analysisActivity.getId();
+		xmlRepresentation.state = analysisActivity.getState().toString();
 		
 		JAXBContext jaxbContext;
 		try {
-			jaxbContext = JAXBContext.newInstance(AnalysisActivityRepresentation.class);
+			jaxbContext = JAXBContext.newInstance(JAXBAnalysisActivityRepresentation.class);
 			Marshaller marshaler = jaxbContext.createMarshaller();
 			
-			marshaler.marshal(representation, entityStream);
+			marshaler.marshal(xmlRepresentation, entityStream);
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

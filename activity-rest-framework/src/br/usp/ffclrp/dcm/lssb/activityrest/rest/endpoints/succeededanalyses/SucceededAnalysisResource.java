@@ -22,6 +22,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.AbstractDatas
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.OutputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityState;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -56,6 +58,8 @@ public class SucceededAnalysisResource {
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON })
 	public Response get() {
 		
+		AnalysisActivityRepresentation representation =
+				new AnalysisActivityRepresentation();
 		
 		try {
 			
@@ -86,23 +90,17 @@ public class SucceededAnalysisResource {
 					.type("GET")
 					.build();
 
+			representation.setId(aa.getId());
+			representation.setState(AnalysisActivityState.SUCCEEDED);
+			
 			Response.ResponseBuilder response = 
-					Response.ok(aa)
+					Response.ok(representation)
 					.links(selfLink)
 					.links(deleteLink)
 					.links(parameterSetLink)
 					.links(inputDatasetsLink)
 					.links(outputDatasetsLink);
 			
-			if (AnalysisActivityValidation.isReady(aa)) {
-				URI jobURI = getJobInstanceUri();
-				Link jobLink = Link.fromUri(jobURI)
-						.rel(ResourceRelations.SUBMIT_RELATION)
-						.type("POST")
-						.build();
-				
-				response.links(jobLink);
-			}
 			
 			return response.build();
 			
