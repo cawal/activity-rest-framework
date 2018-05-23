@@ -55,7 +55,7 @@ public class SucceededAnalysisResource {
 	}
 
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON, MediaType.APPLICATION_XML  })
 	public Response get() {
 		
 		AnalysisActivityRepresentation representation =
