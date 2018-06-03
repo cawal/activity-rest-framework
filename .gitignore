@@ -1,1 +1,5 @@
 target
+
+# swap files from editors
+*.swp
+
