@@ -52,7 +52,7 @@ public class NewAnalysisResource {
 	}
 
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON, MediaType.APPLICATION_XML})
+	@Produces({  MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON})
 	public Response get() {
 		
 		AnalysisActivityRepresentation representation = 
