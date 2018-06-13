@@ -16,6 +16,8 @@ import javax.ws.rs.core.UriInfo;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityState;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -45,7 +47,7 @@ public class NewAnalysesCollection {
 	 * @return
 	 */
 	@POST
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, })
 	public Response postNewAnalysis() {
 		
 		try {
@@ -54,7 +56,7 @@ public class NewAnalysesCollection {
 			uriBuilder = uriInfo.getAbsolutePathBuilder();
 			URI locationURI = uriBuilder.path(aa.getId()).build();
 			Response response = Response.created(locationURI)
-					//.entity(aa)
+					.entity(new AnalysisActivityRepresentation(aa,AnalysisActivityState.CREATED))
 					.build();
 						
 			return response;
