@@ -60,7 +60,7 @@ public class ParameterSetResource {
 	 * @return
 	 */
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({  MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,})
 	public Response getAllParameters() {
 		Map<String, Object> map = aa.getParameters();
 		
@@ -135,8 +135,9 @@ public class ParameterSetResource {
 			
 			aa.getParameters().put(parameterName, parameterValue);
 			
-			if(aa.getParameters().get(parameterName) != parameterValue) {
-				throw new IllegalParameterException(parameterName,parameterValue);
+			if (aa.getParameters().get(parameterName) != parameterValue) {
+				throw new IllegalParameterException(parameterName,
+						parameterValue);
 			}
 			
 			analysisActivityDao.update(aa);
