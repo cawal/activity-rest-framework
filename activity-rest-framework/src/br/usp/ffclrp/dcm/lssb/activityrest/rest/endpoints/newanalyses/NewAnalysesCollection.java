@@ -52,11 +52,17 @@ public class NewAnalysesCollection {
 		
 		try {
 			AnalysisActivity aa = createNewAnalysisActivity();
+			
 			System.out.println(aa.getId());
+			
 			uriBuilder = uriInfo.getAbsolutePathBuilder();
 			URI locationURI = uriBuilder.path(aa.getId()).build();
+			
+			AnalysisActivityRepresentation entityRepresentation = 
+					new AnalysisActivityRepresentation(aa,AnalysisActivityState.CREATED);
+			
 			Response response = Response.created(locationURI)
-					.entity(new AnalysisActivityRepresentation(aa,AnalysisActivityState.CREATED))
+					.entity(entityRepresentation)
 					.build();
 						
 			return response;

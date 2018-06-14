@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.ws.rs.Produces;
@@ -20,8 +23,8 @@ import javax.xml.bind.Marshaller;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBAnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBLinkRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.util.LinkRepresentationToJAXB;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 
 /**
  * This MessageBodyWriter can be registered in order to provide support for
@@ -64,19 +67,25 @@ public class AnalysisActivityXMLMessageBodyWriter
 			OutputStream entityStream)
 			throws IOException, WebApplicationException {
 		
+		// cast the entity
 		AnalysisActivityRepresentation analysisActivity = 
 				(AnalysisActivityRepresentation) entity;
 		
-		
+		// creates the binding object
 		JAXBAnalysisActivityRepresentation xmlRepresentation = 
 				new JAXBAnalysisActivityRepresentation();
 		xmlRepresentation.id = analysisActivity.getId();
 		xmlRepresentation.state = analysisActivity.getState().toString();
 		
 		// create link elements from headers
-		xmlRepresentation.links = httpHeaders.get("Link").stream()
+		List<Object> links = 
+				Optional.ofNullable(httpHeaders.get("Link"))
+				.orElse(Collections.emptyList());
+				
+		xmlRepresentation.links = links.stream()
 				.map(x -> (Link) x)
-				.map(AnalysisActivityXMLMessageBodyWriter::transformLinkToJaxb)
+				.map(LinkRepresentationToJAXB::apply)
+				//.map(AnalysisActivityXMLMessageBodyWriter::transformLinkToJaxb)
 				.collect(Collectors.toList());
 		
 		// marshall to XML
@@ -93,17 +102,4 @@ public class AnalysisActivityXMLMessageBodyWriter
 		
 	}
 	
-	
-	/**
-	 * Receives a Link instance (JAX-RS) and return  a JAXB bounded object.
-	 * @param link the Link instance
-	 * @return A object JAXB can marshall
-	 */
-	public static JAXBLinkRepresentation transformLinkToJaxb(Link link) {
-		return new JAXBLinkRepresentation() {{
-			this.href = link.getUri().toString();
-			this.rel = link.getRel();
-			this.method = link.getType();
-		}};
-	}
 }
