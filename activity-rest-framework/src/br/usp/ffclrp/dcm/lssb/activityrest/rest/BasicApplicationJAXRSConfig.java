@@ -19,6 +19,9 @@ public class BasicApplicationJAXRSConfig extends Application {
 		resources.add(
 				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.AnalysisActivityXMLMessageBodyWriter.class);
 		
+		resources.add(
+				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.ParameterMessageBodyReader.class);
+		
 		// Filter for allowing Cross-Origin Resource Sharing
 		resources.add(
 				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.CorsFilter.class);
