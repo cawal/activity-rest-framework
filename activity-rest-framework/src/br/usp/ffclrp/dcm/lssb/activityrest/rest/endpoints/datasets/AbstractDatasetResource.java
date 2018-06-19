@@ -25,6 +25,16 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
  */
 public class AbstractDatasetResource {
 	
+	/**
+	 * Returns an object representing a HTTP response listing the dataset.
+	 * The listing is made using the Link relation of the HTTP header.
+	 * @param basePath The URI path requested.
+	 * @param datasetList A list of input/output datasets 
+	 * 						the analysis activity holds. 
+	 * @param allowUpdate A boolean indicating if the datasets may be updated
+	 * 					by  the client. 
+	 * @return a response object with link headers applied.
+	 */
 	protected Response getResponseForGetDatasetListRequest(
 			URI basePath,
 			List<Dataset> datasetList,

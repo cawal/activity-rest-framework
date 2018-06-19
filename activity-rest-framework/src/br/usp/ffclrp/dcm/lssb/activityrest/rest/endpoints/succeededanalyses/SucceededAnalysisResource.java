@@ -17,7 +17,6 @@ import javax.ws.rs.core.UriInfo;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.AbstractDatasetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.OutputDatasetsResource;
@@ -53,9 +52,12 @@ public class SucceededAnalysisResource {
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
 	}
-
+	
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON, MediaType.APPLICATION_XML  })
+	@Produces({ MediaType.APPLICATION_XML,
+			MediaType.APPLICATION_JSON, 
+			MediaType.APPLICATION_HAL_JSON
+			})
 	public Response get() {
 		
 		AnalysisActivityRepresentation representation =
@@ -65,42 +67,41 @@ public class SucceededAnalysisResource {
 			
 			Link selfLink =
 					Link.fromUri(getUriForSelf())
-					.rel(ResourceRelations.SELF)
-					.type("GET")
-					.build();
+							.rel(ResourceRelations.SELF)
+							.type("GET")
+							.build();
 			Link deleteLink =
 					Link.fromUri(getUriForSelf())
-					.rel(ResourceRelations.SELF)
-					.type("DELETE")
-					.build();
+							.rel(ResourceRelations.SELF)
+							.type("DELETE")
+							.build();
 			Link parameterSetLink =
 					Link.fromUri(getUriForParameterSet())
-					.rel(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION)
-					.type("GET")
-					.build();
+							.rel(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION)
+							.type("GET")
+							.build();
 			Link inputDatasetsLink =
 					Link.fromUri(getUriForInputDatasets())
-					.rel(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION)
-					.type("GET")
-					.build();
-
+							.rel(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION)
+							.type("GET")
+							.build();
+			
 			Link outputDatasetsLink =
 					Link.fromUri(getUriForOutputDatasets())
-					.rel(ResourceRelations.ANALYSYS_OUTPUT_DATASETS_COLLECTION)
-					.type("GET")
-					.build();
-
+							.rel(ResourceRelations.ANALYSYS_OUTPUT_DATASETS_COLLECTION)
+							.type("GET")
+							.build();
+			
 			representation.setId(aa.getId());
 			representation.setState(AnalysisActivityState.SUCCEEDED);
 			
-			Response.ResponseBuilder response = 
+			Response.ResponseBuilder response =
 					Response.ok(representation)
-					.links(selfLink)
-					.links(deleteLink)
-					.links(parameterSetLink)
-					.links(inputDatasetsLink)
-					.links(outputDatasetsLink);
-			
+							.links(selfLink)
+							.links(deleteLink)
+							.links(parameterSetLink)
+							.links(inputDatasetsLink)
+							.links(outputDatasetsLink);
 			
 			return response.build();
 			
@@ -110,8 +111,6 @@ public class SucceededAnalysisResource {
 		}
 	}
 	
-
-
 	/**
 	 * Deletes an analysis.
 	 */
@@ -124,31 +123,33 @@ public class SucceededAnalysisResource {
 		}
 		return Response.ok().build();
 	}
-
 	
-	// sub-resources ------------------------------------------------------------
+	// sub-resources
+	// ------------------------------------------------------------
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
+		return new ParameterSetResource(aaDesc, uriInfo, aa,
+				analysisActivityDao, false);
 	}
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
+		return new InputDatasetsResource(aaDesc, uriInfo, aa,
+				analysisActivityDao, false);
 	}
 	
 	@Path("/outputs/")
 	public AbstractDatasetResource getOutputDatasetsResource() {
-		return new OutputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
+		return new OutputDatasetsResource(aaDesc, uriInfo, aa,
+				analysisActivityDao, false);
 	}
-	
 	
 	// local auxiliary methods -------------------------------------------------
 	private URI getUriForSelf() {
 		return absolutePathURI;
 	}
-
+	
 	private URI getUriForParameterSet() {
 		return UriBuilder.fromUri(getUriForSelf()).path("/parameters/").build();
 	}
@@ -157,21 +158,8 @@ public class SucceededAnalysisResource {
 		return UriBuilder.fromUri(getUriForSelf()).path("/inputs/").build();
 	}
 	
-	
 	private URI getUriForOutputDatasets() {
 		return UriBuilder.fromUri(getUriForSelf()).path("/outputs/").build();
-	}
-	
-	
-	private URI getJobManagerUri() {
-		return UriBuilder.fromUri(this.baseApplicationURI).path("/instances/").build();
-	}
-	
-	private URI getJobInstanceUri() {
-		return UriBuilder.fromUri(getJobManagerUri())
-				.path("/{analysisId}")
-				.resolveTemplate("analysisId", aa.getId())
-				.build();
 	}
 	
 }

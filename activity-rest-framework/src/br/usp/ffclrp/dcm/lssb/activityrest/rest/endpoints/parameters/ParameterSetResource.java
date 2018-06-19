@@ -1,6 +1,7 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
+import com.google.common.collect.Lists;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
@@ -132,6 +135,10 @@ public class ParameterSetResource {
 	public Response putParameterByName(
 			@NotNull @PathParam("parameterName") String parameterName,
 			Object parameterValue) {
+		
+		if(!existsParameterForName(parameterName))
+			throw new NotFoundException();
+		
 		return tryUpdateParameter(parameterName, parameterValue);
 		
 	}
@@ -143,45 +150,55 @@ public class ParameterSetResource {
 			@NotNull @PathParam("parameterName") String parameterName,
 			ParameterRepresentation parameter) {
 		
-		System.out.println(parameterName);
+		if(!existsParameterForName(parameterName))
+			throw new NotFoundException();
+		
 		List<Object> parameterValue = parameter.getValue();
-		System.out.println(parameter.getValue());
-		System.out.println(parameter.getValue().getClass());
-		
-		System.out.println(parameterValue);
-		
 		return tryUpdateParameter(parameterName, parameterValue);
 		
+	}
+
+	private boolean existsParameterForName(String parameterName) {
+		boolean parameterExist = 
+				aaDesc.getParameters().stream()
+					.anyMatch(p -> p.getName().equalsIgnoreCase(parameterName));
+		return parameterExist;
 	}
 	
 	private Response tryUpdateParameter(String parameterName,
 			Object parameterValue) {
 		try {
-			System.out.println(
-					aa.getParameters().put(parameterName, parameterValue));
-//			
-//			((List) parameterValue).forEach(e -> {
-//				System.out.println(e + "->" + e.hashCode());
-//			});
-//			
-//			System.out.println(
-//					parameterValue + "-> " + parameterValue.hashCode());
-//			
-//			Object o = aa.getParameters().get(parameterName);
-//			((List) o).forEach(e -> {
-//				System.out.println(e + "=>" + e.hashCode());
-//			});
-//			
-//			System.out.println(
-//					o + "=> " + o.hashCode());
+			// sanitize and update parameter value
+			List<Object> values = null;
+			if (parameterValue instanceof List) {
+				values = (List<Object>) parameterValue;
+			} else {
+				values = Arrays.asList(parameterValue);
+			}
 			
-			Object updatedParameters = aa.getParameters().get(parameterName);
-			if (( updatedParameters instanceof List && 
-					(! updatedParameters.equals(parameterValue)) 
-				) || (updatedParameters != parameterValue) ) {
-				System.out.println("aqyu");
-				System.out.println(parameterName);
-				System.out.println(updatedParameters);
+			aa.getParameters().put(parameterName, values);
+			
+			// verify if update was suceessfull
+			Object updatedParametersObject =
+					aa.getParameters().get(parameterName);
+			
+			List<Object> list = null;
+			System.out.println(updatedParametersObject);
+			if (!(updatedParametersObject instanceof List)) {
+				list = Arrays.asList(updatedParametersObject);
+			} else {
+				list = (List<Object>) updatedParametersObject;
+			}
+			
+			boolean ok = list.size() == values.size();
+			System.out.println(ok);
+			System.out.println(list);
+			System.out.println(values);
+			for (int i = 0; ok && i < list.size(); i++) {
+				ok = ok && list.get(i).toString().equals(values.get(i).toString());
+			}
+			
+			if (!ok) {
 				throw new IllegalParameterException(parameterName,
 						parameterValue);
 			}
@@ -191,9 +208,6 @@ public class ParameterSetResource {
 			
 		} catch (IllegalParameterException e) {
 			e.printStackTrace();
-			System.out.println("Parameter:");
-			System.out.println(e.getParameterName());
-			System.out.println(e.getNewValue());
 			throw new BadRequestException();
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
