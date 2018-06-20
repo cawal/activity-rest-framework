@@ -1,6 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.representations;
 
-public enum AnalysisActivityState {
+public enum AnalysisActivityStateRepresentation {
 	CREATED,
 	READY,
 	RUNNING,

@@ -17,7 +17,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityState;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -59,7 +59,7 @@ public class NewAnalysesCollection {
 			URI locationURI = uriBuilder.path(aa.getId()).build();
 			
 			AnalysisActivityRepresentation entityRepresentation = 
-					new AnalysisActivityRepresentation(aa,AnalysisActivityState.CREATED);
+					new AnalysisActivityRepresentation(aa,AnalysisActivityStateRepresentation.CREATED);
 			
 			Response response = Response.created(locationURI)
 					.entity(entityRepresentation)

@@ -9,13 +9,13 @@ public class AnalysisActivityRepresentation {
 	public AnalysisActivityRepresentation() {
 	}
 	
-	public AnalysisActivityRepresentation(AnalysisActivity a, AnalysisActivityState state) {
+	public AnalysisActivityRepresentation(AnalysisActivity a, AnalysisActivityStateRepresentation state) {
 		this.id = a.getId();
 		this.state = state;
 	}
 	
 	private String id;
 	
-	private AnalysisActivityState state;
+	private AnalysisActivityStateRepresentation state;
 	
 }

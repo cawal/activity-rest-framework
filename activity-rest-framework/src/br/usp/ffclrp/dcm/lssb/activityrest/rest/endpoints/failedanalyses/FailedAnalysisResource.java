@@ -24,7 +24,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActiv
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityState;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -101,7 +101,7 @@ public class FailedAnalysisResource {
 			
 
 			representation.setId(aa.getId());
-			representation.setState(AnalysisActivityState.SUCCEEDED);
+			representation.setState(AnalysisActivityStateRepresentation.SUCCEEDED);
 			
 			return response.build();
 			
