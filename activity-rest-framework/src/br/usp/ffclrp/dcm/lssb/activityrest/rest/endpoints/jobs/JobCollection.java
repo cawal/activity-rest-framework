@@ -91,7 +91,14 @@ public class JobCollection {
 				
 				URI jobURI = uriInfo.getAbsolutePath();
 				
-				return Response.created(jobURI).build();
+				AnalysisActivityRepresentation representation = 
+						new AnalysisActivityRepresentation();
+				
+				representation.setId(analysisId);
+				representation.setState(AnalysisActivityStateRepresentation.RUNNING);
+				
+				
+				return Response.created(jobURI).entity(representation).build();
 				
 			} else { // if analysis is not ready, return BAD REQUEST
 				Throwable t = new JobCantStartException(analysis);
@@ -197,9 +204,9 @@ public class JobCollection {
 	}
 	
 	private Response responseForExecutingJob(String analysisId) {
+		
 		AnalysisActivityRepresentation representation = 
 				new AnalysisActivityRepresentation();
-		
 		representation.setId(analysisId);
 		representation.setState(AnalysisActivityStateRepresentation.RUNNING);
 		
@@ -219,6 +226,13 @@ public class JobCollection {
 			String errorReport =
 					FileUtils.readFileToString(errorReportFile);
 			
+			// create representation
+			AnalysisActivityRepresentation representation =
+					new AnalysisActivityRepresentation();
+			representation.setId(analysisId);
+			representation.setState(AnalysisActivityStateRepresentation.FAILED);
+			representation.setErrorReport(errorReport);
+			
 			URI failedURI = uriInfo.getBaseUriBuilder()
 					.path("failed-analyses")
 					.path(analysisId)
@@ -231,7 +245,7 @@ public class JobCollection {
 			
 			return Response.status(Status.GONE)
 					.links(failedLink)
-					.entity(errorReport)
+					.entity(representation)
 					.build();
 			
 		} catch (Exception e) {

@@ -18,6 +18,9 @@ public class JAXBAnalysisActivityRepresentation {
 	
 	@XmlAttribute
 	public String state;
+	
+	@XmlElement(name="error-report",nillable=true)
+	public String errorReport;
 
 	@XmlElementWrapper(name="links",namespace="http://kode.ffclrp.usp.br:8080/david-chart-report/xsd")
 	@XmlElement(name="link", required=false, namespace="http://kode.ffclrp.usp.br:8080/david-chart-report/xsd")

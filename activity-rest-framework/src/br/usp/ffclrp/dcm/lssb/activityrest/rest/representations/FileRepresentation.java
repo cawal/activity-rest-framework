@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class FileRepresentation {
 	private String name;
-	private byte[] content;
+	private String contentType;
+	private String content;
 }

@@ -49,6 +49,8 @@ public class BasicApplicationJAXRSConfig extends Application {
 				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.ParameterMessageBodyReader.class);
 		resources.add(
 				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.JobInstanceXMLMessageBodyWriter.class);
+		resources.add(
+				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.FileRepresentationXMLMessageBodyWriter.class);
 		return resources;
 	}
 	

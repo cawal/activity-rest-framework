@@ -18,4 +18,6 @@ public class AnalysisActivityRepresentation {
 	
 	private AnalysisActivityStateRepresentation state;
 	
+	private String errorReport;
+	
 }
