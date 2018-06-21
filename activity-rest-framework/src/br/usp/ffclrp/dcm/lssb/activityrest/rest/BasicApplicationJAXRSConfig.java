@@ -1,5 +1,7 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest;
 
+import java.util.Collections;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.ws.rs.core.Application;
@@ -8,21 +10,27 @@ public class BasicApplicationJAXRSConfig extends Application {
 	
 	public BasicApplicationJAXRSConfig() {
 		super();
-		
-		
 	}
 	
 	@Override
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
+
 		// add here all classes with JAX-RS annotations
-		resources.add(
-				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.AnalysisActivityXMLMessageBodyWriter.class);
+		resources.addAll(this.getSupportClasses());
+		resources.addAll(this.getXMLMessageBodyProviders());
 		
-		resources.add(
-				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.ParameterMessageBodyReader.class);
+		// user extensions 
+		Optional<Set<Class<?>>> classesExtension = 	this.getExtensionClasses();
+		resources.addAll(classesExtension.orElse(Collections.emptySet()));
 		
-		// Filter for allowing Cross-Origin Resource Sharing
+		return resources;
+	}
+	
+	public Set<Class<?>> getSupportClasses(){
+		Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
+		
+		// allow cross-site requests
 		resources.add(
 				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.CorsFilter.class);
 		
@@ -30,11 +38,22 @@ public class BasicApplicationJAXRSConfig extends Application {
 		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
 		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 		
-		// for HAL-JSON Support
-		// resources.add(HalJsonFromObjectMessageBodyWriter.class);
-		// resources.add(HalJsonToObjectMessageBodyReader.class);
-		
 		return resources;
+	}
+	
+	private Set<Class<?>> getXMLMessageBodyProviders(){
+		Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
+		resources.add(
+				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.AnalysisActivityXMLMessageBodyWriter.class);
+		resources.add(
+				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.ParameterMessageBodyReader.class);
+		resources.add(
+				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.JobInstanceXMLMessageBodyWriter.class);
+		return resources;
+	}
+	
+	public Optional<Set<Class<?>>> getExtensionClasses(){
+		return Optional.empty();
 	}
 	
 }
