@@ -9,6 +9,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityM
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -251,7 +252,8 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 		if (!description.isPresent())
 			return null;
 		
-		return internalMap.put(key, sanitize(description.get(), value));
+		Object sanitizedValue = sanitize(description.get(), value);
+		return internalMap.put(key, sanitizedValue);
 	}
 	
 	@Override
@@ -283,60 +285,64 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	protected Object sanitize(ParameterDescription description, Object value) {
-		boolean valueIsCollection = value instanceof Collection;
+		boolean valueIsList = value instanceof List;
 		ParameterKind expectedParameterKind = description.getParameterKind();
 		
-		if(valueIsCollection && (expectedParameterKind == ParameterKind.LIST)) {
-			@SuppressWarnings("unchecked")
-			List<Object> sanitizedList = (List<Object>) ((Collection) value).stream()
-					.map(v -> sanitizeSingleValue(description,v))
-					.collect(Collectors.toList());
+		if (!valueIsList 
+				&& (expectedParameterKind == ParameterKind.LIST)){
+			throw new Error();
 			
+		}
+		
+		List<Object> values = null;
+		
+		if(!valueIsList) {
+			values = Arrays.asList(value);
+		} else {
+			values = (List<Object>)value;
+		}
+		
+		List<Object> sanitizedList = (List<Object>) values.stream()
+				.map(v -> sanitizeValueItem(description,v))
+				.collect(Collectors.toList());
+		
+		
+		
+		if(expectedParameterKind == ParameterKind.LIST) {
 			return sanitizedList;
 
-		} else if (valueIsCollection 
-				&& (expectedParameterKind == ParameterKind.SINGLE_VALUE)){
-				List<?> sanitized = (List<?>) sanitizeList(description,value);
+		} else if (expectedParameterKind == ParameterKind.SINGLE_VALUE){
 					
-				if(sanitized.size() > 0) {
-					return sanitized.get(0);
+				if(sanitizedList.size() > 0) {
+					return sanitizedList.get(0);
 				} 
-				return null;
-			
-		} else if (!valueIsCollection 
-				&& (expectedParameterKind == ParameterKind.SINGLE_VALUE)){
-				
-			return sanitizeSingleValue(description, value);
-			
-		} else if (!valueIsCollection 
-				&& (expectedParameterKind == ParameterKind.LIST)){
-				
-			throw new Error();
-			
+				return null;	
+		
 		} else {
 			throw new Error();
 		}
 	}
 	
-	private List<Object> sanitizeList(ParameterDescription description,
-			Object value) {
-		List<Object> list;
-		
-		if (value instanceof Collection) {
-			list = (List<Object>) ((Collection) value).stream()
-					.map(v -> sanitizeSingleValue(description, v))
-					.filter(a -> a != null)
-					.collect(Collectors.toList());
-			
-		} else {
-			return Collections.emptyList();
-		}
-		
-		return list;
-	}
+//	private List<Object> sanitizeList(ParameterDescription description,
+//			Object value) {
+//		List<Object> list;
+//		
+//		if (value instanceof Collection) {
+//			list = (List<Object>) ((Collection) value).stream()
+//					.map(v -> sanitizeValueItem(description, v))
+//					.filter(a -> a != null)
+//					.collect(Collectors.toList());
+//			
+//		} else {
+//			return Collections.emptyList();
+//		}
+//		
+//		return list;
+//	}
 	
-	private Object sanitizeSingleValue(ParameterDescription description,
+	private Object sanitizeValueItem(ParameterDescription description,
 			Object value) {
 				
 		if (value == null) 
