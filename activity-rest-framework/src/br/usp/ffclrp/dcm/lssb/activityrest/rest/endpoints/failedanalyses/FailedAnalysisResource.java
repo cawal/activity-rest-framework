@@ -23,6 +23,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -54,9 +56,11 @@ public class FailedAnalysisResource {
 	}
 
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON, MediaType.APPLICATION_XML })
 	public Response get() {
 		
+		AnalysisActivityRepresentation representation =
+				new AnalysisActivityRepresentation();
 		
 		try {
 			
@@ -95,15 +99,9 @@ public class FailedAnalysisResource {
 					.links(inputDatasetsLink)
 					.links(errorReportLink);
 			
-			if (AnalysisActivityValidation.isReady(aa)) {
-				URI jobURI = getJobInstanceUri();
-				Link jobLink = Link.fromUri(jobURI)
-						.rel(ResourceRelations.SUBMIT_RELATION)
-						.type("POST")
-						.build();
-				
-				response.links(jobLink);
-			}
+
+			representation.setId(aa.getId());
+			representation.setState(AnalysisActivityStateRepresentation.SUCCEEDED);
 			
 			return response.build();
 			

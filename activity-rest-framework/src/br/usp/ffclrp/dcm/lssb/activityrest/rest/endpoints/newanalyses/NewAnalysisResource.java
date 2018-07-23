@@ -20,6 +20,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -50,9 +52,11 @@ public class NewAnalysisResource {
 	}
 
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON, MediaType.APPLICATION_XML})
+	@Produces({  MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON})
 	public Response get() {
 		
+		AnalysisActivityRepresentation representation = 
+				new AnalysisActivityRepresentation();
 		
 		try {
 			
@@ -76,15 +80,19 @@ public class NewAnalysisResource {
 					.rel(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION)
 					.type("GET")
 					.build();
+			
+			representation.setId(aa.getId());
+			representation.setState(AnalysisActivityStateRepresentation.CREATED);
 
 			Response.ResponseBuilder response = 
-					Response.ok(aa)
+					Response.ok(representation)
 					.links(selfLink)
 					.links(deleteLink)
 					.links(parameterSetLink)
 					.links(inputDatasetsLink);
 			
 			if (AnalysisActivityValidation.isReady(aa)) {
+				representation.setState(AnalysisActivityStateRepresentation.READY);
 				URI jobURI = getJobInstanceUri();
 				Link jobLink = Link.fromUri(jobURI)
 						.rel(ResourceRelations.SUBMIT_RELATION)

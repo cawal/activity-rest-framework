@@ -1,6 +1,8 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters;
 
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
@@ -18,8 +20,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import com.google.common.collect.Lists;
+
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
@@ -60,7 +65,7 @@ public class ParameterSetResource {
 	 * @return
 	 */
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, })
 	public Response getAllParameters() {
 		Map<String, Object> map = aa.getParameters();
 		
@@ -118,7 +123,6 @@ public class ParameterSetResource {
 	}
 	
 	/**
-	 * Receives a object containing only the parameter name and the value
 	 * 
 	 * @param analysisID
 	 * @param parameterName
@@ -131,12 +135,72 @@ public class ParameterSetResource {
 	public Response putParameterByName(
 			@NotNull @PathParam("parameterName") String parameterName,
 			Object parameterValue) {
+		
+		if(!existsParameterForName(parameterName))
+			throw new NotFoundException();
+		
+		return tryUpdateParameter(parameterName, parameterValue);
+		
+	}
+	
+	@PUT
+	@Path("/{parameterName  : [A-Za-z0-9-.]+}")
+	@Consumes({ MediaType.APPLICATION_XML })
+	public Response putParameterByNameXML(
+			@NotNull @PathParam("parameterName") String parameterName,
+			ParameterRepresentation parameter) {
+		
+		if(!existsParameterForName(parameterName))
+			throw new NotFoundException();
+		
+		List<Object> parameterValue = parameter.getValue();
+		return tryUpdateParameter(parameterName, parameterValue);
+		
+	}
+
+	private boolean existsParameterForName(String parameterName) {
+		boolean parameterExist = 
+				aaDesc.getParameters().stream()
+					.anyMatch(p -> p.getName().equalsIgnoreCase(parameterName));
+		return parameterExist;
+	}
+	
+	private Response tryUpdateParameter(String parameterName,
+			Object parameterValue) {
 		try {
+			// sanitize and update parameter value
+			List<Object> values = null;
+			if (parameterValue instanceof List) {
+				values = (List<Object>) parameterValue;
+			} else {
+				values = Arrays.asList(parameterValue);
+			}
 			
-			aa.getParameters().put(parameterName, parameterValue);
+			aa.getParameters().put(parameterName, values);
 			
-			if(aa.getParameters().get(parameterName) != parameterValue) {
-				throw new IllegalParameterException(parameterName,parameterValue);
+			// verify if update was suceessfull
+			Object updatedParametersObject =
+					aa.getParameters().get(parameterName);
+			
+			List<Object> list = null;
+			System.out.println(updatedParametersObject);
+			if (!(updatedParametersObject instanceof List)) {
+				list = Arrays.asList(updatedParametersObject);
+			} else {
+				list = (List<Object>) updatedParametersObject;
+			}
+			
+			boolean ok = list.size() == values.size();
+			System.out.println(ok);
+			System.out.println(list);
+			System.out.println(values);
+			for (int i = 0; ok && i < list.size(); i++) {
+				ok = ok && list.get(i).toString().equals(values.get(i).toString());
+			}
+			
+			if (!ok) {
+				throw new IllegalParameterException(parameterName,
+						parameterValue);
 			}
 			
 			analysisActivityDao.update(aa);
@@ -144,13 +208,9 @@ public class ParameterSetResource {
 			
 		} catch (IllegalParameterException e) {
 			e.printStackTrace();
-			System.out.println("Parameter:");
-			System.out.println(e.getParameterName());
-			System.out.println(e.getNewValue());
 			throw new BadRequestException();
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
 		}
-		
 	}
 }

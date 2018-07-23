@@ -1,6 +1,8 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,10 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
+import org.apache.commons.io.FileUtils;
+
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.FileRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
@@ -25,6 +30,16 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
  */
 public class AbstractDatasetResource {
 	
+	/**
+	 * Returns an object representing a HTTP response listing the dataset.
+	 * The listing is made using the Link relation of the HTTP header.
+	 * @param basePath The URI path requested.
+	 * @param datasetList A list of input/output datasets 
+	 * 						the analysis activity holds. 
+	 * @param allowUpdate A boolean indicating if the datasets may be updated
+	 * 					by  the client. 
+	 * @return a response object with link headers applied.
+	 */
 	protected Response getResponseForGetDatasetListRequest(
 			URI basePath,
 			List<Dataset> datasetList,
@@ -76,13 +91,26 @@ public class AbstractDatasetResource {
 			
 		} else { // single file, stdout or stderr shold have only one file
 			
+			try {
 			File file = d.getFiles().get(0);
+			
 			if (file == null)
-				throw new NotFoundException();			
-			return Response.ok(file)
-					.header("Content-type", d.getDescription().getMimetype())
+				throw new FileNotFoundException();	
+			
+			FileRepresentation representation = new FileRepresentation();
+			representation.setName(file.getName());
+			representation.setContent(FileUtils.readFileToString(file));
+			representation.setContentType(d.getDescription().getMimetype());
+			
+			return Response.ok(representation)
+					//.header("Content-type", d.getDescription().getMimetype())
 					.links(links.toArray(new Link[links.size()]))
 					.build();
+			
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw new NotFoundException();
+			}
 		}
 	}
 	
@@ -108,19 +136,31 @@ public class AbstractDatasetResource {
 			
 		} else if (datasetKind == DatasetKind.FILE_COLLECTION) {
 			
+			try { 
 			Optional<File> fileOp = d.getFiles().stream()
 					.filter(f -> f.getName().equalsIgnoreCase(fileName))
 					.findFirst();
 			
 			if (!fileOp.isPresent())
-				throw new NotFoundException();
+				throw new FileNotFoundException();	
 			
+			File file = fileOp.get();
+			
+			FileRepresentation representation = new FileRepresentation();
+			representation.setName(file.getName());
+			representation.setContent(FileUtils.readFileToString(file));
+			representation.setContentType(d.getDescription().getMimetype());
 			links.add(self);
 			
 			return Response.ok(fileOp.get())
 					.links(links.toArray(new Link[links.size()]))
-					.header("Content-type", d.getDescription().getMimetype())
+					//.header("Content-type", d.getDescription().getMimetype())
 					.build();
+			
+			} catch ( IOException e) {
+				e.printStackTrace();
+				throw new NotFoundException();
+			}
 		} else {
 			throw new BadRequestException();
 		}

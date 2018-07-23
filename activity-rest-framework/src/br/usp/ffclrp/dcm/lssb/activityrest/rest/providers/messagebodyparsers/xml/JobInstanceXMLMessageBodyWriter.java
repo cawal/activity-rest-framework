@@ -22,9 +22,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBAnalysisActivityRepresentation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBLinkRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBJobInstanceRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.util.LinkRepresentationToJAXB;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.JobInstanceRepresentation;
 
 /**
  * This MessageBodyWriter can be registered in order to provide support for
@@ -35,7 +35,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivity
 
 @Provider
 @Produces(MediaType.APPLICATION_XML)
-public class AnalysisActivityXMLMessageBodyWriter
+public class JobInstanceXMLMessageBodyWriter
 		implements MessageBodyWriter<Object> {
 	
 	/**
@@ -44,7 +44,7 @@ public class AnalysisActivityXMLMessageBodyWriter
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType,
 			Annotation[] annotations, MediaType mediaType) {
-		return AnalysisActivityRepresentation.class.isAssignableFrom(type);
+		return JobInstanceRepresentation.class.isAssignableFrom(type);
 	}
 	
 	/**
@@ -68,14 +68,15 @@ public class AnalysisActivityXMLMessageBodyWriter
 			throws IOException, WebApplicationException {
 		
 		// cast the entity
-		AnalysisActivityRepresentation analysisActivity = 
-				(AnalysisActivityRepresentation) entity;
+		JobInstanceRepresentation jobInstance = 
+				(JobInstanceRepresentation) entity;
 		
 		// creates the binding object
-		JAXBAnalysisActivityRepresentation xmlRepresentation = 
-				new JAXBAnalysisActivityRepresentation();
-		xmlRepresentation.id = analysisActivity.getId();
-		xmlRepresentation.state = analysisActivity.getState().toString();
+		JAXBJobInstanceRepresentation xmlRepresentation = 
+				new JAXBJobInstanceRepresentation();
+		xmlRepresentation.id = jobInstance.getId();
+		xmlRepresentation.state = jobInstance.getState().toString();
+		xmlRepresentation.errorReport = jobInstance.getErrorReport();
 		
 		// create link elements from headers
 		List<Object> links = 

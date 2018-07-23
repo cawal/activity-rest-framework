@@ -7,12 +7,10 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Link;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
@@ -21,21 +19,18 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBAnalysisActivityRepresentation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBLinkRepresentation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.util.LinkRepresentationToJAXB;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBFileRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.FileRepresentation;
 
 /**
- * This MessageBodyWriter can be registered in order to provide support for
- * the representation of the response entities as application/hal+json
+ * 
  * 
  * @author cawal
  */
 
 @Provider
 @Produces(MediaType.APPLICATION_XML)
-public class AnalysisActivityXMLMessageBodyWriter
+public class FileRepresentationXMLMessageBodyWriter
 		implements MessageBodyWriter<Object> {
 	
 	/**
@@ -44,7 +39,7 @@ public class AnalysisActivityXMLMessageBodyWriter
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType,
 			Annotation[] annotations, MediaType mediaType) {
-		return AnalysisActivityRepresentation.class.isAssignableFrom(type);
+		return FileRepresentation.class.isAssignableFrom(type);
 	}
 	
 	/**
@@ -68,36 +63,36 @@ public class AnalysisActivityXMLMessageBodyWriter
 			throws IOException, WebApplicationException {
 		
 		// cast the entity
-		AnalysisActivityRepresentation analysisActivity = 
-				(AnalysisActivityRepresentation) entity;
+		FileRepresentation fileRepresentation =
+				(FileRepresentation) entity;
 		
 		// creates the binding object
-		JAXBAnalysisActivityRepresentation xmlRepresentation = 
-				new JAXBAnalysisActivityRepresentation();
-		xmlRepresentation.id = analysisActivity.getId();
-		xmlRepresentation.state = analysisActivity.getState().toString();
+		JAXBFileRepresentation xmlRepresentation =
+				new JAXBFileRepresentation();
+		xmlRepresentation.name = fileRepresentation.getName();
+		xmlRepresentation.content = fileRepresentation.getContent();
+		xmlRepresentation.contentType = fileRepresentation.getContentType();
 		
 		// create link elements from headers
-		List<Object> links = 
-				Optional.ofNullable(httpHeaders.get("Link"))
-				.orElse(Collections.emptyList());
-				
-		xmlRepresentation.links = links.stream()
-				.map(x -> (Link) x)
-				.map(LinkRepresentationToJAXB::apply)
-				//.map(AnalysisActivityXMLMessageBodyWriter::transformLinkToJaxb)
-				.collect(Collectors.toList());
+		//List<Object> links =
+		//		Optional.ofNullable(httpHeaders.get("Link"))
+		//				.orElse(Collections.emptyList());
+		
+		// xmlRepresentation.links = links.stream()
+		// .map(x -> (Link) x)
+		// .map(LinkRepresentationToJAXB::apply)
+		// .collect(Collectors.toList());
 		
 		// marshall to XML
 		try {
-			JAXBContext jaxbContext = 
-					JAXBContext.newInstance(JAXBAnalysisActivityRepresentation.class);
+			JAXBContext jaxbContext =
+					JAXBContext.newInstance(JAXBFileRepresentation.class);
 			Marshaller marshaler = jaxbContext.createMarshaller();
 			marshaler.marshal(xmlRepresentation, entityStream);
 			
 		} catch (JAXBException e) {
 			e.printStackTrace();
-			throw  new ServerErrorException(500);
+			throw new ServerErrorException(500);
 		}
 		
 	}

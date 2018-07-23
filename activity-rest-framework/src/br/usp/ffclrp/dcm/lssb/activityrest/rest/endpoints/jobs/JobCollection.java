@@ -29,6 +29,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundE
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.InvalidCommandLineDefinition;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;
@@ -89,7 +91,14 @@ public class JobCollection {
 				
 				URI jobURI = uriInfo.getAbsolutePath();
 				
-				return Response.created(jobURI).build();
+				AnalysisActivityRepresentation representation = 
+						new AnalysisActivityRepresentation();
+				
+				representation.setId(analysisId);
+				representation.setState(AnalysisActivityStateRepresentation.RUNNING);
+				
+				
+				return Response.created(jobURI).entity(representation).build();
 				
 			} else { // if analysis is not ready, return BAD REQUEST
 				Throwable t = new JobCantStartException(analysis);
@@ -121,7 +130,7 @@ public class JobCollection {
 			
 			switch (jobState) {
 			case RUNNING:
-				return responseForExecutingJob();
+				return responseForExecutingJob(analysisId);
 			case SUCCEEDED:
 				return processSucceededJob(analysisId);
 			case FAILED:
@@ -194,8 +203,17 @@ public class JobCollection {
 		}
 	}
 	
-	private Response responseForExecutingJob() {
-		return Response.ok().links().build();
+	private Response responseForExecutingJob(String analysisId) {
+		
+		AnalysisActivityRepresentation representation = 
+				new AnalysisActivityRepresentation();
+		representation.setId(analysisId);
+		representation.setState(AnalysisActivityStateRepresentation.RUNNING);
+		
+		return Response.ok()
+				.entity(representation)
+				.links()
+				.build();
 	}
 	
 	private Response processFailedJob(String analysisId) {
@@ -208,6 +226,13 @@ public class JobCollection {
 			String errorReport =
 					FileUtils.readFileToString(errorReportFile);
 			
+			// create representation
+			AnalysisActivityRepresentation representation =
+					new AnalysisActivityRepresentation();
+			representation.setId(analysisId);
+			representation.setState(AnalysisActivityStateRepresentation.FAILED);
+			representation.setErrorReport(errorReport);
+			
 			URI failedURI = uriInfo.getBaseUriBuilder()
 					.path("failed-analyses")
 					.path(analysisId)
@@ -218,8 +243,11 @@ public class JobCollection {
 					.type("GET")
 					.build();
 			
-			return Response.status(Status.GONE).links(failedLink)
-					.entity(errorReport).build();
+			return Response.status(Status.GONE)
+					.links(failedLink)
+					.entity(representation)
+					.build();
+			
 		} catch (Exception e) {
 			throw new ServerErrorException(500);
 		}
