@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="analysisactivitydescription" nsURI="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="analysisactivitydescription" nsURI="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"
     nsPrefix="aad">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="slm" value="string-list-manipulators.ecore#/"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AnalysisActivityDescription">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" ordered="false"
-        upperBound="-1" eType="#//ParameterDescription" containment="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This metaclass describes the information necessary to execute a command&#xA;line application, as well as its inputs and outputs."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" ordered="false" upperBound="-1" eType="#//ParameterDescription"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1"
-        eType="#//DatasetDescription" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1" eType="#//DatasetDescription" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1"
-        eType="#//DatasetDescription" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1" eType="#//DatasetDescription" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="commandLineTemplate" lowerBound="1"
-        upperBound="-1" eType="#//CommandLineEntryList" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commandLineTemplate" lowerBound="1" upperBound="-1" eType="#//CommandLineEntryList"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="readinessContraints" ordered="false"
-        upperBound="-1" eType="#//ReadinessConstraint" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readinessContraints" ordered="false" upperBound="-1" eType="#//ReadinessConstraint"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -40,6 +41,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterDescription">
     <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
       <details key="archetype" value="Thing"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This metaclass describes a parameter of a command line application."/>
     </eAnnotations>
     <eOperations name="isValidValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="A"/>
@@ -65,12 +69,9 @@
       </eParameters>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterKind" lowerBound="1"
-        eType="#//ParameterKind"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterType" lowerBound="1"
-        eType="#//ParameterType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" ordered="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterKind" lowerBound="1" eType="#//ParameterKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterType" lowerBound="1" eType="#//ParameterType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" ordered="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -86,10 +87,12 @@
     <eLiterals name="REAL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetDescription">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This metaclass describes a dataset of the command line application."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasetKind" lowerBound="1"
-        eType="#//DatasetKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasetKind" lowerBound="1" eType="#//DatasetKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DatasetKind">
     <eLiterals name="STANDARD_INPUT"/>
@@ -99,8 +102,7 @@
     <eLiterals name="FILE_COLLECTION" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommandLineEntryList" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" upperBound="-1"
-        eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" upperBound="-1" eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
@@ -108,20 +110,17 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literals" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literals" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1"
-        eType="#//DatasetDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//DatasetDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
-        eType="#//ParameterDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//ParameterDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -129,32 +128,24 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1"
-        eType="#//DatasetDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//DatasetDescription"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MinimunDatasetCardinalityConstraint"
-      eSuperTypes="#//DatasetConstraint">
+  <eClassifiers xsi:type="ecore:EClass" name="MinimunDatasetCardinalityConstraint" eSuperTypes="#//DatasetConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MaximunDatasetCardinalityConstraint"
-      eSuperTypes="#//DatasetConstraint">
+  <eClassifiers xsi:type="ecore:EClass" name="MaximunDatasetCardinalityConstraint" eSuperTypes="#//DatasetConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true"
-      eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
-        eType="#//ParameterDescription"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//ParameterDescription"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MinimunParameterCardinalityConstraint"
-      eSuperTypes="#//ParameterConstraint">
+  <eClassifiers xsi:type="ecore:EClass" name="MinimunParameterCardinalityConstraint" eSuperTypes="#//ParameterConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MaximunParameterCardinalityConstraint"
-      eSuperTypes="#//ParameterConstraint">
+  <eClassifiers xsi:type="ecore:EClass" name="MaximunParameterCardinalityConstraint" eSuperTypes="#//ParameterConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List"
-      serializable="false">
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List" serializable="false">
     <eTypeParameters name="A"/>
   </eClassifiers>
 </ecore:EPackage>
