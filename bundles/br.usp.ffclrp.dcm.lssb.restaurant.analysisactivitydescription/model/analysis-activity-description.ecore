@@ -5,9 +5,24 @@
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="slm" value="string-list-manipulators.ecore#/"/>
   </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AnalysisActivityDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This metaclass describes the information necessary to execute a command&#xA;line application, as well as its inputs and outputs."/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="noStdInAmongOutputs noStdOutOrStdErrAmongInputs onlyOneSdtInAmongInputs onlyOneSdtOutAmongOutputs onlyOneSdtErrAmongOutputs"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="noStdInAmongOutputs" value="&#xA;            0 = self.outputDatasets->collect(d :DatasetDescription &#xA;                | d.datasetKind = '#STANDARD_INPUT'&#xA;            )->size()"/>
+      <details key="noStdOutOrStdErrAmongInputs" value="&#xA;            0 = self.inputDatasets->collect(d :DatasetDescription &#xA;                | d.datasetKind = '#STANDARD_OUTPUT' or d.datasetKind = '#STANDARD_ERR'&#xA;            )->size()"/>
+      <details key="onlyOneSdtInAmongInputs" value=" &#xA;            2 > self.inputDatasets->collect(d :DatasetDescription &#xA;                | d.datasetKind = '#STANDARD_INPUT'&#xA;            )->size()"/>
+      <details key="onlyOneSdtOutAmongOutputs" value=" &#xA;            2 > self.outputDatasets->collect(d :DatasetDescription &#xA;                | d.datasetKind = '#STANDARD_OUTPUT'&#xA;            )->size()"/>
+      <details key="onlyOneSdtErrAmongOutputs" value=" &#xA;            2 > self.outputDatasets->collect(d :DatasetDescription &#xA;                | d.datasetKind = '#STANDARD_ERR'&#xA;            )->size()"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" ordered="false" upperBound="-1" eType="#//ParameterDescription"
         containment="true">
@@ -43,7 +58,7 @@
       <details key="archetype" value="Thing"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="This metaclass describes a parameter of a command line application."/>
+      <details key="documentation" value="This metaclass describes a parameter of a command line application.&#xA;A parameter is a argument that is passed by its literal value.&#xA;@SeeOther Dataset"/>
     </eAnnotations>
     <eOperations name="isValidValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="A"/>
@@ -88,7 +103,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="This metaclass describes a dataset of the command line application."/>
+      <details key="documentation" value="This metaclass describes a dataset of the command line application.&#xA;A Dataset is a number of related files. These files contains the data&#xA;of most interest for the analysis and are passed for the underlying tool&#xA;by their file system paths."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -131,18 +146,42 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//DatasetDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MinimunDatasetCardinalityConstraint" eSuperTypes="#//DatasetConstraint">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OnlyPositiveNumbers"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OnlyPositiveNumbers" value="&#xA;            value >= 1"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MaximunDatasetCardinalityConstraint" eSuperTypes="#//DatasetConstraint">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OnlyPositiveNumbersOrInfinite"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OnlyPositiveNumbersOrInfinite" value="&#xA;            value = -1 or value > 0"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//ParameterDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MinimunParameterCardinalityConstraint" eSuperTypes="#//ParameterConstraint">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OnlyPositiveNumbers"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OnlyPositiveNumbers" value="&#xA;            value >= 1"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MaximunParameterCardinalityConstraint" eSuperTypes="#//ParameterConstraint">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OnlyPositiveNumbersOrInfinite"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OnlyPositiveNumbersOrInfinite" value="&#xA;            value = -1 or value > 0"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List" serializable="false">

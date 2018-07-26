@@ -97,7 +97,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link StringListManipulatorsPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -111,12 +111,14 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 		if (isInited) return (StringListManipulatorsPackage)EPackage.Registry.INSTANCE.getEPackage(StringListManipulatorsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		StringListManipulatorsPackageImpl theStringListManipulatorsPackage = (StringListManipulatorsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof StringListManipulatorsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new StringListManipulatorsPackageImpl());
+		Object registeredStringListManipulatorsPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		StringListManipulatorsPackageImpl theStringListManipulatorsPackage = registeredStringListManipulatorsPackage instanceof StringListManipulatorsPackageImpl ? (StringListManipulatorsPackageImpl)registeredStringListManipulatorsPackage : new StringListManipulatorsPackageImpl();
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		AnalysisActivityDescriptionPackageImpl theAnalysisActivityDescriptionPackage = (AnalysisActivityDescriptionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI) instanceof AnalysisActivityDescriptionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI) : AnalysisActivityDescriptionPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI);
+		AnalysisActivityDescriptionPackageImpl theAnalysisActivityDescriptionPackage = (AnalysisActivityDescriptionPackageImpl)(registeredPackage instanceof AnalysisActivityDescriptionPackageImpl ? registeredPackage : AnalysisActivityDescriptionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theStringListManipulatorsPackage.createPackageContents();
@@ -129,7 +131,6 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 		// Mark meta-data to indicate it can't be changed
 		theStringListManipulatorsPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(StringListManipulatorsPackage.eNS_URI, theStringListManipulatorsPackage);
 		return theStringListManipulatorsPackage;
@@ -360,18 +361,18 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * @generated
 	 */
 	protected void createCollectionAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Collection";	
+		String source = "http://www.eclipse.org/OCL/Collection";
 		addAnnotation
-		  (getStringListManipulator__Transform__EList(), 
-		   source, 
+		  (getStringListManipulator__Transform__EList(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  ((getStringListManipulator__Transform__EList()).getEParameters().get(0), 
-		   source, 
+		  ((getStringListManipulator__Transform__EList()).getEParameters().get(0),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
+			   "nullFree", "false"
 		   });
 	}
 

@@ -11,6 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Analysis Activity Description</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * This metaclass describes the information necessary to execute a command
+ * line application, as well as its inputs and outputs.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -23,7 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getAnalysisActivityDescription()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='noStdInAmongOutputs noStdOutOrStdErrAmongInputs onlyOneSdtInAmongInputs onlyOneSdtOutAmongOutputs onlyOneSdtErrAmongOutputs'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot noStdInAmongOutputs='\n            0 = self.outputDatasets-&gt;collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_INPUT\'\n            )-&gt;size()' noStdOutOrStdErrAmongInputs='\n            0 = self.inputDatasets-&gt;collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_OUTPUT\' or d.datasetKind = \'#STANDARD_ERR\'\n            )-&gt;size()' onlyOneSdtInAmongInputs=' \n            2 &gt; self.inputDatasets-&gt;collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_INPUT\'\n            )-&gt;size()' onlyOneSdtOutAmongOutputs=' \n            2 &gt; self.outputDatasets-&gt;collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_OUTPUT\'\n            )-&gt;size()' onlyOneSdtErrAmongOutputs=' \n            2 &gt; self.outputDatasets-&gt;collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_ERR\'\n            )-&gt;size()'"
  * @generated
  */
 public interface AnalysisActivityDescription extends EObject {

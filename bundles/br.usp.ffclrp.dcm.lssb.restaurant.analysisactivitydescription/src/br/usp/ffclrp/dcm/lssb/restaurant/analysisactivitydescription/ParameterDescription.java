@@ -12,6 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Parameter Description</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * This metaclass describes a parameter of a command line application.
+ * A parameter is a argument that is passed by its literal value.
+ * @SeeOther Dataset
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>

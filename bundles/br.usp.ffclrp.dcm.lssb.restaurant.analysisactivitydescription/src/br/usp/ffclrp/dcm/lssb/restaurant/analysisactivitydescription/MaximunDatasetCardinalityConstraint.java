@@ -17,7 +17,8 @@ import java.math.BigInteger;
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getMaximunDatasetCardinalityConstraint()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='OnlyPositiveNumbersOrInfinite'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot OnlyPositiveNumbersOrInfinite='\n            value = -1 or value &gt; 0'"
  * @generated
  */
 public interface MaximunDatasetCardinalityConstraint extends DatasetConstraint {

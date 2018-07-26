@@ -22,6 +22,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKi
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.util.AnalysisActivityDescriptionValidator;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.StringListManipulatorsPackageImpl;
 import java.util.List;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.ETypeParameter;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -198,7 +200,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link AnalysisActivityDescriptionPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -212,12 +214,14 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		if (isInited) return (AnalysisActivityDescriptionPackage)EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityDescriptionPackage.eNS_URI);
 
 		// Obtain or create and register package
-		AnalysisActivityDescriptionPackageImpl theAnalysisActivityDescriptionPackage = (AnalysisActivityDescriptionPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AnalysisActivityDescriptionPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AnalysisActivityDescriptionPackageImpl());
+		Object registeredAnalysisActivityDescriptionPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		AnalysisActivityDescriptionPackageImpl theAnalysisActivityDescriptionPackage = registeredAnalysisActivityDescriptionPackage instanceof AnalysisActivityDescriptionPackageImpl ? (AnalysisActivityDescriptionPackageImpl)registeredAnalysisActivityDescriptionPackage : new AnalysisActivityDescriptionPackageImpl();
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		StringListManipulatorsPackageImpl theStringListManipulatorsPackage = (StringListManipulatorsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StringListManipulatorsPackage.eNS_URI) instanceof StringListManipulatorsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StringListManipulatorsPackage.eNS_URI) : StringListManipulatorsPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(StringListManipulatorsPackage.eNS_URI);
+		StringListManipulatorsPackageImpl theStringListManipulatorsPackage = (StringListManipulatorsPackageImpl)(registeredPackage instanceof StringListManipulatorsPackageImpl ? registeredPackage : StringListManipulatorsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theAnalysisActivityDescriptionPackage.createPackageContents();
@@ -227,10 +231,18 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		theAnalysisActivityDescriptionPackage.initializePackageContents();
 		theStringListManipulatorsPackage.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theAnalysisActivityDescriptionPackage,
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return AnalysisActivityDescriptionValidator.INSTANCE;
+				 }
+			 });
+
 		// Mark meta-data to indicate it can't be changed
 		theAnalysisActivityDescriptionPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(AnalysisActivityDescriptionPackage.eNS_URI, theAnalysisActivityDescriptionPackage);
 		return theAnalysisActivityDescriptionPackage;
@@ -849,6 +861,10 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		// Create annotations
 		// http://www.eclipse.org/OCL/Import
 		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
 		// http://www.eclipse.org/OCL/Collection
 		createCollectionAnnotations();
 		// http://www.obeo.fr/dsl/dnc/archetype
@@ -862,12 +878,104 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * @generated
 	 */
 	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";	
+		String source = "http://www.eclipse.org/OCL/Import";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "slm", "string-list-manipulators.ecore#/"
+			   "slm", "string-list-manipulators.ecore#/"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			   "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			   "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+		   });
+		addAnnotation
+		  (analysisActivityDescriptionEClass,
+		   source,
+		   new String[] {
+			   "constraints", "noStdInAmongOutputs noStdOutOrStdErrAmongInputs onlyOneSdtInAmongInputs onlyOneSdtOutAmongOutputs onlyOneSdtErrAmongOutputs"
+		   });
+		addAnnotation
+		  (minimunDatasetCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "constraints", "OnlyPositiveNumbers"
+		   });
+		addAnnotation
+		  (maximunDatasetCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "constraints", "OnlyPositiveNumbersOrInfinite"
+		   });
+		addAnnotation
+		  (minimunParameterCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "constraints", "OnlyPositiveNumbers"
+		   });
+		addAnnotation
+		  (maximunParameterCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "constraints", "OnlyPositiveNumbersOrInfinite"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation
+		  (analysisActivityDescriptionEClass,
+		   source,
+		   new String[] {
+			   "noStdInAmongOutputs", "\n            0 = self.outputDatasets->collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_INPUT\'\n            )->size()",
+			   "noStdOutOrStdErrAmongInputs", "\n            0 = self.inputDatasets->collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_OUTPUT\' or d.datasetKind = \'#STANDARD_ERR\'\n            )->size()",
+			   "onlyOneSdtInAmongInputs", " \n            2 > self.inputDatasets->collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_INPUT\'\n            )->size()",
+			   "onlyOneSdtOutAmongOutputs", " \n            2 > self.outputDatasets->collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_OUTPUT\'\n            )->size()",
+			   "onlyOneSdtErrAmongOutputs", " \n            2 > self.outputDatasets->collect(d :DatasetDescription \n                | d.datasetKind = \'#STANDARD_ERR\'\n            )->size()"
+		   });
+		addAnnotation
+		  (minimunDatasetCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "OnlyPositiveNumbers", "\n            value >= 1"
+		   });
+		addAnnotation
+		  (maximunDatasetCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "OnlyPositiveNumbersOrInfinite", "\n            value = -1 or value > 0"
+		   });
+		addAnnotation
+		  (minimunParameterCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "OnlyPositiveNumbers", "\n            value >= 1"
+		   });
+		addAnnotation
+		  (maximunParameterCardinalityConstraintEClass,
+		   source,
+		   new String[] {
+			   "OnlyPositiveNumbersOrInfinite", "\n            value = -1 or value > 0"
 		   });
 	}
 
@@ -878,60 +986,60 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * @generated
 	 */
 	protected void createCollectionAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Collection";	
+		String source = "http://www.eclipse.org/OCL/Collection";
 		addAnnotation
-		  (getAnalysisActivityDescription_Parameters(), 
-		   source, 
+		  (getAnalysisActivityDescription_Parameters(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getAnalysisActivityDescription_InputDatasets(), 
-		   source, 
+		  (getAnalysisActivityDescription_InputDatasets(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getAnalysisActivityDescription_OutputDatasets(), 
-		   source, 
+		  (getAnalysisActivityDescription_OutputDatasets(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getAnalysisActivityDescription_CommandLineTemplate(), 
-		   source, 
+		  (getAnalysisActivityDescription_CommandLineTemplate(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getAnalysisActivityDescription_ReadinessContraints(), 
-		   source, 
+		  (getAnalysisActivityDescription_ReadinessContraints(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  ((getParameterDescription__IsValidValue__EList()).getEParameters().get(0), 
-		   source, 
+		  ((getParameterDescription__IsValidValue__EList()).getEParameters().get(0),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getParameterDescription_DefaultValue(), 
-		   source, 
+		  (getParameterDescription_DefaultValue(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getCommandLineEntryList_Manipulators(), 
-		   source, 
+		  (getCommandLineEntryList_Manipulators(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
-		   });	
+			   "nullFree", "false"
+		   });
 		addAnnotation
-		  (getLiteralCommandLineEntryList_Literals(), 
-		   source, 
+		  (getLiteralCommandLineEntryList_Literals(),
+		   source,
 		   new String[] {
-			 "nullFree", "false"
+			   "nullFree", "false"
 		   });
 	}
 
@@ -942,12 +1050,12 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * @generated
 	 */
 	protected void createArchetypeAnnotations() {
-		String source = "http://www.obeo.fr/dsl/dnc/archetype";	
+		String source = "http://www.obeo.fr/dsl/dnc/archetype";
 		addAnnotation
-		  (parameterDescriptionEClass, 
-		   source, 
+		  (parameterDescriptionEClass,
+		   source,
 		   new String[] {
-			 "archetype", "Thing"
+			   "archetype", "Thing"
 		   });
 	}
 

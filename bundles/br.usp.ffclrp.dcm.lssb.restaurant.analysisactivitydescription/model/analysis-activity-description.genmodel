@@ -15,6 +15,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//ParameterType">
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/REAL"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//DatasetKind">
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/STANDARD_INPUT"/>
@@ -23,7 +24,9 @@
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/SINGLE_FILE"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/FILE_COLLECTION"/>
     </genEnums>
-    <genDataTypes ecoreDataType="analysis-activity-description.ecore#//Object"/>
+    <genDataTypes ecoreDataType="analysis-activity-description.ecore#//List">
+      <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//List/A"/>
+    </genDataTypes>
     <genClasses ecoreClass="analysis-activity-description.ecore#//AnalysisActivityDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/inputDatasets"/>
@@ -38,12 +41,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ParameterDescription/defaultValue"/>
       <genOperations ecoreOperation="analysis-activity-description.ecore#//ParameterDescription/isValidValue">
         <genParameters ecoreParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue/value"/>
+        <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue/A"/>
       </genOperations>
       <genOperations ecoreOperation="analysis-activity-description.ecore#//ParameterDescription/isValidValue.1">
         <genParameters ecoreParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.1/value"/>
+        <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.1/A"/>
       </genOperations>
       <genOperations ecoreOperation="analysis-activity-description.ecore#//ParameterDescription/isValidValue.2">
         <genParameters ecoreParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.2/value"/>
+        <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.2/A"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//DatasetDescription">

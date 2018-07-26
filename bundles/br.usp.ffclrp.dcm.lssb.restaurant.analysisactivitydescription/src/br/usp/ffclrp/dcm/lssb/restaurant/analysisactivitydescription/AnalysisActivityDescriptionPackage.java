@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EReference;
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/OCL/Import slm='string-list-manipulators.ecore#/'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface AnalysisActivityDescriptionPackage extends EPackage {

@@ -17,7 +17,8 @@ import java.math.BigInteger;
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getMinimunDatasetCardinalityConstraint()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='OnlyPositiveNumbers'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot OnlyPositiveNumbers='\n            value &gt;= 1'"
  * @generated
  */
 public interface MinimunDatasetCardinalityConstraint extends DatasetConstraint {
