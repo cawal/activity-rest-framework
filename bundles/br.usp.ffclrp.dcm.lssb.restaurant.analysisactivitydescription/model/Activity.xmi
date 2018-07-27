@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aad:Activity
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore">
+  <parameters
+      name="parameter"/>
+  <tool xsi:type="aad:CommandLineTool"
+      name="ls"
+      executablePath="ls">
+    <commandLineTemplate
+        xsi:type="aad:LiteralCommandLineEntryList">
+      <literals>teste</literals>
+    </commandLineTemplate>
+    <exitCodes
+        code="0"
+        reportMessage="Success"/>
+    <exitCodes
+        code="1"
+        reportMessage="Something failed"/>
+  </tool>
+</aad:Activity>
