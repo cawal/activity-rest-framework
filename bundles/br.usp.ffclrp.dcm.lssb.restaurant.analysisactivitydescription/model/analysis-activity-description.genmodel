@@ -8,54 +8,75 @@
   <foreignModel>analysis-activity-description.ecore</foreignModel>
   <genPackages prefix="AnalysisActivityDescription" basePackage="br.usp.ffclrp.dcm.lssb.restaurant"
       disposableProviderFactory="true" ecorePackage="analysis-activity-description.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//ParameterKind">
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterKind/SINGLE_VALUE"/>
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterKind/LIST"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//ParameterType">
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/INTEGER"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/REAL"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//DatasetKind">
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/STANDARD_INPUT"/>
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/STANDARD_OUTPUT"/>
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/STANDARD_ERROR"/>
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/SINGLE_FILE"/>
-      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//DatasetKind/FILE_COLLECTION"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//TerminationStatus">
+      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//TerminationStatus/SUCCEEDED"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//TerminationStatus/FAILED"/>
     </genEnums>
-    <genDataTypes ecoreDataType="analysis-activity-description.ecore#//List">
-      <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//List/A"/>
-    </genDataTypes>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//AnalysisActivityDescription">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/inputDatasets"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/outputDatasets"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/commandLineTemplate"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//AnalysisActivityDescription/readinessContraints"/>
+    <genDataTypes ecoreDataType="analysis-activity-description.ecore#//ExecutablePath"/>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//Activity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/inputDatasets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/outputDatasets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/readinessContraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/tool"/>
     </genClasses>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//ParameterDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ParameterDescription/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ParameterDescription/parameterKind"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ParameterDescription/parameterType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ParameterDescription/defaultValue"/>
-      <genOperations ecoreOperation="analysis-activity-description.ecore#//ParameterDescription/isValidValue">
-        <genParameters ecoreParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue/value"/>
-        <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue/A"/>
-      </genOperations>
-      <genOperations ecoreOperation="analysis-activity-description.ecore#//ParameterDescription/isValidValue.1">
-        <genParameters ecoreParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.1/value"/>
-        <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.1/A"/>
-      </genOperations>
-      <genOperations ecoreOperation="analysis-activity-description.ecore#//ParameterDescription/isValidValue.2">
-        <genParameters ecoreParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.2/value"/>
-        <genTypeParameters ecoreTypeParameter="analysis-activity-description.ecore#//ParameterDescription/isValidValue.2/A"/>
-      </genOperations>
+    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//MultiplicityElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MultiplicityElement/minimumCardinality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MultiplicityElement/maximumCardinality"/>
     </genClasses>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//DatasetDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//DatasetDescription/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//DatasetDescription/mimetype"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//DatasetDescription/datasetKind"/>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/parameterType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//Dataset">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/mimetype"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//InputDataset"/>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//OutputDataset"/>
+    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//ReadinessConstraint"/>
+    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//DatasetReadinessConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//DatasetReadinessConstraint/dataset"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//ParameterReadinessConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//ParameterReadinessConstraint/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//MinimunDatasetCardinalityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MinimunDatasetCardinalityConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//MaximunDatasetCardinalityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MaximunDatasetCardinalityConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//MinimunParameterCardinalityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MinimunParameterCardinalityConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//MaximunParameterCardinalityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MaximunParameterCardinalityConstraint/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//Tool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Tool/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Tool/activity"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//CommandLineTool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//CommandLineTool/executablePath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/commandLineTemplate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/standardInputStream"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/standardOutputStream"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/standardErrorStream"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/exitCodes"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//ExitCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ExitCode/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ExitCode/reportMessage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//ExitCode/status"/>
     </genClasses>
     <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//CommandLineEntryList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineEntryList/manipulators"/>
@@ -68,25 +89,6 @@
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//ParameterCommandLineEntryList">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//ParameterCommandLineEntryList/parameter"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//ReadinessConstraint"/>
-    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//DatasetConstraint">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//DatasetConstraint/dataset"/>
-    </genClasses>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//MinimunDatasetCardinalityConstraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MinimunDatasetCardinalityConstraint/value"/>
-    </genClasses>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//MaximunDatasetCardinalityConstraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MaximunDatasetCardinalityConstraint/value"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//ParameterConstraint">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//ParameterConstraint/parameter"/>
-    </genClasses>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//MinimunParameterCardinalityConstraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MinimunParameterCardinalityConstraint/value"/>
-    </genClasses>
-    <genClasses ecoreClass="analysis-activity-description.ecore#//MaximunParameterCardinalityConstraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MaximunParameterCardinalityConstraint/value"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="StringListManipulators" basePackage="br.usp.ffclrp.dcm.lssb.restaurant"

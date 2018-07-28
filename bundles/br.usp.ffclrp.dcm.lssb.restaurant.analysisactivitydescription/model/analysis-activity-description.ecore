@@ -21,12 +21,12 @@
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1" eType="#//Dataset" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1" eType="#//InputDataset" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1" eType="#//Dataset" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1" eType="#//OutputDataset" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -76,7 +76,7 @@
     <eLiterals name="INTEGER"/>
     <eLiterals name="REAL"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Dataset" eSuperTypes="#//MultiplicityElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Dataset" abstract="true" eSuperTypes="#//MultiplicityElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This metaclass describes a dataset of the command line application.&#xA;A Dataset is a number of related files. These files contains the data&#xA;of most interest for the analysis and are passed for the underlying tool&#xA;by their file system paths."/>
     </eAnnotations>
@@ -84,6 +84,8 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputDataset" eSuperTypes="#//Dataset"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputDataset" eSuperTypes="#//Dataset"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Constraints on readiness of the activity"/>
@@ -160,9 +162,9 @@
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="standardInputStream" eType="#//Dataset"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="standardOutputStream" eType="#//Dataset"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="standardErrorStream" eType="#//Dataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="standardInputStream" eType="#//InputDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="standardOutputStream" eType="#//OutputDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="standardErrorStream" eType="#//OutputDataset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exitCodes" ordered="false" upperBound="-1" eType="#//ExitCode" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
@@ -174,7 +176,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reportMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1" eType="#//TerminationStatus"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TerminationStatus" serializable="false">
+  <eClassifiers xsi:type="ecore:EEnum" name="TerminationStatus">
     <eLiterals name="SUCCEEDED"/>
     <eLiterals name="FAILED" value="1"/>
   </eClassifiers>
@@ -191,10 +193,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="AtLeast1Value"/>
+      <details key="constraints" value="OneOrMoreLiterals"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="AtLeast1Value" value="&#xA;            literals->size() > 0"/>
+      <details key="OneOrMoreLiterals" value="&#xA;            literals->size() > 0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literals" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
