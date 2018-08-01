@@ -28,7 +28,7 @@
             id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionEditorID"
             name="%_UI_AnalysisActivityDescriptionEditor_label"
             icon="icons/full/obj16/AnalysisActivityDescriptionModelFile.gif"
-            extensions="aadm"
+            extensions="aad"
             class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionEditor"
             contributorClass="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionActionBarContributor">
       </editor>

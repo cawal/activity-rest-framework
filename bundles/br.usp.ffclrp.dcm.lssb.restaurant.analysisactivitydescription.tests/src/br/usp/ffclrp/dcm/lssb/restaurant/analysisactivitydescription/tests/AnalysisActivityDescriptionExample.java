@@ -59,7 +59,7 @@ public class AnalysisActivityDescriptionExample {
 		if (args.length == 0) {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
-				Resource resource = resourceSet.createResource(URI.createURI("http:///My.aadm"));
+				Resource resource = resourceSet.createResource(URI.createURI("http:///My.aad"));
 				Activity root = AnalysisActivityDescriptionFactory.eINSTANCE.createActivity();
 				resource.getContents().add(root);
 				resource.save(System.out, null);

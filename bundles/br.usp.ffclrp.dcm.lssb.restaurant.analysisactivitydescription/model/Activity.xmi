@@ -8,5 +8,8 @@
       name="output"
       mimetype="plain/text"/>
   <tool xsi:type="aad:CommandLineTool"
-      name="ls"/>
+      name="ls">
+    <commandLineTemplate
+        xsi:type="aad:ToolNameCommandLineEntry"/>
+  </tool>
 </aad:Activity>

@@ -7,7 +7,7 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>analysis-activity-description.ecore</foreignModel>
   <genPackages prefix="AnalysisActivityDescription" basePackage="br.usp.ffclrp.dcm.lssb.restaurant"
-      disposableProviderFactory="true" fileExtensions="aadm" ecorePackage="analysis-activity-description.ecore#/">
+      disposableProviderFactory="true" fileExtensions="aad" ecorePackage="analysis-activity-description.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//ParameterType">
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/INTEGER"/>
