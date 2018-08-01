@@ -7,7 +7,7 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>analysis-activity-description.ecore</foreignModel>
   <genPackages prefix="AnalysisActivityDescription" basePackage="br.usp.ffclrp.dcm.lssb.restaurant"
-      disposableProviderFactory="true" ecorePackage="analysis-activity-description.ecore#/">
+      disposableProviderFactory="true" fileExtensions="aadm" ecorePackage="analysis-activity-description.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//ParameterType">
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/INTEGER"/>
@@ -17,7 +17,7 @@
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//TerminationStatus/SUCCEEDED"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//TerminationStatus/FAILED"/>
     </genEnums>
-    <genDataTypes ecoreDataType="analysis-activity-description.ecore#//ExecutablePath"/>
+    <genDataTypes ecoreDataType="analysis-activity-description.ecore#//FilePath"/>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/description"/>
@@ -61,6 +61,11 @@
     <genClasses ecoreClass="analysis-activity-description.ecore#//MaximunParameterCardinalityConstraint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MaximunParameterCardinalityConstraint/value"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//CustomConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//CustomConstraint/name"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//CustomParameterConstraint"/>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//CustomDatasetConstraint"/>
     <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//Tool">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Tool/name"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Tool/activity"/>
@@ -81,6 +86,7 @@
     <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//CommandLineEntryList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineEntryList/manipulators"/>
     </genClasses>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//ToolNameCommandLineEntry"/>
     <genClasses ecoreClass="analysis-activity-description.ecore#//LiteralCommandLineEntryList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//LiteralCommandLineEntryList/literals"/>
     </genClasses>

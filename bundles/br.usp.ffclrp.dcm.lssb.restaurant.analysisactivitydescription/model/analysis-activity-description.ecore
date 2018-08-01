@@ -133,6 +133,11 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterConstraint" eSuperTypes="#//CustomConstraint #//ParameterReadinessConstraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetConstraint" eSuperTypes="#//CustomConstraint #//DatasetReadinessConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="Tool" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Abstract class to describe the tool used for executing the activity."/>
@@ -145,17 +150,17 @@
       <details key="documentation" value="A command line tool that can be called to execute the activity."/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="stdInMustBeInputDataset stdInMustHave1AsCardinality stdOutMustBeOutputDataset stdOutMustHave1AsCardinality stdErrMustBeOutputDataset stdErrMustHave1AsCardinality"/>
+      <details key="constraints" value="stdInMustBeInputDatasetInRelatedActivity stdOutMustBeOutputDatasetInRelatedActivity stdErrMustBeOutputDatasetInRelatedActivity stdInMustHave1AsCardinality stdOutMustHave1AsCardinality stdErrMustHave1AsCardinality"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="stdInMustBeInputDataset" value="&#xA;            if not self.standardInputStream.oclIsUndefined() then&#xA;                self.activity.inputDatasets->includes(self.standardInputStream)&#xA;            else true endif"/>
+      <details key="stdInMustBeInputDatasetInRelatedActivity" value="&#xA;            if not self.standardInputStream.oclIsUndefined() then&#xA;                self.activity.inputDatasets->includes(self.standardInputStream)&#xA;            else true endif"/>
+      <details key="stdOutMustBeOutputDatasetInRelatedActivity" value="&#xA;            if not self.standardOutputStream.oclIsUndefined() then&#xA;                self.activity.outputDatasets->includes(self.standardOutputStream)&#xA;            else true endif"/>
+      <details key="stdErrMustBeOutputDatasetInRelatedActivity" value="&#xA;            if not self.standardErrorStream.oclIsUndefined() then&#xA;                self.activity.outputDatasets->includes(self.standardErrorStream)&#xA;            else true endif"/>
       <details key="stdInMustHave1AsCardinality" value="&#xA;            if not self.standardInputStream.oclIsUndefined() then&#xA;                self.standardInputStream.minimumCardinality = 1&#xA;                and self.standardInputStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
-      <details key="stdOutMustBeOutputDataset" value="&#xA;            if not self.standardOutputStream.oclIsUndefined() then&#xA;                self.activity.outputDatasets->includes(self.standardOutputStream)&#xA;            else true endif"/>
       <details key="stdOutMustHave1AsCardinality" value="&#xA;            if not self.standardOutputStream.oclIsUndefined() then&#xA;                self.standardOutputStream.minimumCardinality = 1&#xA;                and self.standardOutputStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
-      <details key="stdErrMustBeOutputDataset" value="&#xA;            if not self.standardErrorStream.oclIsUndefined() then&#xA;                self.activity.outputDatasets->includes(self.standardErrorStream)&#xA;            else true endif"/>
       <details key="stdErrMustHave1AsCardinality" value="&#xA;            if not self.standardErrorStream.oclIsUndefined() then&#xA;                self.standardErrorStream.minimumCardinality = 1&#xA;                and self.standardErrorStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executablePath" eType="#//ExecutablePath"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executablePath" eType="#//FilePath"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commandLineTemplate" lowerBound="1" upperBound="-1" eType="#//CommandLineEntryList"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
@@ -184,13 +189,14 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A list of entries for the command line tool."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" upperBound="-1" eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" ordered="false" upperBound="-1" eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolNameCommandLineEntry" eSuperTypes="#//CommandLineEntryList"/>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="OneOrMoreLiterals"/>
@@ -210,5 +216,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ExecutablePath" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="FilePath" instanceClassName="java.lang.String"/>
 </ecore:EPackage>

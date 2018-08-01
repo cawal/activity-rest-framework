@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Constraints on readiness
+ * Constraints on readiness of the activity
  * <!-- end-model-doc -->
  *
  *

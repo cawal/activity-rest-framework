@@ -3,8 +3,6 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.util;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.*;
-
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -87,42 +85,60 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
-			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION:
-				return validateAnalysisActivityDescription((AnalysisActivityDescription)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION:
-				return validateParameterDescription((ParameterDescription)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION:
-				return validateDatasetDescription((DatasetDescription)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.ACTIVITY:
+				return validateActivity((Activity)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.MULTIPLICITY_ELEMENT:
+				return validateMultiplicityElement((MultiplicityElement)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.PARAMETER:
+				return validateParameter((Parameter)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.DATASET:
+				return validateDataset((Dataset)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.INPUT_DATASET:
+				return validateInputDataset((InputDataset)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET:
+				return validateOutputDataset((OutputDataset)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT:
+				return validateReadinessConstraint((ReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT:
+				return validateDatasetReadinessConstraint((DatasetReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT:
+				return validateParameterReadinessConstraint((ParameterReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT:
+				return validateMinimunDatasetCardinalityConstraint((MinimunDatasetCardinalityConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT:
+				return validateMaximunDatasetCardinalityConstraint((MaximunDatasetCardinalityConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
+				return validateMinimunParameterCardinalityConstraint((MinimunParameterCardinalityConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
+				return validateMaximunParameterCardinalityConstraint((MaximunParameterCardinalityConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.CUSTOM_CONSTRAINT:
+				return validateCustomConstraint((CustomConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT:
+				return validateCustomParameterConstraint((CustomParameterConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT:
+				return validateCustomDatasetConstraint((CustomDatasetConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.TOOL:
+				return validateTool((Tool)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL:
+				return validateCommandLineTool((CommandLineTool)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.EXIT_CODE:
+				return validateExitCode((ExitCode)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST:
 				return validateCommandLineEntryList((CommandLineEntryList)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.TOOL_NAME_COMMAND_LINE_ENTRY:
+				return validateToolNameCommandLineEntry((ToolNameCommandLineEntry)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST:
 				return validateLiteralCommandLineEntryList((LiteralCommandLineEntryList)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST:
 				return validateDatasetCommandLineEntryList((DatasetCommandLineEntryList)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST:
 				return validateParameterCommandLineEntryList((ParameterCommandLineEntryList)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT:
-				return validateReadinessConstraint((ReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT:
-				return validateDatasetConstraint((DatasetConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT:
-				return validateMinimunDatasetCardinalityConstraint((MinimunDatasetCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT:
-				return validateMaximunDatasetCardinalityConstraint((MaximunDatasetCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT:
-				return validateParameterConstraint((ParameterConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
-				return validateMinimunParameterCardinalityConstraint((MinimunParameterCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
-				return validateMaximunParameterCardinalityConstraint((MaximunParameterCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.PARAMETER_KIND:
-				return validateParameterKind((ParameterKind)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.PARAMETER_TYPE:
 				return validateParameterType((ParameterType)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.DATASET_KIND:
-				return validateDatasetKind((DatasetKind)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.LIST:
-				return validateList((List<?>)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.TERMINATION_STATUS:
+				return validateTerminationStatus((TerminationStatus)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.FILE_PATH:
+				return validateFilePath((String)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -133,179 +149,85 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAnalysisActivityDescription(AnalysisActivityDescription analysisActivityDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(analysisActivityDescription, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validateAnalysisActivityDescription_noStdInAmongOutputs(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validateAnalysisActivityDescription_noStdOutOrStdErrAmongInputs(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validateAnalysisActivityDescription_onlyOneSdtInAmongInputs(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validateAnalysisActivityDescription_onlyOneSdtOutAmongOutputs(analysisActivityDescription, diagnostics, context);
-		if (result || diagnostics != null) result &= validateAnalysisActivityDescription_onlyOneSdtErrAmongOutputs(analysisActivityDescription, diagnostics, context);
+	public boolean validateActivity(Activity activity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(activity, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMultiplicityElement(MultiplicityElement multiplicityElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(multiplicityElement, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersForMinimumCardinality(multiplicityElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersOrMinusOneForMaximumCardinality(multiplicityElement, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the noStdInAmongOutputs constraint of '<em>Analysis Activity Description</em>'.
+	 * The cached validation expression for the OnlyPositiveNumbersForMinimumCardinality constraint of '<em>Multiplicity Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String ANALYSIS_ACTIVITY_DESCRIPTION__NO_STD_IN_AMONG_OUTPUTS__EEXPRESSION = "\n" +
-		"            0 = self.outputDatasets->collect(d :DatasetDescription \n" +
-		"                | d.datasetKind = '#STANDARD_INPUT'\n" +
-		"            )->size()";
+	protected static final String MULTIPLICITY_ELEMENT__ONLY_POSITIVE_NUMBERS_FOR_MINIMUM_CARDINALITY__EEXPRESSION = "\n" +
+		"            minimumCardinality >= 1";
 
 	/**
-	 * Validates the noStdInAmongOutputs constraint of '<em>Analysis Activity Description</em>'.
+	 * Validates the OnlyPositiveNumbersForMinimumCardinality constraint of '<em>Multiplicity Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAnalysisActivityDescription_noStdInAmongOutputs(AnalysisActivityDescription analysisActivityDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMultiplicityElement_OnlyPositiveNumbersForMinimumCardinality(MultiplicityElement multiplicityElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return
 			validate
-				(AnalysisActivityDescriptionPackage.Literals.ANALYSIS_ACTIVITY_DESCRIPTION,
-				 analysisActivityDescription,
+				(AnalysisActivityDescriptionPackage.Literals.MULTIPLICITY_ELEMENT,
+				 multiplicityElement,
 				 diagnostics,
 				 context,
 				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "noStdInAmongOutputs",
-				 ANALYSIS_ACTIVITY_DESCRIPTION__NO_STD_IN_AMONG_OUTPUTS__EEXPRESSION,
+				 "OnlyPositiveNumbersForMinimumCardinality",
+				 MULTIPLICITY_ELEMENT__ONLY_POSITIVE_NUMBERS_FOR_MINIMUM_CARDINALITY__EEXPRESSION,
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
 	}
 
 	/**
-	 * The cached validation expression for the noStdOutOrStdErrAmongInputs constraint of '<em>Analysis Activity Description</em>'.
+	 * The cached validation expression for the OnlyPositiveNumbersOrMinusOneForMaximumCardinality constraint of '<em>Multiplicity Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String ANALYSIS_ACTIVITY_DESCRIPTION__NO_STD_OUT_OR_STD_ERR_AMONG_INPUTS__EEXPRESSION = "\n" +
-		"            0 = self.inputDatasets->collect(d :DatasetDescription \n" +
-		"                | d.datasetKind = '#STANDARD_OUTPUT' or d.datasetKind = '#STANDARD_ERR'\n" +
-		"            )->size()";
+	protected static final String MULTIPLICITY_ELEMENT__ONLY_POSITIVE_NUMBERS_OR_MINUS_ONE_FOR_MAXIMUM_CARDINALITY__EEXPRESSION = "\n" +
+		"            maximumCardinality >= 1 or maximumCardinality = -1";
 
 	/**
-	 * Validates the noStdOutOrStdErrAmongInputs constraint of '<em>Analysis Activity Description</em>'.
+	 * Validates the OnlyPositiveNumbersOrMinusOneForMaximumCardinality constraint of '<em>Multiplicity Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAnalysisActivityDescription_noStdOutOrStdErrAmongInputs(AnalysisActivityDescription analysisActivityDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMultiplicityElement_OnlyPositiveNumbersOrMinusOneForMaximumCardinality(MultiplicityElement multiplicityElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return
 			validate
-				(AnalysisActivityDescriptionPackage.Literals.ANALYSIS_ACTIVITY_DESCRIPTION,
-				 analysisActivityDescription,
+				(AnalysisActivityDescriptionPackage.Literals.MULTIPLICITY_ELEMENT,
+				 multiplicityElement,
 				 diagnostics,
 				 context,
 				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "noStdOutOrStdErrAmongInputs",
-				 ANALYSIS_ACTIVITY_DESCRIPTION__NO_STD_OUT_OR_STD_ERR_AMONG_INPUTS__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
-	}
-
-	/**
-	 * The cached validation expression for the onlyOneSdtInAmongInputs constraint of '<em>Analysis Activity Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String ANALYSIS_ACTIVITY_DESCRIPTION__ONLY_ONE_SDT_IN_AMONG_INPUTS__EEXPRESSION = " \n" +
-		"            2 > self.inputDatasets->collect(d :DatasetDescription \n" +
-		"                | d.datasetKind = '#STANDARD_INPUT'\n" +
-		"            )->size()";
-
-	/**
-	 * Validates the onlyOneSdtInAmongInputs constraint of '<em>Analysis Activity Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAnalysisActivityDescription_onlyOneSdtInAmongInputs(AnalysisActivityDescription analysisActivityDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.ANALYSIS_ACTIVITY_DESCRIPTION,
-				 analysisActivityDescription,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "onlyOneSdtInAmongInputs",
-				 ANALYSIS_ACTIVITY_DESCRIPTION__ONLY_ONE_SDT_IN_AMONG_INPUTS__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
-	}
-
-	/**
-	 * The cached validation expression for the onlyOneSdtOutAmongOutputs constraint of '<em>Analysis Activity Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String ANALYSIS_ACTIVITY_DESCRIPTION__ONLY_ONE_SDT_OUT_AMONG_OUTPUTS__EEXPRESSION = " \n" +
-		"            2 > self.outputDatasets->collect(d :DatasetDescription \n" +
-		"                | d.datasetKind = '#STANDARD_OUTPUT'\n" +
-		"            )->size()";
-
-	/**
-	 * Validates the onlyOneSdtOutAmongOutputs constraint of '<em>Analysis Activity Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAnalysisActivityDescription_onlyOneSdtOutAmongOutputs(AnalysisActivityDescription analysisActivityDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.ANALYSIS_ACTIVITY_DESCRIPTION,
-				 analysisActivityDescription,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "onlyOneSdtOutAmongOutputs",
-				 ANALYSIS_ACTIVITY_DESCRIPTION__ONLY_ONE_SDT_OUT_AMONG_OUTPUTS__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
-	}
-
-	/**
-	 * The cached validation expression for the onlyOneSdtErrAmongOutputs constraint of '<em>Analysis Activity Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String ANALYSIS_ACTIVITY_DESCRIPTION__ONLY_ONE_SDT_ERR_AMONG_OUTPUTS__EEXPRESSION = " \n" +
-		"            2 > self.outputDatasets->collect(d :DatasetDescription \n" +
-		"                | d.datasetKind = '#STANDARD_ERR'\n" +
-		"            )->size()";
-
-	/**
-	 * Validates the onlyOneSdtErrAmongOutputs constraint of '<em>Analysis Activity Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAnalysisActivityDescription_onlyOneSdtErrAmongOutputs(AnalysisActivityDescription analysisActivityDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.ANALYSIS_ACTIVITY_DESCRIPTION,
-				 analysisActivityDescription,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "onlyOneSdtErrAmongOutputs",
-				 ANALYSIS_ACTIVITY_DESCRIPTION__ONLY_ONE_SDT_ERR_AMONG_OUTPUTS__EEXPRESSION,
+				 "OnlyPositiveNumbersOrMinusOneForMaximumCardinality",
+				 MULTIPLICITY_ELEMENT__ONLY_POSITIVE_NUMBERS_OR_MINUS_ONE_FOR_MAXIMUM_CARDINALITY__EEXPRESSION,
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
@@ -316,8 +238,52 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameterDescription(ParameterDescription parameterDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parameterDescription, diagnostics, context);
+	public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(parameter, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersForMinimumCardinality(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersOrMinusOneForMaximumCardinality(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validateParameter_defaultValueCardinalityMustBeLessThanMaximun(parameter, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the defaultValueCardinalityMustBeLessThanMaximun constraint of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String PARAMETER__DEFAULT_VALUE_CARDINALITY_MUST_BE_LESS_THAN_MAXIMUN__EEXPRESSION = "\n" +
+		"            if maximumCardinality > 1 then\n" +
+		"                defaultValue->size() <= maximumCardinality\n" +
+		"            else true endif";
+
+	/**
+	 * Validates the defaultValueCardinalityMustBeLessThanMaximun constraint of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameter_defaultValueCardinalityMustBeLessThanMaximun(Parameter parameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.PARAMETER,
+				 parameter,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "defaultValueCardinalityMustBeLessThanMaximun",
+				 PARAMETER__DEFAULT_VALUE_CARDINALITY_MUST_BE_LESS_THAN_MAXIMUN__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -325,8 +291,59 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDatasetDescription(DatasetDescription datasetDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(datasetDescription, diagnostics, context);
+	public boolean validateDataset(Dataset dataset, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(dataset, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersForMinimumCardinality(dataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersOrMinusOneForMaximumCardinality(dataset, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInputDataset(InputDataset inputDataset, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(inputDataset, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersForMinimumCardinality(inputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersOrMinusOneForMaximumCardinality(inputDataset, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOutputDataset(OutputDataset outputDataset, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(outputDataset, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersForMinimumCardinality(outputDataset, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMultiplicityElement_OnlyPositiveNumbersOrMinusOneForMaximumCardinality(outputDataset, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -343,8 +360,57 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateToolNameCommandLineEntry(ToolNameCommandLineEntry toolNameCommandLineEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(toolNameCommandLineEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateLiteralCommandLineEntryList(LiteralCommandLineEntryList literalCommandLineEntryList, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(literalCommandLineEntryList, diagnostics, context);
+		if (!validate_NoCircularContainment(literalCommandLineEntryList, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(literalCommandLineEntryList, diagnostics, context);
+		if (result || diagnostics != null) result &= validateLiteralCommandLineEntryList_OneOrMoreLiterals(literalCommandLineEntryList, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the OneOrMoreLiterals constraint of '<em>Literal Command Line Entry List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String LITERAL_COMMAND_LINE_ENTRY_LIST__ONE_OR_MORE_LITERALS__EEXPRESSION = "\n" +
+		"            literals->size() > 0";
+
+	/**
+	 * Validates the OneOrMoreLiterals constraint of '<em>Literal Command Line Entry List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLiteralCommandLineEntryList_OneOrMoreLiterals(LiteralCommandLineEntryList literalCommandLineEntryList, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.LITERAL_COMMAND_LINE_ENTRY_LIST,
+				 literalCommandLineEntryList,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "OneOrMoreLiterals",
+				 LITERAL_COMMAND_LINE_ENTRY_LIST__ONE_OR_MORE_LITERALS__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -379,8 +445,17 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDatasetConstraint(DatasetConstraint datasetConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(datasetConstraint, diagnostics, context);
+	public boolean validateDatasetReadinessConstraint(DatasetReadinessConstraint datasetReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(datasetReadinessConstraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameterReadinessConstraint(ParameterReadinessConstraint parameterReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(parameterReadinessConstraint, diagnostics, context);
 	}
 
 	/**
@@ -486,15 +561,6 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameterConstraint(ParameterConstraint parameterConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parameterConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint minimunParameterCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(minimunParameterCardinalityConstraint, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(minimunParameterCardinalityConstraint, diagnostics, context);
@@ -593,8 +659,269 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameterKind(ParameterKind parameterKind, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
+	public boolean validateCustomConstraint(CustomConstraint customConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(customConstraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCustomParameterConstraint(CustomParameterConstraint customParameterConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(customParameterConstraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCustomDatasetConstraint(CustomDatasetConstraint customDatasetConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(customDatasetConstraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTool(Tool tool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(tool, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(commandLineTool, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCommandLineTool_stdInMustBeInputDatasetInRelatedActivity(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCommandLineTool_stdOutMustBeOutputDatasetInRelatedActivity(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCommandLineTool_stdErrMustBeOutputDatasetInRelatedActivity(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCommandLineTool_stdInMustHave1AsCardinality(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCommandLineTool_stdOutMustHave1AsCardinality(commandLineTool, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCommandLineTool_stdErrMustHave1AsCardinality(commandLineTool, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the stdInMustBeInputDatasetInRelatedActivity constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMAND_LINE_TOOL__STD_IN_MUST_BE_INPUT_DATASET_IN_RELATED_ACTIVITY__EEXPRESSION = "\n" +
+		"            if not self.standardInputStream.oclIsUndefined() then\n" +
+		"                self.activity.inputDatasets->includes(self.standardInputStream)\n" +
+		"            else true endif";
+
+	/**
+	 * Validates the stdInMustBeInputDatasetInRelatedActivity constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool_stdInMustBeInputDatasetInRelatedActivity(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL,
+				 commandLineTool,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "stdInMustBeInputDatasetInRelatedActivity",
+				 COMMAND_LINE_TOOL__STD_IN_MUST_BE_INPUT_DATASET_IN_RELATED_ACTIVITY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the stdOutMustBeOutputDatasetInRelatedActivity constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMAND_LINE_TOOL__STD_OUT_MUST_BE_OUTPUT_DATASET_IN_RELATED_ACTIVITY__EEXPRESSION = "\n" +
+		"            if not self.standardOutputStream.oclIsUndefined() then\n" +
+		"                self.activity.outputDatasets->includes(self.standardOutputStream)\n" +
+		"            else true endif";
+
+	/**
+	 * Validates the stdOutMustBeOutputDatasetInRelatedActivity constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool_stdOutMustBeOutputDatasetInRelatedActivity(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL,
+				 commandLineTool,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "stdOutMustBeOutputDatasetInRelatedActivity",
+				 COMMAND_LINE_TOOL__STD_OUT_MUST_BE_OUTPUT_DATASET_IN_RELATED_ACTIVITY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the stdErrMustBeOutputDatasetInRelatedActivity constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMAND_LINE_TOOL__STD_ERR_MUST_BE_OUTPUT_DATASET_IN_RELATED_ACTIVITY__EEXPRESSION = "\n" +
+		"            if not self.standardErrorStream.oclIsUndefined() then\n" +
+		"                self.activity.outputDatasets->includes(self.standardErrorStream)\n" +
+		"            else true endif";
+
+	/**
+	 * Validates the stdErrMustBeOutputDatasetInRelatedActivity constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool_stdErrMustBeOutputDatasetInRelatedActivity(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL,
+				 commandLineTool,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "stdErrMustBeOutputDatasetInRelatedActivity",
+				 COMMAND_LINE_TOOL__STD_ERR_MUST_BE_OUTPUT_DATASET_IN_RELATED_ACTIVITY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the stdInMustHave1AsCardinality constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMAND_LINE_TOOL__STD_IN_MUST_HAVE1_AS_CARDINALITY__EEXPRESSION = "\n" +
+		"            if not self.standardInputStream.oclIsUndefined() then\n" +
+		"                self.standardInputStream.minimumCardinality = 1\n" +
+		"                and self.standardInputStream.maximumCardinality = 1\n" +
+		"            else \n" +
+		"                true \n" +
+		"            endif";
+
+	/**
+	 * Validates the stdInMustHave1AsCardinality constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool_stdInMustHave1AsCardinality(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL,
+				 commandLineTool,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "stdInMustHave1AsCardinality",
+				 COMMAND_LINE_TOOL__STD_IN_MUST_HAVE1_AS_CARDINALITY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the stdOutMustHave1AsCardinality constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMAND_LINE_TOOL__STD_OUT_MUST_HAVE1_AS_CARDINALITY__EEXPRESSION = "\n" +
+		"            if not self.standardOutputStream.oclIsUndefined() then\n" +
+		"                self.standardOutputStream.minimumCardinality = 1\n" +
+		"                and self.standardOutputStream.maximumCardinality = 1\n" +
+		"            else \n" +
+		"                true \n" +
+		"            endif";
+
+	/**
+	 * Validates the stdOutMustHave1AsCardinality constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool_stdOutMustHave1AsCardinality(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL,
+				 commandLineTool,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "stdOutMustHave1AsCardinality",
+				 COMMAND_LINE_TOOL__STD_OUT_MUST_HAVE1_AS_CARDINALITY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the stdErrMustHave1AsCardinality constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMAND_LINE_TOOL__STD_ERR_MUST_HAVE1_AS_CARDINALITY__EEXPRESSION = "\n" +
+		"            if not self.standardErrorStream.oclIsUndefined() then\n" +
+		"                self.standardErrorStream.minimumCardinality = 1\n" +
+		"                and self.standardErrorStream.maximumCardinality = 1\n" +
+		"            else \n" +
+		"                true \n" +
+		"            endif";
+
+	/**
+	 * Validates the stdErrMustHave1AsCardinality constraint of '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCommandLineTool_stdErrMustHave1AsCardinality(CommandLineTool commandLineTool, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL,
+				 commandLineTool,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "stdErrMustHave1AsCardinality",
+				 COMMAND_LINE_TOOL__STD_ERR_MUST_HAVE1_AS_CARDINALITY__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExitCode(ExitCode exitCode, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(exitCode, diagnostics, context);
 	}
 
 	/**
@@ -611,7 +938,7 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDatasetKind(DatasetKind datasetKind, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateTerminationStatus(TerminationStatus terminationStatus, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -620,7 +947,7 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateList(List<?> list, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateFilePath(String filePath, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

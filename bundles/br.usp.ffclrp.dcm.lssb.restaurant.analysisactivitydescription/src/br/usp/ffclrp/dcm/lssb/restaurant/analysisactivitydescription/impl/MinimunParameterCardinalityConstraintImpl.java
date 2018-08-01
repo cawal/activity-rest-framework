@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MinimunParameterCardinalityConstraintImpl extends ParameterConstraintImpl implements MinimunParameterCardinalityConstraint {
+public class MinimunParameterCardinalityConstraintImpl extends ParameterReadinessConstraintImpl implements MinimunParameterCardinalityConstraint {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

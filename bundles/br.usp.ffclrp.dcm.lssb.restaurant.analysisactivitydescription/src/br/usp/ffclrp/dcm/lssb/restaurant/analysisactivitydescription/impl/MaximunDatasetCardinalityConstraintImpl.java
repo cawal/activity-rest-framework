@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MaximunDatasetCardinalityConstraintImpl extends DatasetConstraintImpl implements MaximunDatasetCardinalityConstraint {
+public class MaximunDatasetCardinalityConstraintImpl extends DatasetReadinessConstraintImpl implements MaximunDatasetCardinalityConstraint {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

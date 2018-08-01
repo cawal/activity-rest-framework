@@ -3,8 +3,9 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterReadinessConstraint;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -14,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter Constraint</b></em>'.
+ * An implementation of the model object '<em><b>Parameter Readiness Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterReadinessConstraintImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl implements ParameterConstraint {
+public abstract class ParameterReadinessConstraintImpl extends ReadinessConstraintImpl implements ParameterReadinessConstraint {
 	/**
 	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -34,14 +35,14 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterDescription parameter;
+	protected Parameter parameter;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ParameterConstraintImpl() {
+	protected ParameterReadinessConstraintImpl() {
 		super();
 	}
 
@@ -52,7 +53,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AnalysisActivityDescriptionPackage.Literals.PARAMETER_CONSTRAINT;
+		return AnalysisActivityDescriptionPackage.Literals.PARAMETER_READINESS_CONSTRAINT;
 	}
 
 	/**
@@ -60,13 +61,13 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterDescription getParameter() {
+	public Parameter getParameter() {
 		if (parameter != null && parameter.eIsProxy()) {
 			InternalEObject oldParameter = (InternalEObject)parameter;
-			parameter = (ParameterDescription)eResolveProxy(oldParameter);
+			parameter = (Parameter)eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER, oldParameter, parameter));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT__PARAMETER, oldParameter, parameter));
 			}
 		}
 		return parameter;
@@ -77,7 +78,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterDescription basicGetParameter() {
+	public Parameter basicGetParameter() {
 		return parameter;
 	}
 
@@ -86,11 +87,11 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameter(ParameterDescription newParameter) {
-		ParameterDescription oldParameter = parameter;
+	public void setParameter(Parameter newParameter) {
+		Parameter oldParameter = parameter;
 		parameter = newParameter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER, oldParameter, parameter));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT__PARAMETER, oldParameter, parameter));
 	}
 
 	/**
@@ -101,7 +102,7 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER:
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT__PARAMETER:
 				if (resolve) return getParameter();
 				return basicGetParameter();
 		}
@@ -116,8 +117,8 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER:
-				setParameter((ParameterDescription)newValue);
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT__PARAMETER:
+				setParameter((Parameter)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -131,8 +132,8 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER:
-				setParameter((ParameterDescription)null);
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT__PARAMETER:
+				setParameter((Parameter)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -146,10 +147,10 @@ public abstract class ParameterConstraintImpl extends ReadinessConstraintImpl im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT__PARAMETER:
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT__PARAMETER:
 				return parameter != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ParameterConstraintImpl
+} //ParameterReadinessConstraintImpl

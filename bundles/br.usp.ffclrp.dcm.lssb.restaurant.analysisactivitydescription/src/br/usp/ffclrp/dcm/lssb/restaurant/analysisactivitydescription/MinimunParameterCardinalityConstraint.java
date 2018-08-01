@@ -21,7 +21,7 @@ import java.math.BigInteger;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot OnlyPositiveNumbers='\n            value &gt;= 1'"
  * @generated
  */
-public interface MinimunParameterCardinalityConstraint extends ParameterConstraint {
+public interface MinimunParameterCardinalityConstraint extends ParameterReadinessConstraint {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->

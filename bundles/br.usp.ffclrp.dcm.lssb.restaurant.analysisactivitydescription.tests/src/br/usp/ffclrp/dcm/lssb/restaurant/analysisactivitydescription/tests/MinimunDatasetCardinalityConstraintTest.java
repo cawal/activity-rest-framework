@@ -13,7 +13,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MinimunDatasetCardinalityConstraintTest extends DatasetConstraintTest {
+public class MinimunDatasetCardinalityConstraintTest extends DatasetReadinessConstraintTest {
 
 	/**
 	 * <!-- begin-user-doc -->

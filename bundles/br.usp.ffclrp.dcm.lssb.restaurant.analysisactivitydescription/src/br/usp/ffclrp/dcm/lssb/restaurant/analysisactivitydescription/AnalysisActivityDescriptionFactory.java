@@ -22,31 +22,40 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	AnalysisActivityDescriptionFactory eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Analysis Activity Description</em>'.
+	 * Returns a new object of class '<em>Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Analysis Activity Description</em>'.
+	 * @return a new object of class '<em>Activity</em>'.
 	 * @generated
 	 */
-	AnalysisActivityDescription createAnalysisActivityDescription();
+	Activity createActivity();
 
 	/**
-	 * Returns a new object of class '<em>Parameter Description</em>'.
+	 * Returns a new object of class '<em>Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter Description</em>'.
+	 * @return a new object of class '<em>Parameter</em>'.
 	 * @generated
 	 */
-	ParameterDescription createParameterDescription();
+	Parameter createParameter();
 
 	/**
-	 * Returns a new object of class '<em>Dataset Description</em>'.
+	 * Returns a new object of class '<em>Input Dataset</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Dataset Description</em>'.
+	 * @return a new object of class '<em>Input Dataset</em>'.
 	 * @generated
 	 */
-	DatasetDescription createDatasetDescription();
+	InputDataset createInputDataset();
+
+	/**
+	 * Returns a new object of class '<em>Output Dataset</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Output Dataset</em>'.
+	 * @generated
+	 */
+	OutputDataset createOutputDataset();
 
 	/**
 	 * Returns a new object of class '<em>Literal Command Line Entry List</em>'.
@@ -110,6 +119,51 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	 * @generated
 	 */
 	MaximunParameterCardinalityConstraint createMaximunParameterCardinalityConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Custom Parameter Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Parameter Constraint</em>'.
+	 * @generated
+	 */
+	CustomParameterConstraint createCustomParameterConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Custom Dataset Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Dataset Constraint</em>'.
+	 * @generated
+	 */
+	CustomDatasetConstraint createCustomDatasetConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Command Line Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Command Line Tool</em>'.
+	 * @generated
+	 */
+	CommandLineTool createCommandLineTool();
+
+	/**
+	 * Returns a new object of class '<em>Exit Code</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exit Code</em>'.
+	 * @generated
+	 */
+	ExitCode createExitCode();
+
+	/**
+	 * Returns a new object of class '<em>Tool Name Command Line Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tool Name Command Line Entry</em>'.
+	 * @generated
+	 */
+	ToolNameCommandLineEntry createToolNameCommandLineEntry();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -17,7 +17,8 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getLiteralCommandLineEntryList()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='OneOrMoreLiterals'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot OneOrMoreLiterals='\n            literals-&gt;size() &gt; 0'"
  * @generated
  */
 public interface LiteralCommandLineEntryList extends CommandLineEntryList {

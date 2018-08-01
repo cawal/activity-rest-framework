@@ -13,6 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Command Line Entry List</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A list of entries for the command line tool.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -36,7 +40,7 @@ public interface CommandLineEntryList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Manipulators</em>' containment reference list.
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getCommandLineEntryList_Manipulators()
-	 * @model containment="true"
+	 * @model containment="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */

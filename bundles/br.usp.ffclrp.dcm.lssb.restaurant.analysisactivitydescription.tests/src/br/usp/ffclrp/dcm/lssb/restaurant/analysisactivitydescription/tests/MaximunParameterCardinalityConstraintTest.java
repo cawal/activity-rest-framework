@@ -13,7 +13,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MaximunParameterCardinalityConstraintTest extends ParameterConstraintTest {
+public class MaximunParameterCardinalityConstraintTest extends ParameterReadinessConstraintTest {
 
 	/**
 	 * <!-- begin-user-doc -->
