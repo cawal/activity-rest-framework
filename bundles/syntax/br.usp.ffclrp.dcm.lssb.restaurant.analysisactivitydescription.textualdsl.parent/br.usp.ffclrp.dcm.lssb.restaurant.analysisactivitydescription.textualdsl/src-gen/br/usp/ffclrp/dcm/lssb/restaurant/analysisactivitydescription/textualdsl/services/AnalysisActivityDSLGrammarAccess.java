@@ -387,21 +387,25 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cMULTILINE_STRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//EString:
-		//	STRING | ID;
+		//	MULTILINE_STRING | STRING | ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//STRING | ID
+		//MULTILINE_STRING | STRING | ID
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//MULTILINE_STRING
+		public RuleCall getMULTILINE_STRINGTerminalRuleCall_0() { return cMULTILINE_STRINGTerminalRuleCall_0; }
+		
 		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
 		
 		//ID
-		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
+		public RuleCall getIDTerminalRuleCall_2() { return cIDTerminalRuleCall_2; }
 	}
 	public class ParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Parameter");
@@ -536,19 +540,23 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		private final Keyword cMimetypeKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Assignment cMimetypeAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
 		private final RuleCall cMimetypeEStringParserRuleCall_7_1_0 = (RuleCall)cMimetypeAssignment_7_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cRemarksKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cRemarksAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cRemarksEStringParserRuleCall_8_1_0 = (RuleCall)cRemarksAssignment_8_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//InputDataset analysisactivitydescription::InputDataset:
 		//	'Dataset'
 		//	name=EString
 		//	'{'
 		//	'minimumCardinality' minimumCardinality=EBigInteger
-		//	'maximumCardinality' maximumCardinality=EBigInteger ('mimetype' mimetype=EString)?
+		//	'maximumCardinality' maximumCardinality=EBigInteger ('mimetype' mimetype=EString)? ('remarks' remarks=EString)?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Dataset' name=EString '{' 'minimumCardinality' minimumCardinality=EBigInteger 'maximumCardinality'
-		//maximumCardinality=EBigInteger ('mimetype' mimetype=EString)? '}'
+		//maximumCardinality=EBigInteger ('mimetype' mimetype=EString)? ('remarks' remarks=EString)? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Dataset'
@@ -593,8 +601,20 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//EString
 		public RuleCall getMimetypeEStringParserRuleCall_7_1_0() { return cMimetypeEStringParserRuleCall_7_1_0; }
 		
+		//('remarks' remarks=EString)?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//'remarks'
+		public Keyword getRemarksKeyword_8_0() { return cRemarksKeyword_8_0; }
+		
+		//remarks=EString
+		public Assignment getRemarksAssignment_8_1() { return cRemarksAssignment_8_1; }
+		
+		//EString
+		public RuleCall getRemarksEStringParserRuleCall_8_1_0() { return cRemarksEStringParserRuleCall_8_1_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 	}
 	public class OutputDatasetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.OutputDataset");
@@ -1229,14 +1249,14 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	}
 	public class FilePathElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.FilePath");
-		private final Keyword cFilePathKeyword = (Keyword)rule.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//FilePath analysisactivitydescription::FilePath:
-		//	'FilePath' /* TODO: implement this rule and an appropriate IValueConverter */;
+		//	EString /* TODO: implement this rule and an appropriate IValueConverter */;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'FilePath'
-		public Keyword getFilePathKeyword() { return cFilePathKeyword; }
+		//EString
+		public RuleCall getEStringParserRuleCall() { return cEStringParserRuleCall; }
 	}
 	public class ExitCodeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ExitCode");
@@ -1871,6 +1891,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	private final TerminationStatusElements eTerminationStatus;
 	private final TerminalRule tLIST_START;
 	private final TerminalRule tLIST_END;
+	private final TerminalRule tMULTILINE_STRING;
 	
 	private final Grammar grammar;
 	
@@ -1914,6 +1935,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		this.eTerminationStatus = new TerminationStatusElements();
 		this.tLIST_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.LIST_START");
 		this.tLIST_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.LIST_END");
+		this.tMULTILINE_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.MULTILINE_STRING");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2013,7 +2035,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	}
 	
 	//EString:
-	//	STRING | ID;
+	//	MULTILINE_STRING | STRING | ID;
 	public EStringElements getEStringAccess() {
 		return pEString;
 	}
@@ -2044,7 +2066,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//	name=EString
 	//	'{'
 	//	'minimumCardinality' minimumCardinality=EBigInteger
-	//	'maximumCardinality' maximumCardinality=EBigInteger ('mimetype' mimetype=EString)?
+	//	'maximumCardinality' maximumCardinality=EBigInteger ('mimetype' mimetype=EString)? ('remarks' remarks=EString)?
 	//	'}';
 	public InputDatasetElements getInputDatasetAccess() {
 		return pInputDataset;
@@ -2189,7 +2211,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	}
 	
 	//FilePath analysisactivitydescription::FilePath:
-	//	'FilePath' /* TODO: implement this rule and an appropriate IValueConverter */;
+	//	EString /* TODO: implement this rule and an appropriate IValueConverter */;
 	public FilePathElements getFilePathAccess() {
 		return pFilePath;
 	}
@@ -2338,6 +2360,12 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//	']';
 	public TerminalRule getLIST_ENDRule() {
 		return tLIST_END;
+	}
+	
+	//terminal MULTILINE_STRING:
+	//	"'''"->"'''";
+	public TerminalRule getMULTILINE_STRINGRule() {
+		return tMULTILINE_STRING;
 	}
 	
 	//terminal ID:

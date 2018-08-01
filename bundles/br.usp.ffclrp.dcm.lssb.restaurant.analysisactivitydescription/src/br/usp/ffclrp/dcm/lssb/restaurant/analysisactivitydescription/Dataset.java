@@ -2,7 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Dataset</b></em>'.
@@ -20,6 +19,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks <em>Remarks</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getMimetype <em>Mimetype</em>}</li>
  * </ul>
  *
@@ -53,6 +53,32 @@ public interface Dataset extends MultiplicityElement {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Remarks</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Remarks</em>' attribute.
+	 * @see #setRemarks(String)
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDataset_Remarks()
+	 * @model
+	 * @generated
+	 */
+	String getRemarks();
+
+	/**
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks <em>Remarks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Remarks</em>' attribute.
+	 * @see #getRemarks()
+	 * @generated
+	 */
+	void setRemarks(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Mimetype</b></em>' attribute.

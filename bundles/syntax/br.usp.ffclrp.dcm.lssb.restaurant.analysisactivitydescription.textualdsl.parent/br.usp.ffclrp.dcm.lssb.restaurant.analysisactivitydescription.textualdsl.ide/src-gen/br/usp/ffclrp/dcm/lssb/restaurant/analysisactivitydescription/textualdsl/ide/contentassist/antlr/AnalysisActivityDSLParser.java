@@ -53,6 +53,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParameterAccess().getGroup_9_3(), "rule__Parameter__Group_9_3__0");
 			builder.put(grammarAccess.getInputDatasetAccess().getGroup(), "rule__InputDataset__Group__0");
 			builder.put(grammarAccess.getInputDatasetAccess().getGroup_7(), "rule__InputDataset__Group_7__0");
+			builder.put(grammarAccess.getInputDatasetAccess().getGroup_8(), "rule__InputDataset__Group_8__0");
 			builder.put(grammarAccess.getOutputDatasetAccess().getGroup(), "rule__OutputDataset__Group__0");
 			builder.put(grammarAccess.getOutputDatasetAccess().getGroup_7(), "rule__OutputDataset__Group_7__0");
 			builder.put(grammarAccess.getEBigIntegerAccess().getGroup(), "rule__EBigInteger__Group__0");
@@ -116,6 +117,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInputDatasetAccess().getMinimumCardinalityAssignment_4(), "rule__InputDataset__MinimumCardinalityAssignment_4");
 			builder.put(grammarAccess.getInputDatasetAccess().getMaximumCardinalityAssignment_6(), "rule__InputDataset__MaximumCardinalityAssignment_6");
 			builder.put(grammarAccess.getInputDatasetAccess().getMimetypeAssignment_7_1(), "rule__InputDataset__MimetypeAssignment_7_1");
+			builder.put(grammarAccess.getInputDatasetAccess().getRemarksAssignment_8_1(), "rule__InputDataset__RemarksAssignment_8_1");
 			builder.put(grammarAccess.getOutputDatasetAccess().getNameAssignment_1(), "rule__OutputDataset__NameAssignment_1");
 			builder.put(grammarAccess.getOutputDatasetAccess().getMinimumCardinalityAssignment_4(), "rule__OutputDataset__MinimumCardinalityAssignment_4");
 			builder.put(grammarAccess.getOutputDatasetAccess().getMaximumCardinalityAssignment_6(), "rule__OutputDataset__MaximumCardinalityAssignment_6");

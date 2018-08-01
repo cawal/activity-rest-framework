@@ -490,9 +490,9 @@ ruleFilePath
 	}
 	:
 	(
-		{ before(grammarAccess.getFilePathAccess().getFilePathKeyword()); }
-		'FilePath'
-		{ after(grammarAccess.getFilePathAccess().getFilePathKeyword()); }
+		{ before(grammarAccess.getFilePathAccess().getEStringParserRuleCall()); }
+		ruleEString
+		{ after(grammarAccess.getFilePathAccess().getEStringParserRuleCall()); }
 	)
 ;
 finally {
@@ -904,15 +904,21 @@ rule__EString__Alternatives
 	}
 :
 	(
-		{ before(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); }
+		{ before(grammarAccess.getEStringAccess().getMULTILINE_STRINGTerminalRuleCall_0()); }
+		RULE_MULTILINE_STRING
+		{ after(grammarAccess.getEStringAccess().getMULTILINE_STRINGTerminalRuleCall_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); }
+		{ before(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_1()); }
+		RULE_STRING
+		{ after(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEStringAccess().getIDTerminalRuleCall_2()); }
 		RULE_ID
-		{ after(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); }
+		{ after(grammarAccess.getEStringAccess().getIDTerminalRuleCall_2()); }
 	)
 ;
 finally {
@@ -2782,6 +2788,7 @@ rule__InputDataset__Group__8
 	}
 :
 	rule__InputDataset__Group__8__Impl
+	rule__InputDataset__Group__9
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2793,9 +2800,35 @@ rule__InputDataset__Group__8__Impl
 	}
 :
 (
-	{ before(grammarAccess.getInputDatasetAccess().getRightCurlyBracketKeyword_8()); }
+	{ before(grammarAccess.getInputDatasetAccess().getGroup_8()); }
+	(rule__InputDataset__Group_8__0)?
+	{ after(grammarAccess.getInputDatasetAccess().getGroup_8()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__InputDataset__Group__9
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__InputDataset__Group__9__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__InputDataset__Group__9__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getInputDatasetAccess().getRightCurlyBracketKeyword_9()); }
 	'}'
-	{ after(grammarAccess.getInputDatasetAccess().getRightCurlyBracketKeyword_8()); }
+	{ after(grammarAccess.getInputDatasetAccess().getRightCurlyBracketKeyword_9()); }
 )
 ;
 finally {
@@ -2850,6 +2883,60 @@ rule__InputDataset__Group_7__1__Impl
 	{ before(grammarAccess.getInputDatasetAccess().getMimetypeAssignment_7_1()); }
 	(rule__InputDataset__MimetypeAssignment_7_1)
 	{ after(grammarAccess.getInputDatasetAccess().getMimetypeAssignment_7_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__InputDataset__Group_8__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__InputDataset__Group_8__0__Impl
+	rule__InputDataset__Group_8__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__InputDataset__Group_8__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getInputDatasetAccess().getRemarksKeyword_8_0()); }
+	'remarks'
+	{ after(grammarAccess.getInputDatasetAccess().getRemarksKeyword_8_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__InputDataset__Group_8__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__InputDataset__Group_8__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__InputDataset__Group_8__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getInputDatasetAccess().getRemarksAssignment_8_1()); }
+	(rule__InputDataset__RemarksAssignment_8_1)
+	{ after(grammarAccess.getInputDatasetAccess().getRemarksAssignment_8_1()); }
 )
 ;
 finally {
@@ -7654,6 +7741,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__InputDataset__RemarksAssignment_8_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_8_1_0()); }
+		ruleEString
+		{ after(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_8_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__OutputDataset__NameAssignment_1
 	@init {
 		int stackSize = keepStackSize();
@@ -8376,6 +8478,8 @@ finally {
 RULE_LIST_START : '[';
 
 RULE_LIST_END : ']';
+
+RULE_MULTILINE_STRING : '\'\'\'' ( options {greedy=false;} : . )*'\'\'\'';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

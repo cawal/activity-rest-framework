@@ -621,20 +621,28 @@ ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	leaveRule();
 }:
 	(
-		this_STRING_0=RULE_STRING
+		this_MULTILINE_STRING_0=RULE_MULTILINE_STRING
 		{
-			$current.merge(this_STRING_0);
+			$current.merge(this_MULTILINE_STRING_0);
 		}
 		{
-			newLeafNode(this_STRING_0, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0());
+			newLeafNode(this_MULTILINE_STRING_0, grammarAccess.getEStringAccess().getMULTILINE_STRINGTerminalRuleCall_0());
 		}
 		    |
-		this_ID_1=RULE_ID
+		this_STRING_1=RULE_STRING
 		{
-			$current.merge(this_ID_1);
+			$current.merge(this_STRING_1);
 		}
 		{
-			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
+			newLeafNode(this_STRING_1, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_1());
+		}
+		    |
+		this_ID_2=RULE_ID
+		{
+			$current.merge(this_ID_2);
+		}
+		{
+			newLeafNode(this_ID_2, grammarAccess.getEStringAccess().getIDTerminalRuleCall_2());
 		}
 	)
 ;
@@ -930,9 +938,34 @@ ruleInputDataset returns [EObject current=null]
 				)
 			)
 		)?
-		otherlv_9='}'
+		(
+			otherlv_9='remarks'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getInputDatasetAccess().getRemarksKeyword_8_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_8_1_0());
+					}
+					lv_remarks_10_0=ruleEString
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
+						}
+						set(
+							$current,
+							"remarks",
+							lv_remarks_10_0,
+							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getInputDatasetAccess().getRightCurlyBracketKeyword_8());
+			newLeafNode(otherlv_11, grammarAccess.getInputDatasetAccess().getRightCurlyBracketKeyword_9());
 		}
 	)
 ;
@@ -1805,10 +1838,15 @@ ruleFilePath returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 @after {
 	leaveRule();
 }:
-	kw='FilePath'
 	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getFilePathAccess().getFilePathKeyword());
+		newCompositeNode(grammarAccess.getFilePathAccess().getEStringParserRuleCall());
+	}
+	this_EString_0=ruleEString
+	{
+		$current.merge(this_EString_0);
+	}
+	{
+		afterParserOrEnumRuleCall();
 	}
 ;
 
@@ -2657,6 +2695,8 @@ ruleTerminationStatus returns [Enumerator current=null]
 RULE_LIST_START : '[';
 
 RULE_LIST_END : ']';
+
+RULE_MULTILINE_STRING : '\'\'\'' ( options {greedy=false;} : . )*'\'\'\'';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

@@ -20,8 +20,39 @@ class AnalysisActivityDSLParsingTest {
 	
 	@Test
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
+		val result = parseHelper.parse('''Activity 'teste' {
+		    description 
+		    'This activity lists the directories.'
+		    parameters [
+		        Parameter "dir" {
+		            minimumCardinality 1
+		            maximumCardinality 1
+		            parameterType REAL
+		        }
+		    ]
+		    outputDatasets [
+		        Dataset "list" {
+		            minimumCardinality 1
+		            maximumCardinality 1
+		        }
+		    ]
+		    tool CommandLineTool 'ls' {
+		        executablePath "ls/s"
+		        standardOutputStream list
+		        
+		        commandLineTemplate [ 
+		            ToolNameCommandLineEntry {},
+		            LiteralCommandLineEntryList {
+		                literals ["teste" , "Other String" ] } ,
+		            ParameterCommandLineEntryList{
+		                parameter dir
+		                manipulators [
+		                    PrependListWith 'first item of list'
+		                ]
+		            }
+		        ]
+		    }
+		}
 		''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors

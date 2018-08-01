@@ -308,13 +308,22 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int DATASET__NAME = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET__REMARKS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET__MIMETYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+	int DATASET__MIMETYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Dataset</em>' class.
@@ -323,7 +332,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
+	int DATASET_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Dataset</em>' class.
@@ -370,6 +379,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_DATASET__NAME = DATASET__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__REMARKS = DATASET__REMARKS;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -434,6 +452,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_DATASET__NAME = DATASET__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__REMARKS = DATASET__REMARKS;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -1504,6 +1531,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EAttribute getDataset_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks <em>Remarks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remarks</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks()
+	 * @see #getDataset()
+	 * @generated
+	 */
+	EAttribute getDataset_Remarks();
+
+	/**
 	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getMimetype <em>Mimetype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2153,6 +2191,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATASET__NAME = eINSTANCE.getDataset_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATASET__REMARKS = eINSTANCE.getDataset_Remarks();
 
 		/**
 		 * The meta object literal for the '<em><b>Mimetype</b></em>' attribute feature.

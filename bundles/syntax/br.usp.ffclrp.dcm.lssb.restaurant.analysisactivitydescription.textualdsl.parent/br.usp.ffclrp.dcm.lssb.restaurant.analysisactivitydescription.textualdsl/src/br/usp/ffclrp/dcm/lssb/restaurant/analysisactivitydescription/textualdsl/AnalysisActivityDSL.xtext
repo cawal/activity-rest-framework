@@ -9,14 +9,14 @@ import "http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.e
 Activity returns analysisactivitydescription::Activity:
 	'Activity'
 	name=EString
-	'{'
+	ENTITY_START
 		('description' description=EString)?
-		('parameters' LIST_START parameters+=Parameter ( "," parameters+=Parameter)* LIST_END )?
-		('inputDatasets' LIST_START inputDatasets+=InputDataset ( "," inputDatasets+=InputDataset)* LIST_END )?
-		('outputDatasets' LIST_START outputDatasets+=OutputDataset ( "," outputDatasets+=OutputDataset)* LIST_END )?
-		('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint ( "," readinessContraints+=ReadinessConstraint)* LIST_END )?
+		('parameters' LIST_START parameters+=Parameter ( LIST_SEPARATOR parameters+=Parameter)* LIST_END )?
+		('inputDatasets' LIST_START inputDatasets+=InputDataset ( LIST_SEPARATOR inputDatasets+=InputDataset)* LIST_END )?
+		('outputDatasets' LIST_START outputDatasets+=OutputDataset ( LIST_SEPARATOR outputDatasets+=OutputDataset)* LIST_END )?
+		('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint ( LIST_SEPARATOR readinessContraints+=ReadinessConstraint)* LIST_END )?
 		'tool' tool=Tool
-	'}';
+	ENTITY_END;
 
 
 
@@ -38,35 +38,36 @@ StringListManipulator returns StringListManipulator:
 	Join | PrependEach | AppendEach | AppendListWith | PrependListWith;
 
 EString returns ecore::EString:
-	STRING | ID;
+	MULTILINE_STRING | STRING | ID ;
 
 Parameter returns analysisactivitydescription::Parameter:
 	'Parameter'
 	name=EString
-	'{'
+	ENTITY_START
 		'minimumCardinality' minimumCardinality=EBigInteger
 		'maximumCardinality' maximumCardinality=EBigInteger
 		'parameterType' parameterType=ParameterType
-		('defaultValues' LIST_START  defaultValue+=EString ( "," defaultValue+=EString)* LIST_START  )?
-	'}';
+		('defaultValues' LIST_START  defaultValue+=EString ( LIST_SEPARATOR defaultValue+=EString)* LIST_START  )?
+	ENTITY_END;
 
 InputDataset returns analysisactivitydescription::InputDataset:
 	'Dataset'
 	name=EString
-	'{'
+	ENTITY_START
 		'minimumCardinality' minimumCardinality=EBigInteger
 		'maximumCardinality' maximumCardinality=EBigInteger
 		('mimetype' mimetype=EString)?
-	'}';
+		('remarks' remarks=EString )?
+	ENTITY_END;
 
 OutputDataset returns analysisactivitydescription::OutputDataset:
 	'Dataset'
 	name=EString
-	'{'
+	ENTITY_START
 		'minimumCardinality' minimumCardinality=EBigInteger
 		'maximumCardinality' maximumCardinality=EBigInteger
 		('mimetype' mimetype=EString)?
-	'}';
+	ENTITY_END;
 
 EBigInteger returns ecore::EBigInteger:
 	'-'? INT;
@@ -76,97 +77,98 @@ enum ParameterType returns analysisactivitydescription::ParameterType:
 
 MinimunDatasetCardinalityConstraint returns analysisactivitydescription::MinimunDatasetCardinalityConstraint:
 	'MinimunDatasetCardinalityConstraint'
-	'{'
+	ENTITY_START
 		('value' value=EBigInteger)?
 		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
-	'}';
+	ENTITY_END;
 
 MaximunDatasetCardinalityConstraint returns analysisactivitydescription::MaximunDatasetCardinalityConstraint:
 	'MaximunDatasetCardinalityConstraint'
-	'{'
+	ENTITY_START
 		('value' value=EBigInteger)?
 		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
-	'}';
+	ENTITY_END;
 
 MinimunParameterCardinalityConstraint returns analysisactivitydescription::MinimunParameterCardinalityConstraint:
 	'MinimunParameterCardinalityConstraint'
-	'{'
+	ENTITY_START
 		('value' value=EBigInteger)?
 		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
-	'}';
+	ENTITY_END;
 
 MaximunParameterCardinalityConstraint returns analysisactivitydescription::MaximunParameterCardinalityConstraint:
 	'MaximunParameterCardinalityConstraint'
-	'{'
+	ENTITY_START
 		('value' value=EBigInteger)?
 		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
-	'}';
+	ENTITY_END;
 
 CustomParameterConstraint returns analysisactivitydescription::CustomParameterConstraint:
 	'CustomParameterConstraint'
 	name=EString
-	'{'
+	ENTITY_START
 		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
-	'}';
+	ENTITY_END;
 
 CustomDatasetConstraint returns analysisactivitydescription::CustomDatasetConstraint:
 	'CustomDatasetConstraint'
 	name=EString
-	'{'
+	ENTITY_START
 		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
-	'}';
+	ENTITY_END;
 
 CommandLineTool returns analysisactivitydescription::CommandLineTool:
 	'CommandLineTool'
 	name=EString
-	'{'
+	ENTITY_START
 		('executablePath' executablePath=FilePath)?
 		('standardInputStream' standardInputStream=[analysisactivitydescription::InputDataset|EString])?
 		('standardOutputStream' standardOutputStream=[analysisactivitydescription::OutputDataset|EString])?
 		('standardErrorStream' standardErrorStream=[analysisactivitydescription::OutputDataset|EString])?
-		'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList ( "," commandLineTemplate+=CommandLineEntryList)* LIST_END 
-		('exitCodes' LIST_START exitCodes+=ExitCode ( "," exitCodes+=ExitCode)* LIST_END )?
-	'}';
+		'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList ( LIST_SEPARATOR commandLineTemplate+=CommandLineEntryList)* LIST_END 
+		('exitCodes' LIST_START exitCodes+=ExitCode ( LIST_SEPARATOR exitCodes+=ExitCode)* LIST_END )?
+	ENTITY_END;
 
 FilePath returns analysisactivitydescription::FilePath:
-	'FilePath' /* TODO: implement this rule and an appropriate IValueConverter */;
+	EString /* TODO: implement this rule and an appropriate IValueConverter */;
 
 ExitCode returns analysisactivitydescription::ExitCode:
 	'ExitCode'
-	'{'
+	ENTITY_START
 		'code' code=EBigInteger
 		('reportMessage' reportMessage=EString)?
 		'status' status=TerminationStatus
-	'}';
+	ENTITY_END;
 
 ToolNameCommandLineEntry returns analysisactivitydescription::ToolNameCommandLineEntry:
 	{analysisactivitydescription::ToolNameCommandLineEntry}
 	'ToolNameCommandLineEntry'
-	'{'
-		('manipulators' LIST_START manipulators+=StringListManipulator ( "," manipulators+=StringListManipulator)* LIST_END )?
-	'}';
+	ENTITY_START
+		('manipulators' LIST_START manipulators+=StringListManipulator ( LIST_SEPARATOR manipulators+=StringListManipulator)* LIST_END )?
+	ENTITY_END;
 
 LiteralCommandLineEntryList returns analysisactivitydescription::LiteralCommandLineEntryList:
 	{analysisactivitydescription::LiteralCommandLineEntryList}
 	'LiteralCommandLineEntryList'
-	'{'
-		('literals' LIST_START literals+=EString ( "," literals+=EString)* LIST_END )?
-		('manipulators' LIST_START manipulators+=StringListManipulator ( "," manipulators+=StringListManipulator)* LIST_END )?
-	'}';
+	ENTITY_START
+		('literals' LIST_START literals+=EString ( LIST_SEPARATOR literals+=EString)* LIST_END )?
+		('manipulators' LIST_START manipulators+=StringListManipulator ( LIST_SEPARATOR manipulators+=StringListManipulator)* LIST_END )?
+	ENTITY_END;
 
 DatasetCommandLineEntryList returns analysisactivitydescription::DatasetCommandLineEntryList:
 	'DatasetCommandLineEntryList'
-	'{'
+	ENTITY_START
 		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
-		('manipulators' LIST_START manipulators+=StringListManipulator ( "," manipulators+=StringListManipulator)* LIST_END )?
-	'}';
+		('manipulators' LIST_START manipulators+=StringListManipulator ( LIST_SEPARATOR manipulators+=StringListManipulator)* LIST_END )?
+	ENTITY_END;
 
 ParameterCommandLineEntryList returns analysisactivitydescription::ParameterCommandLineEntryList:
 	'ParameterCommandLineEntryList'
-	'{'
+	ENTITY_START
 		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
-		('manipulators' LIST_START manipulators+=StringListManipulator ( "," manipulators+=StringListManipulator)* LIST_END )?
-	'}';
+		('manipulators' LIST_START manipulators+=StringListManipulator ( LIST_SEPARATOR manipulators+=StringListManipulator)* LIST_END )?
+	ENTITY_END;
+
 
 Join returns Join:
 	'Join' delimiter=EString;
@@ -189,3 +191,11 @@ enum TerminationStatus returns analysisactivitydescription::TerminationStatus:
 				
 terminal LIST_START: '[';
 terminal LIST_END: ']';
+terminal LIST_SEPARATOR : ',';
+
+terminal ENTITY_START: '{';
+terminal ENTITY_END: '}';
+
+terminal MULTILINE_STRING:
+            "'''" -> "'''" 
+        ;

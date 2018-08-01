@@ -473,8 +473,17 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataset_Mimetype() {
+	public EAttribute getDataset_Remarks() {
 		return (EAttribute)datasetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataset_Mimetype() {
+		return (EAttribute)datasetEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -930,6 +939,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 
 		datasetEClass = createEClass(DATASET);
 		createEAttribute(datasetEClass, DATASET__NAME);
+		createEAttribute(datasetEClass, DATASET__REMARKS);
 		createEAttribute(datasetEClass, DATASET__MIMETYPE);
 
 		inputDatasetEClass = createEClass(INPUT_DATASET);
@@ -1075,6 +1085,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 
 		initEClass(datasetEClass, Dataset.class, "Dataset", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataset_Name(), ecorePackage.getEString(), "name", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataset_Remarks(), ecorePackage.getEString(), "remarks", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_Mimetype(), ecorePackage.getEString(), "mimetype", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputDatasetEClass, InputDataset.class, "InputDataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -278,7 +278,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     InputDataset returns InputDataset
 	 *
 	 * Constraint:
-	 *     (name=EString minimumCardinality=EBigInteger maximumCardinality=EBigInteger mimetype=EString?)
+	 *     (name=EString minimumCardinality=EBigInteger maximumCardinality=EBigInteger mimetype=EString? remarks=EString?)
 	 */
 	protected void sequence_InputDataset(ISerializationContext context, InputDataset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

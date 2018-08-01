@@ -38,6 +38,7 @@
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Dataset">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/remarks"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/mimetype"/>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//InputDataset"/>
