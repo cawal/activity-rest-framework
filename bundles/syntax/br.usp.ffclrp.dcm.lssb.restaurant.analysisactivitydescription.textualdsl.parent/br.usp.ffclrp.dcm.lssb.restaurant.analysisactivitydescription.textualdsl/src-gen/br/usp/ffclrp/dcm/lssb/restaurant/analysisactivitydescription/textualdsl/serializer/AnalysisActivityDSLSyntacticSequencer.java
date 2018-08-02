@@ -11,6 +11,9 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -18,19 +21,47 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected AnalysisActivityDSLGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (AnalysisActivityDSLGrammarAccess) access;
+		match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_ENDTerminalRuleCall_4_5()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getLIST_ENDRule())
+		if (ruleCall.getRule() == grammarAccess.getENTITY_ENDRule())
+			return getENTITY_ENDToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getENTITY_STARTRule())
+			return getENTITY_STARTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getLIST_ENDRule())
 			return getLIST_ENDToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getLIST_SEPARATORRule())
+			return getLIST_SEPARATORToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getLIST_STARTRule())
 			return getLIST_STARTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPIPE_TORule())
+			return getPIPE_TOToken(semanticObject, ruleCall, node);
 		return "";
+	}
+	
+	/**
+	 * terminal ENTITY_END: '}';
+	 */
+	protected String getENTITY_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "}";
+	}
+	
+	/**
+	 * terminal ENTITY_START: '{';
+	 */
+	protected String getENTITY_STARTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "{";
 	}
 	
 	/**
@@ -43,6 +74,15 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	}
 	
 	/**
+	 * terminal LIST_SEPARATOR : ',';
+	 */
+	protected String getLIST_SEPARATORToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return ",";
+	}
+	
+	/**
 	 * terminal LIST_START: '[';
 	 */
 	protected String getLIST_STARTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -51,14 +91,37 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 		return "[";
 	}
 	
+	/**
+	 * terminal PIPE_TO : '|';
+	 */
+	protected String getPIPE_TOToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "|";
+	}
+	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q.equals(syntax))
+				emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('pipe' ENTITY_START ENTITY_END)?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     executablePath=FilePath (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
+	 *     name=EString ENTITY_START (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
+	 */
+	protected void emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

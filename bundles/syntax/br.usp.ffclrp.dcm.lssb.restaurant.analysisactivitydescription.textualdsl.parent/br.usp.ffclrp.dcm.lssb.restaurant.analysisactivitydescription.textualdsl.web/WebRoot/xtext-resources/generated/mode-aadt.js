@@ -1,20 +1,9 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "Activity|AppendEach|AppendListWith|CommandLineTool|CustomDatasetConstraint|CustomParameterConstraint|Dataset|DatasetCommandLineEntryList|ExitCode|FAILED|INTEGER|Join|LiteralCommandLineEntryList|MaximunDatasetCardinalityConstraint|MaximunParameterCardinalityConstraint|MinimunDatasetCardinalityConstraint|MinimunParameterCardinalityConstraint|Parameter|ParameterCommandLineEntryList|PrependEach|PrependListWith|REAL|STRING|SUCCEEDED|ToolNameCommandLineEntry|code|commandLineTemplate|dataset|defaultValues|description|executablePath|exitCodes|inputDatasets|literals|manipulators|maximumCardinality|mimetype|minimumCardinality|outputDatasets|parameter|parameterType|parameters|readinessContraints|remarks|reportMessage|standardErrorStream|standardInputStream|standardOutputStream|status|tool|value";
+		var keywords = "AppendEach|AppendListWith|CommandLineTool|CustomDatasetConstraint|CustomParameterConstraint|FAILED|INTEGER|Join|MaximunDatasetCardinalityConstraint|MaximunParameterCardinalityConstraint|MinimunDatasetCardinalityConstraint|MinimunParameterCardinalityConstraint|PrependEach|PrependListWith|REAL|STRING|SUCCEEDED|activity|commandLineTemplate|dataset|description|executablePath|from|if|literals|on|parameter|pipe|produces|readinessContraints|remarks|returns|stderr|stdin|stdout|to|toolname|using|value|with";
 		this.$rules = {
 			"start": [
-				{token: "comment", regex: "\\/\\/.*$"},
-				{token: "comment", regex: "\\/\\*", next : "comment"},
-				{token: "string", regex: '["](?:(?:\\\\.)|(?:[^"\\\\]))*?["]'},
-				{token: "string", regex: "['](?:(?:\\\\.)|(?:[^'\\\\]))*?[']"},
-				{token: "constant.numeric", regex: "[+-]?\\d+(?:(?:\\.\\d*)?(?:[eE][+-]?\\d+)?)?\\b"},
-				{token: "lparen", regex: "[{]"},
-				{token: "rparen", regex: "[}]"},
 				{token: "keyword", regex: "\\b(?:" + keywords + ")\\b"}
-			],
-			"comment": [
-				{token: "comment", regex: ".*?\\*\\/", next : "start"},
-				{token: "comment", regex: ".+"}
 			]
 		};
 	};

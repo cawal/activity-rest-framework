@@ -131,8 +131,8 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     (
 	 *         name=EString 
 	 *         description=EString? 
-	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (inputDatasets+=InputDataset inputDatasets+=InputDataset*)? 
+	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (outputDatasets+=OutputDataset outputDatasets+=OutputDataset*)? 
 	 *         (readinessContraints+=ReadinessConstraint readinessContraints+=ReadinessConstraint*)? 
 	 *         tool=Tool
@@ -253,7 +253,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     DatasetCommandLineEntryList returns DatasetCommandLineEntryList
 	 *
 	 * Constraint:
-	 *     (dataset=[Dataset|EString] (manipulators+=StringListManipulator manipulators+=StringListManipulator*)?)
+	 *     (dataset=[Dataset|EString] manipulators+=StringListManipulator*)
 	 */
 	protected void sequence_DatasetCommandLineEntryList(ISerializationContext context, DatasetCommandLineEntryList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -265,7 +265,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     ExitCode returns ExitCode
 	 *
 	 * Constraint:
-	 *     (code=EBigInteger reportMessage=EString? status=TerminationStatus)
+	 *     (code=EBigInteger status=TerminationStatus reportMessage=EString?)
 	 */
 	protected void sequence_ExitCode(ISerializationContext context, ExitCode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -278,7 +278,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     InputDataset returns InputDataset
 	 *
 	 * Constraint:
-	 *     (name=EString minimumCardinality=EBigInteger maximumCardinality=EBigInteger mimetype=EString? remarks=EString?)
+	 *     (name=EString mimetype=EString? minimumCardinality=EBigInteger maximumCardinality=EBigInteger remarks=EString?)
 	 */
 	protected void sequence_InputDataset(ISerializationContext context, InputDataset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -310,7 +310,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     LiteralCommandLineEntryList returns LiteralCommandLineEntryList
 	 *
 	 * Constraint:
-	 *     ((literals+=EString literals+=EString*)? (manipulators+=StringListManipulator manipulators+=StringListManipulator*)?)
+	 *     (literals+=EString literals+=EString* manipulators+=StringListManipulator*)
 	 */
 	protected void sequence_LiteralCommandLineEntryList(ISerializationContext context, LiteralCommandLineEntryList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -375,7 +375,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     OutputDataset returns OutputDataset
 	 *
 	 * Constraint:
-	 *     (name=EString minimumCardinality=EBigInteger maximumCardinality=EBigInteger mimetype=EString?)
+	 *     (name=EString mimetype=EString? minimumCardinality=EBigInteger maximumCardinality=EBigInteger remarks=EString?)
 	 */
 	protected void sequence_OutputDataset(ISerializationContext context, OutputDataset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -388,7 +388,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     ParameterCommandLineEntryList returns ParameterCommandLineEntryList
 	 *
 	 * Constraint:
-	 *     (parameter=[Parameter|EString] (manipulators+=StringListManipulator manipulators+=StringListManipulator*)?)
+	 *     (parameter=[Parameter|EString] manipulators+=StringListManipulator*)
 	 */
 	protected void sequence_ParameterCommandLineEntryList(ISerializationContext context, ParameterCommandLineEntryList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -402,9 +402,9 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 * Constraint:
 	 *     (
 	 *         name=EString 
+	 *         parameterType=ParameterType 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
-	 *         parameterType=ParameterType 
 	 *         (defaultValue+=EString defaultValue+=EString*)?
 	 *     )
 	 */
@@ -457,7 +457,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     ToolNameCommandLineEntry returns ToolNameCommandLineEntry
 	 *
 	 * Constraint:
-	 *     (manipulators+=StringListManipulator manipulators+=StringListManipulator*)?
+	 *     manipulators+=StringListManipulator*
 	 */
 	protected void sequence_ToolNameCommandLineEntry(ISerializationContext context, ToolNameCommandLineEntry semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
