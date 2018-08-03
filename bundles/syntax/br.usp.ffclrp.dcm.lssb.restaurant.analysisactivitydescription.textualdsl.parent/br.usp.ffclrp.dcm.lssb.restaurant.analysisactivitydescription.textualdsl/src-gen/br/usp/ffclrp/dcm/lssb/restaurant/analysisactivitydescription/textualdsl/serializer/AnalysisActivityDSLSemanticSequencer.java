@@ -190,9 +190,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     (
 	 *         name=EString 
 	 *         executablePath=FilePath? 
-	 *         standardInputStream=[InputDataset|EString]? 
-	 *         standardOutputStream=[OutputDataset|EString]? 
-	 *         standardErrorStream=[OutputDataset|EString]? 
+	 *         (standardInputStream=[InputDataset|EString] | standardOutputStream=[OutputDataset|EString] | standardErrorStream=[OutputDataset|EString])* 
 	 *         commandLineTemplate+=CommandLineEntryList 
 	 *         commandLineTemplate+=CommandLineEntryList* 
 	 *         (exitCodes+=ExitCode exitCodes+=ExitCode*)?

@@ -13,5 +13,6 @@ Require-Bundle: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.te
  org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide.contentassist.antlr.internal,
- br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide.contentassist.antlr
+ br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide.contentassist.antlr,
+ br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide.contentassist.antlr.lexer
 

@@ -11,10 +11,10 @@ Activity returns analysisactivitydescription::Activity:
 	'activity'
 	name=EString
 	ENTITY_START
-		('description' description=EString)?
-		('on' LIST_START inputDatasets+=InputDataset ( LIST_SEPARATOR inputDatasets+=InputDataset)* LIST_END )?
-		('with' LIST_START parameters+=Parameter ( LIST_SEPARATOR parameters+=Parameter)* LIST_END )?
-		('produces' LIST_START outputDatasets+=OutputDataset ( LIST_SEPARATOR outputDatasets+=OutputDataset)* LIST_END )?
+		('description' description=EString STATEMENT_END)?
+		('on' ENTITY_START inputDatasets+=InputDataset ( inputDatasets+=InputDataset )* ENTITY_END )?
+		('with' ENTITY_START parameters+=Parameter ( parameters+=Parameter)* ENTITY_END )?
+		('produces' ENTITY_START outputDatasets+=OutputDataset ( outputDatasets+=OutputDataset)* ENTITY_END )?
 		('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint ( LIST_SEPARATOR readinessContraints+=ReadinessConstraint)* LIST_END )?
 		'using' tool=Tool
 	ENTITY_END;
@@ -50,6 +50,7 @@ Parameter returns analysisactivitydescription::Parameter:
 	   minimumCardinality=EBigInteger LIST_SEPARATOR  maximumCardinality=EBigInteger
 	LIST_END
 	('=' LIST_START  defaultValue+=EString ( LIST_SEPARATOR defaultValue+=EString)* LIST_END  )?
+    STATEMENT_END
     ;
 
 InputDataset returns analysisactivitydescription::InputDataset:
@@ -62,9 +63,10 @@ InputDataset returns analysisactivitydescription::InputDataset:
     LIST_END
     (
        ENTITY_START
-       'remarks' remarks=EString 
+       'remarks' remarks=EString STATEMENT_END
        ENTITY_END 
     )? 
+    STATEMENT_END
     ;
 	
 
@@ -78,9 +80,10 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
     LIST_END
     (
        ENTITY_START
-       'remarks' remarks=EString 
+       'remarks' remarks=EString STATEMENT_END
        ENTITY_END 
     )? 
+    STATEMENT_END
     ;
 
 EBigInteger returns ecore::EBigInteger:
@@ -138,14 +141,16 @@ CommandLineTool returns analysisactivitydescription::CommandLineTool:
 		('executablePath' executablePath=FilePath)?
 		('pipe'
 		ENTITY_START
-		  ('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString])?
-		  ('stdout' 'to' standardOutputStream=[analysisactivitydescription::OutputDataset|EString])?
-		  ('stderr' 'to' standardErrorStream=[analysisactivitydescription::OutputDataset|EString])?
+		( 
+		  ('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString] STATEMENT_END)?
+		  & ('stdout' 'to' standardOutputStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?
+		  & ('stderr' 'to' standardErrorStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?
+        )
         ENTITY_END
         )?
         'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList ( LIST_SEPARATOR commandLineTemplate+=CommandLineEntryList)* LIST_END 
 
-		('returns' LIST_START exitCodes+=ExitCode ( LIST_SEPARATOR exitCodes+=ExitCode)* LIST_END )?
+		('returns' ENTITY_START exitCodes+=ExitCode ( exitCodes+=ExitCode)* ENTITY_END )?
 	ENTITY_END;
 
 FilePath returns analysisactivitydescription::FilePath:
@@ -156,6 +161,7 @@ ExitCode returns analysisactivitydescription::ExitCode:
 	'if'  
     status=TerminationStatus	
 	(reportMessage=EString)?
+	STATEMENT_END
     ;
 
 ToolNameCommandLineEntry returns analysisactivitydescription::ToolNameCommandLineEntry:
@@ -206,9 +212,10 @@ enum TerminationStatus returns analysisactivitydescription::TerminationStatus:
 
 terminal ENTITY_START: '{';
 terminal ENTITY_END: '}';
+terminal STATEMENT_END: ';';
 // The following synthetic tokens are used for the indentation-aware blocks
-// terminal ENTITY_START: 'synthetic:BEGIN';  // increase indentation
-// terminal ENTITY_END: 'synthetic:END';      // decrease indentation
+//terminal ENTITY_START: 'synthetic:ENTITY_START';  // increase indentation
+//terminal ENTITY_END: 'synthetic:ENTITY_END';      // decrease indentation
 terminal DEFINITION_START: "(";
 terminal DEFINITION_END: ")";
 				

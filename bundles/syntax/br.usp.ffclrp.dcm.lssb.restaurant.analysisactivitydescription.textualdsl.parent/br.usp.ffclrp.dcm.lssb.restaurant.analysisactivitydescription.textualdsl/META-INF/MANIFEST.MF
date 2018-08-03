@@ -23,5 +23,6 @@ Export-Package: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.te
  br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.scoping,
  br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parser.antlr,
  br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.generator,
- br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.serializer
+ br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.serializer,
+ br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parser.antlr.lexer
 Import-Package: org.apache.log4j

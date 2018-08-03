@@ -21,12 +21,12 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected AnalysisActivityDSLGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q;
+	protected AbstractElementAlias match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (AnalysisActivityDSLGrammarAccess) access;
-		match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_ENDTerminalRuleCall_4_5()));
+		match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_ENDTerminalRuleCall_4_3()));
 	}
 	
 	@Override
@@ -43,6 +43,8 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 			return getLIST_STARTToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPIPE_TORule())
 			return getPIPE_TOToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSTATEMENT_ENDRule())
+			return getSTATEMENT_ENDToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -100,14 +102,23 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 		return "|";
 	}
 	
+	/**
+	 * terminal STATEMENT_END: ';';
+	 */
+	protected String getSTATEMENT_ENDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return ";";
+	}
+	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q.equals(syntax))
-				emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q.equals(syntax))
+				emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -120,7 +131,7 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	 *     executablePath=FilePath (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 *     name=EString ENTITY_START (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 */
-	protected void emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_5__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -41,11 +41,8 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getActivityAccess().getGroup(), "rule__Activity__Group__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_3(), "rule__Activity__Group_3__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_4(), "rule__Activity__Group_4__0");
-			builder.put(grammarAccess.getActivityAccess().getGroup_4_3(), "rule__Activity__Group_4_3__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_5(), "rule__Activity__Group_5__0");
-			builder.put(grammarAccess.getActivityAccess().getGroup_5_3(), "rule__Activity__Group_5_3__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_6(), "rule__Activity__Group_6__0");
-			builder.put(grammarAccess.getActivityAccess().getGroup_6_3(), "rule__Activity__Group_6_3__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_7(), "rule__Activity__Group_7__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_7_3(), "rule__Activity__Group_7_3__0");
 			builder.put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
@@ -69,12 +66,11 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup(), "rule__CommandLineTool__Group__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_3(), "rule__CommandLineTool__Group_3__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4(), "rule__CommandLineTool__Group_4__0");
-			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4_2(), "rule__CommandLineTool__Group_4_2__0");
-			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4_3(), "rule__CommandLineTool__Group_4_3__0");
-			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4_4(), "rule__CommandLineTool__Group_4_4__0");
+			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4_2_0(), "rule__CommandLineTool__Group_4_2_0__0");
+			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4_2_1(), "rule__CommandLineTool__Group_4_2_1__0");
+			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4_2_2(), "rule__CommandLineTool__Group_4_2_2__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_8(), "rule__CommandLineTool__Group_8__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_10(), "rule__CommandLineTool__Group_10__0");
-			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_10_3(), "rule__CommandLineTool__Group_10_3__0");
 			builder.put(grammarAccess.getExitCodeAccess().getGroup(), "rule__ExitCode__Group__0");
 			builder.put(grammarAccess.getToolNameCommandLineEntryAccess().getGroup(), "rule__ToolNameCommandLineEntry__Group__0");
 			builder.put(grammarAccess.getToolNameCommandLineEntryAccess().getGroup_2(), "rule__ToolNameCommandLineEntry__Group_2__0");
@@ -93,11 +89,11 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getActivityAccess().getNameAssignment_1(), "rule__Activity__NameAssignment_1");
 			builder.put(grammarAccess.getActivityAccess().getDescriptionAssignment_3_1(), "rule__Activity__DescriptionAssignment_3_1");
 			builder.put(grammarAccess.getActivityAccess().getInputDatasetsAssignment_4_2(), "rule__Activity__InputDatasetsAssignment_4_2");
-			builder.put(grammarAccess.getActivityAccess().getInputDatasetsAssignment_4_3_1(), "rule__Activity__InputDatasetsAssignment_4_3_1");
+			builder.put(grammarAccess.getActivityAccess().getInputDatasetsAssignment_4_3(), "rule__Activity__InputDatasetsAssignment_4_3");
 			builder.put(grammarAccess.getActivityAccess().getParametersAssignment_5_2(), "rule__Activity__ParametersAssignment_5_2");
-			builder.put(grammarAccess.getActivityAccess().getParametersAssignment_5_3_1(), "rule__Activity__ParametersAssignment_5_3_1");
+			builder.put(grammarAccess.getActivityAccess().getParametersAssignment_5_3(), "rule__Activity__ParametersAssignment_5_3");
 			builder.put(grammarAccess.getActivityAccess().getOutputDatasetsAssignment_6_2(), "rule__Activity__OutputDatasetsAssignment_6_2");
-			builder.put(grammarAccess.getActivityAccess().getOutputDatasetsAssignment_6_3_1(), "rule__Activity__OutputDatasetsAssignment_6_3_1");
+			builder.put(grammarAccess.getActivityAccess().getOutputDatasetsAssignment_6_3(), "rule__Activity__OutputDatasetsAssignment_6_3");
 			builder.put(grammarAccess.getActivityAccess().getReadinessContraintsAssignment_7_2(), "rule__Activity__ReadinessContraintsAssignment_7_2");
 			builder.put(grammarAccess.getActivityAccess().getReadinessContraintsAssignment_7_3_1(), "rule__Activity__ReadinessContraintsAssignment_7_3_1");
 			builder.put(grammarAccess.getActivityAccess().getToolAssignment_9(), "rule__Activity__ToolAssignment_9");
@@ -131,13 +127,13 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCustomDatasetConstraintAccess().getDatasetAssignment_4(), "rule__CustomDatasetConstraint__DatasetAssignment_4");
 			builder.put(grammarAccess.getCommandLineToolAccess().getNameAssignment_1(), "rule__CommandLineTool__NameAssignment_1");
 			builder.put(grammarAccess.getCommandLineToolAccess().getExecutablePathAssignment_3_1(), "rule__CommandLineTool__ExecutablePathAssignment_3_1");
-			builder.put(grammarAccess.getCommandLineToolAccess().getStandardInputStreamAssignment_4_2_2(), "rule__CommandLineTool__StandardInputStreamAssignment_4_2_2");
-			builder.put(grammarAccess.getCommandLineToolAccess().getStandardOutputStreamAssignment_4_3_2(), "rule__CommandLineTool__StandardOutputStreamAssignment_4_3_2");
-			builder.put(grammarAccess.getCommandLineToolAccess().getStandardErrorStreamAssignment_4_4_2(), "rule__CommandLineTool__StandardErrorStreamAssignment_4_4_2");
+			builder.put(grammarAccess.getCommandLineToolAccess().getStandardInputStreamAssignment_4_2_0_2(), "rule__CommandLineTool__StandardInputStreamAssignment_4_2_0_2");
+			builder.put(grammarAccess.getCommandLineToolAccess().getStandardOutputStreamAssignment_4_2_1_2(), "rule__CommandLineTool__StandardOutputStreamAssignment_4_2_1_2");
+			builder.put(grammarAccess.getCommandLineToolAccess().getStandardErrorStreamAssignment_4_2_2_2(), "rule__CommandLineTool__StandardErrorStreamAssignment_4_2_2_2");
 			builder.put(grammarAccess.getCommandLineToolAccess().getCommandLineTemplateAssignment_7(), "rule__CommandLineTool__CommandLineTemplateAssignment_7");
 			builder.put(grammarAccess.getCommandLineToolAccess().getCommandLineTemplateAssignment_8_1(), "rule__CommandLineTool__CommandLineTemplateAssignment_8_1");
 			builder.put(grammarAccess.getCommandLineToolAccess().getExitCodesAssignment_10_2(), "rule__CommandLineTool__ExitCodesAssignment_10_2");
-			builder.put(grammarAccess.getCommandLineToolAccess().getExitCodesAssignment_10_3_1(), "rule__CommandLineTool__ExitCodesAssignment_10_3_1");
+			builder.put(grammarAccess.getCommandLineToolAccess().getExitCodesAssignment_10_3(), "rule__CommandLineTool__ExitCodesAssignment_10_3");
 			builder.put(grammarAccess.getExitCodeAccess().getCodeAssignment_0(), "rule__ExitCode__CodeAssignment_0");
 			builder.put(grammarAccess.getExitCodeAccess().getStatusAssignment_2(), "rule__ExitCode__StatusAssignment_2");
 			builder.put(grammarAccess.getExitCodeAccess().getReportMessageAssignment_3(), "rule__ExitCode__ReportMessageAssignment_3");
@@ -154,6 +150,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAppendEachAccess().getValueAssignment_1(), "rule__AppendEach__ValueAssignment_1");
 			builder.put(grammarAccess.getAppendListWithAccess().getValueAssignment_1(), "rule__AppendListWith__ValueAssignment_1");
 			builder.put(grammarAccess.getPrependListWithAccess().getValueAssignment_1(), "rule__PrependListWith__ValueAssignment_1");
+			builder.put(grammarAccess.getCommandLineToolAccess().getUnorderedGroup_4_2(), "rule__CommandLineTool__UnorderedGroup_4_2");
 		}
 	}
 	
