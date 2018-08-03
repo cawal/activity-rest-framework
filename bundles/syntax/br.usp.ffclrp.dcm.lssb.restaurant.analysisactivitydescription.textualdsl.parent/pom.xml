@@ -85,6 +85,7 @@
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
 					<version>${xtextVersion}</version>
+					<!-- this dependency is a workaround for Xtext2.14  as presented in https://github.com/eclipse/xtext/issues/1231-->
 					<dependencies>
 						<dependency>
 							<groupId>org.eclipse.platform</groupId>
