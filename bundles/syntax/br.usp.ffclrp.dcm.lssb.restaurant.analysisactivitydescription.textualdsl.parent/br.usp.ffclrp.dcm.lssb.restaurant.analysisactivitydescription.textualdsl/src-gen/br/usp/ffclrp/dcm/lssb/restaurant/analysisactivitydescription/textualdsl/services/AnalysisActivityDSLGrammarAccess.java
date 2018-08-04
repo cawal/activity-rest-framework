@@ -1080,7 +1080,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		private final Assignment cExecutablePathAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cExecutablePathFilePathParserRuleCall_3_1_0 = (RuleCall)cExecutablePathAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cPipeKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cRedirectingKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final RuleCall cENTITY_STARTTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
 		private final UnorderedGroup cUnorderedGroup_4_2 = (UnorderedGroup)cGroup_4.eContents().get(2);
 		private final Group cGroup_4_2_0 = (Group)cUnorderedGroup_4_2.eContents().get(0);
@@ -1127,7 +1127,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//CommandLineTool analysisactivitydescription::CommandLineTool:
 		//	'CommandLineTool'
 		//	name=EString
-		//	ENTITY_START ('executablePath' executablePath=FilePath)? ('pipe'
+		//	ENTITY_START ('executablePath' executablePath=FilePath)? ('redirecting'
 		//	ENTITY_START (('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString] STATEMENT_END)?
 		//	& ('stdout' 'to' standardOutputStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?
 		//	& ('stderr' 'to' standardErrorStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?)
@@ -1138,9 +1138,9 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//	ENTITY_END;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'CommandLineTool' name=EString ENTITY_START ('executablePath' executablePath=FilePath)? ('pipe' ENTITY_START (('stdin'
-		//'from' standardInputStream=[analysisactivitydescription::InputDataset|EString] STATEMENT_END)? & ('stdout' 'to'
-		//standardOutputStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)? & ('stderr' 'to'
+		//'CommandLineTool' name=EString ENTITY_START ('executablePath' executablePath=FilePath)? ('redirecting' ENTITY_START
+		//(('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString] STATEMENT_END)? & ('stdout'
+		//'to' standardOutputStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)? & ('stderr' 'to'
 		//standardErrorStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?) ENTITY_END)?
 		//'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList (LIST_SEPARATOR
 		//commandLineTemplate+=CommandLineEntryList)* LIST_END ('returns' ENTITY_START exitCodes+=ExitCode exitCodes+=ExitCode*
@@ -1171,14 +1171,14 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//FilePath
 		public RuleCall getExecutablePathFilePathParserRuleCall_3_1_0() { return cExecutablePathFilePathParserRuleCall_3_1_0; }
 		
-		//('pipe' ENTITY_START (('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString]
+		//('redirecting' ENTITY_START (('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString]
 		//STATEMENT_END)? & ('stdout' 'to' standardOutputStream=[analysisactivitydescription::OutputDataset|EString]
 		//STATEMENT_END)? & ('stderr' 'to' standardErrorStream=[analysisactivitydescription::OutputDataset|EString]
 		//STATEMENT_END)?) ENTITY_END)?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'pipe'
-		public Keyword getPipeKeyword_4_0() { return cPipeKeyword_4_0; }
+		//'redirecting'
+		public Keyword getRedirectingKeyword_4_0() { return cRedirectingKeyword_4_0; }
 		
 		//ENTITY_START
 		public RuleCall getENTITY_STARTTerminalRuleCall_4_1() { return cENTITY_STARTTerminalRuleCall_4_1; }
@@ -2098,7 +2098,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//CommandLineTool analysisactivitydescription::CommandLineTool:
 	//	'CommandLineTool'
 	//	name=EString
-	//	ENTITY_START ('executablePath' executablePath=FilePath)? ('pipe'
+	//	ENTITY_START ('executablePath' executablePath=FilePath)? ('redirecting'
 	//	ENTITY_START (('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString] STATEMENT_END)?
 	//	& ('stdout' 'to' standardOutputStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?
 	//	& ('stderr' 'to' standardErrorStream=[analysisactivitydescription::OutputDataset|EString] STATEMENT_END)?)

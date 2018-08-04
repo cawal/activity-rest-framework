@@ -28,9 +28,9 @@
 'literals'=58
 'on'=29
 'parameter'=33
-'pipe'=49
 'produces'=31
 'readinessContraints'=32
+'redirecting'=49
 'remarks'=37
 'returns'=55
 'stderr'=54

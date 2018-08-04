@@ -139,7 +139,7 @@ CommandLineTool returns analysisactivitydescription::CommandLineTool:
 	name=EString
 	ENTITY_START
 		('executablePath' executablePath=FilePath)?
-		('pipe'
+		('redirecting'
 		ENTITY_START
 		( 
 		  ('stdin' 'from' standardInputStream=[analysisactivitydescription::InputDataset|EString] STATEMENT_END)?

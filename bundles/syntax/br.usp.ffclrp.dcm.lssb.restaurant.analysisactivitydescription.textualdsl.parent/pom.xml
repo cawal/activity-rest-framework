@@ -37,7 +37,7 @@
 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web</module>
 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.target</module>
 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.tests</module>
-		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.tests</module>
+<!-- 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.tests</module> -->
 	</modules>
 	<build>
 		<plugins>
@@ -241,8 +241,7 @@
 					<version>${tycho-version}</version>
 					<configuration>
 						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
-						<argLine>${tycho.testArgLine} ${platformSystemProperties}
-							${systemProperties} ${moduleProperties}</argLine>
+						<argLine>${tycho.testArgLine} ${platformSystemProperties} ${systemProperties} ${moduleProperties}</argLine>
 						<failIfNoTests>false</failIfNoTests>
 						<useUIHarness>false</useUIHarness>
 					</configuration>

@@ -1668,9 +1668,9 @@ ruleCommandLineTool returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_5='pipe'
+			otherlv_5='redirecting'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0());
+				newLeafNode(otherlv_5, grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0());
 			}
 			this_ENTITY_START_6=RULE_ENTITY_START
 			{

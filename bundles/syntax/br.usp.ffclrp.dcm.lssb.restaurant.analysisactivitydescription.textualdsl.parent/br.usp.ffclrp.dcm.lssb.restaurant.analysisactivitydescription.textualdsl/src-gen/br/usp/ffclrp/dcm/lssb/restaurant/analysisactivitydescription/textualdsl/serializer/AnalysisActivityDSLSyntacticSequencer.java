@@ -21,12 +21,12 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected AnalysisActivityDSLGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q;
+	protected AbstractElementAlias match_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (AnalysisActivityDSLGrammarAccess) access;
-		match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_ENDTerminalRuleCall_4_3()));
+		match_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_ENDTerminalRuleCall_4_3()));
 	}
 	
 	@Override
@@ -117,21 +117,21 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q.equals(syntax))
-				emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q.equals(syntax))
+				emit_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
-	 *     ('pipe' ENTITY_START ENTITY_END)?
+	 *     ('redirecting' ENTITY_START ENTITY_END)?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     executablePath=FilePath (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 *     name=EString ENTITY_START (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 */
-	protected void emit_CommandLineTool___PipeKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

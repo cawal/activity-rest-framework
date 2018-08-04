@@ -4933,9 +4933,9 @@ rule__CommandLineTool__Group_4__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()); }
-	'pipe'
-	{ after(grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()); }
+	{ before(grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0()); }
+	'redirecting'
+	{ after(grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0()); }
 )
 ;
 finally {

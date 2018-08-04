@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_MULTILINE_STRING", "RULE_STRING", "RULE_ID", "RULE_ENTITY_START", "RULE_ENTITY_END", "RULE_STATEMENT_END", "RULE_LIST_START", "RULE_LIST_END", "RULE_LIST_SEPARATOR", "RULE_INT", "RULE_PIPE_TO", "RULE_DEFINITION_START", "RULE_DEFINITION_END", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'STRING'", "'INTEGER'", "'REAL'", "'SUCCEEDED'", "'FAILED'", "'activity'", "'using'", "'description'", "'on'", "'with'", "'produces'", "'readinessContraints'", "'parameter'", "':'", "'='", "'dataset'", "'remarks'", "'-'", "'MinimunDatasetCardinalityConstraint'", "'value'", "'MaximunDatasetCardinalityConstraint'", "'MinimunParameterCardinalityConstraint'", "'MaximunParameterCardinalityConstraint'", "'CustomParameterConstraint'", "'CustomDatasetConstraint'", "'CommandLineTool'", "'commandLineTemplate'", "'executablePath'", "'pipe'", "'stdin'", "'from'", "'stdout'", "'to'", "'stderr'", "'returns'", "'if'", "'toolname'", "'literals'", "'Join'", "'PrependEach'", "'AppendEach'", "'AppendListWith'", "'PrependListWith'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_MULTILINE_STRING", "RULE_STRING", "RULE_ID", "RULE_ENTITY_START", "RULE_ENTITY_END", "RULE_STATEMENT_END", "RULE_LIST_START", "RULE_LIST_END", "RULE_LIST_SEPARATOR", "RULE_INT", "RULE_PIPE_TO", "RULE_DEFINITION_START", "RULE_DEFINITION_END", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'STRING'", "'INTEGER'", "'REAL'", "'SUCCEEDED'", "'FAILED'", "'activity'", "'using'", "'description'", "'on'", "'with'", "'produces'", "'readinessContraints'", "'parameter'", "':'", "'='", "'dataset'", "'remarks'", "'-'", "'MinimunDatasetCardinalityConstraint'", "'value'", "'MaximunDatasetCardinalityConstraint'", "'MinimunParameterCardinalityConstraint'", "'MaximunParameterCardinalityConstraint'", "'CustomParameterConstraint'", "'CustomDatasetConstraint'", "'CommandLineTool'", "'commandLineTemplate'", "'executablePath'", "'redirecting'", "'stdin'", "'from'", "'stdout'", "'to'", "'stderr'", "'returns'", "'if'", "'toolname'", "'literals'", "'Join'", "'PrependEach'", "'AppendEach'", "'AppendListWith'", "'PrependListWith'"
     };
     public static final int T__50=50;
     public static final int RULE_LIST_END=11;
@@ -14881,21 +14881,21 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__CommandLineTool__Group_4__0__Impl"
-    // InternalAnalysisActivityDSL.g:4930:1: rule__CommandLineTool__Group_4__0__Impl : ( 'pipe' ) ;
+    // InternalAnalysisActivityDSL.g:4930:1: rule__CommandLineTool__Group_4__0__Impl : ( 'redirecting' ) ;
     public final void rule__CommandLineTool__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:4934:1: ( ( 'pipe' ) )
-            // InternalAnalysisActivityDSL.g:4935:1: ( 'pipe' )
+            // InternalAnalysisActivityDSL.g:4934:1: ( ( 'redirecting' ) )
+            // InternalAnalysisActivityDSL.g:4935:1: ( 'redirecting' )
             {
-            // InternalAnalysisActivityDSL.g:4935:1: ( 'pipe' )
-            // InternalAnalysisActivityDSL.g:4936:2: 'pipe'
+            // InternalAnalysisActivityDSL.g:4935:1: ( 'redirecting' )
+            // InternalAnalysisActivityDSL.g:4936:2: 'redirecting'
             {
-             before(grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()); 
+             before(grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0()); 
             match(input,49,FOLLOW_2); 
-             after(grammarAccess.getCommandLineToolAccess().getPipeKeyword_4_0()); 
+             after(grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0()); 
 
             }
 
