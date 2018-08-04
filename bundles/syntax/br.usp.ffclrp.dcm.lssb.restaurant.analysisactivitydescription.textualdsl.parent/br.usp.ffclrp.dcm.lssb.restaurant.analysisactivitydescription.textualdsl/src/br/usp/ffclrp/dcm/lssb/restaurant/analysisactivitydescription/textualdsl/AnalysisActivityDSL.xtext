@@ -124,14 +124,14 @@ CustomParameterConstraint returns analysisactivitydescription::CustomParameterCo
 	'CustomParameterConstraint'
 	name=EString
 	ENTITY_START
-		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
+		'on' parameter=[analysisactivitydescription::Parameter|EString]
 	ENTITY_END;
 
 CustomDatasetConstraint returns analysisactivitydescription::CustomDatasetConstraint:
 	'CustomDatasetConstraint'
 	name=EString
 	ENTITY_START
-		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
+		'on' dataset=[analysisactivitydescription::Dataset|EString]
 	ENTITY_END;
 
 CommandLineTool returns analysisactivitydescription::CommandLineTool:
