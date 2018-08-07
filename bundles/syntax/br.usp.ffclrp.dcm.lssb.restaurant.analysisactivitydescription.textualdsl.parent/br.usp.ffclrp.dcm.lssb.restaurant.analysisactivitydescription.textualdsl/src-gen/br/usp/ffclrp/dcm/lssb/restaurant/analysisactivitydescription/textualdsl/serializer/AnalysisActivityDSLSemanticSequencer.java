@@ -7,15 +7,13 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ToolNameCommandLineEntry;
@@ -61,8 +59,14 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT:
 				sequence_CustomDatasetConstraint(context, (CustomDatasetConstraint) semanticObject); 
 				return; 
+			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT:
+				sequence_CustomDatasetReadinessConstraint(context, (CustomDatasetReadinessConstraint) semanticObject); 
+				return; 
 			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT:
 				sequence_CustomParameterConstraint(context, (CustomParameterConstraint) semanticObject); 
+				return; 
+			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT:
+				sequence_CustomParameterReadinessConstraint(context, (CustomParameterReadinessConstraint) semanticObject); 
 				return; 
 			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST:
 				sequence_DatasetCommandLineEntryList(context, (DatasetCommandLineEntryList) semanticObject); 
@@ -75,18 +79,6 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				return; 
 			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST:
 				sequence_LiteralCommandLineEntryList(context, (LiteralCommandLineEntryList) semanticObject); 
-				return; 
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT:
-				sequence_MaximunDatasetCardinalityConstraint(context, (MaximunDatasetCardinalityConstraint) semanticObject); 
-				return; 
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
-				sequence_MaximunParameterCardinalityConstraint(context, (MaximunParameterCardinalityConstraint) semanticObject); 
-				return; 
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT:
-				sequence_MinimunDatasetCardinalityConstraint(context, (MinimunDatasetCardinalityConstraint) semanticObject); 
-				return; 
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
-				sequence_MinimunParameterCardinalityConstraint(context, (MinimunParameterCardinalityConstraint) semanticObject); 
 				return; 
 			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET:
 				sequence_OutputDataset(context, (OutputDataset) semanticObject); 
@@ -203,13 +195,33 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	
 	/**
 	 * Contexts:
-	 *     ReadinessConstraint returns CustomDatasetConstraint
+	 *     DatasetConstraint returns CustomDatasetConstraint
 	 *     CustomDatasetConstraint returns CustomDatasetConstraint
+	 *
+	 * Constraint:
+	 *     name=EString
+	 */
+	protected void sequence_CustomDatasetConstraint(ISerializationContext context, CustomDatasetConstraint semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCustomDatasetConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReadinessConstraint returns CustomDatasetReadinessConstraint
+	 *     DatasetReadinessConstraint returns CustomDatasetReadinessConstraint
+	 *     CustomDatasetReadinessConstraint returns CustomDatasetReadinessConstraint
 	 *
 	 * Constraint:
 	 *     (name=EString dataset=[Dataset|EString])
 	 */
-	protected void sequence_CustomDatasetConstraint(ISerializationContext context, CustomDatasetConstraint semanticObject) {
+	protected void sequence_CustomDatasetReadinessConstraint(ISerializationContext context, CustomDatasetReadinessConstraint semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME));
@@ -217,21 +229,41 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.DATASET_READINESS_CONSTRAINT__DATASET));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomDatasetConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getCustomDatasetConstraintAccess().getDatasetDatasetEStringParserRuleCall_4_0_1(), semanticObject.eGet(AnalysisActivityDescriptionPackage.Literals.DATASET_READINESS_CONSTRAINT__DATASET, false));
+		feeder.accept(grammarAccess.getCustomDatasetReadinessConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCustomDatasetReadinessConstraintAccess().getDatasetDatasetEStringParserRuleCall_4_0_1(), semanticObject.eGet(AnalysisActivityDescriptionPackage.Literals.DATASET_READINESS_CONSTRAINT__DATASET, false));
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     ReadinessConstraint returns CustomParameterConstraint
+	 *     ParameterConstraint returns CustomParameterConstraint
 	 *     CustomParameterConstraint returns CustomParameterConstraint
+	 *
+	 * Constraint:
+	 *     name=EString
+	 */
+	protected void sequence_CustomParameterConstraint(ISerializationContext context, CustomParameterConstraint semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCustomParameterConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReadinessConstraint returns CustomParameterReadinessConstraint
+	 *     ParameterReadinessConstraint returns CustomParameterReadinessConstraint
+	 *     CustomParameterReadinessConstraint returns CustomParameterReadinessConstraint
 	 *
 	 * Constraint:
 	 *     (name=EString parameter=[Parameter|EString])
 	 */
-	protected void sequence_CustomParameterConstraint(ISerializationContext context, CustomParameterConstraint semanticObject) {
+	protected void sequence_CustomParameterReadinessConstraint(ISerializationContext context, CustomParameterReadinessConstraint semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME));
@@ -239,8 +271,8 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.PARAMETER_READINESS_CONSTRAINT__PARAMETER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomParameterConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getCustomParameterConstraintAccess().getParameterParameterEStringParserRuleCall_4_0_1(), semanticObject.eGet(AnalysisActivityDescriptionPackage.Literals.PARAMETER_READINESS_CONSTRAINT__PARAMETER, false));
+		feeder.accept(grammarAccess.getCustomParameterReadinessConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCustomParameterReadinessConstraintAccess().getParameterParameterEStringParserRuleCall_4_0_1(), semanticObject.eGet(AnalysisActivityDescriptionPackage.Literals.PARAMETER_READINESS_CONSTRAINT__PARAMETER, false));
 		feeder.finish();
 	}
 	
@@ -276,7 +308,13 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     InputDataset returns InputDataset
 	 *
 	 * Constraint:
-	 *     (name=EString mimetype=EString? minimumCardinality=EBigInteger maximumCardinality=EBigInteger remarks=EString?)
+	 *     (
+	 *         name=EString 
+	 *         mimetype=EString? 
+	 *         minimumCardinality=EBigInteger 
+	 *         maximumCardinality=EBigInteger 
+	 *         (remarks=EString? (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?)+
+	 *     )
 	 */
 	protected void sequence_InputDataset(ISerializationContext context, InputDataset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -317,63 +355,17 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	
 	/**
 	 * Contexts:
-	 *     ReadinessConstraint returns MaximunDatasetCardinalityConstraint
-	 *     MaximunDatasetCardinalityConstraint returns MaximunDatasetCardinalityConstraint
-	 *
-	 * Constraint:
-	 *     (value=EBigInteger? dataset=[Dataset|EString])
-	 */
-	protected void sequence_MaximunDatasetCardinalityConstraint(ISerializationContext context, MaximunDatasetCardinalityConstraint semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ReadinessConstraint returns MaximunParameterCardinalityConstraint
-	 *     MaximunParameterCardinalityConstraint returns MaximunParameterCardinalityConstraint
-	 *
-	 * Constraint:
-	 *     (value=EBigInteger? parameter=[Parameter|EString])
-	 */
-	protected void sequence_MaximunParameterCardinalityConstraint(ISerializationContext context, MaximunParameterCardinalityConstraint semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ReadinessConstraint returns MinimunDatasetCardinalityConstraint
-	 *     MinimunDatasetCardinalityConstraint returns MinimunDatasetCardinalityConstraint
-	 *
-	 * Constraint:
-	 *     (value=EBigInteger? dataset=[Dataset|EString])
-	 */
-	protected void sequence_MinimunDatasetCardinalityConstraint(ISerializationContext context, MinimunDatasetCardinalityConstraint semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ReadinessConstraint returns MinimunParameterCardinalityConstraint
-	 *     MinimunParameterCardinalityConstraint returns MinimunParameterCardinalityConstraint
-	 *
-	 * Constraint:
-	 *     (value=EBigInteger? parameter=[Parameter|EString])
-	 */
-	protected void sequence_MinimunParameterCardinalityConstraint(ISerializationContext context, MinimunParameterCardinalityConstraint semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Dataset returns OutputDataset
 	 *     OutputDataset returns OutputDataset
 	 *
 	 * Constraint:
-	 *     (name=EString mimetype=EString? minimumCardinality=EBigInteger maximumCardinality=EBigInteger remarks=EString?)
+	 *     (
+	 *         name=EString 
+	 *         mimetype=EString? 
+	 *         minimumCardinality=EBigInteger 
+	 *         maximumCardinality=EBigInteger 
+	 *         (remarks=EString? (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?)+
+	 *     )
 	 */
 	protected void sequence_OutputDataset(ISerializationContext context, OutputDataset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -403,7 +395,8 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         parameterType=ParameterType 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
-	 *         (defaultValue+=EString defaultValue+=EString*)?
+	 *         (defaultValue+=EString defaultValue+=EString*)? 
+	 *         (constraints+=ParameterConstraint constraints+=ParameterConstraint*)?
 	 *     )
 	 */
 	protected void sequence_Parameter(ISerializationContext context, br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter semanticObject) {

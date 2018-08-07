@@ -61,8 +61,8 @@ Parameter returns analysisactivitydescription::Parameter:
     ;
 
 InputDataset returns analysisactivitydescription::InputDataset:
-	'dataset'
-	name=EString
+    'dataset'
+    name=EString
     ':'
     (mimetype=EString)?
     LIST_START
@@ -70,9 +70,11 @@ InputDataset returns analysisactivitydescription::InputDataset:
     LIST_END
     (
        ENTITY_START
-       ('remarks' remarks=EString STATEMENT_END)
-       &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END)?
-       ENTITY_END 
+       (
+            ('remarks' remarks=EString STATEMENT_END)
+            &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)
+        )?
+      ENTITY_END 
     )? 
     STATEMENT_END
     ;
@@ -88,8 +90,10 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
     LIST_END
     (
        ENTITY_START
-       'remarks' remarks=EString STATEMENT_END
-       &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END)?
+       (
+            ('remarks' remarks=EString STATEMENT_END)
+            &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)
+        )?
       ENTITY_END 
     )? 
     STATEMENT_END
@@ -109,8 +113,11 @@ ParameterConstraint returns analysisactivitydescription::ParameterConstraint:
 CustomParameterConstraint returns analysisactivitydescription::CustomParameterConstraint:
 	'CustomParameterConstraint'
 	name=EString
-	ENTITY_START
-	ENTITY_END;
+    (
+        ENTITY_START
+        ENTITY_END
+    )?
+    ;
 	
 
 DatasetConstraint returns analysisactivitydescription::DatasetConstraint:
@@ -120,8 +127,11 @@ DatasetConstraint returns analysisactivitydescription::DatasetConstraint:
 CustomDatasetConstraint returns analysisactivitydescription::CustomDatasetConstraint:
 	'CustomDatasetConstraint'
 	name=EString
-	ENTITY_START
-	ENTITY_END;
+	(
+	    ENTITY_START
+	    ENTITY_END
+	)?
+	;
 	
 	
 	
@@ -148,10 +158,10 @@ CustomDatasetReadinessConstraint returns analysisactivitydescription::CustomData
     ;
 
 CommandLineTool returns analysisactivitydescription::CommandLineTool:
-	'CommandLineTool'
+	'executable'
 	name=EString
 	ENTITY_START
-		('executablePath' executablePath=FilePath)?
+		('path' executablePath=FilePath)?
 		('redirecting'
 		ENTITY_START
 		( 
