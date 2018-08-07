@@ -10,7 +10,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCo
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class ParameterConstraintTest extends ReadinessConstraintTest {
+public abstract class ParameterConstraintTest extends ConstraintTest {
 
 	/**
 	 * Constructs a new Parameter Constraint test case with the given name.

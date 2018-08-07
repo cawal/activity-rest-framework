@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class CustomConstraintImpl extends ReadinessConstraintImpl implements CustomConstraint {
+public abstract class CustomConstraintImpl extends ConstraintImpl implements CustomConstraint {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -13,5 +13,5 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  * @model
  * @generated
  */
-public interface CustomDatasetConstraint extends CustomConstraint, DatasetReadinessConstraint {
+public interface CustomDatasetConstraint extends CustomConstraint, DatasetConstraint {
 } // CustomDatasetConstraint

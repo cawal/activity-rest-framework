@@ -85,42 +85,6 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	ParameterCommandLineEntryList createParameterCommandLineEntryList();
 
 	/**
-	 * Returns a new object of class '<em>Minimun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Minimun Dataset Cardinality Constraint</em>'.
-	 * @generated
-	 */
-	MinimunDatasetCardinalityConstraint createMinimunDatasetCardinalityConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * @generated
-	 */
-	MaximunDatasetCardinalityConstraint createMaximunDatasetCardinalityConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * @generated
-	 */
-	MinimunParameterCardinalityConstraint createMinimunParameterCardinalityConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * @generated
-	 */
-	MaximunParameterCardinalityConstraint createMaximunParameterCardinalityConstraint();
-
-	/**
 	 * Returns a new object of class '<em>Custom Parameter Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -137,6 +101,24 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	 * @generated
 	 */
 	CustomDatasetConstraint createCustomDatasetConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Custom Parameter Readiness Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Parameter Readiness Constraint</em>'.
+	 * @generated
+	 */
+	CustomParameterReadinessConstraint createCustomParameterReadinessConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Custom Dataset Readiness Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Dataset Readiness Constraint</em>'.
+	 * @generated
+	 */
+	CustomDatasetReadinessConstraint createCustomDatasetReadinessConstraint();
 
 	/**
 	 * Returns a new object of class '<em>Command Line Tool</em>'.

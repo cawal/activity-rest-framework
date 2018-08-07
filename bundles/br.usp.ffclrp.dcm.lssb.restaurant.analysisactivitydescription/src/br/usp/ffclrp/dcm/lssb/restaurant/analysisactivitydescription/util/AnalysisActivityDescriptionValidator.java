@@ -97,26 +97,28 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 				return validateInputDataset((InputDataset)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET:
 				return validateOutputDataset((OutputDataset)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT:
-				return validateReadinessConstraint((ReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT:
-				return validateDatasetReadinessConstraint((DatasetReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT:
-				return validateParameterReadinessConstraint((ParameterReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT:
-				return validateMinimunDatasetCardinalityConstraint((MinimunDatasetCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT:
-				return validateMaximunDatasetCardinalityConstraint((MaximunDatasetCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
-				return validateMinimunParameterCardinalityConstraint((MinimunParameterCardinalityConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT:
-				return validateMaximunParameterCardinalityConstraint((MaximunParameterCardinalityConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.CONSTRAINT:
+				return validateConstraint((Constraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT:
+				return validateParameterConstraint((ParameterConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT:
+				return validateDatasetConstraint((DatasetConstraint)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.CUSTOM_CONSTRAINT:
 				return validateCustomConstraint((CustomConstraint)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT:
 				return validateCustomParameterConstraint((CustomParameterConstraint)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT:
 				return validateCustomDatasetConstraint((CustomDatasetConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT:
+				return validateReadinessConstraint((ReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT:
+				return validateDatasetReadinessConstraint((DatasetReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT:
+				return validateParameterReadinessConstraint((ParameterReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT:
+				return validateCustomParameterReadinessConstraint((CustomParameterReadinessConstraint)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT:
+				return validateCustomDatasetReadinessConstraint((CustomDatasetReadinessConstraint)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.TOOL:
 				return validateTool((Tool)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL:
@@ -351,6 +353,33 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateConstraint(Constraint constraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(constraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameterConstraint(ParameterConstraint parameterConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(parameterConstraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDatasetConstraint(DatasetConstraint datasetConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(datasetConstraint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateCommandLineEntryList(CommandLineEntryList commandLineEntryList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(commandLineEntryList, diagnostics, context);
 	}
@@ -463,48 +492,8 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMinimunDatasetCardinalityConstraint(MinimunDatasetCardinalityConstraint minimunDatasetCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(minimunDatasetCardinalityConstraint, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(minimunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validateMinimunDatasetCardinalityConstraint_OnlyPositiveNumbers(minimunDatasetCardinalityConstraint, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the OnlyPositiveNumbers constraint of '<em>Minimun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String MINIMUN_DATASET_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS__EEXPRESSION = "\n" +
-		"            value >= 1";
-
-	/**
-	 * Validates the OnlyPositiveNumbers constraint of '<em>Minimun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMinimunDatasetCardinalityConstraint_OnlyPositiveNumbers(MinimunDatasetCardinalityConstraint minimunDatasetCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.MINIMUN_DATASET_CARDINALITY_CONSTRAINT,
-				 minimunDatasetCardinalityConstraint,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "OnlyPositiveNumbers",
-				 MINIMUN_DATASET_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
+	public boolean validateCustomParameterReadinessConstraint(CustomParameterReadinessConstraint customParameterReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(customParameterReadinessConstraint, diagnostics, context);
 	}
 
 	/**
@@ -512,146 +501,8 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMaximunDatasetCardinalityConstraint(MaximunDatasetCardinalityConstraint maximunDatasetCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(maximunDatasetCardinalityConstraint, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(maximunDatasetCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validateMaximunDatasetCardinalityConstraint_OnlyPositiveNumbersOrInfinite(maximunDatasetCardinalityConstraint, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the OnlyPositiveNumbersOrInfinite constraint of '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS_OR_INFINITE__EEXPRESSION = "\n" +
-		"            value = -1 or value > 0";
-
-	/**
-	 * Validates the OnlyPositiveNumbersOrInfinite constraint of '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMaximunDatasetCardinalityConstraint_OnlyPositiveNumbersOrInfinite(MaximunDatasetCardinalityConstraint maximunDatasetCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT,
-				 maximunDatasetCardinalityConstraint,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "OnlyPositiveNumbersOrInfinite",
-				 MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS_OR_INFINITE__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint minimunParameterCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(minimunParameterCardinalityConstraint, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(minimunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validateMinimunParameterCardinalityConstraint_OnlyPositiveNumbers(minimunParameterCardinalityConstraint, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the OnlyPositiveNumbers constraint of '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS__EEXPRESSION = "\n" +
-		"            value >= 1";
-
-	/**
-	 * Validates the OnlyPositiveNumbers constraint of '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMinimunParameterCardinalityConstraint_OnlyPositiveNumbers(MinimunParameterCardinalityConstraint minimunParameterCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT,
-				 minimunParameterCardinalityConstraint,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "OnlyPositiveNumbers",
-				 MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMaximunParameterCardinalityConstraint(MaximunParameterCardinalityConstraint maximunParameterCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(maximunParameterCardinalityConstraint, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(maximunParameterCardinalityConstraint, diagnostics, context);
-		if (result || diagnostics != null) result &= validateMaximunParameterCardinalityConstraint_OnlyPositiveNumbersOrInfinite(maximunParameterCardinalityConstraint, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the OnlyPositiveNumbersOrInfinite constraint of '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS_OR_INFINITE__EEXPRESSION = "\n" +
-		"            value = -1 or value > 0";
-
-	/**
-	 * Validates the OnlyPositiveNumbersOrInfinite constraint of '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMaximunParameterCardinalityConstraint_OnlyPositiveNumbersOrInfinite(MaximunParameterCardinalityConstraint maximunParameterCardinalityConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(AnalysisActivityDescriptionPackage.Literals.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT,
-				 maximunParameterCardinalityConstraint,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "OnlyPositiveNumbersOrInfinite",
-				 MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__ONLY_POSITIVE_NUMBERS_OR_INFINITE__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
+	public boolean validateCustomDatasetReadinessConstraint(CustomDatasetReadinessConstraint customDatasetReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(customDatasetReadinessConstraint, diagnostics, context);
 	}
 
 	/**

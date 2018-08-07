@@ -23,7 +23,7 @@ Activity returns analysisactivitydescription::Activity:
 
 
 ReadinessConstraint returns analysisactivitydescription::ReadinessConstraint:
-	MinimunDatasetCardinalityConstraint | MaximunDatasetCardinalityConstraint | MinimunParameterCardinalityConstraint | MaximunParameterCardinalityConstraint | CustomParameterConstraint | CustomDatasetConstraint;
+	ParameterReadinessConstraint | DatasetReadinessConstraint;
 
 Tool returns analysisactivitydescription::Tool:
 	CommandLineTool;
@@ -50,6 +50,13 @@ Parameter returns analysisactivitydescription::Parameter:
 	   minimumCardinality=EBigInteger LIST_SEPARATOR  maximumCardinality=EBigInteger
 	LIST_END
 	('=' LIST_START  defaultValue+=EString ( LIST_SEPARATOR defaultValue+=EString)* LIST_END  )?
+	(
+	    ENTITY_START
+	    ('constraints' LIST_START constraints+=ParameterConstraint 
+	        (LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END
+	    )?
+	    ENTITY_END
+	)?
     STATEMENT_END
     ;
 
@@ -63,7 +70,8 @@ InputDataset returns analysisactivitydescription::InputDataset:
     LIST_END
     (
        ENTITY_START
-       'remarks' remarks=EString STATEMENT_END
+       ('remarks' remarks=EString STATEMENT_END)
+       &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END)?
        ENTITY_END 
     )? 
     STATEMENT_END
@@ -81,7 +89,8 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
     (
        ENTITY_START
        'remarks' remarks=EString STATEMENT_END
-       ENTITY_END 
+       &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END)?
+      ENTITY_END 
     )? 
     STATEMENT_END
     ;
@@ -92,47 +101,51 @@ EBigInteger returns ecore::EBigInteger:
 enum ParameterType returns analysisactivitydescription::ParameterType:
 				STRING = 'STRING' | INTEGER = 'INTEGER' | REAL = 'REAL';
 
-MinimunDatasetCardinalityConstraint returns analysisactivitydescription::MinimunDatasetCardinalityConstraint:
-	'MinimunDatasetCardinalityConstraint'
-	ENTITY_START
-		('value' value=EBigInteger)?
-		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
-	ENTITY_END;
-
-MaximunDatasetCardinalityConstraint returns analysisactivitydescription::MaximunDatasetCardinalityConstraint:
-	'MaximunDatasetCardinalityConstraint'
-	ENTITY_START
-		('value' value=EBigInteger)?
-		'dataset' dataset=[analysisactivitydescription::Dataset|EString]
-	ENTITY_END;
-
-MinimunParameterCardinalityConstraint returns analysisactivitydescription::MinimunParameterCardinalityConstraint:
-	'MinimunParameterCardinalityConstraint'
-	ENTITY_START
-		('value' value=EBigInteger)?
-		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
-	ENTITY_END;
-
-MaximunParameterCardinalityConstraint returns analysisactivitydescription::MaximunParameterCardinalityConstraint:
-	'MaximunParameterCardinalityConstraint'
-	ENTITY_START
-		('value' value=EBigInteger)?
-		'parameter' parameter=[analysisactivitydescription::Parameter|EString]
-	ENTITY_END;
+    
+ParameterConstraint returns analysisactivitydescription::ParameterConstraint:
+    CustomParameterConstraint
+;
 
 CustomParameterConstraint returns analysisactivitydescription::CustomParameterConstraint:
 	'CustomParameterConstraint'
 	name=EString
 	ENTITY_START
-		'on' parameter=[analysisactivitydescription::Parameter|EString]
 	ENTITY_END;
+	
+
+DatasetConstraint returns analysisactivitydescription::DatasetConstraint:
+    CustomDatasetConstraint
+;
 
 CustomDatasetConstraint returns analysisactivitydescription::CustomDatasetConstraint:
 	'CustomDatasetConstraint'
 	name=EString
 	ENTITY_START
-		'on' dataset=[analysisactivitydescription::Dataset|EString]
 	ENTITY_END;
+	
+	
+	
+ParameterReadinessConstraint returns analysisactivitydescription::ParameterReadinessConstraint:
+    CustomParameterReadinessConstraint
+;
+CustomParameterReadinessConstraint returns analysisactivitydescription::CustomParameterReadinessConstraint:
+    'CustomParameterReadinessConstraint'
+    name=EString
+    ENTITY_START
+        'on' parameter=[analysisactivitydescription::Parameter|EString]
+    ENTITY_END;	
+	
+DatasetReadinessConstraint returns analysisactivitydescription::DatasetReadinessConstraint:
+    CustomDatasetReadinessConstraint
+;
+    
+CustomDatasetReadinessConstraint returns analysisactivitydescription::CustomDatasetReadinessConstraint:
+    'CustomDatasetReadinessConstraint'
+    name=EString
+    ENTITY_START
+        'on' dataset=[analysisactivitydescription::Dataset|EString]
+    ENTITY_END
+    ;
 
 CommandLineTool returns analysisactivitydescription::CommandLineTool:
 	'CommandLineTool'

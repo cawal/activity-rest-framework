@@ -2,6 +2,8 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Dataset</b></em>'.
@@ -21,6 +23,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getName <em>Name</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks <em>Remarks</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getMimetype <em>Mimetype</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getConstraints <em>Constraints</em>}</li>
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDataset()
@@ -105,5 +108,22 @@ public interface Dataset extends MultiplicityElement {
 	 * @generated
 	 */
 	void setMimetype(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDataset_Constraints()
+	 * @model containment="true" ordered="false"
+	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
+	 * @generated
+	 */
+	EList<DatasetConstraint> getConstraints();
 
 } // Dataset

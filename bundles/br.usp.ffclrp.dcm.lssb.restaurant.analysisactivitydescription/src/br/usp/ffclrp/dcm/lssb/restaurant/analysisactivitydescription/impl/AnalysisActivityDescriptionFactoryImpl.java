@@ -61,12 +61,10 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 			case AnalysisActivityDescriptionPackage.PARAMETER: return createParameter();
 			case AnalysisActivityDescriptionPackage.INPUT_DATASET: return createInputDataset();
 			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET: return createOutputDataset();
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT: return createMinimunDatasetCardinalityConstraint();
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT: return createMaximunDatasetCardinalityConstraint();
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT: return createMinimunParameterCardinalityConstraint();
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT: return createMaximunParameterCardinalityConstraint();
 			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT: return createCustomParameterConstraint();
 			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT: return createCustomDatasetConstraint();
+			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT: return createCustomParameterReadinessConstraint();
+			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT: return createCustomDatasetReadinessConstraint();
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL: return createCommandLineTool();
 			case AnalysisActivityDescriptionPackage.EXIT_CODE: return createExitCode();
 			case AnalysisActivityDescriptionPackage.TOOL_NAME_COMMAND_LINE_ENTRY: return createToolNameCommandLineEntry();
@@ -191,46 +189,6 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MinimunDatasetCardinalityConstraint createMinimunDatasetCardinalityConstraint() {
-		MinimunDatasetCardinalityConstraintImpl minimunDatasetCardinalityConstraint = new MinimunDatasetCardinalityConstraintImpl();
-		return minimunDatasetCardinalityConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MaximunDatasetCardinalityConstraint createMaximunDatasetCardinalityConstraint() {
-		MaximunDatasetCardinalityConstraintImpl maximunDatasetCardinalityConstraint = new MaximunDatasetCardinalityConstraintImpl();
-		return maximunDatasetCardinalityConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MinimunParameterCardinalityConstraint createMinimunParameterCardinalityConstraint() {
-		MinimunParameterCardinalityConstraintImpl minimunParameterCardinalityConstraint = new MinimunParameterCardinalityConstraintImpl();
-		return minimunParameterCardinalityConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MaximunParameterCardinalityConstraint createMaximunParameterCardinalityConstraint() {
-		MaximunParameterCardinalityConstraintImpl maximunParameterCardinalityConstraint = new MaximunParameterCardinalityConstraintImpl();
-		return maximunParameterCardinalityConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public CustomParameterConstraint createCustomParameterConstraint() {
 		CustomParameterConstraintImpl customParameterConstraint = new CustomParameterConstraintImpl();
 		return customParameterConstraint;
@@ -244,6 +202,26 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	public CustomDatasetConstraint createCustomDatasetConstraint() {
 		CustomDatasetConstraintImpl customDatasetConstraint = new CustomDatasetConstraintImpl();
 		return customDatasetConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomParameterReadinessConstraint createCustomParameterReadinessConstraint() {
+		CustomParameterReadinessConstraintImpl customParameterReadinessConstraint = new CustomParameterReadinessConstraintImpl();
+		return customParameterReadinessConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomDatasetReadinessConstraint createCustomDatasetReadinessConstraint() {
+		CustomDatasetReadinessConstraintImpl customDatasetReadinessConstraint = new CustomDatasetReadinessConstraintImpl();
+		return customDatasetReadinessConstraint;
 	}
 
 	/**

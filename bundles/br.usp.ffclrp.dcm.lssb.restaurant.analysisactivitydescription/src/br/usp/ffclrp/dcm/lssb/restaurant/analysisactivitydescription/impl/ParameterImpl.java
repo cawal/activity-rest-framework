@@ -4,19 +4,24 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +34,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,6 +89,16 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * @ordered
 	 */
 	protected EList<String> defaultValue;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ParameterConstraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,6 +178,32 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ParameterConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<ParameterConstraint>(ParameterConstraint.class, this, AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -171,6 +213,8 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 				return getParameterType();
 			case AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE:
 				return getDefaultValue();
+			case AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,6 +238,10 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 				getDefaultValue().clear();
 				getDefaultValue().addAll((Collection<? extends String>)newValue);
 				return;
+			case AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends ParameterConstraint>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -215,6 +263,9 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 			case AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE:
 				getDefaultValue().clear();
 				return;
+			case AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -233,6 +284,8 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 				return parameterType != PARAMETER_TYPE_EDEFAULT;
 			case AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE:
 				return defaultValue != null && !defaultValue.isEmpty();
+			case AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

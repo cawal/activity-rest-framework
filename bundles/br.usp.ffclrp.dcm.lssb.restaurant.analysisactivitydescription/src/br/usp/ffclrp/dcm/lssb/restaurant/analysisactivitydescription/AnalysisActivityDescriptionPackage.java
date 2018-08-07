@@ -253,13 +253,22 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER__DEFAULT_VALUE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__CONSTRAINTS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -326,13 +335,22 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int DATASET__MIMETYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET__CONSTRAINTS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+	int DATASET_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Dataset</em>' class.
@@ -397,6 +415,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_DATASET__MIMETYPE = DATASET__MIMETYPE;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__CONSTRAINTS = DATASET__CONSTRAINTS;
 
 	/**
 	 * The number of structural features of the '<em>Input Dataset</em>' class.
@@ -472,6 +499,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int OUTPUT_DATASET__MIMETYPE = DATASET__MIMETYPE;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__CONSTRAINTS = DATASET__CONSTRAINTS;
+
+	/**
 	 * The number of structural features of the '<em>Output Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -490,6 +526,90 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int OUTPUT_DATASET_OPERATION_COUNT = DATASET_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl <em>Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getConstraint()
+	 * @generated
+	 */
+	int CONSTRAINT = 6;
+
+	/**
+	 * The number of structural features of the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl <em>Parameter Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterConstraint()
+	 * @generated
+	 */
+	int PARAMETER_CONSTRAINT = 7;
+
+	/**
+	 * The number of structural features of the '<em>Parameter Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Parameter Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl <em>Dataset Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetConstraint()
+	 * @generated
+	 */
+	int DATASET_CONSTRAINT = 8;
+
+	/**
+	 * The number of structural features of the '<em>Dataset Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Dataset Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl <em>Command Line Entry List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -497,7 +617,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntryList()
 	 * @generated
 	 */
-	int COMMAND_LINE_ENTRY_LIST = 19;
+	int COMMAND_LINE_ENTRY_LIST = 20;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolNameCommandLineEntryImpl <em>Tool Name Command Line Entry</em>}' class.
@@ -507,7 +627,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getToolNameCommandLineEntry()
 	 * @generated
 	 */
-	int TOOL_NAME_COMMAND_LINE_ENTRY = 20;
+	int TOOL_NAME_COMMAND_LINE_ENTRY = 21;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
@@ -517,7 +637,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntryList()
 	 * @generated
 	 */
-	int LITERAL_COMMAND_LINE_ENTRY_LIST = 21;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST = 22;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl <em>Dataset Command Line Entry List</em>}' class.
@@ -527,7 +647,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntryList()
 	 * @generated
 	 */
-	int DATASET_COMMAND_LINE_ENTRY_LIST = 22;
+	int DATASET_COMMAND_LINE_ENTRY_LIST = 23;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl <em>Parameter Command Line Entry List</em>}' class.
@@ -537,7 +657,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntryList()
 	 * @generated
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 23;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 24;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl <em>Readiness Constraint</em>}' class.
@@ -547,25 +667,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getReadinessConstraint()
 	 * @generated
 	 */
-	int READINESS_CONSTRAINT = 6;
-
-	/**
-	 * The number of structural features of the '<em>Readiness Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int READINESS_CONSTRAINT_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Readiness Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int READINESS_CONSTRAINT_OPERATION_COUNT = 0;
+	int READINESS_CONSTRAINT = 12;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetReadinessConstraintImpl <em>Dataset Readiness Constraint</em>}' class.
@@ -575,7 +677,166 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetReadinessConstraint()
 	 * @generated
 	 */
-	int DATASET_READINESS_CONSTRAINT = 7;
+	int DATASET_READINESS_CONSTRAINT = 13;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterReadinessConstraintImpl <em>Parameter Readiness Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterReadinessConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterReadinessConstraint()
+	 * @generated
+	 */
+	int PARAMETER_READINESS_CONSTRAINT = 14;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomConstraintImpl <em>Custom Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomConstraint()
+	 * @generated
+	 */
+	int CUSTOM_CONSTRAINT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_CONSTRAINT__NAME = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Custom Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Custom Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterReadinessConstraintImpl <em>Custom Parameter Readiness Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterReadinessConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomParameterReadinessConstraint()
+	 * @generated
+	 */
+	int CUSTOM_PARAMETER_READINESS_CONSTRAINT = 15;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetReadinessConstraintImpl <em>Custom Dataset Readiness Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetReadinessConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomDatasetReadinessConstraint()
+	 * @generated
+	 */
+	int CUSTOM_DATASET_READINESS_CONSTRAINT = 16;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterConstraintImpl <em>Custom Parameter Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomParameterConstraint()
+	 * @generated
+	 */
+	int CUSTOM_PARAMETER_CONSTRAINT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_PARAMETER_CONSTRAINT__NAME = CUSTOM_CONSTRAINT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Custom Parameter Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_PARAMETER_CONSTRAINT_FEATURE_COUNT = CUSTOM_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Custom Parameter Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_PARAMETER_CONSTRAINT_OPERATION_COUNT = CUSTOM_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetConstraintImpl <em>Custom Dataset Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomDatasetConstraint()
+	 * @generated
+	 */
+	int CUSTOM_DATASET_CONSTRAINT = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_DATASET_CONSTRAINT__NAME = CUSTOM_CONSTRAINT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Custom Dataset Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_DATASET_CONSTRAINT_FEATURE_COUNT = CUSTOM_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Custom Dataset Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_DATASET_CONSTRAINT_OPERATION_COUNT = CUSTOM_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Readiness Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READINESS_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Readiness Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READINESS_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Dataset</b></em>' reference.
@@ -605,16 +866,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int DATASET_READINESS_CONSTRAINT_OPERATION_COUNT = READINESS_CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterReadinessConstraintImpl <em>Parameter Readiness Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterReadinessConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterReadinessConstraint()
-	 * @generated
-	 */
-	int PARAMETER_READINESS_CONSTRAINT = 8;
-
-	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -642,106 +893,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER_READINESS_CONSTRAINT_OPERATION_COUNT = READINESS_CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl <em>Minimun Dataset Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunDatasetCardinalityConstraint()
-	 * @generated
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT = 9;
-
-	/**
-	 * The feature id for the '<em><b>Dataset</b></em>' reference.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT__DATASET = DATASET_READINESS_CONSTRAINT__DATASET;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = DATASET_READINESS_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Minimun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT_FEATURE_COUNT = DATASET_READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Minimun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT_OPERATION_COUNT = DATASET_READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl <em>Maximun Dataset Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunDatasetCardinalityConstraint()
-	 * @generated
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT = 10;
-
-	/**
-	 * The feature id for the '<em><b>Dataset</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__DATASET = DATASET_READINESS_CONSTRAINT__DATASET;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = DATASET_READINESS_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Maximun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT_FEATURE_COUNT = DATASET_READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Maximun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT_OPERATION_COUNT = DATASET_READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl <em>Minimun Parameter Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT = 11;
+	int CUSTOM_PARAMETER_READINESS_CONSTRAINT__NAME = CUSTOM_CONSTRAINT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' reference.
@@ -750,90 +908,25 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__PARAMETER = PARAMETER_READINESS_CONSTRAINT__PARAMETER;
+	int CUSTOM_PARAMETER_READINESS_CONSTRAINT__PARAMETER = CUSTOM_CONSTRAINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The number of structural features of the '<em>Custom Parameter Readiness Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = PARAMETER_READINESS_CONSTRAINT_FEATURE_COUNT + 0;
+	int CUSTOM_PARAMETER_READINESS_CONSTRAINT_FEATURE_COUNT = CUSTOM_CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Minimun Parameter Cardinality Constraint</em>' class.
+	 * The number of operations of the '<em>Custom Parameter Readiness Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT_FEATURE_COUNT = PARAMETER_READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Minimun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT_OPERATION_COUNT = PARAMETER_READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl <em>Maximun Parameter Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT = 12;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__PARAMETER = PARAMETER_READINESS_CONSTRAINT__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = PARAMETER_READINESS_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Maximun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT_FEATURE_COUNT = PARAMETER_READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Maximun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT_OPERATION_COUNT = PARAMETER_READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomConstraintImpl <em>Custom Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomConstraint()
-	 * @generated
-	 */
-	int CUSTOM_CONSTRAINT = 13;
+	int CUSTOM_PARAMETER_READINESS_CONSTRAINT_OPERATION_COUNT = CUSTOM_CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -842,90 +935,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_CONSTRAINT__NAME = READINESS_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Custom Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT_FEATURE_COUNT = READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Custom Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT_OPERATION_COUNT = READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterConstraintImpl <em>Custom Parameter Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomParameterConstraint()
-	 * @generated
-	 */
-	int CUSTOM_PARAMETER_CONSTRAINT = 14;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_PARAMETER_CONSTRAINT__NAME = CUSTOM_CONSTRAINT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_PARAMETER_CONSTRAINT__PARAMETER = CUSTOM_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Custom Parameter Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_PARAMETER_CONSTRAINT_FEATURE_COUNT = CUSTOM_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Custom Parameter Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_PARAMETER_CONSTRAINT_OPERATION_COUNT = CUSTOM_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetConstraintImpl <em>Custom Dataset Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomDatasetConstraint()
-	 * @generated
-	 */
-	int CUSTOM_DATASET_CONSTRAINT = 15;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_DATASET_CONSTRAINT__NAME = CUSTOM_CONSTRAINT__NAME;
+	int CUSTOM_DATASET_READINESS_CONSTRAINT__NAME = CUSTOM_CONSTRAINT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Dataset</b></em>' reference.
@@ -934,25 +944,25 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_DATASET_CONSTRAINT__DATASET = CUSTOM_CONSTRAINT_FEATURE_COUNT + 0;
+	int CUSTOM_DATASET_READINESS_CONSTRAINT__DATASET = CUSTOM_CONSTRAINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Custom Dataset Constraint</em>' class.
+	 * The number of structural features of the '<em>Custom Dataset Readiness Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_DATASET_CONSTRAINT_FEATURE_COUNT = CUSTOM_CONSTRAINT_FEATURE_COUNT + 1;
+	int CUSTOM_DATASET_READINESS_CONSTRAINT_FEATURE_COUNT = CUSTOM_CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Custom Dataset Constraint</em>' class.
+	 * The number of operations of the '<em>Custom Dataset Readiness Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_DATASET_CONSTRAINT_OPERATION_COUNT = CUSTOM_CONSTRAINT_OPERATION_COUNT + 0;
+	int CUSTOM_DATASET_READINESS_CONSTRAINT_OPERATION_COUNT = CUSTOM_CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolImpl <em>Tool</em>}' class.
@@ -962,7 +972,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getTool()
 	 * @generated
 	 */
-	int TOOL = 16;
+	int TOOL = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1008,7 +1018,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineTool()
 	 * @generated
 	 */
-	int COMMAND_LINE_TOOL = 17;
+	int COMMAND_LINE_TOOL = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1108,7 +1118,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getExitCode()
 	 * @generated
 	 */
-	int EXIT_CODE = 18;
+	int EXIT_CODE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
@@ -1325,7 +1335,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterType()
 	 * @generated
 	 */
-	int PARAMETER_TYPE = 24;
+	int PARAMETER_TYPE = 25;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus <em>Termination Status</em>}' enum.
@@ -1335,7 +1345,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getTerminationStatus()
 	 * @generated
 	 */
-	int TERMINATION_STATUS = 25;
+	int TERMINATION_STATUS = 26;
 
 	/**
 	 * The meta object id for the '<em>File Path</em>' data type.
@@ -1345,7 +1355,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getFilePath()
 	 * @generated
 	 */
-	int FILE_PATH = 26;
+	int FILE_PATH = 27;
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity <em>Activity</em>}'.
@@ -1510,6 +1520,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EAttribute getParameter_DefaultValue();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getConstraints()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EReference getParameter_Constraints();
+
+	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1553,6 +1574,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EAttribute getDataset_Mimetype();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getConstraints()
+	 * @see #getDataset()
+	 * @generated
+	 */
+	EReference getDataset_Constraints();
+
+	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset <em>Input Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1571,6 +1603,36 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOutputDataset();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint
+	 * @generated
+	 */
+	EClass getConstraint();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint <em>Parameter Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint
+	 * @generated
+	 */
+	EClass getParameterConstraint();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint <em>Dataset Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dataset Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint
+	 * @generated
+	 */
+	EClass getDatasetConstraint();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList <em>Command Line Entry List</em>}'.
@@ -1719,88 +1781,24 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EReference getParameterReadinessConstraint_Parameter();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint <em>Minimun Dataset Cardinality Constraint</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint <em>Custom Parameter Readiness Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Minimun Dataset Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint
+	 * @return the meta object for class '<em>Custom Parameter Readiness Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint
 	 * @generated
 	 */
-	EClass getMinimunDatasetCardinalityConstraint();
+	EClass getCustomParameterReadinessConstraint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint#getValue <em>Value</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint <em>Custom Dataset Readiness Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint#getValue()
-	 * @see #getMinimunDatasetCardinalityConstraint()
+	 * @return the meta object for class '<em>Custom Dataset Readiness Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint
 	 * @generated
 	 */
-	EAttribute getMinimunDatasetCardinalityConstraint_Value();
-
-	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint <em>Maximun Dataset Cardinality Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint
-	 * @generated
-	 */
-	EClass getMaximunDatasetCardinalityConstraint();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint#getValue()
-	 * @see #getMaximunDatasetCardinalityConstraint()
-	 * @generated
-	 */
-	EAttribute getMaximunDatasetCardinalityConstraint_Value();
-
-	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint <em>Minimun Parameter Cardinality Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint
-	 * @generated
-	 */
-	EClass getMinimunParameterCardinalityConstraint();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint#getValue()
-	 * @see #getMinimunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	EAttribute getMinimunParameterCardinalityConstraint_Value();
-
-	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint <em>Maximun Parameter Cardinality Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint
-	 * @generated
-	 */
-	EClass getMaximunParameterCardinalityConstraint();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint#getValue()
-	 * @see #getMaximunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	EAttribute getMaximunParameterCardinalityConstraint_Value();
+	EClass getCustomDatasetReadinessConstraint();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomConstraint <em>Custom Constraint</em>}'.
@@ -2175,6 +2173,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EAttribute PARAMETER__DEFAULT_VALUE = eINSTANCE.getParameter_DefaultValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__CONSTRAINTS = eINSTANCE.getParameter_Constraints();
+
+		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl <em>Dataset</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2209,6 +2215,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EAttribute DATASET__MIMETYPE = eINSTANCE.getDataset_Mimetype();
 
 		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATASET__CONSTRAINTS = eINSTANCE.getDataset_Constraints();
+
+		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.InputDatasetImpl <em>Input Dataset</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2227,6 +2241,36 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OUTPUT_DATASET = eINSTANCE.getOutputDataset();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getConstraint()
+		 * @generated
+		 */
+		EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl <em>Parameter Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterConstraint()
+		 * @generated
+		 */
+		EClass PARAMETER_CONSTRAINT = eINSTANCE.getParameterConstraint();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl <em>Dataset Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetConstraint()
+		 * @generated
+		 */
+		EClass DATASET_CONSTRAINT = eINSTANCE.getDatasetConstraint();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl <em>Command Line Entry List</em>}' class.
@@ -2357,76 +2401,24 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EReference PARAMETER_READINESS_CONSTRAINT__PARAMETER = eINSTANCE.getParameterReadinessConstraint_Parameter();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl <em>Minimun Dataset Cardinality Constraint</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterReadinessConstraintImpl <em>Custom Parameter Readiness Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunDatasetCardinalityConstraint()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterReadinessConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomParameterReadinessConstraint()
 		 * @generated
 		 */
-		EClass MINIMUN_DATASET_CARDINALITY_CONSTRAINT = eINSTANCE.getMinimunDatasetCardinalityConstraint();
+		EClass CUSTOM_PARAMETER_READINESS_CONSTRAINT = eINSTANCE.getCustomParameterReadinessConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetReadinessConstraintImpl <em>Custom Dataset Readiness Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetReadinessConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomDatasetReadinessConstraint()
 		 * @generated
 		 */
-		EAttribute MINIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMinimunDatasetCardinalityConstraint_Value();
-
-		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl <em>Maximun Dataset Cardinality Constraint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunDatasetCardinalityConstraint()
-		 * @generated
-		 */
-		EClass MAXIMUN_DATASET_CARDINALITY_CONSTRAINT = eINSTANCE.getMaximunDatasetCardinalityConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMaximunDatasetCardinalityConstraint_Value();
-
-		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl <em>Minimun Parameter Cardinality Constraint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunParameterCardinalityConstraint()
-		 * @generated
-		 */
-		EClass MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT = eINSTANCE.getMinimunParameterCardinalityConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMinimunParameterCardinalityConstraint_Value();
-
-		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl <em>Maximun Parameter Cardinality Constraint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunParameterCardinalityConstraint()
-		 * @generated
-		 */
-		EClass MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT = eINSTANCE.getMaximunParameterCardinalityConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMaximunParameterCardinalityConstraint_Value();
+		EClass CUSTOM_DATASET_READINESS_CONSTRAINT = eINSTANCE.getCustomDatasetReadinessConstraint();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomConstraintImpl <em>Custom Constraint</em>}' class.

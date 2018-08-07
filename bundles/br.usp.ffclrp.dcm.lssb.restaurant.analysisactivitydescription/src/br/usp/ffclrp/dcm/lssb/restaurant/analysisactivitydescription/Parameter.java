@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getName <em>Name</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getConstraints <em>Constraints</em>}</li>
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameter()
@@ -101,5 +102,22 @@ public interface Parameter extends MultiplicityElement {
 	 * @generated
 	 */
 	EList<String> getDefaultValue();
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameter_Constraints()
+	 * @model containment="true" ordered="false"
+	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
+	 * @generated
+	 */
+	EList<ParameterConstraint> getConstraints();
 
 } // Parameter

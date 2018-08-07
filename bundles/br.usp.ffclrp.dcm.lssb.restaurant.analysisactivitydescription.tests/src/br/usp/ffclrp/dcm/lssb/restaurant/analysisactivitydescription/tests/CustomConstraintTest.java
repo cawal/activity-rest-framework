@@ -10,7 +10,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomConst
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class CustomConstraintTest extends ReadinessConstraintTest {
+public abstract class CustomConstraintTest extends ConstraintTest {
 
 	/**
 	 * Constructs a new Custom Constraint test case with the given name.

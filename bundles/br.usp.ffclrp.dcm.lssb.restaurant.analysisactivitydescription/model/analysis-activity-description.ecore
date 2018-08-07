@@ -71,6 +71,12 @@
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//ParameterConstraint"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterType">
     <eLiterals name="STRING"/>
@@ -85,10 +91,23 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remarks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//DatasetConstraint" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputDataset" eSuperTypes="#//Dataset"/>
   <eClassifiers xsi:type="ecore:EClass" name="OutputDataset" eSuperTypes="#//Dataset"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true" eSuperTypes="#//Constraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatasetConstraint" abstract="true" eSuperTypes="#//Constraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomConstraint" abstract="true" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterConstraint" eSuperTypes="#//CustomConstraint #//ParameterConstraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetConstraint" eSuperTypes="#//CustomConstraint #//DatasetConstraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true" eSuperTypes="#//Constraint">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Constraints on readiness of the activity"/>
     </eAnnotations>
@@ -99,47 +118,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterReadinessConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MinimunDatasetCardinalityConstraint" eSuperTypes="#//DatasetReadinessConstraint">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OnlyPositiveNumbers"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OnlyPositiveNumbers" value="&#xA;            value >= 1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MaximunDatasetCardinalityConstraint" eSuperTypes="#//DatasetReadinessConstraint">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OnlyPositiveNumbersOrInfinite"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OnlyPositiveNumbersOrInfinite" value="&#xA;            value = -1 or value > 0"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MinimunParameterCardinalityConstraint" eSuperTypes="#//ParameterReadinessConstraint">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OnlyPositiveNumbers"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OnlyPositiveNumbers" value="&#xA;            value >= 1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MaximunParameterCardinalityConstraint" eSuperTypes="#//ParameterReadinessConstraint">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="OnlyPositiveNumbersOrInfinite"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="OnlyPositiveNumbersOrInfinite" value="&#xA;            value = -1 or value > 0"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterConstraint" eSuperTypes="#//CustomConstraint #//ParameterReadinessConstraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetConstraint" eSuperTypes="#//CustomConstraint #//DatasetReadinessConstraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterReadinessConstraint" eSuperTypes="#//CustomConstraint #//ParameterReadinessConstraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetReadinessConstraint" eSuperTypes="#//CustomConstraint #//DatasetReadinessConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="Tool" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Abstract class to describe the tool used for executing the activity."/>

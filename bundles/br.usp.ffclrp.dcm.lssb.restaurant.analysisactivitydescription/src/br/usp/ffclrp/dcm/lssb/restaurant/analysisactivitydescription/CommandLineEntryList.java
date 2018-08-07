@@ -15,6 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <!-- begin-model-doc -->
  * A list of entries for the command line tool.
+ * This entry list can be manipulated before being used
+ * for the command line.
+ * Each item of the final list will be used as a different
+ * argument for the command line tool.
+ * 
  * <!-- end-model-doc -->
  *
  * <p>

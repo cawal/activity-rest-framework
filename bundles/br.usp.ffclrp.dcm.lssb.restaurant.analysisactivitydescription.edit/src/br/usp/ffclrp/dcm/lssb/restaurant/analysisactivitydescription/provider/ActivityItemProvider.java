@@ -229,32 +229,12 @@ public class ActivityItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createMinimunDatasetCardinalityConstraint()));
+				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomParameterReadinessConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createMaximunDatasetCardinalityConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createMinimunParameterCardinalityConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createMaximunParameterCardinalityConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomParameterConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomDatasetConstraint()));
+				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomDatasetReadinessConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter

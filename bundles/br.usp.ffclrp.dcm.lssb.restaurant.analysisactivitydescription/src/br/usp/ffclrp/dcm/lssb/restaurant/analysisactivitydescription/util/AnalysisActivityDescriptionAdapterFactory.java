@@ -92,32 +92,16 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 				return createOutputDatasetAdapter();
 			}
 			@Override
-			public Adapter caseReadinessConstraint(ReadinessConstraint object) {
-				return createReadinessConstraintAdapter();
+			public Adapter caseConstraint(Constraint object) {
+				return createConstraintAdapter();
 			}
 			@Override
-			public Adapter caseDatasetReadinessConstraint(DatasetReadinessConstraint object) {
-				return createDatasetReadinessConstraintAdapter();
+			public Adapter caseParameterConstraint(ParameterConstraint object) {
+				return createParameterConstraintAdapter();
 			}
 			@Override
-			public Adapter caseParameterReadinessConstraint(ParameterReadinessConstraint object) {
-				return createParameterReadinessConstraintAdapter();
-			}
-			@Override
-			public Adapter caseMinimunDatasetCardinalityConstraint(MinimunDatasetCardinalityConstraint object) {
-				return createMinimunDatasetCardinalityConstraintAdapter();
-			}
-			@Override
-			public Adapter caseMaximunDatasetCardinalityConstraint(MaximunDatasetCardinalityConstraint object) {
-				return createMaximunDatasetCardinalityConstraintAdapter();
-			}
-			@Override
-			public Adapter caseMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint object) {
-				return createMinimunParameterCardinalityConstraintAdapter();
-			}
-			@Override
-			public Adapter caseMaximunParameterCardinalityConstraint(MaximunParameterCardinalityConstraint object) {
-				return createMaximunParameterCardinalityConstraintAdapter();
+			public Adapter caseDatasetConstraint(DatasetConstraint object) {
+				return createDatasetConstraintAdapter();
 			}
 			@Override
 			public Adapter caseCustomConstraint(CustomConstraint object) {
@@ -130,6 +114,26 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 			@Override
 			public Adapter caseCustomDatasetConstraint(CustomDatasetConstraint object) {
 				return createCustomDatasetConstraintAdapter();
+			}
+			@Override
+			public Adapter caseReadinessConstraint(ReadinessConstraint object) {
+				return createReadinessConstraintAdapter();
+			}
+			@Override
+			public Adapter caseDatasetReadinessConstraint(DatasetReadinessConstraint object) {
+				return createDatasetReadinessConstraintAdapter();
+			}
+			@Override
+			public Adapter caseParameterReadinessConstraint(ParameterReadinessConstraint object) {
+				return createParameterReadinessConstraintAdapter();
+			}
+			@Override
+			public Adapter caseCustomParameterReadinessConstraint(CustomParameterReadinessConstraint object) {
+				return createCustomParameterReadinessConstraintAdapter();
+			}
+			@Override
+			public Adapter caseCustomDatasetReadinessConstraint(CustomDatasetReadinessConstraint object) {
+				return createCustomDatasetReadinessConstraintAdapter();
 			}
 			@Override
 			public Adapter caseTool(Tool object) {
@@ -268,6 +272,48 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint
+	 * @generated
+	 */
+	public Adapter createConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint <em>Parameter Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint
+	 * @generated
+	 */
+	public Adapter createParameterConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint <em>Dataset Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint
+	 * @generated
+	 */
+	public Adapter createDatasetConstraintAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList <em>Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -380,58 +426,30 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint <em>Minimun Dataset Cardinality Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint <em>Custom Parameter Readiness Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint
 	 * @generated
 	 */
-	public Adapter createMinimunDatasetCardinalityConstraintAdapter() {
+	public Adapter createCustomParameterReadinessConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint <em>Maximun Dataset Cardinality Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint <em>Custom Dataset Readiness Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint
 	 * @generated
 	 */
-	public Adapter createMaximunDatasetCardinalityConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint <em>Minimun Parameter Cardinality Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint
-	 * @generated
-	 */
-	public Adapter createMinimunParameterCardinalityConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint <em>Maximun Parameter Cardinality Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint
-	 * @generated
-	 */
-	public Adapter createMaximunParameterCardinalityConstraintAdapter() {
+	public Adapter createCustomDatasetReadinessConstraintAdapter() {
 		return null;
 	}
 

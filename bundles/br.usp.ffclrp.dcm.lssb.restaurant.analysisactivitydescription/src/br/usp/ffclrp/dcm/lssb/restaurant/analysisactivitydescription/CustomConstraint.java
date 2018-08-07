@@ -19,7 +19,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  * @model abstract="true"
  * @generated
  */
-public interface CustomConstraint extends ReadinessConstraint {
+public interface CustomConstraint extends Constraint {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

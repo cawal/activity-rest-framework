@@ -20,6 +20,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  * @generated
  */
 public interface ParameterReadinessConstraint extends ReadinessConstraint {
+
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' reference.
 	 * <!-- begin-user-doc -->

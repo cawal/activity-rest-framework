@@ -3,7 +3,6 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.provider;
 
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint;
 
 import java.util.Collection;
@@ -11,8 +10,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -43,31 +40,8 @@ public class CustomDatasetConstraintItemProvider extends CustomConstraintItemPro
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDatasetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Dataset feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDatasetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DatasetReadinessConstraint_dataset_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DatasetReadinessConstraint_dataset_feature", "_UI_DatasetReadinessConstraint_type"),
-				 AnalysisActivityDescriptionPackage.Literals.DATASET_READINESS_CONSTRAINT__DATASET,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

@@ -45,7 +45,7 @@ public interface Activity extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getActivity_Name()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	String getName();

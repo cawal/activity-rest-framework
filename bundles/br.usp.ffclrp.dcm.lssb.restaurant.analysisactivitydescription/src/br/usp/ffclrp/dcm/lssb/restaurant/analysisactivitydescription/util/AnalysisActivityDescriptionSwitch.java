@@ -108,62 +108,30 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT: {
-				ReadinessConstraint readinessConstraint = (ReadinessConstraint)theEObject;
-				T result = caseReadinessConstraint(readinessConstraint);
+			case AnalysisActivityDescriptionPackage.CONSTRAINT: {
+				Constraint constraint = (Constraint)theEObject;
+				T result = caseConstraint(constraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT: {
-				DatasetReadinessConstraint datasetReadinessConstraint = (DatasetReadinessConstraint)theEObject;
-				T result = caseDatasetReadinessConstraint(datasetReadinessConstraint);
-				if (result == null) result = caseReadinessConstraint(datasetReadinessConstraint);
+			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT: {
+				ParameterConstraint parameterConstraint = (ParameterConstraint)theEObject;
+				T result = caseParameterConstraint(parameterConstraint);
+				if (result == null) result = caseConstraint(parameterConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT: {
-				ParameterReadinessConstraint parameterReadinessConstraint = (ParameterReadinessConstraint)theEObject;
-				T result = caseParameterReadinessConstraint(parameterReadinessConstraint);
-				if (result == null) result = caseReadinessConstraint(parameterReadinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT: {
-				MinimunDatasetCardinalityConstraint minimunDatasetCardinalityConstraint = (MinimunDatasetCardinalityConstraint)theEObject;
-				T result = caseMinimunDatasetCardinalityConstraint(minimunDatasetCardinalityConstraint);
-				if (result == null) result = caseDatasetReadinessConstraint(minimunDatasetCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(minimunDatasetCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT: {
-				MaximunDatasetCardinalityConstraint maximunDatasetCardinalityConstraint = (MaximunDatasetCardinalityConstraint)theEObject;
-				T result = caseMaximunDatasetCardinalityConstraint(maximunDatasetCardinalityConstraint);
-				if (result == null) result = caseDatasetReadinessConstraint(maximunDatasetCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(maximunDatasetCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT: {
-				MinimunParameterCardinalityConstraint minimunParameterCardinalityConstraint = (MinimunParameterCardinalityConstraint)theEObject;
-				T result = caseMinimunParameterCardinalityConstraint(minimunParameterCardinalityConstraint);
-				if (result == null) result = caseParameterReadinessConstraint(minimunParameterCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(minimunParameterCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT: {
-				MaximunParameterCardinalityConstraint maximunParameterCardinalityConstraint = (MaximunParameterCardinalityConstraint)theEObject;
-				T result = caseMaximunParameterCardinalityConstraint(maximunParameterCardinalityConstraint);
-				if (result == null) result = caseParameterReadinessConstraint(maximunParameterCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(maximunParameterCardinalityConstraint);
+			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT: {
+				DatasetConstraint datasetConstraint = (DatasetConstraint)theEObject;
+				T result = caseDatasetConstraint(datasetConstraint);
+				if (result == null) result = caseConstraint(datasetConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnalysisActivityDescriptionPackage.CUSTOM_CONSTRAINT: {
 				CustomConstraint customConstraint = (CustomConstraint)theEObject;
 				T result = caseCustomConstraint(customConstraint);
-				if (result == null) result = caseReadinessConstraint(customConstraint);
+				if (result == null) result = caseConstraint(customConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -171,8 +139,8 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				CustomParameterConstraint customParameterConstraint = (CustomParameterConstraint)theEObject;
 				T result = caseCustomParameterConstraint(customParameterConstraint);
 				if (result == null) result = caseCustomConstraint(customParameterConstraint);
-				if (result == null) result = caseParameterReadinessConstraint(customParameterConstraint);
-				if (result == null) result = caseReadinessConstraint(customParameterConstraint);
+				if (result == null) result = caseParameterConstraint(customParameterConstraint);
+				if (result == null) result = caseConstraint(customParameterConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -180,8 +148,51 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				CustomDatasetConstraint customDatasetConstraint = (CustomDatasetConstraint)theEObject;
 				T result = caseCustomDatasetConstraint(customDatasetConstraint);
 				if (result == null) result = caseCustomConstraint(customDatasetConstraint);
-				if (result == null) result = caseDatasetReadinessConstraint(customDatasetConstraint);
-				if (result == null) result = caseReadinessConstraint(customDatasetConstraint);
+				if (result == null) result = caseDatasetConstraint(customDatasetConstraint);
+				if (result == null) result = caseConstraint(customDatasetConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT: {
+				ReadinessConstraint readinessConstraint = (ReadinessConstraint)theEObject;
+				T result = caseReadinessConstraint(readinessConstraint);
+				if (result == null) result = caseConstraint(readinessConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT: {
+				DatasetReadinessConstraint datasetReadinessConstraint = (DatasetReadinessConstraint)theEObject;
+				T result = caseDatasetReadinessConstraint(datasetReadinessConstraint);
+				if (result == null) result = caseReadinessConstraint(datasetReadinessConstraint);
+				if (result == null) result = caseConstraint(datasetReadinessConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT: {
+				ParameterReadinessConstraint parameterReadinessConstraint = (ParameterReadinessConstraint)theEObject;
+				T result = caseParameterReadinessConstraint(parameterReadinessConstraint);
+				if (result == null) result = caseReadinessConstraint(parameterReadinessConstraint);
+				if (result == null) result = caseConstraint(parameterReadinessConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT: {
+				CustomParameterReadinessConstraint customParameterReadinessConstraint = (CustomParameterReadinessConstraint)theEObject;
+				T result = caseCustomParameterReadinessConstraint(customParameterReadinessConstraint);
+				if (result == null) result = caseCustomConstraint(customParameterReadinessConstraint);
+				if (result == null) result = caseParameterReadinessConstraint(customParameterReadinessConstraint);
+				if (result == null) result = caseReadinessConstraint(customParameterReadinessConstraint);
+				if (result == null) result = caseConstraint(customParameterReadinessConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT: {
+				CustomDatasetReadinessConstraint customDatasetReadinessConstraint = (CustomDatasetReadinessConstraint)theEObject;
+				T result = caseCustomDatasetReadinessConstraint(customDatasetReadinessConstraint);
+				if (result == null) result = caseCustomConstraint(customDatasetReadinessConstraint);
+				if (result == null) result = caseDatasetReadinessConstraint(customDatasetReadinessConstraint);
+				if (result == null) result = caseReadinessConstraint(customDatasetReadinessConstraint);
+				if (result == null) result = caseConstraint(customDatasetReadinessConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -333,6 +344,51 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstraint(Constraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterConstraint(ParameterConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dataset Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dataset Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDatasetConstraint(DatasetConstraint object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -453,62 +509,32 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Minimun Dataset Cardinality Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Parameter Readiness Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Minimun Dataset Cardinality Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Parameter Readiness Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMinimunDatasetCardinalityConstraint(MinimunDatasetCardinalityConstraint object) {
+	public T caseCustomParameterReadinessConstraint(CustomParameterReadinessConstraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Maximun Dataset Cardinality Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Dataset Readiness Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Maximun Dataset Cardinality Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Dataset Readiness Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMaximunDatasetCardinalityConstraint(MaximunDatasetCardinalityConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMaximunParameterCardinalityConstraint(MaximunParameterCardinalityConstraint object) {
+	public T caseCustomDatasetReadinessConstraint(CustomDatasetReadinessConstraint object) {
 		return null;
 	}
 

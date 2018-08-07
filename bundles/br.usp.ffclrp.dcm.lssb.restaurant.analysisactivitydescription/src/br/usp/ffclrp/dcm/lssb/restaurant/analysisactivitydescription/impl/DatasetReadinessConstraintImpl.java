@@ -36,7 +36,6 @@ public abstract class DatasetReadinessConstraintImpl extends ReadinessConstraint
 	 * @ordered
 	 */
 	protected Dataset dataset;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

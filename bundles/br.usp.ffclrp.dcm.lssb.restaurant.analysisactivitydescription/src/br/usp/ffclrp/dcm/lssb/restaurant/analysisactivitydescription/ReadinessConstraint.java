@@ -2,8 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Readiness Constraint</b></em>'.
@@ -18,5 +16,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface ReadinessConstraint extends EObject {
+public interface ReadinessConstraint extends Constraint {
 } // ReadinessConstraint

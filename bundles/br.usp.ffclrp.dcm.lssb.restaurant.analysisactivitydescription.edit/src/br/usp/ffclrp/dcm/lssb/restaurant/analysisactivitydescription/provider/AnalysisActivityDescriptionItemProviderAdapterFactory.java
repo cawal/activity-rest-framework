@@ -164,98 +164,6 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MinimunDatasetCardinalityConstraintItemProvider minimunDatasetCardinalityConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMinimunDatasetCardinalityConstraintAdapter() {
-		if (minimunDatasetCardinalityConstraintItemProvider == null) {
-			minimunDatasetCardinalityConstraintItemProvider = new MinimunDatasetCardinalityConstraintItemProvider(this);
-		}
-
-		return minimunDatasetCardinalityConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MaximunDatasetCardinalityConstraintItemProvider maximunDatasetCardinalityConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMaximunDatasetCardinalityConstraintAdapter() {
-		if (maximunDatasetCardinalityConstraintItemProvider == null) {
-			maximunDatasetCardinalityConstraintItemProvider = new MaximunDatasetCardinalityConstraintItemProvider(this);
-		}
-
-		return maximunDatasetCardinalityConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MinimunParameterCardinalityConstraintItemProvider minimunParameterCardinalityConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMinimunParameterCardinalityConstraintAdapter() {
-		if (minimunParameterCardinalityConstraintItemProvider == null) {
-			minimunParameterCardinalityConstraintItemProvider = new MinimunParameterCardinalityConstraintItemProvider(this);
-		}
-
-		return minimunParameterCardinalityConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MaximunParameterCardinalityConstraintItemProvider maximunParameterCardinalityConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMaximunParameterCardinalityConstraintAdapter() {
-		if (maximunParameterCardinalityConstraintItemProvider == null) {
-			maximunParameterCardinalityConstraintItemProvider = new MaximunParameterCardinalityConstraintItemProvider(this);
-		}
-
-		return maximunParameterCardinalityConstraintItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,6 +207,52 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 		}
 
 		return customDatasetConstraintItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomParameterReadinessConstraintItemProvider customParameterReadinessConstraintItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomParameterReadinessConstraintAdapter() {
+		if (customParameterReadinessConstraintItemProvider == null) {
+			customParameterReadinessConstraintItemProvider = new CustomParameterReadinessConstraintItemProvider(this);
+		}
+
+		return customParameterReadinessConstraintItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomDatasetReadinessConstraintItemProvider customDatasetReadinessConstraintItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomDatasetReadinessConstraintAdapter() {
+		if (customDatasetReadinessConstraintItemProvider == null) {
+			customDatasetReadinessConstraintItemProvider = new CustomDatasetReadinessConstraintItemProvider(this);
+		}
+
+		return customDatasetReadinessConstraintItemProvider;
 	}
 
 	/**
@@ -542,12 +496,10 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 		if (parameterItemProvider != null) parameterItemProvider.dispose();
 		if (inputDatasetItemProvider != null) inputDatasetItemProvider.dispose();
 		if (outputDatasetItemProvider != null) outputDatasetItemProvider.dispose();
-		if (minimunDatasetCardinalityConstraintItemProvider != null) minimunDatasetCardinalityConstraintItemProvider.dispose();
-		if (maximunDatasetCardinalityConstraintItemProvider != null) maximunDatasetCardinalityConstraintItemProvider.dispose();
-		if (minimunParameterCardinalityConstraintItemProvider != null) minimunParameterCardinalityConstraintItemProvider.dispose();
-		if (maximunParameterCardinalityConstraintItemProvider != null) maximunParameterCardinalityConstraintItemProvider.dispose();
 		if (customParameterConstraintItemProvider != null) customParameterConstraintItemProvider.dispose();
 		if (customDatasetConstraintItemProvider != null) customDatasetConstraintItemProvider.dispose();
+		if (customParameterReadinessConstraintItemProvider != null) customParameterReadinessConstraintItemProvider.dispose();
+		if (customDatasetReadinessConstraintItemProvider != null) customDatasetReadinessConstraintItemProvider.dispose();
 		if (commandLineToolItemProvider != null) commandLineToolItemProvider.dispose();
 		if (exitCodeItemProvider != null) exitCodeItemProvider.dispose();
 		if (toolNameCommandLineEntryItemProvider != null) toolNameCommandLineEntryItemProvider.dispose();

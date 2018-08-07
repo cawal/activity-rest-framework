@@ -7,8 +7,6 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessCo
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Readiness Constraint</b></em>'.
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class ReadinessConstraintImpl extends MinimalEObjectImpl.Container implements ReadinessConstraint {
+public abstract class ReadinessConstraintImpl extends ConstraintImpl implements ReadinessConstraint {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

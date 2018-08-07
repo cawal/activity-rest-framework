@@ -10,7 +10,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCons
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class DatasetConstraintTest extends ReadinessConstraintTest {
+public abstract class DatasetConstraintTest extends ConstraintTest {
 
 	/**
 	 * Constructs a new Dataset Constraint test case with the given name.

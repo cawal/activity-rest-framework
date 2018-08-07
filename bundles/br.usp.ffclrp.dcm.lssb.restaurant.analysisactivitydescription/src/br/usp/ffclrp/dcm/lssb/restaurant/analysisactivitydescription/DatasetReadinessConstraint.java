@@ -20,6 +20,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  * @generated
  */
 public interface DatasetReadinessConstraint extends ReadinessConstraint {
+
 	/**
 	 * Returns the value of the '<em><b>Dataset</b></em>' reference.
 	 * <!-- begin-user-doc -->

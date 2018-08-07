@@ -7,23 +7,24 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisAct
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
@@ -97,6 +98,27 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass constraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parameterConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass datasetConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass commandLineEntryListEClass = null;
 
 	/**
@@ -153,28 +175,14 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass minimunDatasetCardinalityConstraintEClass = null;
+	private EClass customParameterReadinessConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass maximunDatasetCardinalityConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass minimunParameterCardinalityConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass maximunParameterCardinalityConstraintEClass = null;
+	private EClass customDatasetReadinessConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -455,6 +463,15 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getParameter_Constraints() {
+		return (EReference)parameterEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataset() {
 		return datasetEClass;
 	}
@@ -491,6 +508,15 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDataset_Constraints() {
+		return (EReference)datasetEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInputDataset() {
 		return inputDatasetEClass;
 	}
@@ -502,6 +528,33 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 */
 	public EClass getOutputDataset() {
 		return outputDatasetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConstraint() {
+		return constraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParameterConstraint() {
+		return parameterConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDatasetConstraint() {
+		return datasetConstraintEClass;
 	}
 
 	/**
@@ -635,8 +688,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMinimunDatasetCardinalityConstraint() {
-		return minimunDatasetCardinalityConstraintEClass;
+	public EClass getCustomParameterReadinessConstraint() {
+		return customParameterReadinessConstraintEClass;
 	}
 
 	/**
@@ -644,62 +697,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMinimunDatasetCardinalityConstraint_Value() {
-		return (EAttribute)minimunDatasetCardinalityConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMaximunDatasetCardinalityConstraint() {
-		return maximunDatasetCardinalityConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMaximunDatasetCardinalityConstraint_Value() {
-		return (EAttribute)maximunDatasetCardinalityConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMinimunParameterCardinalityConstraint() {
-		return minimunParameterCardinalityConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMinimunParameterCardinalityConstraint_Value() {
-		return (EAttribute)minimunParameterCardinalityConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMaximunParameterCardinalityConstraint() {
-		return maximunParameterCardinalityConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMaximunParameterCardinalityConstraint_Value() {
-		return (EAttribute)maximunParameterCardinalityConstraintEClass.getEStructuralFeatures().get(0);
+	public EClass getCustomDatasetReadinessConstraint() {
+		return customDatasetReadinessConstraintEClass;
 	}
 
 	/**
@@ -936,15 +935,30 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		createEAttribute(parameterEClass, PARAMETER__NAME);
 		createEAttribute(parameterEClass, PARAMETER__PARAMETER_TYPE);
 		createEAttribute(parameterEClass, PARAMETER__DEFAULT_VALUE);
+		createEReference(parameterEClass, PARAMETER__CONSTRAINTS);
 
 		datasetEClass = createEClass(DATASET);
 		createEAttribute(datasetEClass, DATASET__NAME);
 		createEAttribute(datasetEClass, DATASET__REMARKS);
 		createEAttribute(datasetEClass, DATASET__MIMETYPE);
+		createEReference(datasetEClass, DATASET__CONSTRAINTS);
 
 		inputDatasetEClass = createEClass(INPUT_DATASET);
 
 		outputDatasetEClass = createEClass(OUTPUT_DATASET);
+
+		constraintEClass = createEClass(CONSTRAINT);
+
+		parameterConstraintEClass = createEClass(PARAMETER_CONSTRAINT);
+
+		datasetConstraintEClass = createEClass(DATASET_CONSTRAINT);
+
+		customConstraintEClass = createEClass(CUSTOM_CONSTRAINT);
+		createEAttribute(customConstraintEClass, CUSTOM_CONSTRAINT__NAME);
+
+		customParameterConstraintEClass = createEClass(CUSTOM_PARAMETER_CONSTRAINT);
+
+		customDatasetConstraintEClass = createEClass(CUSTOM_DATASET_CONSTRAINT);
 
 		readinessConstraintEClass = createEClass(READINESS_CONSTRAINT);
 
@@ -954,24 +968,9 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		parameterReadinessConstraintEClass = createEClass(PARAMETER_READINESS_CONSTRAINT);
 		createEReference(parameterReadinessConstraintEClass, PARAMETER_READINESS_CONSTRAINT__PARAMETER);
 
-		minimunDatasetCardinalityConstraintEClass = createEClass(MINIMUN_DATASET_CARDINALITY_CONSTRAINT);
-		createEAttribute(minimunDatasetCardinalityConstraintEClass, MINIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE);
+		customParameterReadinessConstraintEClass = createEClass(CUSTOM_PARAMETER_READINESS_CONSTRAINT);
 
-		maximunDatasetCardinalityConstraintEClass = createEClass(MAXIMUN_DATASET_CARDINALITY_CONSTRAINT);
-		createEAttribute(maximunDatasetCardinalityConstraintEClass, MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE);
-
-		minimunParameterCardinalityConstraintEClass = createEClass(MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT);
-		createEAttribute(minimunParameterCardinalityConstraintEClass, MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE);
-
-		maximunParameterCardinalityConstraintEClass = createEClass(MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT);
-		createEAttribute(maximunParameterCardinalityConstraintEClass, MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE);
-
-		customConstraintEClass = createEClass(CUSTOM_CONSTRAINT);
-		createEAttribute(customConstraintEClass, CUSTOM_CONSTRAINT__NAME);
-
-		customParameterConstraintEClass = createEClass(CUSTOM_PARAMETER_CONSTRAINT);
-
-		customDatasetConstraintEClass = createEClass(CUSTOM_DATASET_CONSTRAINT);
+		customDatasetReadinessConstraintEClass = createEClass(CUSTOM_DATASET_READINESS_CONSTRAINT);
 
 		toolEClass = createEClass(TOOL);
 		createEAttribute(toolEClass, TOOL__NAME);
@@ -1047,17 +1046,20 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		datasetEClass.getESuperTypes().add(this.getMultiplicityElement());
 		inputDatasetEClass.getESuperTypes().add(this.getDataset());
 		outputDatasetEClass.getESuperTypes().add(this.getDataset());
+		parameterConstraintEClass.getESuperTypes().add(this.getConstraint());
+		datasetConstraintEClass.getESuperTypes().add(this.getConstraint());
+		customConstraintEClass.getESuperTypes().add(this.getConstraint());
+		customParameterConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
+		customParameterConstraintEClass.getESuperTypes().add(this.getParameterConstraint());
+		customDatasetConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
+		customDatasetConstraintEClass.getESuperTypes().add(this.getDatasetConstraint());
+		readinessConstraintEClass.getESuperTypes().add(this.getConstraint());
 		datasetReadinessConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
 		parameterReadinessConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
-		minimunDatasetCardinalityConstraintEClass.getESuperTypes().add(this.getDatasetReadinessConstraint());
-		maximunDatasetCardinalityConstraintEClass.getESuperTypes().add(this.getDatasetReadinessConstraint());
-		minimunParameterCardinalityConstraintEClass.getESuperTypes().add(this.getParameterReadinessConstraint());
-		maximunParameterCardinalityConstraintEClass.getESuperTypes().add(this.getParameterReadinessConstraint());
-		customConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
-		customParameterConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
-		customParameterConstraintEClass.getESuperTypes().add(this.getParameterReadinessConstraint());
-		customDatasetConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
-		customDatasetConstraintEClass.getESuperTypes().add(this.getDatasetReadinessConstraint());
+		customParameterReadinessConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
+		customParameterReadinessConstraintEClass.getESuperTypes().add(this.getParameterReadinessConstraint());
+		customDatasetReadinessConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
+		customDatasetReadinessConstraintEClass.getESuperTypes().add(this.getDatasetReadinessConstraint());
 		commandLineToolEClass.getESuperTypes().add(this.getTool());
 		toolNameCommandLineEntryEClass.getESuperTypes().add(this.getCommandLineEntryList());
 		literalCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
@@ -1066,7 +1068,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivity_Description(), ecorePackage.getEString(), "description", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getActivity_InputDatasets(), this.getInputDataset(), null, "inputDatasets", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1082,15 +1084,30 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_ParameterType(), this.getParameterType(), "parameterType", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getParameter_Constraints(), this.getParameterConstraint(), null, "constraints", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(datasetEClass, Dataset.class, "Dataset", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataset_Name(), ecorePackage.getEString(), "name", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_Remarks(), ecorePackage.getEString(), "remarks", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_Mimetype(), ecorePackage.getEString(), "mimetype", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataset_Constraints(), this.getDatasetConstraint(), null, "constraints", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(inputDatasetEClass, InputDataset.class, "InputDataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(outputDatasetEClass, OutputDataset.class, "OutputDataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(parameterConstraintEClass, ParameterConstraint.class, "ParameterConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(datasetConstraintEClass, DatasetConstraint.class, "DatasetConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(customConstraintEClass, CustomConstraint.class, "CustomConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomConstraint_Name(), ecorePackage.getEString(), "name", null, 1, 1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(customParameterConstraintEClass, CustomParameterConstraint.class, "CustomParameterConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(customDatasetConstraintEClass, CustomDatasetConstraint.class, "CustomDatasetConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(readinessConstraintEClass, ReadinessConstraint.class, "ReadinessConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1100,24 +1117,9 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEClass(parameterReadinessConstraintEClass, ParameterReadinessConstraint.class, "ParameterReadinessConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getParameterReadinessConstraint_Parameter(), this.getParameter(), null, "parameter", null, 1, 1, ParameterReadinessConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(minimunDatasetCardinalityConstraintEClass, MinimunDatasetCardinalityConstraint.class, "MinimunDatasetCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMinimunDatasetCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MinimunDatasetCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(customParameterReadinessConstraintEClass, CustomParameterReadinessConstraint.class, "CustomParameterReadinessConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(maximunDatasetCardinalityConstraintEClass, MaximunDatasetCardinalityConstraint.class, "MaximunDatasetCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMaximunDatasetCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MaximunDatasetCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(minimunParameterCardinalityConstraintEClass, MinimunParameterCardinalityConstraint.class, "MinimunParameterCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMinimunParameterCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MinimunParameterCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(maximunParameterCardinalityConstraintEClass, MaximunParameterCardinalityConstraint.class, "MaximunParameterCardinalityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMaximunParameterCardinalityConstraint_Value(), ecorePackage.getEBigInteger(), "value", null, 0, 1, MaximunParameterCardinalityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(customConstraintEClass, CustomConstraint.class, "CustomConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCustomConstraint_Name(), ecorePackage.getEString(), "name", null, 1, 1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(customParameterConstraintEClass, CustomParameterConstraint.class, "CustomParameterConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(customDatasetConstraintEClass, CustomDatasetConstraint.class, "CustomDatasetConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(customDatasetReadinessConstraintEClass, CustomDatasetReadinessConstraint.class, "CustomDatasetReadinessConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(toolEClass, Tool.class, "Tool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTool_Name(), ecorePackage.getEString(), "name", null, 1, 1, Tool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1222,30 +1224,6 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 			   "constraints", "defaultValueCardinalityMustBeLessThanMaximun"
 		   });
 		addAnnotation
-		  (minimunDatasetCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "constraints", "OnlyPositiveNumbers"
-		   });
-		addAnnotation
-		  (maximunDatasetCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "constraints", "OnlyPositiveNumbersOrInfinite"
-		   });
-		addAnnotation
-		  (minimunParameterCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "constraints", "OnlyPositiveNumbers"
-		   });
-		addAnnotation
-		  (maximunParameterCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "constraints", "OnlyPositiveNumbersOrInfinite"
-		   });
-		addAnnotation
 		  (commandLineToolEClass,
 		   source,
 		   new String[] {
@@ -1279,30 +1257,6 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		   source,
 		   new String[] {
 			   "defaultValueCardinalityMustBeLessThanMaximun", "\n            if maximumCardinality > 1 then\n                defaultValue->size() <= maximumCardinality\n            else true endif"
-		   });
-		addAnnotation
-		  (minimunDatasetCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "OnlyPositiveNumbers", "\n            value >= 1"
-		   });
-		addAnnotation
-		  (maximunDatasetCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "OnlyPositiveNumbersOrInfinite", "\n            value = -1 or value > 0"
-		   });
-		addAnnotation
-		  (minimunParameterCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "OnlyPositiveNumbers", "\n            value >= 1"
-		   });
-		addAnnotation
-		  (maximunParameterCardinalityConstraintEClass,
-		   source,
-		   new String[] {
-			   "OnlyPositiveNumbersOrInfinite", "\n            value = -1 or value > 0"
 		   });
 		addAnnotation
 		  (commandLineToolEClass,
@@ -1357,6 +1311,18 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		   });
 		addAnnotation
 		  (getParameter_DefaultValue(),
+		   source,
+		   new String[] {
+			   "nullFree", "false"
+		   });
+		addAnnotation
+		  (getParameter_Constraints(),
+		   source,
+		   new String[] {
+			   "nullFree", "false"
+		   });
+		addAnnotation
+		  (getDataset_Constraints(),
 		   source,
 		   new String[] {
 			   "nullFree", "false"

@@ -36,7 +36,6 @@ public abstract class ParameterReadinessConstraintImpl extends ReadinessConstrai
 	 * @ordered
 	 */
 	protected Parameter parameter;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

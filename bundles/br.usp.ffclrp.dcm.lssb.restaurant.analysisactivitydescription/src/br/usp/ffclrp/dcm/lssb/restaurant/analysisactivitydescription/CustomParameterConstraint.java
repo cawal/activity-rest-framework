@@ -13,5 +13,5 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription;
  * @model
  * @generated
  */
-public interface CustomParameterConstraint extends CustomConstraint, ParameterReadinessConstraint {
+public interface CustomParameterConstraint extends CustomConstraint, ParameterConstraint {
 } // CustomParameterConstraint
