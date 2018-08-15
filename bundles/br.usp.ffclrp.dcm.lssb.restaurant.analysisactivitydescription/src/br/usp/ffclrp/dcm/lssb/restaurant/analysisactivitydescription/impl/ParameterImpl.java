@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getRemarks <em>Remarks</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl#getConstraints <em>Constraints</em>}</li>
@@ -59,6 +60,26 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemarks()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REMARKS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemarks()
+	 * @generated
+	 * @ordered
+	 */
+	protected String remarks = REMARKS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getParameterType() <em>Parameter Type</em>}' attribute.
@@ -145,6 +166,27 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getRemarks() {
+		return remarks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRemarks(String newRemarks) {
+		String oldRemarks = remarks;
+		remarks = newRemarks;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER__REMARKS, oldRemarks, remarks));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ParameterType getParameterType() {
 		return parameterType;
 	}
@@ -209,6 +251,8 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER__NAME:
 				return getName();
+			case AnalysisActivityDescriptionPackage.PARAMETER__REMARKS:
+				return getRemarks();
 			case AnalysisActivityDescriptionPackage.PARAMETER__PARAMETER_TYPE:
 				return getParameterType();
 			case AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE:
@@ -230,6 +274,9 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER__NAME:
 				setName((String)newValue);
+				return;
+			case AnalysisActivityDescriptionPackage.PARAMETER__REMARKS:
+				setRemarks((String)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.PARAMETER__PARAMETER_TYPE:
 				setParameterType((ParameterType)newValue);
@@ -257,6 +304,9 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 			case AnalysisActivityDescriptionPackage.PARAMETER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case AnalysisActivityDescriptionPackage.PARAMETER__REMARKS:
+				setRemarks(REMARKS_EDEFAULT);
+				return;
 			case AnalysisActivityDescriptionPackage.PARAMETER__PARAMETER_TYPE:
 				setParameterType(PARAMETER_TYPE_EDEFAULT);
 				return;
@@ -280,6 +330,8 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AnalysisActivityDescriptionPackage.PARAMETER__REMARKS:
+				return REMARKS_EDEFAULT == null ? remarks != null : !REMARKS_EDEFAULT.equals(remarks);
 			case AnalysisActivityDescriptionPackage.PARAMETER__PARAMETER_TYPE:
 				return parameterType != PARAMETER_TYPE_EDEFAULT;
 			case AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE:
@@ -302,6 +354,8 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", remarks: ");
+		result.append(remarks);
 		result.append(", parameterType: ");
 		result.append(parameterType);
 		result.append(", defaultValue: ");

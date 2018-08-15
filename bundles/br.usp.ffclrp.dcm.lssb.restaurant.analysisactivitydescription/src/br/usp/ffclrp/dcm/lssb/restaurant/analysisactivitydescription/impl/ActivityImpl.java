@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getRemarks <em>Remarks</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getInputDatasets <em>Input Datasets</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getOutputDatasets <em>Output Datasets</em>}</li>
@@ -67,24 +67,24 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The default value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
+	 * @see #getRemarks()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
+	protected static final String REMARKS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The cached value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
+	 * @see #getRemarks()
 	 * @generated
 	 * @ordered
 	 */
-	protected String description = DESCRIPTION_EDEFAULT;
+	protected String remarks = REMARKS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -181,8 +181,8 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDescription() {
-		return description;
+	public String getRemarks() {
+		return remarks;
 	}
 
 	/**
@@ -190,11 +190,11 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
+	public void setRemarks(String newRemarks) {
+		String oldRemarks = remarks;
+		remarks = newRemarks;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS, oldRemarks, remarks));
 	}
 
 	/**
@@ -336,8 +336,8 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
 				return getName();
-			case AnalysisActivityDescriptionPackage.ACTIVITY__DESCRIPTION:
-				return getDescription();
+			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
+				return getRemarks();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				return getParameters();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__INPUT_DATASETS:
@@ -364,8 +364,8 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__DESCRIPTION:
-				setDescription((String)newValue);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
+				setRemarks((String)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				getParameters().clear();
@@ -401,8 +401,8 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
+				setRemarks(REMARKS_EDEFAULT);
 				return;
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				getParameters().clear();
@@ -433,8 +433,8 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityDescriptionPackage.ACTIVITY__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
+				return REMARKS_EDEFAULT == null ? remarks != null : !REMARKS_EDEFAULT.equals(remarks);
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__INPUT_DATASETS:
@@ -461,8 +461,8 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", description: ");
-		result.append(description);
+		result.append(", remarks: ");
+		result.append(remarks);
 		result.append(')');
 		return result.toString();
 	}

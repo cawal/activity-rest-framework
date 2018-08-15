@@ -11,7 +11,7 @@ Activity returns analysisactivitydescription::Activity:
 	'activity'
 	name=EString
 	ENTITY_START
-		('description' description=EString STATEMENT_END)?
+		(remarks=MULTILINE_STRING STATEMENT_END)?
 		('on' ENTITY_START inputDatasets+=InputDataset ( inputDatasets+=InputDataset )* ENTITY_END )?
 		('with' ENTITY_START parameters+=Parameter ( parameters+=Parameter)* ENTITY_END )?
 		('produces' ENTITY_START outputDatasets+=OutputDataset ( outputDatasets+=OutputDataset)* ENTITY_END )?
@@ -52,9 +52,15 @@ Parameter returns analysisactivitydescription::Parameter:
 	('=' LIST_START  defaultValue+=EString ( LIST_SEPARATOR defaultValue+=EString)* LIST_END  )?
 	(
 	    ENTITY_START
-	    ('constraints' LIST_START constraints+=ParameterConstraint 
-	        (LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END
-	    )?
+        (
+            (remarks=MULTILINE_STRING STATEMENT_END)?
+	        & (
+	           'constraints' 
+	           LIST_START constraints+=ParameterConstraint 
+	               (LIST_SEPARATOR constraints+=ParameterConstraint)* 
+	           LIST_END
+	        )?
+	    )
 	    ENTITY_END
 	)?
     STATEMENT_END
@@ -71,7 +77,7 @@ InputDataset returns analysisactivitydescription::InputDataset:
     (
        ENTITY_START
        (
-            ('remarks' remarks=EString STATEMENT_END)
+            (remarks=MULTILINE_STRING STATEMENT_END)
             &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)
         )?
       ENTITY_END 
@@ -91,7 +97,7 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
     (
        ENTITY_START
        (
-            ('remarks' remarks=EString STATEMENT_END)
+            (remarks=MULTILINE_STRING STATEMENT_END)
             &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)
         )?
       ENTITY_END 

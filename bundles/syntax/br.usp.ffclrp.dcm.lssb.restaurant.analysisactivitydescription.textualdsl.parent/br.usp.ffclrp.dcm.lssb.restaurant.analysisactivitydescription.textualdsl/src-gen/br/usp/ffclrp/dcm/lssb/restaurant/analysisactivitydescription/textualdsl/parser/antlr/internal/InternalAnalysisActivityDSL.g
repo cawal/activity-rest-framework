@@ -105,47 +105,61 @@ ruleActivity returns [EObject current=null]
 			newLeafNode(this_ENTITY_START_2, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_2());
 		}
 		(
-			otherlv_3='description'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getDescriptionKeyword_3_0());
-			}
 			(
 				(
+					lv_remarks_3_0=RULE_MULTILINE_STRING
 					{
-						newCompositeNode(grammarAccess.getActivityAccess().getDescriptionEStringParserRuleCall_3_1_0());
+						newLeafNode(lv_remarks_3_0, grammarAccess.getActivityAccess().getRemarksMULTILINE_STRINGTerminalRuleCall_3_0_0());
 					}
-					lv_description_4_0=ruleEString
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getActivityRule());
+							$current = createModelElement(grammarAccess.getActivityRule());
 						}
-						set(
+						setWithLastConsumed(
 							$current,
-							"description",
-							lv_description_4_0,
-							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
-						afterParserOrEnumRuleCall();
+							"remarks",
+							lv_remarks_3_0,
+							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.MULTILINE_STRING");
 					}
 				)
 			)
-			this_STATEMENT_END_5=RULE_STATEMENT_END
+			this_STATEMENT_END_4=RULE_STATEMENT_END
 			{
-				newLeafNode(this_STATEMENT_END_5, grammarAccess.getActivityAccess().getSTATEMENT_ENDTerminalRuleCall_3_2());
+				newLeafNode(this_STATEMENT_END_4, grammarAccess.getActivityAccess().getSTATEMENT_ENDTerminalRuleCall_3_1());
 			}
 		)?
 		(
-			otherlv_6='on'
+			otherlv_5='on'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getActivityAccess().getOnKeyword_4_0());
+				newLeafNode(otherlv_5, grammarAccess.getActivityAccess().getOnKeyword_4_0());
 			}
-			this_ENTITY_START_7=RULE_ENTITY_START
+			this_ENTITY_START_6=RULE_ENTITY_START
 			{
-				newLeafNode(this_ENTITY_START_7, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_4_1());
+				newLeafNode(this_ENTITY_START_6, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_4_1());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getActivityAccess().getInputDatasetsInputDatasetParserRuleCall_4_2_0());
+					}
+					lv_inputDatasets_7_0=ruleInputDataset
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getActivityRule());
+						}
+						add(
+							$current,
+							"inputDatasets",
+							lv_inputDatasets_7_0,
+							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.InputDataset");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getActivityAccess().getInputDatasetsInputDatasetParserRuleCall_4_3_0());
 					}
 					lv_inputDatasets_8_0=ruleInputDataset
 					{
@@ -160,44 +174,44 @@ ruleActivity returns [EObject current=null]
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)
+			)*
+			this_ENTITY_END_9=RULE_ENTITY_END
+			{
+				newLeafNode(this_ENTITY_END_9, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_4_4());
+			}
+		)?
+		(
+			otherlv_10='with'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getActivityAccess().getWithKeyword_5_0());
+			}
+			this_ENTITY_START_11=RULE_ENTITY_START
+			{
+				newLeafNode(this_ENTITY_START_11, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_5_1());
+			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActivityAccess().getInputDatasetsInputDatasetParserRuleCall_4_3_0());
+						newCompositeNode(grammarAccess.getActivityAccess().getParametersParameterParserRuleCall_5_2_0());
 					}
-					lv_inputDatasets_9_0=ruleInputDataset
+					lv_parameters_12_0=ruleParameter
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActivityRule());
 						}
 						add(
 							$current,
-							"inputDatasets",
-							lv_inputDatasets_9_0,
-							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.InputDataset");
+							"parameters",
+							lv_parameters_12_0,
+							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Parameter");
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)*
-			this_ENTITY_END_10=RULE_ENTITY_END
-			{
-				newLeafNode(this_ENTITY_END_10, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_4_4());
-			}
-		)?
-		(
-			otherlv_11='with'
-			{
-				newLeafNode(otherlv_11, grammarAccess.getActivityAccess().getWithKeyword_5_0());
-			}
-			this_ENTITY_START_12=RULE_ENTITY_START
-			{
-				newLeafNode(this_ENTITY_START_12, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_5_1());
-			}
+			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActivityAccess().getParametersParameterParserRuleCall_5_2_0());
+						newCompositeNode(grammarAccess.getActivityAccess().getParametersParameterParserRuleCall_5_3_0());
 					}
 					lv_parameters_13_0=ruleParameter
 					{
@@ -212,44 +226,44 @@ ruleActivity returns [EObject current=null]
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)
+			)*
+			this_ENTITY_END_14=RULE_ENTITY_END
+			{
+				newLeafNode(this_ENTITY_END_14, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_5_4());
+			}
+		)?
+		(
+			otherlv_15='produces'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getActivityAccess().getProducesKeyword_6_0());
+			}
+			this_ENTITY_START_16=RULE_ENTITY_START
+			{
+				newLeafNode(this_ENTITY_START_16, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_6_1());
+			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActivityAccess().getParametersParameterParserRuleCall_5_3_0());
+						newCompositeNode(grammarAccess.getActivityAccess().getOutputDatasetsOutputDatasetParserRuleCall_6_2_0());
 					}
-					lv_parameters_14_0=ruleParameter
+					lv_outputDatasets_17_0=ruleOutputDataset
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActivityRule());
 						}
 						add(
 							$current,
-							"parameters",
-							lv_parameters_14_0,
-							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Parameter");
+							"outputDatasets",
+							lv_outputDatasets_17_0,
+							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.OutputDataset");
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)*
-			this_ENTITY_END_15=RULE_ENTITY_END
-			{
-				newLeafNode(this_ENTITY_END_15, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_5_4());
-			}
-		)?
-		(
-			otherlv_16='produces'
-			{
-				newLeafNode(otherlv_16, grammarAccess.getActivityAccess().getProducesKeyword_6_0());
-			}
-			this_ENTITY_START_17=RULE_ENTITY_START
-			{
-				newLeafNode(this_ENTITY_START_17, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_6_1());
-			}
+			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActivityAccess().getOutputDatasetsOutputDatasetParserRuleCall_6_2_0());
+						newCompositeNode(grammarAccess.getActivityAccess().getOutputDatasetsOutputDatasetParserRuleCall_6_3_0());
 					}
 					lv_outputDatasets_18_0=ruleOutputDataset
 					{
@@ -264,46 +278,27 @@ ruleActivity returns [EObject current=null]
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getActivityAccess().getOutputDatasetsOutputDatasetParserRuleCall_6_3_0());
-					}
-					lv_outputDatasets_19_0=ruleOutputDataset
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getActivityRule());
-						}
-						add(
-							$current,
-							"outputDatasets",
-							lv_outputDatasets_19_0,
-							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.OutputDataset");
-						afterParserOrEnumRuleCall();
-					}
-				)
 			)*
-			this_ENTITY_END_20=RULE_ENTITY_END
+			this_ENTITY_END_19=RULE_ENTITY_END
 			{
-				newLeafNode(this_ENTITY_END_20, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_6_4());
+				newLeafNode(this_ENTITY_END_19, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_6_4());
 			}
 		)?
 		(
-			otherlv_21='readinessContraints'
+			otherlv_20='readinessContraints'
 			{
-				newLeafNode(otherlv_21, grammarAccess.getActivityAccess().getReadinessContraintsKeyword_7_0());
+				newLeafNode(otherlv_20, grammarAccess.getActivityAccess().getReadinessContraintsKeyword_7_0());
 			}
-			this_LIST_START_22=RULE_LIST_START
+			this_LIST_START_21=RULE_LIST_START
 			{
-				newLeafNode(this_LIST_START_22, grammarAccess.getActivityAccess().getLIST_STARTTerminalRuleCall_7_1());
+				newLeafNode(this_LIST_START_21, grammarAccess.getActivityAccess().getLIST_STARTTerminalRuleCall_7_1());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getActivityAccess().getReadinessContraintsReadinessConstraintParserRuleCall_7_2_0());
 					}
-					lv_readinessContraints_23_0=ruleReadinessConstraint
+					lv_readinessContraints_22_0=ruleReadinessConstraint
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActivityRule());
@@ -311,23 +306,23 @@ ruleActivity returns [EObject current=null]
 						add(
 							$current,
 							"readinessContraints",
-							lv_readinessContraints_23_0,
+							lv_readinessContraints_22_0,
 							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ReadinessConstraint");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				this_LIST_SEPARATOR_24=RULE_LIST_SEPARATOR
+				this_LIST_SEPARATOR_23=RULE_LIST_SEPARATOR
 				{
-					newLeafNode(this_LIST_SEPARATOR_24, grammarAccess.getActivityAccess().getLIST_SEPARATORTerminalRuleCall_7_3_0());
+					newLeafNode(this_LIST_SEPARATOR_23, grammarAccess.getActivityAccess().getLIST_SEPARATORTerminalRuleCall_7_3_0());
 				}
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getActivityAccess().getReadinessContraintsReadinessConstraintParserRuleCall_7_3_1_0());
 						}
-						lv_readinessContraints_25_0=ruleReadinessConstraint
+						lv_readinessContraints_24_0=ruleReadinessConstraint
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getActivityRule());
@@ -335,28 +330,28 @@ ruleActivity returns [EObject current=null]
 							add(
 								$current,
 								"readinessContraints",
-								lv_readinessContraints_25_0,
+								lv_readinessContraints_24_0,
 								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ReadinessConstraint");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 			)*
-			this_LIST_END_26=RULE_LIST_END
+			this_LIST_END_25=RULE_LIST_END
 			{
-				newLeafNode(this_LIST_END_26, grammarAccess.getActivityAccess().getLIST_ENDTerminalRuleCall_7_4());
+				newLeafNode(this_LIST_END_25, grammarAccess.getActivityAccess().getLIST_ENDTerminalRuleCall_7_4());
 			}
 		)?
-		otherlv_27='using'
+		otherlv_26='using'
 		{
-			newLeafNode(otherlv_27, grammarAccess.getActivityAccess().getUsingKeyword_8());
+			newLeafNode(otherlv_26, grammarAccess.getActivityAccess().getUsingKeyword_8());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getActivityAccess().getToolToolParserRuleCall_9_0());
 				}
-				lv_tool_28_0=ruleTool
+				lv_tool_27_0=ruleTool
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getActivityRule());
@@ -364,15 +359,15 @@ ruleActivity returns [EObject current=null]
 					set(
 						$current,
 						"tool",
-						lv_tool_28_0,
+						lv_tool_27_0,
 						"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Tool");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_ENTITY_END_29=RULE_ENTITY_END
+		this_ENTITY_END_28=RULE_ENTITY_END
 		{
-			newLeafNode(this_ENTITY_END_29, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_10());
+			newLeafNode(this_ENTITY_END_28, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_10());
 		}
 	)
 ;
@@ -773,71 +768,127 @@ ruleParameter returns [EObject current=null]
 				newLeafNode(this_ENTITY_START_15, grammarAccess.getParameterAccess().getENTITY_STARTTerminalRuleCall_10_0());
 			}
 			(
-				otherlv_16='constraints'
-				{
-					newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getConstraintsKeyword_10_1_0());
-				}
-				this_LIST_START_17=RULE_LIST_START
-				{
-					newLeafNode(this_LIST_START_17, grammarAccess.getParameterAccess().getLIST_STARTTerminalRuleCall_10_1_1());
-				}
 				(
-					(
-						{
-							newCompositeNode(grammarAccess.getParameterAccess().getConstraintsParameterConstraintParserRuleCall_10_1_2_0());
-						}
-						lv_constraints_18_0=ruleParameterConstraint
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getParameterRule());
-							}
-							add(
-								$current,
-								"constraints",
-								lv_constraints_18_0,
-								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ParameterConstraint");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				(
-					this_LIST_SEPARATOR_19=RULE_LIST_SEPARATOR
-					{
-						newLeafNode(this_LIST_SEPARATOR_19, grammarAccess.getParameterAccess().getLIST_SEPARATORTerminalRuleCall_10_1_3_0());
+					{ 
+					  getUnorderedGroupHelper().enter(grammarAccess.getParameterAccess().getUnorderedGroup_10_1());
 					}
 					(
 						(
-							{
-								newCompositeNode(grammarAccess.getParameterAccess().getConstraintsParameterConstraintParserRuleCall_10_1_3_1_0());
-							}
-							lv_constraints_20_0=ruleParameterConstraint
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getParameterRule());
-								}
-								add(
-									$current,
-									"constraints",
-									lv_constraints_20_0,
-									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ParameterConstraint");
-								afterParserOrEnumRuleCall();
-							}
-						)
+				(
+					{getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_10_1(), 0)}?=>(
+						{
+							getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_10_1(), 0);
+						}
+									({true}?=>((
+										(
+											lv_remarks_17_0=RULE_MULTILINE_STRING
+											{
+												newLeafNode(lv_remarks_17_0, grammarAccess.getParameterAccess().getRemarksMULTILINE_STRINGTerminalRuleCall_10_1_0_0_0());
+											}
+											{
+												if ($current==null) {
+													$current = createModelElement(grammarAccess.getParameterRule());
+												}
+												setWithLastConsumed(
+													$current,
+													"remarks",
+													lv_remarks_17_0,
+													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.MULTILINE_STRING");
+											}
+										)
+									)
+									this_STATEMENT_END_18=RULE_STATEMENT_END
+									{
+										newLeafNode(this_STATEMENT_END_18, grammarAccess.getParameterAccess().getSTATEMENT_ENDTerminalRuleCall_10_1_0_1());
+									}
+									))
+						{ 
+							getUnorderedGroupHelper().returnFromSelection(grammarAccess.getParameterAccess().getUnorderedGroup_10_1());
+						}
 					)
-				)*
-				this_LIST_END_21=RULE_LIST_END
-				{
-					newLeafNode(this_LIST_END_21, grammarAccess.getParameterAccess().getLIST_ENDTerminalRuleCall_10_1_4());
-				}
-			)?
-			this_ENTITY_END_22=RULE_ENTITY_END
+				)|
+				(
+					{getUnorderedGroupHelper().canSelect(grammarAccess.getParameterAccess().getUnorderedGroup_10_1(), 1)}?=>(
+						{
+							getUnorderedGroupHelper().select(grammarAccess.getParameterAccess().getUnorderedGroup_10_1(), 1);
+						}
+									({true}?=>(otherlv_19='constraints'
+									{
+										newLeafNode(otherlv_19, grammarAccess.getParameterAccess().getConstraintsKeyword_10_1_1_0());
+									}
+									this_LIST_START_20=RULE_LIST_START
+									{
+										newLeafNode(this_LIST_START_20, grammarAccess.getParameterAccess().getLIST_STARTTerminalRuleCall_10_1_1_1());
+									}
+									(
+										(
+											{
+												newCompositeNode(grammarAccess.getParameterAccess().getConstraintsParameterConstraintParserRuleCall_10_1_1_2_0());
+											}
+											lv_constraints_21_0=ruleParameterConstraint
+											{
+												if ($current==null) {
+													$current = createModelElementForParent(grammarAccess.getParameterRule());
+												}
+												add(
+													$current,
+													"constraints",
+													lv_constraints_21_0,
+													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ParameterConstraint");
+												afterParserOrEnumRuleCall();
+											}
+										)
+									)
+									(
+										this_LIST_SEPARATOR_22=RULE_LIST_SEPARATOR
+										{
+											newLeafNode(this_LIST_SEPARATOR_22, grammarAccess.getParameterAccess().getLIST_SEPARATORTerminalRuleCall_10_1_1_3_0());
+										}
+										(
+											(
+												{
+													newCompositeNode(grammarAccess.getParameterAccess().getConstraintsParameterConstraintParserRuleCall_10_1_1_3_1_0());
+												}
+												lv_constraints_23_0=ruleParameterConstraint
+												{
+													if ($current==null) {
+														$current = createModelElementForParent(grammarAccess.getParameterRule());
+													}
+													add(
+														$current,
+														"constraints",
+														lv_constraints_23_0,
+														"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ParameterConstraint");
+													afterParserOrEnumRuleCall();
+												}
+											)
+										)
+									)*
+									this_LIST_END_24=RULE_LIST_END
+									{
+										newLeafNode(this_LIST_END_24, grammarAccess.getParameterAccess().getLIST_ENDTerminalRuleCall_10_1_1_4());
+									}
+									))
+						{ 
+							getUnorderedGroupHelper().returnFromSelection(grammarAccess.getParameterAccess().getUnorderedGroup_10_1());
+						}
+					)
+				)
+						)*
+					)
+				)
+					{ 
+					  getUnorderedGroupHelper().leave(grammarAccess.getParameterAccess().getUnorderedGroup_10_1());
+					}
+			)
+			this_ENTITY_END_25=RULE_ENTITY_END
 			{
-				newLeafNode(this_ENTITY_END_22, grammarAccess.getParameterAccess().getENTITY_ENDTerminalRuleCall_10_2());
+				newLeafNode(this_ENTITY_END_25, grammarAccess.getParameterAccess().getENTITY_ENDTerminalRuleCall_10_2());
 			}
 		)?
-		this_STATEMENT_END_23=RULE_STATEMENT_END
+		this_STATEMENT_END_26=RULE_STATEMENT_END
 		{
-			newLeafNode(this_STATEMENT_END_23, grammarAccess.getParameterAccess().getSTATEMENT_ENDTerminalRuleCall_11());
+			newLeafNode(this_STATEMENT_END_26, grammarAccess.getParameterAccess().getSTATEMENT_ENDTerminalRuleCall_11());
 		}
 	)
 ;
@@ -971,32 +1022,27 @@ ruleInputDataset returns [EObject current=null]
 						{
 							getUnorderedGroupHelper().select(grammarAccess.getInputDatasetAccess().getUnorderedGroup_9_1(), 0);
 						}
-									({true}?=>(otherlv_11='remarks'
-									{
-										newLeafNode(otherlv_11, grammarAccess.getInputDatasetAccess().getRemarksKeyword_9_1_0_0());
-									}
-									(
+									({true}?=>((
 										(
+											lv_remarks_11_0=RULE_MULTILINE_STRING
 											{
-												newCompositeNode(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_9_1_0_1_0());
+												newLeafNode(lv_remarks_11_0, grammarAccess.getInputDatasetAccess().getRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0());
 											}
-											lv_remarks_12_0=ruleEString
 											{
 												if ($current==null) {
-													$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
+													$current = createModelElement(grammarAccess.getInputDatasetRule());
 												}
-												set(
+												setWithLastConsumed(
 													$current,
 													"remarks",
-													lv_remarks_12_0,
-													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
-												afterParserOrEnumRuleCall();
+													lv_remarks_11_0,
+													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.MULTILINE_STRING");
 											}
 										)
 									)
-									this_STATEMENT_END_13=RULE_STATEMENT_END
+									this_STATEMENT_END_12=RULE_STATEMENT_END
 									{
-										newLeafNode(this_STATEMENT_END_13, grammarAccess.getInputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_0_2());
+										newLeafNode(this_STATEMENT_END_12, grammarAccess.getInputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_0_1());
 									}
 									))
 						{ 
@@ -1009,20 +1055,20 @@ ruleInputDataset returns [EObject current=null]
 						{
 							getUnorderedGroupHelper().select(grammarAccess.getInputDatasetAccess().getUnorderedGroup_9_1(), 1);
 						}
-									({true}?=>(otherlv_14='constraints'
+									({true}?=>(otherlv_13='constraints'
 									{
-										newLeafNode(otherlv_14, grammarAccess.getInputDatasetAccess().getConstraintsKeyword_9_1_1_0());
+										newLeafNode(otherlv_13, grammarAccess.getInputDatasetAccess().getConstraintsKeyword_9_1_1_0());
 									}
-									this_LIST_START_15=RULE_LIST_START
+									this_LIST_START_14=RULE_LIST_START
 									{
-										newLeafNode(this_LIST_START_15, grammarAccess.getInputDatasetAccess().getLIST_STARTTerminalRuleCall_9_1_1_1());
+										newLeafNode(this_LIST_START_14, grammarAccess.getInputDatasetAccess().getLIST_STARTTerminalRuleCall_9_1_1_1());
 									}
 									(
 										(
 											{
 												newCompositeNode(grammarAccess.getInputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0());
 											}
-											lv_constraints_16_0=ruleDatasetConstraint
+											lv_constraints_15_0=ruleDatasetConstraint
 											{
 												if ($current==null) {
 													$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
@@ -1030,23 +1076,23 @@ ruleInputDataset returns [EObject current=null]
 												add(
 													$current,
 													"constraints",
-													lv_constraints_16_0,
+													lv_constraints_15_0,
 													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
 												afterParserOrEnumRuleCall();
 											}
 										)
 									)
 									(
-										this_LIST_SEPARATOR_17=RULE_LIST_SEPARATOR
+										this_LIST_SEPARATOR_16=RULE_LIST_SEPARATOR
 										{
-											newLeafNode(this_LIST_SEPARATOR_17, grammarAccess.getInputDatasetAccess().getLIST_SEPARATORTerminalRuleCall_9_1_1_3_0());
+											newLeafNode(this_LIST_SEPARATOR_16, grammarAccess.getInputDatasetAccess().getLIST_SEPARATORTerminalRuleCall_9_1_1_3_0());
 										}
 										(
 											(
 												{
 													newCompositeNode(grammarAccess.getInputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0());
 												}
-												lv_constraints_18_0=ruleDatasetConstraint
+												lv_constraints_17_0=ruleDatasetConstraint
 												{
 													if ($current==null) {
 														$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
@@ -1054,20 +1100,20 @@ ruleInputDataset returns [EObject current=null]
 													add(
 														$current,
 														"constraints",
-														lv_constraints_18_0,
+														lv_constraints_17_0,
 														"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
 													afterParserOrEnumRuleCall();
 												}
 											)
 										)
 									)*
-									this_LIST_END_19=RULE_LIST_END
+									this_LIST_END_18=RULE_LIST_END
 									{
-										newLeafNode(this_LIST_END_19, grammarAccess.getInputDatasetAccess().getLIST_ENDTerminalRuleCall_9_1_1_4());
+										newLeafNode(this_LIST_END_18, grammarAccess.getInputDatasetAccess().getLIST_ENDTerminalRuleCall_9_1_1_4());
 									}
-									this_STATEMENT_END_20=RULE_STATEMENT_END
+									this_STATEMENT_END_19=RULE_STATEMENT_END
 									{
-										newLeafNode(this_STATEMENT_END_20, grammarAccess.getInputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_1_5());
+										newLeafNode(this_STATEMENT_END_19, grammarAccess.getInputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_1_5());
 									}
 									))
 						{ 
@@ -1083,14 +1129,14 @@ ruleInputDataset returns [EObject current=null]
 					  getUnorderedGroupHelper().leave(grammarAccess.getInputDatasetAccess().getUnorderedGroup_9_1());
 					}
 			)?
-			this_ENTITY_END_21=RULE_ENTITY_END
+			this_ENTITY_END_20=RULE_ENTITY_END
 			{
-				newLeafNode(this_ENTITY_END_21, grammarAccess.getInputDatasetAccess().getENTITY_ENDTerminalRuleCall_9_2());
+				newLeafNode(this_ENTITY_END_20, grammarAccess.getInputDatasetAccess().getENTITY_ENDTerminalRuleCall_9_2());
 			}
 		)?
-		this_STATEMENT_END_22=RULE_STATEMENT_END
+		this_STATEMENT_END_21=RULE_STATEMENT_END
 		{
-			newLeafNode(this_STATEMENT_END_22, grammarAccess.getInputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_10());
+			newLeafNode(this_STATEMENT_END_21, grammarAccess.getInputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_10());
 		}
 	)
 ;
@@ -1224,32 +1270,27 @@ ruleOutputDataset returns [EObject current=null]
 						{
 							getUnorderedGroupHelper().select(grammarAccess.getOutputDatasetAccess().getUnorderedGroup_9_1(), 0);
 						}
-									({true}?=>(otherlv_11='remarks'
-									{
-										newLeafNode(otherlv_11, grammarAccess.getOutputDatasetAccess().getRemarksKeyword_9_1_0_0());
-									}
-									(
+									({true}?=>((
 										(
+											lv_remarks_11_0=RULE_MULTILINE_STRING
 											{
-												newCompositeNode(grammarAccess.getOutputDatasetAccess().getRemarksEStringParserRuleCall_9_1_0_1_0());
+												newLeafNode(lv_remarks_11_0, grammarAccess.getOutputDatasetAccess().getRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0());
 											}
-											lv_remarks_12_0=ruleEString
 											{
 												if ($current==null) {
-													$current = createModelElementForParent(grammarAccess.getOutputDatasetRule());
+													$current = createModelElement(grammarAccess.getOutputDatasetRule());
 												}
-												set(
+												setWithLastConsumed(
 													$current,
 													"remarks",
-													lv_remarks_12_0,
-													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
-												afterParserOrEnumRuleCall();
+													lv_remarks_11_0,
+													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.MULTILINE_STRING");
 											}
 										)
 									)
-									this_STATEMENT_END_13=RULE_STATEMENT_END
+									this_STATEMENT_END_12=RULE_STATEMENT_END
 									{
-										newLeafNode(this_STATEMENT_END_13, grammarAccess.getOutputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_0_2());
+										newLeafNode(this_STATEMENT_END_12, grammarAccess.getOutputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_0_1());
 									}
 									))
 						{ 
@@ -1262,20 +1303,20 @@ ruleOutputDataset returns [EObject current=null]
 						{
 							getUnorderedGroupHelper().select(grammarAccess.getOutputDatasetAccess().getUnorderedGroup_9_1(), 1);
 						}
-									({true}?=>(otherlv_14='constraints'
+									({true}?=>(otherlv_13='constraints'
 									{
-										newLeafNode(otherlv_14, grammarAccess.getOutputDatasetAccess().getConstraintsKeyword_9_1_1_0());
+										newLeafNode(otherlv_13, grammarAccess.getOutputDatasetAccess().getConstraintsKeyword_9_1_1_0());
 									}
-									this_LIST_START_15=RULE_LIST_START
+									this_LIST_START_14=RULE_LIST_START
 									{
-										newLeafNode(this_LIST_START_15, grammarAccess.getOutputDatasetAccess().getLIST_STARTTerminalRuleCall_9_1_1_1());
+										newLeafNode(this_LIST_START_14, grammarAccess.getOutputDatasetAccess().getLIST_STARTTerminalRuleCall_9_1_1_1());
 									}
 									(
 										(
 											{
 												newCompositeNode(grammarAccess.getOutputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0());
 											}
-											lv_constraints_16_0=ruleDatasetConstraint
+											lv_constraints_15_0=ruleDatasetConstraint
 											{
 												if ($current==null) {
 													$current = createModelElementForParent(grammarAccess.getOutputDatasetRule());
@@ -1283,23 +1324,23 @@ ruleOutputDataset returns [EObject current=null]
 												add(
 													$current,
 													"constraints",
-													lv_constraints_16_0,
+													lv_constraints_15_0,
 													"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
 												afterParserOrEnumRuleCall();
 											}
 										)
 									)
 									(
-										this_LIST_SEPARATOR_17=RULE_LIST_SEPARATOR
+										this_LIST_SEPARATOR_16=RULE_LIST_SEPARATOR
 										{
-											newLeafNode(this_LIST_SEPARATOR_17, grammarAccess.getOutputDatasetAccess().getLIST_SEPARATORTerminalRuleCall_9_1_1_3_0());
+											newLeafNode(this_LIST_SEPARATOR_16, grammarAccess.getOutputDatasetAccess().getLIST_SEPARATORTerminalRuleCall_9_1_1_3_0());
 										}
 										(
 											(
 												{
 													newCompositeNode(grammarAccess.getOutputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0());
 												}
-												lv_constraints_18_0=ruleDatasetConstraint
+												lv_constraints_17_0=ruleDatasetConstraint
 												{
 													if ($current==null) {
 														$current = createModelElementForParent(grammarAccess.getOutputDatasetRule());
@@ -1307,20 +1348,20 @@ ruleOutputDataset returns [EObject current=null]
 													add(
 														$current,
 														"constraints",
-														lv_constraints_18_0,
+														lv_constraints_17_0,
 														"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
 													afterParserOrEnumRuleCall();
 												}
 											)
 										)
 									)*
-									this_LIST_END_19=RULE_LIST_END
+									this_LIST_END_18=RULE_LIST_END
 									{
-										newLeafNode(this_LIST_END_19, grammarAccess.getOutputDatasetAccess().getLIST_ENDTerminalRuleCall_9_1_1_4());
+										newLeafNode(this_LIST_END_18, grammarAccess.getOutputDatasetAccess().getLIST_ENDTerminalRuleCall_9_1_1_4());
 									}
-									this_STATEMENT_END_20=RULE_STATEMENT_END
+									this_STATEMENT_END_19=RULE_STATEMENT_END
 									{
-										newLeafNode(this_STATEMENT_END_20, grammarAccess.getOutputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_1_5());
+										newLeafNode(this_STATEMENT_END_19, grammarAccess.getOutputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_9_1_1_5());
 									}
 									))
 						{ 
@@ -1336,14 +1377,14 @@ ruleOutputDataset returns [EObject current=null]
 					  getUnorderedGroupHelper().leave(grammarAccess.getOutputDatasetAccess().getUnorderedGroup_9_1());
 					}
 			)?
-			this_ENTITY_END_21=RULE_ENTITY_END
+			this_ENTITY_END_20=RULE_ENTITY_END
 			{
-				newLeafNode(this_ENTITY_END_21, grammarAccess.getOutputDatasetAccess().getENTITY_ENDTerminalRuleCall_9_2());
+				newLeafNode(this_ENTITY_END_20, grammarAccess.getOutputDatasetAccess().getENTITY_ENDTerminalRuleCall_9_2());
 			}
 		)?
-		this_STATEMENT_END_22=RULE_STATEMENT_END
+		this_STATEMENT_END_21=RULE_STATEMENT_END
 		{
-			newLeafNode(this_STATEMENT_END_22, grammarAccess.getOutputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_10());
+			newLeafNode(this_STATEMENT_END_21, grammarAccess.getOutputDatasetAccess().getSTATEMENT_ENDTerminalRuleCall_10());
 		}
 	)
 ;
@@ -1445,14 +1486,16 @@ ruleCustomParameterConstraint returns [EObject current=null]
 				}
 			)
 		)
-		this_ENTITY_START_2=RULE_ENTITY_START
-		{
-			newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomParameterConstraintAccess().getENTITY_STARTTerminalRuleCall_2());
-		}
-		this_ENTITY_END_3=RULE_ENTITY_END
-		{
-			newLeafNode(this_ENTITY_END_3, grammarAccess.getCustomParameterConstraintAccess().getENTITY_ENDTerminalRuleCall_3());
-		}
+		(
+			this_ENTITY_START_2=RULE_ENTITY_START
+			{
+				newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomParameterConstraintAccess().getENTITY_STARTTerminalRuleCall_2_0());
+			}
+			this_ENTITY_END_3=RULE_ENTITY_END
+			{
+				newLeafNode(this_ENTITY_END_3, grammarAccess.getCustomParameterConstraintAccess().getENTITY_ENDTerminalRuleCall_2_1());
+			}
+		)?
 	)
 ;
 
@@ -1520,14 +1563,16 @@ ruleCustomDatasetConstraint returns [EObject current=null]
 				}
 			)
 		)
-		this_ENTITY_START_2=RULE_ENTITY_START
-		{
-			newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_STARTTerminalRuleCall_2());
-		}
-		this_ENTITY_END_3=RULE_ENTITY_END
-		{
-			newLeafNode(this_ENTITY_END_3, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_ENDTerminalRuleCall_3());
-		}
+		(
+			this_ENTITY_START_2=RULE_ENTITY_START
+			{
+				newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_STARTTerminalRuleCall_2_0());
+			}
+			this_ENTITY_END_3=RULE_ENTITY_END
+			{
+				newLeafNode(this_ENTITY_END_3, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_ENDTerminalRuleCall_2_1());
+			}
+		)?
 	)
 ;
 

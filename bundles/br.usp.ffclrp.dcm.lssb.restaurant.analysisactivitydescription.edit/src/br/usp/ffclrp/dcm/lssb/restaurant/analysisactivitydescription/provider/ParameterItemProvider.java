@@ -48,6 +48,7 @@ public class ParameterItemProvider extends MultiplicityElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addRemarksPropertyDescriptor(object);
 			addParameterTypePropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
 		}
@@ -68,6 +69,28 @@ public class ParameterItemProvider extends MultiplicityElementItemProvider {
 				 getString("_UI_Parameter_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_name_feature", "_UI_Parameter_type"),
 				 AnalysisActivityDescriptionPackage.Literals.PARAMETER__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Remarks feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRemarksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_remarks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_remarks_feature", "_UI_Parameter_type"),
+				 AnalysisActivityDescriptionPackage.Literals.PARAMETER__REMARKS,
 				 true,
 				 false,
 				 false,
@@ -189,6 +212,7 @@ public class ParameterItemProvider extends MultiplicityElementItemProvider {
 
 		switch (notification.getFeatureID(Parameter.class)) {
 			case AnalysisActivityDescriptionPackage.PARAMETER__NAME:
+			case AnalysisActivityDescriptionPackage.PARAMETER__REMARKS:
 			case AnalysisActivityDescriptionPackage.PARAMETER__PARAMETER_TYPE:
 			case AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

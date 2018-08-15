@@ -64,7 +64,7 @@ public class ActivityItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addDescriptionPropertyDescriptor(object);
+			addRemarksPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -92,19 +92,19 @@ public class ActivityItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Description feature.
+	 * This adds a property descriptor for the Remarks feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDescriptionPropertyDescriptor(Object object) {
+	protected void addRemarksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Activity_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Activity_description_feature", "_UI_Activity_type"),
-				 AnalysisActivityDescriptionPackage.Literals.ACTIVITY__DESCRIPTION,
+				 getString("_UI_Activity_remarks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Activity_remarks_feature", "_UI_Activity_type"),
+				 AnalysisActivityDescriptionPackage.Literals.ACTIVITY__REMARKS,
 				 true,
 				 false,
 				 false,
@@ -186,7 +186,7 @@ public class ActivityItemProvider
 
 		switch (notification.getFeatureID(Activity.class)) {
 			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
-			case AnalysisActivityDescriptionPackage.ACTIVITY__DESCRIPTION:
+			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:

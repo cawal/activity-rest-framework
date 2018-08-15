@@ -80,13 +80,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int ACTIVITY__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__DESCRIPTION = 1;
+	int ACTIVITY__REMARKS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -235,13 +235,22 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER__NAME = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__REMARKS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Parameter Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__PARAMETER_TYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETER__PARAMETER_TYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' attribute list.
@@ -250,7 +259,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__DEFAULT_VALUE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
+	int PARAMETER__DEFAULT_VALUE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -259,7 +268,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__CONSTRAINTS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
+	int PARAMETER__CONSTRAINTS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -268,7 +277,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
+	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -1379,15 +1388,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EAttribute getActivity_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getRemarks <em>Remarks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getDescription()
+	 * @return the meta object for the attribute '<em>Remarks</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getRemarks()
 	 * @see #getActivity()
 	 * @generated
 	 */
-	EAttribute getActivity_Description();
+	EAttribute getActivity_Remarks();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getParameters <em>Parameters</em>}'.
@@ -1496,6 +1505,17 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParameter_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getRemarks <em>Remarks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remarks</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getRemarks()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_Remarks();
 
 	/**
 	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getParameterType <em>Parameter Type</em>}'.
@@ -2065,12 +2085,12 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EAttribute ACTIVITY__NAME = eINSTANCE.getActivity_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ACTIVITY__DESCRIPTION = eINSTANCE.getActivity_Description();
+		EAttribute ACTIVITY__REMARKS = eINSTANCE.getActivity_Remarks();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -2155,6 +2175,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__REMARKS = eINSTANCE.getParameter_Remarks();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameter Type</b></em>' attribute feature.

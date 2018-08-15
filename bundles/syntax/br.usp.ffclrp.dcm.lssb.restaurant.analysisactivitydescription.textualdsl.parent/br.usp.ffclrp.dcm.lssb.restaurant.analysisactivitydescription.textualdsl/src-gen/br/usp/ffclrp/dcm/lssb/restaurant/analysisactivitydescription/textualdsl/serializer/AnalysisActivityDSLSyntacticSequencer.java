@@ -22,6 +22,8 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 
 	protected AnalysisActivityDSLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q;
+	protected AbstractElementAlias match_CustomDatasetConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q;
+	protected AbstractElementAlias match_CustomParameterConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q;
 	protected AbstractElementAlias match_InputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q;
 	protected AbstractElementAlias match_OutputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q;
 	protected AbstractElementAlias match_Parameter___ENTITY_STARTTerminalRuleCall_10_0_ENTITY_ENDTerminalRuleCall_10_2__q;
@@ -30,6 +32,8 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (AnalysisActivityDSLGrammarAccess) access;
 		match_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getRedirectingKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getCommandLineToolAccess().getENTITY_ENDTerminalRuleCall_4_3()));
+		match_CustomDatasetConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_STARTTerminalRuleCall_2_0()), new TokenAlias(false, false, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_ENDTerminalRuleCall_2_1()));
+		match_CustomParameterConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCustomParameterConstraintAccess().getENTITY_STARTTerminalRuleCall_2_0()), new TokenAlias(false, false, grammarAccess.getCustomParameterConstraintAccess().getENTITY_ENDTerminalRuleCall_2_1()));
 		match_InputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInputDatasetAccess().getENTITY_STARTTerminalRuleCall_9_0()), new TokenAlias(false, false, grammarAccess.getInputDatasetAccess().getENTITY_ENDTerminalRuleCall_9_2()));
 		match_OutputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getOutputDatasetAccess().getENTITY_STARTTerminalRuleCall_9_0()), new TokenAlias(false, false, grammarAccess.getOutputDatasetAccess().getENTITY_ENDTerminalRuleCall_9_2()));
 		match_Parameter___ENTITY_STARTTerminalRuleCall_10_0_ENTITY_ENDTerminalRuleCall_10_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getParameterAccess().getENTITY_STARTTerminalRuleCall_10_0()), new TokenAlias(false, false, grammarAccess.getParameterAccess().getENTITY_ENDTerminalRuleCall_10_2()));
@@ -125,6 +129,10 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q.equals(syntax))
 				emit_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_CustomDatasetConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q.equals(syntax))
+				emit_CustomDatasetConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_CustomParameterConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q.equals(syntax))
+				emit_CustomParameterConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_InputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q.equals(syntax))
 				emit_InputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_OutputDataset___ENTITY_STARTTerminalRuleCall_9_0_ENTITY_ENDTerminalRuleCall_9_2__q.equals(syntax))
@@ -144,6 +152,28 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	 *     name=EString ENTITY_START (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 */
 	protected void emit_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (ENTITY_START ENTITY_END)?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=EString (ambiguity) (rule end)
+	 */
+	protected void emit_CustomDatasetConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (ENTITY_START ENTITY_END)?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=EString (ambiguity) (rule end)
+	 */
+	protected void emit_CustomParameterConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -20,7 +20,7 @@
     <genDataTypes ecoreDataType="analysis-activity-description.ecore#//FilePath"/>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Activity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/remarks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/inputDatasets"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/outputDatasets"/>
@@ -33,6 +33,7 @@
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/remarks"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/parameterType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/defaultValue"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Parameter/constraints"/>
