@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="analysisactivitydescription" nsURI="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="analysisactivitydescription" nsURI="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"
     nsPrefix="aad">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="slm" value="string-list-manipulators.ecore#/"/>
@@ -17,28 +17,32 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remarks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" ordered="false" upperBound="-1" eType="#//Parameter" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" ordered="false"
+        upperBound="-1" eType="#//Parameter" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1" eType="#//InputDataset" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1"
+        eType="#//InputDataset" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1" eType="#//OutputDataset" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1"
+        eType="#//OutputDataset" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="readinessContraints" ordered="false" upperBound="-1" eType="#//ReadinessConstraint"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readinessContraints" ordered="false"
+        upperBound="-1" eType="#//ReadinessConstraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tool" lowerBound="1" eType="#//Tool" containment="true" eOpposite="#//Tool/activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tool" lowerBound="1" eType="#//Tool"
+        containment="true" eOpposite="#//Tool/activity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MultiplicityElement" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -48,9 +52,11 @@
       <details key="OnlyPositiveNumbersForMinimumCardinality" value="&#xA;            minimumCardinality >= 1"/>
       <details key="OnlyPositiveNumbersOrMinusOneForMaximumCardinality" value="&#xA;            maximumCardinality >= 1 or maximumCardinality = -1"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumCardinality" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumCardinality" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"
         defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumCardinality" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumCardinality" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"
         defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//MultiplicityElement">
@@ -66,14 +72,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remarks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterType" lowerBound="1" eType="#//ParameterType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" ordered="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterType" lowerBound="1"
+        eType="#//ParameterType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" ordered="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//ParameterConstraint"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false"
+        upperBound="-1" eType="#//ParameterConstraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -92,7 +100,8 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remarks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//DatasetConstraint" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false"
+        upperBound="-1" eType="#//DatasetConstraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -101,32 +110,40 @@
   <eClassifiers xsi:type="ecore:EClass" name="InputDataset" eSuperTypes="#//Dataset"/>
   <eClassifiers xsi:type="ecore:EClass" name="OutputDataset" eSuperTypes="#//Dataset"/>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true" eSuperTypes="#//Constraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true"
+      eSuperTypes="#//Constraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetConstraint" abstract="true" eSuperTypes="#//Constraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomConstraint" abstract="true" eSuperTypes="#//Constraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomParameterConstraint" eSuperTypes="#//CustomConstraint #//ParameterConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetConstraint" eSuperTypes="#//CustomConstraint #//DatasetConstraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true" eSuperTypes="#//Constraint">
+  <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true"
+      eSuperTypes="#//Constraint">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Constraints on readiness of the activity"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatasetReadinessConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//Dataset"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatasetReadinessConstraint" abstract="true"
+      eSuperTypes="#//ReadinessConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1"
+        eType="#//Dataset"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterReadinessConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterReadinessConstraint" abstract="true"
+      eSuperTypes="#//ReadinessConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+        eType="#//Parameter"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterReadinessConstraint" eSuperTypes="#//CustomConstraint #//ParameterReadinessConstraint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterReadinessConstraint"
+      eSuperTypes="#//CustomConstraint #//ParameterReadinessConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetReadinessConstraint" eSuperTypes="#//CustomConstraint #//DatasetReadinessConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="Tool" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Abstract class to describe the tool used for executing the activity."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity" eOpposite="#//Activity/tool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        eOpposite="#//Activity/tool"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommandLineTool" eSuperTypes="#//Tool">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -144,8 +161,8 @@
       <details key="stdErrMustHave1AsCardinality" value="&#xA;            if not self.standardErrorStream.oclIsUndefined() then&#xA;                self.standardErrorStream.minimumCardinality = 1&#xA;                and self.standardErrorStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="executablePath" eType="#//FilePath"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="commandLineTemplate" lowerBound="1" upperBound="-1" eType="#//CommandLineEntryList"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commandLineTemplate" lowerBound="1"
+        upperBound="-1" eType="#//CommandLineEntryList" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -153,7 +170,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="standardInputStream" eType="#//InputDataset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="standardOutputStream" eType="#//OutputDataset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="standardErrorStream" eType="#//OutputDataset"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exitCodes" ordered="false" upperBound="-1" eType="#//ExitCode" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exitCodes" ordered="false"
+        upperBound="-1" eType="#//ExitCode" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -162,7 +180,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ExitCode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reportMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1" eType="#//TerminationStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//TerminationStatus"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TerminationStatus">
     <eLiterals name="SUCCEEDED"/>
@@ -172,7 +191,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A list of entries for the command line tool.&#xA;This entry list can be manipulated before being used&#xA;for the command line.&#xA;Each item of the final list will be used as a different&#xA;argument for the command line tool.&#xA;"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" ordered="false" upperBound="-1" eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" ordered="false"
+        upperBound="-1" eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
@@ -187,17 +207,20 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="OneOrMoreLiterals" value="&#xA;            literals->size() > 0"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literals" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literals" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatasetCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//Dataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1"
+        eType="#//Dataset"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+        eType="#//Parameter"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="FilePath" instanceClassName="java.lang.String"/>
 </ecore:EPackage>
