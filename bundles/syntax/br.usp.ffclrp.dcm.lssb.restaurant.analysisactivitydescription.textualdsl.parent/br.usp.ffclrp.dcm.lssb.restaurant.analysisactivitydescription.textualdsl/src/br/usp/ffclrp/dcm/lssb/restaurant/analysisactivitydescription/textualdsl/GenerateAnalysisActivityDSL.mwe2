@@ -42,6 +42,7 @@ Workflow {
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
+//			fragment = org.eclipse.xtext.generator.parser.packrat.PackratParserFragment auto-inject {}
 			formatter = {
 				generateStub = true
 			}

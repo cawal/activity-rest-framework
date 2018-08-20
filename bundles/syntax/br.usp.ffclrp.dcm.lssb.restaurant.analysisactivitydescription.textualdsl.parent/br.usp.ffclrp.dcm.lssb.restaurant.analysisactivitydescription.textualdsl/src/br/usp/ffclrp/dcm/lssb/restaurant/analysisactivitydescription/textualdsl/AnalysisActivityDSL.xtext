@@ -11,7 +11,7 @@ Activity returns analysisactivitydescription::Activity:
 	'activity'
 	name=EString
 	ENTITY_START
-		(remarks=MULTILINE_STRING STATEMENT_END)?
+		('remarks' remarks=EString STATEMENT_END)?
 		('on' ENTITY_START inputDatasets+=InputDataset ( inputDatasets+=InputDataset )* ENTITY_END )?
 		('with' ENTITY_START parameters+=Parameter ( parameters+=Parameter)* ENTITY_END )?
 		('produces' ENTITY_START outputDatasets+=OutputDataset ( outputDatasets+=OutputDataset)* ENTITY_END )?
@@ -52,15 +52,13 @@ Parameter returns analysisactivitydescription::Parameter:
 	('=' LIST_START  defaultValue+=EString ( LIST_SEPARATOR defaultValue+=EString)* LIST_END  )?
 	(
 	    ENTITY_START
+        ('remarks' remarks=EString STATEMENT_END)?
         (
-            (remarks=MULTILINE_STRING STATEMENT_END)?
-	        & (
-	           'constraints' 
-	           LIST_START constraints+=ParameterConstraint 
-	               (LIST_SEPARATOR constraints+=ParameterConstraint)* 
-	           LIST_END
-	        )?
-	    )
+           'constraints' 
+           LIST_START constraints+=ParameterConstraint 
+               (LIST_SEPARATOR constraints+=ParameterConstraint)* 
+           LIST_END
+        )?
 	    ENTITY_END
 	)?
     STATEMENT_END
@@ -76,9 +74,12 @@ InputDataset returns analysisactivitydescription::InputDataset:
     LIST_END
     (
        ENTITY_START
-       (
-            (remarks=MULTILINE_STRING STATEMENT_END)
-            &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)
+        ('remarks' remarks=EString STATEMENT_END)?
+        (
+            'constraints' LIST_START 
+                constraints+=DatasetConstraint 
+                (LIST_SEPARATOR constraints+=DatasetConstraint)* 
+                LIST_END STATEMENT_END
         )?
       ENTITY_END 
     )? 
@@ -96,9 +97,13 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
     LIST_END
     (
        ENTITY_START
-       (
-            (remarks=MULTILINE_STRING STATEMENT_END)
-            &('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)
+        ('remarks' remarks=EString STATEMENT_END)?
+        (
+            'constraints' LIST_START 
+            constraints+=DatasetConstraint 
+            (LIST_SEPARATOR constraints+=DatasetConstraint)* 
+            LIST_END 
+            STATEMENT_END
         )?
       ENTITY_END 
     )? 
@@ -242,9 +247,6 @@ enum TerminationStatus returns analysisactivitydescription::TerminationStatus:
 terminal ENTITY_START: '{';
 terminal ENTITY_END: '}';
 terminal STATEMENT_END: ';';
-// The following synthetic tokens are used for the indentation-aware blocks
-//terminal ENTITY_START: 'synthetic:ENTITY_START';  // increase indentation
-//terminal ENTITY_END: 'synthetic:ENTITY_END';      // decrease indentation
 terminal DEFINITION_START: "(";
 terminal DEFINITION_END: ")";
 				
@@ -258,7 +260,6 @@ terminal PIPE_TO : '|';
 terminal MULTILINE_STRING:
             "'''" -> "'''" 
         ;
-        
         
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') (("-")?('a'..'z'|'A'..'Z'|'_'|'0'..'9'))*;
 terminal INT returns ecore::EInt: ('0'..'9')+;

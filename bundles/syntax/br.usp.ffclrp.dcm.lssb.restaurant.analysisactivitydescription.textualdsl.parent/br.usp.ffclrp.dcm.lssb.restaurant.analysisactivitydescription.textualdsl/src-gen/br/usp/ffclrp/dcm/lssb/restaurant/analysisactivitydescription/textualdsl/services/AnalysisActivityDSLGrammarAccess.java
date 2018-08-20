@@ -35,9 +35,10 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final RuleCall cENTITY_STARTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cRemarksAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cRemarksMULTILINE_STRINGTerminalRuleCall_3_0_0 = (RuleCall)cRemarksAssignment_3_0.eContents().get(0);
-		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final Keyword cRemarksKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cRemarksAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cRemarksEStringParserRuleCall_3_1_0 = (RuleCall)cRemarksAssignment_3_1.eContents().get(0);
+		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_3_2 = (RuleCall)cGroup_3.eContents().get(2);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cOnKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final RuleCall cENTITY_STARTTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
@@ -80,7 +81,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//Activity analysisactivitydescription::Activity:
 		//	'activity'
 		//	name=EString
-		//	ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END)? ('on' ENTITY_START inputDatasets+=InputDataset
+		//	ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('on' ENTITY_START inputDatasets+=InputDataset
 		//	inputDatasets+=InputDataset* ENTITY_END)? ('with' ENTITY_START parameters+=Parameter parameters+=Parameter*
 		//	ENTITY_END)? ('produces' ENTITY_START outputDatasets+=OutputDataset outputDatasets+=OutputDataset* ENTITY_END)?
 		//	('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint (LIST_SEPARATOR
@@ -89,7 +90,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//	ENTITY_END;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'activity' name=EString ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END)? ('on' ENTITY_START
+		//'activity' name=EString ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('on' ENTITY_START
 		//inputDatasets+=InputDataset inputDatasets+=InputDataset* ENTITY_END)? ('with' ENTITY_START parameters+=Parameter
 		//parameters+=Parameter* ENTITY_END)? ('produces' ENTITY_START outputDatasets+=OutputDataset
 		//outputDatasets+=OutputDataset* ENTITY_END)? ('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint
@@ -108,17 +109,20 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//ENTITY_START
 		public RuleCall getENTITY_STARTTerminalRuleCall_2() { return cENTITY_STARTTerminalRuleCall_2; }
 		
-		//(remarks=MULTILINE_STRING STATEMENT_END)?
+		//('remarks' remarks=EString STATEMENT_END)?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//remarks=MULTILINE_STRING
-		public Assignment getRemarksAssignment_3_0() { return cRemarksAssignment_3_0; }
+		//'remarks'
+		public Keyword getRemarksKeyword_3_0() { return cRemarksKeyword_3_0; }
 		
-		//MULTILINE_STRING
-		public RuleCall getRemarksMULTILINE_STRINGTerminalRuleCall_3_0_0() { return cRemarksMULTILINE_STRINGTerminalRuleCall_3_0_0; }
+		//remarks=EString
+		public Assignment getRemarksAssignment_3_1() { return cRemarksAssignment_3_1; }
+		
+		//EString
+		public RuleCall getRemarksEStringParserRuleCall_3_1_0() { return cRemarksEStringParserRuleCall_3_1_0; }
 		
 		//STATEMENT_END
-		public RuleCall getSTATEMENT_ENDTerminalRuleCall_3_1() { return cSTATEMENT_ENDTerminalRuleCall_3_1; }
+		public RuleCall getSTATEMENT_ENDTerminalRuleCall_3_2() { return cSTATEMENT_ENDTerminalRuleCall_3_2; }
 		
 		//('on' ENTITY_START inputDatasets+=InputDataset inputDatasets+=InputDataset* ENTITY_END)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -393,22 +397,22 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		private final RuleCall cLIST_ENDTerminalRuleCall_9_4 = (RuleCall)cGroup_9.eContents().get(4);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
 		private final RuleCall cENTITY_STARTTerminalRuleCall_10_0 = (RuleCall)cGroup_10.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_10_1 = (UnorderedGroup)cGroup_10.eContents().get(1);
-		private final Group cGroup_10_1_0 = (Group)cUnorderedGroup_10_1.eContents().get(0);
-		private final Assignment cRemarksAssignment_10_1_0_0 = (Assignment)cGroup_10_1_0.eContents().get(0);
-		private final RuleCall cRemarksMULTILINE_STRINGTerminalRuleCall_10_1_0_0_0 = (RuleCall)cRemarksAssignment_10_1_0_0.eContents().get(0);
-		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_10_1_0_1 = (RuleCall)cGroup_10_1_0.eContents().get(1);
-		private final Group cGroup_10_1_1 = (Group)cUnorderedGroup_10_1.eContents().get(1);
-		private final Keyword cConstraintsKeyword_10_1_1_0 = (Keyword)cGroup_10_1_1.eContents().get(0);
-		private final RuleCall cLIST_STARTTerminalRuleCall_10_1_1_1 = (RuleCall)cGroup_10_1_1.eContents().get(1);
-		private final Assignment cConstraintsAssignment_10_1_1_2 = (Assignment)cGroup_10_1_1.eContents().get(2);
-		private final RuleCall cConstraintsParameterConstraintParserRuleCall_10_1_1_2_0 = (RuleCall)cConstraintsAssignment_10_1_1_2.eContents().get(0);
-		private final Group cGroup_10_1_1_3 = (Group)cGroup_10_1_1.eContents().get(3);
-		private final RuleCall cLIST_SEPARATORTerminalRuleCall_10_1_1_3_0 = (RuleCall)cGroup_10_1_1_3.eContents().get(0);
-		private final Assignment cConstraintsAssignment_10_1_1_3_1 = (Assignment)cGroup_10_1_1_3.eContents().get(1);
-		private final RuleCall cConstraintsParameterConstraintParserRuleCall_10_1_1_3_1_0 = (RuleCall)cConstraintsAssignment_10_1_1_3_1.eContents().get(0);
-		private final RuleCall cLIST_ENDTerminalRuleCall_10_1_1_4 = (RuleCall)cGroup_10_1_1.eContents().get(4);
-		private final RuleCall cENTITY_ENDTerminalRuleCall_10_2 = (RuleCall)cGroup_10.eContents().get(2);
+		private final Group cGroup_10_1 = (Group)cGroup_10.eContents().get(1);
+		private final Keyword cRemarksKeyword_10_1_0 = (Keyword)cGroup_10_1.eContents().get(0);
+		private final Assignment cRemarksAssignment_10_1_1 = (Assignment)cGroup_10_1.eContents().get(1);
+		private final RuleCall cRemarksEStringParserRuleCall_10_1_1_0 = (RuleCall)cRemarksAssignment_10_1_1.eContents().get(0);
+		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_10_1_2 = (RuleCall)cGroup_10_1.eContents().get(2);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cConstraintsKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final RuleCall cLIST_STARTTerminalRuleCall_10_2_1 = (RuleCall)cGroup_10_2.eContents().get(1);
+		private final Assignment cConstraintsAssignment_10_2_2 = (Assignment)cGroup_10_2.eContents().get(2);
+		private final RuleCall cConstraintsParameterConstraintParserRuleCall_10_2_2_0 = (RuleCall)cConstraintsAssignment_10_2_2.eContents().get(0);
+		private final Group cGroup_10_2_3 = (Group)cGroup_10_2.eContents().get(3);
+		private final RuleCall cLIST_SEPARATORTerminalRuleCall_10_2_3_0 = (RuleCall)cGroup_10_2_3.eContents().get(0);
+		private final Assignment cConstraintsAssignment_10_2_3_1 = (Assignment)cGroup_10_2_3.eContents().get(1);
+		private final RuleCall cConstraintsParameterConstraintParserRuleCall_10_2_3_1_0 = (RuleCall)cConstraintsAssignment_10_2_3_1.eContents().get(0);
+		private final RuleCall cLIST_ENDTerminalRuleCall_10_2_4 = (RuleCall)cGroup_10_2.eContents().get(4);
+		private final RuleCall cENTITY_ENDTerminalRuleCall_10_3 = (RuleCall)cGroup_10.eContents().get(3);
 		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_11 = (RuleCall)cGroup.eContents().get(11);
 		
 		//Parameter analysisactivitydescription::Parameter:
@@ -419,17 +423,17 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//	LIST_START
 		//	minimumCardinality=EBigInteger LIST_SEPARATOR maximumCardinality=EBigInteger
 		//	LIST_END ('=' LIST_START defaultValue+=EString (LIST_SEPARATOR defaultValue+=EString)* LIST_END)? (ENTITY_START
-		//	((remarks=MULTILINE_STRING STATEMENT_END)?
-		//	& ('constraints'
+		//	('remarks' remarks=EString STATEMENT_END)? ('constraints'
 		//	LIST_START constraints+=ParameterConstraint (LIST_SEPARATOR constraints+=ParameterConstraint)*
-		//	LIST_END)?) ENTITY_END)?
+		//	LIST_END)?
+		//	ENTITY_END)?
 		//	STATEMENT_END;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'parameter' name=EString ':' parameterType=ParameterType LIST_START minimumCardinality=EBigInteger LIST_SEPARATOR
 		//maximumCardinality=EBigInteger LIST_END ('=' LIST_START defaultValue+=EString (LIST_SEPARATOR defaultValue+=EString)*
-		//LIST_END)? (ENTITY_START ((remarks=MULTILINE_STRING STATEMENT_END)? & ('constraints' LIST_START
-		//constraints+=ParameterConstraint (LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END)?) ENTITY_END)?
+		//LIST_END)? (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START
+		//constraints+=ParameterConstraint (LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END)? ENTITY_END)?
 		//STATEMENT_END
 		public Group getGroup() { return cGroup; }
 		
@@ -502,61 +506,60 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//LIST_END
 		public RuleCall getLIST_ENDTerminalRuleCall_9_4() { return cLIST_ENDTerminalRuleCall_9_4; }
 		
-		//(ENTITY_START ((remarks=MULTILINE_STRING STATEMENT_END)? & ('constraints' LIST_START constraints+=ParameterConstraint
-		//(LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END)?) ENTITY_END)?
+		//(ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START constraints+=ParameterConstraint
+		//(LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END)? ENTITY_END)?
 		public Group getGroup_10() { return cGroup_10; }
 		
 		//ENTITY_START
 		public RuleCall getENTITY_STARTTerminalRuleCall_10_0() { return cENTITY_STARTTerminalRuleCall_10_0; }
 		
-		//(remarks=MULTILINE_STRING STATEMENT_END)? & ('constraints' LIST_START constraints+=ParameterConstraint (LIST_SEPARATOR
-		//constraints+=ParameterConstraint)* LIST_END)?
-		public UnorderedGroup getUnorderedGroup_10_1() { return cUnorderedGroup_10_1; }
+		//('remarks' remarks=EString STATEMENT_END)?
+		public Group getGroup_10_1() { return cGroup_10_1; }
 		
-		//(remarks=MULTILINE_STRING STATEMENT_END)?
-		public Group getGroup_10_1_0() { return cGroup_10_1_0; }
+		//'remarks'
+		public Keyword getRemarksKeyword_10_1_0() { return cRemarksKeyword_10_1_0; }
 		
-		//remarks=MULTILINE_STRING
-		public Assignment getRemarksAssignment_10_1_0_0() { return cRemarksAssignment_10_1_0_0; }
+		//remarks=EString
+		public Assignment getRemarksAssignment_10_1_1() { return cRemarksAssignment_10_1_1; }
 		
-		//MULTILINE_STRING
-		public RuleCall getRemarksMULTILINE_STRINGTerminalRuleCall_10_1_0_0_0() { return cRemarksMULTILINE_STRINGTerminalRuleCall_10_1_0_0_0; }
+		//EString
+		public RuleCall getRemarksEStringParserRuleCall_10_1_1_0() { return cRemarksEStringParserRuleCall_10_1_1_0; }
 		
 		//STATEMENT_END
-		public RuleCall getSTATEMENT_ENDTerminalRuleCall_10_1_0_1() { return cSTATEMENT_ENDTerminalRuleCall_10_1_0_1; }
+		public RuleCall getSTATEMENT_ENDTerminalRuleCall_10_1_2() { return cSTATEMENT_ENDTerminalRuleCall_10_1_2; }
 		
 		//('constraints' LIST_START constraints+=ParameterConstraint (LIST_SEPARATOR constraints+=ParameterConstraint)* LIST_END)?
-		public Group getGroup_10_1_1() { return cGroup_10_1_1; }
+		public Group getGroup_10_2() { return cGroup_10_2; }
 		
 		//'constraints'
-		public Keyword getConstraintsKeyword_10_1_1_0() { return cConstraintsKeyword_10_1_1_0; }
+		public Keyword getConstraintsKeyword_10_2_0() { return cConstraintsKeyword_10_2_0; }
 		
 		//LIST_START
-		public RuleCall getLIST_STARTTerminalRuleCall_10_1_1_1() { return cLIST_STARTTerminalRuleCall_10_1_1_1; }
+		public RuleCall getLIST_STARTTerminalRuleCall_10_2_1() { return cLIST_STARTTerminalRuleCall_10_2_1; }
 		
 		//constraints+=ParameterConstraint
-		public Assignment getConstraintsAssignment_10_1_1_2() { return cConstraintsAssignment_10_1_1_2; }
+		public Assignment getConstraintsAssignment_10_2_2() { return cConstraintsAssignment_10_2_2; }
 		
 		//ParameterConstraint
-		public RuleCall getConstraintsParameterConstraintParserRuleCall_10_1_1_2_0() { return cConstraintsParameterConstraintParserRuleCall_10_1_1_2_0; }
+		public RuleCall getConstraintsParameterConstraintParserRuleCall_10_2_2_0() { return cConstraintsParameterConstraintParserRuleCall_10_2_2_0; }
 		
 		//(LIST_SEPARATOR constraints+=ParameterConstraint)*
-		public Group getGroup_10_1_1_3() { return cGroup_10_1_1_3; }
+		public Group getGroup_10_2_3() { return cGroup_10_2_3; }
 		
 		//LIST_SEPARATOR
-		public RuleCall getLIST_SEPARATORTerminalRuleCall_10_1_1_3_0() { return cLIST_SEPARATORTerminalRuleCall_10_1_1_3_0; }
+		public RuleCall getLIST_SEPARATORTerminalRuleCall_10_2_3_0() { return cLIST_SEPARATORTerminalRuleCall_10_2_3_0; }
 		
 		//constraints+=ParameterConstraint
-		public Assignment getConstraintsAssignment_10_1_1_3_1() { return cConstraintsAssignment_10_1_1_3_1; }
+		public Assignment getConstraintsAssignment_10_2_3_1() { return cConstraintsAssignment_10_2_3_1; }
 		
 		//ParameterConstraint
-		public RuleCall getConstraintsParameterConstraintParserRuleCall_10_1_1_3_1_0() { return cConstraintsParameterConstraintParserRuleCall_10_1_1_3_1_0; }
+		public RuleCall getConstraintsParameterConstraintParserRuleCall_10_2_3_1_0() { return cConstraintsParameterConstraintParserRuleCall_10_2_3_1_0; }
 		
 		//LIST_END
-		public RuleCall getLIST_ENDTerminalRuleCall_10_1_1_4() { return cLIST_ENDTerminalRuleCall_10_1_1_4; }
+		public RuleCall getLIST_ENDTerminalRuleCall_10_2_4() { return cLIST_ENDTerminalRuleCall_10_2_4; }
 		
 		//ENTITY_END
-		public RuleCall getENTITY_ENDTerminalRuleCall_10_2() { return cENTITY_ENDTerminalRuleCall_10_2; }
+		public RuleCall getENTITY_ENDTerminalRuleCall_10_3() { return cENTITY_ENDTerminalRuleCall_10_3; }
 		
 		//STATEMENT_END
 		public RuleCall getSTATEMENT_ENDTerminalRuleCall_11() { return cSTATEMENT_ENDTerminalRuleCall_11; }
@@ -579,23 +582,23 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		private final RuleCall cLIST_ENDTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
 		private final RuleCall cENTITY_STARTTerminalRuleCall_9_0 = (RuleCall)cGroup_9.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_9_1 = (UnorderedGroup)cGroup_9.eContents().get(1);
-		private final Group cGroup_9_1_0 = (Group)cUnorderedGroup_9_1.eContents().get(0);
-		private final Assignment cRemarksAssignment_9_1_0_0 = (Assignment)cGroup_9_1_0.eContents().get(0);
-		private final RuleCall cRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0 = (RuleCall)cRemarksAssignment_9_1_0_0.eContents().get(0);
-		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_1_0_1 = (RuleCall)cGroup_9_1_0.eContents().get(1);
-		private final Group cGroup_9_1_1 = (Group)cUnorderedGroup_9_1.eContents().get(1);
-		private final Keyword cConstraintsKeyword_9_1_1_0 = (Keyword)cGroup_9_1_1.eContents().get(0);
-		private final RuleCall cLIST_STARTTerminalRuleCall_9_1_1_1 = (RuleCall)cGroup_9_1_1.eContents().get(1);
-		private final Assignment cConstraintsAssignment_9_1_1_2 = (Assignment)cGroup_9_1_1.eContents().get(2);
-		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0 = (RuleCall)cConstraintsAssignment_9_1_1_2.eContents().get(0);
-		private final Group cGroup_9_1_1_3 = (Group)cGroup_9_1_1.eContents().get(3);
-		private final RuleCall cLIST_SEPARATORTerminalRuleCall_9_1_1_3_0 = (RuleCall)cGroup_9_1_1_3.eContents().get(0);
-		private final Assignment cConstraintsAssignment_9_1_1_3_1 = (Assignment)cGroup_9_1_1_3.eContents().get(1);
-		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0 = (RuleCall)cConstraintsAssignment_9_1_1_3_1.eContents().get(0);
-		private final RuleCall cLIST_ENDTerminalRuleCall_9_1_1_4 = (RuleCall)cGroup_9_1_1.eContents().get(4);
-		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_1_1_5 = (RuleCall)cGroup_9_1_1.eContents().get(5);
-		private final RuleCall cENTITY_ENDTerminalRuleCall_9_2 = (RuleCall)cGroup_9.eContents().get(2);
+		private final Group cGroup_9_1 = (Group)cGroup_9.eContents().get(1);
+		private final Keyword cRemarksKeyword_9_1_0 = (Keyword)cGroup_9_1.eContents().get(0);
+		private final Assignment cRemarksAssignment_9_1_1 = (Assignment)cGroup_9_1.eContents().get(1);
+		private final RuleCall cRemarksEStringParserRuleCall_9_1_1_0 = (RuleCall)cRemarksAssignment_9_1_1.eContents().get(0);
+		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_1_2 = (RuleCall)cGroup_9_1.eContents().get(2);
+		private final Group cGroup_9_2 = (Group)cGroup_9.eContents().get(2);
+		private final Keyword cConstraintsKeyword_9_2_0 = (Keyword)cGroup_9_2.eContents().get(0);
+		private final RuleCall cLIST_STARTTerminalRuleCall_9_2_1 = (RuleCall)cGroup_9_2.eContents().get(1);
+		private final Assignment cConstraintsAssignment_9_2_2 = (Assignment)cGroup_9_2.eContents().get(2);
+		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_2_2_0 = (RuleCall)cConstraintsAssignment_9_2_2.eContents().get(0);
+		private final Group cGroup_9_2_3 = (Group)cGroup_9_2.eContents().get(3);
+		private final RuleCall cLIST_SEPARATORTerminalRuleCall_9_2_3_0 = (RuleCall)cGroup_9_2_3.eContents().get(0);
+		private final Assignment cConstraintsAssignment_9_2_3_1 = (Assignment)cGroup_9_2_3.eContents().get(1);
+		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0 = (RuleCall)cConstraintsAssignment_9_2_3_1.eContents().get(0);
+		private final RuleCall cLIST_ENDTerminalRuleCall_9_2_4 = (RuleCall)cGroup_9_2.eContents().get(4);
+		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_2_5 = (RuleCall)cGroup_9_2.eContents().get(5);
+		private final RuleCall cENTITY_ENDTerminalRuleCall_9_3 = (RuleCall)cGroup_9.eContents().get(3);
 		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_10 = (RuleCall)cGroup.eContents().get(10);
 		
 		//InputDataset analysisactivitydescription::InputDataset:
@@ -605,14 +608,15 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//	mimetype=EString?
 		//	LIST_START
 		//	minimumCardinality=EBigInteger LIST_SEPARATOR maximumCardinality=EBigInteger
-		//	LIST_END (ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START
-		//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
+		//	LIST_END (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START
+		//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)*
+		//	LIST_END STATEMENT_END)?
 		//	ENTITY_END)?
 		//	STATEMENT_END;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'dataset' name=EString ':' mimetype=EString? LIST_START minimumCardinality=EBigInteger LIST_SEPARATOR
-		//maximumCardinality=EBigInteger LIST_END (ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints'
+		//maximumCardinality=EBigInteger LIST_END (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints'
 		//LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
 		//ENTITY_END)? STATEMENT_END
 		public Group getGroup() { return cGroup; }
@@ -656,65 +660,64 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//LIST_END
 		public RuleCall getLIST_ENDTerminalRuleCall_8() { return cLIST_ENDTerminalRuleCall_8; }
 		
-		//(ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START constraints+=DatasetConstraint
+		//(ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START constraints+=DatasetConstraint
 		//(LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)? ENTITY_END)?
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//ENTITY_START
 		public RuleCall getENTITY_STARTTerminalRuleCall_9_0() { return cENTITY_STARTTerminalRuleCall_9_0; }
 		
-		//(remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR
-		//constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
-		public UnorderedGroup getUnorderedGroup_9_1() { return cUnorderedGroup_9_1; }
+		//('remarks' remarks=EString STATEMENT_END)?
+		public Group getGroup_9_1() { return cGroup_9_1; }
 		
-		//remarks=MULTILINE_STRING STATEMENT_END
-		public Group getGroup_9_1_0() { return cGroup_9_1_0; }
+		//'remarks'
+		public Keyword getRemarksKeyword_9_1_0() { return cRemarksKeyword_9_1_0; }
 		
-		//remarks=MULTILINE_STRING
-		public Assignment getRemarksAssignment_9_1_0_0() { return cRemarksAssignment_9_1_0_0; }
+		//remarks=EString
+		public Assignment getRemarksAssignment_9_1_1() { return cRemarksAssignment_9_1_1; }
 		
-		//MULTILINE_STRING
-		public RuleCall getRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0() { return cRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0; }
+		//EString
+		public RuleCall getRemarksEStringParserRuleCall_9_1_1_0() { return cRemarksEStringParserRuleCall_9_1_1_0; }
 		
 		//STATEMENT_END
-		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_1_0_1() { return cSTATEMENT_ENDTerminalRuleCall_9_1_0_1; }
+		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_1_2() { return cSTATEMENT_ENDTerminalRuleCall_9_1_2; }
 		
-		//'constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END
-		//STATEMENT_END
-		public Group getGroup_9_1_1() { return cGroup_9_1_1; }
+		//('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END
+		//STATEMENT_END)?
+		public Group getGroup_9_2() { return cGroup_9_2; }
 		
 		//'constraints'
-		public Keyword getConstraintsKeyword_9_1_1_0() { return cConstraintsKeyword_9_1_1_0; }
+		public Keyword getConstraintsKeyword_9_2_0() { return cConstraintsKeyword_9_2_0; }
 		
 		//LIST_START
-		public RuleCall getLIST_STARTTerminalRuleCall_9_1_1_1() { return cLIST_STARTTerminalRuleCall_9_1_1_1; }
+		public RuleCall getLIST_STARTTerminalRuleCall_9_2_1() { return cLIST_STARTTerminalRuleCall_9_2_1; }
 		
 		//constraints+=DatasetConstraint
-		public Assignment getConstraintsAssignment_9_1_1_2() { return cConstraintsAssignment_9_1_1_2; }
+		public Assignment getConstraintsAssignment_9_2_2() { return cConstraintsAssignment_9_2_2; }
 		
 		//DatasetConstraint
-		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0() { return cConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0; }
+		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_2_2_0() { return cConstraintsDatasetConstraintParserRuleCall_9_2_2_0; }
 		
 		//(LIST_SEPARATOR constraints+=DatasetConstraint)*
-		public Group getGroup_9_1_1_3() { return cGroup_9_1_1_3; }
+		public Group getGroup_9_2_3() { return cGroup_9_2_3; }
 		
 		//LIST_SEPARATOR
-		public RuleCall getLIST_SEPARATORTerminalRuleCall_9_1_1_3_0() { return cLIST_SEPARATORTerminalRuleCall_9_1_1_3_0; }
+		public RuleCall getLIST_SEPARATORTerminalRuleCall_9_2_3_0() { return cLIST_SEPARATORTerminalRuleCall_9_2_3_0; }
 		
 		//constraints+=DatasetConstraint
-		public Assignment getConstraintsAssignment_9_1_1_3_1() { return cConstraintsAssignment_9_1_1_3_1; }
+		public Assignment getConstraintsAssignment_9_2_3_1() { return cConstraintsAssignment_9_2_3_1; }
 		
 		//DatasetConstraint
-		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0() { return cConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0; }
+		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0() { return cConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0; }
 		
 		//LIST_END
-		public RuleCall getLIST_ENDTerminalRuleCall_9_1_1_4() { return cLIST_ENDTerminalRuleCall_9_1_1_4; }
+		public RuleCall getLIST_ENDTerminalRuleCall_9_2_4() { return cLIST_ENDTerminalRuleCall_9_2_4; }
 		
 		//STATEMENT_END
-		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_1_1_5() { return cSTATEMENT_ENDTerminalRuleCall_9_1_1_5; }
+		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_2_5() { return cSTATEMENT_ENDTerminalRuleCall_9_2_5; }
 		
 		//ENTITY_END
-		public RuleCall getENTITY_ENDTerminalRuleCall_9_2() { return cENTITY_ENDTerminalRuleCall_9_2; }
+		public RuleCall getENTITY_ENDTerminalRuleCall_9_3() { return cENTITY_ENDTerminalRuleCall_9_3; }
 		
 		//STATEMENT_END
 		public RuleCall getSTATEMENT_ENDTerminalRuleCall_10() { return cSTATEMENT_ENDTerminalRuleCall_10; }
@@ -737,23 +740,23 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		private final RuleCall cLIST_ENDTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
 		private final RuleCall cENTITY_STARTTerminalRuleCall_9_0 = (RuleCall)cGroup_9.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_9_1 = (UnorderedGroup)cGroup_9.eContents().get(1);
-		private final Group cGroup_9_1_0 = (Group)cUnorderedGroup_9_1.eContents().get(0);
-		private final Assignment cRemarksAssignment_9_1_0_0 = (Assignment)cGroup_9_1_0.eContents().get(0);
-		private final RuleCall cRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0 = (RuleCall)cRemarksAssignment_9_1_0_0.eContents().get(0);
-		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_1_0_1 = (RuleCall)cGroup_9_1_0.eContents().get(1);
-		private final Group cGroup_9_1_1 = (Group)cUnorderedGroup_9_1.eContents().get(1);
-		private final Keyword cConstraintsKeyword_9_1_1_0 = (Keyword)cGroup_9_1_1.eContents().get(0);
-		private final RuleCall cLIST_STARTTerminalRuleCall_9_1_1_1 = (RuleCall)cGroup_9_1_1.eContents().get(1);
-		private final Assignment cConstraintsAssignment_9_1_1_2 = (Assignment)cGroup_9_1_1.eContents().get(2);
-		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0 = (RuleCall)cConstraintsAssignment_9_1_1_2.eContents().get(0);
-		private final Group cGroup_9_1_1_3 = (Group)cGroup_9_1_1.eContents().get(3);
-		private final RuleCall cLIST_SEPARATORTerminalRuleCall_9_1_1_3_0 = (RuleCall)cGroup_9_1_1_3.eContents().get(0);
-		private final Assignment cConstraintsAssignment_9_1_1_3_1 = (Assignment)cGroup_9_1_1_3.eContents().get(1);
-		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0 = (RuleCall)cConstraintsAssignment_9_1_1_3_1.eContents().get(0);
-		private final RuleCall cLIST_ENDTerminalRuleCall_9_1_1_4 = (RuleCall)cGroup_9_1_1.eContents().get(4);
-		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_1_1_5 = (RuleCall)cGroup_9_1_1.eContents().get(5);
-		private final RuleCall cENTITY_ENDTerminalRuleCall_9_2 = (RuleCall)cGroup_9.eContents().get(2);
+		private final Group cGroup_9_1 = (Group)cGroup_9.eContents().get(1);
+		private final Keyword cRemarksKeyword_9_1_0 = (Keyword)cGroup_9_1.eContents().get(0);
+		private final Assignment cRemarksAssignment_9_1_1 = (Assignment)cGroup_9_1.eContents().get(1);
+		private final RuleCall cRemarksEStringParserRuleCall_9_1_1_0 = (RuleCall)cRemarksAssignment_9_1_1.eContents().get(0);
+		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_1_2 = (RuleCall)cGroup_9_1.eContents().get(2);
+		private final Group cGroup_9_2 = (Group)cGroup_9.eContents().get(2);
+		private final Keyword cConstraintsKeyword_9_2_0 = (Keyword)cGroup_9_2.eContents().get(0);
+		private final RuleCall cLIST_STARTTerminalRuleCall_9_2_1 = (RuleCall)cGroup_9_2.eContents().get(1);
+		private final Assignment cConstraintsAssignment_9_2_2 = (Assignment)cGroup_9_2.eContents().get(2);
+		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_2_2_0 = (RuleCall)cConstraintsAssignment_9_2_2.eContents().get(0);
+		private final Group cGroup_9_2_3 = (Group)cGroup_9_2.eContents().get(3);
+		private final RuleCall cLIST_SEPARATORTerminalRuleCall_9_2_3_0 = (RuleCall)cGroup_9_2_3.eContents().get(0);
+		private final Assignment cConstraintsAssignment_9_2_3_1 = (Assignment)cGroup_9_2_3.eContents().get(1);
+		private final RuleCall cConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0 = (RuleCall)cConstraintsAssignment_9_2_3_1.eContents().get(0);
+		private final RuleCall cLIST_ENDTerminalRuleCall_9_2_4 = (RuleCall)cGroup_9_2.eContents().get(4);
+		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_9_2_5 = (RuleCall)cGroup_9_2.eContents().get(5);
+		private final RuleCall cENTITY_ENDTerminalRuleCall_9_3 = (RuleCall)cGroup_9.eContents().get(3);
 		private final RuleCall cSTATEMENT_ENDTerminalRuleCall_10 = (RuleCall)cGroup.eContents().get(10);
 		
 		//OutputDataset analysisactivitydescription::OutputDataset:
@@ -763,14 +766,16 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//	mimetype=EString?
 		//	LIST_START
 		//	minimumCardinality=EBigInteger LIST_SEPARATOR maximumCardinality=EBigInteger
-		//	LIST_END (ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START
-		//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
+		//	LIST_END (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START
+		//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)*
+		//	LIST_END
+		//	STATEMENT_END)?
 		//	ENTITY_END)?
 		//	STATEMENT_END;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'dataset' name=EString ':' mimetype=EString? LIST_START minimumCardinality=EBigInteger LIST_SEPARATOR
-		//maximumCardinality=EBigInteger LIST_END (ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints'
+		//maximumCardinality=EBigInteger LIST_END (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints'
 		//LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
 		//ENTITY_END)? STATEMENT_END
 		public Group getGroup() { return cGroup; }
@@ -814,65 +819,64 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 		//LIST_END
 		public RuleCall getLIST_ENDTerminalRuleCall_8() { return cLIST_ENDTerminalRuleCall_8; }
 		
-		//(ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START constraints+=DatasetConstraint
+		//(ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START constraints+=DatasetConstraint
 		//(LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)? ENTITY_END)?
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//ENTITY_START
 		public RuleCall getENTITY_STARTTerminalRuleCall_9_0() { return cENTITY_STARTTerminalRuleCall_9_0; }
 		
-		//(remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR
-		//constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
-		public UnorderedGroup getUnorderedGroup_9_1() { return cUnorderedGroup_9_1; }
+		//('remarks' remarks=EString STATEMENT_END)?
+		public Group getGroup_9_1() { return cGroup_9_1; }
 		
-		//remarks=MULTILINE_STRING STATEMENT_END
-		public Group getGroup_9_1_0() { return cGroup_9_1_0; }
+		//'remarks'
+		public Keyword getRemarksKeyword_9_1_0() { return cRemarksKeyword_9_1_0; }
 		
-		//remarks=MULTILINE_STRING
-		public Assignment getRemarksAssignment_9_1_0_0() { return cRemarksAssignment_9_1_0_0; }
+		//remarks=EString
+		public Assignment getRemarksAssignment_9_1_1() { return cRemarksAssignment_9_1_1; }
 		
-		//MULTILINE_STRING
-		public RuleCall getRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0() { return cRemarksMULTILINE_STRINGTerminalRuleCall_9_1_0_0_0; }
+		//EString
+		public RuleCall getRemarksEStringParserRuleCall_9_1_1_0() { return cRemarksEStringParserRuleCall_9_1_1_0; }
 		
 		//STATEMENT_END
-		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_1_0_1() { return cSTATEMENT_ENDTerminalRuleCall_9_1_0_1; }
+		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_1_2() { return cSTATEMENT_ENDTerminalRuleCall_9_1_2; }
 		
-		//'constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END
-		//STATEMENT_END
-		public Group getGroup_9_1_1() { return cGroup_9_1_1; }
+		//('constraints' LIST_START constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END
+		//STATEMENT_END)?
+		public Group getGroup_9_2() { return cGroup_9_2; }
 		
 		//'constraints'
-		public Keyword getConstraintsKeyword_9_1_1_0() { return cConstraintsKeyword_9_1_1_0; }
+		public Keyword getConstraintsKeyword_9_2_0() { return cConstraintsKeyword_9_2_0; }
 		
 		//LIST_START
-		public RuleCall getLIST_STARTTerminalRuleCall_9_1_1_1() { return cLIST_STARTTerminalRuleCall_9_1_1_1; }
+		public RuleCall getLIST_STARTTerminalRuleCall_9_2_1() { return cLIST_STARTTerminalRuleCall_9_2_1; }
 		
 		//constraints+=DatasetConstraint
-		public Assignment getConstraintsAssignment_9_1_1_2() { return cConstraintsAssignment_9_1_1_2; }
+		public Assignment getConstraintsAssignment_9_2_2() { return cConstraintsAssignment_9_2_2; }
 		
 		//DatasetConstraint
-		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0() { return cConstraintsDatasetConstraintParserRuleCall_9_1_1_2_0; }
+		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_2_2_0() { return cConstraintsDatasetConstraintParserRuleCall_9_2_2_0; }
 		
 		//(LIST_SEPARATOR constraints+=DatasetConstraint)*
-		public Group getGroup_9_1_1_3() { return cGroup_9_1_1_3; }
+		public Group getGroup_9_2_3() { return cGroup_9_2_3; }
 		
 		//LIST_SEPARATOR
-		public RuleCall getLIST_SEPARATORTerminalRuleCall_9_1_1_3_0() { return cLIST_SEPARATORTerminalRuleCall_9_1_1_3_0; }
+		public RuleCall getLIST_SEPARATORTerminalRuleCall_9_2_3_0() { return cLIST_SEPARATORTerminalRuleCall_9_2_3_0; }
 		
 		//constraints+=DatasetConstraint
-		public Assignment getConstraintsAssignment_9_1_1_3_1() { return cConstraintsAssignment_9_1_1_3_1; }
+		public Assignment getConstraintsAssignment_9_2_3_1() { return cConstraintsAssignment_9_2_3_1; }
 		
 		//DatasetConstraint
-		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0() { return cConstraintsDatasetConstraintParserRuleCall_9_1_1_3_1_0; }
+		public RuleCall getConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0() { return cConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0; }
 		
 		//LIST_END
-		public RuleCall getLIST_ENDTerminalRuleCall_9_1_1_4() { return cLIST_ENDTerminalRuleCall_9_1_1_4; }
+		public RuleCall getLIST_ENDTerminalRuleCall_9_2_4() { return cLIST_ENDTerminalRuleCall_9_2_4; }
 		
 		//STATEMENT_END
-		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_1_1_5() { return cSTATEMENT_ENDTerminalRuleCall_9_1_1_5; }
+		public RuleCall getSTATEMENT_ENDTerminalRuleCall_9_2_5() { return cSTATEMENT_ENDTerminalRuleCall_9_2_5; }
 		
 		//ENTITY_END
-		public RuleCall getENTITY_ENDTerminalRuleCall_9_2() { return cENTITY_ENDTerminalRuleCall_9_2; }
+		public RuleCall getENTITY_ENDTerminalRuleCall_9_3() { return cENTITY_ENDTerminalRuleCall_9_3; }
 		
 		//STATEMENT_END
 		public RuleCall getSTATEMENT_ENDTerminalRuleCall_10() { return cSTATEMENT_ENDTerminalRuleCall_10; }
@@ -1922,7 +1926,7 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//Activity analysisactivitydescription::Activity:
 	//	'activity'
 	//	name=EString
-	//	ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END)? ('on' ENTITY_START inputDatasets+=InputDataset
+	//	ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('on' ENTITY_START inputDatasets+=InputDataset
 	//	inputDatasets+=InputDataset* ENTITY_END)? ('with' ENTITY_START parameters+=Parameter parameters+=Parameter*
 	//	ENTITY_END)? ('produces' ENTITY_START outputDatasets+=OutputDataset outputDatasets+=OutputDataset* ENTITY_END)?
 	//	('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint (LIST_SEPARATOR
@@ -2005,10 +2009,10 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//	LIST_START
 	//	minimumCardinality=EBigInteger LIST_SEPARATOR maximumCardinality=EBigInteger
 	//	LIST_END ('=' LIST_START defaultValue+=EString (LIST_SEPARATOR defaultValue+=EString)* LIST_END)? (ENTITY_START
-	//	((remarks=MULTILINE_STRING STATEMENT_END)?
-	//	& ('constraints'
+	//	('remarks' remarks=EString STATEMENT_END)? ('constraints'
 	//	LIST_START constraints+=ParameterConstraint (LIST_SEPARATOR constraints+=ParameterConstraint)*
-	//	LIST_END)?) ENTITY_END)?
+	//	LIST_END)?
+	//	ENTITY_END)?
 	//	STATEMENT_END;
 	public ParameterElements getParameterAccess() {
 		return pParameter;
@@ -2025,8 +2029,9 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//	mimetype=EString?
 	//	LIST_START
 	//	minimumCardinality=EBigInteger LIST_SEPARATOR maximumCardinality=EBigInteger
-	//	LIST_END (ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START
-	//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
+	//	LIST_END (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START
+	//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)*
+	//	LIST_END STATEMENT_END)?
 	//	ENTITY_END)?
 	//	STATEMENT_END;
 	public InputDatasetElements getInputDatasetAccess() {
@@ -2044,8 +2049,10 @@ public class AnalysisActivityDSLGrammarAccess extends AbstractGrammarElementFind
 	//	mimetype=EString?
 	//	LIST_START
 	//	minimumCardinality=EBigInteger LIST_SEPARATOR maximumCardinality=EBigInteger
-	//	LIST_END (ENTITY_START (remarks=MULTILINE_STRING STATEMENT_END & 'constraints' LIST_START
-	//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)* LIST_END STATEMENT_END)?
+	//	LIST_END (ENTITY_START ('remarks' remarks=EString STATEMENT_END)? ('constraints' LIST_START
+	//	constraints+=DatasetConstraint (LIST_SEPARATOR constraints+=DatasetConstraint)*
+	//	LIST_END
+	//	STATEMENT_END)?
 	//	ENTITY_END)?
 	//	STATEMENT_END;
 	public OutputDatasetElements getOutputDatasetAccess() {

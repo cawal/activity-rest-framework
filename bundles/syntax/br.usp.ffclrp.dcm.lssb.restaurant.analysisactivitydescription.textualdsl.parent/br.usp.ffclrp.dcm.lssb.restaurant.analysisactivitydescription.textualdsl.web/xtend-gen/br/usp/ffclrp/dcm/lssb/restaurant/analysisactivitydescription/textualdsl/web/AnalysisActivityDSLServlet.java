@@ -3,38 +3,33 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web.AnalysisActivityDSLWebSetup;
-import com.google.inject.Injector;
-import javax.servlet.annotation.WebServlet;
-import org.eclipse.xtext.util.DisposableRegistry;
-import org.eclipse.xtext.web.servlet.XtextServlet;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-
 /**
  * Deploy this class into a servlet container to enable DSL-specific services.
  */
-@WebServlet(name = "XtextServices", urlPatterns = "/xtext-service/*")
-@SuppressWarnings("all")
-public class AnalysisActivityDSLServlet extends XtextServlet {
-  private DisposableRegistry disposableRegistry;
+/* @WebServlet(, ) */@SuppressWarnings("all")
+public class AnalysisActivityDSLServlet /* implements XtextServlet  */{
+  private /* DisposableRegistry */Object disposableRegistry;
   
   @Override
-  public void init() {
-    try {
-      super.init();
-      final Injector injector = new AnalysisActivityDSLWebSetup().createInjectorAndDoEMFRegistration();
-      this.disposableRegistry = injector.<DisposableRegistry>getInstance(DisposableRegistry.class);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  public DisposableRegistry init() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field super is undefined"
+      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type AnalysisActivityDSLWebSetup"
+      + "\nThe method or field DisposableRegistry is undefined"
+      + "\nThe field AnalysisActivityDSLServlet.disposableRegistry refers to the missing type DisposableRegistry"
+      + "\ninit cannot be resolved"
+      + "\ngetInstance cannot be resolved");
   }
   
   @Override
-  public void destroy() {
-    if ((this.disposableRegistry != null)) {
-      this.disposableRegistry.dispose();
-      this.disposableRegistry = null;
-    }
-    super.destroy();
+  public Object destroy() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field super is undefined"
+      + "\nThe field AnalysisActivityDSLServlet.disposableRegistry refers to the missing type DisposableRegistry"
+      + "\nThe field AnalysisActivityDSLServlet.disposableRegistry refers to the missing type DisposableRegistry"
+      + "\nThe field AnalysisActivityDSLServlet.disposableRegistry refers to the missing type DisposableRegistry"
+      + "\n!== cannot be resolved"
+      + "\ndispose cannot be resolved"
+      + "\ndestroy cannot be resolved");
   }
 }

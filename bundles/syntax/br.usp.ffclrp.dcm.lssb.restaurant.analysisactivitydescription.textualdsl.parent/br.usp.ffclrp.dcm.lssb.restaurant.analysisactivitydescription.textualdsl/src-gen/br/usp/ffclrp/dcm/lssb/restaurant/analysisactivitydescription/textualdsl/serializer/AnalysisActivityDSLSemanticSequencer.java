@@ -122,7 +122,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         remarks=MULTILINE_STRING? 
+	 *         remarks=EString? 
 	 *         (inputDatasets+=InputDataset inputDatasets+=InputDataset*)? 
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (outputDatasets+=OutputDataset outputDatasets+=OutputDataset*)? 
@@ -313,7 +313,8 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         mimetype=EString? 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
-	 *         (remarks=MULTILINE_STRING? (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?)+
+	 *         remarks=EString? 
+	 *         (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?
 	 *     )
 	 */
 	protected void sequence_InputDataset(ISerializationContext context, InputDataset semanticObject) {
@@ -364,7 +365,8 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         mimetype=EString? 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
-	 *         (remarks=MULTILINE_STRING? (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?)+
+	 *         remarks=EString? 
+	 *         (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?
 	 *     )
 	 */
 	protected void sequence_OutputDataset(ISerializationContext context, OutputDataset semanticObject) {
@@ -396,7 +398,8 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
 	 *         (defaultValue+=EString defaultValue+=EString*)? 
-	 *         (remarks=MULTILINE_STRING? (constraints+=ParameterConstraint constraints+=ParameterConstraint*)?)+
+	 *         remarks=EString? 
+	 *         (constraints+=ParameterConstraint constraints+=ParameterConstraint*)?
 	 *     )
 	 */
 	protected void sequence_Parameter(ISerializationContext context, br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter semanticObject) {
