@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated activity -->
+      <package
+            uri="http://dcm.ffclrp.usp.br/lssb/models/activity.ecore"
+            class="br.usp.ffclrp.dcm.lssb.activityrest.model.ActivityPackage"
+            genModel="model/activity.genmodel"/>
+   </extension>
+
+</plugin>
