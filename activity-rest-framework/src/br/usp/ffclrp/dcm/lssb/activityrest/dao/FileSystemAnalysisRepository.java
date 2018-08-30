@@ -30,7 +30,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityM
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 
-public class FileSystemDao implements AnalysisActivityDao {
+public class FileSystemAnalysisRepository implements ActivityRepository {
 	
 	private static final String SINGLE_FILE_DATASETS_DIR_PATH =
 			"SINGLE_FILE_DATASETS";
@@ -48,10 +48,10 @@ public class FileSystemDao implements AnalysisActivityDao {
 	
 	
 	private final static Logger LOGGER 
-		= Logger.getLogger(FileSystemDao.class.getName());
+		= Logger.getLogger(FileSystemAnalysisRepository.class.getName());
 	
 	
-	public FileSystemDao(
+	public FileSystemAnalysisRepository(
 			@NotNull File localStorage,
 			@NotNull AnalysisActivityDescription aaDesc) {
 		
@@ -196,7 +196,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 		return analysisRoot;
 	}
 	
-	public AnalysisActivity moveFrom(String analysisId, FileSystemDao from)
+	public AnalysisActivity moveFrom(String analysisId, FileSystemAnalysisRepository from)
 			throws AnalysisActivityNotFoundException {
 		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
 		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);

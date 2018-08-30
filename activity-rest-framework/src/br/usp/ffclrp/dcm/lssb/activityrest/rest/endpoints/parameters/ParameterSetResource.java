@@ -22,7 +22,7 @@ import javax.ws.rs.core.UriInfo;
 
 import com.google.common.collect.Lists;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
@@ -38,7 +38,7 @@ public class ParameterSetResource {
 	URI absolutePathURI;
 	
 	private AnalysisActivity aa;
-	private AnalysisActivityDao analysisActivityDao;
+	private ActivityRepository analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	boolean allowUpdates;
 	
@@ -46,7 +46,7 @@ public class ParameterSetResource {
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull AnalysisActivityDao analysisActivityDao,
+			@Nonnull ActivityRepository analysisActivityDao,
 			boolean allowUpdates) {
 		this.aaDesc = aaDesc;
 		this.aa = aa;

@@ -17,7 +17,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
@@ -39,14 +39,14 @@ public class FailedAnalysisResource {
 	URI absolutePathURI;
 	
 	AnalysisActivity aa;
-	AnalysisActivityDao analysisActivityDao;
+	ActivityRepository analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public FailedAnalysisResource(
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull AnalysisActivityDao analysisActivityDao) {
+			@Nonnull ActivityRepository analysisActivityDao) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.aa = aa;

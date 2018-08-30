@@ -27,13 +27,7 @@ public class ArchitectureTest {
 			classes().that().areAnnotatedWith(Provider.class)
 					.should().resideInAPackage("..providers..");
 	
-	@ArchTest
-	public static ArchRule messageBodyParsersAreIsolated =
-			noClasses()
-					.that().resideInAPackage("..messagebodyparsers..")
-					.should().accessClassesThat()
-					.resideInAPackage(
-							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel");
+
 	
 	@ArchTest
 	public static ArchRule rule = layeredArchitecture()
@@ -48,4 +42,15 @@ public class ArchitectureTest {
 			
 			.whereLayer("persistence")
 			.mayOnlyBeAccessedByLayers("rest interface");
+	
+	
+	@ArchTest
+	public static ArchRule messageBodyParsersAreIsolated =
+			noClasses()
+					.that().resideInAPackage("..messagebodyparsers..")
+					.should().accessClassesThat()
+					.resideInAPackage(
+							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel");
+	
+	
 }

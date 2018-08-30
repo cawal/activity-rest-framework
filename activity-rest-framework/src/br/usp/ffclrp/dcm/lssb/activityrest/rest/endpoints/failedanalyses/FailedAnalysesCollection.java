@@ -9,7 +9,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -21,12 +21,12 @@ public class FailedAnalysesCollection {
 	@Context
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
-	AnalysisActivityDao analysisActivityDao;
+	ActivityRepository analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public FailedAnalysesCollection(AnalysisActivityDescription aaDesc,
 			UriInfo uriInfo,
-			AnalysisActivityDao succeededAnalysisActivityDao) {
+			ActivityRepository succeededAnalysisActivityDao) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
 		this.aaDesc = aaDesc;

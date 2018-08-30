@@ -26,7 +26,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.IOUtils;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
@@ -44,14 +44,14 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	boolean allowUpdate;
 	
 	private AnalysisActivity aa;
-	private AnalysisActivityDao analysisActivityDao;
+	private ActivityRepository analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public InputDatasetsResource(
 			@NotNull AnalysisActivityDescription aaDesc,
 			@NotNull UriInfo uriInfo,
 			@NotNull AnalysisActivity aa,
-			@NotNull AnalysisActivityDao analysisActivityDao,
+			@NotNull ActivityRepository analysisActivityDao,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;

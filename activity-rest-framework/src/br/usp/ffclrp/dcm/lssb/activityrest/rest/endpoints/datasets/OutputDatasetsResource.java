@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -27,14 +27,14 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	boolean allowUpdate;
 	
 	private AnalysisActivity aa;
-	private AnalysisActivityDao analysisActivityDao;
+	private ActivityRepository analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public OutputDatasetsResource(
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull AnalysisActivityDao analysisActivityDao,
+			@Nonnull ActivityRepository analysisActivityDao,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;

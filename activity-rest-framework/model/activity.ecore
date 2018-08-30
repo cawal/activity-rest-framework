@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="analysisactivitymodel" nsURI="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-model.ecore" nsPrefix="aam">
+    name="analysisactivitymodel" nsURI="http://dcm.ffclrp.usp.br/lssb/models/activity.ecore" nsPrefix="aam">
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="aad" value="../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="FileAdapter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1" eType="#//Object"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnalysisActivity">
     <eOperations name="inputDatasetForName" eType="#//Dataset">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,6 +26,11 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="errorReport" eType="#//File"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileAdapter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dataset">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="ecore:EClass ../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#//Dataset"/>
@@ -42,14 +42,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputDataset" eSuperTypes="#//Dataset"/>
   <eClassifiers xsi:type="ecore:EClass" name="OutputDataset" eSuperTypes="#//Dataset"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List" serializable="false">
-    <eTypeParameters name="A"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaMap" instanceClassName="java.util.Map" abstract="true" interface="true">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="class ParametersMap : 'java.util.Map$Entry' {&#xA;attribute key : String;&#xA;attribute value : Object;&#xA;}"/>
-    </eAnnotations>
     <eTypeParameters name="k"/>
     <eTypeParameters name="v"/>
   </eClassifiers>
@@ -89,4 +82,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EDataType" name="ParameterUpdateException" instanceClassName="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions.ParameterUpdateException"
       serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List" serializable="false">
+    <eTypeParameters name="A"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="File" instanceClassName="java.io.File"/>
 </ecore:EPackage>

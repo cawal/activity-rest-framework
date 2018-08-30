@@ -20,18 +20,18 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemAnalysisRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 
-public class FileSystemDaoTest {
+public class FileSystemRepositoryTest {
 
 	static File localStorage;
-	static AnalysisActivityDao dao;
+	static ActivityRepository dao;
 	static AnalysisActivityDescription aaDesc;
 	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI = "./AnalysisActivityDescription.xmi";
 	
@@ -95,7 +95,7 @@ public class FileSystemDaoTest {
 		localStorage = new File("/tmp/dao_test_root");
 		localStorage.mkdirs();
 		///java.nio.file.Files.createTempDirectory("dao_test").toFile();
-		dao = new FileSystemDao(localStorage, aaDesc);
+		dao = new FileSystemAnalysisRepository(localStorage, aaDesc);
 	}
 	
 	@After

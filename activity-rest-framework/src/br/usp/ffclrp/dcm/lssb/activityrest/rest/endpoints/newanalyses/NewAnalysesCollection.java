@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
@@ -28,13 +28,13 @@ public class NewAnalysesCollection {
 	
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
-	AnalysisActivityDao analysisActivityDao;
+	ActivityRepository analysisActivityDao;
 	AnalysisActivityDescription aaDesc;
 	
 	public NewAnalysesCollection(
 			@Nonnull AnalysisActivityDescription aaDesc,
 			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivityDao analysisActivityDao) {
+			@Nonnull ActivityRepository analysisActivityDao) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = analysisActivityDao;
