@@ -22,6 +22,15 @@ public interface AnalysisActivityModelFactory extends EFactory {
 	AnalysisActivityModelFactory eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>File Adapter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>File Adapter</em>'.
+	 * @generated
+	 */
+	FileAdapter createFileAdapter();
+
+	/**
 	 * Returns a new object of class '<em>Analysis Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

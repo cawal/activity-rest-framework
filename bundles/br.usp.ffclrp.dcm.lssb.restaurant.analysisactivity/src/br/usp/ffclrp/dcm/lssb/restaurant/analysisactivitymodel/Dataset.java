@@ -2,7 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
@@ -63,12 +62,12 @@ public interface Dataset extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' reference.
-	 * @see #setDescription(DatasetDescription)
+	 * @see #setDescription(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getDataset_Description()
 	 * @model
 	 * @generated
 	 */
-	DatasetDescription getDescription();
+	br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset getDescription();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription <em>Description</em>}' reference.
@@ -78,7 +77,7 @@ public interface Dataset extends EObject {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(DatasetDescription value);
+	void setDescription(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset value);
 
 	/**
 	 * Returns the value of the '<em><b>Files</b></em>' attribute list.

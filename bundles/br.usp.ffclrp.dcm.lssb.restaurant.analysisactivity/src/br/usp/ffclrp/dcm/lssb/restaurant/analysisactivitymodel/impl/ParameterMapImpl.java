@@ -2,16 +2,16 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.*;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +35,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl#getDescriptions <em>Descriptions</em>}</li>
+ * <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl#getDescriptions
+ * <em>Descriptions</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,14 +44,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 public class ParameterMapImpl extends MinimalEObjectImpl.Container
 		implements ParameterMap {
 	/**
-	 * The cached value of the '{@link #getDescriptions() <em>Descriptions</em>}' reference list.
+	 * The cached value of the '{@link #getDescriptions()
+	 * <em>Descriptions</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getDescriptions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterDescription> descriptions;
+	protected EList<Parameter> descriptions;
 	Map<String, Object> internalMap;
 	
 	/**
@@ -61,12 +64,13 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	 **/
 	protected ParameterMapImpl() {
 		super();
-		this.internalMap = new HashMap<String,Object>();
+		this.internalMap = new HashMap<String, Object>();
 	}
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,11 +81,14 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<ParameterDescription> getDescriptions() {
+	public EList<Parameter> getDescriptions() {
 		if (descriptions == null) {
-			descriptions = new EObjectResolvingEList<ParameterDescription>(ParameterDescription.class, this, AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS);
+			descriptions = new EObjectResolvingEList<Parameter>(Parameter.class,
+					this,
+					AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS);
 		}
 		return descriptions;
 	}
@@ -92,18 +99,19 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	 */
 	public ValidationResult validateParameters(Map<String, Object> map) {
 		
-		List<ValidationResult> individualResults = 
+		List<ValidationResult> individualResults =
 				map.entrySet().stream()
-					.map(e -> this.validateParameter(e.getKey(),e.getValue()))
-					.collect(Collectors.toList());
+						.map(e -> this.validateParameter(e.getKey(),
+								e.getValue()))
+						.collect(Collectors.toList());
 		
 		ValidationResult r =
 				AnalysisActivityModelFactory.eINSTANCE.createValidationResult();
 		
 		r.setIsValid(individualResults.stream().allMatch(i -> i.getIsValid()));
 		
-		for(ValidationResult i : individualResults) {
-			for(String key : i.getInvalidValues().keySet()) {
+		for (ValidationResult i : individualResults) {
+			for (String key : i.getInvalidValues().keySet()) {
 				r.getInvalidValues().put(key, i.getInvalidValues().get(key));
 			}
 		}
@@ -117,9 +125,10 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	 */
 	@SuppressWarnings("serial")
 	public ValidationResult validateParameter(String name, Object value) {
-		ValidationResult valResult = AnalysisActivityModelFactory.eINSTANCE.createValidationResult();
+		ValidationResult valResult =
+				AnalysisActivityModelFactory.eINSTANCE.createValidationResult();
 		
-		//TODO validate
+		// TODO validate
 		valResult.setIsValid(true);
 		
 		return valResult;
@@ -128,13 +137,14 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
-				return getDescriptions();
+		case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
+			return getDescriptions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -142,16 +152,18 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
-				getDescriptions().clear();
-				getDescriptions().addAll((Collection<? extends ParameterDescription>)newValue);
-				return;
+		case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
+			getDescriptions().clear();
+			getDescriptions()
+					.addAll((Collection<? extends Parameter>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -159,14 +171,15 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
-				getDescriptions().clear();
-				return;
+		case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
+			getDescriptions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -174,13 +187,14 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
-				return descriptions != null && !descriptions.isEmpty();
+		case AnalysisActivityModelPackage.PARAMETER_MAP__DESCRIPTIONS:
+			return descriptions != null && !descriptions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -188,6 +202,7 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,13 +210,14 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	public Object eInvoke(int operationID, EList<?> arguments)
 			throws InvocationTargetException {
 		switch (operationID) {
-			case AnalysisActivityModelPackage.PARAMETER_MAP___VALIDATE_PARAMETERS__MAP:
-				return validateParameters((Map<String, Object>)arguments.get(0));
-			case AnalysisActivityModelPackage.PARAMETER_MAP___VALIDATE_PARAMETER__STRING_OBJECT:
-				return validateParameter((String)arguments.get(0), arguments.get(1));
-			case AnalysisActivityModelPackage.PARAMETER_MAP___SET_DEFAULT_VALUES:
-				setDefaultValues();
-				return null;
+		case AnalysisActivityModelPackage.PARAMETER_MAP___VALIDATE_PARAMETERS__MAP:
+			return validateParameters((Map<String, Object>) arguments.get(0));
+		case AnalysisActivityModelPackage.PARAMETER_MAP___VALIDATE_PARAMETER__STRING_OBJECT:
+			return validateParameter((String) arguments.get(0),
+					arguments.get(1));
+		case AnalysisActivityModelPackage.PARAMETER_MAP___SET_DEFAULT_VALUES:
+			setDefaultValues();
+			return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -244,7 +260,7 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	
 	@Override
 	public Object put(String key, Object value) {
-		Optional<ParameterDescription> description =
+		Optional<Parameter> description =
 				this.getDescriptions().stream()
 						.filter(d -> d.getName().equalsIgnoreCase(key))
 						.findFirst();
@@ -279,78 +295,70 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	
 	public void setDefaultValues() {
 		this.internalMap.clear();
-		for (ParameterDescription d : this.getDescriptions()) {
+		for (Parameter d : this.getDescriptions()) {
 			this.put(d.getName(), sanitize(d, d.getDefaultValue()));
 		}
 	}
 	
-	
 	@SuppressWarnings("unchecked")
-	protected Object sanitize(ParameterDescription description, Object value) {
+	protected Object sanitize(Parameter description, Object value) {
 		boolean valueIsList = value instanceof List;
-		ParameterKind expectedParameterKind = description.getParameterKind();
-		
-		if (!valueIsList 
-				&& (expectedParameterKind == ParameterKind.LIST)){
+		boolean expectList = MultiplicityElementUtil.acceptsList(description);
+		if (!valueIsList && expectList) {
 			throw new Error();
-			
 		}
 		
 		List<Object> values = null;
 		
-		if(!valueIsList) {
+		if (!valueIsList) {
 			values = Arrays.asList(value);
 		} else {
-			values = (List<Object>)value;
+			values = (List<Object>) value;
 		}
 		
 		List<Object> sanitizedList = (List<Object>) values.stream()
-				.map(v -> sanitizeValueItem(description,v))
+				.map(v -> sanitizeValueItem(description, v))
 				.collect(Collectors.toList());
 		
-		
-		
-		if(expectedParameterKind == ParameterKind.LIST) {
+		if (expectList) {
 			return sanitizedList;
-
-		} else if (expectedParameterKind == ParameterKind.SINGLE_VALUE){
-					
-				if(sanitizedList.size() > 0) {
-					return sanitizedList.get(0);
-				} 
-				return null;	
-		
+			
 		} else {
-			throw new Error();
+			
+			if (sanitizedList.size() > 0) {
+				return sanitizedList.get(0);
+			}
+			return null;
+			
 		}
 	}
 	
-//	private List<Object> sanitizeList(ParameterDescription description,
-//			Object value) {
-//		List<Object> list;
-//		
-//		if (value instanceof Collection) {
-//			list = (List<Object>) ((Collection) value).stream()
-//					.map(v -> sanitizeValueItem(description, v))
-//					.filter(a -> a != null)
-//					.collect(Collectors.toList());
-//			
-//		} else {
-//			return Collections.emptyList();
-//		}
-//		
-//		return list;
-//	}
+	// private List<Object> sanitizeList(Parameter description,
+	// Object value) {
+	// List<Object> list;
+	//
+	// if (value instanceof Collection) {
+	// list = (List<Object>) ((Collection) value).stream()
+	// .map(v -> sanitizeValueItem(description, v))
+	// .filter(a -> a != null)
+	// .collect(Collectors.toList());
+	//
+	// } else {
+	// return Collections.emptyList();
+	// }
+	//
+	// return list;
+	// }
 	
-	private Object sanitizeValueItem(ParameterDescription description,
+	private Object sanitizeValueItem(Parameter description,
 			Object value) {
-				
-		if (value == null) 
+		
+		if (value == null)
 			return null; // nothing to do
 			
 		if (value instanceof Collection)
 			return null; // should not be collection
-		
+			
 		try {
 			if (value instanceof String || value instanceof Number) {
 				Object sanitized = null;
@@ -358,11 +366,11 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 				case INTEGER:
 					sanitized = Integer.parseInt(value.toString());
 					break;
-					
+				
 				case REAL:
 					sanitized = Double.parseDouble(value.toString());
 					break;
-					
+				
 				case STRING:
 					sanitized = value;
 					break;
@@ -377,7 +385,5 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 			return null;
 		}
 	}
-	
-
 	
 } // ParameterMapImpl

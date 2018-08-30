@@ -2,7 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 
@@ -66,7 +65,7 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * @generated
 	 * @ordered
 	 */
-	protected DatasetDescription description;
+	protected br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset description;
 
 	/**
 	 * The cached value of the '{@link #getFiles() <em>Files</em>}' attribute list.
@@ -123,10 +122,10 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetDescription getDescription() {
+	public br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset getDescription() {
 		if (description != null && description.eIsProxy()) {
 			InternalEObject oldDescription = (InternalEObject)description;
-			description = (DatasetDescription)eResolveProxy(oldDescription);
+			description = (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset)eResolveProxy(oldDescription);
 			if (description != oldDescription) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.DATASET__DESCRIPTION, oldDescription, description));
@@ -140,7 +139,7 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetDescription basicGetDescription() {
+	public br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset basicGetDescription() {
 		return description;
 	}
 
@@ -149,8 +148,8 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(DatasetDescription newDescription) {
-		DatasetDescription oldDescription = description;
+	public void setDescription(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset newDescription) {
+		br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.DATASET__DESCRIPTION, oldDescription, description));
@@ -200,7 +199,7 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 				setName((String)newValue);
 				return;
 			case AnalysisActivityModelPackage.DATASET__DESCRIPTION:
-				setDescription((DatasetDescription)newValue);
+				setDescription((br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset)newValue);
 				return;
 			case AnalysisActivityModelPackage.DATASET__FILES:
 				getFiles().clear();
@@ -222,7 +221,7 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 				setName(NAME_EDEFAULT);
 				return;
 			case AnalysisActivityModelPackage.DATASET__DESCRIPTION:
-				setDescription((DatasetDescription)null);
+				setDescription((br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset)null);
 				return;
 			case AnalysisActivityModelPackage.DATASET__FILES:
 				getFiles().clear();
@@ -258,7 +257,7 @@ public class DatasetImpl extends MinimalEObjectImpl.Container implements Dataset
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", files: ");

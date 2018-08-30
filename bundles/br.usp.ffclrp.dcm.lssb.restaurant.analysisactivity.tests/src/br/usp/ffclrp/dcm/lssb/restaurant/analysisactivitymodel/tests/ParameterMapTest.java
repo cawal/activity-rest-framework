@@ -2,7 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.tests;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +12,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
@@ -30,11 +29,11 @@ import junit.textui.TestRunner;
  * <p>
  * The following operations are tested:
  * <ul>
- * <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#checkAndSetValues(java.lang.Object)
- * <em>Check And Set Values</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameters(java.util.Map) <em>Validate Parameters</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameter(java.lang.String, java.lang.Object) <em>Validate Parameter</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#setDefaultValues() <em>Set Default Values</em>}</li>
  * </ul>
  * </p>
- * 
  * @generated
  */
 public class ParameterMapTest extends TestCase {
@@ -45,13 +44,12 @@ public class ParameterMapTest extends TestCase {
 	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI =
 			"./AnalysisActivityDescription.xmi";
 	
-	private static AnalysisActivityDescription aaDesc;
+	private static Activity aaDesc;
 	
 	/**
-	 * The fixture for this Parameter test case.
+	 * The fixture for this Parameter Map test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ParameterMap fixture = null;
@@ -59,7 +57,6 @@ public class ParameterMapTest extends TestCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static void main(String[] args) {
@@ -67,10 +64,9 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	/**
-	 * Constructs a new Parameter test case with the given name.
+	 * Constructs a new Parameter Map test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ParameterMapTest(String name) {
@@ -78,10 +74,9 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	/**
-	 * Sets the fixture for this Parameter test case.
+	 * Sets the fixture for this Parameter Map test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void setFixture(ParameterMap fixture) {
@@ -89,10 +84,9 @@ public class ParameterMapTest extends TestCase {
 	}
 	
 	/**
-	 * Returns the fixture for this Parameter test case.
+	 * Returns the fixture for this Parameter Map test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ParameterMap getFixture() {
@@ -102,29 +96,17 @@ public class ParameterMapTest extends TestCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		initializeEcoreResources();
-		ParameterMap parameterMap =
-				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
-		
-		setFixture(parameterMap);
-		parameterMap.getDescriptions().clear();
-		parameterMap.getDescriptions().addAll(aaDesc.getParameters());
-		System.out.println(fixture.entrySet());
-		parameterMap.setDefaultValues();
-		System.out.println(fixture.entrySet());
-		
+		setFixture(AnalysisActivityModelFactory.eINSTANCE.createParameterMap());
 	}
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
@@ -133,6 +115,45 @@ public class ParameterMapTest extends TestCase {
 		setFixture(null);
 	}
 	
+	/**
+	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameters(java.util.Map) <em>Validate Parameters</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameters(java.util.Map)
+	 * @generated
+	 */
+	public void testValidateParameters__Map() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameter(java.lang.String, java.lang.Object) <em>Validate Parameter</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameter(java.lang.String, java.lang.Object)
+	 * @generated
+	 */
+	public void testValidateParameter__String_Object() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#setDefaultValues() <em>Set Default Values</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#setDefaultValues()
+	 * @generated
+	 */
+	public void testSetDefaultValues() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
 	private void initializeEcoreResources() throws Exception {
 		// Initialize the model
 		AnalysisActivityModelPackage.eINSTANCE.eClass();
@@ -156,30 +177,10 @@ public class ParameterMapTest extends TestCase {
 		Resource resource = resSet.getResource(uri, true);
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
-		aaDesc = (AnalysisActivityDescription) resource.getContents().get(0);
+		aaDesc = (Activity) resource.getContents().get(0);
 		
 		if (aaDesc == null)
 			throw new Exception(uri.toString() + " not found!");
-	}
-	
-	/**
-	 * Tests the
-	 * '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#checkAndSetValues(java.lang.Object)
-	 * <em>Check And Set Values</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
-	 * @throws ParameterUpdateException
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Parameter#checkAndSetValues(java.lang.Object)
-	 * @generated
-	 */
-	
-	public void testCreateDefaultValues() throws ParameterUpdateException {
-		
-		assertEquals(2.0, (double) fixture.get("threshold"), 0.01);
-		assertEquals(5, (int) fixture.get("count"));
-		assertNull(fixture.get("gene-identifier-type"));
-		assertTrue(((List) fixture.get("categories-in-result")).isEmpty());
 	}
 	
 	public void testPutAll() throws ParameterUpdateException {

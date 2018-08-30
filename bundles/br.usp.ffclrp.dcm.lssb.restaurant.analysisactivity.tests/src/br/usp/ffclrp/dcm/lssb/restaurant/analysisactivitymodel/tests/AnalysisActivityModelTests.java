@@ -32,6 +32,7 @@ public class AnalysisActivityModelTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new AnalysisActivityModelTests("analysisactivitymodel Tests");
 		suite.addTestSuite(AnalysisActivityTest.class);
+		suite.addTestSuite(ParameterMapTest.class);
 		return suite;
 	}
 

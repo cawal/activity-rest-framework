@@ -62,7 +62,7 @@ public class AnalysisactivityexceptionsPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link AnalysisactivityexceptionsPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -76,7 +76,8 @@ public class AnalysisactivityexceptionsPackageImpl extends EPackageImpl implemen
 		if (isInited) return (AnalysisactivityexceptionsPackage)EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		AnalysisactivityexceptionsPackageImpl theAnalysisactivityexceptionsPackage = (AnalysisactivityexceptionsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AnalysisactivityexceptionsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AnalysisactivityexceptionsPackageImpl());
+		Object registeredAnalysisactivityexceptionsPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		AnalysisactivityexceptionsPackageImpl theAnalysisactivityexceptionsPackage = registeredAnalysisactivityexceptionsPackage instanceof AnalysisactivityexceptionsPackageImpl ? (AnalysisactivityexceptionsPackageImpl)registeredAnalysisactivityexceptionsPackage : new AnalysisactivityexceptionsPackageImpl();
 
 		isInited = true;
 
@@ -85,7 +86,8 @@ public class AnalysisactivityexceptionsPackageImpl extends EPackageImpl implemen
 		StringListManipulatorsPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		AnalysisActivityModelPackageImpl theAnalysisActivityModelPackage = (AnalysisActivityModelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityModelPackage.eNS_URI) instanceof AnalysisActivityModelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityModelPackage.eNS_URI) : AnalysisActivityModelPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(AnalysisActivityModelPackage.eNS_URI);
+		AnalysisActivityModelPackageImpl theAnalysisActivityModelPackage = (AnalysisActivityModelPackageImpl)(registeredPackage instanceof AnalysisActivityModelPackageImpl ? registeredPackage : AnalysisActivityModelPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theAnalysisactivityexceptionsPackage.createPackageContents();
@@ -98,7 +100,6 @@ public class AnalysisactivityexceptionsPackageImpl extends EPackageImpl implemen
 		// Mark meta-data to indicate it can't be changed
 		theAnalysisactivityexceptionsPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(AnalysisactivityexceptionsPackage.eNS_URI, theAnalysisactivityexceptionsPackage);
 		return theAnalysisactivityexceptionsPackage;

@@ -9,8 +9,16 @@
   <foreignModel>analysis-activity-model.ecore</foreignModel>
   <genPackages prefix="AnalysisActivityModel" basePackage="br.usp.ffclrp.dcm.lssb.restaurant"
       disposableProviderFactory="true" ecorePackage="analysis-activity-model.ecore#/">
-    <genDataTypes ecoreDataType="analysis-activity-model.ecore#//Object"/>
+    <genDataTypes ecoreDataType="analysis-activity-model.ecore#//List">
+      <genTypeParameters ecoreTypeParameter="analysis-activity-model.ecore#//List/A"/>
+    </genDataTypes>
     <genDataTypes ecoreDataType="analysis-activity-model.ecore#//File"/>
+    <genDataTypes ecoreDataType="analysis-activity-model.ecore#//Object"/>
+    <genClasses ecoreClass="analysis-activity-model.ecore#//FileAdapter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//FileAdapter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//FileAdapter/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//FileAdapter/contentType"/>
+    </genClasses>
     <genClasses ecoreClass="analysis-activity-model.ecore#//AnalysisActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//AnalysisActivity/id"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-model.ecore#//AnalysisActivity/description"/>
@@ -24,28 +32,30 @@
       <genOperations ecoreOperation="analysis-activity-model.ecore#//AnalysisActivity/outputDatasetForName">
         <genParameters ecoreParameter="analysis-activity-model.ecore#//AnalysisActivity/outputDatasetForName/name"/>
       </genOperations>
-      <genOperations ecoreOperation="analysis-activity-model.ecore#//AnalysisActivity/parameterForName">
-        <genParameters ecoreParameter="analysis-activity-model.ecore#//AnalysisActivity/parameterForName/name"/>
-      </genOperations>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-model.ecore#//Dataset">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//Dataset/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-model.ecore#//Dataset/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//Dataset/files"/>
     </genClasses>
-    <genClasses ecoreClass="analysis-activity-model.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//Parameter/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-model.ecore#//Parameter/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//Parameter/values"/>
-      <genOperations ecoreOperation="analysis-activity-model.ecore#//Parameter/setValue">
-        <genParameters ecoreParameter="analysis-activity-model.ecore#//Parameter/setValue/value"/>
+    <genClasses image="false" ecoreClass="analysis-activity-model.ecore#//JavaMap">
+      <genTypeParameters ecoreTypeParameter="analysis-activity-model.ecore#//JavaMap/k"/>
+      <genTypeParameters ecoreTypeParameter="analysis-activity-model.ecore#//JavaMap/v"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-model.ecore#//ParameterMap">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-model.ecore#//ParameterMap/descriptions"/>
+      <genOperations ecoreOperation="analysis-activity-model.ecore#//ParameterMap/validateParameters">
+        <genParameters ecoreParameter="analysis-activity-model.ecore#//ParameterMap/validateParameters/map"/>
       </genOperations>
-      <genOperations ecoreOperation="analysis-activity-model.ecore#//Parameter/setValue.1">
-        <genParameters ecoreParameter="analysis-activity-model.ecore#//Parameter/setValue.1/value"/>
+      <genOperations ecoreOperation="analysis-activity-model.ecore#//ParameterMap/validateParameter">
+        <genParameters ecoreParameter="analysis-activity-model.ecore#//ParameterMap/validateParameter/name"/>
+        <genParameters ecoreParameter="analysis-activity-model.ecore#//ParameterMap/validateParameter/value"/>
       </genOperations>
-      <genOperations ecoreOperation="analysis-activity-model.ecore#//Parameter/setValues">
-        <genParameters ecoreParameter="analysis-activity-model.ecore#//Parameter/setValues/value"/>
-      </genOperations>
+      <genOperations ecoreOperation="analysis-activity-model.ecore#//ParameterMap/setDefaultValues"/>
+    </genClasses>
+    <genClasses ecoreClass="analysis-activity-model.ecore#//ValidationResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-model.ecore#//ValidationResult/isValid"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-model.ecore#//ValidationResult/invalidValues"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Analysisactivityexceptions" ecorePackage="activity-exceptions.ecore#/">

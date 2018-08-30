@@ -2,10 +2,10 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.tests;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter;
 import java.io.File;
 import java.io.IOException;
 
@@ -60,7 +60,7 @@ public class AnalysisActivityModelExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.analysisactivitymodel"));
-				AnalysisActivity root = AnalysisActivityModelFactory.eINSTANCE.createAnalysisActivity();
+				FileAdapter root = AnalysisActivityModelFactory.eINSTANCE.createFileAdapter();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

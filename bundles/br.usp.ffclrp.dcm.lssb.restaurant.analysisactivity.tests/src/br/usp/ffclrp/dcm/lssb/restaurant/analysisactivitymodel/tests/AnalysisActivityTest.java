@@ -18,7 +18,6 @@ import junit.textui.TestRunner;
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#inputDatasetForName(java.lang.String) <em>Input Dataset For Name</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#outputDatasetForName(java.lang.String) <em>Output Dataset For Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#parameterForName(java.lang.String) <em>Parameter For Name</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -96,6 +95,32 @@ public class AnalysisActivityTest extends TestCase {
 
 	
 	
+	/**
+	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#inputDatasetForName(java.lang.String) <em>Input Dataset For Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#inputDatasetForName(java.lang.String)
+	 * @generated
+	 */
+	public void testInputDatasetForName__String() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#outputDatasetForName(java.lang.String) <em>Output Dataset For Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#outputDatasetForName(java.lang.String)
+	 * @generated
+	 */
+	public void testOutputDatasetForName__String() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
 	public void test_noTest() {};
 
 } //AnalysisActivityTest

@@ -69,6 +69,10 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	protected AnalysisActivityModelSwitch<Adapter> modelSwitch =
 		new AnalysisActivityModelSwitch<Adapter>() {
 			@Override
+			public Adapter caseFileAdapter(FileAdapter object) {
+				return createFileAdapterAdapter();
+			}
+			@Override
 			public Adapter caseAnalysisActivity(AnalysisActivity object) {
 				return createAnalysisActivityAdapter();
 			}
@@ -107,6 +111,20 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter <em>File Adapter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter
+	 * @generated
+	 */
+	public Adapter createFileAdapterAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity <em>Analysis Activity</em>}'.

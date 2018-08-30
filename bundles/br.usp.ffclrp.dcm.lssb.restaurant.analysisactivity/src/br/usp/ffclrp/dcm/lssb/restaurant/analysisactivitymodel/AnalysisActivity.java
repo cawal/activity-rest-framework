@@ -2,8 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
@@ -67,12 +66,12 @@ public interface AnalysisActivity extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' reference.
-	 * @see #setDescription(AnalysisActivityDescription)
+	 * @see #setDescription(Activity)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getAnalysisActivity_Description()
 	 * @model
 	 * @generated
 	 */
-	AnalysisActivityDescription getDescription();
+	Activity getDescription();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getDescription <em>Description</em>}' reference.
@@ -82,7 +81,7 @@ public interface AnalysisActivity extends EObject {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(AnalysisActivityDescription value);
+	void setDescription(Activity value);
 
 	/**
 	 * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.

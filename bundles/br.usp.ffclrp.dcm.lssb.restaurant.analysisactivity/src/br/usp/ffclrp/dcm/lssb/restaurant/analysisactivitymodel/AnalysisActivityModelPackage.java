@@ -60,6 +60,61 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	AnalysisActivityModelPackage eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl <em>File Adapter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFileAdapter()
+	 * @generated
+	 */
+	int FILE_ADAPTER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_ADAPTER__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_ADAPTER__CONTENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_ADAPTER__CONTENT_TYPE = 2;
+
+	/**
+	 * The number of structural features of the '<em>File Adapter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_ADAPTER_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>File Adapter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_ADAPTER_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl <em>Analysis Activity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,7 +122,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getAnalysisActivity()
 	 * @generated
 	 */
-	int ANALYSIS_ACTIVITY = 0;
+	int ANALYSIS_ACTIVITY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -167,7 +222,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getDataset()
 	 * @generated
 	 */
-	int DATASET = 1;
+	int DATASET = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -222,7 +277,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getParameterMap()
 	 * @generated
 	 */
-	int PARAMETER_MAP = 3;
+	int PARAMETER_MAP = 4;
 
 	/**
 	 * The meta object id for the '<em>List</em>' data type.
@@ -232,7 +287,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getList()
 	 * @generated
 	 */
-	int LIST = 5;
+	int LIST = 6;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -242,7 +297,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 6;
+	int FILE = 7;
 
 
 	/**
@@ -253,7 +308,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getJavaMap()
 	 * @generated
 	 */
-	int JAVA_MAP = 2;
+	int JAVA_MAP = 3;
 
 	/**
 	 * The number of structural features of the '<em>Java Map</em>' class.
@@ -335,7 +390,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getValidationResult()
 	 * @generated
 	 */
-	int VALIDATION_RESULT = 4;
+	int VALIDATION_RESULT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Is Valid</b></em>' attribute.
@@ -381,8 +436,51 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 7;
+	int OBJECT = 8;
 
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter <em>File Adapter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>File Adapter</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter
+	 * @generated
+	 */
+	EClass getFileAdapter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getName()
+	 * @see #getFileAdapter()
+	 * @generated
+	 */
+	EAttribute getFileAdapter_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContent()
+	 * @see #getFileAdapter()
+	 * @generated
+	 */
+	EAttribute getFileAdapter_Content();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContentType <em>Content Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content Type</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContentType()
+	 * @see #getFileAdapter()
+	 * @generated
+	 */
+	EAttribute getFileAdapter_ContentType();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity <em>Analysis Activity</em>}'.
@@ -673,6 +771,40 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl <em>File Adapter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFileAdapter()
+		 * @generated
+		 */
+		EClass FILE_ADAPTER = eINSTANCE.getFileAdapter();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_ADAPTER__NAME = eINSTANCE.getFileAdapter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_ADAPTER__CONTENT = eINSTANCE.getFileAdapter_Content();
+
+		/**
+		 * The meta object literal for the '<em><b>Content Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_ADAPTER__CONTENT_TYPE = eINSTANCE.getFileAdapter_ContentType();
+
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl <em>Analysis Activity</em>}' class.
 		 * <!-- begin-user-doc -->

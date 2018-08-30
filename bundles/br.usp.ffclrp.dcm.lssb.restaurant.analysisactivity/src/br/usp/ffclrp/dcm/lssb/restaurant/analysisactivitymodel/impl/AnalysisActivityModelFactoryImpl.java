@@ -58,6 +58,7 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case AnalysisActivityModelPackage.FILE_ADAPTER: return createFileAdapter();
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY: return createAnalysisActivity();
 			case AnalysisActivityModelPackage.DATASET: return createDataset();
 			case AnalysisActivityModelPackage.PARAMETER_MAP: return createParameterMap();
@@ -99,6 +100,16 @@ public class AnalysisActivityModelFactoryImpl extends EFactoryImpl implements An
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FileAdapter createFileAdapter() {
+		FileAdapterImpl fileAdapter = new FileAdapterImpl();
+		return fileAdapter;
 	}
 
 	/**

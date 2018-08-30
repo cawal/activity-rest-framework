@@ -2,6 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -15,8 +16,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
@@ -71,7 +70,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 * @ordered
 	 */
-	protected AnalysisActivityDescription description;
+	protected Activity description;
 	
 	/**
 	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
@@ -168,10 +167,10 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnalysisActivityDescription getDescription() {
+	public Activity getDescription() {
 		if (description != null && description.eIsProxy()) {
 			InternalEObject oldDescription = (InternalEObject)description;
-			description = (AnalysisActivityDescription)eResolveProxy(oldDescription);
+			description = (Activity)eResolveProxy(oldDescription);
 			if (description != oldDescription) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__DESCRIPTION, oldDescription, description));
@@ -185,7 +184,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnalysisActivityDescription basicGetDescription() {
+	public Activity basicGetDescription() {
 		return description;
 	}
 	
@@ -194,13 +193,13 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(AnalysisActivityDescription newDescription) {
-		AnalysisActivityDescription oldDescription = description;
+	public void setDescription(Activity newDescription) {
+		Activity oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__DESCRIPTION, oldDescription, description));
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -385,7 +384,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 				setId((String)newValue);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__DESCRIPTION:
-				setDescription((AnalysisActivityDescription)newValue);
+				setDescription((Activity)newValue);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__INPUTS:
 				getInputs().clear();
@@ -417,7 +416,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 				setId(ID_EDEFAULT);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__DESCRIPTION:
-				setDescription((AnalysisActivityDescription)null);
+				setDescription((Activity)null);
 				return;
 			case AnalysisActivityModelPackage.ANALYSIS_ACTIVITY__INPUTS:
 				getInputs().clear();
@@ -485,7 +484,7 @@ public class AnalysisActivityImpl extends MinimalEObjectImpl.Container
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (id: ");
 		result.append(id);
 		result.append(", errorReport: ");

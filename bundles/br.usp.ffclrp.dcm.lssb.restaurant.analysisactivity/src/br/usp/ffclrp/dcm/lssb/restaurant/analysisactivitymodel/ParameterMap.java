@@ -2,8 +2,7 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface ParameterMap extends EObject, Map<String, Object> {
 	/**
 	 * Returns the value of the '<em><b>Descriptions</b></em>' reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Descriptions</em>' reference list isn't clear,
@@ -41,7 +40,7 @@ public interface ParameterMap extends EObject, Map<String, Object> {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<ParameterDescription> getDescriptions();
+	EList<Parameter> getDescriptions();
 
 	/**
 	 * <!-- begin-user-doc -->
