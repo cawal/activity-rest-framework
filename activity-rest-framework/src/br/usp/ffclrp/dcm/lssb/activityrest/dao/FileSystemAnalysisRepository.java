@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -35,7 +36,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 	private static final String SINGLE_FILE_DATASETS_DIR_PATH =
 			"SINGLE_FILE_DATASETS";
 	File localStorage;
-	final protected AnalysisActivityDescription aaDesc;
+	final protected Activity aaDesc;
 	final String parametersSubpath = "/parameters.json";
 	final String inputDatasetsSubpath = "/inputs/";
 	final String outputDatasetsSubpath = "/outputs/";
@@ -53,7 +54,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 	
 	public FileSystemAnalysisRepository(
 			@NotNull File localStorage,
-			@NotNull AnalysisActivityDescription aaDesc) {
+			@NotNull Activity aaDesc) {
 		
 		this.localStorage = localStorage;
 		this.aaDesc = aaDesc;
@@ -205,17 +206,17 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 	}
 	
 	private void setDescriptionForAnalysis(AnalysisActivity aa) {
-		AnalysisActivityDescription descCopy = EcoreUtil.copy(aaDesc);
+		Activity descCopy = EcoreUtil.copy(aaDesc);
 		aa.setDescription(descCopy);
 		
-		for (DatasetDescription dp : descCopy.getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy.getInputDatasets()) {
 			Dataset d = AnalysisActivityModelFactory.eINSTANCE.createDataset();
 			d.setName(dp.getName());
 			d.setDescription(dp);
 			aa.getInputs().add(d);
 		}
 		
-		for (DatasetDescription dp : descCopy.getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy.getOutputDatasets()) {
 			Dataset d = AnalysisActivityModelFactory.eINSTANCE.createDataset();
 			d.setName(dp.getName());
 			d.setDescription(dp);
@@ -301,7 +302,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			inputSubdirectory.mkdir();
 		}
 		
-		for (DatasetDescription dp : aaDesc.getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getInputDatasets()) {
 			
 			switch (dp.getDatasetKind()) {
 			case FILE_COLLECTION: // files are inside a dir with the dataset
@@ -335,7 +336,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 				new File(getAnalysisDirectoryInLocalStorage(aa.getId()),
 						inputDatasetsSubpath);
 		
-		for (DatasetDescription dp : aa.getDescription().getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa.getDescription().getInputDatasets()) {
 			Dataset dataset = aa.inputDatasetForName(dp.getName());
 			
 			switch (dp.getDatasetKind()) {
@@ -374,7 +375,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			File inputSubdirectory =
 					new File(analysisRoot, inputDatasetsSubpath);
 			
-			for (DatasetDescription dp : aaDesc.getInputDatasets()) {
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getInputDatasets()) {
 				
 				Dataset dataset = aa.inputDatasetForName(dp.getName());
 				
@@ -454,7 +455,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		
 		clearDatasetsFiles(aa.getOutputs());
 		
-		for (DatasetDescription dp : aa.getDescription().getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa.getDescription().getOutputDatasets()) {
 			
 			Dataset dataset = aa.outputDatasetForName(dp.getName());
 			
@@ -496,7 +497,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			outputSubdirectory.mkdir();
 		}
 		
-		for (DatasetDescription dp : aaDesc.getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getOutputDatasets()) {
 			
 			switch (dp.getDatasetKind()) {
 			case FILE_COLLECTION: // files are inside a dir with the dataset
@@ -530,7 +531,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			File outputSubdirectory =
 					new File(analysisRoot, outputDatasetsSubpath);
 			
-			for (DatasetDescription dp : aaDesc.getOutputDatasets()) {
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getOutputDatasets()) {
 				
 				Dataset dataset = aa.outputDatasetForName(dp.getName());
 				
