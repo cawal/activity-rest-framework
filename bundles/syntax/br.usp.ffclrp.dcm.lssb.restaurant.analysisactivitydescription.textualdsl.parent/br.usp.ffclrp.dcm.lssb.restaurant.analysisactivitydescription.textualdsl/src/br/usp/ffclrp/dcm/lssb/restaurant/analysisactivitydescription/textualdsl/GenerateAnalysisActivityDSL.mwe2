@@ -37,7 +37,7 @@ Workflow {
 			// Associated file extension 
 			// if this don't change the associated extension in the editor, 
 			// replace the plugin.xml file for the plugin.xml_gen in the UI project
-			fileExtensions = "aadt" 
+			fileExtensions = "aadl" 
 			referencedResource = "platform:/resource/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}

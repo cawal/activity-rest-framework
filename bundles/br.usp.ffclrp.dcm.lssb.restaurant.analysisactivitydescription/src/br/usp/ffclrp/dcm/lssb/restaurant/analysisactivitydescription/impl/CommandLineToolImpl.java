@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl#getExecutablePath <em>Executable Path</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl#getCommandLineTemplate <em>Command Line Template</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl#getStandardInputStream <em>Standard Input Stream</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl#getStandardOutputStream <em>Standard Output Stream</em>}</li>
@@ -43,26 +42,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
-	/**
-	 * The default value of the '{@link #getExecutablePath() <em>Executable Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExecutablePath()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String EXECUTABLE_PATH_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getExecutablePath() <em>Executable Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExecutablePath()
-	 * @generated
-	 * @ordered
-	 */
-	protected String executablePath = EXECUTABLE_PATH_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getCommandLineTemplate() <em>Command Line Template</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -130,27 +109,6 @@ public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
 	@Override
 	protected EClass eStaticClass() {
 		return AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getExecutablePath() {
-		return executablePath;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExecutablePath(String newExecutablePath) {
-		String oldExecutablePath = executablePath;
-		executablePath = newExecutablePath;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXECUTABLE_PATH, oldExecutablePath, executablePath));
 	}
 
 	/**
@@ -315,8 +273,6 @@ public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXECUTABLE_PATH:
-				return getExecutablePath();
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE:
 				return getCommandLineTemplate();
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__STANDARD_INPUT_STREAM:
@@ -343,9 +299,6 @@ public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXECUTABLE_PATH:
-				setExecutablePath((String)newValue);
-				return;
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE:
 				getCommandLineTemplate().clear();
 				getCommandLineTemplate().addAll((Collection<? extends CommandLineEntryList>)newValue);
@@ -375,9 +328,6 @@ public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXECUTABLE_PATH:
-				setExecutablePath(EXECUTABLE_PATH_EDEFAULT);
-				return;
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE:
 				getCommandLineTemplate().clear();
 				return;
@@ -405,8 +355,6 @@ public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXECUTABLE_PATH:
-				return EXECUTABLE_PATH_EDEFAULT == null ? executablePath != null : !EXECUTABLE_PATH_EDEFAULT.equals(executablePath);
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE:
 				return commandLineTemplate != null && !commandLineTemplate.isEmpty();
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__STANDARD_INPUT_STREAM:
@@ -419,22 +367,6 @@ public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
 				return exitCodes != null && !exitCodes.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (executablePath: ");
-		result.append(executablePath);
-		result.append(')');
-		return result.toString();
 	}
 
 } //CommandLineToolImpl

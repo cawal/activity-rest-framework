@@ -3,6 +3,7 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
@@ -340,6 +341,40 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiableElement.class) {
+			switch (derivedFeatureID) {
+				case AnalysisActivityDescriptionPackage.PARAMETER__NAME: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME;
+				case AnalysisActivityDescriptionPackage.PARAMETER__REMARKS: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiableElement.class) {
+			switch (baseFeatureID) {
+				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME: return AnalysisActivityDescriptionPackage.PARAMETER__NAME;
+				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS: return AnalysisActivityDescriptionPackage.PARAMETER__REMARKS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

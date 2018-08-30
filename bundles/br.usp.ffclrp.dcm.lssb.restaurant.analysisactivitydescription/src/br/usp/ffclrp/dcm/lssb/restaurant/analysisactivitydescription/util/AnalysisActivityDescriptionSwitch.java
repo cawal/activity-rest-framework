@@ -66,9 +66,16 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT: {
+				IdentifiableElement identifiableElement = (IdentifiableElement)theEObject;
+				T result = caseIdentifiableElement(identifiableElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AnalysisActivityDescriptionPackage.ACTIVITY: {
 				Activity activity = (Activity)theEObject;
 				T result = caseActivity(activity);
+				if (result == null) result = caseIdentifiableElement(activity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -82,6 +89,7 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				Parameter parameter = (Parameter)theEObject;
 				T result = caseParameter(parameter);
 				if (result == null) result = caseMultiplicityElement(parameter);
+				if (result == null) result = caseIdentifiableElement(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -89,6 +97,7 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				Dataset dataset = (Dataset)theEObject;
 				T result = caseDataset(dataset);
 				if (result == null) result = caseMultiplicityElement(dataset);
+				if (result == null) result = caseIdentifiableElement(dataset);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -97,6 +106,7 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				T result = caseInputDataset(inputDataset);
 				if (result == null) result = caseDataset(inputDataset);
 				if (result == null) result = caseMultiplicityElement(inputDataset);
+				if (result == null) result = caseIdentifiableElement(inputDataset);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,6 +115,7 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				T result = caseOutputDataset(outputDataset);
 				if (result == null) result = caseDataset(outputDataset);
 				if (result == null) result = caseMultiplicityElement(outputDataset);
+				if (result == null) result = caseIdentifiableElement(outputDataset);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -199,6 +210,7 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 			case AnalysisActivityDescriptionPackage.TOOL: {
 				Tool tool = (Tool)theEObject;
 				T result = caseTool(tool);
+				if (result == null) result = caseIdentifiableElement(tool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -206,6 +218,7 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				CommandLineTool commandLineTool = (CommandLineTool)theEObject;
 				T result = caseCommandLineTool(commandLineTool);
 				if (result == null) result = caseTool(commandLineTool);
+				if (result == null) result = caseIdentifiableElement(commandLineTool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -251,6 +264,21 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifiable Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifiableElement(IdentifiableElement object) {
+		return null;
 	}
 
 	/**

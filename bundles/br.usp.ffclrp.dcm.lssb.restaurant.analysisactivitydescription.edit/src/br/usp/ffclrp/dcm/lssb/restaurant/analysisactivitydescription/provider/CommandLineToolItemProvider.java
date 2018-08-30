@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -48,34 +47,11 @@ public class CommandLineToolItemProvider extends ToolItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addExecutablePathPropertyDescriptor(object);
 			addStandardInputStreamPropertyDescriptor(object);
 			addStandardOutputStreamPropertyDescriptor(object);
 			addStandardErrorStreamPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Executable Path feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addExecutablePathPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CommandLineTool_executablePath_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CommandLineTool_executablePath_feature", "_UI_CommandLineTool_type"),
-				 AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_TOOL__EXECUTABLE_PATH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -213,9 +189,6 @@ public class CommandLineToolItemProvider extends ToolItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CommandLineTool.class)) {
-			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXECUTABLE_PATH:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE:
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXIT_CODES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

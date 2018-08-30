@@ -2,10 +2,10 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.tests;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement;
 import java.io.File;
 import java.io.IOException;
 
@@ -60,7 +60,7 @@ public class AnalysisActivityDescriptionExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.aad"));
-				Activity root = AnalysisActivityDescriptionFactory.eINSTANCE.createActivity();
+				IdentifiableElement root = AnalysisActivityDescriptionFactory.eINSTANCE.createIdentifiableElement();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

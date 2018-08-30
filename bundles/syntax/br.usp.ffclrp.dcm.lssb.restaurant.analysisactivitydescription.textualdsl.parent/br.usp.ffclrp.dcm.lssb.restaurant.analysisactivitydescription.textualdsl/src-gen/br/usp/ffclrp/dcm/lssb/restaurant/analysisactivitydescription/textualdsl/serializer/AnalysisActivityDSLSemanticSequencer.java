@@ -121,7 +121,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=EString 
+	 *         name=Identifier 
 	 *         remarks=EString? 
 	 *         (inputDatasets+=InputDataset inputDatasets+=InputDataset*)? 
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
@@ -181,7 +181,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         executablePath=FilePath? 
+	 *         remarks=EString? 
 	 *         (standardInputStream=[InputDataset|EString] | standardOutputStream=[OutputDataset|EString] | standardErrorStream=[OutputDataset|EString])* 
 	 *         commandLineTemplate+=CommandLineEntryList 
 	 *         commandLineTemplate+=CommandLineEntryList* 
@@ -199,7 +199,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     CustomDatasetConstraint returns CustomDatasetConstraint
 	 *
 	 * Constraint:
-	 *     name=EString
+	 *     name=Identifier
 	 */
 	protected void sequence_CustomDatasetConstraint(ISerializationContext context, CustomDatasetConstraint semanticObject) {
 		if (errorAcceptor != null) {
@@ -207,7 +207,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomDatasetConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCustomDatasetConstraintAccess().getNameIdentifierParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -219,7 +219,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     CustomDatasetReadinessConstraint returns CustomDatasetReadinessConstraint
 	 *
 	 * Constraint:
-	 *     (name=EString dataset=[Dataset|EString])
+	 *     (name=Identifier dataset=[Dataset|EString])
 	 */
 	protected void sequence_CustomDatasetReadinessConstraint(ISerializationContext context, CustomDatasetReadinessConstraint semanticObject) {
 		if (errorAcceptor != null) {
@@ -229,7 +229,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.DATASET_READINESS_CONSTRAINT__DATASET));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomDatasetReadinessConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCustomDatasetReadinessConstraintAccess().getNameIdentifierParserRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getCustomDatasetReadinessConstraintAccess().getDatasetDatasetEStringParserRuleCall_4_0_1(), semanticObject.eGet(AnalysisActivityDescriptionPackage.Literals.DATASET_READINESS_CONSTRAINT__DATASET, false));
 		feeder.finish();
 	}
@@ -241,7 +241,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     CustomParameterConstraint returns CustomParameterConstraint
 	 *
 	 * Constraint:
-	 *     name=EString
+	 *     name=Identifier
 	 */
 	protected void sequence_CustomParameterConstraint(ISerializationContext context, CustomParameterConstraint semanticObject) {
 		if (errorAcceptor != null) {
@@ -249,7 +249,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.CUSTOM_CONSTRAINT__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomParameterConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCustomParameterConstraintAccess().getNameIdentifierParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -261,7 +261,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *     CustomParameterReadinessConstraint returns CustomParameterReadinessConstraint
 	 *
 	 * Constraint:
-	 *     (name=EString parameter=[Parameter|EString])
+	 *     (name=Identifier parameter=[Parameter|EString])
 	 */
 	protected void sequence_CustomParameterReadinessConstraint(ISerializationContext context, CustomParameterReadinessConstraint semanticObject) {
 		if (errorAcceptor != null) {
@@ -271,7 +271,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AnalysisActivityDescriptionPackage.Literals.PARAMETER_READINESS_CONSTRAINT__PARAMETER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomParameterReadinessConstraintAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCustomParameterReadinessConstraintAccess().getNameIdentifierParserRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getCustomParameterReadinessConstraintAccess().getParameterParameterEStringParserRuleCall_4_0_1(), semanticObject.eGet(AnalysisActivityDescriptionPackage.Literals.PARAMETER_READINESS_CONSTRAINT__PARAMETER, false));
 		feeder.finish();
 	}
@@ -309,7 +309,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=EString 
+	 *         name=Identifier 
 	 *         mimetype=EString? 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
@@ -361,7 +361,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=EString 
+	 *         name=Identifier 
 	 *         mimetype=EString? 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
@@ -393,7 +393,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=EString 
+	 *         name=Identifier 
 	 *         parameterType=ParameterType 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 

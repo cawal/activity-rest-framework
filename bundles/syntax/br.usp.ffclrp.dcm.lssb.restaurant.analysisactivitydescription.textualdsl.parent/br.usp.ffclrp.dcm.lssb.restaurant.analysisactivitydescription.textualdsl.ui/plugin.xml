@@ -7,7 +7,7 @@
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
-			extensions="adtm"
+			extensions="aadl"
 			id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL"
 			name="AnalysisActivityDSL Editor">
 		</editor>
@@ -207,7 +207,7 @@
 	<extension point="org.eclipse.core.contenttype.contentTypes">
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
-			file-extensions="adtm"
+			file-extensions="aadl"
 			id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.contenttype"
 			name="AnalysisActivityDSL File"
 			priority="normal">
@@ -218,13 +218,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="adtm">
+			type="aadl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-			uriExtension="adtm">
+			uriExtension="aadl">
 		</resourceServiceProvider>
 	</extension>
 	<!-- marker definitions for br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL -->
@@ -261,7 +261,7 @@
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-			fileExtensions="adtm"/>
+			fileExtensions="aadl"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
@@ -404,7 +404,7 @@
 	<extension point="org.eclipse.compare.contentViewers">
 		<viewer id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.compare.contentViewers"
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="adtm">
+			extensions="aadl">
 		</viewer>
 		<contentTypeBinding
 			contentTypeId="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.contenttype"
@@ -413,7 +413,7 @@
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.compare.contentMergeViewers"
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="adtm" label="AnalysisActivityDSL Compare">
+			extensions="aadl" label="AnalysisActivityDSL Compare">
 		</viewer>
 		<contentTypeBinding
 			contentTypeId="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.contenttype"
@@ -422,12 +422,12 @@
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.editors.documentProviders"
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-			extensions="adtm">
+			extensions="aadl">
 		</provider>
 	</extension>
 	<extension point="org.eclipse.team.core.fileTypes">
 		<fileTypes
-			extension="adtm"
+			extension="aadl"
 			type="text">
 		</fileTypes>
 	</extension>

@@ -13,7 +13,7 @@ define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], functi
 		this.HighlightRules = HighlightRules;
 	};
 	oop.inherits(Mode, mText.Mode);
-	Mode.prototype.$id = "xtext/aadt";
+	Mode.prototype.$id = "xtext/aadl";
 	Mode.prototype.getCompletions = function(state, session, pos, prefix) {
 		return [];
 	}

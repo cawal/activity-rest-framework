@@ -133,7 +133,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCustomDatasetReadinessConstraintAccess().getNameAssignment_1(), "rule__CustomDatasetReadinessConstraint__NameAssignment_1");
 			builder.put(grammarAccess.getCustomDatasetReadinessConstraintAccess().getDatasetAssignment_4(), "rule__CustomDatasetReadinessConstraint__DatasetAssignment_4");
 			builder.put(grammarAccess.getCommandLineToolAccess().getNameAssignment_1(), "rule__CommandLineTool__NameAssignment_1");
-			builder.put(grammarAccess.getCommandLineToolAccess().getExecutablePathAssignment_3_1(), "rule__CommandLineTool__ExecutablePathAssignment_3_1");
+			builder.put(grammarAccess.getCommandLineToolAccess().getRemarksAssignment_3_1(), "rule__CommandLineTool__RemarksAssignment_3_1");
 			builder.put(grammarAccess.getCommandLineToolAccess().getStandardInputStreamAssignment_4_2_0_2(), "rule__CommandLineTool__StandardInputStreamAssignment_4_2_0_2");
 			builder.put(grammarAccess.getCommandLineToolAccess().getStandardOutputStreamAssignment_4_2_1_2(), "rule__CommandLineTool__StandardOutputStreamAssignment_4_2_1_2");
 			builder.put(grammarAccess.getCommandLineToolAccess().getStandardErrorStreamAssignment_4_2_2_2(), "rule__CommandLineTool__StandardErrorStreamAssignment_4_2_2_2");

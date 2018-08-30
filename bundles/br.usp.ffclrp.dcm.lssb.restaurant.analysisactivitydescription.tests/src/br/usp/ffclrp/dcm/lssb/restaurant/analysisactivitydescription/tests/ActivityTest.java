@@ -4,9 +4,6 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.tests;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory;
-
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**
@@ -15,15 +12,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ActivityTest extends TestCase {
-
-	/**
-	 * The fixture for this Activity test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Activity fixture = null;
+public class ActivityTest extends IdentifiableElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -45,23 +34,14 @@ public class ActivityTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Activity test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Activity fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Activity test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Activity getFixture() {
-		return fixture;
+		return (Activity)fixture;
 	}
 
 	/**

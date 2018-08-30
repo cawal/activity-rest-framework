@@ -60,11 +60,11 @@ public class AnalysisActivityDSLFormatter extends AbstractFormatter2 {
   }
   
   public void format(final Object commandLineTool, final IFormattableDocument document) {
-    if (commandLineTool instanceof XtextResource) {
-      _format((XtextResource)commandLineTool, document);
-      return;
-    } else if (commandLineTool instanceof CommandLineTool) {
+    if (commandLineTool instanceof CommandLineTool) {
       _format((CommandLineTool)commandLineTool, document);
+      return;
+    } else if (commandLineTool instanceof XtextResource) {
+      _format((XtextResource)commandLineTool, document);
       return;
     } else if (commandLineTool instanceof Activity) {
       _format((Activity)commandLineTool, document);

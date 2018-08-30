@@ -148,8 +148,8 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	 *     ('redirecting' ENTITY_START ENTITY_END)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     executablePath=FilePath (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 *     name=EString ENTITY_START (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
+	 *     remarks=EString STATEMENT_END (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 */
 	protected void emit_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -160,7 +160,7 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	 *     (ENTITY_START ENTITY_END)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name=EString (ambiguity) (rule end)
+	 *     name=Identifier (ambiguity) (rule end)
 	 */
 	protected void emit_CustomDatasetConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -171,7 +171,7 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	 *     (ENTITY_START ENTITY_END)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name=EString (ambiguity) (rule end)
+	 *     name=Identifier (ambiguity) (rule end)
 	 */
 	protected void emit_CustomParameterConstraint___ENTITY_STARTTerminalRuleCall_2_0_ENTITY_ENDTerminalRuleCall_2_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

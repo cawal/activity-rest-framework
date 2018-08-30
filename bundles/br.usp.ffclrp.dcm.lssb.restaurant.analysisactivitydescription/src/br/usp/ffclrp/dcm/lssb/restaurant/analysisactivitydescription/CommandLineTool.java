@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getExecutablePath <em>Executable Path</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getCommandLineTemplate <em>Command Line Template</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardInputStream <em>Standard Input Stream</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardOutputStream <em>Standard Output Stream</em>}</li>
@@ -31,32 +30,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface CommandLineTool extends Tool {
-	/**
-	 * Returns the value of the '<em><b>Executable Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Executable Path</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Executable Path</em>' attribute.
-	 * @see #setExecutablePath(String)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getCommandLineTool_ExecutablePath()
-	 * @model dataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FilePath"
-	 * @generated
-	 */
-	String getExecutablePath();
-
-	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getExecutablePath <em>Executable Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Executable Path</em>' attribute.
-	 * @see #getExecutablePath()
-	 * @generated
-	 */
-	void setExecutablePath(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Command Line Template</b></em>' containment reference list.
 	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList}.

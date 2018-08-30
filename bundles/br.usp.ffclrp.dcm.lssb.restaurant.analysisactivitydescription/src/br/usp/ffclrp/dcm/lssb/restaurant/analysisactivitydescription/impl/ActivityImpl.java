@@ -21,8 +21,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,8 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getRemarks <em>Remarks</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getInputDatasets <em>Input Datasets</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getOutputDatasets <em>Output Datasets</em>}</li>
@@ -45,47 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ActivityImpl extends MinimalEObjectImpl.Container implements Activity {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRemarks()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String REMARKS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRemarks()
-	 * @generated
-	 * @ordered
-	 */
-	protected String remarks = REMARKS_EDEFAULT;
-
+public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -153,48 +109,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	protected EClass eStaticClass() {
 		return AnalysisActivityDescriptionPackage.Literals.ACTIVITY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getRemarks() {
-		return remarks;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRemarks(String newRemarks) {
-		String oldRemarks = remarks;
-		remarks = newRemarks;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS, oldRemarks, remarks));
 	}
 
 	/**
@@ -334,10 +248,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
-				return getName();
-			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
-				return getRemarks();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				return getParameters();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__INPUT_DATASETS:
@@ -361,12 +271,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
-				setName((String)newValue);
-				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
-				setRemarks((String)newValue);
-				return;
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
@@ -398,12 +302,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
-				setRemarks(REMARKS_EDEFAULT);
-				return;
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				getParameters().clear();
 				return;
@@ -431,10 +329,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.ACTIVITY__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityDescriptionPackage.ACTIVITY__REMARKS:
-				return REMARKS_EDEFAULT == null ? remarks != null : !REMARKS_EDEFAULT.equals(remarks);
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__INPUT_DATASETS:
@@ -447,24 +341,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
 				return tool != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", remarks: ");
-		result.append(remarks);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ActivityImpl

@@ -85,6 +85,8 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT:
+				return validateIdentifiableElement((IdentifiableElement)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.ACTIVITY:
 				return validateActivity((Activity)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.MULTIPLICITY_ELEMENT:
@@ -144,6 +146,15 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 			default:
 				return true;
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIdentifiableElement(IdentifiableElement identifiableElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(identifiableElement, diagnostics, context);
 	}
 
 	/**

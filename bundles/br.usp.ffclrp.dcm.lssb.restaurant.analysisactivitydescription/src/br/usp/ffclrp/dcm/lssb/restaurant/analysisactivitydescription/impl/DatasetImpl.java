@@ -5,6 +5,7 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -299,6 +300,40 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiableElement.class) {
+			switch (derivedFeatureID) {
+				case AnalysisActivityDescriptionPackage.DATASET__NAME: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME;
+				case AnalysisActivityDescriptionPackage.DATASET__REMARKS: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiableElement.class) {
+			switch (baseFeatureID) {
+				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME: return AnalysisActivityDescriptionPackage.DATASET__NAME;
+				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS: return AnalysisActivityDescriptionPackage.DATASET__REMARKS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

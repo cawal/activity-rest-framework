@@ -22,6 +22,15 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	AnalysisActivityDescriptionFactory eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Identifiable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Identifiable Element</em>'.
+	 * @generated
+	 */
+	IdentifiableElement createIdentifiableElement();
+
+	/**
 	 * Returns a new object of class '<em>Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

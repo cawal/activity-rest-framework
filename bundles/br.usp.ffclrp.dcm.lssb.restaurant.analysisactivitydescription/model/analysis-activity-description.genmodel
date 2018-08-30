@@ -18,9 +18,11 @@
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//TerminationStatus/FAILED"/>
     </genEnums>
     <genDataTypes ecoreDataType="analysis-activity-description.ecore#//FilePath"/>
+    <genClasses ecoreClass="analysis-activity-description.ecore#//IdentifiableElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//IdentifiableElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//IdentifiableElement/remarks"/>
+    </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Activity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Activity/remarks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/inputDatasets"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/outputDatasets"/>
@@ -32,15 +34,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//MultiplicityElement/maximumCardinality"/>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/remarks"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/parameterType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Parameter/defaultValue"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Parameter/constraints"/>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Dataset">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/remarks"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Dataset/mimetype"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Dataset/constraints"/>
     </genClasses>
@@ -64,11 +62,9 @@
     <genClasses ecoreClass="analysis-activity-description.ecore#//CustomParameterReadinessConstraint"/>
     <genClasses ecoreClass="analysis-activity-description.ecore#//CustomDatasetReadinessConstraint"/>
     <genClasses image="false" ecoreClass="analysis-activity-description.ecore#//Tool">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//Tool/name"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Tool/activity"/>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//CommandLineTool">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//CommandLineTool/executablePath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/commandLineTemplate"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/standardInputStream"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//CommandLineTool/standardOutputStream"/>

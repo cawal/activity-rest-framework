@@ -72,6 +72,29 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IdentifiableElementItemProvider identifiableElementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIdentifiableElementAdapter() {
+		if (identifiableElementItemProvider == null) {
+			identifiableElementItemProvider = new IdentifiableElementItemProvider(this);
+		}
+
+		return identifiableElementItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -492,6 +515,7 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 	 * @generated
 	 */
 	public void dispose() {
+		if (identifiableElementItemProvider != null) identifiableElementItemProvider.dispose();
 		if (activityItemProvider != null) activityItemProvider.dispose();
 		if (parameterItemProvider != null) parameterItemProvider.dispose();
 		if (inputDatasetItemProvider != null) inputDatasetItemProvider.dispose();

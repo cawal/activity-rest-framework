@@ -9,7 +9,7 @@ import "http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" 
 
 Activity returns analysisactivitydescription::Activity:
 	'activity'
-	name=EString
+	name=Identifier
 	ENTITY_START
 		('remarks' remarks=EString STATEMENT_END)?
 		('on' ENTITY_START inputDatasets+=InputDataset ( inputDatasets+=InputDataset )* ENTITY_END )?
@@ -40,10 +40,15 @@ StringListManipulator returns slm::StringListManipulator:
 
 EString returns ecore::EString:
 	MULTILINE_STRING | STRING | ID ;
+	
+
+Identifier returns ecore::EString:
+	ID
+;	
 
 Parameter returns analysisactivitydescription::Parameter:
 	'parameter'
-	name=EString
+	name=Identifier
 	':'
 	parameterType=ParameterType
 	LIST_START
@@ -66,7 +71,7 @@ Parameter returns analysisactivitydescription::Parameter:
 
 InputDataset returns analysisactivitydescription::InputDataset:
     'dataset'
-    name=EString
+    name=Identifier
     ':'
     (mimetype=EString)?
     LIST_START
@@ -89,7 +94,7 @@ InputDataset returns analysisactivitydescription::InputDataset:
 
 OutputDataset returns analysisactivitydescription::OutputDataset:
     'dataset'
-    name=EString
+    name=Identifier
     ':'
     (mimetype=EString)?
     LIST_START
@@ -123,7 +128,7 @@ ParameterConstraint returns analysisactivitydescription::ParameterConstraint:
 
 CustomParameterConstraint returns analysisactivitydescription::CustomParameterConstraint:
 	'CustomParameterConstraint'
-	name=EString
+	name=Identifier
     (
         ENTITY_START
         ENTITY_END
@@ -137,7 +142,7 @@ DatasetConstraint returns analysisactivitydescription::DatasetConstraint:
 
 CustomDatasetConstraint returns analysisactivitydescription::CustomDatasetConstraint:
 	'CustomDatasetConstraint'
-	name=EString
+	name=Identifier
 	(
 	    ENTITY_START
 	    ENTITY_END
@@ -151,7 +156,7 @@ ParameterReadinessConstraint returns analysisactivitydescription::ParameterReadi
 ;
 CustomParameterReadinessConstraint returns analysisactivitydescription::CustomParameterReadinessConstraint:
     'CustomParameterReadinessConstraint'
-    name=EString
+    name=Identifier
     ENTITY_START
         'on' parameter=[analysisactivitydescription::Parameter|EString]
     ENTITY_END;	
@@ -162,7 +167,7 @@ DatasetReadinessConstraint returns analysisactivitydescription::DatasetReadiness
     
 CustomDatasetReadinessConstraint returns analysisactivitydescription::CustomDatasetReadinessConstraint:
     'CustomDatasetReadinessConstraint'
-    name=EString
+    name=Identifier
     ENTITY_START
         'on' dataset=[analysisactivitydescription::Dataset|EString]
     ENTITY_END
@@ -172,7 +177,7 @@ CommandLineTool returns analysisactivitydescription::CommandLineTool:
 	'executable'
 	name=EString
 	ENTITY_START
-		('path' executablePath=FilePath)?
+		('remarks' remarks=EString STATEMENT_END)?
 		('redirecting'
 		ENTITY_START
 		( 
@@ -247,8 +252,6 @@ enum TerminationStatus returns analysisactivitydescription::TerminationStatus:
 terminal ENTITY_START: '{';
 terminal ENTITY_END: '}';
 terminal STATEMENT_END: ';';
-terminal DEFINITION_START: "(";
-terminal DEFINITION_END: ")";
 				
 terminal LIST_START: '[';
 terminal LIST_END: ']';
@@ -264,8 +267,8 @@ terminal MULTILINE_STRING:
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') (("-")?('a'..'z'|'A'..'Z'|'_'|'0'..'9'))*;
 terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal STRING:
-            '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"' |
-            "'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )* "'"
+            '"' ( '\\' .  | !('\\'|'"') )* '"' |
+            "'" ( '\\' .  | !('\\'|"'") )* "'"
         ;
 terminal ML_COMMENT : '/*' -> '*/';
 terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;

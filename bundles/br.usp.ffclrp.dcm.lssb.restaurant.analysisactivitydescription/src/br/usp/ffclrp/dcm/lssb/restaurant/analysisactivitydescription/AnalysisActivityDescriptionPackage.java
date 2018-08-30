@@ -61,14 +61,14 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	AnalysisActivityDescriptionPackage eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl <em>Activity</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl <em>Identifiable Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getActivity()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getIdentifiableElement()
 	 * @generated
 	 */
-	int ACTIVITY = 0;
+	int IDENTIFIABLE_ELEMENT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -77,7 +77,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__NAME = 0;
+	int IDENTIFIABLE_ELEMENT__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
@@ -86,7 +86,53 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__REMARKS = 1;
+	int IDENTIFIABLE_ELEMENT__REMARKS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Identifiable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_ELEMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Identifiable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl <em>Activity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getActivity()
+	 * @generated
+	 */
+	int ACTIVITY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME = IDENTIFIABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REMARKS = IDENTIFIABLE_ELEMENT__REMARKS;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -95,7 +141,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__PARAMETERS = 2;
+	int ACTIVITY__PARAMETERS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Input Datasets</b></em>' containment reference list.
@@ -104,7 +150,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__INPUT_DATASETS = 3;
+	int ACTIVITY__INPUT_DATASETS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Output Datasets</b></em>' containment reference list.
@@ -113,7 +159,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__OUTPUT_DATASETS = 4;
+	int ACTIVITY__OUTPUT_DATASETS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Readiness Contraints</b></em>' containment reference list.
@@ -122,7 +168,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__READINESS_CONTRAINTS = 5;
+	int ACTIVITY__READINESS_CONTRAINTS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Tool</b></em>' containment reference.
@@ -131,7 +177,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__TOOL = 6;
+	int ACTIVITY__TOOL = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Activity</em>' class.
@@ -140,7 +186,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_FEATURE_COUNT = 7;
+	int ACTIVITY_FEATURE_COUNT = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Activity</em>' class.
@@ -149,7 +195,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_OPERATION_COUNT = 0;
+	int ACTIVITY_OPERATION_COUNT = IDENTIFIABLE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MultiplicityElementImpl <em>Multiplicity Element</em>}' class.
@@ -159,7 +205,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMultiplicityElement()
 	 * @generated
 	 */
-	int MULTIPLICITY_ELEMENT = 1;
+	int MULTIPLICITY_ELEMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
@@ -205,7 +251,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 2;
+	int PARAMETER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
@@ -296,7 +342,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDataset()
 	 * @generated
 	 */
-	int DATASET = 3;
+	int DATASET = 4;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
@@ -378,7 +424,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getInputDataset()
 	 * @generated
 	 */
-	int INPUT_DATASET = 4;
+	int INPUT_DATASET = 5;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
@@ -460,7 +506,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getOutputDataset()
 	 * @generated
 	 */
-	int OUTPUT_DATASET = 5;
+	int OUTPUT_DATASET = 6;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
@@ -542,7 +588,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 6;
+	int CONSTRAINT = 7;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -570,7 +616,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterConstraint()
 	 * @generated
 	 */
-	int PARAMETER_CONSTRAINT = 7;
+	int PARAMETER_CONSTRAINT = 8;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Constraint</em>' class.
@@ -598,7 +644,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetConstraint()
 	 * @generated
 	 */
-	int DATASET_CONSTRAINT = 8;
+	int DATASET_CONSTRAINT = 9;
 
 	/**
 	 * The number of structural features of the '<em>Dataset Constraint</em>' class.
@@ -626,7 +672,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntryList()
 	 * @generated
 	 */
-	int COMMAND_LINE_ENTRY_LIST = 20;
+	int COMMAND_LINE_ENTRY_LIST = 21;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolNameCommandLineEntryImpl <em>Tool Name Command Line Entry</em>}' class.
@@ -636,7 +682,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getToolNameCommandLineEntry()
 	 * @generated
 	 */
-	int TOOL_NAME_COMMAND_LINE_ENTRY = 21;
+	int TOOL_NAME_COMMAND_LINE_ENTRY = 22;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
@@ -646,7 +692,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntryList()
 	 * @generated
 	 */
-	int LITERAL_COMMAND_LINE_ENTRY_LIST = 22;
+	int LITERAL_COMMAND_LINE_ENTRY_LIST = 23;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl <em>Dataset Command Line Entry List</em>}' class.
@@ -656,7 +702,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntryList()
 	 * @generated
 	 */
-	int DATASET_COMMAND_LINE_ENTRY_LIST = 23;
+	int DATASET_COMMAND_LINE_ENTRY_LIST = 24;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl <em>Parameter Command Line Entry List</em>}' class.
@@ -666,7 +712,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntryList()
 	 * @generated
 	 */
-	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 24;
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 25;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl <em>Readiness Constraint</em>}' class.
@@ -676,7 +722,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getReadinessConstraint()
 	 * @generated
 	 */
-	int READINESS_CONSTRAINT = 12;
+	int READINESS_CONSTRAINT = 13;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetReadinessConstraintImpl <em>Dataset Readiness Constraint</em>}' class.
@@ -686,7 +732,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetReadinessConstraint()
 	 * @generated
 	 */
-	int DATASET_READINESS_CONSTRAINT = 13;
+	int DATASET_READINESS_CONSTRAINT = 14;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterReadinessConstraintImpl <em>Parameter Readiness Constraint</em>}' class.
@@ -696,7 +742,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterReadinessConstraint()
 	 * @generated
 	 */
-	int PARAMETER_READINESS_CONSTRAINT = 14;
+	int PARAMETER_READINESS_CONSTRAINT = 15;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomConstraintImpl <em>Custom Constraint</em>}' class.
@@ -706,7 +752,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomConstraint()
 	 * @generated
 	 */
-	int CUSTOM_CONSTRAINT = 9;
+	int CUSTOM_CONSTRAINT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -743,7 +789,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomParameterReadinessConstraint()
 	 * @generated
 	 */
-	int CUSTOM_PARAMETER_READINESS_CONSTRAINT = 15;
+	int CUSTOM_PARAMETER_READINESS_CONSTRAINT = 16;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomDatasetReadinessConstraintImpl <em>Custom Dataset Readiness Constraint</em>}' class.
@@ -753,7 +799,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomDatasetReadinessConstraint()
 	 * @generated
 	 */
-	int CUSTOM_DATASET_READINESS_CONSTRAINT = 16;
+	int CUSTOM_DATASET_READINESS_CONSTRAINT = 17;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CustomParameterConstraintImpl <em>Custom Parameter Constraint</em>}' class.
@@ -763,7 +809,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomParameterConstraint()
 	 * @generated
 	 */
-	int CUSTOM_PARAMETER_CONSTRAINT = 10;
+	int CUSTOM_PARAMETER_CONSTRAINT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -800,7 +846,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCustomDatasetConstraint()
 	 * @generated
 	 */
-	int CUSTOM_DATASET_CONSTRAINT = 11;
+	int CUSTOM_DATASET_CONSTRAINT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -981,7 +1027,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getTool()
 	 * @generated
 	 */
-	int TOOL = 17;
+	int TOOL = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -990,7 +1036,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL__NAME = 0;
+	int TOOL__NAME = IDENTIFIABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__REMARKS = IDENTIFIABLE_ELEMENT__REMARKS;
 
 	/**
 	 * The feature id for the '<em><b>Activity</b></em>' container reference.
@@ -999,7 +1054,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL__ACTIVITY = 1;
+	int TOOL__ACTIVITY = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Tool</em>' class.
@@ -1008,7 +1063,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL_FEATURE_COUNT = 2;
+	int TOOL_FEATURE_COUNT = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Tool</em>' class.
@@ -1017,7 +1072,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL_OPERATION_COUNT = 0;
+	int TOOL_OPERATION_COUNT = IDENTIFIABLE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl <em>Command Line Tool</em>}' class.
@@ -1027,7 +1082,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineTool()
 	 * @generated
 	 */
-	int COMMAND_LINE_TOOL = 18;
+	int COMMAND_LINE_TOOL = 19;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1039,6 +1094,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int COMMAND_LINE_TOOL__NAME = TOOL__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__REMARKS = TOOL__REMARKS;
+
+	/**
 	 * The feature id for the '<em><b>Activity</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1048,22 +1112,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int COMMAND_LINE_TOOL__ACTIVITY = TOOL__ACTIVITY;
 
 	/**
-	 * The feature id for the '<em><b>Executable Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMAND_LINE_TOOL__EXECUTABLE_PATH = TOOL_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Command Line Template</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE = TOOL_FEATURE_COUNT + 1;
+	int COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE = TOOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Standard Input Stream</b></em>' reference.
@@ -1072,7 +1127,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL__STANDARD_INPUT_STREAM = TOOL_FEATURE_COUNT + 2;
+	int COMMAND_LINE_TOOL__STANDARD_INPUT_STREAM = TOOL_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Standard Output Stream</b></em>' reference.
@@ -1081,7 +1136,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL__STANDARD_OUTPUT_STREAM = TOOL_FEATURE_COUNT + 3;
+	int COMMAND_LINE_TOOL__STANDARD_OUTPUT_STREAM = TOOL_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Standard Error Stream</b></em>' reference.
@@ -1090,7 +1145,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL__STANDARD_ERROR_STREAM = TOOL_FEATURE_COUNT + 4;
+	int COMMAND_LINE_TOOL__STANDARD_ERROR_STREAM = TOOL_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Exit Codes</b></em>' containment reference list.
@@ -1099,7 +1154,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL__EXIT_CODES = TOOL_FEATURE_COUNT + 5;
+	int COMMAND_LINE_TOOL__EXIT_CODES = TOOL_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Command Line Tool</em>' class.
@@ -1108,7 +1163,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL_FEATURE_COUNT = TOOL_FEATURE_COUNT + 6;
+	int COMMAND_LINE_TOOL_FEATURE_COUNT = TOOL_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Command Line Tool</em>' class.
@@ -1127,7 +1182,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getExitCode()
 	 * @generated
 	 */
-	int EXIT_CODE = 19;
+	int EXIT_CODE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
@@ -1344,7 +1399,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterType()
 	 * @generated
 	 */
-	int PARAMETER_TYPE = 25;
+	int PARAMETER_TYPE = 26;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus <em>Termination Status</em>}' enum.
@@ -1354,7 +1409,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getTerminationStatus()
 	 * @generated
 	 */
-	int TERMINATION_STATUS = 26;
+	int TERMINATION_STATUS = 27;
 
 	/**
 	 * The meta object id for the '<em>File Path</em>' data type.
@@ -1364,7 +1419,39 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getFilePath()
 	 * @generated
 	 */
-	int FILE_PATH = 27;
+	int FILE_PATH = 28;
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement <em>Identifiable Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identifiable Element</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement
+	 * @generated
+	 */
+	EClass getIdentifiableElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getName()
+	 * @see #getIdentifiableElement()
+	 * @generated
+	 */
+	EAttribute getIdentifiableElement_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemarks <em>Remarks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remarks</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemarks()
+	 * @see #getIdentifiableElement()
+	 * @generated
+	 */
+	EAttribute getIdentifiableElement_Remarks();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity <em>Activity</em>}'.
@@ -1375,28 +1462,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getActivity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getName()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getRemarks <em>Remarks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remarks</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getRemarks()
-	 * @see #getActivity()
-	 * @generated
-	 */
-	EAttribute getActivity_Remarks();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getParameters <em>Parameters</em>}'.
@@ -1496,28 +1561,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getName()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getRemarks <em>Remarks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remarks</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getRemarks()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Remarks();
-
-	/**
 	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getParameterType <em>Parameter Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1559,28 +1602,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDataset();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getName()
-	 * @see #getDataset()
-	 * @generated
-	 */
-	EAttribute getDataset_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks <em>Remarks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remarks</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getRemarks()
-	 * @see #getDataset()
-	 * @generated
-	 */
-	EAttribute getDataset_Remarks();
 
 	/**
 	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getMimetype <em>Mimetype</em>}'.
@@ -1872,17 +1893,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EClass getTool();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool#getName()
-	 * @see #getTool()
-	 * @generated
-	 */
-	EAttribute getTool_Name();
-
-	/**
 	 * Returns the meta object for the container reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool#getActivity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1902,17 +1912,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCommandLineTool();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getExecutablePath <em>Executable Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Executable Path</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getExecutablePath()
-	 * @see #getCommandLineTool()
-	 * @generated
-	 */
-	EAttribute getCommandLineTool_ExecutablePath();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getCommandLineTemplate <em>Command Line Template</em>}'.
@@ -2067,6 +2066,32 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl <em>Identifiable Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getIdentifiableElement()
+		 * @generated
+		 */
+		EClass IDENTIFIABLE_ELEMENT = eINSTANCE.getIdentifiableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE_ELEMENT__NAME = eINSTANCE.getIdentifiableElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE_ELEMENT__REMARKS = eINSTANCE.getIdentifiableElement_Remarks();
+
+		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl <em>Activity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2075,22 +2100,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACTIVITY = eINSTANCE.getActivity();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__NAME = eINSTANCE.getActivity_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTIVITY__REMARKS = eINSTANCE.getActivity_Remarks();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -2169,22 +2178,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__REMARKS = eINSTANCE.getParameter_Remarks();
-
-		/**
 		 * The meta object literal for the '<em><b>Parameter Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2217,22 +2210,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DATASET = eINSTANCE.getDataset();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATASET__NAME = eINSTANCE.getDataset_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATASET__REMARKS = eINSTANCE.getDataset_Remarks();
 
 		/**
 		 * The meta object literal for the '<em><b>Mimetype</b></em>' attribute feature.
@@ -2497,14 +2474,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EClass TOOL = eINSTANCE.getTool();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TOOL__NAME = eINSTANCE.getTool_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Activity</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2521,14 +2490,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMMAND_LINE_TOOL = eINSTANCE.getCommandLineTool();
-
-		/**
-		 * The meta object literal for the '<em><b>Executable Path</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMMAND_LINE_TOOL__EXECUTABLE_PATH = eINSTANCE.getCommandLineTool_ExecutablePath();
 
 		/**
 		 * The meta object literal for the '<em><b>Command Line Template</b></em>' containment reference list feature.
