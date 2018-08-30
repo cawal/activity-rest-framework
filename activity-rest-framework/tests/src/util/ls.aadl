@@ -1,0 +1,29 @@
+activity list-files {
+	remarks 'Lists the files present in the paths parameter.';
+	
+	with {
+		parameter paths : STRING[1,-1] {
+			remarks 'The paths of the files to list.';
+		};
+	}
+	produces {
+		dataset file-list : 'text/plain' [1,1] {
+			remarks 'A listing of the file properties';
+		};
+		
+	}
+ 	using executable ls {
+		redirecting {
+			stdout to file-list;
+		}
+		commandLineTemplate [
+			literals ['-la'],
+			parameter paths
+		]
+		returns {
+			0 if SUCCEEDED;
+			1 if FAILED 'Minor problems. (E.g., cannot access directory)';
+			2 if FAILED 'Serious trouble. (E.g., cannot access command-line argument)';
+		}
+	}
+}
