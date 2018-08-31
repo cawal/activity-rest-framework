@@ -1,0 +1,20 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+    <!-- Link to the parent pom -->
+	<parent>
+		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+		<artifactId>activity-rest-framework-root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+	<artifactId>activity-rest-bundles</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivity</module>
+	</modules>
+</project>

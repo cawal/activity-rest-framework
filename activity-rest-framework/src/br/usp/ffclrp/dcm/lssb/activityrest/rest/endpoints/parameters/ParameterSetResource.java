@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import io.swagger.annotations.Api;
@@ -39,11 +39,11 @@ public class ParameterSetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	boolean allowUpdates;
 	
 	public ParameterSetResource(
-			@Nonnull AnalysisActivityDescription aaDesc,
+			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,

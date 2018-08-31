@@ -13,12 +13,14 @@ import org.eclipse.emf.common.util.EList;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.InvalidCommandLineDefinition;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -64,9 +66,9 @@ public class JobUtil {
 			throws InvalidCommandLineDefinition {
 		
 		List<String> commandLine = new ArrayList<>();
-		AnalysisActivityDescription description = analysis.getDescription();
+		Activity description = analysis.getDescription();
 		List<CommandLineEntryList> entries =
-				description.getCommandLineTemplate();
+				((CommandLineTool) description.getTool()).getCommandLineTemplate();
 		
 		for (CommandLineEntryList e : entries) {
 			
@@ -77,7 +79,7 @@ public class JobUtil {
 						((LiteralCommandLineEntryList) e).getLiterals());
 				
 			} else if (e instanceof DatasetCommandLineEntryList) {
-				DatasetDescription dp =
+				br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp =
 						((DatasetCommandLineEntryList) e).getDataset();
 				
 				if (dp.getDatasetKind() == DatasetKind.STANDARD_INPUT
@@ -95,7 +97,7 @@ public class JobUtil {
 				}
 				
 			} else if (e instanceof ParameterCommandLineEntryList) {
-				ParameterDescription pp =
+				Parameter pp =
 						((ParameterCommandLineEntryList) e).getParameter();
 				
 				Object parameterValue =
@@ -130,7 +132,7 @@ public class JobUtil {
 	private static File getStandardInputPipedFile(AnalysisActivity aa)
 			throws IOException {
 		
-		for (DatasetDescription pr : aa.getDescription().getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset pr : aa.getDescription().getInputDatasets()) {
 			if (pr.getDatasetKind() != DatasetKind.STANDARD_INPUT) {
 				Dataset d = aa.inputDatasetForName(pr.getName());
 				if (d != null && d.getFiles().size() > 0) {
@@ -144,6 +146,7 @@ public class JobUtil {
 	
 	private static File getStandardOutputPipedFile(AnalysisActivity aa)
 			throws IOException {
+		
 		
 		for (DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
 			if (pr.getDatasetKind() == DatasetKind.STANDARD_OUTPUT) {

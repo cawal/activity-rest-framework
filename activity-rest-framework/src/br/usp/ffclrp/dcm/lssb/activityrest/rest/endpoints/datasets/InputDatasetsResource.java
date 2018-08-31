@@ -28,7 +28,7 @@ import org.apache.commons.io.IOUtils;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
@@ -45,10 +45,10 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	
 	public InputDatasetsResource(
-			@NotNull AnalysisActivityDescription aaDesc,
+			@NotNull Activity aaDesc,
 			@NotNull UriInfo uriInfo,
 			@NotNull AnalysisActivity aa,
 			@NotNull ActivityRepository analysisActivityDao,

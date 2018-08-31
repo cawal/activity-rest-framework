@@ -11,7 +11,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;
 
@@ -22,9 +22,9 @@ public class FailedAnalysesCollection {
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
 	ActivityRepository analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	
-	public FailedAnalysesCollection(AnalysisActivityDescription aaDesc,
+	public FailedAnalysesCollection(Activity aaDesc,
 			UriInfo uriInfo,
 			ActivityRepository succeededAnalysisActivityDao) {
 		this.uriInfo = uriInfo;

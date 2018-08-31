@@ -31,7 +31,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.Invali
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;
 
@@ -40,7 +40,7 @@ public class JobCollection {
 	
 	@Context
 	UriInfo uriInfo;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	
 	FileSystemActivityRepository nonExecutedDao;
 	FileSystemActivityRepository runningDao;
@@ -49,7 +49,7 @@ public class JobCollection {
 	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
 			new JobManagerImpl();
 	
-	public JobCollection(AnalysisActivityDescription aaDesc,
+	public JobCollection(Activity aaDesc,
 			UriInfo uriInfo,
 			FileSystemActivityRepository nonExecutedAnalysisActivityDao,
 			FileSystemActivityRepository runningAnalysisActivityDao,

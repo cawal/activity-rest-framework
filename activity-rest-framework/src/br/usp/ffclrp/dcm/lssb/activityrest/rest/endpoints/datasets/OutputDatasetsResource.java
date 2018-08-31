@@ -13,7 +13,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import io.swagger.annotations.Api;
@@ -28,10 +28,10 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	
 	public OutputDatasetsResource(
-			@Nonnull AnalysisActivityDescription aaDesc,
+			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,

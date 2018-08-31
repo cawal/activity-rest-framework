@@ -58,4 +58,20 @@ public class BasicApplicationJAXRSConfig extends Application {
 		return Optional.empty();
 	}
 	
+
+	public Optional<Set<Class<?>>> getExtensionSingletons(){
+		return Optional.empty();
+	}
+	
+	@Override
+	public Set<Object> getSingletons() {
+		Set<Object> singletons = super.getSingletons();
+		
+
+		Optional<Set<Class<?>>> userExtensions = this.getExtensionSingletons();
+		singletons.addAll(userExtensions.orElse(Collections.emptySet()));
+		
+		return singletons;
+	}
+	
 }

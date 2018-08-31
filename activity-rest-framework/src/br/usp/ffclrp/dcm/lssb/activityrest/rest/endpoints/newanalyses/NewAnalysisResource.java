@@ -23,7 +23,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSe
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;
 
@@ -36,10 +36,10 @@ public class NewAnalysisResource {
 	
 	AnalysisActivity aa;
 	ActivityRepository analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	
 	public NewAnalysisResource(
-			@Nonnull AnalysisActivityDescription aaDesc,
+			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao) {
