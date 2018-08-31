@@ -14,13 +14,13 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisAct
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSLStandaloneSetup;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 
-public class ActivityModelService {
+public class ModelsService {
 	
 	/**
 	 * Utility method to initialize the resources needed to 
 	 * load AADM models using EMF's Resource API.
 	 */
-	private static void initializeAADMResources() {
+	private static void initializeEcoreModelsResources() {
 		AnalysisActivityModelPackage.eINSTANCE.eClass();
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
 	}
@@ -37,7 +37,7 @@ public class ActivityModelService {
 
 		Activity activity = null;
 		// Needed because Xtext only loads its generated grammar
-		initializeAADMResources();
+		initializeEcoreModelsResources();
 		
 		// Register the grammar
 		Injector injector = new AnalysisActivityDSLStandaloneSetup().createInjectorAndDoEMFRegistration();

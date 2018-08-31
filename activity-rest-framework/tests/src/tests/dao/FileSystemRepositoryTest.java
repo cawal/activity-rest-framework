@@ -1,19 +1,16 @@
 package tests.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.WebApplicationException;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,19 +18,18 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemAnalysisRepository;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 
 public class FileSystemRepositoryTest {
 
 	static File localStorage;
 	static ActivityRepository dao;
-	static AnalysisActivityDescription aaDesc;
-	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI = "./AnalysisActivityDescription.xmi";
+	static Activity aaDesc;
+	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI = 
+			"./AnalysisActivityDescription.aadl";
 	
 	static List<String> keys = Arrays.asList(
 			"email",
@@ -44,35 +40,16 @@ public class FileSystemRepositoryTest {
 			"gene-identifier-type"
 		);
 	
-	private void initializeEcoreResources() {
-		// Initialize the model
-        AnalysisActivityModelPackage.eINSTANCE.eClass();
-        AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
-
-        // Register the XMI resource factory for the extension
-
-        Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-        Map<String, Object> m = reg.getExtensionToFactoryMap();
-        m.put("xmi", new XMIResourceFactoryImpl());
-
-        // Obtain a new resource set
-        ResourceSetImpl resSet = new ResourceSetImpl();
-        
-        
+	private void initializeEcoreResources() throws IOException {        
         URI uri = URI
                 .createURI(ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI);
         try {
-			resSet.createResource(uri).load(this.getClass()
-					.getResource(uri.toString())
-					.openStream(), null);
+        	aaDesc = ModelsService.retrieveAADLModel(this.getClass()
+    				.getResource(uri.toString())
+    				.openStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		};
-        // Get the resource
-        Resource resource = resSet.getResource(uri, true);
-        // Get the first model element and cast it to the right type, in my
-        // example everything is hierarchical included in this first node
-        aaDesc = (AnalysisActivityDescription) resource.getContents().get(0);
         
         if(aaDesc == null) 
         	throw new WebApplicationException(uri.toString() + " not found!");
@@ -95,7 +72,7 @@ public class FileSystemRepositoryTest {
 		localStorage = new File("/tmp/dao_test_root");
 		localStorage.mkdirs();
 		///java.nio.file.Files.createTempDirectory("dao_test").toFile();
-		dao = new FileSystemAnalysisRepository(localStorage, aaDesc);
+		dao = new FileSystemActivityRepository(localStorage, aaDesc);
 	}
 	
 	@After

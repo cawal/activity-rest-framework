@@ -1,0 +1,36 @@
+activity gene-chart-report {
+	remarks 'Lists the files present in the paths parameter.';
+	on {
+	}
+	with {
+		parameter paths : STRING[1,-1] {
+			remarks 'The paths of the files to list.';
+		};
+		parameter email : STRING [1,1];
+		parameter count : INTEGER [1,1] = ['1'];
+		parameter threshold : REAL [1,1] = ['2.0'];
+		parameter gene-ids : STRING [1,-1];
+		parameter categories-in-result : STRING [1,-1];
+		parameter gene-identifier-type : STRING [1,1];
+	}
+	produces {
+		dataset output.tsv : 'text/tsv' [1,1] {
+			remarks 'The output';
+		};
+		
+	}
+ 	using executable geas-david-chart-report {
+		redirecting {
+			stdout to file-list;
+		}
+		commandLineTemplate [
+			literals ['-la'],
+			parameter email
+		]
+		returns {
+			0 if SUCCEEDED;
+			1 if FAILED 'Minor problems. (E.g., cannot access directory)';
+			2 if FAILED 'Serious trouble. (E.g., cannot access command-line argument)';
+		}
+	}
+}

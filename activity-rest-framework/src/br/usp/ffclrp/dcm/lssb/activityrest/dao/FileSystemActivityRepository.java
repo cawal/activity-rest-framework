@@ -24,14 +24,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
 
-public class FileSystemAnalysisRepository implements ActivityRepository {
+public class FileSystemActivityRepository implements ActivityRepository {
 	
 	private static final String SINGLE_FILE_DATASETS_DIR_PATH =
 			"SINGLE_FILE_DATASETS";
@@ -47,12 +47,10 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 	JsonbConfig jsonConfig;
 	Jsonb jsonb;
 	
+	private final static Logger LOGGER =
+			Logger.getLogger(FileSystemActivityRepository.class.getName());
 	
-	private final static Logger LOGGER 
-		= Logger.getLogger(FileSystemAnalysisRepository.class.getName());
-	
-	
-	public FileSystemAnalysisRepository(
+	public FileSystemActivityRepository(
 			@NotNull File localStorage,
 			@NotNull Activity aaDesc) {
 		
@@ -84,7 +82,6 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		
 		analysis.setId(newAnalysisId.toString());
 		File analysisRoot = new File(localStorage, analysis.getId());
-		
 		
 		try {
 			analysisRoot.mkdirs();
@@ -197,7 +194,8 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		return analysisRoot;
 	}
 	
-	public AnalysisActivity moveFrom(String analysisId, FileSystemAnalysisRepository from)
+	public AnalysisActivity moveFrom(String analysisId,
+			FileSystemActivityRepository from)
 			throws AnalysisActivityNotFoundException {
 		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
 		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);
@@ -209,14 +207,16 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		Activity descCopy = EcoreUtil.copy(aaDesc);
 		aa.setDescription(descCopy);
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy.getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy
+				.getInputDatasets()) {
 			Dataset d = AnalysisActivityModelFactory.eINSTANCE.createDataset();
 			d.setName(dp.getName());
 			d.setDescription(dp);
 			aa.getInputs().add(d);
 		}
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy.getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy
+				.getOutputDatasets()) {
 			Dataset d = AnalysisActivityModelFactory.eINSTANCE.createDataset();
 			d.setName(dp.getName());
 			d.setDescription(dp);
@@ -236,12 +236,14 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		}
 		
 		// save/overwrite parameters
-		/*Map<String, Object> parametersMap =
-				ParametersUtil
-						.parameterDescriptionsToMap(aaDesc.getParameters());*/
+		/*
+		 * Map<String, Object> parametersMap =
+		 * ParametersUtil
+		 * .parameterDescriptionsToMap(aaDesc.getParameters());
+		 */
 		
 		FileWriter parametersStream = new FileWriter(parametersFile);
-		ParameterMap parametersMap = 
+		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
 		
 		parametersMap.getDescriptions().addAll(aaDesc.getParameters());
@@ -273,9 +275,10 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		// TODO: move for better place
 		aa.getParameters().clear();
 		aa.getParameters().getDescriptions().clear();
-		aa.getParameters().getDescriptions().addAll(aa.getDescription().getParameters());
+		aa.getParameters().getDescriptions()
+				.addAll(aa.getDescription().getParameters());
 		aa.getParameters().setDefaultValues();
-
+		
 		// get values from file
 		try {
 			@SuppressWarnings("unchecked")
@@ -284,9 +287,9 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 							Map.class);
 			
 			aa.getParameters().putAll(parametersSet);
-
+			
 		} catch (FileNotFoundException e) {
-//		} catch (FileNotFoundException e) {
+			// } catch (FileNotFoundException e) {
 			e.printStackTrace();
 			throw new AnalysisActivityNotFoundException(aa.getId());
 		}
@@ -302,27 +305,18 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			inputSubdirectory.mkdir();
 		}
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+				.getInputDatasets()) {
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if (MultiplicityElementUtil.acceptsList(dp)) {
 				File datasetSubdirectory =
 						new File(inputSubdirectory, dp.getName());
 				datasetSubdirectory.mkdirs();
-				break;
-			
-			case SINGLE_FILE: // file has the dataset name
+			} else {
 				File singleFileDatasetDir =
 						new File(inputSubdirectory,
 								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
-				break;
-			default:
-				throw new NotImplementedException(
-						"Must provide implementation for "
-								+ dp.getDatasetKind()
-								+ " at " + Thread.currentThread());
 			}
 		}
 	}
@@ -336,31 +330,26 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 				new File(getAnalysisDirectoryInLocalStorage(aa.getId()),
 						inputDatasetsSubpath);
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa.getDescription().getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa
+				.getDescription().getInputDatasets()) {
 			Dataset dataset = aa.inputDatasetForName(dp.getName());
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if (MultiplicityElementUtil.acceptsList(dp)) {// files are inside a
+															// dir with the
+															// dataset
+				// name
 				File[] files = new File(inputDatasetsDirectory, dp.getName())
 						.listFiles();
 				dataset.getFiles().addAll(Arrays.asList(files));
-				break;
-			
-			case SINGLE_FILE: // file has the dataset name
+				
+			} else {// file has the dataset name
 				File singleFileDatasetDir =
 						new File(inputDatasetsDirectory,
 								SINGLE_FILE_DATASETS_DIR_PATH);
 				File datasetFile =
 						new File(singleFileDatasetDir, dataset.getName());
 				dataset.getFiles().add(datasetFile);
-				break;
-			default:
-				System.err.println("Must provide implementation for "
-						+ dp.getDatasetKind()
-						+ " at "
-						+ Thread.currentThread().getStackTrace().toString());
-				break;
+				
 			}
 		}
 		
@@ -375,13 +364,16 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			File inputSubdirectory =
 					new File(analysisRoot, inputDatasetsSubpath);
 			
-			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getInputDatasets()) {
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+					.getInputDatasets()) {
 				
 				Dataset dataset = aa.inputDatasetForName(dp.getName());
 				
-				switch (dp.getDatasetKind()) {
-				case FILE_COLLECTION: // files are inside a dir with the dataset
-										// name
+				if (MultiplicityElementUtil.acceptsList(dp)) {// files are
+																// inside a dir
+																// with the
+																// dataset
+					// name
 					File datasetSubdirectory =
 							new File(inputSubdirectory, dp.getName());
 					for (int i = 0; i < dataset.getFiles().size(); i++) {
@@ -398,9 +390,8 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 							
 						}
 					}
-					break;
-				
-				case SINGLE_FILE: // file has the dataset name
+					
+				} else { // file has the dataset name
 					File singleFileDatasetDir =
 							new File(inputSubdirectory,
 									SINGLE_FILE_DATASETS_DIR_PATH);
@@ -417,13 +408,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 						dataset.getFiles().remove(0);
 						dataset.getFiles().add(expectedFile);
 					}
-					break;
-				default:
-					System.err.println("Must provide implementation for "
-							+ dp.getDatasetKind()
-							+ " at " + Thread.currentThread().getStackTrace()
-									.toString());
-					break;
+					
 				}
 				
 			}
@@ -455,21 +440,21 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 		
 		clearDatasetsFiles(aa.getOutputs());
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa.getDescription().getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa
+				.getDescription().getOutputDatasets()) {
 			
 			Dataset dataset = aa.outputDatasetForName(dp.getName());
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if (MultiplicityElementUtil.acceptsList(dp)) {
+				// files are inside a dir with the dataset
+				// name
 				File datasetDir =
 						new File(outputDatasetsDirectory, dp.getName());
 				datasetDir.mkdirs();
 				File[] files = datasetDir.listFiles();
 				dataset.getFiles().addAll(Arrays.asList(files));
-				break;
-			
-			case SINGLE_FILE: // file has the dataset name
+				
+			} else {// file has the dataset name
 				
 				File singleFileDatasetDir =
 						new File(outputDatasetsDirectory,
@@ -478,13 +463,6 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 				File datasetFile =
 						new File(singleFileDatasetDir, dataset.getName());
 				dataset.getFiles().add(datasetFile);
-				break;
-			
-			default:
-				throw new NotImplementedException(
-						"Must provide implementation for "
-								+ dp.getDatasetKind()
-								+ " at " + Thread.currentThread());
 			}
 		}
 		
@@ -497,27 +475,20 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			outputSubdirectory.mkdir();
 		}
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+				.getOutputDatasets()) {
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if(MultiplicityElementUtil.acceptsList(dp)) {
+				// files are inside a dir with the dataset name
 				File datasetSubdirectory =
 						new File(outputSubdirectory, dp.getName());
 				datasetSubdirectory.mkdirs();
-				break;
 			
-			case SINGLE_FILE: // file has the dataset name
+			} else { // file has the dataset name
 				File singleFileDatasetDir =
 						new File(outputSubdirectory,
 								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
-				break;
-			default:
-				throw new NotImplementedException(
-						"Must provide implementation for "
-								+ dp.getDatasetKind()
-								+ " at " + Thread.currentThread());
 			}
 		}
 	}
@@ -531,12 +502,12 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			File outputSubdirectory =
 					new File(analysisRoot, outputDatasetsSubpath);
 			
-			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc.getOutputDatasets()) {
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+					.getOutputDatasets()) {
 				
 				Dataset dataset = aa.outputDatasetForName(dp.getName());
-				
-				switch (dp.getDatasetKind()) {
-				case FILE_COLLECTION: // files are inside a dir with the dataset
+				if(MultiplicityElementUtil.acceptsList(dp)) {
+					// files are inside a dir with the dataset
 										// name
 					File datasetSubdirectory =
 							new File(outputSubdirectory, dp.getName());
@@ -554,9 +525,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 							
 						}
 					}
-					break;
-				
-				case SINGLE_FILE: // file has the dataset name
+				} else {// file has the dataset name
 					File singleFileDatasetDir =
 							new File(outputSubdirectory,
 									SINGLE_FILE_DATASETS_DIR_PATH);
@@ -575,15 +544,7 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 						dataset.getFiles().remove(0);
 						dataset.getFiles().add(expectedFile);
 					}
-					break;
-				default:
-					System.err.println("Must provide implementation for "
-							+ dp.getDatasetKind()
-							+ " at " + Thread.currentThread().getStackTrace()
-									.toString());
-					break;
 				}
-				
 			}
 			
 			// reloadInputDatasetsFiles(aa);
@@ -625,6 +586,5 @@ public class FileSystemAnalysisRepository implements ActivityRepository {
 			aa.setErrorReport(expectedFile);
 		}
 	}
-	
 	
 }

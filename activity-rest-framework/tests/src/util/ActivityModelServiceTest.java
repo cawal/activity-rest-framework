@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.util.ActivityModelService;
+import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 
 public class ActivityModelServiceTest {
@@ -35,7 +35,7 @@ public class ActivityModelServiceTest {
 	@Test
 	public void retrieveAADLModelFromInputStream() throws IOException {
 		InputStream modelInputStream = this.getClass().getResourceAsStream("ls.aadl");
-		Activity model = ActivityModelService.retrieveAADLModel(modelInputStream);
+		Activity model = ModelsService.retrieveAADLModel(modelInputStream);
 		assertNotNull(model);
 		assertEquals("list-files", model.getName());
 	}

@@ -11,6 +11,7 @@
 	<modules>
 		<module>activity-rest-framework</module>
 		<module>activity-rest-framework-testing</module>
+		<module>bundles/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivity</module>
 	</modules>
 
 

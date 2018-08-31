@@ -20,7 +20,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemAnalysisRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManagerImpl;
@@ -42,19 +42,19 @@ public class JobCollection {
 	UriInfo uriInfo;
 	AnalysisActivityDescription aaDesc;
 	
-	FileSystemAnalysisRepository nonExecutedDao;
-	FileSystemAnalysisRepository runningDao;
-	FileSystemAnalysisRepository succeededDAO;
-	FileSystemAnalysisRepository failedDAO;
+	FileSystemActivityRepository nonExecutedDao;
+	FileSystemActivityRepository runningDao;
+	FileSystemActivityRepository succeededDAO;
+	FileSystemActivityRepository failedDAO;
 	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
 			new JobManagerImpl();
 	
 	public JobCollection(AnalysisActivityDescription aaDesc,
 			UriInfo uriInfo,
-			FileSystemAnalysisRepository nonExecutedAnalysisActivityDao,
-			FileSystemAnalysisRepository runningAnalysisActivityDao,
-			FileSystemAnalysisRepository succeededAnalysisActivityDao,
-			FileSystemAnalysisRepository failedAnalysisActivityDao) {
+			FileSystemActivityRepository nonExecutedAnalysisActivityDao,
+			FileSystemActivityRepository runningAnalysisActivityDao,
+			FileSystemActivityRepository succeededAnalysisActivityDao,
+			FileSystemActivityRepository failedAnalysisActivityDao) {
 		
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
