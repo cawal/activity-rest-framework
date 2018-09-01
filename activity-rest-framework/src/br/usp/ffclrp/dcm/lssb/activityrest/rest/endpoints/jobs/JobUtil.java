@@ -19,12 +19,16 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLine
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator;
 
 public class JobUtil {
@@ -44,10 +48,14 @@ public class JobUtil {
 			File workingDirectory)
 			throws InvalidCommandLineDefinition, IOException {
 		
-		List<String> commandLine = produceCommandLine(aa);
-		File standardInput = getStandardInputPipedFile(aa);
-		File standardOutput = getStandardOutputPipedFile(aa);
-		File standardError = getStandardErrorPipedFile(aa);
+		
+		Tool tool = aa.getDescription().getTool();
+		CommandLineTool clt = (CommandLineTool) tool;
+		
+		List<String> commandLine = produceCommandLine(aa,clt);
+		File standardInput = getStandardInputPipedFile(aa,clt);
+		File standardOutput = getStandardOutputPipedFile(aa,clt);
+		File standardError = getStandardErrorPipedFile(aa,clt);
 		File errorReportFile = aa.getErrorReport();
 		
 		JobConfig jb = JobConfig.builder()
@@ -62,13 +70,16 @@ public class JobUtil {
 		return jb;
 	}
 	
-	private static List<String> produceCommandLine(AnalysisActivity analysis)
+	private static List<String> produceCommandLine(AnalysisActivity analysis,CommandLineTool clt)
 			throws InvalidCommandLineDefinition {
 		
 		List<String> commandLine = new ArrayList<>();
 		Activity description = analysis.getDescription();
 		List<CommandLineEntryList> entries =
 				((CommandLineTool) description.getTool()).getCommandLineTemplate();
+		
+		
+		commandLine.add(getExecutableString(clt));
 		
 		for (CommandLineEntryList e : entries) {
 			
@@ -81,12 +92,6 @@ public class JobUtil {
 			} else if (e instanceof DatasetCommandLineEntryList) {
 				br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp =
 						((DatasetCommandLineEntryList) e).getDataset();
-				
-				if (dp.getDatasetKind() == DatasetKind.STANDARD_INPUT
-						|| dp.getDatasetKind() == DatasetKind.STANDARD_OUTPUT
-						|| dp.getDatasetKind() == DatasetKind.STANDARD_ERROR)
-					throw new InvalidCommandLineDefinition(dp.getName(),
-							dp.getDatasetKind());
 				
 				Dataset dataset = analysis.inputDatasetForName(dp.getName());
 				dataset = (dataset != null) ? dataset
@@ -129,31 +134,35 @@ public class JobUtil {
 	}
 	
 	
-	private static File getStandardInputPipedFile(AnalysisActivity aa)
+	private static String getExecutableString(CommandLineTool clt) {
+		return clt.getName();
+	}
+
+	private static File getStandardInputPipedFile(AnalysisActivity aa, CommandLineTool clt)
 			throws IOException {
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset pr : aa.getDescription().getInputDatasets()) {
-			if (pr.getDatasetKind() != DatasetKind.STANDARD_INPUT) {
-				Dataset d = aa.inputDatasetForName(pr.getName());
-				if (d != null && d.getFiles().size() > 0) {
-					return d.getFiles().get(0);
-				}
+		InputDataset datasetDescription = clt.getStandardInputStream();
+		if(datasetDescription != null) {
+			Dataset d = aa.inputDatasetForName(datasetDescription.getName());
+			if (d != null && d.getFiles().size() > 0) {
+				return d.getFiles().get(0);
 			}
 		}
+		
 		File temp = File.createTempFile("job-manager-input", aa.getId());
 		return temp;
 	}
 	
-	private static File getStandardOutputPipedFile(AnalysisActivity aa)
+	private static File getStandardOutputPipedFile(AnalysisActivity aa, CommandLineTool clt)
 			throws IOException {
 		
+
+		OutputDataset datasetDescription = clt.getStandardOutputStream();
 		
-		for (DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
-			if (pr.getDatasetKind() == DatasetKind.STANDARD_OUTPUT) {
-				Dataset d = aa.outputDatasetForName(pr.getName());
-				if (d != null && d.getFiles().size() > 0) {
-					return d.getFiles().get(0);
-				}
+		if(datasetDescription != null) {
+			Dataset d = aa.outputDatasetForName(datasetDescription.getName());
+			if (d != null && d.getFiles().size() > 0) {
+				return d.getFiles().get(0);
 			}
 		}
 		
@@ -161,15 +170,16 @@ public class JobUtil {
 		return temp;
 	}
 	
-	private static File getStandardErrorPipedFile(AnalysisActivity aa)
+	private static File getStandardErrorPipedFile(AnalysisActivity aa, CommandLineTool clt)
 			throws IOException {
 		
-		for (DatasetDescription pr : aa.getDescription().getOutputDatasets()) {
-			if (pr.getDatasetKind() == DatasetKind.STANDARD_ERROR) {
-				Dataset d = aa.outputDatasetForName(pr.getName());
-				if (d != null && d.getFiles().size() > 0) {
-					return d.getFiles().get(0);
-				}
+
+		OutputDataset datasetDescription = clt.getStandardErrorStream();
+		
+		if(datasetDescription != null) {
+			Dataset d = aa.outputDatasetForName(datasetDescription.getName());
+			if (d != null && d.getFiles().size() > 0) {
+				return d.getFiles().get(0);
 			}
 		}
 		
