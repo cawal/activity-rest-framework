@@ -63,7 +63,7 @@ public class RootResource {
 			"./analysis-activity-template.json";
 	
 	public RootResource(InputStream aadlModel, FileSystemRepositoryProperties daoProperties) throws IOException {
-		
+		System.out.println("CARREGANDO ROOT RESOURCE" + aadlModel);
 		initializeEcoreResources(aadlModel);
 		initializeFileSystemDaos(daoProperties);
 	}
@@ -137,7 +137,7 @@ public class RootResource {
 	}
 	
 	private void initializeEcoreResources(InputStream is) throws IOException {
-		ModelsService.retrieveAADLModel(is);
+		aaDesc = ModelsService.retrieveAADLModel(is);
 	}
 	
 	private void initializeFileSystemDaos(FileSystemRepositoryProperties properties) {

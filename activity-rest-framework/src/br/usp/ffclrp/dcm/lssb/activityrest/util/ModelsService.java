@@ -34,7 +34,6 @@ public class ModelsService {
 	 */
 	public static Activity retrieveAADLModel(InputStream inputStream) throws IOException {
 		String uri = "dummy:/example.aadl";
-
 		Activity activity = null;
 		// Needed because Xtext only loads its generated grammar
 		initializeEcoreModelsResources();
