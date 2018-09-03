@@ -62,6 +62,8 @@ public class RootResource {
 	final String analysisActivityResourcePath =
 			"./analysis-activity-template.json";
 	
+	public RootResource() {};
+	
 	public RootResource(InputStream aadlModel, FileSystemRepositoryProperties daoProperties) throws IOException {
 		System.out.println("CARREGANDO ROOT RESOURCE" + aadlModel);
 		initializeEcoreResources(aadlModel);
@@ -136,11 +138,11 @@ public class RootResource {
 				failedDao);
 	}
 	
-	private void initializeEcoreResources(InputStream is) throws IOException {
+	protected void initializeEcoreResources(InputStream is) throws IOException {
 		aaDesc = ModelsService.retrieveAADLModel(is);
 	}
 	
-	private void initializeFileSystemDaos(FileSystemRepositoryProperties properties) {
+	protected void initializeFileSystemDaos(FileSystemRepositoryProperties properties) {
 		
 		File nonExecutedAnalysisActivityDaoRoot =
 				new File(properties.getNonExecutedAnalysesRootDirectory());
