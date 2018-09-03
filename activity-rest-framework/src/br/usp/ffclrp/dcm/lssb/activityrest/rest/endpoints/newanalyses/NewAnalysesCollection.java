@@ -53,8 +53,6 @@ public class NewAnalysesCollection {
 		try {
 			AnalysisActivity aa = createNewAnalysisActivity();
 			
-			System.out.println(aa.getId());
-			
 			uriBuilder = uriInfo.getAbsolutePathBuilder();
 			URI locationURI = uriBuilder.path(aa.getId()).build();
 			

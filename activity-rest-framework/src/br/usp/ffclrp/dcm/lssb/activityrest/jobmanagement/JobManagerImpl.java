@@ -65,16 +65,15 @@ public class JobManagerImpl implements JobManager {
 				.observer(jobObserver)
 				.build();
 		
-		
 		try {
 			File stateFile = retrieveStateFileForId(jobId);
 			if(stateFile.exists()) {
 				boolean jobIsNotCanceled = 
 						JobState.CANCELED != 
 						JobState.valueOf(FileUtils.readFileToString(stateFile));
-				if(jobIsNotCanceled)
-					// job exists!
+				if(jobIsNotCanceled) {// job exists!
 					throw new JobCantStartException(jobId);
+				}
 			} else {
 				stateFile.createNewFile();
 			}

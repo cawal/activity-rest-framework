@@ -78,11 +78,8 @@ public class JobUtil {
 		List<CommandLineEntryList> entries =
 				((CommandLineTool) description.getTool()).getCommandLineTemplate();
 		
-		
 		commandLine.add(getExecutableString(clt));
-		
 		for (CommandLineEntryList e : entries) {
-			
 			EList<String> stringList = new BasicEList<>();
 			
 			if (e instanceof LiteralCommandLineEntryList) {
@@ -126,9 +123,6 @@ public class JobUtil {
 			}
 			commandLine.addAll(stringList);
 		}
-		
-		System.out.println("COMMAND LINE");
-		commandLine.stream().forEach(System.out::println);
 		
 		return commandLine;
 	}

@@ -86,8 +86,6 @@ public class ParameterSetResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response putAllParameters(Map<String, Object> map) {
-		System.out.println("Received Map:");
-		System.out.println(map);
 		aa.getParameters().putAll(map);
 		try {
 			analysisActivityDao.update(aa);
@@ -183,7 +181,6 @@ public class ParameterSetResource {
 					aa.getParameters().get(parameterName);
 			
 			List<Object> list = null;
-			System.out.println(updatedParametersObject);
 			if (!(updatedParametersObject instanceof List)) {
 				list = Arrays.asList(updatedParametersObject);
 			} else {
@@ -191,9 +188,6 @@ public class ParameterSetResource {
 			}
 			
 			boolean ok = list.size() == values.size();
-			System.out.println(ok);
-			System.out.println(list);
-			System.out.println(values);
 			for (int i = 0; ok && i < list.size(); i++) {
 				ok = ok && list.get(i).toString().equals(values.get(i).toString());
 			}

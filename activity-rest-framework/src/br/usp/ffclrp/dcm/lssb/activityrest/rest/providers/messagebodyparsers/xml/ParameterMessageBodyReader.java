@@ -67,25 +67,17 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(entityStream);
 			doc.getDocumentElement().normalize();
-			System.out.print("Root element: ");
 			entity.setName(doc.getDocumentElement().getNodeName());
 			List<Object> valueList = new ArrayList<>();
 			entity.setValue(valueList);
 			
 			
-			System.out.println(doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("value");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					System.out.print("\nCurrent Element :");
-					System.out.println(nNode.getNodeName());
 					Element eElement = (Element) nNode;
-//					System.out.print("id : ");
-//					System.out.println(eElement.getAttribute("id"));
 					String textContent = eElement.getTextContent();
-					System.out.println(textContent);
-					System.out.println(textContent.getClass().toString());
 					valueList.add(textContent);
 //					NodeList empNodeList = eElement.getChildNodes();
 //					for (int count = 0; count < empNodeList
@@ -93,16 +85,10 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 //						Node node1 = empNodeList.item(count);
 //						if (node1.getNodeType() == Node.ELEMENT_NODE) {
 //							Element ele = (Element) node1;
-//							System.out.print(ele.getNodeName() + ": ");
-//							System.out.println(ele.getTextContent());
 //						}
 //					}
 				} else if (nNode.getNodeType() == Node.COMMENT_NODE) {
-//					System.out.print("\nCurrent Element :");
-//					System.out.println(nNode.getNodeName());
 //					Comment comment = (Comment) nNode;
-//					System.out.println(
-//							"Comment Text: " + comment.getTextContent());
 				}
 			}
 			
@@ -112,7 +98,6 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 			throw new BadRequestException();
 		}
 		
-		System.out.println(entity);
 		return entity;
 	}
 	

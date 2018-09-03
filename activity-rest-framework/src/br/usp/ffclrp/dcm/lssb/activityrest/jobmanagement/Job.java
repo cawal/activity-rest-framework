@@ -39,10 +39,7 @@ public class Job implements Runnable {
 			pb.redirectInput(Redirect.from(jobConfig.standardInputPipedFile()));
 			
 			Process process = pb.start();
-			System.out.println("starting");
 			process.waitFor();
-			System.out.println("ended");
-			System.out.println(process.exitValue());
 			// When the process is finished
 			switch (process.exitValue()) {
 			// If the process was successfully finished
