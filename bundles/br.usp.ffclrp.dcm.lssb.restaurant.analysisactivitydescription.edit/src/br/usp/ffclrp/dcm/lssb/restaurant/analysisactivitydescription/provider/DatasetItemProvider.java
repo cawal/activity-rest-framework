@@ -48,7 +48,7 @@ public class DatasetItemProvider extends MultiplicityElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addRemarksPropertyDescriptor(object);
+			addRemarkPropertyDescriptor(object);
 			addMimetypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -77,19 +77,19 @@ public class DatasetItemProvider extends MultiplicityElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Remarks feature.
+	 * This adds a property descriptor for the Remark feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRemarksPropertyDescriptor(Object object) {
+	protected void addRemarkPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IdentifiableElement_remarks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableElement_remarks_feature", "_UI_IdentifiableElement_type"),
-				 AnalysisActivityDescriptionPackage.Literals.IDENTIFIABLE_ELEMENT__REMARKS,
+				 getString("_UI_IdentifiableElement_remark_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableElement_remark_feature", "_UI_IdentifiableElement_type"),
+				 AnalysisActivityDescriptionPackage.Literals.IDENTIFIABLE_ELEMENT__REMARK,
 				 true,
 				 false,
 				 false,
@@ -189,7 +189,7 @@ public class DatasetItemProvider extends MultiplicityElementItemProvider {
 
 		switch (notification.getFeatureID(Dataset.class)) {
 			case AnalysisActivityDescriptionPackage.DATASET__NAME:
-			case AnalysisActivityDescriptionPackage.DATASET__REMARKS:
+			case AnalysisActivityDescriptionPackage.DATASET__REMARK:
 			case AnalysisActivityDescriptionPackage.DATASET__MIMETYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

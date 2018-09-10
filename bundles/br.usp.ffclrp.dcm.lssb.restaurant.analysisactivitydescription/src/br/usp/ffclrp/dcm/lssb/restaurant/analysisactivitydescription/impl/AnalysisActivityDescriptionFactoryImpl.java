@@ -57,7 +57,6 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT: return createIdentifiableElement();
 			case AnalysisActivityDescriptionPackage.ACTIVITY: return createActivity();
 			case AnalysisActivityDescriptionPackage.PARAMETER: return createParameter();
 			case AnalysisActivityDescriptionPackage.INPUT_DATASET: return createInputDataset();
@@ -113,16 +112,6 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IdentifiableElement createIdentifiableElement() {
-		IdentifiableElementImpl identifiableElement = new IdentifiableElementImpl();
-		return identifiableElement;
 	}
 
 	/**

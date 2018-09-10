@@ -28,7 +28,7 @@
 'produces'=23
 'readinessContraints'=24
 'redirecting'=37
-'remarks'=20
+'remark'=20
 'returns'=44
 'stderr'=42
 'stdin'=38

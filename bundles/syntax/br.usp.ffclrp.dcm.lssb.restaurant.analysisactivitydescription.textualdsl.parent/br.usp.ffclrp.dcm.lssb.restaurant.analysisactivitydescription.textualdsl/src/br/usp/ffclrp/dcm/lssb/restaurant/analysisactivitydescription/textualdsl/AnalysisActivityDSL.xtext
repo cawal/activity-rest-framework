@@ -9,7 +9,7 @@ Activity returns analysisactivitydescription::Activity:
 	'activity'
 	name=Identifier
 	ENTITY_START
-		('remarks' remarks=EString STATEMENT_END)?
+		('remark' remark=EString STATEMENT_END)?
 		('on' ENTITY_START inputDatasets+=InputDataset ( inputDatasets+=InputDataset )* ENTITY_END )?
 		('with' ENTITY_START parameters+=Parameter ( parameters+=Parameter)* ENTITY_END )?
 		('produces' ENTITY_START outputDatasets+=OutputDataset ( outputDatasets+=OutputDataset)* ENTITY_END )?
@@ -55,7 +55,7 @@ Parameter returns analysisactivitydescription::Parameter:
 	('=' LIST_START  defaultValue+=EString ( LIST_SEPARATOR defaultValue+=EString)* LIST_END  )?
 	(
 	    ENTITY_START
-        ('remarks' remarks=EString STATEMENT_END)?
+        ('remark' remark=EString STATEMENT_END)?
         (
            'constraints' 
            LIST_START constraints+=ParameterConstraint 
@@ -77,7 +77,7 @@ InputDataset returns analysisactivitydescription::InputDataset:
     LIST_END
     (
        ENTITY_START
-        ('remarks' remarks=EString STATEMENT_END)?
+        ('remark' remark=EString STATEMENT_END)?
         (
             'constraints' LIST_START 
                 constraints+=DatasetConstraint 
@@ -100,7 +100,7 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
     LIST_END
     (
        ENTITY_START
-        ('remarks' remarks=EString STATEMENT_END)?
+        ('remark' remark=EString STATEMENT_END)?
         (
             'constraints' LIST_START 
             constraints+=DatasetConstraint 
@@ -175,7 +175,7 @@ CommandLineTool returns analysisactivitydescription::CommandLineTool:
 	'executable'
 	name=EString
 	ENTITY_START
-		('remarks' remarks=EString STATEMENT_END)?
+		('remark' remark=EString STATEMENT_END)?
 		('redirecting'
 		ENTITY_START
 		( 

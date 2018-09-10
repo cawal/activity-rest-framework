@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ENTITY_START", "RULE_STATEMENT_END", "RULE_ENTITY_END", "RULE_LIST_START", "RULE_LIST_SEPARATOR", "RULE_LIST_END", "RULE_MULTILINE_STRING", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_PIPE_TO", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'activity'", "'remarks'", "'on'", "'with'", "'produces'", "'readinessContraints'", "'using'", "'parameter'", "':'", "'='", "'constraints'", "'dataset'", "'-'", "'CustomParameterConstraint'", "'CustomDatasetConstraint'", "'CustomParameterReadinessConstraint'", "'CustomDatasetReadinessConstraint'", "'executable'", "'redirecting'", "'stdin'", "'from'", "'stdout'", "'to'", "'stderr'", "'commandLineTemplate'", "'returns'", "'if'", "'toolname'", "'literals'", "'Join'", "'PrependEach'", "'AppendEach'", "'AppendListWith'", "'PrependListWith'", "'STRING'", "'INTEGER'", "'REAL'", "'SUCCEEDED'", "'FAILED'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ENTITY_START", "RULE_STATEMENT_END", "RULE_ENTITY_END", "RULE_LIST_START", "RULE_LIST_SEPARATOR", "RULE_LIST_END", "RULE_MULTILINE_STRING", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_PIPE_TO", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'activity'", "'remark'", "'on'", "'with'", "'produces'", "'readinessContraints'", "'using'", "'parameter'", "':'", "'='", "'constraints'", "'dataset'", "'-'", "'CustomParameterConstraint'", "'CustomDatasetConstraint'", "'CustomParameterReadinessConstraint'", "'CustomDatasetReadinessConstraint'", "'executable'", "'redirecting'", "'stdin'", "'from'", "'stdout'", "'to'", "'stderr'", "'commandLineTemplate'", "'returns'", "'if'", "'toolname'", "'literals'", "'Join'", "'PrependEach'", "'AppendEach'", "'AppendListWith'", "'PrependListWith'", "'STRING'", "'INTEGER'", "'REAL'", "'SUCCEEDED'", "'FAILED'"
     };
     public static final int T__50=50;
     public static final int RULE_LIST_END=9;
@@ -156,7 +156,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleActivity"
-    // InternalAnalysisActivityDSL.g:72:1: ruleActivity returns [EObject current=null] : (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END ) ;
+    // InternalAnalysisActivityDSL.g:72:1: ruleActivity returns [EObject current=null] : (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END ) ;
     public final EObject ruleActivity() throws RecognitionException {
         EObject current = null;
 
@@ -181,7 +181,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         Token this_ENTITY_END_29=null;
         AntlrDatatypeRuleToken lv_name_1_0 = null;
 
-        AntlrDatatypeRuleToken lv_remarks_4_0 = null;
+        AntlrDatatypeRuleToken lv_remark_4_0 = null;
 
         EObject lv_inputDatasets_8_0 = null;
 
@@ -206,11 +206,11 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalAnalysisActivityDSL.g:78:2: ( (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END ) )
-            // InternalAnalysisActivityDSL.g:79:2: (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END )
+            // InternalAnalysisActivityDSL.g:78:2: ( (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END ) )
+            // InternalAnalysisActivityDSL.g:79:2: (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END )
             {
-            // InternalAnalysisActivityDSL.g:79:2: (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END )
-            // InternalAnalysisActivityDSL.g:80:3: otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END
+            // InternalAnalysisActivityDSL.g:79:2: (otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END )
+            // InternalAnalysisActivityDSL.g:80:3: otherlv_0= 'activity' ( (lv_name_1_0= ruleIdentifier ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'on' this_ENTITY_START_7= RULE_ENTITY_START ( (lv_inputDatasets_8_0= ruleInputDataset ) ) ( (lv_inputDatasets_9_0= ruleInputDataset ) )* this_ENTITY_END_10= RULE_ENTITY_END )? (otherlv_11= 'with' this_ENTITY_START_12= RULE_ENTITY_START ( (lv_parameters_13_0= ruleParameter ) ) ( (lv_parameters_14_0= ruleParameter ) )* this_ENTITY_END_15= RULE_ENTITY_END )? (otherlv_16= 'produces' this_ENTITY_START_17= RULE_ENTITY_START ( (lv_outputDatasets_18_0= ruleOutputDataset ) ) ( (lv_outputDatasets_19_0= ruleOutputDataset ) )* this_ENTITY_END_20= RULE_ENTITY_END )? (otherlv_21= 'readinessContraints' this_LIST_START_22= RULE_LIST_START ( (lv_readinessContraints_23_0= ruleReadinessConstraint ) ) (this_LIST_SEPARATOR_24= RULE_LIST_SEPARATOR ( (lv_readinessContraints_25_0= ruleReadinessConstraint ) ) )* this_LIST_END_26= RULE_LIST_END )? otherlv_27= 'using' ( (lv_tool_28_0= ruleTool ) ) this_ENTITY_END_29= RULE_ENTITY_END
             {
             otherlv_0=(Token)match(input,19,FOLLOW_3); 
 
@@ -251,7 +251,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
             			newLeafNode(this_ENTITY_START_2, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_2());
             		
-            // InternalAnalysisActivityDSL.g:107:3: (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )?
+            // InternalAnalysisActivityDSL.g:107:3: (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -260,23 +260,23 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
             }
             switch (alt1) {
                 case 1 :
-                    // InternalAnalysisActivityDSL.g:108:4: otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END
+                    // InternalAnalysisActivityDSL.g:108:4: otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END
                     {
                     otherlv_3=(Token)match(input,20,FOLLOW_6); 
 
-                    				newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getRemarksKeyword_3_0());
+                    				newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getRemarkKeyword_3_0());
                     			
-                    // InternalAnalysisActivityDSL.g:112:4: ( (lv_remarks_4_0= ruleEString ) )
-                    // InternalAnalysisActivityDSL.g:113:5: (lv_remarks_4_0= ruleEString )
+                    // InternalAnalysisActivityDSL.g:112:4: ( (lv_remark_4_0= ruleEString ) )
+                    // InternalAnalysisActivityDSL.g:113:5: (lv_remark_4_0= ruleEString )
                     {
-                    // InternalAnalysisActivityDSL.g:113:5: (lv_remarks_4_0= ruleEString )
-                    // InternalAnalysisActivityDSL.g:114:6: lv_remarks_4_0= ruleEString
+                    // InternalAnalysisActivityDSL.g:113:5: (lv_remark_4_0= ruleEString )
+                    // InternalAnalysisActivityDSL.g:114:6: lv_remark_4_0= ruleEString
                     {
 
-                    						newCompositeNode(grammarAccess.getActivityAccess().getRemarksEStringParserRuleCall_3_1_0());
+                    						newCompositeNode(grammarAccess.getActivityAccess().getRemarkEStringParserRuleCall_3_1_0());
                     					
                     pushFollow(FOLLOW_7);
-                    lv_remarks_4_0=ruleEString();
+                    lv_remark_4_0=ruleEString();
 
                     state._fsp--;
 
@@ -286,8 +286,8 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                     						}
                     						set(
                     							current,
-                    							"remarks",
-                    							lv_remarks_4_0,
+                    							"remark",
+                    							lv_remark_4_0,
                     							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
                     						afterParserOrEnumRuleCall();
                     					
@@ -1665,7 +1665,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleParameter"
-    // InternalAnalysisActivityDSL.g:632:1: ruleParameter returns [EObject current=null] : (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END ) ;
+    // InternalAnalysisActivityDSL.g:632:1: ruleParameter returns [EObject current=null] : (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END ) ;
     public final EObject ruleParameter() throws RecognitionException {
         EObject current = null;
 
@@ -1699,7 +1699,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
         AntlrDatatypeRuleToken lv_defaultValue_13_0 = null;
 
-        AntlrDatatypeRuleToken lv_remarks_17_0 = null;
+        AntlrDatatypeRuleToken lv_remark_17_0 = null;
 
         EObject lv_constraints_21_0 = null;
 
@@ -1710,11 +1710,11 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalAnalysisActivityDSL.g:638:2: ( (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END ) )
-            // InternalAnalysisActivityDSL.g:639:2: (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END )
+            // InternalAnalysisActivityDSL.g:638:2: ( (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END ) )
+            // InternalAnalysisActivityDSL.g:639:2: (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END )
             {
-            // InternalAnalysisActivityDSL.g:639:2: (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END )
-            // InternalAnalysisActivityDSL.g:640:3: otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END
+            // InternalAnalysisActivityDSL.g:639:2: (otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END )
+            // InternalAnalysisActivityDSL.g:640:3: otherlv_0= 'parameter' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_parameterType_3_0= ruleParameterType ) ) this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (otherlv_9= '=' this_LIST_START_10= RULE_LIST_START ( (lv_defaultValue_11_0= ruleEString ) ) (this_LIST_SEPARATOR_12= RULE_LIST_SEPARATOR ( (lv_defaultValue_13_0= ruleEString ) ) )* this_LIST_END_14= RULE_LIST_END )? (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )? this_STATEMENT_END_26= RULE_STATEMENT_END
             {
             otherlv_0=(Token)match(input,26,FOLLOW_3); 
 
@@ -1979,7 +1979,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
             }
 
-            // InternalAnalysisActivityDSL.g:794:3: (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )?
+            // InternalAnalysisActivityDSL.g:794:3: (this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -1988,13 +1988,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
             }
             switch (alt19) {
                 case 1 :
-                    // InternalAnalysisActivityDSL.g:795:4: this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END
+                    // InternalAnalysisActivityDSL.g:795:4: this_ENTITY_START_15= RULE_ENTITY_START (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )? (otherlv_19= 'constraints' this_LIST_START_20= RULE_LIST_START ( (lv_constraints_21_0= ruleParameterConstraint ) ) (this_LIST_SEPARATOR_22= RULE_LIST_SEPARATOR ( (lv_constraints_23_0= ruleParameterConstraint ) ) )* this_LIST_END_24= RULE_LIST_END )? this_ENTITY_END_25= RULE_ENTITY_END
                     {
                     this_ENTITY_START_15=(Token)match(input,RULE_ENTITY_START,FOLLOW_29); 
 
                     				newLeafNode(this_ENTITY_START_15, grammarAccess.getParameterAccess().getENTITY_STARTTerminalRuleCall_10_0());
                     			
-                    // InternalAnalysisActivityDSL.g:799:4: (otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )?
+                    // InternalAnalysisActivityDSL.g:799:4: (otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2003,23 +2003,23 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                     }
                     switch (alt16) {
                         case 1 :
-                            // InternalAnalysisActivityDSL.g:800:5: otherlv_16= 'remarks' ( (lv_remarks_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END
+                            // InternalAnalysisActivityDSL.g:800:5: otherlv_16= 'remark' ( (lv_remark_17_0= ruleEString ) ) this_STATEMENT_END_18= RULE_STATEMENT_END
                             {
                             otherlv_16=(Token)match(input,20,FOLLOW_6); 
 
-                            					newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getRemarksKeyword_10_1_0());
+                            					newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getRemarkKeyword_10_1_0());
                             				
-                            // InternalAnalysisActivityDSL.g:804:5: ( (lv_remarks_17_0= ruleEString ) )
-                            // InternalAnalysisActivityDSL.g:805:6: (lv_remarks_17_0= ruleEString )
+                            // InternalAnalysisActivityDSL.g:804:5: ( (lv_remark_17_0= ruleEString ) )
+                            // InternalAnalysisActivityDSL.g:805:6: (lv_remark_17_0= ruleEString )
                             {
-                            // InternalAnalysisActivityDSL.g:805:6: (lv_remarks_17_0= ruleEString )
-                            // InternalAnalysisActivityDSL.g:806:7: lv_remarks_17_0= ruleEString
+                            // InternalAnalysisActivityDSL.g:805:6: (lv_remark_17_0= ruleEString )
+                            // InternalAnalysisActivityDSL.g:806:7: lv_remark_17_0= ruleEString
                             {
 
-                            							newCompositeNode(grammarAccess.getParameterAccess().getRemarksEStringParserRuleCall_10_1_1_0());
+                            							newCompositeNode(grammarAccess.getParameterAccess().getRemarkEStringParserRuleCall_10_1_1_0());
                             						
                             pushFollow(FOLLOW_7);
-                            lv_remarks_17_0=ruleEString();
+                            lv_remark_17_0=ruleEString();
 
                             state._fsp--;
 
@@ -2029,8 +2029,8 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                             							}
                             							set(
                             								current,
-                            								"remarks",
-                            								lv_remarks_17_0,
+                            								"remark",
+                            								lv_remark_17_0,
                             								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
                             							afterParserOrEnumRuleCall();
                             						
@@ -2242,7 +2242,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleInputDataset"
-    // InternalAnalysisActivityDSL.g:906:1: ruleInputDataset returns [EObject current=null] : (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) ;
+    // InternalAnalysisActivityDSL.g:906:1: ruleInputDataset returns [EObject current=null] : (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) ;
     public final EObject ruleInputDataset() throws RecognitionException {
         EObject current = null;
 
@@ -2269,7 +2269,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
         AntlrDatatypeRuleToken lv_maximumCardinality_7_0 = null;
 
-        AntlrDatatypeRuleToken lv_remarks_11_0 = null;
+        AntlrDatatypeRuleToken lv_remark_11_0 = null;
 
         EObject lv_constraints_15_0 = null;
 
@@ -2280,11 +2280,11 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalAnalysisActivityDSL.g:912:2: ( (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) )
-            // InternalAnalysisActivityDSL.g:913:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
+            // InternalAnalysisActivityDSL.g:912:2: ( (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) )
+            // InternalAnalysisActivityDSL.g:913:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
             {
-            // InternalAnalysisActivityDSL.g:913:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
-            // InternalAnalysisActivityDSL.g:914:3: otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END
+            // InternalAnalysisActivityDSL.g:913:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
+            // InternalAnalysisActivityDSL.g:914:3: otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END
             {
             otherlv_0=(Token)match(input,30,FOLLOW_3); 
 
@@ -2441,7 +2441,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
             			newLeafNode(this_LIST_END_8, grammarAccess.getInputDatasetAccess().getLIST_ENDTerminalRuleCall_8());
             		
-            // InternalAnalysisActivityDSL.g:1010:3: (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )?
+            // InternalAnalysisActivityDSL.g:1010:3: (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -2450,13 +2450,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
             }
             switch (alt24) {
                 case 1 :
-                    // InternalAnalysisActivityDSL.g:1011:4: this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END
+                    // InternalAnalysisActivityDSL.g:1011:4: this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END
                     {
                     this_ENTITY_START_9=(Token)match(input,RULE_ENTITY_START,FOLLOW_29); 
 
                     				newLeafNode(this_ENTITY_START_9, grammarAccess.getInputDatasetAccess().getENTITY_STARTTerminalRuleCall_9_0());
                     			
-                    // InternalAnalysisActivityDSL.g:1015:4: (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )?
+                    // InternalAnalysisActivityDSL.g:1015:4: (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )?
                     int alt21=2;
                     int LA21_0 = input.LA(1);
 
@@ -2465,23 +2465,23 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                     }
                     switch (alt21) {
                         case 1 :
-                            // InternalAnalysisActivityDSL.g:1016:5: otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END
+                            // InternalAnalysisActivityDSL.g:1016:5: otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END
                             {
                             otherlv_10=(Token)match(input,20,FOLLOW_6); 
 
-                            					newLeafNode(otherlv_10, grammarAccess.getInputDatasetAccess().getRemarksKeyword_9_1_0());
+                            					newLeafNode(otherlv_10, grammarAccess.getInputDatasetAccess().getRemarkKeyword_9_1_0());
                             				
-                            // InternalAnalysisActivityDSL.g:1020:5: ( (lv_remarks_11_0= ruleEString ) )
-                            // InternalAnalysisActivityDSL.g:1021:6: (lv_remarks_11_0= ruleEString )
+                            // InternalAnalysisActivityDSL.g:1020:5: ( (lv_remark_11_0= ruleEString ) )
+                            // InternalAnalysisActivityDSL.g:1021:6: (lv_remark_11_0= ruleEString )
                             {
-                            // InternalAnalysisActivityDSL.g:1021:6: (lv_remarks_11_0= ruleEString )
-                            // InternalAnalysisActivityDSL.g:1022:7: lv_remarks_11_0= ruleEString
+                            // InternalAnalysisActivityDSL.g:1021:6: (lv_remark_11_0= ruleEString )
+                            // InternalAnalysisActivityDSL.g:1022:7: lv_remark_11_0= ruleEString
                             {
 
-                            							newCompositeNode(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0());
+                            							newCompositeNode(grammarAccess.getInputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0());
                             						
                             pushFollow(FOLLOW_7);
-                            lv_remarks_11_0=ruleEString();
+                            lv_remark_11_0=ruleEString();
 
                             state._fsp--;
 
@@ -2491,8 +2491,8 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                             							}
                             							set(
                             								current,
-                            								"remarks",
-                            								lv_remarks_11_0,
+                            								"remark",
+                            								lv_remark_11_0,
                             								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
                             							afterParserOrEnumRuleCall();
                             						
@@ -2708,7 +2708,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleOutputDataset"
-    // InternalAnalysisActivityDSL.g:1126:1: ruleOutputDataset returns [EObject current=null] : (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) ;
+    // InternalAnalysisActivityDSL.g:1126:1: ruleOutputDataset returns [EObject current=null] : (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) ;
     public final EObject ruleOutputDataset() throws RecognitionException {
         EObject current = null;
 
@@ -2735,7 +2735,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
         AntlrDatatypeRuleToken lv_maximumCardinality_7_0 = null;
 
-        AntlrDatatypeRuleToken lv_remarks_11_0 = null;
+        AntlrDatatypeRuleToken lv_remark_11_0 = null;
 
         EObject lv_constraints_15_0 = null;
 
@@ -2746,11 +2746,11 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalAnalysisActivityDSL.g:1132:2: ( (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) )
-            // InternalAnalysisActivityDSL.g:1133:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
+            // InternalAnalysisActivityDSL.g:1132:2: ( (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END ) )
+            // InternalAnalysisActivityDSL.g:1133:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
             {
-            // InternalAnalysisActivityDSL.g:1133:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
-            // InternalAnalysisActivityDSL.g:1134:3: otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END
+            // InternalAnalysisActivityDSL.g:1133:2: (otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END )
+            // InternalAnalysisActivityDSL.g:1134:3: otherlv_0= 'dataset' ( (lv_name_1_0= ruleIdentifier ) ) otherlv_2= ':' ( (lv_mimetype_3_0= ruleEString ) )? this_LIST_START_4= RULE_LIST_START ( (lv_minimumCardinality_5_0= ruleEBigInteger ) ) this_LIST_SEPARATOR_6= RULE_LIST_SEPARATOR ( (lv_maximumCardinality_7_0= ruleEBigInteger ) ) this_LIST_END_8= RULE_LIST_END (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )? this_STATEMENT_END_21= RULE_STATEMENT_END
             {
             otherlv_0=(Token)match(input,30,FOLLOW_3); 
 
@@ -2907,7 +2907,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
             			newLeafNode(this_LIST_END_8, grammarAccess.getOutputDatasetAccess().getLIST_ENDTerminalRuleCall_8());
             		
-            // InternalAnalysisActivityDSL.g:1230:3: (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )?
+            // InternalAnalysisActivityDSL.g:1230:3: (this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -2916,13 +2916,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
             }
             switch (alt29) {
                 case 1 :
-                    // InternalAnalysisActivityDSL.g:1231:4: this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END
+                    // InternalAnalysisActivityDSL.g:1231:4: this_ENTITY_START_9= RULE_ENTITY_START (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )? (otherlv_13= 'constraints' this_LIST_START_14= RULE_LIST_START ( (lv_constraints_15_0= ruleDatasetConstraint ) ) (this_LIST_SEPARATOR_16= RULE_LIST_SEPARATOR ( (lv_constraints_17_0= ruleDatasetConstraint ) ) )* this_LIST_END_18= RULE_LIST_END this_STATEMENT_END_19= RULE_STATEMENT_END )? this_ENTITY_END_20= RULE_ENTITY_END
                     {
                     this_ENTITY_START_9=(Token)match(input,RULE_ENTITY_START,FOLLOW_29); 
 
                     				newLeafNode(this_ENTITY_START_9, grammarAccess.getOutputDatasetAccess().getENTITY_STARTTerminalRuleCall_9_0());
                     			
-                    // InternalAnalysisActivityDSL.g:1235:4: (otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )?
+                    // InternalAnalysisActivityDSL.g:1235:4: (otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END )?
                     int alt26=2;
                     int LA26_0 = input.LA(1);
 
@@ -2931,23 +2931,23 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                     }
                     switch (alt26) {
                         case 1 :
-                            // InternalAnalysisActivityDSL.g:1236:5: otherlv_10= 'remarks' ( (lv_remarks_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END
+                            // InternalAnalysisActivityDSL.g:1236:5: otherlv_10= 'remark' ( (lv_remark_11_0= ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END
                             {
                             otherlv_10=(Token)match(input,20,FOLLOW_6); 
 
-                            					newLeafNode(otherlv_10, grammarAccess.getOutputDatasetAccess().getRemarksKeyword_9_1_0());
+                            					newLeafNode(otherlv_10, grammarAccess.getOutputDatasetAccess().getRemarkKeyword_9_1_0());
                             				
-                            // InternalAnalysisActivityDSL.g:1240:5: ( (lv_remarks_11_0= ruleEString ) )
-                            // InternalAnalysisActivityDSL.g:1241:6: (lv_remarks_11_0= ruleEString )
+                            // InternalAnalysisActivityDSL.g:1240:5: ( (lv_remark_11_0= ruleEString ) )
+                            // InternalAnalysisActivityDSL.g:1241:6: (lv_remark_11_0= ruleEString )
                             {
-                            // InternalAnalysisActivityDSL.g:1241:6: (lv_remarks_11_0= ruleEString )
-                            // InternalAnalysisActivityDSL.g:1242:7: lv_remarks_11_0= ruleEString
+                            // InternalAnalysisActivityDSL.g:1241:6: (lv_remark_11_0= ruleEString )
+                            // InternalAnalysisActivityDSL.g:1242:7: lv_remark_11_0= ruleEString
                             {
 
-                            							newCompositeNode(grammarAccess.getOutputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0());
+                            							newCompositeNode(grammarAccess.getOutputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0());
                             						
                             pushFollow(FOLLOW_7);
-                            lv_remarks_11_0=ruleEString();
+                            lv_remark_11_0=ruleEString();
 
                             state._fsp--;
 
@@ -2957,8 +2957,8 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                             							}
                             							set(
                             								current,
-                            								"remarks",
-                            								lv_remarks_11_0,
+                            								"remark",
+                            								lv_remark_11_0,
                             								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
                             							afterParserOrEnumRuleCall();
                             						
@@ -4195,7 +4195,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleCommandLineTool"
-    // InternalAnalysisActivityDSL.g:1723:1: ruleCommandLineTool returns [EObject current=null] : (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END ) ;
+    // InternalAnalysisActivityDSL.g:1723:1: ruleCommandLineTool returns [EObject current=null] : (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END ) ;
     public final EObject ruleCommandLineTool() throws RecognitionException {
         EObject current = null;
 
@@ -4225,7 +4225,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         Token this_ENTITY_END_33=null;
         AntlrDatatypeRuleToken lv_name_1_0 = null;
 
-        AntlrDatatypeRuleToken lv_remarks_4_0 = null;
+        AntlrDatatypeRuleToken lv_remark_4_0 = null;
 
         EObject lv_commandLineTemplate_24_0 = null;
 
@@ -4240,11 +4240,11 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalAnalysisActivityDSL.g:1729:2: ( (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END ) )
-            // InternalAnalysisActivityDSL.g:1730:2: (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END )
+            // InternalAnalysisActivityDSL.g:1729:2: ( (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END ) )
+            // InternalAnalysisActivityDSL.g:1730:2: (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END )
             {
-            // InternalAnalysisActivityDSL.g:1730:2: (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END )
-            // InternalAnalysisActivityDSL.g:1731:3: otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END
+            // InternalAnalysisActivityDSL.g:1730:2: (otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END )
+            // InternalAnalysisActivityDSL.g:1731:3: otherlv_0= 'executable' ( (lv_name_1_0= ruleEString ) ) this_ENTITY_START_2= RULE_ENTITY_START (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )? (otherlv_6= 'redirecting' this_ENTITY_START_7= RULE_ENTITY_START ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'stdin' otherlv_10= 'from' ( ( ruleEString ) ) this_STATEMENT_END_12= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_13= 'stdout' otherlv_14= 'to' ( ( ruleEString ) ) this_STATEMENT_END_16= RULE_STATEMENT_END ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'stderr' otherlv_18= 'to' ( ( ruleEString ) ) this_STATEMENT_END_20= RULE_STATEMENT_END ) ) ) ) )* ) ) ) this_ENTITY_END_21= RULE_ENTITY_END )? otherlv_22= 'commandLineTemplate' this_LIST_START_23= RULE_LIST_START ( (lv_commandLineTemplate_24_0= ruleCommandLineEntryList ) ) (this_LIST_SEPARATOR_25= RULE_LIST_SEPARATOR ( (lv_commandLineTemplate_26_0= ruleCommandLineEntryList ) ) )* this_LIST_END_27= RULE_LIST_END (otherlv_28= 'returns' this_ENTITY_START_29= RULE_ENTITY_START ( (lv_exitCodes_30_0= ruleExitCode ) ) ( (lv_exitCodes_31_0= ruleExitCode ) )* this_ENTITY_END_32= RULE_ENTITY_END )? this_ENTITY_END_33= RULE_ENTITY_END
             {
             otherlv_0=(Token)match(input,36,FOLLOW_6); 
 
@@ -4285,7 +4285,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
 
             			newLeafNode(this_ENTITY_START_2, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_2());
             		
-            // InternalAnalysisActivityDSL.g:1758:3: (otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )?
+            // InternalAnalysisActivityDSL.g:1758:3: (otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END )?
             int alt33=2;
             int LA33_0 = input.LA(1);
 
@@ -4294,23 +4294,23 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
             }
             switch (alt33) {
                 case 1 :
-                    // InternalAnalysisActivityDSL.g:1759:4: otherlv_3= 'remarks' ( (lv_remarks_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END
+                    // InternalAnalysisActivityDSL.g:1759:4: otherlv_3= 'remark' ( (lv_remark_4_0= ruleEString ) ) this_STATEMENT_END_5= RULE_STATEMENT_END
                     {
                     otherlv_3=(Token)match(input,20,FOLLOW_6); 
 
-                    				newLeafNode(otherlv_3, grammarAccess.getCommandLineToolAccess().getRemarksKeyword_3_0());
+                    				newLeafNode(otherlv_3, grammarAccess.getCommandLineToolAccess().getRemarkKeyword_3_0());
                     			
-                    // InternalAnalysisActivityDSL.g:1763:4: ( (lv_remarks_4_0= ruleEString ) )
-                    // InternalAnalysisActivityDSL.g:1764:5: (lv_remarks_4_0= ruleEString )
+                    // InternalAnalysisActivityDSL.g:1763:4: ( (lv_remark_4_0= ruleEString ) )
+                    // InternalAnalysisActivityDSL.g:1764:5: (lv_remark_4_0= ruleEString )
                     {
-                    // InternalAnalysisActivityDSL.g:1764:5: (lv_remarks_4_0= ruleEString )
-                    // InternalAnalysisActivityDSL.g:1765:6: lv_remarks_4_0= ruleEString
+                    // InternalAnalysisActivityDSL.g:1764:5: (lv_remark_4_0= ruleEString )
+                    // InternalAnalysisActivityDSL.g:1765:6: lv_remark_4_0= ruleEString
                     {
 
-                    						newCompositeNode(grammarAccess.getCommandLineToolAccess().getRemarksEStringParserRuleCall_3_1_0());
+                    						newCompositeNode(grammarAccess.getCommandLineToolAccess().getRemarkEStringParserRuleCall_3_1_0());
                     					
                     pushFollow(FOLLOW_7);
-                    lv_remarks_4_0=ruleEString();
+                    lv_remark_4_0=ruleEString();
 
                     state._fsp--;
 
@@ -4320,8 +4320,8 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalAntlrPars
                     						}
                     						set(
                     							current,
-                    							"remarks",
-                    							lv_remarks_4_0,
+                    							"remark",
+                    							lv_remark_4_0,
                     							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
                     						afterParserOrEnumRuleCall();
                     					

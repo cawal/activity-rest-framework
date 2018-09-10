@@ -105,24 +105,24 @@ ruleActivity returns [EObject current=null]
 			newLeafNode(this_ENTITY_START_2, grammarAccess.getActivityAccess().getENTITY_STARTTerminalRuleCall_2());
 		}
 		(
-			otherlv_3='remarks'
+			otherlv_3='remark'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getRemarksKeyword_3_0());
+				newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getRemarkKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActivityAccess().getRemarksEStringParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getActivityAccess().getRemarkEStringParserRuleCall_3_1_0());
 					}
-					lv_remarks_4_0=ruleEString
+					lv_remark_4_0=ruleEString
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActivityRule());
 						}
 						set(
 							$current,
-							"remarks",
-							lv_remarks_4_0,
+							"remark",
+							lv_remark_4_0,
 							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
 						afterParserOrEnumRuleCall();
 					}
@@ -797,24 +797,24 @@ ruleParameter returns [EObject current=null]
 				newLeafNode(this_ENTITY_START_15, grammarAccess.getParameterAccess().getENTITY_STARTTerminalRuleCall_10_0());
 			}
 			(
-				otherlv_16='remarks'
+				otherlv_16='remark'
 				{
-					newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getRemarksKeyword_10_1_0());
+					newLeafNode(otherlv_16, grammarAccess.getParameterAccess().getRemarkKeyword_10_1_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getParameterAccess().getRemarksEStringParserRuleCall_10_1_1_0());
+							newCompositeNode(grammarAccess.getParameterAccess().getRemarkEStringParserRuleCall_10_1_1_0());
 						}
-						lv_remarks_17_0=ruleEString
+						lv_remark_17_0=ruleEString
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getParameterRule());
 							}
 							set(
 								$current,
-								"remarks",
-								lv_remarks_17_0,
+								"remark",
+								lv_remark_17_0,
 								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
 							afterParserOrEnumRuleCall();
 						}
@@ -1013,24 +1013,24 @@ ruleInputDataset returns [EObject current=null]
 				newLeafNode(this_ENTITY_START_9, grammarAccess.getInputDatasetAccess().getENTITY_STARTTerminalRuleCall_9_0());
 			}
 			(
-				otherlv_10='remarks'
+				otherlv_10='remark'
 				{
-					newLeafNode(otherlv_10, grammarAccess.getInputDatasetAccess().getRemarksKeyword_9_1_0());
+					newLeafNode(otherlv_10, grammarAccess.getInputDatasetAccess().getRemarkKeyword_9_1_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0());
+							newCompositeNode(grammarAccess.getInputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0());
 						}
-						lv_remarks_11_0=ruleEString
+						lv_remark_11_0=ruleEString
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
 							}
 							set(
 								$current,
-								"remarks",
-								lv_remarks_11_0,
+								"remark",
+								lv_remark_11_0,
 								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
 							afterParserOrEnumRuleCall();
 						}
@@ -1233,24 +1233,24 @@ ruleOutputDataset returns [EObject current=null]
 				newLeafNode(this_ENTITY_START_9, grammarAccess.getOutputDatasetAccess().getENTITY_STARTTerminalRuleCall_9_0());
 			}
 			(
-				otherlv_10='remarks'
+				otherlv_10='remark'
 				{
-					newLeafNode(otherlv_10, grammarAccess.getOutputDatasetAccess().getRemarksKeyword_9_1_0());
+					newLeafNode(otherlv_10, grammarAccess.getOutputDatasetAccess().getRemarkKeyword_9_1_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOutputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0());
+							newCompositeNode(grammarAccess.getOutputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0());
 						}
-						lv_remarks_11_0=ruleEString
+						lv_remark_11_0=ruleEString
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOutputDatasetRule());
 							}
 							set(
 								$current,
-								"remarks",
-								lv_remarks_11_0,
+								"remark",
+								lv_remark_11_0,
 								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
 							afterParserOrEnumRuleCall();
 						}
@@ -1756,24 +1756,24 @@ ruleCommandLineTool returns [EObject current=null]
 			newLeafNode(this_ENTITY_START_2, grammarAccess.getCommandLineToolAccess().getENTITY_STARTTerminalRuleCall_2());
 		}
 		(
-			otherlv_3='remarks'
+			otherlv_3='remark'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getCommandLineToolAccess().getRemarksKeyword_3_0());
+				newLeafNode(otherlv_3, grammarAccess.getCommandLineToolAccess().getRemarkKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCommandLineToolAccess().getRemarksEStringParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getCommandLineToolAccess().getRemarkEStringParserRuleCall_3_1_0());
 					}
-					lv_remarks_4_0=ruleEString
+					lv_remark_4_0=ruleEString
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCommandLineToolRule());
 						}
 						set(
 							$current,
-							"remarks",
-							lv_remarks_4_0,
+							"remark",
+							lv_remark_4_0,
 							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.EString");
 						afterParserOrEnumRuleCall();
 					}

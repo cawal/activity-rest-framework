@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl#getRemarks <em>Remarks</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl#getRemark <em>Remark</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implements IdentifiableElement {
+public abstract class IdentifiableElementImpl extends MinimalEObjectImpl.Container implements IdentifiableElement {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -48,24 +48,24 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
+	 * The default value of the '{@link #getRemark() <em>Remark</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRemarks()
+	 * @see #getRemark()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REMARKS_EDEFAULT = null;
+	protected static final String REMARK_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
+	 * The cached value of the '{@link #getRemark() <em>Remark</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRemarks()
+	 * @see #getRemark()
 	 * @generated
 	 * @ordered
 	 */
-	protected String remarks = REMARKS_EDEFAULT;
+	protected String remark = REMARK_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,8 +112,8 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRemarks() {
-		return remarks;
+	public String getRemark() {
+		return remark;
 	}
 
 	/**
@@ -121,11 +121,11 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRemarks(String newRemarks) {
-		String oldRemarks = remarks;
-		remarks = newRemarks;
+	public void setRemark(String newRemark) {
+		String oldRemark = remark;
+		remark = newRemark;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS, oldRemarks, remarks));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK, oldRemark, remark));
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME:
 				return getName();
-			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS:
-				return getRemarks();
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK:
+				return getRemark();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -155,8 +155,8 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS:
-				setRemarks((String)newValue);
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK:
+				setRemark((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,8 +173,8 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS:
-				setRemarks(REMARKS_EDEFAULT);
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK:
+				setRemark(REMARK_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -190,8 +190,8 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS:
-				return REMARKS_EDEFAULT == null ? remarks != null : !REMARKS_EDEFAULT.equals(remarks);
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK:
+				return REMARK_EDEFAULT == null ? remark != null : !REMARK_EDEFAULT.equals(remark);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -208,8 +208,8 @@ public class IdentifiableElementImpl extends MinimalEObjectImpl.Container implem
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", remarks: ");
-		result.append(remarks);
+		result.append(", remark: ");
+		result.append(remark);
 		result.append(')');
 		return result.toString();
 	}

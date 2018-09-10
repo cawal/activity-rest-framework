@@ -80,13 +80,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int IDENTIFIABLE_ELEMENT__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTIFIABLE_ELEMENT__REMARKS = 1;
+	int IDENTIFIABLE_ELEMENT__REMARK = 1;
 
 	/**
 	 * The number of structural features of the '<em>Identifiable Element</em>' class.
@@ -126,13 +126,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int ACTIVITY__NAME = IDENTIFIABLE_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__REMARKS = IDENTIFIABLE_ELEMENT__REMARKS;
+	int ACTIVITY__REMARK = IDENTIFIABLE_ELEMENT__REMARK;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -281,13 +281,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER__NAME = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__REMARKS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETER__REMARK = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Type</b></em>' attribute.
@@ -372,13 +372,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int DATASET__NAME = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET__REMARKS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
+	int DATASET__REMARK = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -454,13 +454,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int INPUT_DATASET__NAME = DATASET__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_DATASET__REMARKS = DATASET__REMARKS;
+	int INPUT_DATASET__REMARK = DATASET__REMARK;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -536,13 +536,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int OUTPUT_DATASET__NAME = DATASET__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUTPUT_DATASET__REMARKS = DATASET__REMARKS;
+	int OUTPUT_DATASET__REMARK = DATASET__REMARK;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -1039,13 +1039,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int TOOL__NAME = IDENTIFIABLE_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL__REMARKS = IDENTIFIABLE_ELEMENT__REMARKS;
+	int TOOL__REMARK = IDENTIFIABLE_ELEMENT__REMARK;
 
 	/**
 	 * The feature id for the '<em><b>Activity</b></em>' container reference.
@@ -1094,13 +1094,13 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int COMMAND_LINE_TOOL__NAME = TOOL__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Remarks</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_LINE_TOOL__REMARKS = TOOL__REMARKS;
+	int COMMAND_LINE_TOOL__REMARK = TOOL__REMARK;
 
 	/**
 	 * The feature id for the '<em><b>Activity</b></em>' container reference.
@@ -1443,15 +1443,15 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EAttribute getIdentifiableElement_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemarks <em>Remarks</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemark <em>Remark</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remarks</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemarks()
+	 * @return the meta object for the attribute '<em>Remark</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemark()
 	 * @see #getIdentifiableElement()
 	 * @generated
 	 */
-	EAttribute getIdentifiableElement_Remarks();
+	EAttribute getIdentifiableElement_Remark();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity <em>Activity</em>}'.
@@ -2084,12 +2084,12 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EAttribute IDENTIFIABLE_ELEMENT__NAME = eINSTANCE.getIdentifiableElement_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Remarks</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Remark</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IDENTIFIABLE_ELEMENT__REMARKS = eINSTANCE.getIdentifiableElement_Remarks();
+		EAttribute IDENTIFIABLE_ELEMENT__REMARK = eINSTANCE.getIdentifiableElement_Remark();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl <em>Activity</em>}' class.

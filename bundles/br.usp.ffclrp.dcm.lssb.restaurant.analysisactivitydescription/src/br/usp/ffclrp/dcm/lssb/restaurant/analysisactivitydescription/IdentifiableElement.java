@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemarks <em>Remarks</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemark <em>Remark</em>}</li>
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getIdentifiableElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface IdentifiableElement extends EObject {
@@ -49,29 +49,29 @@ public interface IdentifiableElement extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Remarks</b></em>' attribute.
+	 * Returns the value of the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Remarks</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Remark</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Remarks</em>' attribute.
-	 * @see #setRemarks(String)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getIdentifiableElement_Remarks()
+	 * @return the value of the '<em>Remark</em>' attribute.
+	 * @see #setRemark(String)
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getIdentifiableElement_Remark()
 	 * @model
 	 * @generated
 	 */
-	String getRemarks();
+	String getRemark();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemarks <em>Remarks</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemark <em>Remark</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Remarks</em>' attribute.
-	 * @see #getRemarks()
+	 * @param value the new value of the '<em>Remark</em>' attribute.
+	 * @see #getRemark()
 	 * @generated
 	 */
-	void setRemarks(String value);
+	void setRemark(String value);
 
 } // IdentifiableElement

@@ -20,7 +20,7 @@
     <genDataTypes ecoreDataType="analysis-activity-description.ecore#//FilePath"/>
     <genClasses ecoreClass="analysis-activity-description.ecore#//IdentifiableElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//IdentifiableElement/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//IdentifiableElement/remarks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysis-activity-description.ecore#//IdentifiableElement/remark"/>
     </genClasses>
     <genClasses ecoreClass="analysis-activity-description.ecore#//Activity">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysis-activity-description.ecore#//Activity/parameters"/>

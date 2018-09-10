@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl#getRemarks <em>Remarks</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl#getRemark <em>Remark</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl#getMimetype <em>Mimetype</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -55,24 +55,24 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
+	 * The default value of the '{@link #getRemark() <em>Remark</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRemarks()
+	 * @see #getRemark()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REMARKS_EDEFAULT = null;
+	protected static final String REMARK_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRemarks() <em>Remarks</em>}' attribute.
+	 * The cached value of the '{@link #getRemark() <em>Remark</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRemarks()
+	 * @see #getRemark()
 	 * @generated
 	 * @ordered
 	 */
-	protected String remarks = REMARKS_EDEFAULT;
+	protected String remark = REMARK_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMimetype() <em>Mimetype</em>}' attribute.
@@ -149,8 +149,8 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRemarks() {
-		return remarks;
+	public String getRemark() {
+		return remark;
 	}
 
 	/**
@@ -158,11 +158,11 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRemarks(String newRemarks) {
-		String oldRemarks = remarks;
-		remarks = newRemarks;
+	public void setRemark(String newRemark) {
+		String oldRemark = remark;
+		remark = newRemark;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET__REMARKS, oldRemarks, remarks));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET__REMARK, oldRemark, remark));
 	}
 
 	/**
@@ -222,8 +222,8 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.DATASET__NAME:
 				return getName();
-			case AnalysisActivityDescriptionPackage.DATASET__REMARKS:
-				return getRemarks();
+			case AnalysisActivityDescriptionPackage.DATASET__REMARK:
+				return getRemark();
 			case AnalysisActivityDescriptionPackage.DATASET__MIMETYPE:
 				return getMimetype();
 			case AnalysisActivityDescriptionPackage.DATASET__CONSTRAINTS:
@@ -244,8 +244,8 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 			case AnalysisActivityDescriptionPackage.DATASET__NAME:
 				setName((String)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.DATASET__REMARKS:
-				setRemarks((String)newValue);
+			case AnalysisActivityDescriptionPackage.DATASET__REMARK:
+				setRemark((String)newValue);
 				return;
 			case AnalysisActivityDescriptionPackage.DATASET__MIMETYPE:
 				setMimetype((String)newValue);
@@ -269,8 +269,8 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 			case AnalysisActivityDescriptionPackage.DATASET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AnalysisActivityDescriptionPackage.DATASET__REMARKS:
-				setRemarks(REMARKS_EDEFAULT);
+			case AnalysisActivityDescriptionPackage.DATASET__REMARK:
+				setRemark(REMARK_EDEFAULT);
 				return;
 			case AnalysisActivityDescriptionPackage.DATASET__MIMETYPE:
 				setMimetype(MIMETYPE_EDEFAULT);
@@ -292,8 +292,8 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.DATASET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AnalysisActivityDescriptionPackage.DATASET__REMARKS:
-				return REMARKS_EDEFAULT == null ? remarks != null : !REMARKS_EDEFAULT.equals(remarks);
+			case AnalysisActivityDescriptionPackage.DATASET__REMARK:
+				return REMARK_EDEFAULT == null ? remark != null : !REMARK_EDEFAULT.equals(remark);
 			case AnalysisActivityDescriptionPackage.DATASET__MIMETYPE:
 				return MIMETYPE_EDEFAULT == null ? mimetype != null : !MIMETYPE_EDEFAULT.equals(mimetype);
 			case AnalysisActivityDescriptionPackage.DATASET__CONSTRAINTS:
@@ -312,7 +312,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 		if (baseClass == IdentifiableElement.class) {
 			switch (derivedFeatureID) {
 				case AnalysisActivityDescriptionPackage.DATASET__NAME: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME;
-				case AnalysisActivityDescriptionPackage.DATASET__REMARKS: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS;
+				case AnalysisActivityDescriptionPackage.DATASET__REMARK: return AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK;
 				default: return -1;
 			}
 		}
@@ -329,7 +329,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 		if (baseClass == IdentifiableElement.class) {
 			switch (baseFeatureID) {
 				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__NAME: return AnalysisActivityDescriptionPackage.DATASET__NAME;
-				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARKS: return AnalysisActivityDescriptionPackage.DATASET__REMARKS;
+				case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT__REMARK: return AnalysisActivityDescriptionPackage.DATASET__REMARK;
 				default: return -1;
 			}
 		}
@@ -348,8 +348,8 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", remarks: ");
-		result.append(remarks);
+		result.append(", remark: ");
+		result.append(remark);
 		result.append(", mimetype: ");
 		result.append(mimetype);
 		result.append(')');

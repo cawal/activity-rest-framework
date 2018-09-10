@@ -354,7 +354,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIdentifiableElement_Remarks() {
+	public EAttribute getIdentifiableElement_Remark() {
 		return (EAttribute)identifiableElementEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -892,7 +892,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		// Create classes and their features
 		identifiableElementEClass = createEClass(IDENTIFIABLE_ELEMENT);
 		createEAttribute(identifiableElementEClass, IDENTIFIABLE_ELEMENT__NAME);
-		createEAttribute(identifiableElementEClass, IDENTIFIABLE_ELEMENT__REMARKS);
+		createEAttribute(identifiableElementEClass, IDENTIFIABLE_ELEMENT__REMARK);
 
 		activityEClass = createEClass(ACTIVITY);
 		createEReference(activityEClass, ACTIVITY__PARAMETERS);
@@ -1040,9 +1040,9 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		parameterCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(identifiableElementEClass, IdentifiableElement.class, "IdentifiableElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(identifiableElementEClass, IdentifiableElement.class, "IdentifiableElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentifiableElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, IdentifiableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIdentifiableElement_Remarks(), ecorePackage.getEString(), "remarks", null, 0, 1, IdentifiableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiableElement_Remark(), ecorePackage.getEString(), "remark", null, 0, 1, IdentifiableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActivity_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);

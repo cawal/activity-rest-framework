@@ -122,7 +122,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 * Constraint:
 	 *     (
 	 *         name=Identifier 
-	 *         remarks=EString? 
+	 *         remark=EString? 
 	 *         (inputDatasets+=InputDataset inputDatasets+=InputDataset*)? 
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (outputDatasets+=OutputDataset outputDatasets+=OutputDataset*)? 
@@ -181,7 +181,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         remarks=EString? 
+	 *         remark=EString? 
 	 *         (standardInputStream=[InputDataset|EString] | standardOutputStream=[OutputDataset|EString] | standardErrorStream=[OutputDataset|EString])* 
 	 *         commandLineTemplate+=CommandLineEntryList 
 	 *         commandLineTemplate+=CommandLineEntryList* 
@@ -313,7 +313,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         mimetype=EString? 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
-	 *         remarks=EString? 
+	 *         remark=EString? 
 	 *         (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?
 	 *     )
 	 */
@@ -365,7 +365,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         mimetype=EString? 
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
-	 *         remarks=EString? 
+	 *         remark=EString? 
 	 *         (constraints+=DatasetConstraint constraints+=DatasetConstraint*)?
 	 *     )
 	 */
@@ -398,7 +398,7 @@ public class AnalysisActivityDSLSemanticSequencer extends AbstractDelegatingSema
 	 *         minimumCardinality=EBigInteger 
 	 *         maximumCardinality=EBigInteger 
 	 *         (defaultValue+=EString defaultValue+=EString*)? 
-	 *         remarks=EString? 
+	 *         remark=EString? 
 	 *         (constraints+=ParameterConstraint constraints+=ParameterConstraint*)?
 	 *     )
 	 */

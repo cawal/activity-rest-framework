@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_MULTILINE_STRING", "RULE_STRING", "RULE_ENTITY_START", "RULE_ENTITY_END", "RULE_STATEMENT_END", "RULE_LIST_START", "RULE_LIST_END", "RULE_LIST_SEPARATOR", "RULE_INT", "RULE_PIPE_TO", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'STRING'", "'INTEGER'", "'REAL'", "'SUCCEEDED'", "'FAILED'", "'activity'", "'using'", "'remarks'", "'on'", "'with'", "'produces'", "'readinessContraints'", "'parameter'", "':'", "'='", "'constraints'", "'dataset'", "'-'", "'CustomParameterConstraint'", "'CustomDatasetConstraint'", "'CustomParameterReadinessConstraint'", "'CustomDatasetReadinessConstraint'", "'executable'", "'commandLineTemplate'", "'redirecting'", "'stdin'", "'from'", "'stdout'", "'to'", "'stderr'", "'returns'", "'if'", "'toolname'", "'literals'", "'Join'", "'PrependEach'", "'AppendEach'", "'AppendListWith'", "'PrependListWith'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_MULTILINE_STRING", "RULE_STRING", "RULE_ENTITY_START", "RULE_ENTITY_END", "RULE_STATEMENT_END", "RULE_LIST_START", "RULE_LIST_END", "RULE_LIST_SEPARATOR", "RULE_INT", "RULE_PIPE_TO", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'STRING'", "'INTEGER'", "'REAL'", "'SUCCEEDED'", "'FAILED'", "'activity'", "'using'", "'remark'", "'on'", "'with'", "'produces'", "'readinessContraints'", "'parameter'", "':'", "'='", "'constraints'", "'dataset'", "'-'", "'CustomParameterConstraint'", "'CustomDatasetConstraint'", "'CustomParameterReadinessConstraint'", "'CustomDatasetReadinessConstraint'", "'executable'", "'commandLineTemplate'", "'redirecting'", "'stdin'", "'from'", "'stdout'", "'to'", "'stderr'", "'returns'", "'if'", "'toolname'", "'literals'", "'Join'", "'PrependEach'", "'AppendEach'", "'AppendListWith'", "'PrependListWith'"
     };
     public static final int T__50=50;
     public static final int RULE_LIST_END=11;
@@ -4119,21 +4119,21 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__Activity__Group_3__0__Impl"
-    // InternalAnalysisActivityDSL.g:1311:1: rule__Activity__Group_3__0__Impl : ( 'remarks' ) ;
+    // InternalAnalysisActivityDSL.g:1311:1: rule__Activity__Group_3__0__Impl : ( 'remark' ) ;
     public final void rule__Activity__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:1315:1: ( ( 'remarks' ) )
-            // InternalAnalysisActivityDSL.g:1316:1: ( 'remarks' )
+            // InternalAnalysisActivityDSL.g:1315:1: ( ( 'remark' ) )
+            // InternalAnalysisActivityDSL.g:1316:1: ( 'remark' )
             {
-            // InternalAnalysisActivityDSL.g:1316:1: ( 'remarks' )
-            // InternalAnalysisActivityDSL.g:1317:2: 'remarks'
+            // InternalAnalysisActivityDSL.g:1316:1: ( 'remark' )
+            // InternalAnalysisActivityDSL.g:1317:2: 'remark'
             {
-             before(grammarAccess.getActivityAccess().getRemarksKeyword_3_0()); 
+             before(grammarAccess.getActivityAccess().getRemarkKeyword_3_0()); 
             match(input,26,FOLLOW_2); 
-             after(grammarAccess.getActivityAccess().getRemarksKeyword_3_0()); 
+             after(grammarAccess.getActivityAccess().getRemarkKeyword_3_0()); 
 
             }
 
@@ -4194,31 +4194,31 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__Activity__Group_3__1__Impl"
-    // InternalAnalysisActivityDSL.g:1338:1: rule__Activity__Group_3__1__Impl : ( ( rule__Activity__RemarksAssignment_3_1 ) ) ;
+    // InternalAnalysisActivityDSL.g:1338:1: rule__Activity__Group_3__1__Impl : ( ( rule__Activity__RemarkAssignment_3_1 ) ) ;
     public final void rule__Activity__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:1342:1: ( ( ( rule__Activity__RemarksAssignment_3_1 ) ) )
-            // InternalAnalysisActivityDSL.g:1343:1: ( ( rule__Activity__RemarksAssignment_3_1 ) )
+            // InternalAnalysisActivityDSL.g:1342:1: ( ( ( rule__Activity__RemarkAssignment_3_1 ) ) )
+            // InternalAnalysisActivityDSL.g:1343:1: ( ( rule__Activity__RemarkAssignment_3_1 ) )
             {
-            // InternalAnalysisActivityDSL.g:1343:1: ( ( rule__Activity__RemarksAssignment_3_1 ) )
-            // InternalAnalysisActivityDSL.g:1344:2: ( rule__Activity__RemarksAssignment_3_1 )
+            // InternalAnalysisActivityDSL.g:1343:1: ( ( rule__Activity__RemarkAssignment_3_1 ) )
+            // InternalAnalysisActivityDSL.g:1344:2: ( rule__Activity__RemarkAssignment_3_1 )
             {
-             before(grammarAccess.getActivityAccess().getRemarksAssignment_3_1()); 
-            // InternalAnalysisActivityDSL.g:1345:2: ( rule__Activity__RemarksAssignment_3_1 )
-            // InternalAnalysisActivityDSL.g:1345:3: rule__Activity__RemarksAssignment_3_1
+             before(grammarAccess.getActivityAccess().getRemarkAssignment_3_1()); 
+            // InternalAnalysisActivityDSL.g:1345:2: ( rule__Activity__RemarkAssignment_3_1 )
+            // InternalAnalysisActivityDSL.g:1345:3: rule__Activity__RemarkAssignment_3_1
             {
             pushFollow(FOLLOW_2);
-            rule__Activity__RemarksAssignment_3_1();
+            rule__Activity__RemarkAssignment_3_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getActivityAccess().getRemarksAssignment_3_1()); 
+             after(grammarAccess.getActivityAccess().getRemarkAssignment_3_1()); 
 
             }
 
@@ -8013,21 +8013,21 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__Parameter__Group_10_1__0__Impl"
-    // InternalAnalysisActivityDSL.g:2607:1: rule__Parameter__Group_10_1__0__Impl : ( 'remarks' ) ;
+    // InternalAnalysisActivityDSL.g:2607:1: rule__Parameter__Group_10_1__0__Impl : ( 'remark' ) ;
     public final void rule__Parameter__Group_10_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:2611:1: ( ( 'remarks' ) )
-            // InternalAnalysisActivityDSL.g:2612:1: ( 'remarks' )
+            // InternalAnalysisActivityDSL.g:2611:1: ( ( 'remark' ) )
+            // InternalAnalysisActivityDSL.g:2612:1: ( 'remark' )
             {
-            // InternalAnalysisActivityDSL.g:2612:1: ( 'remarks' )
-            // InternalAnalysisActivityDSL.g:2613:2: 'remarks'
+            // InternalAnalysisActivityDSL.g:2612:1: ( 'remark' )
+            // InternalAnalysisActivityDSL.g:2613:2: 'remark'
             {
-             before(grammarAccess.getParameterAccess().getRemarksKeyword_10_1_0()); 
+             before(grammarAccess.getParameterAccess().getRemarkKeyword_10_1_0()); 
             match(input,26,FOLLOW_2); 
-             after(grammarAccess.getParameterAccess().getRemarksKeyword_10_1_0()); 
+             after(grammarAccess.getParameterAccess().getRemarkKeyword_10_1_0()); 
 
             }
 
@@ -8088,31 +8088,31 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__Parameter__Group_10_1__1__Impl"
-    // InternalAnalysisActivityDSL.g:2634:1: rule__Parameter__Group_10_1__1__Impl : ( ( rule__Parameter__RemarksAssignment_10_1_1 ) ) ;
+    // InternalAnalysisActivityDSL.g:2634:1: rule__Parameter__Group_10_1__1__Impl : ( ( rule__Parameter__RemarkAssignment_10_1_1 ) ) ;
     public final void rule__Parameter__Group_10_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:2638:1: ( ( ( rule__Parameter__RemarksAssignment_10_1_1 ) ) )
-            // InternalAnalysisActivityDSL.g:2639:1: ( ( rule__Parameter__RemarksAssignment_10_1_1 ) )
+            // InternalAnalysisActivityDSL.g:2638:1: ( ( ( rule__Parameter__RemarkAssignment_10_1_1 ) ) )
+            // InternalAnalysisActivityDSL.g:2639:1: ( ( rule__Parameter__RemarkAssignment_10_1_1 ) )
             {
-            // InternalAnalysisActivityDSL.g:2639:1: ( ( rule__Parameter__RemarksAssignment_10_1_1 ) )
-            // InternalAnalysisActivityDSL.g:2640:2: ( rule__Parameter__RemarksAssignment_10_1_1 )
+            // InternalAnalysisActivityDSL.g:2639:1: ( ( rule__Parameter__RemarkAssignment_10_1_1 ) )
+            // InternalAnalysisActivityDSL.g:2640:2: ( rule__Parameter__RemarkAssignment_10_1_1 )
             {
-             before(grammarAccess.getParameterAccess().getRemarksAssignment_10_1_1()); 
-            // InternalAnalysisActivityDSL.g:2641:2: ( rule__Parameter__RemarksAssignment_10_1_1 )
-            // InternalAnalysisActivityDSL.g:2641:3: rule__Parameter__RemarksAssignment_10_1_1
+             before(grammarAccess.getParameterAccess().getRemarkAssignment_10_1_1()); 
+            // InternalAnalysisActivityDSL.g:2641:2: ( rule__Parameter__RemarkAssignment_10_1_1 )
+            // InternalAnalysisActivityDSL.g:2641:3: rule__Parameter__RemarkAssignment_10_1_1
             {
             pushFollow(FOLLOW_2);
-            rule__Parameter__RemarksAssignment_10_1_1();
+            rule__Parameter__RemarkAssignment_10_1_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getParameterAccess().getRemarksAssignment_10_1_1()); 
+             after(grammarAccess.getParameterAccess().getRemarkAssignment_10_1_1()); 
 
             }
 
@@ -10035,21 +10035,21 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__InputDataset__Group_9_1__0__Impl"
-    // InternalAnalysisActivityDSL.g:3282:1: rule__InputDataset__Group_9_1__0__Impl : ( 'remarks' ) ;
+    // InternalAnalysisActivityDSL.g:3282:1: rule__InputDataset__Group_9_1__0__Impl : ( 'remark' ) ;
     public final void rule__InputDataset__Group_9_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:3286:1: ( ( 'remarks' ) )
-            // InternalAnalysisActivityDSL.g:3287:1: ( 'remarks' )
+            // InternalAnalysisActivityDSL.g:3286:1: ( ( 'remark' ) )
+            // InternalAnalysisActivityDSL.g:3287:1: ( 'remark' )
             {
-            // InternalAnalysisActivityDSL.g:3287:1: ( 'remarks' )
-            // InternalAnalysisActivityDSL.g:3288:2: 'remarks'
+            // InternalAnalysisActivityDSL.g:3287:1: ( 'remark' )
+            // InternalAnalysisActivityDSL.g:3288:2: 'remark'
             {
-             before(grammarAccess.getInputDatasetAccess().getRemarksKeyword_9_1_0()); 
+             before(grammarAccess.getInputDatasetAccess().getRemarkKeyword_9_1_0()); 
             match(input,26,FOLLOW_2); 
-             after(grammarAccess.getInputDatasetAccess().getRemarksKeyword_9_1_0()); 
+             after(grammarAccess.getInputDatasetAccess().getRemarkKeyword_9_1_0()); 
 
             }
 
@@ -10110,31 +10110,31 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__InputDataset__Group_9_1__1__Impl"
-    // InternalAnalysisActivityDSL.g:3309:1: rule__InputDataset__Group_9_1__1__Impl : ( ( rule__InputDataset__RemarksAssignment_9_1_1 ) ) ;
+    // InternalAnalysisActivityDSL.g:3309:1: rule__InputDataset__Group_9_1__1__Impl : ( ( rule__InputDataset__RemarkAssignment_9_1_1 ) ) ;
     public final void rule__InputDataset__Group_9_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:3313:1: ( ( ( rule__InputDataset__RemarksAssignment_9_1_1 ) ) )
-            // InternalAnalysisActivityDSL.g:3314:1: ( ( rule__InputDataset__RemarksAssignment_9_1_1 ) )
+            // InternalAnalysisActivityDSL.g:3313:1: ( ( ( rule__InputDataset__RemarkAssignment_9_1_1 ) ) )
+            // InternalAnalysisActivityDSL.g:3314:1: ( ( rule__InputDataset__RemarkAssignment_9_1_1 ) )
             {
-            // InternalAnalysisActivityDSL.g:3314:1: ( ( rule__InputDataset__RemarksAssignment_9_1_1 ) )
-            // InternalAnalysisActivityDSL.g:3315:2: ( rule__InputDataset__RemarksAssignment_9_1_1 )
+            // InternalAnalysisActivityDSL.g:3314:1: ( ( rule__InputDataset__RemarkAssignment_9_1_1 ) )
+            // InternalAnalysisActivityDSL.g:3315:2: ( rule__InputDataset__RemarkAssignment_9_1_1 )
             {
-             before(grammarAccess.getInputDatasetAccess().getRemarksAssignment_9_1_1()); 
-            // InternalAnalysisActivityDSL.g:3316:2: ( rule__InputDataset__RemarksAssignment_9_1_1 )
-            // InternalAnalysisActivityDSL.g:3316:3: rule__InputDataset__RemarksAssignment_9_1_1
+             before(grammarAccess.getInputDatasetAccess().getRemarkAssignment_9_1_1()); 
+            // InternalAnalysisActivityDSL.g:3316:2: ( rule__InputDataset__RemarkAssignment_9_1_1 )
+            // InternalAnalysisActivityDSL.g:3316:3: rule__InputDataset__RemarkAssignment_9_1_1
             {
             pushFollow(FOLLOW_2);
-            rule__InputDataset__RemarksAssignment_9_1_1();
+            rule__InputDataset__RemarkAssignment_9_1_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getInputDatasetAccess().getRemarksAssignment_9_1_1()); 
+             after(grammarAccess.getInputDatasetAccess().getRemarkAssignment_9_1_1()); 
 
             }
 
@@ -12132,21 +12132,21 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__OutputDataset__Group_9_1__0__Impl"
-    // InternalAnalysisActivityDSL.g:3984:1: rule__OutputDataset__Group_9_1__0__Impl : ( 'remarks' ) ;
+    // InternalAnalysisActivityDSL.g:3984:1: rule__OutputDataset__Group_9_1__0__Impl : ( 'remark' ) ;
     public final void rule__OutputDataset__Group_9_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:3988:1: ( ( 'remarks' ) )
-            // InternalAnalysisActivityDSL.g:3989:1: ( 'remarks' )
+            // InternalAnalysisActivityDSL.g:3988:1: ( ( 'remark' ) )
+            // InternalAnalysisActivityDSL.g:3989:1: ( 'remark' )
             {
-            // InternalAnalysisActivityDSL.g:3989:1: ( 'remarks' )
-            // InternalAnalysisActivityDSL.g:3990:2: 'remarks'
+            // InternalAnalysisActivityDSL.g:3989:1: ( 'remark' )
+            // InternalAnalysisActivityDSL.g:3990:2: 'remark'
             {
-             before(grammarAccess.getOutputDatasetAccess().getRemarksKeyword_9_1_0()); 
+             before(grammarAccess.getOutputDatasetAccess().getRemarkKeyword_9_1_0()); 
             match(input,26,FOLLOW_2); 
-             after(grammarAccess.getOutputDatasetAccess().getRemarksKeyword_9_1_0()); 
+             after(grammarAccess.getOutputDatasetAccess().getRemarkKeyword_9_1_0()); 
 
             }
 
@@ -12207,31 +12207,31 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__OutputDataset__Group_9_1__1__Impl"
-    // InternalAnalysisActivityDSL.g:4011:1: rule__OutputDataset__Group_9_1__1__Impl : ( ( rule__OutputDataset__RemarksAssignment_9_1_1 ) ) ;
+    // InternalAnalysisActivityDSL.g:4011:1: rule__OutputDataset__Group_9_1__1__Impl : ( ( rule__OutputDataset__RemarkAssignment_9_1_1 ) ) ;
     public final void rule__OutputDataset__Group_9_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:4015:1: ( ( ( rule__OutputDataset__RemarksAssignment_9_1_1 ) ) )
-            // InternalAnalysisActivityDSL.g:4016:1: ( ( rule__OutputDataset__RemarksAssignment_9_1_1 ) )
+            // InternalAnalysisActivityDSL.g:4015:1: ( ( ( rule__OutputDataset__RemarkAssignment_9_1_1 ) ) )
+            // InternalAnalysisActivityDSL.g:4016:1: ( ( rule__OutputDataset__RemarkAssignment_9_1_1 ) )
             {
-            // InternalAnalysisActivityDSL.g:4016:1: ( ( rule__OutputDataset__RemarksAssignment_9_1_1 ) )
-            // InternalAnalysisActivityDSL.g:4017:2: ( rule__OutputDataset__RemarksAssignment_9_1_1 )
+            // InternalAnalysisActivityDSL.g:4016:1: ( ( rule__OutputDataset__RemarkAssignment_9_1_1 ) )
+            // InternalAnalysisActivityDSL.g:4017:2: ( rule__OutputDataset__RemarkAssignment_9_1_1 )
             {
-             before(grammarAccess.getOutputDatasetAccess().getRemarksAssignment_9_1_1()); 
-            // InternalAnalysisActivityDSL.g:4018:2: ( rule__OutputDataset__RemarksAssignment_9_1_1 )
-            // InternalAnalysisActivityDSL.g:4018:3: rule__OutputDataset__RemarksAssignment_9_1_1
+             before(grammarAccess.getOutputDatasetAccess().getRemarkAssignment_9_1_1()); 
+            // InternalAnalysisActivityDSL.g:4018:2: ( rule__OutputDataset__RemarkAssignment_9_1_1 )
+            // InternalAnalysisActivityDSL.g:4018:3: rule__OutputDataset__RemarkAssignment_9_1_1
             {
             pushFollow(FOLLOW_2);
-            rule__OutputDataset__RemarksAssignment_9_1_1();
+            rule__OutputDataset__RemarkAssignment_9_1_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getOutputDatasetAccess().getRemarksAssignment_9_1_1()); 
+             after(grammarAccess.getOutputDatasetAccess().getRemarkAssignment_9_1_1()); 
 
             }
 
@@ -15890,21 +15890,21 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__CommandLineTool__Group_3__0__Impl"
-    // InternalAnalysisActivityDSL.g:5253:1: rule__CommandLineTool__Group_3__0__Impl : ( 'remarks' ) ;
+    // InternalAnalysisActivityDSL.g:5253:1: rule__CommandLineTool__Group_3__0__Impl : ( 'remark' ) ;
     public final void rule__CommandLineTool__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:5257:1: ( ( 'remarks' ) )
-            // InternalAnalysisActivityDSL.g:5258:1: ( 'remarks' )
+            // InternalAnalysisActivityDSL.g:5257:1: ( ( 'remark' ) )
+            // InternalAnalysisActivityDSL.g:5258:1: ( 'remark' )
             {
-            // InternalAnalysisActivityDSL.g:5258:1: ( 'remarks' )
-            // InternalAnalysisActivityDSL.g:5259:2: 'remarks'
+            // InternalAnalysisActivityDSL.g:5258:1: ( 'remark' )
+            // InternalAnalysisActivityDSL.g:5259:2: 'remark'
             {
-             before(grammarAccess.getCommandLineToolAccess().getRemarksKeyword_3_0()); 
+             before(grammarAccess.getCommandLineToolAccess().getRemarkKeyword_3_0()); 
             match(input,26,FOLLOW_2); 
-             after(grammarAccess.getCommandLineToolAccess().getRemarksKeyword_3_0()); 
+             after(grammarAccess.getCommandLineToolAccess().getRemarkKeyword_3_0()); 
 
             }
 
@@ -15965,31 +15965,31 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
 
 
     // $ANTLR start "rule__CommandLineTool__Group_3__1__Impl"
-    // InternalAnalysisActivityDSL.g:5280:1: rule__CommandLineTool__Group_3__1__Impl : ( ( rule__CommandLineTool__RemarksAssignment_3_1 ) ) ;
+    // InternalAnalysisActivityDSL.g:5280:1: rule__CommandLineTool__Group_3__1__Impl : ( ( rule__CommandLineTool__RemarkAssignment_3_1 ) ) ;
     public final void rule__CommandLineTool__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAnalysisActivityDSL.g:5284:1: ( ( ( rule__CommandLineTool__RemarksAssignment_3_1 ) ) )
-            // InternalAnalysisActivityDSL.g:5285:1: ( ( rule__CommandLineTool__RemarksAssignment_3_1 ) )
+            // InternalAnalysisActivityDSL.g:5284:1: ( ( ( rule__CommandLineTool__RemarkAssignment_3_1 ) ) )
+            // InternalAnalysisActivityDSL.g:5285:1: ( ( rule__CommandLineTool__RemarkAssignment_3_1 ) )
             {
-            // InternalAnalysisActivityDSL.g:5285:1: ( ( rule__CommandLineTool__RemarksAssignment_3_1 ) )
-            // InternalAnalysisActivityDSL.g:5286:2: ( rule__CommandLineTool__RemarksAssignment_3_1 )
+            // InternalAnalysisActivityDSL.g:5285:1: ( ( rule__CommandLineTool__RemarkAssignment_3_1 ) )
+            // InternalAnalysisActivityDSL.g:5286:2: ( rule__CommandLineTool__RemarkAssignment_3_1 )
             {
-             before(grammarAccess.getCommandLineToolAccess().getRemarksAssignment_3_1()); 
-            // InternalAnalysisActivityDSL.g:5287:2: ( rule__CommandLineTool__RemarksAssignment_3_1 )
-            // InternalAnalysisActivityDSL.g:5287:3: rule__CommandLineTool__RemarksAssignment_3_1
+             before(grammarAccess.getCommandLineToolAccess().getRemarkAssignment_3_1()); 
+            // InternalAnalysisActivityDSL.g:5287:2: ( rule__CommandLineTool__RemarkAssignment_3_1 )
+            // InternalAnalysisActivityDSL.g:5287:3: rule__CommandLineTool__RemarkAssignment_3_1
             {
             pushFollow(FOLLOW_2);
-            rule__CommandLineTool__RemarksAssignment_3_1();
+            rule__CommandLineTool__RemarkAssignment_3_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getCommandLineToolAccess().getRemarksAssignment_3_1()); 
+             after(grammarAccess.getCommandLineToolAccess().getRemarkAssignment_3_1()); 
 
             }
 
@@ -21621,9 +21621,9 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
     // $ANTLR end "rule__Activity__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Activity__RemarksAssignment_3_1"
-    // InternalAnalysisActivityDSL.g:7175:1: rule__Activity__RemarksAssignment_3_1 : ( ruleEString ) ;
-    public final void rule__Activity__RemarksAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Activity__RemarkAssignment_3_1"
+    // InternalAnalysisActivityDSL.g:7175:1: rule__Activity__RemarkAssignment_3_1 : ( ruleEString ) ;
+    public final void rule__Activity__RemarkAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -21634,13 +21634,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
             // InternalAnalysisActivityDSL.g:7180:2: ( ruleEString )
             // InternalAnalysisActivityDSL.g:7181:3: ruleEString
             {
-             before(grammarAccess.getActivityAccess().getRemarksEStringParserRuleCall_3_1_0()); 
+             before(grammarAccess.getActivityAccess().getRemarkEStringParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getActivityAccess().getRemarksEStringParserRuleCall_3_1_0()); 
+             after(grammarAccess.getActivityAccess().getRemarkEStringParserRuleCall_3_1_0()); 
 
             }
 
@@ -21659,7 +21659,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
         }
         return ;
     }
-    // $ANTLR end "rule__Activity__RemarksAssignment_3_1"
+    // $ANTLR end "rule__Activity__RemarkAssignment_3_1"
 
 
     // $ANTLR start "rule__Activity__InputDatasetsAssignment_4_2"
@@ -22277,9 +22277,9 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
     // $ANTLR end "rule__Parameter__DefaultValueAssignment_9_3_1"
 
 
-    // $ANTLR start "rule__Parameter__RemarksAssignment_10_1_1"
-    // InternalAnalysisActivityDSL.g:7415:1: rule__Parameter__RemarksAssignment_10_1_1 : ( ruleEString ) ;
-    public final void rule__Parameter__RemarksAssignment_10_1_1() throws RecognitionException {
+    // $ANTLR start "rule__Parameter__RemarkAssignment_10_1_1"
+    // InternalAnalysisActivityDSL.g:7415:1: rule__Parameter__RemarkAssignment_10_1_1 : ( ruleEString ) ;
+    public final void rule__Parameter__RemarkAssignment_10_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -22290,13 +22290,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
             // InternalAnalysisActivityDSL.g:7420:2: ( ruleEString )
             // InternalAnalysisActivityDSL.g:7421:3: ruleEString
             {
-             before(grammarAccess.getParameterAccess().getRemarksEStringParserRuleCall_10_1_1_0()); 
+             before(grammarAccess.getParameterAccess().getRemarkEStringParserRuleCall_10_1_1_0()); 
             pushFollow(FOLLOW_2);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getParameterAccess().getRemarksEStringParserRuleCall_10_1_1_0()); 
+             after(grammarAccess.getParameterAccess().getRemarkEStringParserRuleCall_10_1_1_0()); 
 
             }
 
@@ -22315,7 +22315,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
         }
         return ;
     }
-    // $ANTLR end "rule__Parameter__RemarksAssignment_10_1_1"
+    // $ANTLR end "rule__Parameter__RemarkAssignment_10_1_1"
 
 
     // $ANTLR start "rule__Parameter__ConstraintsAssignment_10_2_2"
@@ -22564,9 +22564,9 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
     // $ANTLR end "rule__InputDataset__MaximumCardinalityAssignment_7"
 
 
-    // $ANTLR start "rule__InputDataset__RemarksAssignment_9_1_1"
-    // InternalAnalysisActivityDSL.g:7520:1: rule__InputDataset__RemarksAssignment_9_1_1 : ( ruleEString ) ;
-    public final void rule__InputDataset__RemarksAssignment_9_1_1() throws RecognitionException {
+    // $ANTLR start "rule__InputDataset__RemarkAssignment_9_1_1"
+    // InternalAnalysisActivityDSL.g:7520:1: rule__InputDataset__RemarkAssignment_9_1_1 : ( ruleEString ) ;
+    public final void rule__InputDataset__RemarkAssignment_9_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -22577,13 +22577,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
             // InternalAnalysisActivityDSL.g:7525:2: ( ruleEString )
             // InternalAnalysisActivityDSL.g:7526:3: ruleEString
             {
-             before(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0()); 
+             before(grammarAccess.getInputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0()); 
             pushFollow(FOLLOW_2);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getInputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0()); 
+             after(grammarAccess.getInputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0()); 
 
             }
 
@@ -22602,7 +22602,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
         }
         return ;
     }
-    // $ANTLR end "rule__InputDataset__RemarksAssignment_9_1_1"
+    // $ANTLR end "rule__InputDataset__RemarkAssignment_9_1_1"
 
 
     // $ANTLR start "rule__InputDataset__ConstraintsAssignment_9_2_2"
@@ -22851,9 +22851,9 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
     // $ANTLR end "rule__OutputDataset__MaximumCardinalityAssignment_7"
 
 
-    // $ANTLR start "rule__OutputDataset__RemarksAssignment_9_1_1"
-    // InternalAnalysisActivityDSL.g:7625:1: rule__OutputDataset__RemarksAssignment_9_1_1 : ( ruleEString ) ;
-    public final void rule__OutputDataset__RemarksAssignment_9_1_1() throws RecognitionException {
+    // $ANTLR start "rule__OutputDataset__RemarkAssignment_9_1_1"
+    // InternalAnalysisActivityDSL.g:7625:1: rule__OutputDataset__RemarkAssignment_9_1_1 : ( ruleEString ) ;
+    public final void rule__OutputDataset__RemarkAssignment_9_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -22864,13 +22864,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
             // InternalAnalysisActivityDSL.g:7630:2: ( ruleEString )
             // InternalAnalysisActivityDSL.g:7631:3: ruleEString
             {
-             before(grammarAccess.getOutputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0()); 
+             before(grammarAccess.getOutputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0()); 
             pushFollow(FOLLOW_2);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getOutputDatasetAccess().getRemarksEStringParserRuleCall_9_1_1_0()); 
+             after(grammarAccess.getOutputDatasetAccess().getRemarkEStringParserRuleCall_9_1_1_0()); 
 
             }
 
@@ -22889,7 +22889,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
         }
         return ;
     }
-    // $ANTLR end "rule__OutputDataset__RemarksAssignment_9_1_1"
+    // $ANTLR end "rule__OutputDataset__RemarkAssignment_9_1_1"
 
 
     // $ANTLR start "rule__OutputDataset__ConstraintsAssignment_9_2_2"
@@ -23277,9 +23277,9 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
     // $ANTLR end "rule__CommandLineTool__NameAssignment_1"
 
 
-    // $ANTLR start "rule__CommandLineTool__RemarksAssignment_3_1"
-    // InternalAnalysisActivityDSL.g:7783:1: rule__CommandLineTool__RemarksAssignment_3_1 : ( ruleEString ) ;
-    public final void rule__CommandLineTool__RemarksAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__CommandLineTool__RemarkAssignment_3_1"
+    // InternalAnalysisActivityDSL.g:7783:1: rule__CommandLineTool__RemarkAssignment_3_1 : ( ruleEString ) ;
+    public final void rule__CommandLineTool__RemarkAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -23290,13 +23290,13 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
             // InternalAnalysisActivityDSL.g:7788:2: ( ruleEString )
             // InternalAnalysisActivityDSL.g:7789:3: ruleEString
             {
-             before(grammarAccess.getCommandLineToolAccess().getRemarksEStringParserRuleCall_3_1_0()); 
+             before(grammarAccess.getCommandLineToolAccess().getRemarkEStringParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getCommandLineToolAccess().getRemarksEStringParserRuleCall_3_1_0()); 
+             after(grammarAccess.getCommandLineToolAccess().getRemarkEStringParserRuleCall_3_1_0()); 
 
             }
 
@@ -23315,7 +23315,7 @@ public class InternalAnalysisActivityDSLParser extends AbstractInternalContentAs
         }
         return ;
     }
-    // $ANTLR end "rule__CommandLineTool__RemarksAssignment_3_1"
+    // $ANTLR end "rule__CommandLineTool__RemarkAssignment_3_1"
 
 
     // $ANTLR start "rule__CommandLineTool__StandardInputStreamAssignment_4_2_0_2"

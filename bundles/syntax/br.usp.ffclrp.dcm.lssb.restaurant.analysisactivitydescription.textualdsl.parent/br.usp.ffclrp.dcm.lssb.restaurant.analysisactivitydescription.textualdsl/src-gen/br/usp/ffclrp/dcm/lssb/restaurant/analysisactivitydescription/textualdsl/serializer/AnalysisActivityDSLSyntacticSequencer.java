@@ -149,7 +149,7 @@ public class AnalysisActivityDSLSyntacticSequencer extends AbstractSyntacticSequ
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     name=EString ENTITY_START (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
-	 *     remarks=EString STATEMENT_END (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
+	 *     remark=EString STATEMENT_END (ambiguity) 'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList
 	 */
 	protected void emit_CommandLineTool___RedirectingKeyword_4_0_ENTITY_STARTTerminalRuleCall_4_1_ENTITY_ENDTerminalRuleCall_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
