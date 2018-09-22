@@ -71,8 +71,7 @@
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//ParameterConstraint"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -88,7 +87,7 @@
       <details key="documentation" value="This metaclass describes a dataset of the command line application.&#xA;A Dataset is a number of related files. These files contains the data&#xA;of most interest for the analysis and are passed for the underlying tool&#xA;by their file system paths."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//DatasetConstraint" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -96,14 +95,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputDataset" eSuperTypes="#//Dataset"/>
   <eClassifiers xsi:type="ecore:EClass" name="OutputDataset" eSuperTypes="#//Dataset"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterConstraint" abstract="true" eSuperTypes="#//Constraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DatasetConstraint" abstract="true" eSuperTypes="#//Constraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomConstraint" abstract="true" eSuperTypes="#//Constraint">
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterConstraint" eSuperTypes="#//CustomConstraint #//ParameterConstraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetConstraint" eSuperTypes="#//CustomConstraint #//DatasetConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true" eSuperTypes="#//Constraint">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Constraints on readiness of the activity"/>
@@ -115,8 +109,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterReadinessConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomParameterReadinessConstraint" eSuperTypes="#//CustomConstraint #//ParameterReadinessConstraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomDatasetReadinessConstraint" eSuperTypes="#//CustomConstraint #//DatasetReadinessConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="Tool" abstract="true" eSuperTypes="#//IdentifiableElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Abstract class to describe the tool used for executing the activity."/>
