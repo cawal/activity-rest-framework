@@ -57,16 +57,17 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION: return createAnalysisActivityDescription();
-			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION: return createParameterDescription();
-			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION: return createDatasetDescription();
+			case AnalysisActivityDescriptionPackage.ACTIVITY: return createActivity();
+			case AnalysisActivityDescriptionPackage.PARAMETER: return createParameter();
+			case AnalysisActivityDescriptionPackage.INPUT_DATASET: return createInputDataset();
+			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET: return createOutputDataset();
+			case AnalysisActivityDescriptionPackage.CONSTRAINT: return createConstraint();
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL: return createCommandLineTool();
+			case AnalysisActivityDescriptionPackage.EXIT_CODE: return createExitCode();
+			case AnalysisActivityDescriptionPackage.TOOL_NAME_COMMAND_LINE_ENTRY: return createToolNameCommandLineEntry();
 			case AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST: return createLiteralCommandLineEntryList();
 			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST: return createDatasetCommandLineEntryList();
 			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST: return createParameterCommandLineEntryList();
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT: return createMinimunDatasetCardinalityConstraint();
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT: return createMaximunDatasetCardinalityConstraint();
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT: return createMinimunParameterCardinalityConstraint();
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT: return createMaximunParameterCardinalityConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,12 +81,12 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_KIND:
-				return createParameterKindFromString(eDataType, initialValue);
 			case AnalysisActivityDescriptionPackage.PARAMETER_TYPE:
 				return createParameterTypeFromString(eDataType, initialValue);
-			case AnalysisActivityDescriptionPackage.DATASET_KIND:
-				return createDatasetKindFromString(eDataType, initialValue);
+			case AnalysisActivityDescriptionPackage.TERMINATION_STATUS:
+				return createTerminationStatusFromString(eDataType, initialValue);
+			case AnalysisActivityDescriptionPackage.FILE_PATH:
+				return createFilePathFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -99,12 +100,12 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case AnalysisActivityDescriptionPackage.PARAMETER_KIND:
-				return convertParameterKindToString(eDataType, instanceValue);
 			case AnalysisActivityDescriptionPackage.PARAMETER_TYPE:
 				return convertParameterTypeToString(eDataType, instanceValue);
-			case AnalysisActivityDescriptionPackage.DATASET_KIND:
-				return convertDatasetKindToString(eDataType, instanceValue);
+			case AnalysisActivityDescriptionPackage.TERMINATION_STATUS:
+				return convertTerminationStatusToString(eDataType, instanceValue);
+			case AnalysisActivityDescriptionPackage.FILE_PATH:
+				return convertFilePathToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -115,9 +116,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnalysisActivityDescription createAnalysisActivityDescription() {
-		AnalysisActivityDescriptionImpl analysisActivityDescription = new AnalysisActivityDescriptionImpl();
-		return analysisActivityDescription;
+	public Activity createActivity() {
+		ActivityImpl activity = new ActivityImpl();
+		return activity;
 	}
 
 	/**
@@ -125,9 +126,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterDescription createParameterDescription() {
-		ParameterDescriptionImpl parameterDescription = new ParameterDescriptionImpl();
-		return parameterDescription;
+	public Parameter createParameter() {
+		ParameterImpl parameter = new ParameterImpl();
+		return parameter;
 	}
 
 	/**
@@ -135,9 +136,29 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetDescription createDatasetDescription() {
-		DatasetDescriptionImpl datasetDescription = new DatasetDescriptionImpl();
-		return datasetDescription;
+	public InputDataset createInputDataset() {
+		InputDatasetImpl inputDataset = new InputDatasetImpl();
+		return inputDataset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputDataset createOutputDataset() {
+		OutputDatasetImpl outputDataset = new OutputDatasetImpl();
+		return outputDataset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createConstraint() {
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
 	}
 
 	/**
@@ -175,9 +196,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MinimunDatasetCardinalityConstraint createMinimunDatasetCardinalityConstraint() {
-		MinimunDatasetCardinalityConstraintImpl minimunDatasetCardinalityConstraint = new MinimunDatasetCardinalityConstraintImpl();
-		return minimunDatasetCardinalityConstraint;
+	public CommandLineTool createCommandLineTool() {
+		CommandLineToolImpl commandLineTool = new CommandLineToolImpl();
+		return commandLineTool;
 	}
 
 	/**
@@ -185,9 +206,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MaximunDatasetCardinalityConstraint createMaximunDatasetCardinalityConstraint() {
-		MaximunDatasetCardinalityConstraintImpl maximunDatasetCardinalityConstraint = new MaximunDatasetCardinalityConstraintImpl();
-		return maximunDatasetCardinalityConstraint;
+	public ExitCode createExitCode() {
+		ExitCodeImpl exitCode = new ExitCodeImpl();
+		return exitCode;
 	}
 
 	/**
@@ -195,39 +216,9 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MinimunParameterCardinalityConstraint createMinimunParameterCardinalityConstraint() {
-		MinimunParameterCardinalityConstraintImpl minimunParameterCardinalityConstraint = new MinimunParameterCardinalityConstraintImpl();
-		return minimunParameterCardinalityConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MaximunParameterCardinalityConstraint createMaximunParameterCardinalityConstraint() {
-		MaximunParameterCardinalityConstraintImpl maximunParameterCardinalityConstraint = new MaximunParameterCardinalityConstraintImpl();
-		return maximunParameterCardinalityConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ParameterKind createParameterKindFromString(EDataType eDataType, String initialValue) {
-		ParameterKind result = ParameterKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertParameterKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
+	public ToolNameCommandLineEntry createToolNameCommandLineEntry() {
+		ToolNameCommandLineEntryImpl toolNameCommandLineEntry = new ToolNameCommandLineEntryImpl();
+		return toolNameCommandLineEntry;
 	}
 
 	/**
@@ -255,8 +246,8 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetKind createDatasetKindFromString(EDataType eDataType, String initialValue) {
-		DatasetKind result = DatasetKind.get(initialValue);
+	public TerminationStatus createTerminationStatusFromString(EDataType eDataType, String initialValue) {
+		TerminationStatus result = TerminationStatus.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -266,8 +257,26 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertDatasetKindToString(EDataType eDataType, Object instanceValue) {
+	public String convertTerminationStatusToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String createFilePathFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFilePathToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

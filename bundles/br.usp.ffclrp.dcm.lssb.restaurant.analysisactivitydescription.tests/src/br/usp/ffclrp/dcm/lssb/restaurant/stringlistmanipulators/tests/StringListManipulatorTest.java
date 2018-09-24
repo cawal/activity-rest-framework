@@ -58,6 +58,19 @@ public abstract class StringListManipulatorTest extends TestCase {
 		return fixture;
 	}
 
+	/**
+	 * Tests the '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator#transform(org.eclipse.emf.common.util.EList) <em>Transform</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator#transform(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	public void testTransform__EList() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
 	public void test_noTest() {
 	}
 

@@ -33,7 +33,6 @@ public class AnalysisactivitydescriptionAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new AnalysisactivitydescriptionAllTests("Analysis-activity-description Tests");
-		suite.addTest(AnalysisActivityDescriptionTests.suite());
 		suite.addTest(StringListManipulatorsTests.suite());
 		return suite;
 	}

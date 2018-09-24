@@ -155,7 +155,7 @@ public class JoinImpl extends StringListManipulatorImpl implements Join {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (delimiter: ");
 		result.append(delimiter);
 		result.append(')');

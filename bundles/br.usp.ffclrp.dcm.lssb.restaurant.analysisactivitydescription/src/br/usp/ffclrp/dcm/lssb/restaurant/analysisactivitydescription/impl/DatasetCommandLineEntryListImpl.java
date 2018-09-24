@@ -3,9 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +34,7 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * @generated
 	 * @ordered
 	 */
-	protected DatasetDescription dataset;
+	protected Dataset dataset;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,10 +60,10 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetDescription getDataset() {
+	public Dataset getDataset() {
 		if (dataset != null && dataset.eIsProxy()) {
 			InternalEObject oldDataset = (InternalEObject)dataset;
-			dataset = (DatasetDescription)eResolveProxy(oldDataset);
+			dataset = (Dataset)eResolveProxy(oldDataset);
 			if (dataset != oldDataset) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET, oldDataset, dataset));
@@ -78,7 +77,7 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DatasetDescription basicGetDataset() {
+	public Dataset basicGetDataset() {
 		return dataset;
 	}
 
@@ -87,8 +86,8 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataset(DatasetDescription newDataset) {
-		DatasetDescription oldDataset = dataset;
+	public void setDataset(Dataset newDataset) {
+		Dataset oldDataset = dataset;
 		dataset = newDataset;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET, oldDataset, dataset));
@@ -118,7 +117,7 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET:
-				setDataset((DatasetDescription)newValue);
+				setDataset((Dataset)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,7 +132,7 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.DATASET_COMMAND_LINE_ENTRY_LIST__DATASET:
-				setDataset((DatasetDescription)null);
+				setDataset((Dataset)null);
 				return;
 		}
 		super.eUnset(featureID);

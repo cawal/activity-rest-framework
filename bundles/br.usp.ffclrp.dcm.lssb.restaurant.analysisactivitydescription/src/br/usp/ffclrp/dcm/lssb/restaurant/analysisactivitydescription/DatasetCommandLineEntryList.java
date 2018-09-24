@@ -29,12 +29,12 @@ public interface DatasetCommandLineEntryList extends CommandLineEntryList {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dataset</em>' reference.
-	 * @see #setDataset(DatasetDescription)
+	 * @see #setDataset(Dataset)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getDatasetCommandLineEntryList_Dataset()
 	 * @model required="true"
 	 * @generated
 	 */
-	DatasetDescription getDataset();
+	Dataset getDataset();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList#getDataset <em>Dataset</em>}' reference.
@@ -44,6 +44,6 @@ public interface DatasetCommandLineEntryList extends CommandLineEntryList {
 	 * @see #getDataset()
 	 * @generated
 	 */
-	void setDataset(DatasetDescription value);
+	void setDataset(Dataset value);
 
 } // DatasetCommandLineEntryList

@@ -9,6 +9,13 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Dataset Description</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * This metaclass describes a dataset of the command line application.
+ * A Dataset is a number of related files. These files contains the data
+ * of most interest for the analysis and are passed for the underlying tool
+ * by their file system paths.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>

@@ -29,12 +29,12 @@ public interface ParameterCommandLineEntryList extends CommandLineEntryList {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference.
-	 * @see #setParameter(ParameterDescription)
+	 * @see #setParameter(Parameter)
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getParameterCommandLineEntryList_Parameter()
 	 * @model required="true"
 	 * @generated
 	 */
-	ParameterDescription getParameter();
+	Parameter getParameter();
 
 	/**
 	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList#getParameter <em>Parameter</em>}' reference.
@@ -44,6 +44,6 @@ public interface ParameterCommandLineEntryList extends CommandLineEntryList {
 	 * @see #getParameter()
 	 * @generated
 	 */
-	void setParameter(ParameterDescription value);
+	void setParameter(Parameter value);
 
 } // ParameterCommandLineEntryList

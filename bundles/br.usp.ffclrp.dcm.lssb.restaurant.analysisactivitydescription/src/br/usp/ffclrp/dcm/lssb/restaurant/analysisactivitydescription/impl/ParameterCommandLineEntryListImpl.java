@@ -3,9 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +34,7 @@ public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl 
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterDescription parameter;
+	protected Parameter parameter;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,10 +60,10 @@ public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterDescription getParameter() {
+	public Parameter getParameter() {
 		if (parameter != null && parameter.eIsProxy()) {
 			InternalEObject oldParameter = (InternalEObject)parameter;
-			parameter = (ParameterDescription)eResolveProxy(oldParameter);
+			parameter = (Parameter)eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER, oldParameter, parameter));
@@ -78,7 +77,7 @@ public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterDescription basicGetParameter() {
+	public Parameter basicGetParameter() {
 		return parameter;
 	}
 
@@ -87,8 +86,8 @@ public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameter(ParameterDescription newParameter) {
-		ParameterDescription oldParameter = parameter;
+	public void setParameter(Parameter newParameter) {
+		Parameter oldParameter = parameter;
 		parameter = newParameter;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER, oldParameter, parameter));
@@ -118,7 +117,7 @@ public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER:
-				setParameter((ParameterDescription)newValue);
+				setParameter((Parameter)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,7 +132,7 @@ public class ParameterCommandLineEntryListImpl extends CommandLineEntryListImpl 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AnalysisActivityDescriptionPackage.PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER:
-				setParameter((ParameterDescription)null);
+				setParameter((Parameter)null);
 				return;
 		}
 		super.eUnset(featureID);
