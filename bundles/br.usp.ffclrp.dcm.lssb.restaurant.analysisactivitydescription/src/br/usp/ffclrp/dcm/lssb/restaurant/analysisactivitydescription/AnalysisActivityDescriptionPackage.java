@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -25,6 +24,7 @@ import org.eclipse.emf.ecore.EReference;
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/OCL/Import slm='string-list-manipulators.ecore#/'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface AnalysisActivityDescriptionPackage extends EPackage {
@@ -61,14 +61,78 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	AnalysisActivityDescriptionPackage eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionImpl <em>Analysis Activity Description</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl <em>Identifiable Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getAnalysisActivityDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getIdentifiableElement()
 	 * @generated
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION = 0;
+	int IDENTIFIABLE_ELEMENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_ELEMENT__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_ELEMENT__REMARK = 1;
+
+	/**
+	 * The number of structural features of the '<em>Identifiable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_ELEMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Identifiable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl <em>Activity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getActivity()
+	 * @generated
+	 */
+	int ACTIVITY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__NAME = IDENTIFIABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__REMARK = IDENTIFIABLE_ELEMENT__REMARK;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -77,7 +141,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION__PARAMETERS = 0;
+	int ACTIVITY__PARAMETERS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Input Datasets</b></em>' containment reference list.
@@ -86,7 +150,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION__INPUT_DATASETS = 1;
+	int ACTIVITY__INPUT_DATASETS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Output Datasets</b></em>' containment reference list.
@@ -95,53 +159,108 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION__OUTPUT_DATASETS = 2;
+	int ACTIVITY__OUTPUT_DATASETS = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Command Line Template</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Functional Entity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION__COMMAND_LINE_TEMPLATE = 3;
+	int ACTIVITY__FUNCTIONAL_ENTITY = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Readiness Contraints</b></em>' containment reference list.
+	 * The number of structural features of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION__READINESS_CONTRAINTS = 4;
+	int ACTIVITY_FEATURE_COUNT = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the '<em>Analysis Activity Description</em>' class.
+	 * The number of operations of the '<em>Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION_FEATURE_COUNT = 5;
+	int ACTIVITY_OPERATION_COUNT = IDENTIFIABLE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Analysis Activity Description</em>' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MultiplicityElementImpl <em>Multiplicity Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MultiplicityElementImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMultiplicityElement()
+	 * @generated
+	 */
+	int MULTIPLICITY_ELEMENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANALYSIS_ACTIVITY_DESCRIPTION_OPERATION_COUNT = 0;
+	int MULTIPLICITY_ELEMENT__MINIMUM_CARDINALITY = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl <em>Parameter Description</em>}' class.
+	 * The feature id for the '<em><b>Maximum Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterDescription()
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ELEMENT__MAXIMUM_CARDINALITY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Multiplicity Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ELEMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Multiplicity Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER_DESCRIPTION = 1;
+	int PARAMETER = 3;
+
+	/**
+	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__MINIMUM_CARDINALITY = MULTIPLICITY_ELEMENT__MINIMUM_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Maximum Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__MAXIMUM_CARDINALITY = MULTIPLICITY_ELEMENT__MAXIMUM_CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -150,16 +269,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION__NAME = 0;
+	int PARAMETER__NAME = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Parameter Kind</b></em>' attribute.
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION__PARAMETER_KIND = 1;
+	int PARAMETER__REMARK = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Type</b></em>' attribute.
@@ -168,7 +287,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION__PARAMETER_TYPE = 2;
+	int PARAMETER__PARAMETER_TYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' attribute list.
@@ -177,62 +296,62 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION__DEFAULT_VALUE = 3;
+	int PARAMETER__DEFAULT_VALUE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Parameter Description</em>' class.
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION_FEATURE_COUNT = 4;
+	int PARAMETER__CONSTRAINTS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>Is Valid Value</em>' operation.
+	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST = 0;
+	int PARAMETER_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The operation id for the '<em>Is Valid Value</em>' operation.
+	 * The number of operations of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT = 1;
+	int PARAMETER_OPERATION_COUNT = MULTIPLICITY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Is Valid Value</em>' operation.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl <em>Dataset</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDataset()
+	 * @generated
+	 */
+	int DATASET = 4;
+
+	/**
+	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST = 2;
+	int DATASET__MINIMUM_CARDINALITY = MULTIPLICITY_ELEMENT__MINIMUM_CARDINALITY;
 
 	/**
-	 * The number of operations of the '<em>Parameter Description</em>' class.
+	 * The feature id for the '<em><b>Maximum Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DESCRIPTION_OPERATION_COUNT = 3;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl <em>Dataset Description</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetDescription()
-	 * @generated
-	 */
-	int DATASET_DESCRIPTION = 2;
+	int DATASET__MAXIMUM_CARDINALITY = MULTIPLICITY_ELEMENT__MAXIMUM_CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -241,7 +360,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_DESCRIPTION__NAME = 0;
+	int DATASET__NAME = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET__REMARK = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
@@ -250,34 +378,235 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_DESCRIPTION__MIMETYPE = 1;
+	int DATASET__MIMETYPE = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Dataset Kind</b></em>' attribute.
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_DESCRIPTION__DATASET_KIND = 2;
+	int DATASET__CONSTRAINTS = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Dataset Description</em>' class.
+	 * The number of structural features of the '<em>Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_DESCRIPTION_FEATURE_COUNT = 3;
+	int DATASET_FEATURE_COUNT = MULTIPLICITY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of operations of the '<em>Dataset Description</em>' class.
+	 * The number of operations of the '<em>Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_DESCRIPTION_OPERATION_COUNT = 0;
+	int DATASET_OPERATION_COUNT = MULTIPLICITY_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.InputDatasetImpl <em>Input Dataset</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.InputDatasetImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getInputDataset()
+	 * @generated
+	 */
+	int INPUT_DATASET = 5;
+
+	/**
+	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__MINIMUM_CARDINALITY = DATASET__MINIMUM_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Maximum Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__MAXIMUM_CARDINALITY = DATASET__MAXIMUM_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__NAME = DATASET__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__REMARK = DATASET__REMARK;
+
+	/**
+	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__MIMETYPE = DATASET__MIMETYPE;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET__CONSTRAINTS = DATASET__CONSTRAINTS;
+
+	/**
+	 * The number of structural features of the '<em>Input Dataset</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET_FEATURE_COUNT = DATASET_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Input Dataset</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_DATASET_OPERATION_COUNT = DATASET_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.OutputDatasetImpl <em>Output Dataset</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.OutputDatasetImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getOutputDataset()
+	 * @generated
+	 */
+	int OUTPUT_DATASET = 6;
+
+	/**
+	 * The feature id for the '<em><b>Minimum Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__MINIMUM_CARDINALITY = DATASET__MINIMUM_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Maximum Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__MAXIMUM_CARDINALITY = DATASET__MAXIMUM_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__NAME = DATASET__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__REMARK = DATASET__REMARK;
+
+	/**
+	 * The feature id for the '<em><b>Mimetype</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__MIMETYPE = DATASET__MIMETYPE;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET__CONSTRAINTS = DATASET__CONSTRAINTS;
+
+	/**
+	 * The number of structural features of the '<em>Output Dataset</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET_FEATURE_COUNT = DATASET_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Output Dataset</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_DATASET_OPERATION_COUNT = DATASET_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl <em>Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getConstraint()
+	 * @generated
+	 */
+	int CONSTRAINT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl <em>Command Line Entry List</em>}' class.
@@ -287,7 +616,257 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineEntryList()
 	 * @generated
 	 */
-	int COMMAND_LINE_ENTRY_LIST = 3;
+	int COMMAND_LINE_ENTRY_LIST = 11;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolNameCommandLineEntryImpl <em>Tool Name Command Line Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolNameCommandLineEntryImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getToolNameCommandLineEntry()
+	 * @generated
+	 */
+	int TOOL_NAME_COMMAND_LINE_ENTRY = 12;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntryList()
+	 * @generated
+	 */
+	int LITERAL_COMMAND_LINE_ENTRY_LIST = 13;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl <em>Dataset Command Line Entry List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntryList()
+	 * @generated
+	 */
+	int DATASET_COMMAND_LINE_ENTRY_LIST = 14;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl <em>Parameter Command Line Entry List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntryList()
+	 * @generated
+	 */
+	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 15;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.FunctionalEntityImpl <em>Functional Entity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.FunctionalEntityImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getFunctionalEntity()
+	 * @generated
+	 */
+	int FUNCTIONAL_ENTITY = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_ENTITY__NAME = IDENTIFIABLE_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_ENTITY__REMARK = IDENTIFIABLE_ELEMENT__REMARK;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_ENTITY__ACTIVITY = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Functional Entity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_ENTITY_FEATURE_COUNT = IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Functional Entity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_ENTITY_OPERATION_COUNT = IDENTIFIABLE_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl <em>Command Line Tool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineTool()
+	 * @generated
+	 */
+	int COMMAND_LINE_TOOL = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__NAME = FUNCTIONAL_ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Remark</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__REMARK = FUNCTIONAL_ENTITY__REMARK;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__ACTIVITY = FUNCTIONAL_ENTITY__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Command Line Template</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE = FUNCTIONAL_ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Standard Input Stream</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__STANDARD_INPUT_STREAM = FUNCTIONAL_ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Standard Output Stream</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__STANDARD_OUTPUT_STREAM = FUNCTIONAL_ENTITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Standard Error Stream</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__STANDARD_ERROR_STREAM = FUNCTIONAL_ENTITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Exit Codes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL__EXIT_CODES = FUNCTIONAL_ENTITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Command Line Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL_FEATURE_COUNT = FUNCTIONAL_ENTITY_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Command Line Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE_TOOL_OPERATION_COUNT = FUNCTIONAL_ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ExitCodeImpl <em>Exit Code</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ExitCodeImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getExitCode()
+	 * @generated
+	 */
+	int EXIT_CODE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_CODE__CODE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Report Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_CODE__REPORT_MESSAGE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_CODE__STATUS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Exit Code</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_CODE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Exit Code</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_CODE_OPERATION_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -317,14 +896,31 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
+	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getLiteralCommandLineEntryList()
 	 * @generated
+	 * @ordered
 	 */
-	int LITERAL_COMMAND_LINE_ENTRY_LIST = 4;
+	int TOOL_NAME_COMMAND_LINE_ENTRY__MANIPULATORS = COMMAND_LINE_ENTRY_LIST__MANIPULATORS;
+
+	/**
+	 * The number of structural features of the '<em>Tool Name Command Line Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL_NAME_COMMAND_LINE_ENTRY_FEATURE_COUNT = COMMAND_LINE_ENTRY_LIST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Tool Name Command Line Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL_NAME_COMMAND_LINE_ENTRY_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -363,16 +959,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int LITERAL_COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl <em>Dataset Command Line Entry List</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetCommandLineEntryListImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetCommandLineEntryList()
-	 * @generated
-	 */
-	int DATASET_COMMAND_LINE_ENTRY_LIST = 5;
-
-	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -407,16 +993,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATASET_COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl <em>Parameter Command Line Entry List</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterCommandLineEntryListImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterCommandLineEntryList()
-	 * @generated
-	 */
-	int PARAMETER_COMMAND_LINE_ENTRY_LIST = 6;
 
 	/**
 	 * The feature id for the '<em><b>Manipulators</b></em>' containment reference list.
@@ -455,302 +1031,6 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	int PARAMETER_COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT = COMMAND_LINE_ENTRY_LIST_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl <em>Readiness Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getReadinessConstraint()
-	 * @generated
-	 */
-	int READINESS_CONSTRAINT = 7;
-
-	/**
-	 * The number of structural features of the '<em>Readiness Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int READINESS_CONSTRAINT_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Readiness Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int READINESS_CONSTRAINT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl <em>Dataset Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetConstraint()
-	 * @generated
-	 */
-	int DATASET_CONSTRAINT = 8;
-
-	/**
-	 * The feature id for the '<em><b>Dataset</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATASET_CONSTRAINT__DATASET = READINESS_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Dataset Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATASET_CONSTRAINT_FEATURE_COUNT = READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Dataset Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATASET_CONSTRAINT_OPERATION_COUNT = READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl <em>Minimun Dataset Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunDatasetCardinalityConstraint()
-	 * @generated
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT = 9;
-
-	/**
-	 * The feature id for the '<em><b>Dataset</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT__DATASET = DATASET_CONSTRAINT__DATASET;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = DATASET_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Minimun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT_FEATURE_COUNT = DATASET_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Minimun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_DATASET_CARDINALITY_CONSTRAINT_OPERATION_COUNT = DATASET_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl <em>Maximun Dataset Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunDatasetCardinalityConstraint()
-	 * @generated
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT = 10;
-
-	/**
-	 * The feature id for the '<em><b>Dataset</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__DATASET = DATASET_CONSTRAINT__DATASET;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = DATASET_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Maximun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT_FEATURE_COUNT = DATASET_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Maximun Dataset Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_DATASET_CARDINALITY_CONSTRAINT_OPERATION_COUNT = DATASET_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl <em>Parameter Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterConstraint()
-	 * @generated
-	 */
-	int PARAMETER_CONSTRAINT = 11;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_CONSTRAINT__PARAMETER = READINESS_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Parameter Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_CONSTRAINT_FEATURE_COUNT = READINESS_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Parameter Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_CONSTRAINT_OPERATION_COUNT = READINESS_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl <em>Minimun Parameter Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT = 12;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__PARAMETER = PARAMETER_CONSTRAINT__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = PARAMETER_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Minimun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT_FEATURE_COUNT = PARAMETER_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Minimun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT_OPERATION_COUNT = PARAMETER_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl <em>Maximun Parameter Cardinality Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT = 13;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__PARAMETER = PARAMETER_CONSTRAINT__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = PARAMETER_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Maximun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT_FEATURE_COUNT = PARAMETER_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Maximun Parameter Cardinality Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT_OPERATION_COUNT = PARAMETER_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind <em>Parameter Kind</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterKind()
-	 * @generated
-	 */
-	int PARAMETER_KIND = 14;
-
-	/**
 	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType <em>Parameter Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -758,219 +1038,261 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterType()
 	 * @generated
 	 */
-	int PARAMETER_TYPE = 15;
+	int PARAMETER_TYPE = 16;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind <em>Dataset Kind</em>}' enum.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus <em>Termination Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetKind()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getTerminationStatus()
 	 * @generated
 	 */
-	int DATASET_KIND = 16;
+	int TERMINATION_STATUS = 17;
 
 	/**
-	 * The meta object id for the '<em>List</em>' data type.
+	 * The meta object id for the '<em>File Path</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.util.List
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getList()
+	 * @see java.lang.String
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getFilePath()
 	 * @generated
 	 */
-	int LIST = 17;
+	int FILE_PATH = 18;
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription <em>Analysis Activity Description</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement <em>Identifiable Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Analysis Activity Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription
+	 * @return the meta object for class '<em>Identifiable Element</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement
 	 * @generated
 	 */
-	EClass getAnalysisActivityDescription();
+	EClass getIdentifiableElement();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getName()
+	 * @see #getIdentifiableElement()
+	 * @generated
+	 */
+	EAttribute getIdentifiableElement_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemark <em>Remark</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remark</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement#getRemark()
+	 * @see #getIdentifiableElement()
+	 * @generated
+	 */
+	EAttribute getIdentifiableElement_Remark();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Activity</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
+	 * @generated
+	 */
+	EClass getActivity();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getParameters()
-	 * @see #getAnalysisActivityDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getParameters()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getAnalysisActivityDescription_Parameters();
+	EReference getActivity_Parameters();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getInputDatasets <em>Input Datasets</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getInputDatasets <em>Input Datasets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Input Datasets</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getInputDatasets()
-	 * @see #getAnalysisActivityDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getInputDatasets()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getAnalysisActivityDescription_InputDatasets();
+	EReference getActivity_InputDatasets();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getOutputDatasets <em>Output Datasets</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getOutputDatasets <em>Output Datasets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Output Datasets</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getOutputDatasets()
-	 * @see #getAnalysisActivityDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getOutputDatasets()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getAnalysisActivityDescription_OutputDatasets();
+	EReference getActivity_OutputDatasets();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getCommandLineTemplate <em>Command Line Template</em>}'.
+	 * Returns the meta object for the containment reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getFunctionalEntity <em>Functional Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Command Line Template</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getCommandLineTemplate()
-	 * @see #getAnalysisActivityDescription()
+	 * @return the meta object for the containment reference '<em>Functional Entity</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getFunctionalEntity()
+	 * @see #getActivity()
 	 * @generated
 	 */
-	EReference getAnalysisActivityDescription_CommandLineTemplate();
+	EReference getActivity_FunctionalEntity();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getReadinessContraints <em>Readiness Contraints</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement <em>Multiplicity Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Readiness Contraints</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription#getReadinessContraints()
-	 * @see #getAnalysisActivityDescription()
+	 * @return the meta object for class '<em>Multiplicity Element</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement
 	 * @generated
 	 */
-	EReference getAnalysisActivityDescription_ReadinessContraints();
+	EClass getMultiplicityElement();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription <em>Parameter Description</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement#getMinimumCardinality <em>Minimum Cardinality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameter Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription
+	 * @return the meta object for the attribute '<em>Minimum Cardinality</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement#getMinimumCardinality()
+	 * @see #getMultiplicityElement()
 	 * @generated
 	 */
-	EClass getParameterDescription();
+	EAttribute getMultiplicityElement_MinimumCardinality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement#getMaximumCardinality <em>Maximum Cardinality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getName()
-	 * @see #getParameterDescription()
+	 * @return the meta object for the attribute '<em>Maximum Cardinality</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement#getMaximumCardinality()
+	 * @see #getMultiplicityElement()
 	 * @generated
 	 */
-	EAttribute getParameterDescription_Name();
+	EAttribute getMultiplicityElement_MaximumCardinality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterKind <em>Parameter Kind</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Parameter Kind</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterKind()
-	 * @see #getParameterDescription()
+	 * @return the meta object for class '<em>Parameter</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter
 	 * @generated
 	 */
-	EAttribute getParameterDescription_ParameterKind();
+	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterType <em>Parameter Type</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getParameterType <em>Parameter Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Parameter Type</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getParameterType()
-	 * @see #getParameterDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getParameterType()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameterDescription_ParameterType();
+	EAttribute getParameter_ParameterType();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getDefaultValue <em>Default Value</em>}'.
+	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getDefaultValue <em>Default Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Default Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#getDefaultValue()
-	 * @see #getParameterDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getDefaultValue()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameterDescription_DefaultValue();
+	EAttribute getParameter_DefaultValue();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(org.eclipse.emf.common.util.EList) <em>Is Valid Value</em>}' operation.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Valid Value</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(org.eclipse.emf.common.util.EList)
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter#getConstraints()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EOperation getParameterDescription__IsValidValue__EList();
+	EReference getParameter_Constraints();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.lang.Object) <em>Is Valid Value</em>}' operation.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Valid Value</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.lang.Object)
+	 * @return the meta object for class '<em>Dataset</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset
 	 * @generated
 	 */
-	EOperation getParameterDescription__IsValidValue__Object();
+	EClass getDataset();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.util.List) <em>Is Valid Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Valid Value</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription#isValidValue(java.util.List)
-	 * @generated
-	 */
-	EOperation getParameterDescription__IsValidValue__List();
-
-	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription <em>Dataset Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dataset Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription
-	 * @generated
-	 */
-	EClass getDatasetDescription();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getName()
-	 * @see #getDatasetDescription()
-	 * @generated
-	 */
-	EAttribute getDatasetDescription_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getMimetype <em>Mimetype</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getMimetype <em>Mimetype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Mimetype</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getMimetype()
-	 * @see #getDatasetDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getMimetype()
+	 * @see #getDataset()
 	 * @generated
 	 */
-	EAttribute getDatasetDescription_Mimetype();
+	EAttribute getDataset_Mimetype();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getDatasetKind <em>Dataset Kind</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Dataset Kind</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription#getDatasetKind()
-	 * @see #getDatasetDescription()
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset#getConstraints()
+	 * @see #getDataset()
 	 * @generated
 	 */
-	EAttribute getDatasetDescription_DatasetKind();
+	EReference getDataset_Constraints();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset <em>Input Dataset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Input Dataset</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset
+	 * @generated
+	 */
+	EClass getInputDataset();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset <em>Output Dataset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Output Dataset</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset
+	 * @generated
+	 */
+	EClass getOutputDataset();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constraint</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint
+	 * @generated
+	 */
+	EClass getConstraint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint#getName()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EAttribute getConstraint_Name();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList <em>Command Line Entry List</em>}'.
@@ -992,6 +1314,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCommandLineEntryList_Manipulators();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ToolNameCommandLineEntry <em>Tool Name Command Line Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Tool Name Command Line Entry</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ToolNameCommandLineEntry
+	 * @generated
+	 */
+	EClass getToolNameCommandLineEntry();
 
 	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList <em>Literal Command Line Entry List</em>}'.
@@ -1057,150 +1389,133 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EReference getParameterCommandLineEntryList_Parameter();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint <em>Readiness Constraint</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity <em>Functional Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Readiness Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint
+	 * @return the meta object for class '<em>Functional Entity</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity
 	 * @generated
 	 */
-	EClass getReadinessConstraint();
+	EClass getFunctionalEntity();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint <em>Dataset Constraint</em>}'.
+	 * Returns the meta object for the container reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity#getActivity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dataset Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint
+	 * @return the meta object for the container reference '<em>Activity</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity#getActivity()
+	 * @see #getFunctionalEntity()
 	 * @generated
 	 */
-	EClass getDatasetConstraint();
+	EReference getFunctionalEntity_Activity();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint#getDataset <em>Dataset</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool <em>Command Line Tool</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Dataset</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint#getDataset()
-	 * @see #getDatasetConstraint()
+	 * @return the meta object for class '<em>Command Line Tool</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool
 	 * @generated
 	 */
-	EReference getDatasetConstraint_Dataset();
+	EClass getCommandLineTool();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint <em>Minimun Dataset Cardinality Constraint</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getCommandLineTemplate <em>Command Line Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Minimun Dataset Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint
+	 * @return the meta object for the containment reference list '<em>Command Line Template</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getCommandLineTemplate()
+	 * @see #getCommandLineTool()
 	 * @generated
 	 */
-	EClass getMinimunDatasetCardinalityConstraint();
+	EReference getCommandLineTool_CommandLineTemplate();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint#getValue <em>Value</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardInputStream <em>Standard Input Stream</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint#getValue()
-	 * @see #getMinimunDatasetCardinalityConstraint()
+	 * @return the meta object for the reference '<em>Standard Input Stream</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardInputStream()
+	 * @see #getCommandLineTool()
 	 * @generated
 	 */
-	EAttribute getMinimunDatasetCardinalityConstraint_Value();
+	EReference getCommandLineTool_StandardInputStream();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint <em>Maximun Dataset Cardinality Constraint</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardOutputStream <em>Standard Output Stream</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint
+	 * @return the meta object for the reference '<em>Standard Output Stream</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardOutputStream()
+	 * @see #getCommandLineTool()
 	 * @generated
 	 */
-	EClass getMaximunDatasetCardinalityConstraint();
+	EReference getCommandLineTool_StandardOutputStream();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint#getValue <em>Value</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardErrorStream <em>Standard Error Stream</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint#getValue()
-	 * @see #getMaximunDatasetCardinalityConstraint()
+	 * @return the meta object for the reference '<em>Standard Error Stream</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getStandardErrorStream()
+	 * @see #getCommandLineTool()
 	 * @generated
 	 */
-	EAttribute getMaximunDatasetCardinalityConstraint_Value();
+	EReference getCommandLineTool_StandardErrorStream();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint <em>Parameter Constraint</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getExitCodes <em>Exit Codes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameter Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint
+	 * @return the meta object for the containment reference list '<em>Exit Codes</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool#getExitCodes()
+	 * @see #getCommandLineTool()
 	 * @generated
 	 */
-	EClass getParameterConstraint();
+	EReference getCommandLineTool_ExitCodes();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode <em>Exit Code</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parameter</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint#getParameter()
-	 * @see #getParameterConstraint()
+	 * @return the meta object for class '<em>Exit Code</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode
 	 * @generated
 	 */
-	EReference getParameterConstraint_Parameter();
+	EClass getExitCode();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint <em>Minimun Parameter Cardinality Constraint</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode#getCode <em>Code</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint
+	 * @return the meta object for the attribute '<em>Code</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode#getCode()
+	 * @see #getExitCode()
 	 * @generated
 	 */
-	EClass getMinimunParameterCardinalityConstraint();
+	EAttribute getExitCode_Code();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode#getReportMessage <em>Report Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint#getValue()
-	 * @see #getMinimunParameterCardinalityConstraint()
+	 * @return the meta object for the attribute '<em>Report Message</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode#getReportMessage()
+	 * @see #getExitCode()
 	 * @generated
 	 */
-	EAttribute getMinimunParameterCardinalityConstraint_Value();
+	EAttribute getExitCode_ReportMessage();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint <em>Maximun Parameter Cardinality Constraint</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode#getStatus <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode#getStatus()
+	 * @see #getExitCode()
 	 * @generated
 	 */
-	EClass getMaximunParameterCardinalityConstraint();
-
-	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint#getValue()
-	 * @see #getMaximunParameterCardinalityConstraint()
-	 * @generated
-	 */
-	EAttribute getMaximunParameterCardinalityConstraint_Value();
-
-	/**
-	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind <em>Parameter Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Parameter Kind</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
-	 * @generated
-	 */
-	EEnum getParameterKind();
+	EAttribute getExitCode_Status();
 
 	/**
 	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType <em>Parameter Type</em>}'.
@@ -1213,25 +1528,25 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	EEnum getParameterType();
 
 	/**
-	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind <em>Dataset Kind</em>}'.
+	 * Returns the meta object for enum '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus <em>Termination Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Dataset Kind</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
+	 * @return the meta object for enum '<em>Termination Status</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus
 	 * @generated
 	 */
-	EEnum getDatasetKind();
+	EEnum getTerminationStatus();
 
 	/**
-	 * Returns the meta object for data type '{@link java.util.List <em>List</em>}'.
+	 * Returns the meta object for data type '{@link java.lang.String <em>File Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>List</em>'.
-	 * @see java.util.List
-	 * @model instanceClass="java.util.List" serializeable="false" typeParameters="A"
+	 * @return the meta object for data type '<em>File Path</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
 	 * @generated
 	 */
-	EDataType getList();
+	EDataType getFilePath();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1257,14 +1572,40 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionImpl <em>Analysis Activity Description</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl <em>Identifiable Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getAnalysisActivityDescription()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.IdentifiableElementImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getIdentifiableElement()
 		 * @generated
 		 */
-		EClass ANALYSIS_ACTIVITY_DESCRIPTION = eINSTANCE.getAnalysisActivityDescription();
+		EClass IDENTIFIABLE_ELEMENT = eINSTANCE.getIdentifiableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE_ELEMENT__NAME = eINSTANCE.getIdentifiableElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Remark</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE_ELEMENT__REMARK = eINSTANCE.getIdentifiableElement_Remark();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl <em>Activity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getActivity()
+		 * @generated
+		 */
+		EClass ACTIVITY = eINSTANCE.getActivity();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -1272,7 +1613,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANALYSIS_ACTIVITY_DESCRIPTION__PARAMETERS = eINSTANCE.getAnalysisActivityDescription_Parameters();
+		EReference ACTIVITY__PARAMETERS = eINSTANCE.getActivity_Parameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Input Datasets</b></em>' containment reference list feature.
@@ -1280,7 +1621,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANALYSIS_ACTIVITY_DESCRIPTION__INPUT_DATASETS = eINSTANCE.getAnalysisActivityDescription_InputDatasets();
+		EReference ACTIVITY__INPUT_DATASETS = eINSTANCE.getActivity_InputDatasets();
 
 		/**
 		 * The meta object literal for the '<em><b>Output Datasets</b></em>' containment reference list feature.
@@ -1288,49 +1629,51 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANALYSIS_ACTIVITY_DESCRIPTION__OUTPUT_DATASETS = eINSTANCE.getAnalysisActivityDescription_OutputDatasets();
+		EReference ACTIVITY__OUTPUT_DATASETS = eINSTANCE.getActivity_OutputDatasets();
 
 		/**
-		 * The meta object literal for the '<em><b>Command Line Template</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Functional Entity</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANALYSIS_ACTIVITY_DESCRIPTION__COMMAND_LINE_TEMPLATE = eINSTANCE.getAnalysisActivityDescription_CommandLineTemplate();
+		EReference ACTIVITY__FUNCTIONAL_ENTITY = eINSTANCE.getActivity_FunctionalEntity();
 
 		/**
-		 * The meta object literal for the '<em><b>Readiness Contraints</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MultiplicityElementImpl <em>Multiplicity Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MultiplicityElementImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMultiplicityElement()
+		 * @generated
+		 */
+		EClass MULTIPLICITY_ELEMENT = eINSTANCE.getMultiplicityElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Minimum Cardinality</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANALYSIS_ACTIVITY_DESCRIPTION__READINESS_CONTRAINTS = eINSTANCE.getAnalysisActivityDescription_ReadinessContraints();
+		EAttribute MULTIPLICITY_ELEMENT__MINIMUM_CARDINALITY = eINSTANCE.getMultiplicityElement_MinimumCardinality();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl <em>Parameter Description</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterDescriptionImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterDescription()
-		 * @generated
-		 */
-		EClass PARAMETER_DESCRIPTION = eINSTANCE.getParameterDescription();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Maximum Cardinality</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_DESCRIPTION__NAME = eINSTANCE.getParameterDescription_Name();
+		EAttribute MULTIPLICITY_ELEMENT__MAXIMUM_CARDINALITY = eINSTANCE.getMultiplicityElement_MaximumCardinality();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter Kind</b></em>' attribute feature.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameter()
 		 * @generated
 		 */
-		EAttribute PARAMETER_DESCRIPTION__PARAMETER_KIND = eINSTANCE.getParameterDescription_ParameterKind();
+		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameter Type</b></em>' attribute feature.
@@ -1338,7 +1681,7 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_DESCRIPTION__PARAMETER_TYPE = eINSTANCE.getParameterDescription_ParameterType();
+		EAttribute PARAMETER__PARAMETER_TYPE = eINSTANCE.getParameter_ParameterType();
 
 		/**
 		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute list feature.
@@ -1346,49 +1689,25 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_DESCRIPTION__DEFAULT_VALUE = eINSTANCE.getParameterDescription_DefaultValue();
+		EAttribute PARAMETER__DEFAULT_VALUE = eINSTANCE.getParameter_DefaultValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__ELIST = eINSTANCE.getParameterDescription__IsValidValue__EList();
+		EReference PARAMETER__CONSTRAINTS = eINSTANCE.getParameter_Constraints();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl <em>Dataset</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDataset()
 		 * @generated
 		 */
-		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__OBJECT = eINSTANCE.getParameterDescription__IsValidValue__Object();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Valid Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation PARAMETER_DESCRIPTION___IS_VALID_VALUE__LIST = eINSTANCE.getParameterDescription__IsValidValue__List();
-
-		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl <em>Dataset Description</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetDescriptionImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetDescription()
-		 * @generated
-		 */
-		EClass DATASET_DESCRIPTION = eINSTANCE.getDatasetDescription();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATASET_DESCRIPTION__NAME = eINSTANCE.getDatasetDescription_Name();
+		EClass DATASET = eINSTANCE.getDataset();
 
 		/**
 		 * The meta object literal for the '<em><b>Mimetype</b></em>' attribute feature.
@@ -1396,15 +1715,53 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATASET_DESCRIPTION__MIMETYPE = eINSTANCE.getDatasetDescription_Mimetype();
+		EAttribute DATASET__MIMETYPE = eINSTANCE.getDataset_Mimetype();
 
 		/**
-		 * The meta object literal for the '<em><b>Dataset Kind</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATASET_DESCRIPTION__DATASET_KIND = eINSTANCE.getDatasetDescription_DatasetKind();
+		EReference DATASET__CONSTRAINTS = eINSTANCE.getDataset_Constraints();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.InputDatasetImpl <em>Input Dataset</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.InputDatasetImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getInputDataset()
+		 * @generated
+		 */
+		EClass INPUT_DATASET = eINSTANCE.getInputDataset();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.OutputDatasetImpl <em>Output Dataset</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.OutputDatasetImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getOutputDataset()
+		 * @generated
+		 */
+		EClass OUTPUT_DATASET = eINSTANCE.getOutputDataset();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ConstraintImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getConstraint()
+		 * @generated
+		 */
+		EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT__NAME = eINSTANCE.getConstraint_Name();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineEntryListImpl <em>Command Line Entry List</em>}' class.
@@ -1423,6 +1780,16 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMMAND_LINE_ENTRY_LIST__MANIPULATORS = eINSTANCE.getCommandLineEntryList_Manipulators();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolNameCommandLineEntryImpl <em>Tool Name Command Line Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ToolNameCommandLineEntryImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getToolNameCommandLineEntry()
+		 * @generated
+		 */
+		EClass TOOL_NAME_COMMAND_LINE_ENTRY = eINSTANCE.getToolNameCommandLineEntry();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.LiteralCommandLineEntryListImpl <em>Literal Command Line Entry List</em>}' class.
@@ -1479,132 +1846,106 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EReference PARAMETER_COMMAND_LINE_ENTRY_LIST__PARAMETER = eINSTANCE.getParameterCommandLineEntryList_Parameter();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl <em>Readiness Constraint</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.FunctionalEntityImpl <em>Functional Entity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ReadinessConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getReadinessConstraint()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.FunctionalEntityImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getFunctionalEntity()
 		 * @generated
 		 */
-		EClass READINESS_CONSTRAINT = eINSTANCE.getReadinessConstraint();
+		EClass FUNCTIONAL_ENTITY = eINSTANCE.getFunctionalEntity();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl <em>Dataset Constraint</em>}' class.
+		 * The meta object literal for the '<em><b>Activity</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.DatasetConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetConstraint()
 		 * @generated
 		 */
-		EClass DATASET_CONSTRAINT = eINSTANCE.getDatasetConstraint();
+		EReference FUNCTIONAL_ENTITY__ACTIVITY = eINSTANCE.getFunctionalEntity_Activity();
 
 		/**
-		 * The meta object literal for the '<em><b>Dataset</b></em>' reference feature.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl <em>Command Line Tool</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getCommandLineTool()
 		 * @generated
 		 */
-		EReference DATASET_CONSTRAINT__DATASET = eINSTANCE.getDatasetConstraint_Dataset();
+		EClass COMMAND_LINE_TOOL = eINSTANCE.getCommandLineTool();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl <em>Minimun Dataset Cardinality Constraint</em>}' class.
+		 * The meta object literal for the '<em><b>Command Line Template</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunDatasetCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunDatasetCardinalityConstraint()
 		 * @generated
 		 */
-		EClass MINIMUN_DATASET_CARDINALITY_CONSTRAINT = eINSTANCE.getMinimunDatasetCardinalityConstraint();
+		EReference COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE = eINSTANCE.getCommandLineTool_CommandLineTemplate();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Standard Input Stream</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MINIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMinimunDatasetCardinalityConstraint_Value();
+		EReference COMMAND_LINE_TOOL__STANDARD_INPUT_STREAM = eINSTANCE.getCommandLineTool_StandardInputStream();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl <em>Maximun Dataset Cardinality Constraint</em>}' class.
+		 * The meta object literal for the '<em><b>Standard Output Stream</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunDatasetCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunDatasetCardinalityConstraint()
 		 * @generated
 		 */
-		EClass MAXIMUN_DATASET_CARDINALITY_CONSTRAINT = eINSTANCE.getMaximunDatasetCardinalityConstraint();
+		EReference COMMAND_LINE_TOOL__STANDARD_OUTPUT_STREAM = eINSTANCE.getCommandLineTool_StandardOutputStream();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Standard Error Stream</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAXIMUN_DATASET_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMaximunDatasetCardinalityConstraint_Value();
+		EReference COMMAND_LINE_TOOL__STANDARD_ERROR_STREAM = eINSTANCE.getCommandLineTool_StandardErrorStream();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl <em>Parameter Constraint</em>}' class.
+		 * The meta object literal for the '<em><b>Exit Codes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ParameterConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterConstraint()
 		 * @generated
 		 */
-		EClass PARAMETER_CONSTRAINT = eINSTANCE.getParameterConstraint();
+		EReference COMMAND_LINE_TOOL__EXIT_CODES = eINSTANCE.getCommandLineTool_ExitCodes();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' reference feature.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ExitCodeImpl <em>Exit Code</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ExitCodeImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getExitCode()
 		 * @generated
 		 */
-		EReference PARAMETER_CONSTRAINT__PARAMETER = eINSTANCE.getParameterConstraint_Parameter();
+		EClass EXIT_CODE = eINSTANCE.getExitCode();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl <em>Minimun Parameter Cardinality Constraint</em>}' class.
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MinimunParameterCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMinimunParameterCardinalityConstraint()
 		 * @generated
 		 */
-		EClass MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT = eINSTANCE.getMinimunParameterCardinalityConstraint();
+		EAttribute EXIT_CODE__CODE = eINSTANCE.getExitCode_Code();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Report Message</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMinimunParameterCardinalityConstraint_Value();
+		EAttribute EXIT_CODE__REPORT_MESSAGE = eINSTANCE.getExitCode_ReportMessage();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl <em>Maximun Parameter Cardinality Constraint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.MaximunParameterCardinalityConstraintImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getMaximunParameterCardinalityConstraint()
-		 * @generated
-		 */
-		EClass MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT = eINSTANCE.getMaximunParameterCardinalityConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT__VALUE = eINSTANCE.getMaximunParameterCardinalityConstraint_Value();
-
-		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind <em>Parameter Kind</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getParameterKind()
-		 * @generated
-		 */
-		EEnum PARAMETER_KIND = eINSTANCE.getParameterKind();
+		EAttribute EXIT_CODE__STATUS = eINSTANCE.getExitCode_Status();
 
 		/**
 		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType <em>Parameter Type</em>}' enum.
@@ -1617,24 +1958,24 @@ public interface AnalysisActivityDescriptionPackage extends EPackage {
 		EEnum PARAMETER_TYPE = eINSTANCE.getParameterType();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind <em>Dataset Kind</em>}' enum.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus <em>Termination Status</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getDatasetKind()
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getTerminationStatus()
 		 * @generated
 		 */
-		EEnum DATASET_KIND = eINSTANCE.getDatasetKind();
+		EEnum TERMINATION_STATUS = eINSTANCE.getTerminationStatus();
 
 		/**
-		 * The meta object literal for the '<em>List</em>' data type.
+		 * The meta object literal for the '<em>File Path</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see java.util.List
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getList()
+		 * @see java.lang.String
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.AnalysisActivityDescriptionPackageImpl#getFilePath()
 		 * @generated
 		 */
-		EDataType LIST = eINSTANCE.getList();
+		EDataType FILE_PATH = eINSTANCE.getFilePath();
 
 	}
 

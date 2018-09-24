@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+*.xtendbin
 
 # Log file
 *.log

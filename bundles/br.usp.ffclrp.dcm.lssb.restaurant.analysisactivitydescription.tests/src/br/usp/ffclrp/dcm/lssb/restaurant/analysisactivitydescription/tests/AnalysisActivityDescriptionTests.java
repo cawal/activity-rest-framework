@@ -31,7 +31,6 @@ public class AnalysisActivityDescriptionTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new AnalysisActivityDescriptionTests("analysisactivitydescription Tests");
-		suite.addTestSuite(ParameterDescriptionTest.class);
 		return suite;
 	}
 

@@ -66,27 +66,96 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case AnalysisActivityDescriptionPackage.ANALYSIS_ACTIVITY_DESCRIPTION: {
-				AnalysisActivityDescription analysisActivityDescription = (AnalysisActivityDescription)theEObject;
-				T result = caseAnalysisActivityDescription(analysisActivityDescription);
+			case AnalysisActivityDescriptionPackage.IDENTIFIABLE_ELEMENT: {
+				IdentifiableElement identifiableElement = (IdentifiableElement)theEObject;
+				T result = caseIdentifiableElement(identifiableElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_DESCRIPTION: {
-				ParameterDescription parameterDescription = (ParameterDescription)theEObject;
-				T result = caseParameterDescription(parameterDescription);
+			case AnalysisActivityDescriptionPackage.ACTIVITY: {
+				Activity activity = (Activity)theEObject;
+				T result = caseActivity(activity);
+				if (result == null) result = caseIdentifiableElement(activity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.DATASET_DESCRIPTION: {
-				DatasetDescription datasetDescription = (DatasetDescription)theEObject;
-				T result = caseDatasetDescription(datasetDescription);
+			case AnalysisActivityDescriptionPackage.MULTIPLICITY_ELEMENT: {
+				MultiplicityElement multiplicityElement = (MultiplicityElement)theEObject;
+				T result = caseMultiplicityElement(multiplicityElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.PARAMETER: {
+				Parameter parameter = (Parameter)theEObject;
+				T result = caseParameter(parameter);
+				if (result == null) result = caseMultiplicityElement(parameter);
+				if (result == null) result = caseIdentifiableElement(parameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.DATASET: {
+				Dataset dataset = (Dataset)theEObject;
+				T result = caseDataset(dataset);
+				if (result == null) result = caseMultiplicityElement(dataset);
+				if (result == null) result = caseIdentifiableElement(dataset);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.INPUT_DATASET: {
+				InputDataset inputDataset = (InputDataset)theEObject;
+				T result = caseInputDataset(inputDataset);
+				if (result == null) result = caseDataset(inputDataset);
+				if (result == null) result = caseMultiplicityElement(inputDataset);
+				if (result == null) result = caseIdentifiableElement(inputDataset);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET: {
+				OutputDataset outputDataset = (OutputDataset)theEObject;
+				T result = caseOutputDataset(outputDataset);
+				if (result == null) result = caseDataset(outputDataset);
+				if (result == null) result = caseMultiplicityElement(outputDataset);
+				if (result == null) result = caseIdentifiableElement(outputDataset);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.CONSTRAINT: {
+				Constraint constraint = (Constraint)theEObject;
+				T result = caseConstraint(constraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY: {
+				FunctionalEntity functionalEntity = (FunctionalEntity)theEObject;
+				T result = caseFunctionalEntity(functionalEntity);
+				if (result == null) result = caseIdentifiableElement(functionalEntity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL: {
+				CommandLineTool commandLineTool = (CommandLineTool)theEObject;
+				T result = caseCommandLineTool(commandLineTool);
+				if (result == null) result = caseFunctionalEntity(commandLineTool);
+				if (result == null) result = caseIdentifiableElement(commandLineTool);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.EXIT_CODE: {
+				ExitCode exitCode = (ExitCode)theEObject;
+				T result = caseExitCode(exitCode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST: {
 				CommandLineEntryList commandLineEntryList = (CommandLineEntryList)theEObject;
 				T result = caseCommandLineEntryList(commandLineEntryList);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AnalysisActivityDescriptionPackage.TOOL_NAME_COMMAND_LINE_ENTRY: {
+				ToolNameCommandLineEntry toolNameCommandLineEntry = (ToolNameCommandLineEntry)theEObject;
+				T result = caseToolNameCommandLineEntry(toolNameCommandLineEntry);
+				if (result == null) result = caseCommandLineEntryList(toolNameCommandLineEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -111,104 +180,127 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT: {
-				ReadinessConstraint readinessConstraint = (ReadinessConstraint)theEObject;
-				T result = caseReadinessConstraint(readinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT: {
-				DatasetConstraint datasetConstraint = (DatasetConstraint)theEObject;
-				T result = caseDatasetConstraint(datasetConstraint);
-				if (result == null) result = caseReadinessConstraint(datasetConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MINIMUN_DATASET_CARDINALITY_CONSTRAINT: {
-				MinimunDatasetCardinalityConstraint minimunDatasetCardinalityConstraint = (MinimunDatasetCardinalityConstraint)theEObject;
-				T result = caseMinimunDatasetCardinalityConstraint(minimunDatasetCardinalityConstraint);
-				if (result == null) result = caseDatasetConstraint(minimunDatasetCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(minimunDatasetCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MAXIMUN_DATASET_CARDINALITY_CONSTRAINT: {
-				MaximunDatasetCardinalityConstraint maximunDatasetCardinalityConstraint = (MaximunDatasetCardinalityConstraint)theEObject;
-				T result = caseMaximunDatasetCardinalityConstraint(maximunDatasetCardinalityConstraint);
-				if (result == null) result = caseDatasetConstraint(maximunDatasetCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(maximunDatasetCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT: {
-				ParameterConstraint parameterConstraint = (ParameterConstraint)theEObject;
-				T result = caseParameterConstraint(parameterConstraint);
-				if (result == null) result = caseReadinessConstraint(parameterConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MINIMUN_PARAMETER_CARDINALITY_CONSTRAINT: {
-				MinimunParameterCardinalityConstraint minimunParameterCardinalityConstraint = (MinimunParameterCardinalityConstraint)theEObject;
-				T result = caseMinimunParameterCardinalityConstraint(minimunParameterCardinalityConstraint);
-				if (result == null) result = caseParameterConstraint(minimunParameterCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(minimunParameterCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.MAXIMUN_PARAMETER_CARDINALITY_CONSTRAINT: {
-				MaximunParameterCardinalityConstraint maximunParameterCardinalityConstraint = (MaximunParameterCardinalityConstraint)theEObject;
-				T result = caseMaximunParameterCardinalityConstraint(maximunParameterCardinalityConstraint);
-				if (result == null) result = caseParameterConstraint(maximunParameterCardinalityConstraint);
-				if (result == null) result = caseReadinessConstraint(maximunParameterCardinalityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Analysis Activity Description</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Analysis Activity Description</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Identifiable Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAnalysisActivityDescription(AnalysisActivityDescription object) {
+	public T caseIdentifiableElement(IdentifiableElement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter Description</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter Description</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseParameterDescription(ParameterDescription object) {
+	public T caseActivity(Activity object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dataset Description</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Multiplicity Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dataset Description</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Multiplicity Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDatasetDescription(DatasetDescription object) {
+	public T caseMultiplicityElement(MultiplicityElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameter(Parameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dataset</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dataset</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataset(Dataset object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Input Dataset</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Input Dataset</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInputDataset(InputDataset object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Output Dataset</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Output Dataset</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOutputDataset(OutputDataset object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstraint(Constraint object) {
 		return null;
 	}
 
@@ -224,6 +316,21 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCommandLineEntryList(CommandLineEntryList object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tool Name Command Line Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tool Name Command Line Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseToolNameCommandLineEntry(ToolNameCommandLineEntry object) {
 		return null;
 	}
 
@@ -273,107 +380,47 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Readiness Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Functional Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Readiness Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Functional Entity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReadinessConstraint(ReadinessConstraint object) {
+	public T caseFunctionalEntity(FunctionalEntity object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dataset Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Command Line Tool</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dataset Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Command Line Tool</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDatasetConstraint(DatasetConstraint object) {
+	public T caseCommandLineTool(CommandLineTool object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Minimun Dataset Cardinality Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Exit Code</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Minimun Dataset Cardinality Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Exit Code</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMinimunDatasetCardinalityConstraint(MinimunDatasetCardinalityConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Maximun Dataset Cardinality Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMaximunDatasetCardinalityConstraint(MaximunDatasetCardinalityConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseParameterConstraint(ParameterConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Minimun Parameter Cardinality Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMinimunParameterCardinalityConstraint(MinimunParameterCardinalityConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Maximun Parameter Cardinality Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMaximunParameterCardinalityConstraint(MaximunParameterCardinalityConstraint object) {
+	public T caseExitCode(ExitCode object) {
 		return null;
 	}
 
