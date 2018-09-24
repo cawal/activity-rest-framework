@@ -19,6 +19,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLine
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
@@ -49,7 +50,7 @@ public class JobUtil {
 			throws InvalidCommandLineDefinition, IOException {
 		
 		
-		Tool tool = aa.getDescription().getTool();
+		FunctionalEntity tool = aa.getDescription().getFunctionalEntity();
 		CommandLineTool clt = (CommandLineTool) tool;
 		
 		List<String> commandLine = produceCommandLine(aa,clt);
@@ -76,7 +77,7 @@ public class JobUtil {
 		List<String> commandLine = new ArrayList<>();
 		Activity description = analysis.getDescription();
 		List<CommandLineEntryList> entries =
-				((CommandLineTool) description.getTool()).getCommandLineTemplate();
+				((CommandLineTool) description.getFunctionalEntity()).getCommandLineTemplate();
 		
 		commandLine.add(getExecutableString(clt));
 		for (CommandLineEntryList e : entries) {
