@@ -78,7 +78,7 @@ public interface Parameter extends MultiplicityElement, IdentifiableElement {
 
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
@@ -91,6 +91,6 @@ public interface Parameter extends MultiplicityElement, IdentifiableElement {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<ParameterConstraint> getConstraints();
+	EList<Constraint> getConstraints();
 
 } // Parameter

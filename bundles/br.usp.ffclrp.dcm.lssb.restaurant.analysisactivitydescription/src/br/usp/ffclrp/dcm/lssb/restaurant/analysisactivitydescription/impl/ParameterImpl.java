@@ -3,9 +3,9 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
 
 import java.util.Collection;
@@ -120,7 +120,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterConstraint> constraints;
+	protected EList<Constraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,9 +221,9 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ParameterConstraint> getConstraints() {
+	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentEList<ParameterConstraint>(ParameterConstraint.class, this, AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS);
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS);
 		}
 		return constraints;
 	}
@@ -288,7 +288,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 				return;
 			case AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS:
 				getConstraints().clear();
-				getConstraints().addAll((Collection<? extends ParameterConstraint>)newValue);
+				getConstraints().addAll((Collection<? extends Constraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

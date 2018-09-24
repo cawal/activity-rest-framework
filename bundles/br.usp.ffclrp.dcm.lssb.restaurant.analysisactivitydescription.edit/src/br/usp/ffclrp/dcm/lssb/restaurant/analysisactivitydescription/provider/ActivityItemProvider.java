@@ -64,8 +64,7 @@ public class ActivityItemProvider
 			childrenFeatures.add(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__PARAMETERS);
 			childrenFeatures.add(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__INPUT_DATASETS);
 			childrenFeatures.add(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__OUTPUT_DATASETS);
-			childrenFeatures.add(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS);
-			childrenFeatures.add(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__TOOL);
+			childrenFeatures.add(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__FUNCTIONAL_ENTITY);
 		}
 		return childrenFeatures;
 	}
@@ -124,8 +123,7 @@ public class ActivityItemProvider
 			case AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS:
 			case AnalysisActivityDescriptionPackage.ACTIVITY__INPUT_DATASETS:
 			case AnalysisActivityDescriptionPackage.ACTIVITY__OUTPUT_DATASETS:
-			case AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS:
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -160,17 +158,7 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomParameterReadinessConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__READINESS_CONTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomDatasetReadinessConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__TOOL,
+				(AnalysisActivityDescriptionPackage.Literals.ACTIVITY__FUNCTIONAL_ENTITY,
 				 AnalysisActivityDescriptionFactory.eINSTANCE.createCommandLineTool()));
 	}
 

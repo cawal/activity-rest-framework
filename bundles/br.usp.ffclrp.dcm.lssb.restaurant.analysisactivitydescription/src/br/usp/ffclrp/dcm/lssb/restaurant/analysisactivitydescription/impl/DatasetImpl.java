@@ -3,8 +3,8 @@
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -102,7 +102,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DatasetConstraint> constraints;
+	protected EList<Constraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,9 +191,9 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DatasetConstraint> getConstraints() {
+	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentEList<DatasetConstraint>(DatasetConstraint.class, this, AnalysisActivityDescriptionPackage.DATASET__CONSTRAINTS);
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, AnalysisActivityDescriptionPackage.DATASET__CONSTRAINTS);
 		}
 		return constraints;
 	}
@@ -252,7 +252,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 				return;
 			case AnalysisActivityDescriptionPackage.DATASET__CONSTRAINTS:
 				getConstraints().clear();
-				getConstraints().addAll((Collection<? extends DatasetConstraint>)newValue);
+				getConstraints().addAll((Collection<? extends Constraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

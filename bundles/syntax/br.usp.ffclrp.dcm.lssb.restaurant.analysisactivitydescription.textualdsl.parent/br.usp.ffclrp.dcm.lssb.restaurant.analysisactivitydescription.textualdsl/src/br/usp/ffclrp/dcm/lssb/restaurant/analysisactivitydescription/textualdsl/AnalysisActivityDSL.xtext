@@ -13,17 +13,13 @@ Activity returns analysisactivitydescription::Activity:
 		('on' ENTITY_START inputDatasets+=InputDataset ( inputDatasets+=InputDataset )* ENTITY_END )?
 		('with' ENTITY_START parameters+=Parameter ( parameters+=Parameter)* ENTITY_END )?
 		('produces' ENTITY_START outputDatasets+=OutputDataset ( outputDatasets+=OutputDataset)* ENTITY_END )?
-		('readinessContraints' LIST_START readinessContraints+=ReadinessConstraint ( LIST_SEPARATOR readinessContraints+=ReadinessConstraint)* LIST_END )?
-		'using' tool=Tool
+		'using' functionalEntity=FunctionalEntity
 	ENTITY_END;
 
 
 
 
-ReadinessConstraint returns analysisactivitydescription::ReadinessConstraint:
-	ParameterReadinessConstraint | DatasetReadinessConstraint;
-
-Tool returns analysisactivitydescription::Tool:
+FunctionalEntity returns analysisactivitydescription::FunctionalEntity:
 	CommandLineTool;
 
 Dataset returns analysisactivitydescription::Dataset:
@@ -58,8 +54,8 @@ Parameter returns analysisactivitydescription::Parameter:
         ('remark' remark=EString STATEMENT_END)?
         (
            'constraints' 
-           LIST_START constraints+=ParameterConstraint 
-               (LIST_SEPARATOR constraints+=ParameterConstraint)* 
+           LIST_START constraints+=Constraint 
+               (LIST_SEPARATOR constraints+=Constraint)* 
            LIST_END
         )?
 	    ENTITY_END
@@ -80,8 +76,8 @@ InputDataset returns analysisactivitydescription::InputDataset:
         ('remark' remark=EString STATEMENT_END)?
         (
             'constraints' LIST_START 
-                constraints+=DatasetConstraint 
-                (LIST_SEPARATOR constraints+=DatasetConstraint)* 
+                constraints+=Constraint 
+                (LIST_SEPARATOR constraints+=Constraint)* 
                 LIST_END STATEMENT_END
         )?
       ENTITY_END 
@@ -103,8 +99,8 @@ OutputDataset returns analysisactivitydescription::OutputDataset:
         ('remark' remark=EString STATEMENT_END)?
         (
             'constraints' LIST_START 
-            constraints+=DatasetConstraint 
-            (LIST_SEPARATOR constraints+=DatasetConstraint)* 
+            constraints+=Constraint 
+            (LIST_SEPARATOR constraints+=Constraint)* 
             LIST_END 
             STATEMENT_END
         )?
@@ -120,56 +116,10 @@ enum ParameterType returns analysisactivitydescription::ParameterType:
 				STRING = 'STRING' | INTEGER = 'INTEGER' | REAL = 'REAL';
 
     
-ParameterConstraint returns analysisactivitydescription::ParameterConstraint:
-    CustomParameterConstraint
+Constraint returns analysisactivitydescription::Constraint:
+	'constraint' name=Identifier
 ;
 
-CustomParameterConstraint returns analysisactivitydescription::CustomParameterConstraint:
-	'CustomParameterConstraint'
-	name=Identifier
-    (
-        ENTITY_START
-        ENTITY_END
-    )?
-    ;
-	
-
-DatasetConstraint returns analysisactivitydescription::DatasetConstraint:
-    CustomDatasetConstraint
-;
-
-CustomDatasetConstraint returns analysisactivitydescription::CustomDatasetConstraint:
-	'CustomDatasetConstraint'
-	name=Identifier
-	(
-	    ENTITY_START
-	    ENTITY_END
-	)?
-	;
-	
-	
-	
-ParameterReadinessConstraint returns analysisactivitydescription::ParameterReadinessConstraint:
-    CustomParameterReadinessConstraint
-;
-CustomParameterReadinessConstraint returns analysisactivitydescription::CustomParameterReadinessConstraint:
-    'CustomParameterReadinessConstraint'
-    name=Identifier
-    ENTITY_START
-        'on' parameter=[analysisactivitydescription::Parameter|EString]
-    ENTITY_END;	
-	
-DatasetReadinessConstraint returns analysisactivitydescription::DatasetReadinessConstraint:
-    CustomDatasetReadinessConstraint
-;
-    
-CustomDatasetReadinessConstraint returns analysisactivitydescription::CustomDatasetReadinessConstraint:
-    'CustomDatasetReadinessConstraint'
-    name=Identifier
-    ENTITY_START
-        'on' dataset=[analysisactivitydescription::Dataset|EString]
-    ENTITY_END
-    ;
 
 CommandLineTool returns analysisactivitydescription::CommandLineTool:
 	'executable'

@@ -21,8 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getParameters <em>Parameters</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getInputDatasets <em>Input Datasets</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getOutputDatasets <em>Output Datasets</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getReadinessContraints <em>Readiness Contraints</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getTool <em>Tool</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getFunctionalEntity <em>Functional Entity</em>}</li>
  * </ul>
  *
  * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getActivity()
@@ -82,48 +81,31 @@ public interface Activity extends IdentifiableElement {
 	EList<OutputDataset> getOutputDatasets();
 
 	/**
-	 * Returns the value of the '<em><b>Readiness Contraints</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint}.
+	 * Returns the value of the '<em><b>Functional Entity</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity#getActivity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Readiness Contraints</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Functional Entity</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Readiness Contraints</em>' containment reference list.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getActivity_ReadinessContraints()
-	 * @model containment="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
-	 * @generated
-	 */
-	EList<ReadinessConstraint> getReadinessContraints();
-
-	/**
-	 * Returns the value of the '<em><b>Tool</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool#getActivity <em>Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tool</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tool</em>' containment reference.
-	 * @see #setTool(Tool)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getActivity_Tool()
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool#getActivity
+	 * @return the value of the '<em>Functional Entity</em>' containment reference.
+	 * @see #setFunctionalEntity(FunctionalEntity)
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage#getActivity_FunctionalEntity()
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity#getActivity
 	 * @model opposite="activity" containment="true" required="true"
 	 * @generated
 	 */
-	Tool getTool();
+	FunctionalEntity getFunctionalEntity();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getTool <em>Tool</em>}' containment reference.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity#getFunctionalEntity <em>Functional Entity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Tool</em>' containment reference.
-	 * @see #getTool()
+	 * @param value the new value of the '<em>Functional Entity</em>' containment reference.
+	 * @see #getFunctionalEntity()
 	 * @generated
 	 */
-	void setTool(Tool value);
+	void setFunctionalEntity(FunctionalEntity value);
 
 } // Activity

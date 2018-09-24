@@ -57,7 +57,7 @@ public interface Dataset extends MultiplicityElement, IdentifiableElement {
 
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint}.
+	 * The list contents are of type {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
@@ -70,6 +70,6 @@ public interface Dataset extends MultiplicityElement, IdentifiableElement {
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
 	 */
-	EList<DatasetConstraint> getConstraints();
+	EList<Constraint> getConstraints();
 
 } // Dataset

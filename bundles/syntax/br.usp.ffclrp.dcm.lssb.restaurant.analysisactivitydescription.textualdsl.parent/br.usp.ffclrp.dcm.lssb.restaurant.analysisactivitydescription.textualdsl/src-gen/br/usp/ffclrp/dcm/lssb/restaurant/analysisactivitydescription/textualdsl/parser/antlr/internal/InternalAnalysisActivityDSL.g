@@ -289,139 +289,45 @@ ruleActivity returns [EObject current=null]
 				newLeafNode(this_ENTITY_END_20, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_6_4());
 			}
 		)?
-		(
-			otherlv_21='readinessContraints'
-			{
-				newLeafNode(otherlv_21, grammarAccess.getActivityAccess().getReadinessContraintsKeyword_7_0());
-			}
-			this_LIST_START_22=RULE_LIST_START
-			{
-				newLeafNode(this_LIST_START_22, grammarAccess.getActivityAccess().getLIST_STARTTerminalRuleCall_7_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getActivityAccess().getReadinessContraintsReadinessConstraintParserRuleCall_7_2_0());
-					}
-					lv_readinessContraints_23_0=ruleReadinessConstraint
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getActivityRule());
-						}
-						add(
-							$current,
-							"readinessContraints",
-							lv_readinessContraints_23_0,
-							"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ReadinessConstraint");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				this_LIST_SEPARATOR_24=RULE_LIST_SEPARATOR
-				{
-					newLeafNode(this_LIST_SEPARATOR_24, grammarAccess.getActivityAccess().getLIST_SEPARATORTerminalRuleCall_7_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getActivityAccess().getReadinessContraintsReadinessConstraintParserRuleCall_7_3_1_0());
-						}
-						lv_readinessContraints_25_0=ruleReadinessConstraint
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getActivityRule());
-							}
-							add(
-								$current,
-								"readinessContraints",
-								lv_readinessContraints_25_0,
-								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ReadinessConstraint");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			this_LIST_END_26=RULE_LIST_END
-			{
-				newLeafNode(this_LIST_END_26, grammarAccess.getActivityAccess().getLIST_ENDTerminalRuleCall_7_4());
-			}
-		)?
-		otherlv_27='using'
+		otherlv_21='using'
 		{
-			newLeafNode(otherlv_27, grammarAccess.getActivityAccess().getUsingKeyword_8());
+			newLeafNode(otherlv_21, grammarAccess.getActivityAccess().getUsingKeyword_7());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getActivityAccess().getToolToolParserRuleCall_9_0());
+					newCompositeNode(grammarAccess.getActivityAccess().getFunctionalEntityFunctionalEntityParserRuleCall_8_0());
 				}
-				lv_tool_28_0=ruleTool
+				lv_functionalEntity_22_0=ruleFunctionalEntity
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getActivityRule());
 					}
 					set(
 						$current,
-						"tool",
-						lv_tool_28_0,
-						"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Tool");
+						"functionalEntity",
+						lv_functionalEntity_22_0,
+						"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.FunctionalEntity");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		this_ENTITY_END_29=RULE_ENTITY_END
+		this_ENTITY_END_23=RULE_ENTITY_END
 		{
-			newLeafNode(this_ENTITY_END_29, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_10());
+			newLeafNode(this_ENTITY_END_23, grammarAccess.getActivityAccess().getENTITY_ENDTerminalRuleCall_9());
 		}
 	)
 ;
 
-// Entry rule entryRuleReadinessConstraint
-entryRuleReadinessConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getReadinessConstraintRule()); }
-	iv_ruleReadinessConstraint=ruleReadinessConstraint
-	{ $current=$iv_ruleReadinessConstraint.current; }
+// Entry rule entryRuleFunctionalEntity
+entryRuleFunctionalEntity returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionalEntityRule()); }
+	iv_ruleFunctionalEntity=ruleFunctionalEntity
+	{ $current=$iv_ruleFunctionalEntity.current; }
 	EOF;
 
-// Rule ReadinessConstraint
-ruleReadinessConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			newCompositeNode(grammarAccess.getReadinessConstraintAccess().getParameterReadinessConstraintParserRuleCall_0());
-		}
-		this_ParameterReadinessConstraint_0=ruleParameterReadinessConstraint
-		{
-			$current = $this_ParameterReadinessConstraint_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getReadinessConstraintAccess().getDatasetReadinessConstraintParserRuleCall_1());
-		}
-		this_DatasetReadinessConstraint_1=ruleDatasetReadinessConstraint
-		{
-			$current = $this_DatasetReadinessConstraint_1.current;
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
-// Entry rule entryRuleTool
-entryRuleTool returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getToolRule()); }
-	iv_ruleTool=ruleTool
-	{ $current=$iv_ruleTool.current; }
-	EOF;
-
-// Rule Tool
-ruleTool returns [EObject current=null]
+// Rule FunctionalEntity
+ruleFunctionalEntity returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -429,7 +335,7 @@ ruleTool returns [EObject current=null]
 	leaveRule();
 }:
 	{
-		newCompositeNode(grammarAccess.getToolAccess().getCommandLineToolParserRuleCall());
+		newCompositeNode(grammarAccess.getFunctionalEntityAccess().getCommandLineToolParserRuleCall());
 	}
 	this_CommandLineTool_0=ruleCommandLineTool
 	{
@@ -837,9 +743,9 @@ ruleParameter returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getParameterAccess().getConstraintsParameterConstraintParserRuleCall_10_2_2_0());
+							newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_10_2_2_0());
 						}
-						lv_constraints_21_0=ruleParameterConstraint
+						lv_constraints_21_0=ruleConstraint
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getParameterRule());
@@ -848,7 +754,7 @@ ruleParameter returns [EObject current=null]
 								$current,
 								"constraints",
 								lv_constraints_21_0,
-								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ParameterConstraint");
+								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Constraint");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -861,9 +767,9 @@ ruleParameter returns [EObject current=null]
 					(
 						(
 							{
-								newCompositeNode(grammarAccess.getParameterAccess().getConstraintsParameterConstraintParserRuleCall_10_2_3_1_0());
+								newCompositeNode(grammarAccess.getParameterAccess().getConstraintsConstraintParserRuleCall_10_2_3_1_0());
 							}
-							lv_constraints_23_0=ruleParameterConstraint
+							lv_constraints_23_0=ruleConstraint
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getParameterRule());
@@ -872,7 +778,7 @@ ruleParameter returns [EObject current=null]
 									$current,
 									"constraints",
 									lv_constraints_23_0,
-									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.ParameterConstraint");
+									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Constraint");
 								afterParserOrEnumRuleCall();
 							}
 						)
@@ -1053,9 +959,9 @@ ruleInputDataset returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getInputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_2_2_0());
+							newCompositeNode(grammarAccess.getInputDatasetAccess().getConstraintsConstraintParserRuleCall_9_2_2_0());
 						}
-						lv_constraints_15_0=ruleDatasetConstraint
+						lv_constraints_15_0=ruleConstraint
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
@@ -1064,7 +970,7 @@ ruleInputDataset returns [EObject current=null]
 								$current,
 								"constraints",
 								lv_constraints_15_0,
-								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
+								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Constraint");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -1077,9 +983,9 @@ ruleInputDataset returns [EObject current=null]
 					(
 						(
 							{
-								newCompositeNode(grammarAccess.getInputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0());
+								newCompositeNode(grammarAccess.getInputDatasetAccess().getConstraintsConstraintParserRuleCall_9_2_3_1_0());
 							}
-							lv_constraints_17_0=ruleDatasetConstraint
+							lv_constraints_17_0=ruleConstraint
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getInputDatasetRule());
@@ -1088,7 +994,7 @@ ruleInputDataset returns [EObject current=null]
 									$current,
 									"constraints",
 									lv_constraints_17_0,
-									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
+									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Constraint");
 								afterParserOrEnumRuleCall();
 							}
 						)
@@ -1273,9 +1179,9 @@ ruleOutputDataset returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOutputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_2_2_0());
+							newCompositeNode(grammarAccess.getOutputDatasetAccess().getConstraintsConstraintParserRuleCall_9_2_2_0());
 						}
-						lv_constraints_15_0=ruleDatasetConstraint
+						lv_constraints_15_0=ruleConstraint
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOutputDatasetRule());
@@ -1284,7 +1190,7 @@ ruleOutputDataset returns [EObject current=null]
 								$current,
 								"constraints",
 								lv_constraints_15_0,
-								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
+								"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Constraint");
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -1297,9 +1203,9 @@ ruleOutputDataset returns [EObject current=null]
 					(
 						(
 							{
-								newCompositeNode(grammarAccess.getOutputDatasetAccess().getConstraintsDatasetConstraintParserRuleCall_9_2_3_1_0());
+								newCompositeNode(grammarAccess.getOutputDatasetAccess().getConstraintsConstraintParserRuleCall_9_2_3_1_0());
 							}
-							lv_constraints_17_0=ruleDatasetConstraint
+							lv_constraints_17_0=ruleConstraint
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getOutputDatasetRule());
@@ -1308,7 +1214,7 @@ ruleOutputDataset returns [EObject current=null]
 									$current,
 									"constraints",
 									lv_constraints_17_0,
-									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.DatasetConstraint");
+									"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Constraint");
 								afterParserOrEnumRuleCall();
 							}
 						)
@@ -1368,40 +1274,15 @@ ruleEBigInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTok
 	)
 ;
 
-// Entry rule entryRuleParameterConstraint
-entryRuleParameterConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getParameterConstraintRule()); }
-	iv_ruleParameterConstraint=ruleParameterConstraint
-	{ $current=$iv_ruleParameterConstraint.current; }
+// Entry rule entryRuleConstraint
+entryRuleConstraint returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConstraintRule()); }
+	iv_ruleConstraint=ruleConstraint
+	{ $current=$iv_ruleConstraint.current; }
 	EOF;
 
-// Rule ParameterConstraint
-ruleParameterConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	{
-		newCompositeNode(grammarAccess.getParameterConstraintAccess().getCustomParameterConstraintParserRuleCall());
-	}
-	this_CustomParameterConstraint_0=ruleCustomParameterConstraint
-	{
-		$current = $this_CustomParameterConstraint_0.current;
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleCustomParameterConstraint
-entryRuleCustomParameterConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCustomParameterConstraintRule()); }
-	iv_ruleCustomParameterConstraint=ruleCustomParameterConstraint
-	{ $current=$iv_ruleCustomParameterConstraint.current; }
-	EOF;
-
-// Rule CustomParameterConstraint
-ruleCustomParameterConstraint returns [EObject current=null]
+// Rule Constraint
+ruleConstraint returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1409,19 +1290,19 @@ ruleCustomParameterConstraint returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='CustomParameterConstraint'
+		otherlv_0='constraint'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getCustomParameterConstraintAccess().getCustomParameterConstraintKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getConstraintAccess().getConstraintKeyword_0());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCustomParameterConstraintAccess().getNameIdentifierParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getConstraintAccess().getNameIdentifierParserRuleCall_1_0());
 				}
 				lv_name_1_0=ruleIdentifier
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getCustomParameterConstraintRule());
+						$current = createModelElementForParent(grammarAccess.getConstraintRule());
 					}
 					set(
 						$current,
@@ -1432,283 +1313,6 @@ ruleCustomParameterConstraint returns [EObject current=null]
 				}
 			)
 		)
-		(
-			this_ENTITY_START_2=RULE_ENTITY_START
-			{
-				newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomParameterConstraintAccess().getENTITY_STARTTerminalRuleCall_2_0());
-			}
-			this_ENTITY_END_3=RULE_ENTITY_END
-			{
-				newLeafNode(this_ENTITY_END_3, grammarAccess.getCustomParameterConstraintAccess().getENTITY_ENDTerminalRuleCall_2_1());
-			}
-		)?
-	)
-;
-
-// Entry rule entryRuleDatasetConstraint
-entryRuleDatasetConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDatasetConstraintRule()); }
-	iv_ruleDatasetConstraint=ruleDatasetConstraint
-	{ $current=$iv_ruleDatasetConstraint.current; }
-	EOF;
-
-// Rule DatasetConstraint
-ruleDatasetConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	{
-		newCompositeNode(grammarAccess.getDatasetConstraintAccess().getCustomDatasetConstraintParserRuleCall());
-	}
-	this_CustomDatasetConstraint_0=ruleCustomDatasetConstraint
-	{
-		$current = $this_CustomDatasetConstraint_0.current;
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleCustomDatasetConstraint
-entryRuleCustomDatasetConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCustomDatasetConstraintRule()); }
-	iv_ruleCustomDatasetConstraint=ruleCustomDatasetConstraint
-	{ $current=$iv_ruleCustomDatasetConstraint.current; }
-	EOF;
-
-// Rule CustomDatasetConstraint
-ruleCustomDatasetConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='CustomDatasetConstraint'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getCustomDatasetConstraintAccess().getCustomDatasetConstraintKeyword_0());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getCustomDatasetConstraintAccess().getNameIdentifierParserRuleCall_1_0());
-				}
-				lv_name_1_0=ruleIdentifier
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getCustomDatasetConstraintRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_1_0,
-						"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Identifier");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			this_ENTITY_START_2=RULE_ENTITY_START
-			{
-				newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_STARTTerminalRuleCall_2_0());
-			}
-			this_ENTITY_END_3=RULE_ENTITY_END
-			{
-				newLeafNode(this_ENTITY_END_3, grammarAccess.getCustomDatasetConstraintAccess().getENTITY_ENDTerminalRuleCall_2_1());
-			}
-		)?
-	)
-;
-
-// Entry rule entryRuleParameterReadinessConstraint
-entryRuleParameterReadinessConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getParameterReadinessConstraintRule()); }
-	iv_ruleParameterReadinessConstraint=ruleParameterReadinessConstraint
-	{ $current=$iv_ruleParameterReadinessConstraint.current; }
-	EOF;
-
-// Rule ParameterReadinessConstraint
-ruleParameterReadinessConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	{
-		newCompositeNode(grammarAccess.getParameterReadinessConstraintAccess().getCustomParameterReadinessConstraintParserRuleCall());
-	}
-	this_CustomParameterReadinessConstraint_0=ruleCustomParameterReadinessConstraint
-	{
-		$current = $this_CustomParameterReadinessConstraint_0.current;
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleCustomParameterReadinessConstraint
-entryRuleCustomParameterReadinessConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCustomParameterReadinessConstraintRule()); }
-	iv_ruleCustomParameterReadinessConstraint=ruleCustomParameterReadinessConstraint
-	{ $current=$iv_ruleCustomParameterReadinessConstraint.current; }
-	EOF;
-
-// Rule CustomParameterReadinessConstraint
-ruleCustomParameterReadinessConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='CustomParameterReadinessConstraint'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getCustomParameterReadinessConstraintAccess().getCustomParameterReadinessConstraintKeyword_0());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getCustomParameterReadinessConstraintAccess().getNameIdentifierParserRuleCall_1_0());
-				}
-				lv_name_1_0=ruleIdentifier
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getCustomParameterReadinessConstraintRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_1_0,
-						"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Identifier");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		this_ENTITY_START_2=RULE_ENTITY_START
-		{
-			newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomParameterReadinessConstraintAccess().getENTITY_STARTTerminalRuleCall_2());
-		}
-		otherlv_3='on'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getCustomParameterReadinessConstraintAccess().getOnKeyword_3());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getCustomParameterReadinessConstraintRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getCustomParameterReadinessConstraintAccess().getParameterParameterCrossReference_4_0());
-				}
-				ruleEString
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		this_ENTITY_END_5=RULE_ENTITY_END
-		{
-			newLeafNode(this_ENTITY_END_5, grammarAccess.getCustomParameterReadinessConstraintAccess().getENTITY_ENDTerminalRuleCall_5());
-		}
-	)
-;
-
-// Entry rule entryRuleDatasetReadinessConstraint
-entryRuleDatasetReadinessConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDatasetReadinessConstraintRule()); }
-	iv_ruleDatasetReadinessConstraint=ruleDatasetReadinessConstraint
-	{ $current=$iv_ruleDatasetReadinessConstraint.current; }
-	EOF;
-
-// Rule DatasetReadinessConstraint
-ruleDatasetReadinessConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	{
-		newCompositeNode(grammarAccess.getDatasetReadinessConstraintAccess().getCustomDatasetReadinessConstraintParserRuleCall());
-	}
-	this_CustomDatasetReadinessConstraint_0=ruleCustomDatasetReadinessConstraint
-	{
-		$current = $this_CustomDatasetReadinessConstraint_0.current;
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleCustomDatasetReadinessConstraint
-entryRuleCustomDatasetReadinessConstraint returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCustomDatasetReadinessConstraintRule()); }
-	iv_ruleCustomDatasetReadinessConstraint=ruleCustomDatasetReadinessConstraint
-	{ $current=$iv_ruleCustomDatasetReadinessConstraint.current; }
-	EOF;
-
-// Rule CustomDatasetReadinessConstraint
-ruleCustomDatasetReadinessConstraint returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='CustomDatasetReadinessConstraint'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getCustomDatasetReadinessConstraintAccess().getCustomDatasetReadinessConstraintKeyword_0());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getCustomDatasetReadinessConstraintAccess().getNameIdentifierParserRuleCall_1_0());
-				}
-				lv_name_1_0=ruleIdentifier
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getCustomDatasetReadinessConstraintRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_1_0,
-						"br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.Identifier");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		this_ENTITY_START_2=RULE_ENTITY_START
-		{
-			newLeafNode(this_ENTITY_START_2, grammarAccess.getCustomDatasetReadinessConstraintAccess().getENTITY_STARTTerminalRuleCall_2());
-		}
-		otherlv_3='on'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getCustomDatasetReadinessConstraintAccess().getOnKeyword_3());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getCustomDatasetReadinessConstraintRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getCustomDatasetReadinessConstraintAccess().getDatasetDatasetCrossReference_4_0());
-				}
-				ruleEString
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		this_ENTITY_END_5=RULE_ENTITY_END
-		{
-			newLeafNode(this_ENTITY_END_5, grammarAccess.getCustomDatasetReadinessConstraintAccess().getENTITY_ENDTerminalRuleCall_5());
-		}
 	)
 ;
 

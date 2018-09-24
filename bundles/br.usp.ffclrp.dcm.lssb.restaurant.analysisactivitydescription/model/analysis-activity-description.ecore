@@ -34,13 +34,8 @@
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="readinessContraints" ordered="false" upperBound="-1" eType="#//ReadinessConstraint"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
-        <details key="nullFree" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tool" lowerBound="1" eType="#//Tool" containment="true" eOpposite="#//Tool/activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalEntity" lowerBound="1" eType="#//FunctionalEntity" containment="true"
+        eOpposite="#//FunctionalEntity/activity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MultiplicityElement" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -98,24 +93,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReadinessConstraint" abstract="true" eSuperTypes="#//Constraint">
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalEntity" abstract="true" eSuperTypes="#//IdentifiableElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Constraints on readiness of the activity"/>
+      <details key="documentation" value="Abstract class to describe a functional entity that can executes&#xA;an analysis activity."/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity" eOpposite="#//Activity/functionalEntity"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatasetReadinessConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//Dataset"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterReadinessConstraint" abstract="true" eSuperTypes="#//ReadinessConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tool" abstract="true" eSuperTypes="#//IdentifiableElement">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Abstract class to describe the tool used for executing the activity."/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity" eOpposite="#//Activity/tool"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CommandLineTool" eSuperTypes="#//Tool">
+  <eClassifiers xsi:type="ecore:EClass" name="CommandLineTool" eSuperTypes="#//FunctionalEntity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A command line tool that can be called to execute the activity."/>
     </eAnnotations>

@@ -238,7 +238,7 @@ public class ParameterItemProvider extends MultiplicityElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AnalysisActivityDescriptionPackage.Literals.PARAMETER__CONSTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomParameterConstraint()));
+				 AnalysisActivityDescriptionFactory.eINSTANCE.createConstraint()));
 	}
 
 }

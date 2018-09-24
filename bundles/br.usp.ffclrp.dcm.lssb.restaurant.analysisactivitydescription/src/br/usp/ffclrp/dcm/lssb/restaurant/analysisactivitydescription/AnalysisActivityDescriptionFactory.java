@@ -58,6 +58,15 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	OutputDataset createOutputDataset();
 
 	/**
+	 * Returns a new object of class '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constraint</em>'.
+	 * @generated
+	 */
+	Constraint createConstraint();
+
+	/**
 	 * Returns a new object of class '<em>Literal Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,42 +92,6 @@ public interface AnalysisActivityDescriptionFactory extends EFactory {
 	 * @generated
 	 */
 	ParameterCommandLineEntryList createParameterCommandLineEntryList();
-
-	/**
-	 * Returns a new object of class '<em>Custom Parameter Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Parameter Constraint</em>'.
-	 * @generated
-	 */
-	CustomParameterConstraint createCustomParameterConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Custom Dataset Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Dataset Constraint</em>'.
-	 * @generated
-	 */
-	CustomDatasetConstraint createCustomDatasetConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Custom Parameter Readiness Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Parameter Readiness Constraint</em>'.
-	 * @generated
-	 */
-	CustomParameterReadinessConstraint createCustomParameterReadinessConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Custom Dataset Readiness Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Dataset Readiness Constraint</em>'.
-	 * @generated
-	 */
-	CustomDatasetReadinessConstraint createCustomDatasetReadinessConstraint();
 
 	/**
 	 * Returns a new object of class '<em>Command Line Tool</em>'.

@@ -25,10 +25,7 @@ class AnalysisActivityDSLFormatter extends AbstractFormatter2 {
 		for (outputDataset : activity.outputDatasets) {
 			outputDataset.format
 		}
-		for (readinessConstraint : activity.readinessContraints) {
-			readinessConstraint.format
-		}
-		activity.tool.format
+		activity.functionalEntity.format
 	}
 
 	def dispatch void format(CommandLineTool commandLineTool, extension IFormattableDocument document) {

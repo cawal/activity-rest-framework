@@ -61,10 +61,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 			case AnalysisActivityDescriptionPackage.PARAMETER: return createParameter();
 			case AnalysisActivityDescriptionPackage.INPUT_DATASET: return createInputDataset();
 			case AnalysisActivityDescriptionPackage.OUTPUT_DATASET: return createOutputDataset();
-			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT: return createCustomParameterConstraint();
-			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT: return createCustomDatasetConstraint();
-			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT: return createCustomParameterReadinessConstraint();
-			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT: return createCustomDatasetReadinessConstraint();
+			case AnalysisActivityDescriptionPackage.CONSTRAINT: return createConstraint();
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL: return createCommandLineTool();
 			case AnalysisActivityDescriptionPackage.EXIT_CODE: return createExitCode();
 			case AnalysisActivityDescriptionPackage.TOOL_NAME_COMMAND_LINE_ENTRY: return createToolNameCommandLineEntry();
@@ -159,6 +156,16 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Constraint createConstraint() {
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LiteralCommandLineEntryList createLiteralCommandLineEntryList() {
 		LiteralCommandLineEntryListImpl literalCommandLineEntryList = new LiteralCommandLineEntryListImpl();
 		return literalCommandLineEntryList;
@@ -182,46 +189,6 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	public ParameterCommandLineEntryList createParameterCommandLineEntryList() {
 		ParameterCommandLineEntryListImpl parameterCommandLineEntryList = new ParameterCommandLineEntryListImpl();
 		return parameterCommandLineEntryList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CustomParameterConstraint createCustomParameterConstraint() {
-		CustomParameterConstraintImpl customParameterConstraint = new CustomParameterConstraintImpl();
-		return customParameterConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CustomDatasetConstraint createCustomDatasetConstraint() {
-		CustomDatasetConstraintImpl customDatasetConstraint = new CustomDatasetConstraintImpl();
-		return customDatasetConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CustomParameterReadinessConstraint createCustomParameterReadinessConstraint() {
-		CustomParameterReadinessConstraintImpl customParameterReadinessConstraint = new CustomParameterReadinessConstraintImpl();
-		return customParameterReadinessConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CustomDatasetReadinessConstraint createCustomDatasetReadinessConstraint() {
-		CustomDatasetReadinessConstraintImpl customDatasetReadinessConstraint = new CustomDatasetReadinessConstraintImpl();
-		return customDatasetReadinessConstraint;
 	}
 
 	/**

@@ -31,7 +31,6 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, AnalysisActivityDSLGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getReadinessConstraintAccess().getAlternatives(), "rule__ReadinessConstraint__Alternatives");
 			builder.put(grammarAccess.getDatasetAccess().getAlternatives(), "rule__Dataset__Alternatives");
 			builder.put(grammarAccess.getCommandLineEntryListAccess().getAlternatives(), "rule__CommandLineEntryList__Alternatives");
 			builder.put(grammarAccess.getStringListManipulatorAccess().getAlternatives(), "rule__StringListManipulator__Alternatives");
@@ -43,8 +42,6 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getActivityAccess().getGroup_4(), "rule__Activity__Group_4__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_5(), "rule__Activity__Group_5__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_6(), "rule__Activity__Group_6__0");
-			builder.put(grammarAccess.getActivityAccess().getGroup_7(), "rule__Activity__Group_7__0");
-			builder.put(grammarAccess.getActivityAccess().getGroup_7_3(), "rule__Activity__Group_7_3__0");
 			builder.put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
 			builder.put(grammarAccess.getParameterAccess().getGroup_9(), "rule__Parameter__Group_9__0");
 			builder.put(grammarAccess.getParameterAccess().getGroup_9_3(), "rule__Parameter__Group_9_3__0");
@@ -63,12 +60,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOutputDatasetAccess().getGroup_9_2(), "rule__OutputDataset__Group_9_2__0");
 			builder.put(grammarAccess.getOutputDatasetAccess().getGroup_9_2_3(), "rule__OutputDataset__Group_9_2_3__0");
 			builder.put(grammarAccess.getEBigIntegerAccess().getGroup(), "rule__EBigInteger__Group__0");
-			builder.put(grammarAccess.getCustomParameterConstraintAccess().getGroup(), "rule__CustomParameterConstraint__Group__0");
-			builder.put(grammarAccess.getCustomParameterConstraintAccess().getGroup_2(), "rule__CustomParameterConstraint__Group_2__0");
-			builder.put(grammarAccess.getCustomDatasetConstraintAccess().getGroup(), "rule__CustomDatasetConstraint__Group__0");
-			builder.put(grammarAccess.getCustomDatasetConstraintAccess().getGroup_2(), "rule__CustomDatasetConstraint__Group_2__0");
-			builder.put(grammarAccess.getCustomParameterReadinessConstraintAccess().getGroup(), "rule__CustomParameterReadinessConstraint__Group__0");
-			builder.put(grammarAccess.getCustomDatasetReadinessConstraintAccess().getGroup(), "rule__CustomDatasetReadinessConstraint__Group__0");
+			builder.put(grammarAccess.getConstraintAccess().getGroup(), "rule__Constraint__Group__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup(), "rule__CommandLineTool__Group__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_3(), "rule__CommandLineTool__Group_3__0");
 			builder.put(grammarAccess.getCommandLineToolAccess().getGroup_4(), "rule__CommandLineTool__Group_4__0");
@@ -100,9 +92,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getActivityAccess().getParametersAssignment_5_3(), "rule__Activity__ParametersAssignment_5_3");
 			builder.put(grammarAccess.getActivityAccess().getOutputDatasetsAssignment_6_2(), "rule__Activity__OutputDatasetsAssignment_6_2");
 			builder.put(grammarAccess.getActivityAccess().getOutputDatasetsAssignment_6_3(), "rule__Activity__OutputDatasetsAssignment_6_3");
-			builder.put(grammarAccess.getActivityAccess().getReadinessContraintsAssignment_7_2(), "rule__Activity__ReadinessContraintsAssignment_7_2");
-			builder.put(grammarAccess.getActivityAccess().getReadinessContraintsAssignment_7_3_1(), "rule__Activity__ReadinessContraintsAssignment_7_3_1");
-			builder.put(grammarAccess.getActivityAccess().getToolAssignment_9(), "rule__Activity__ToolAssignment_9");
+			builder.put(grammarAccess.getActivityAccess().getFunctionalEntityAssignment_8(), "rule__Activity__FunctionalEntityAssignment_8");
 			builder.put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
 			builder.put(grammarAccess.getParameterAccess().getParameterTypeAssignment_3(), "rule__Parameter__ParameterTypeAssignment_3");
 			builder.put(grammarAccess.getParameterAccess().getMinimumCardinalityAssignment_5(), "rule__Parameter__MinimumCardinalityAssignment_5");
@@ -126,12 +116,7 @@ public class AnalysisActivityDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOutputDatasetAccess().getRemarkAssignment_9_1_1(), "rule__OutputDataset__RemarkAssignment_9_1_1");
 			builder.put(grammarAccess.getOutputDatasetAccess().getConstraintsAssignment_9_2_2(), "rule__OutputDataset__ConstraintsAssignment_9_2_2");
 			builder.put(grammarAccess.getOutputDatasetAccess().getConstraintsAssignment_9_2_3_1(), "rule__OutputDataset__ConstraintsAssignment_9_2_3_1");
-			builder.put(grammarAccess.getCustomParameterConstraintAccess().getNameAssignment_1(), "rule__CustomParameterConstraint__NameAssignment_1");
-			builder.put(grammarAccess.getCustomDatasetConstraintAccess().getNameAssignment_1(), "rule__CustomDatasetConstraint__NameAssignment_1");
-			builder.put(grammarAccess.getCustomParameterReadinessConstraintAccess().getNameAssignment_1(), "rule__CustomParameterReadinessConstraint__NameAssignment_1");
-			builder.put(grammarAccess.getCustomParameterReadinessConstraintAccess().getParameterAssignment_4(), "rule__CustomParameterReadinessConstraint__ParameterAssignment_4");
-			builder.put(grammarAccess.getCustomDatasetReadinessConstraintAccess().getNameAssignment_1(), "rule__CustomDatasetReadinessConstraint__NameAssignment_1");
-			builder.put(grammarAccess.getCustomDatasetReadinessConstraintAccess().getDatasetAssignment_4(), "rule__CustomDatasetReadinessConstraint__DatasetAssignment_4");
+			builder.put(grammarAccess.getConstraintAccess().getNameAssignment_1(), "rule__Constraint__NameAssignment_1");
 			builder.put(grammarAccess.getCommandLineToolAccess().getNameAssignment_1(), "rule__CommandLineTool__NameAssignment_1");
 			builder.put(grammarAccess.getCommandLineToolAccess().getRemarkAssignment_3_1(), "rule__CommandLineTool__RemarkAssignment_3_1");
 			builder.put(grammarAccess.getCommandLineToolAccess().getStandardInputStreamAssignment_4_2_0_2(), "rule__CommandLineTool__StandardInputStreamAssignment_4_2_0_2");

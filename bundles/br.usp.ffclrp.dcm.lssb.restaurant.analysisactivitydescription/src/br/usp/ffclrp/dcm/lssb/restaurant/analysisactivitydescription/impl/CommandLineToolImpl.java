@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CommandLineToolImpl extends ToolImpl implements CommandLineTool {
+public class CommandLineToolImpl extends FunctionalEntityImpl implements CommandLineTool {
 	/**
 	 * The cached value of the '{@link #getCommandLineTemplate() <em>Command Line Template</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

@@ -164,95 +164,26 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint} instances.
+	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CustomParameterConstraintItemProvider customParameterConstraintItemProvider;
+	protected ConstraintItemProvider constraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint}.
+	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCustomParameterConstraintAdapter() {
-		if (customParameterConstraintItemProvider == null) {
-			customParameterConstraintItemProvider = new CustomParameterConstraintItemProvider(this);
+	public Adapter createConstraintAdapter() {
+		if (constraintItemProvider == null) {
+			constraintItemProvider = new ConstraintItemProvider(this);
 		}
 
-		return customParameterConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CustomDatasetConstraintItemProvider customDatasetConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCustomDatasetConstraintAdapter() {
-		if (customDatasetConstraintItemProvider == null) {
-			customDatasetConstraintItemProvider = new CustomDatasetConstraintItemProvider(this);
-		}
-
-		return customDatasetConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CustomParameterReadinessConstraintItemProvider customParameterReadinessConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCustomParameterReadinessConstraintAdapter() {
-		if (customParameterReadinessConstraintItemProvider == null) {
-			customParameterReadinessConstraintItemProvider = new CustomParameterReadinessConstraintItemProvider(this);
-		}
-
-		return customParameterReadinessConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CustomDatasetReadinessConstraintItemProvider customDatasetReadinessConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCustomDatasetReadinessConstraintAdapter() {
-		if (customDatasetReadinessConstraintItemProvider == null) {
-			customDatasetReadinessConstraintItemProvider = new CustomDatasetReadinessConstraintItemProvider(this);
-		}
-
-		return customDatasetReadinessConstraintItemProvider;
+		return constraintItemProvider;
 	}
 
 	/**
@@ -496,10 +427,7 @@ public class AnalysisActivityDescriptionItemProviderAdapterFactory extends Analy
 		if (parameterItemProvider != null) parameterItemProvider.dispose();
 		if (inputDatasetItemProvider != null) inputDatasetItemProvider.dispose();
 		if (outputDatasetItemProvider != null) outputDatasetItemProvider.dispose();
-		if (customParameterConstraintItemProvider != null) customParameterConstraintItemProvider.dispose();
-		if (customDatasetConstraintItemProvider != null) customDatasetConstraintItemProvider.dispose();
-		if (customParameterReadinessConstraintItemProvider != null) customParameterReadinessConstraintItemProvider.dispose();
-		if (customDatasetReadinessConstraintItemProvider != null) customDatasetReadinessConstraintItemProvider.dispose();
+		if (constraintItemProvider != null) constraintItemProvider.dispose();
 		if (commandLineToolItemProvider != null) commandLineToolItemProvider.dispose();
 		if (exitCodeItemProvider != null) exitCodeItemProvider.dispose();
 		if (toolNameCommandLineEntryItemProvider != null) toolNameCommandLineEntryItemProvider.dispose();

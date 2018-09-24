@@ -125,99 +125,17 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT: {
-				ParameterConstraint parameterConstraint = (ParameterConstraint)theEObject;
-				T result = caseParameterConstraint(parameterConstraint);
-				if (result == null) result = caseConstraint(parameterConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT: {
-				DatasetConstraint datasetConstraint = (DatasetConstraint)theEObject;
-				T result = caseDatasetConstraint(datasetConstraint);
-				if (result == null) result = caseConstraint(datasetConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.CUSTOM_CONSTRAINT: {
-				CustomConstraint customConstraint = (CustomConstraint)theEObject;
-				T result = caseCustomConstraint(customConstraint);
-				if (result == null) result = caseConstraint(customConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT: {
-				CustomParameterConstraint customParameterConstraint = (CustomParameterConstraint)theEObject;
-				T result = caseCustomParameterConstraint(customParameterConstraint);
-				if (result == null) result = caseCustomConstraint(customParameterConstraint);
-				if (result == null) result = caseParameterConstraint(customParameterConstraint);
-				if (result == null) result = caseConstraint(customParameterConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT: {
-				CustomDatasetConstraint customDatasetConstraint = (CustomDatasetConstraint)theEObject;
-				T result = caseCustomDatasetConstraint(customDatasetConstraint);
-				if (result == null) result = caseCustomConstraint(customDatasetConstraint);
-				if (result == null) result = caseDatasetConstraint(customDatasetConstraint);
-				if (result == null) result = caseConstraint(customDatasetConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT: {
-				ReadinessConstraint readinessConstraint = (ReadinessConstraint)theEObject;
-				T result = caseReadinessConstraint(readinessConstraint);
-				if (result == null) result = caseConstraint(readinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT: {
-				DatasetReadinessConstraint datasetReadinessConstraint = (DatasetReadinessConstraint)theEObject;
-				T result = caseDatasetReadinessConstraint(datasetReadinessConstraint);
-				if (result == null) result = caseReadinessConstraint(datasetReadinessConstraint);
-				if (result == null) result = caseConstraint(datasetReadinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT: {
-				ParameterReadinessConstraint parameterReadinessConstraint = (ParameterReadinessConstraint)theEObject;
-				T result = caseParameterReadinessConstraint(parameterReadinessConstraint);
-				if (result == null) result = caseReadinessConstraint(parameterReadinessConstraint);
-				if (result == null) result = caseConstraint(parameterReadinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT: {
-				CustomParameterReadinessConstraint customParameterReadinessConstraint = (CustomParameterReadinessConstraint)theEObject;
-				T result = caseCustomParameterReadinessConstraint(customParameterReadinessConstraint);
-				if (result == null) result = caseCustomConstraint(customParameterReadinessConstraint);
-				if (result == null) result = caseParameterReadinessConstraint(customParameterReadinessConstraint);
-				if (result == null) result = caseReadinessConstraint(customParameterReadinessConstraint);
-				if (result == null) result = caseConstraint(customParameterReadinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT: {
-				CustomDatasetReadinessConstraint customDatasetReadinessConstraint = (CustomDatasetReadinessConstraint)theEObject;
-				T result = caseCustomDatasetReadinessConstraint(customDatasetReadinessConstraint);
-				if (result == null) result = caseCustomConstraint(customDatasetReadinessConstraint);
-				if (result == null) result = caseDatasetReadinessConstraint(customDatasetReadinessConstraint);
-				if (result == null) result = caseReadinessConstraint(customDatasetReadinessConstraint);
-				if (result == null) result = caseConstraint(customDatasetReadinessConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnalysisActivityDescriptionPackage.TOOL: {
-				Tool tool = (Tool)theEObject;
-				T result = caseTool(tool);
-				if (result == null) result = caseIdentifiableElement(tool);
+			case AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY: {
+				FunctionalEntity functionalEntity = (FunctionalEntity)theEObject;
+				T result = caseFunctionalEntity(functionalEntity);
+				if (result == null) result = caseIdentifiableElement(functionalEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL: {
 				CommandLineTool commandLineTool = (CommandLineTool)theEObject;
 				T result = caseCommandLineTool(commandLineTool);
-				if (result == null) result = caseTool(commandLineTool);
+				if (result == null) result = caseFunctionalEntity(commandLineTool);
 				if (result == null) result = caseIdentifiableElement(commandLineTool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -387,36 +305,6 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseParameterConstraint(ParameterConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dataset Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dataset Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDatasetConstraint(DatasetConstraint object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Command Line Entry List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -492,137 +380,17 @@ public class AnalysisActivityDescriptionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Readiness Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Functional Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Readiness Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Functional Entity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseReadinessConstraint(ReadinessConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dataset Readiness Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dataset Readiness Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDatasetReadinessConstraint(DatasetReadinessConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter Readiness Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter Readiness Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseParameterReadinessConstraint(ParameterReadinessConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Parameter Readiness Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Parameter Readiness Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomParameterReadinessConstraint(CustomParameterReadinessConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Dataset Readiness Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Dataset Readiness Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomDatasetReadinessConstraint(CustomDatasetReadinessConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomConstraint(CustomConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Parameter Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Parameter Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomParameterConstraint(CustomParameterConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Dataset Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Dataset Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomDatasetConstraint(CustomDatasetConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Tool</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Tool</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTool(Tool object) {
+	public T caseFunctionalEntity(FunctionalEntity object) {
 		return null;
 	}
 

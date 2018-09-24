@@ -101,28 +101,8 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 				return validateOutputDataset((OutputDataset)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.CONSTRAINT:
 				return validateConstraint((Constraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.PARAMETER_CONSTRAINT:
-				return validateParameterConstraint((ParameterConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.DATASET_CONSTRAINT:
-				return validateDatasetConstraint((DatasetConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.CUSTOM_CONSTRAINT:
-				return validateCustomConstraint((CustomConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_CONSTRAINT:
-				return validateCustomParameterConstraint((CustomParameterConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_CONSTRAINT:
-				return validateCustomDatasetConstraint((CustomDatasetConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.READINESS_CONSTRAINT:
-				return validateReadinessConstraint((ReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.DATASET_READINESS_CONSTRAINT:
-				return validateDatasetReadinessConstraint((DatasetReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.PARAMETER_READINESS_CONSTRAINT:
-				return validateParameterReadinessConstraint((ParameterReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.CUSTOM_PARAMETER_READINESS_CONSTRAINT:
-				return validateCustomParameterReadinessConstraint((CustomParameterReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.CUSTOM_DATASET_READINESS_CONSTRAINT:
-				return validateCustomDatasetReadinessConstraint((CustomDatasetReadinessConstraint)value, diagnostics, context);
-			case AnalysisActivityDescriptionPackage.TOOL:
-				return validateTool((Tool)value, diagnostics, context);
+			case AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY:
+				return validateFunctionalEntity((FunctionalEntity)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL:
 				return validateCommandLineTool((CommandLineTool)value, diagnostics, context);
 			case AnalysisActivityDescriptionPackage.EXIT_CODE:
@@ -373,24 +353,6 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameterConstraint(ParameterConstraint parameterConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parameterConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDatasetConstraint(DatasetConstraint datasetConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(datasetConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateCommandLineEntryList(CommandLineEntryList commandLineEntryList, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(commandLineEntryList, diagnostics, context);
 	}
@@ -476,80 +438,8 @@ public class AnalysisActivityDescriptionValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateReadinessConstraint(ReadinessConstraint readinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(readinessConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDatasetReadinessConstraint(DatasetReadinessConstraint datasetReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(datasetReadinessConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateParameterReadinessConstraint(ParameterReadinessConstraint parameterReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parameterReadinessConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCustomParameterReadinessConstraint(CustomParameterReadinessConstraint customParameterReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(customParameterReadinessConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCustomDatasetReadinessConstraint(CustomDatasetReadinessConstraint customDatasetReadinessConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(customDatasetReadinessConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCustomConstraint(CustomConstraint customConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(customConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCustomParameterConstraint(CustomParameterConstraint customParameterConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(customParameterConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCustomDatasetConstraint(CustomDatasetConstraint customDatasetConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(customDatasetConstraint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTool(Tool tool, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tool, diagnostics, context);
+	public boolean validateFunctionalEntity(FunctionalEntity functionalEntity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(functionalEntity, diagnostics, context);
 	}
 
 	/**

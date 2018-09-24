@@ -8,16 +8,10 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisAct
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.IdentifiableElement;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.LiteralCommandLineEntryList;
@@ -25,13 +19,8 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Multiplicit
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterCommandLineEntryList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
-
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ToolNameCommandLineEntry;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.util.AnalysisActivityDescriptionValidator;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
@@ -113,20 +102,6 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass parameterConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass datasetConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass commandLineEntryListEClass = null;
 
 	/**
@@ -162,63 +137,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass readinessConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass datasetReadinessConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass parameterReadinessConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass customParameterReadinessConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass customDatasetReadinessConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass customConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass customParameterConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass customDatasetConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass toolEClass = null;
+	private EClass functionalEntityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -399,17 +318,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_ReadinessContraints() {
+	public EReference getActivity_FunctionalEntity() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivity_Tool() {
-		return (EReference)activityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -534,17 +444,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getParameterConstraint() {
-		return parameterConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDatasetConstraint() {
-		return datasetConstraintEClass;
+	public EAttribute getConstraint_Name() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -633,8 +534,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getReadinessConstraint() {
-		return readinessConstraintEClass;
+	public EClass getFunctionalEntity() {
+		return functionalEntityEClass;
 	}
 
 	/**
@@ -642,107 +543,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDatasetReadinessConstraint() {
-		return datasetReadinessConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDatasetReadinessConstraint_Dataset() {
-		return (EReference)datasetReadinessConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getParameterReadinessConstraint() {
-		return parameterReadinessConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getParameterReadinessConstraint_Parameter() {
-		return (EReference)parameterReadinessConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCustomParameterReadinessConstraint() {
-		return customParameterReadinessConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCustomDatasetReadinessConstraint() {
-		return customDatasetReadinessConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCustomConstraint() {
-		return customConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCustomConstraint_Name() {
-		return (EAttribute)customConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCustomParameterConstraint() {
-		return customParameterConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCustomDatasetConstraint() {
-		return customDatasetConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTool() {
-		return toolEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTool_Activity() {
-		return (EReference)toolEClass.getEStructuralFeatures().get(0);
+	public EReference getFunctionalEntity_Activity() {
+		return (EReference)functionalEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -898,8 +700,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		createEReference(activityEClass, ACTIVITY__PARAMETERS);
 		createEReference(activityEClass, ACTIVITY__INPUT_DATASETS);
 		createEReference(activityEClass, ACTIVITY__OUTPUT_DATASETS);
-		createEReference(activityEClass, ACTIVITY__READINESS_CONTRAINTS);
-		createEReference(activityEClass, ACTIVITY__TOOL);
+		createEReference(activityEClass, ACTIVITY__FUNCTIONAL_ENTITY);
 
 		multiplicityElementEClass = createEClass(MULTIPLICITY_ELEMENT);
 		createEAttribute(multiplicityElementEClass, MULTIPLICITY_ELEMENT__MINIMUM_CARDINALITY);
@@ -919,32 +720,10 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		outputDatasetEClass = createEClass(OUTPUT_DATASET);
 
 		constraintEClass = createEClass(CONSTRAINT);
+		createEAttribute(constraintEClass, CONSTRAINT__NAME);
 
-		parameterConstraintEClass = createEClass(PARAMETER_CONSTRAINT);
-
-		datasetConstraintEClass = createEClass(DATASET_CONSTRAINT);
-
-		customConstraintEClass = createEClass(CUSTOM_CONSTRAINT);
-		createEAttribute(customConstraintEClass, CUSTOM_CONSTRAINT__NAME);
-
-		customParameterConstraintEClass = createEClass(CUSTOM_PARAMETER_CONSTRAINT);
-
-		customDatasetConstraintEClass = createEClass(CUSTOM_DATASET_CONSTRAINT);
-
-		readinessConstraintEClass = createEClass(READINESS_CONSTRAINT);
-
-		datasetReadinessConstraintEClass = createEClass(DATASET_READINESS_CONSTRAINT);
-		createEReference(datasetReadinessConstraintEClass, DATASET_READINESS_CONSTRAINT__DATASET);
-
-		parameterReadinessConstraintEClass = createEClass(PARAMETER_READINESS_CONSTRAINT);
-		createEReference(parameterReadinessConstraintEClass, PARAMETER_READINESS_CONSTRAINT__PARAMETER);
-
-		customParameterReadinessConstraintEClass = createEClass(CUSTOM_PARAMETER_READINESS_CONSTRAINT);
-
-		customDatasetReadinessConstraintEClass = createEClass(CUSTOM_DATASET_READINESS_CONSTRAINT);
-
-		toolEClass = createEClass(TOOL);
-		createEReference(toolEClass, TOOL__ACTIVITY);
+		functionalEntityEClass = createEClass(FUNCTIONAL_ENTITY);
+		createEReference(functionalEntityEClass, FUNCTIONAL_ENTITY__ACTIVITY);
 
 		commandLineToolEClass = createEClass(COMMAND_LINE_TOOL);
 		createEReference(commandLineToolEClass, COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE);
@@ -1018,22 +797,8 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		datasetEClass.getESuperTypes().add(this.getIdentifiableElement());
 		inputDatasetEClass.getESuperTypes().add(this.getDataset());
 		outputDatasetEClass.getESuperTypes().add(this.getDataset());
-		parameterConstraintEClass.getESuperTypes().add(this.getConstraint());
-		datasetConstraintEClass.getESuperTypes().add(this.getConstraint());
-		customConstraintEClass.getESuperTypes().add(this.getConstraint());
-		customParameterConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
-		customParameterConstraintEClass.getESuperTypes().add(this.getParameterConstraint());
-		customDatasetConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
-		customDatasetConstraintEClass.getESuperTypes().add(this.getDatasetConstraint());
-		readinessConstraintEClass.getESuperTypes().add(this.getConstraint());
-		datasetReadinessConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
-		parameterReadinessConstraintEClass.getESuperTypes().add(this.getReadinessConstraint());
-		customParameterReadinessConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
-		customParameterReadinessConstraintEClass.getESuperTypes().add(this.getParameterReadinessConstraint());
-		customDatasetReadinessConstraintEClass.getESuperTypes().add(this.getCustomConstraint());
-		customDatasetReadinessConstraintEClass.getESuperTypes().add(this.getDatasetReadinessConstraint());
-		toolEClass.getESuperTypes().add(this.getIdentifiableElement());
-		commandLineToolEClass.getESuperTypes().add(this.getTool());
+		functionalEntityEClass.getESuperTypes().add(this.getIdentifiableElement());
+		commandLineToolEClass.getESuperTypes().add(this.getFunctionalEntity());
 		toolNameCommandLineEntryEClass.getESuperTypes().add(this.getCommandLineEntryList());
 		literalCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
 		datasetCommandLineEntryListEClass.getESuperTypes().add(this.getCommandLineEntryList());
@@ -1048,8 +813,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEReference(getActivity_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getActivity_InputDatasets(), this.getInputDataset(), null, "inputDatasets", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivity_OutputDatasets(), this.getOutputDataset(), null, "outputDatasets", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivity_ReadinessContraints(), this.getReadinessConstraint(), null, "readinessContraints", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getActivity_Tool(), this.getTool(), this.getTool_Activity(), "tool", null, 1, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivity_FunctionalEntity(), this.getFunctionalEntity(), this.getFunctionalEntity_Activity(), "functionalEntity", null, 1, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiplicityElementEClass, MultiplicityElement.class, "MultiplicityElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMultiplicityElement_MinimumCardinality(), ecorePackage.getEBigInteger(), "minimumCardinality", "1", 1, 1, MultiplicityElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1058,43 +822,21 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_ParameterType(), this.getParameterType(), "parameterType", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getParameter_Constraints(), this.getParameterConstraint(), null, "constraints", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getParameter_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(datasetEClass, Dataset.class, "Dataset", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataset_Mimetype(), ecorePackage.getEString(), "mimetype", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataset_Constraints(), this.getDatasetConstraint(), null, "constraints", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getDataset_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(inputDatasetEClass, InputDataset.class, "InputDataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(outputDatasetEClass, OutputDataset.class, "OutputDataset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstraint_Name(), ecorePackage.getEString(), "name", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(parameterConstraintEClass, ParameterConstraint.class, "ParameterConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(datasetConstraintEClass, DatasetConstraint.class, "DatasetConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(customConstraintEClass, CustomConstraint.class, "CustomConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCustomConstraint_Name(), ecorePackage.getEString(), "name", null, 1, 1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(customParameterConstraintEClass, CustomParameterConstraint.class, "CustomParameterConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(customDatasetConstraintEClass, CustomDatasetConstraint.class, "CustomDatasetConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(readinessConstraintEClass, ReadinessConstraint.class, "ReadinessConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(datasetReadinessConstraintEClass, DatasetReadinessConstraint.class, "DatasetReadinessConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDatasetReadinessConstraint_Dataset(), this.getDataset(), null, "dataset", null, 1, 1, DatasetReadinessConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(parameterReadinessConstraintEClass, ParameterReadinessConstraint.class, "ParameterReadinessConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameterReadinessConstraint_Parameter(), this.getParameter(), null, "parameter", null, 1, 1, ParameterReadinessConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(customParameterReadinessConstraintEClass, CustomParameterReadinessConstraint.class, "CustomParameterReadinessConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(customDatasetReadinessConstraintEClass, CustomDatasetReadinessConstraint.class, "CustomDatasetReadinessConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(toolEClass, Tool.class, "Tool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTool_Activity(), this.getActivity(), this.getActivity_Tool(), "activity", null, 0, 1, Tool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(functionalEntityEClass, FunctionalEntity.class, "FunctionalEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFunctionalEntity_Activity(), this.getActivity(), this.getActivity_FunctionalEntity(), "activity", null, 0, 1, FunctionalEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandLineToolEClass, CommandLineTool.class, "CommandLineTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCommandLineTool_CommandLineTemplate(), this.getCommandLineEntryList(), null, "commandLineTemplate", null, 1, -1, CommandLineTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1269,12 +1011,6 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		   });
 		addAnnotation
 		  (getActivity_OutputDatasets(),
-		   source,
-		   new String[] {
-			   "nullFree", "false"
-		   });
-		addAnnotation
-		  (getActivity_ReadinessContraints(),
 		   source,
 		   new String[] {
 			   "nullFree", "false"

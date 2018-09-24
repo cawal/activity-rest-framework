@@ -13,7 +13,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CommandLineToolTest extends ToolTest {
+public class CommandLineToolTest extends FunctionalEntityTest {
 
 	/**
 	 * <!-- begin-user-doc -->

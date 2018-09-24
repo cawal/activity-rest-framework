@@ -214,7 +214,7 @@ public class DatasetItemProvider extends MultiplicityElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AnalysisActivityDescriptionPackage.Literals.DATASET__CONSTRAINTS,
-				 AnalysisActivityDescriptionFactory.eINSTANCE.createCustomDatasetConstraint()));
+				 AnalysisActivityDescriptionFactory.eINSTANCE.createConstraint()));
 	}
 
 }

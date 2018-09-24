@@ -4,12 +4,10 @@ package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -35,8 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getInputDatasets <em>Input Datasets</em>}</li>
  *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getOutputDatasets <em>Output Datasets</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getReadinessContraints <em>Readiness Contraints</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getTool <em>Tool</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.ActivityImpl#getFunctionalEntity <em>Functional Entity</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,24 +70,14 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	protected EList<OutputDataset> outputDatasets;
 
 	/**
-	 * The cached value of the '{@link #getReadinessContraints() <em>Readiness Contraints</em>}' containment reference list.
+	 * The cached value of the '{@link #getFunctionalEntity() <em>Functional Entity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReadinessContraints()
+	 * @see #getFunctionalEntity()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ReadinessConstraint> readinessContraints;
-
-	/**
-	 * The cached value of the '{@link #getTool() <em>Tool</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTool()
-	 * @generated
-	 * @ordered
-	 */
-	protected Tool tool;
+	protected FunctionalEntity functionalEntity;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,11 +139,8 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ReadinessConstraint> getReadinessContraints() {
-		if (readinessContraints == null) {
-			readinessContraints = new EObjectContainmentEList<ReadinessConstraint>(ReadinessConstraint.class, this, AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS);
-		}
-		return readinessContraints;
+	public FunctionalEntity getFunctionalEntity() {
+		return functionalEntity;
 	}
 
 	/**
@@ -164,20 +148,11 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Tool getTool() {
-		return tool;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTool(Tool newTool, NotificationChain msgs) {
-		Tool oldTool = tool;
-		tool = newTool;
+	public NotificationChain basicSetFunctionalEntity(FunctionalEntity newFunctionalEntity, NotificationChain msgs) {
+		FunctionalEntity oldFunctionalEntity = functionalEntity;
+		functionalEntity = newFunctionalEntity;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__TOOL, oldTool, newTool);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY, oldFunctionalEntity, newFunctionalEntity);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -188,18 +163,18 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTool(Tool newTool) {
-		if (newTool != tool) {
+	public void setFunctionalEntity(FunctionalEntity newFunctionalEntity) {
+		if (newFunctionalEntity != functionalEntity) {
 			NotificationChain msgs = null;
-			if (tool != null)
-				msgs = ((InternalEObject)tool).eInverseRemove(this, AnalysisActivityDescriptionPackage.TOOL__ACTIVITY, Tool.class, msgs);
-			if (newTool != null)
-				msgs = ((InternalEObject)newTool).eInverseAdd(this, AnalysisActivityDescriptionPackage.TOOL__ACTIVITY, Tool.class, msgs);
-			msgs = basicSetTool(newTool, msgs);
+			if (functionalEntity != null)
+				msgs = ((InternalEObject)functionalEntity).eInverseRemove(this, AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY__ACTIVITY, FunctionalEntity.class, msgs);
+			if (newFunctionalEntity != null)
+				msgs = ((InternalEObject)newFunctionalEntity).eInverseAdd(this, AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY__ACTIVITY, FunctionalEntity.class, msgs);
+			msgs = basicSetFunctionalEntity(newFunctionalEntity, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__TOOL, newTool, newTool));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY, newFunctionalEntity, newFunctionalEntity));
 	}
 
 	/**
@@ -210,10 +185,10 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
-				if (tool != null)
-					msgs = ((InternalEObject)tool).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AnalysisActivityDescriptionPackage.ACTIVITY__TOOL, null, msgs);
-				return basicSetTool((Tool)otherEnd, msgs);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
+				if (functionalEntity != null)
+					msgs = ((InternalEObject)functionalEntity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY, null, msgs);
+				return basicSetFunctionalEntity((FunctionalEntity)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -232,10 +207,8 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 				return ((InternalEList<?>)getInputDatasets()).basicRemove(otherEnd, msgs);
 			case AnalysisActivityDescriptionPackage.ACTIVITY__OUTPUT_DATASETS:
 				return ((InternalEList<?>)getOutputDatasets()).basicRemove(otherEnd, msgs);
-			case AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS:
-				return ((InternalEList<?>)getReadinessContraints()).basicRemove(otherEnd, msgs);
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
-				return basicSetTool(null, msgs);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
+				return basicSetFunctionalEntity(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -254,10 +227,8 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 				return getInputDatasets();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__OUTPUT_DATASETS:
 				return getOutputDatasets();
-			case AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS:
-				return getReadinessContraints();
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
-				return getTool();
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
+				return getFunctionalEntity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -283,12 +254,8 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 				getOutputDatasets().clear();
 				getOutputDatasets().addAll((Collection<? extends OutputDataset>)newValue);
 				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS:
-				getReadinessContraints().clear();
-				getReadinessContraints().addAll((Collection<? extends ReadinessConstraint>)newValue);
-				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
-				setTool((Tool)newValue);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
+				setFunctionalEntity((FunctionalEntity)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -311,11 +278,8 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 			case AnalysisActivityDescriptionPackage.ACTIVITY__OUTPUT_DATASETS:
 				getOutputDatasets().clear();
 				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS:
-				getReadinessContraints().clear();
-				return;
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
-				setTool((Tool)null);
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
+				setFunctionalEntity((FunctionalEntity)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -335,10 +299,8 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 				return inputDatasets != null && !inputDatasets.isEmpty();
 			case AnalysisActivityDescriptionPackage.ACTIVITY__OUTPUT_DATASETS:
 				return outputDatasets != null && !outputDatasets.isEmpty();
-			case AnalysisActivityDescriptionPackage.ACTIVITY__READINESS_CONTRAINTS:
-				return readinessContraints != null && !readinessContraints.isEmpty();
-			case AnalysisActivityDescriptionPackage.ACTIVITY__TOOL:
-				return tool != null;
+			case AnalysisActivityDescriptionPackage.ACTIVITY__FUNCTIONAL_ENTITY:
+				return functionalEntity != null;
 		}
 		return super.eIsSet(featureID);
 	}

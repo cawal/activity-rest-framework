@@ -7,11 +7,10 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.services.AnalysisActivityDSLGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Arrays;
@@ -41,11 +40,7 @@ public class AnalysisActivityDSLFormatter extends AbstractFormatter2 {
     for (final OutputDataset outputDataset : _outputDatasets) {
       document.<OutputDataset>format(outputDataset);
     }
-    EList<ReadinessConstraint> _readinessContraints = activity.getReadinessContraints();
-    for (final ReadinessConstraint readinessConstraint : _readinessContraints) {
-      document.<ReadinessConstraint>format(readinessConstraint);
-    }
-    document.<Tool>format(activity.getTool());
+    document.<FunctionalEntity>format(activity.getFunctionalEntity());
   }
   
   protected void _format(final CommandLineTool commandLineTool, @Extension final IFormattableDocument document) {

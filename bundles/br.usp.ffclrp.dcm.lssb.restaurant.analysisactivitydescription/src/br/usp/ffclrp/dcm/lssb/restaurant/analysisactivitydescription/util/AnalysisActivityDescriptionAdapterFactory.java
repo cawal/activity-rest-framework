@@ -100,48 +100,8 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 				return createConstraintAdapter();
 			}
 			@Override
-			public Adapter caseParameterConstraint(ParameterConstraint object) {
-				return createParameterConstraintAdapter();
-			}
-			@Override
-			public Adapter caseDatasetConstraint(DatasetConstraint object) {
-				return createDatasetConstraintAdapter();
-			}
-			@Override
-			public Adapter caseCustomConstraint(CustomConstraint object) {
-				return createCustomConstraintAdapter();
-			}
-			@Override
-			public Adapter caseCustomParameterConstraint(CustomParameterConstraint object) {
-				return createCustomParameterConstraintAdapter();
-			}
-			@Override
-			public Adapter caseCustomDatasetConstraint(CustomDatasetConstraint object) {
-				return createCustomDatasetConstraintAdapter();
-			}
-			@Override
-			public Adapter caseReadinessConstraint(ReadinessConstraint object) {
-				return createReadinessConstraintAdapter();
-			}
-			@Override
-			public Adapter caseDatasetReadinessConstraint(DatasetReadinessConstraint object) {
-				return createDatasetReadinessConstraintAdapter();
-			}
-			@Override
-			public Adapter caseParameterReadinessConstraint(ParameterReadinessConstraint object) {
-				return createParameterReadinessConstraintAdapter();
-			}
-			@Override
-			public Adapter caseCustomParameterReadinessConstraint(CustomParameterReadinessConstraint object) {
-				return createCustomParameterReadinessConstraintAdapter();
-			}
-			@Override
-			public Adapter caseCustomDatasetReadinessConstraint(CustomDatasetReadinessConstraint object) {
-				return createCustomDatasetReadinessConstraintAdapter();
-			}
-			@Override
-			public Adapter caseTool(Tool object) {
-				return createToolAdapter();
+			public Adapter caseFunctionalEntity(FunctionalEntity object) {
+				return createFunctionalEntityAdapter();
 			}
 			@Override
 			public Adapter caseCommandLineTool(CommandLineTool object) {
@@ -304,34 +264,6 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint <em>Parameter Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint
-	 * @generated
-	 */
-	public Adapter createParameterConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint <em>Dataset Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint
-	 * @generated
-	 */
-	public Adapter createDatasetConstraintAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList <em>Command Line Entry List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -402,128 +334,16 @@ public class AnalysisActivityDescriptionAdapterFactory extends AdapterFactoryImp
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint <em>Readiness Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity <em>Functional Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity
 	 * @generated
 	 */
-	public Adapter createReadinessConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetReadinessConstraint <em>Dataset Readiness Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetReadinessConstraint
-	 * @generated
-	 */
-	public Adapter createDatasetReadinessConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterReadinessConstraint <em>Parameter Readiness Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterReadinessConstraint
-	 * @generated
-	 */
-	public Adapter createParameterReadinessConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint <em>Custom Parameter Readiness Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterReadinessConstraint
-	 * @generated
-	 */
-	public Adapter createCustomParameterReadinessConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint <em>Custom Dataset Readiness Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetReadinessConstraint
-	 * @generated
-	 */
-	public Adapter createCustomDatasetReadinessConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomConstraint <em>Custom Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomConstraint
-	 * @generated
-	 */
-	public Adapter createCustomConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint <em>Custom Parameter Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomParameterConstraint
-	 * @generated
-	 */
-	public Adapter createCustomParameterConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint <em>Custom Dataset Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CustomDatasetConstraint
-	 * @generated
-	 */
-	public Adapter createCustomDatasetConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool <em>Tool</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Tool
-	 * @generated
-	 */
-	public Adapter createToolAdapter() {
+	public Adapter createFunctionalEntityAdapter() {
 		return null;
 	}
 

@@ -249,15 +249,6 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
-	<extension point="org.eclipse.ui.preferencePages">
-		<page
-			category="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL"
-			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSL.validator.preferencePage"
-			name="Errors/Warnings">
-			<keywordReference id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.keyword_AnalysisActivityDSL"/>
-		</page>
-	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.AnalysisActivityDSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
