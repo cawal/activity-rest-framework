@@ -23,19 +23,20 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
 
-public class FileSystemDao implements AnalysisActivityDao {
+public class FileSystemActivityRepository implements ActivityRepository {
 	
 	private static final String SINGLE_FILE_DATASETS_DIR_PATH =
 			"SINGLE_FILE_DATASETS";
 	File localStorage;
-	final protected AnalysisActivityDescription aaDesc;
+	final protected Activity aaDesc;
 	final String parametersSubpath = "/parameters.json";
 	final String inputDatasetsSubpath = "/inputs/";
 	final String outputDatasetsSubpath = "/outputs/";
@@ -46,14 +47,12 @@ public class FileSystemDao implements AnalysisActivityDao {
 	JsonbConfig jsonConfig;
 	Jsonb jsonb;
 	
+	private final static Logger LOGGER =
+			Logger.getLogger(FileSystemActivityRepository.class.getName());
 	
-	private final static Logger LOGGER 
-		= Logger.getLogger(FileSystemDao.class.getName());
-	
-	
-	public FileSystemDao(
+	public FileSystemActivityRepository(
 			@NotNull File localStorage,
-			@NotNull AnalysisActivityDescription aaDesc) {
+			@NotNull Activity aaDesc) {
 		
 		this.localStorage = localStorage;
 		this.aaDesc = aaDesc;
@@ -83,7 +82,6 @@ public class FileSystemDao implements AnalysisActivityDao {
 		
 		analysis.setId(newAnalysisId.toString());
 		File analysisRoot = new File(localStorage, analysis.getId());
-		
 		
 		try {
 			analysisRoot.mkdirs();
@@ -196,7 +194,8 @@ public class FileSystemDao implements AnalysisActivityDao {
 		return analysisRoot;
 	}
 	
-	public AnalysisActivity moveFrom(String analysisId, FileSystemDao from)
+	public AnalysisActivity moveFrom(String analysisId,
+			FileSystemActivityRepository from)
 			throws AnalysisActivityNotFoundException {
 		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
 		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);
@@ -205,17 +204,19 @@ public class FileSystemDao implements AnalysisActivityDao {
 	}
 	
 	private void setDescriptionForAnalysis(AnalysisActivity aa) {
-		AnalysisActivityDescription descCopy = EcoreUtil.copy(aaDesc);
+		Activity descCopy = EcoreUtil.copy(aaDesc);
 		aa.setDescription(descCopy);
 		
-		for (DatasetDescription dp : descCopy.getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy
+				.getInputDatasets()) {
 			Dataset d = AnalysisActivityModelFactory.eINSTANCE.createDataset();
 			d.setName(dp.getName());
 			d.setDescription(dp);
 			aa.getInputs().add(d);
 		}
 		
-		for (DatasetDescription dp : descCopy.getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy
+				.getOutputDatasets()) {
 			Dataset d = AnalysisActivityModelFactory.eINSTANCE.createDataset();
 			d.setName(dp.getName());
 			d.setDescription(dp);
@@ -235,12 +236,14 @@ public class FileSystemDao implements AnalysisActivityDao {
 		}
 		
 		// save/overwrite parameters
-		/*Map<String, Object> parametersMap =
-				ParametersUtil
-						.parameterDescriptionsToMap(aaDesc.getParameters());*/
+		/*
+		 * Map<String, Object> parametersMap =
+		 * ParametersUtil
+		 * .parameterDescriptionsToMap(aaDesc.getParameters());
+		 */
 		
 		FileWriter parametersStream = new FileWriter(parametersFile);
-		ParameterMap parametersMap = 
+		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
 		
 		parametersMap.getDescriptions().addAll(aaDesc.getParameters());
@@ -272,9 +275,10 @@ public class FileSystemDao implements AnalysisActivityDao {
 		// TODO: move for better place
 		aa.getParameters().clear();
 		aa.getParameters().getDescriptions().clear();
-		aa.getParameters().getDescriptions().addAll(aa.getDescription().getParameters());
+		aa.getParameters().getDescriptions()
+				.addAll(aa.getDescription().getParameters());
 		aa.getParameters().setDefaultValues();
-
+		
 		// get values from file
 		try {
 			@SuppressWarnings("unchecked")
@@ -283,9 +287,9 @@ public class FileSystemDao implements AnalysisActivityDao {
 							Map.class);
 			
 			aa.getParameters().putAll(parametersSet);
-
+			
 		} catch (FileNotFoundException e) {
-//		} catch (FileNotFoundException e) {
+			// } catch (FileNotFoundException e) {
 			e.printStackTrace();
 			throw new AnalysisActivityNotFoundException(aa.getId());
 		}
@@ -301,27 +305,18 @@ public class FileSystemDao implements AnalysisActivityDao {
 			inputSubdirectory.mkdir();
 		}
 		
-		for (DatasetDescription dp : aaDesc.getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+				.getInputDatasets()) {
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if (MultiplicityElementUtil.acceptsList(dp)) {
 				File datasetSubdirectory =
 						new File(inputSubdirectory, dp.getName());
 				datasetSubdirectory.mkdirs();
-				break;
-			
-			case SINGLE_FILE: // file has the dataset name
+			} else {
 				File singleFileDatasetDir =
 						new File(inputSubdirectory,
 								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
-				break;
-			default:
-				throw new NotImplementedException(
-						"Must provide implementation for "
-								+ dp.getDatasetKind()
-								+ " at " + Thread.currentThread());
 			}
 		}
 	}
@@ -335,31 +330,26 @@ public class FileSystemDao implements AnalysisActivityDao {
 				new File(getAnalysisDirectoryInLocalStorage(aa.getId()),
 						inputDatasetsSubpath);
 		
-		for (DatasetDescription dp : aa.getDescription().getInputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa
+				.getDescription().getInputDatasets()) {
 			Dataset dataset = aa.inputDatasetForName(dp.getName());
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if (MultiplicityElementUtil.acceptsList(dp)) {// files are inside a
+															// dir with the
+															// dataset
+				// name
 				File[] files = new File(inputDatasetsDirectory, dp.getName())
 						.listFiles();
 				dataset.getFiles().addAll(Arrays.asList(files));
-				break;
-			
-			case SINGLE_FILE: // file has the dataset name
+				
+			} else {// file has the dataset name
 				File singleFileDatasetDir =
 						new File(inputDatasetsDirectory,
 								SINGLE_FILE_DATASETS_DIR_PATH);
 				File datasetFile =
 						new File(singleFileDatasetDir, dataset.getName());
 				dataset.getFiles().add(datasetFile);
-				break;
-			default:
-				System.err.println("Must provide implementation for "
-						+ dp.getDatasetKind()
-						+ " at "
-						+ Thread.currentThread().getStackTrace().toString());
-				break;
+				
 			}
 		}
 		
@@ -374,13 +364,16 @@ public class FileSystemDao implements AnalysisActivityDao {
 			File inputSubdirectory =
 					new File(analysisRoot, inputDatasetsSubpath);
 			
-			for (DatasetDescription dp : aaDesc.getInputDatasets()) {
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+					.getInputDatasets()) {
 				
 				Dataset dataset = aa.inputDatasetForName(dp.getName());
 				
-				switch (dp.getDatasetKind()) {
-				case FILE_COLLECTION: // files are inside a dir with the dataset
-										// name
+				if (MultiplicityElementUtil.acceptsList(dp)) {// files are
+																// inside a dir
+																// with the
+																// dataset
+					// name
 					File datasetSubdirectory =
 							new File(inputSubdirectory, dp.getName());
 					for (int i = 0; i < dataset.getFiles().size(); i++) {
@@ -397,9 +390,8 @@ public class FileSystemDao implements AnalysisActivityDao {
 							
 						}
 					}
-					break;
-				
-				case SINGLE_FILE: // file has the dataset name
+					
+				} else { // file has the dataset name
 					File singleFileDatasetDir =
 							new File(inputSubdirectory,
 									SINGLE_FILE_DATASETS_DIR_PATH);
@@ -416,13 +408,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 						dataset.getFiles().remove(0);
 						dataset.getFiles().add(expectedFile);
 					}
-					break;
-				default:
-					System.err.println("Must provide implementation for "
-							+ dp.getDatasetKind()
-							+ " at " + Thread.currentThread().getStackTrace()
-									.toString());
-					break;
+					
 				}
 				
 			}
@@ -454,21 +440,21 @@ public class FileSystemDao implements AnalysisActivityDao {
 		
 		clearDatasetsFiles(aa.getOutputs());
 		
-		for (DatasetDescription dp : aa.getDescription().getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aa
+				.getDescription().getOutputDatasets()) {
 			
 			Dataset dataset = aa.outputDatasetForName(dp.getName());
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if (MultiplicityElementUtil.acceptsList(dp)) {
+				// files are inside a dir with the dataset
+				// name
 				File datasetDir =
 						new File(outputDatasetsDirectory, dp.getName());
 				datasetDir.mkdirs();
 				File[] files = datasetDir.listFiles();
 				dataset.getFiles().addAll(Arrays.asList(files));
-				break;
-			
-			case SINGLE_FILE: // file has the dataset name
+				
+			} else {// file has the dataset name
 				
 				File singleFileDatasetDir =
 						new File(outputDatasetsDirectory,
@@ -477,13 +463,6 @@ public class FileSystemDao implements AnalysisActivityDao {
 				File datasetFile =
 						new File(singleFileDatasetDir, dataset.getName());
 				dataset.getFiles().add(datasetFile);
-				break;
-			
-			default:
-				throw new NotImplementedException(
-						"Must provide implementation for "
-								+ dp.getDatasetKind()
-								+ " at " + Thread.currentThread());
 			}
 		}
 		
@@ -496,27 +475,20 @@ public class FileSystemDao implements AnalysisActivityDao {
 			outputSubdirectory.mkdir();
 		}
 		
-		for (DatasetDescription dp : aaDesc.getOutputDatasets()) {
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+				.getOutputDatasets()) {
 			
-			switch (dp.getDatasetKind()) {
-			case FILE_COLLECTION: // files are inside a dir with the dataset
-									// name
+			if(MultiplicityElementUtil.acceptsList(dp)) {
+				// files are inside a dir with the dataset name
 				File datasetSubdirectory =
 						new File(outputSubdirectory, dp.getName());
 				datasetSubdirectory.mkdirs();
-				break;
 			
-			case SINGLE_FILE: // file has the dataset name
+			} else { // file has the dataset name
 				File singleFileDatasetDir =
 						new File(outputSubdirectory,
 								SINGLE_FILE_DATASETS_DIR_PATH);
 				singleFileDatasetDir.mkdirs();
-				break;
-			default:
-				throw new NotImplementedException(
-						"Must provide implementation for "
-								+ dp.getDatasetKind()
-								+ " at " + Thread.currentThread());
 			}
 		}
 	}
@@ -530,12 +502,12 @@ public class FileSystemDao implements AnalysisActivityDao {
 			File outputSubdirectory =
 					new File(analysisRoot, outputDatasetsSubpath);
 			
-			for (DatasetDescription dp : aaDesc.getOutputDatasets()) {
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+					.getOutputDatasets()) {
 				
 				Dataset dataset = aa.outputDatasetForName(dp.getName());
-				
-				switch (dp.getDatasetKind()) {
-				case FILE_COLLECTION: // files are inside a dir with the dataset
+				if(MultiplicityElementUtil.acceptsList(dp)) {
+					// files are inside a dir with the dataset
 										// name
 					File datasetSubdirectory =
 							new File(outputSubdirectory, dp.getName());
@@ -553,9 +525,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 							
 						}
 					}
-					break;
-				
-				case SINGLE_FILE: // file has the dataset name
+				} else {// file has the dataset name
 					File singleFileDatasetDir =
 							new File(outputSubdirectory,
 									SINGLE_FILE_DATASETS_DIR_PATH);
@@ -574,15 +544,7 @@ public class FileSystemDao implements AnalysisActivityDao {
 						dataset.getFiles().remove(0);
 						dataset.getFiles().add(expectedFile);
 					}
-					break;
-				default:
-					System.err.println("Must provide implementation for "
-							+ dp.getDatasetKind()
-							+ " at " + Thread.currentThread().getStackTrace()
-									.toString());
-					break;
 				}
-				
 			}
 			
 			// reloadInputDatasetsFiles(aa);
@@ -624,6 +586,5 @@ public class FileSystemDao implements AnalysisActivityDao {
 			aa.setErrorReport(expectedFile);
 		}
 	}
-	
 	
 }

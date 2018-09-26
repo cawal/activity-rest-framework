@@ -20,7 +20,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManagerImpl;
@@ -31,7 +31,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.Invali
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;
 
@@ -40,21 +40,21 @@ public class JobCollection {
 	
 	@Context
 	UriInfo uriInfo;
-	AnalysisActivityDescription aaDesc;
+	Activity aaDesc;
 	
-	FileSystemDao nonExecutedDao;
-	FileSystemDao runningDao;
-	FileSystemDao succeededDAO;
-	FileSystemDao failedDAO;
+	FileSystemActivityRepository nonExecutedDao;
+	FileSystemActivityRepository runningDao;
+	FileSystemActivityRepository succeededDAO;
+	FileSystemActivityRepository failedDAO;
 	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
 			new JobManagerImpl();
 	
-	public JobCollection(AnalysisActivityDescription aaDesc,
+	public JobCollection(Activity aaDesc,
 			UriInfo uriInfo,
-			FileSystemDao nonExecutedAnalysisActivityDao,
-			FileSystemDao runningAnalysisActivityDao,
-			FileSystemDao succeededAnalysisActivityDao,
-			FileSystemDao failedAnalysisActivityDao) {
+			FileSystemActivityRepository nonExecutedAnalysisActivityDao,
+			FileSystemActivityRepository runningAnalysisActivityDao,
+			FileSystemActivityRepository succeededAnalysisActivityDao,
+			FileSystemActivityRepository failedAnalysisActivityDao) {
 		
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;

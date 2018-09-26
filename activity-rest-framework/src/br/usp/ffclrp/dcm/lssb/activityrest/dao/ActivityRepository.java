@@ -4,7 +4,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreati
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 
-public interface AnalysisActivityDao {
+public interface ActivityRepository {
 	
 	/**
 	 * Creates a new AnalysisActivity.

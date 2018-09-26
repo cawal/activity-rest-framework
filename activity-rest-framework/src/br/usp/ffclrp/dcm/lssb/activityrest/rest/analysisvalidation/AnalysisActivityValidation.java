@@ -1,20 +1,11 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation;
 
-import java.util.Collection;
+import java.util.List;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MaximunParameterCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunDatasetCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MinimunParameterCardinalityConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterConstraint;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ReadinessConstraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
 
-// TODO Refactor the validation engine
+// TODO Refactor the validation engine to include other constraints
 public class AnalysisActivityValidation {
 	
 	/**
@@ -25,7 +16,29 @@ public class AnalysisActivityValidation {
 	 */
 	public static boolean isReady(AnalysisActivity aa) {
 		
-		for (ReadinessConstraint c : aa.getDescription()
+
+		boolean parametersReady = aa.getDescription().getParameters().stream()
+				.allMatch(d -> {
+					Object p = aa.getParameters().get(d.getName());
+					
+					if(p instanceof List) {
+						List l = (List) p; 
+						return MultiplicityElementUtil.validCardinality(l.size(), d);
+					} else if (p != null) {
+						return MultiplicityElementUtil.validCardinality(1, d);
+					} else {
+						return false;
+					}
+				});
+		
+		boolean inputsReady = aa.getInputs().stream().allMatch(d -> { 
+			int cardinality = d.getFiles().size();
+			return MultiplicityElementUtil.validCardinality(cardinality,d.getDescription()); 
+		});
+		
+		return parametersReady && inputsReady;
+		
+		/*for (ReadinessConstraint c : aa.getDescription()
 				.getReadinessContraints()) {
 			if (c instanceof DatasetConstraint) {
 				DatasetDescription dp = ((DatasetConstraint) c).getDataset();
@@ -36,7 +49,6 @@ public class AnalysisActivityValidation {
 			}
 			
 			if (c instanceof ParameterConstraint) {
-				System.out.println(c.toString());
 				ParameterDescription pp =
 						((ParameterConstraint) c).getParameter();
 				Object value = aa.getParameters().get(pp.getName());
@@ -46,11 +58,11 @@ public class AnalysisActivityValidation {
 			}
 		}
 		
-		return true;
+		return true;*/
 		
 	}
 	
-	private static boolean isReadyParameter(Object value,
+/*	private static boolean isReadyParameter(Object value,
 			ParameterConstraint c) {
 		if(value instanceof Collection<?>) {
 			if (c instanceof MinimunParameterCardinalityConstraint) {
@@ -89,5 +101,5 @@ public class AnalysisActivityValidation {
 		
 		return false;
 	}
-	
+	*/
 }

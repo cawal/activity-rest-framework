@@ -9,9 +9,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import io.swagger.annotations.Api;
 
@@ -21,12 +21,12 @@ public class SucceededAnalysesCollection {
 	@Context
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
-	AnalysisActivityDao analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	ActivityRepository analysisActivityDao;
+	Activity aaDesc;
 	
-	public SucceededAnalysesCollection(AnalysisActivityDescription aaDesc,
+	public SucceededAnalysesCollection(Activity aaDesc,
 			UriInfo uriInfo,
-			AnalysisActivityDao succeededAnalysisActivityDao) {
+			ActivityRepository succeededAnalysisActivityDao) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
 		this.aaDesc = aaDesc;

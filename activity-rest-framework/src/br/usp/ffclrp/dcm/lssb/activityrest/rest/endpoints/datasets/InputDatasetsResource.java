@@ -26,13 +26,12 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.IOUtils;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetKind;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
 import io.swagger.annotations.Api;
 
 @Api
@@ -44,14 +43,14 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	boolean allowUpdate;
 	
 	private AnalysisActivity aa;
-	private AnalysisActivityDao analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	private ActivityRepository analysisActivityDao;
+	Activity aaDesc;
 	
 	public InputDatasetsResource(
-			@NotNull AnalysisActivityDescription aaDesc,
+			@NotNull Activity aaDesc,
 			@NotNull UriInfo uriInfo,
 			@NotNull AnalysisActivity aa,
-			@NotNull AnalysisActivityDao analysisActivityDao,
+			@NotNull ActivityRepository analysisActivityDao,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;
@@ -129,8 +128,6 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		if (d == null)
 			throw new NotFoundException();
 		
-		DatasetDescription datasetDescription = d.getDescription();
-		DatasetKind datasetKind = datasetDescription.getDatasetKind();
 		String fileName = UUID.randomUUID().toString();
 		
 		URI locationURI = null;
@@ -142,7 +139,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			IOUtils.copy(fileContents, fw);
 			fileContents.close();
 			
-			if (datasetKind == DatasetKind.SINGLE_FILE) {
+			if (MultiplicityElementUtil.dontAcceptsList(d.getDescription())) {
 				if (d.getFiles().size() > 0)
 					throw new BadRequestException();
 			}
@@ -177,13 +174,14 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		if (d == null)
 			throw new NotFoundException();
 		
-		DatasetDescription datasetDescription = d.getDescription();
-		DatasetKind datasetKind = datasetDescription.getDatasetKind();
+		br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset 
+			datasetDescription = d.getDescription();
 		
-		if (datasetKind != DatasetKind.SINGLE_FILE
-				&& datasetKind != DatasetKind.STANDARD_INPUT) {
+		if(MultiplicityElementUtil.acceptsList(datasetDescription)) {
 			throw new BadRequestException();
 		}
+		
+
 		
 		String fileName = UUID.randomUUID().toString();
 		
@@ -196,11 +194,9 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			IOUtils.copy(fileContents, fw);
 			fileContents.close();
 			
-			if (datasetKind == DatasetKind.SINGLE_FILE) {
-				File old = d.getFiles().get(0);
-				d.getFiles().clear();
-				old.delete();
-			}
+			File old = d.getFiles().get(0);
+			d.getFiles().clear();
+			old.delete();
 			
 			d.getFiles().add(f);
 			analysisActivityDao.update(aa);

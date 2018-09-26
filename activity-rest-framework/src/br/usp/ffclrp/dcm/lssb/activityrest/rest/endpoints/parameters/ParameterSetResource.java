@@ -22,10 +22,10 @@ import javax.ws.rs.core.UriInfo;
 
 import com.google.common.collect.Lists;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescription;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 import io.swagger.annotations.Api;
@@ -38,15 +38,15 @@ public class ParameterSetResource {
 	URI absolutePathURI;
 	
 	private AnalysisActivity aa;
-	private AnalysisActivityDao analysisActivityDao;
-	AnalysisActivityDescription aaDesc;
+	private ActivityRepository analysisActivityDao;
+	Activity aaDesc;
 	boolean allowUpdates;
 	
 	public ParameterSetResource(
-			@Nonnull AnalysisActivityDescription aaDesc,
+			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull AnalysisActivityDao analysisActivityDao,
+			@Nonnull ActivityRepository analysisActivityDao,
 			boolean allowUpdates) {
 		this.aaDesc = aaDesc;
 		this.aa = aa;
@@ -86,8 +86,6 @@ public class ParameterSetResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response putAllParameters(Map<String, Object> map) {
-		System.out.println("Received Map:");
-		System.out.println(map);
 		aa.getParameters().putAll(map);
 		try {
 			analysisActivityDao.update(aa);
@@ -183,7 +181,6 @@ public class ParameterSetResource {
 					aa.getParameters().get(parameterName);
 			
 			List<Object> list = null;
-			System.out.println(updatedParametersObject);
 			if (!(updatedParametersObject instanceof List)) {
 				list = Arrays.asList(updatedParametersObject);
 			} else {
@@ -191,9 +188,6 @@ public class ParameterSetResource {
 			}
 			
 			boolean ok = list.size() == values.size();
-			System.out.println(ok);
-			System.out.println(list);
-			System.out.println(values);
 			for (int i = 0; ok && i < list.size(); i++) {
 				ok = ok && list.get(i).toString().equals(values.get(i).toString());
 			}
