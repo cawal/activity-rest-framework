@@ -47,6 +47,7 @@ public class FileSystemRepositoryTest {
         	aaDesc = ModelsService.retrieveAADLModel(this.getClass()
     				.getResource(uri.toString())
     				.openStream());
+        	System.out.println(aaDesc);
 		} catch (IOException e) {
 			e.printStackTrace();
 		};

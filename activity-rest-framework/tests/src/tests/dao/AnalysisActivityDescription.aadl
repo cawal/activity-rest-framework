@@ -1,10 +1,10 @@
 activity gene-chart-report {
-	remarks 'Lists the files present in the paths parameter.';
+	remark 'Lists the files present in the paths parameter.';
 	on {
 	}
 	with {
 		parameter paths : STRING[1,-1] {
-			remarks 'The paths of the files to list.';
+			remark 'The paths of the files to list.';
 		};
 		parameter email : STRING [1,1];
 		parameter count : INTEGER [1,1] = ['1'];
@@ -15,7 +15,7 @@ activity gene-chart-report {
 	}
 	produces {
 		dataset output.tsv : 'text/tsv' [1,1] {
-			remarks 'The output';
+			remark 'The output';
 		};
 		
 	}

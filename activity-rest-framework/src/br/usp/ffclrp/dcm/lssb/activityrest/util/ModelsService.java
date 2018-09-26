@@ -14,6 +14,11 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisAct
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSLStandaloneSetup;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
 
+/**
+ * A number of utility methods for dealing with the Ecore-based models.
+ * @author cawal
+ *
+ */
 public class ModelsService {
 	
 	/**
@@ -28,7 +33,7 @@ public class ModelsService {
 	/**
 	 * Loads a AADM model represented as AADL from a InputStream.
 	 * More info can be obtained at https://wiki.eclipse.org/Xtext/FAQ#How_do_I_load_my_model_in_a_standalone_Java_application.C2.A0.3F
-	 * @param inputStream
+	 * @param inputStream The InputStream to read the AADL description
 	 * @return an representation object of the AADL/AADM model
 	 * @throws IOException if fails to load
 	 */

@@ -64,11 +64,6 @@ public class RootResource {
 	
 	public RootResource() {};
 	
-	/*public RootResource(InputStream aadlModel, FileSystemRepositoryProperties daoProperties) throws IOException {
-		initializeEcoreResources(aadlModel);
-		initializeFileSystemDaos(daoProperties);
-	}*/
-	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response get() {
