@@ -1,11 +1,17 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement;
+package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.*;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobObserver;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCancellationException;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCantStartException;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
 
 public class JobManagerImpl implements JobManager {
 	
@@ -16,6 +22,8 @@ public class JobManagerImpl implements JobManager {
 			
 		@Override
 		public void notifyStarted(Job job) {
+			System.out.println(job.getId());
+			System.out.println(stateManagementDirectory.getAbsolutePath());
 			File stateFile = new File(stateManagementDirectory,job.getId());
 			try {
 				FileUtils.writeStringToFile(stateFile, JobState.RUNNING.toString());
@@ -56,10 +64,41 @@ public class JobManagerImpl implements JobManager {
 	
 	
 	@Override
+	public void submit(String jobId, Job job)
+			throws JobCantStartException {
+		
+		try {
+			File stateFile = retrieveStateFileForId(jobId);
+			if(stateFile.exists()) {
+				boolean jobIsNotCanceled = 
+						JobState.CANCELED != 
+						JobState.valueOf(FileUtils.readFileToString(stateFile));
+				if(jobIsNotCanceled) {// job exists!
+					throw new JobCantStartException(jobId);
+				}
+			} else {
+				stateFile.createNewFile();
+			}
+			FileUtils.writeStringToFile(stateFile, JobState.RUNNING.toString());
+		} catch (Exception e) {
+			throw new JobCantStartException(jobId);
+		}
+		
+		// add  the instance observer to the job
+		job.addObserver(jobObserver);
+		
+		// start the new thread
+		Thread t = new Thread(job);
+		t.setName(jobId);
+		t.start();
+	}
+	
+	
+	/*@Override
 	public void submit(String jobId, JobConfig jobConfig)
 			throws JobCantStartException {
 		
-		Job job = Job.builder()
+		CommandLineToolJob job = CommandLineToolJob.builder()
 				.id(jobId)
 				.jobConfig(jobConfig)
 				.observer(jobObserver)
@@ -86,7 +125,7 @@ public class JobManagerImpl implements JobManager {
 		t.setName(jobId);
 		t.start();
 		
-	}
+	}*/
 	
 	@Override
 	public JobState getState(String jobId) throws JobNotFoundException {

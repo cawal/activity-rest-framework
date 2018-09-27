@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement;
+package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.File;
 import java.util.Collections;

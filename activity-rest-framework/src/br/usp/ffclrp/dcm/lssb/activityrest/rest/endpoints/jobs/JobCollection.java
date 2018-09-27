@@ -1,7 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 
 import javax.ws.rs.BadRequestException;
@@ -20,14 +19,18 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
 
+import com.google.inject.Inject;
+
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobConfig;
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManagerImpl;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobFactory;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobFactoryImpl;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobManagerImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.InvalidCommandLineDefinition;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
@@ -40,7 +43,7 @@ public class JobCollection {
 	
 	@Context
 	UriInfo uriInfo;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	FileSystemActivityRepository nonExecutedDao;
 	FileSystemActivityRepository runningDao;
@@ -49,14 +52,14 @@ public class JobCollection {
 	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
 			new JobManagerImpl();
 	
-	public JobCollection(Activity aaDesc,
+	public JobCollection(Activity activityDescription,
 			UriInfo uriInfo,
 			FileSystemActivityRepository nonExecutedAnalysisActivityDao,
 			FileSystemActivityRepository runningAnalysisActivityDao,
 			FileSystemActivityRepository succeededAnalysisActivityDao,
 			FileSystemActivityRepository failedAnalysisActivityDao) {
 		
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
 		this.nonExecutedDao = nonExecutedAnalysisActivityDao;
 		this.runningDao = runningAnalysisActivityDao;
@@ -79,7 +82,7 @@ public class JobCollection {
 				
 				// get the new location
 				analysis = runningDao.get(analysisId);
-				File workingDirectory = 
+				/*File workingDirectory = 
 						runningDao.getAnalysisDirectoryInLocalStorage(analysisId);
 				
 				// create the job configuration
@@ -87,7 +90,14 @@ public class JobCollection {
 				
 				// start the analysis job or send a batch job and return the
 				// link for polling
-				jobManager.submit(analysisId, jc);
+				jobManager.submit(analysisId, jc);*/
+				
+				// create the job
+				JobFactory jobFactory = new JobFactoryImpl();
+				Job job = jobFactory.createJob(analysis, analysis.getDescription().getFunctionalEntity());
+				// start the analysis job or send a batch job and return the
+				// link for polling
+				jobManager.submit(analysisId, job);
 				
 				URI jobURI = uriInfo.getAbsolutePath();
 				
@@ -107,9 +117,9 @@ public class JobCollection {
 		} catch (AnalysisActivityNotFoundException
 				| br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCantStartException e) {
 			throw new BadRequestException(e);
-		} catch (IOException | InvalidCommandLineDefinition e) {
+		} catch (JobCreationFail e) {
 			e.printStackTrace();
-			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR);
+			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR,e);
 		}
 	}
 	
