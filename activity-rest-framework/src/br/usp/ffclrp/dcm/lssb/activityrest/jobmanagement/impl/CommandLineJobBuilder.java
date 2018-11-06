@@ -12,7 +12,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
 
 public class CommandLineJobBuilder implements JobBuilder{
 	
-	
+	@Override
 	public CommandLineToolJob create(AnalysisActivity activityInstance, 
 			FunctionalEntity functionalEntity) throws JobCreationFail {
 
