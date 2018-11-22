@@ -1,23 +1,11 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
-
-import analysisactivityexceptions.AnalysisactivityexceptionsPackage;
-import analysisactivityexceptions.impl.AnalysisactivityexceptionsPackageImpl;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
-import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
 import java.io.File;
-
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -26,6 +14,16 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
+import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +106,7 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#eNS_URI
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -148,17 +146,11 @@ public class AnalysisActivityModelPackageImpl extends EPackageImpl implements An
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
 		StringListManipulatorsPackage.eINSTANCE.eClass();
 
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(AnalysisactivityexceptionsPackage.eNS_URI);
-		AnalysisactivityexceptionsPackageImpl theAnalysisactivityexceptionsPackage = (AnalysisactivityexceptionsPackageImpl)(registeredPackage instanceof AnalysisactivityexceptionsPackageImpl ? registeredPackage : AnalysisactivityexceptionsPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theAnalysisActivityModelPackage.createPackageContents();
-		theAnalysisactivityexceptionsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theAnalysisActivityModelPackage.initializePackageContents();
-		theAnalysisactivityexceptionsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theAnalysisActivityModelPackage.freeze();

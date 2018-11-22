@@ -1,8 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.util;
 
 import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
@@ -12,12 +10,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage
+ * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage
  * @generated
  */
 public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
@@ -113,13 +113,13 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter <em>File Adapter</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter <em>File Adapter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter
 	 * @generated
 	 */
 	public Adapter createFileAdapterAdapter() {
@@ -127,13 +127,13 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity <em>Analysis Activity</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity <em>Analysis Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity
 	 * @generated
 	 */
 	public Adapter createAnalysisActivityAdapter() {
@@ -141,13 +141,13 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset <em>Dataset</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset
 	 * @generated
 	 */
 	public Adapter createDatasetAdapter() {
@@ -169,13 +169,13 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap <em>Parameter Map</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap <em>Parameter Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap
 	 * @generated
 	 */
 	public Adapter createParameterMapAdapter() {
@@ -183,13 +183,13 @@ public class AnalysisActivityModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult <em>Validation Result</em>}'.
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult <em>Validation Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult
 	 * @generated
 	 */
 	public Adapter createValidationResultAdapter() {

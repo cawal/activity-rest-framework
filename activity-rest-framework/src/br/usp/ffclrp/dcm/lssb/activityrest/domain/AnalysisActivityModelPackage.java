@@ -1,6 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory
+ * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/OCL/Import aad='../../br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/model/analysis-activity-description.ecore#/' aae='activity-exceptions.ecore#/'"
  * @generated
@@ -57,14 +57,14 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AnalysisActivityModelPackage eINSTANCE = br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl.init();
+	AnalysisActivityModelPackage eINSTANCE = br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl <em>File Adapter</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl <em>File Adapter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFileAdapter()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getFileAdapter()
 	 * @generated
 	 */
 	int FILE_ADAPTER = 0;
@@ -115,11 +115,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int FILE_ADAPTER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl <em>Analysis Activity</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl <em>Analysis Activity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getAnalysisActivity()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getAnalysisActivity()
 	 * @generated
 	 */
 	int ANALYSIS_ACTIVITY = 1;
@@ -215,11 +215,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int ANALYSIS_ACTIVITY_OPERATION_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl <em>Dataset</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.DatasetImpl <em>Dataset</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getDataset()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.DatasetImpl
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getDataset()
 	 * @generated
 	 */
 	int DATASET = 2;
@@ -270,11 +270,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int DATASET_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl <em>Parameter Map</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ParameterMapImpl <em>Parameter Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getParameterMap()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ParameterMapImpl
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getParameterMap()
 	 * @generated
 	 */
 	int PARAMETER_MAP = 4;
@@ -284,7 +284,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.util.List
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getList()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getList()
 	 * @generated
 	 */
 	int LIST = 6;
@@ -294,7 +294,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.io.File
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFile()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getFile()
 	 * @generated
 	 */
 	int FILE = 7;
@@ -305,7 +305,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.util.Map
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getJavaMap()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getJavaMap()
 	 * @generated
 	 */
 	int JAVA_MAP = 3;
@@ -383,11 +383,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	int PARAMETER_MAP_OPERATION_COUNT = JAVA_MAP_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ValidationResultImpl <em>Validation Result</em>}' class.
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ValidationResultImpl <em>Validation Result</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ValidationResultImpl
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getValidationResult()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ValidationResultImpl
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getValidationResult()
 	 * @generated
 	 */
 	int VALIDATION_RESULT = 5;
@@ -433,272 +433,272 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.lang.Object
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getObject()
 	 * @generated
 	 */
 	int OBJECT = 8;
 
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter <em>File Adapter</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter <em>File Adapter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>File Adapter</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter
 	 * @generated
 	 */
 	EClass getFileAdapter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getName()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter#getName()
 	 * @see #getFileAdapter()
 	 * @generated
 	 */
 	EAttribute getFileAdapter_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContent <em>Content</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter#getContent <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Content</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContent()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter#getContent()
 	 * @see #getFileAdapter()
 	 * @generated
 	 */
 	EAttribute getFileAdapter_Content();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContentType <em>Content Type</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter#getContentType <em>Content Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Content Type</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter#getContentType()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter#getContentType()
 	 * @see #getFileAdapter()
 	 * @generated
 	 */
 	EAttribute getFileAdapter_ContentType();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity <em>Analysis Activity</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity <em>Analysis Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Analysis Activity</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity
 	 * @generated
 	 */
 	EClass getAnalysisActivity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getId()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getId()
 	 * @see #getAnalysisActivity()
 	 * @generated
 	 */
 	EAttribute getAnalysisActivity_Id();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getDescription()
 	 * @see #getAnalysisActivity()
 	 * @generated
 	 */
 	EReference getAnalysisActivity_Description();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getInputs <em>Inputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getInputs <em>Inputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Inputs</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getInputs()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getInputs()
 	 * @see #getAnalysisActivity()
 	 * @generated
 	 */
 	EReference getAnalysisActivity_Inputs();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Parameters</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getParameters()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getParameters()
 	 * @see #getAnalysisActivity()
 	 * @generated
 	 */
 	EReference getAnalysisActivity_Parameters();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getOutputs <em>Outputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Outputs</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getOutputs()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getOutputs()
 	 * @see #getAnalysisActivity()
 	 * @generated
 	 */
 	EReference getAnalysisActivity_Outputs();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getErrorReport <em>Error Report</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getErrorReport <em>Error Report</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Error Report</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#getErrorReport()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#getErrorReport()
 	 * @see #getAnalysisActivity()
 	 * @generated
 	 */
 	EAttribute getAnalysisActivity_ErrorReport();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#inputDatasetForName(java.lang.String) <em>Input Dataset For Name</em>}' operation.
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#inputDatasetForName(java.lang.String) <em>Input Dataset For Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Input Dataset For Name</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#inputDatasetForName(java.lang.String)
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#inputDatasetForName(java.lang.String)
 	 * @generated
 	 */
 	EOperation getAnalysisActivity__InputDatasetForName__String();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#outputDatasetForName(java.lang.String) <em>Output Dataset For Name</em>}' operation.
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#outputDatasetForName(java.lang.String) <em>Output Dataset For Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Output Dataset For Name</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity#outputDatasetForName(java.lang.String)
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity#outputDatasetForName(java.lang.String)
 	 * @generated
 	 */
 	EOperation getAnalysisActivity__OutputDatasetForName__String();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset <em>Dataset</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Dataset</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset
 	 * @generated
 	 */
 	EClass getDataset();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getName()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getName()
 	 * @see #getDataset()
 	 * @generated
 	 */
 	EAttribute getDataset_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Description</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getDescription()
 	 * @see #getDataset()
 	 * @generated
 	 */
 	EReference getDataset_Description();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getFiles <em>Files</em>}'.
+	 * Returns the meta object for the attribute list '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getFiles <em>Files</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Files</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getFiles()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getFiles()
 	 * @see #getDataset()
 	 * @generated
 	 */
 	EAttribute getDataset_Files();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap <em>Parameter Map</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap <em>Parameter Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Parameter Map</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap
 	 * @generated
 	 */
 	EClass getParameterMap();
 
 	/**
-	 * Returns the meta object for the reference list '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#getDescriptions <em>Descriptions</em>}'.
+	 * Returns the meta object for the reference list '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#getDescriptions <em>Descriptions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Descriptions</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#getDescriptions()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#getDescriptions()
 	 * @see #getParameterMap()
 	 * @generated
 	 */
 	EReference getParameterMap_Descriptions();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameters(java.util.Map) <em>Validate Parameters</em>}' operation.
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#validateParameters(java.util.Map) <em>Validate Parameters</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Validate Parameters</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameters(java.util.Map)
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#validateParameters(java.util.Map)
 	 * @generated
 	 */
 	EOperation getParameterMap__ValidateParameters__Map();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameter(java.lang.String, java.lang.Object) <em>Validate Parameter</em>}' operation.
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#validateParameter(java.lang.String, java.lang.Object) <em>Validate Parameter</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Validate Parameter</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#validateParameter(java.lang.String, java.lang.Object)
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#validateParameter(java.lang.String, java.lang.Object)
 	 * @generated
 	 */
 	EOperation getParameterMap__ValidateParameter__String_Object();
 
 	/**
-	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#setDefaultValues() <em>Set Default Values</em>}' operation.
+	 * Returns the meta object for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#setDefaultValues() <em>Set Default Values</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Set Default Values</em>' operation.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#setDefaultValues()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#setDefaultValues()
 	 * @generated
 	 */
 	EOperation getParameterMap__SetDefaultValues();
 
 	/**
-	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult <em>Validation Result</em>}'.
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult <em>Validation Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Validation Result</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult
 	 * @generated
 	 */
 	EClass getValidationResult();
 
 	/**
-	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult#getIsValid <em>Is Valid</em>}'.
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult#getIsValid <em>Is Valid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Valid</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult#getIsValid()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult#getIsValid()
 	 * @see #getValidationResult()
 	 * @generated
 	 */
 	EAttribute getValidationResult_IsValid();
 
 	/**
-	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult#getInvalidValues <em>Invalid Values</em>}'.
+	 * Returns the meta object for the reference '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult#getInvalidValues <em>Invalid Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Invalid Values</em>'.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult#getInvalidValues()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult#getInvalidValues()
 	 * @see #getValidationResult()
 	 * @generated
 	 */
@@ -772,11 +772,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl <em>File Adapter</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl <em>File Adapter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFileAdapter()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getFileAdapter()
 		 * @generated
 		 */
 		EClass FILE_ADAPTER = eINSTANCE.getFileAdapter();
@@ -806,11 +806,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EAttribute FILE_ADAPTER__CONTENT_TYPE = eINSTANCE.getFileAdapter_ContentType();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl <em>Analysis Activity</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl <em>Analysis Activity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getAnalysisActivity()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getAnalysisActivity()
 		 * @generated
 		 */
 		EClass ANALYSIS_ACTIVITY = eINSTANCE.getAnalysisActivity();
@@ -880,11 +880,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EOperation ANALYSIS_ACTIVITY___OUTPUT_DATASET_FOR_NAME__STRING = eINSTANCE.getAnalysisActivity__OutputDatasetForName__String();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl <em>Dataset</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.DatasetImpl <em>Dataset</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.DatasetImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getDataset()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.DatasetImpl
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getDataset()
 		 * @generated
 		 */
 		EClass DATASET = eINSTANCE.getDataset();
@@ -914,11 +914,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EAttribute DATASET__FILES = eINSTANCE.getDataset_Files();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl <em>Parameter Map</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ParameterMapImpl <em>Parameter Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getParameterMap()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ParameterMapImpl
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getParameterMap()
 		 * @generated
 		 */
 		EClass PARAMETER_MAP = eINSTANCE.getParameterMap();
@@ -956,11 +956,11 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		EOperation PARAMETER_MAP___SET_DEFAULT_VALUES = eINSTANCE.getParameterMap__SetDefaultValues();
 
 		/**
-		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ValidationResultImpl <em>Validation Result</em>}' class.
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ValidationResultImpl <em>Validation Result</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ValidationResultImpl
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getValidationResult()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ValidationResultImpl
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getValidationResult()
 		 * @generated
 		 */
 		EClass VALIDATION_RESULT = eINSTANCE.getValidationResult();
@@ -986,7 +986,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.util.List
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getList()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getList()
 		 * @generated
 		 */
 		EDataType LIST = eINSTANCE.getList();
@@ -996,7 +996,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.io.File
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getFile()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getFile()
 		 * @generated
 		 */
 		EDataType FILE = eINSTANCE.getFile();
@@ -1006,7 +1006,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.util.Map
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getJavaMap()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getJavaMap()
 		 * @generated
 		 */
 		EClass JAVA_MAP = eINSTANCE.getJavaMap();
@@ -1016,7 +1016,7 @@ public interface AnalysisActivityModelPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.lang.Object
-		 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityModelPackageImpl#getObject()
+		 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityModelPackageImpl#getObject()
 		 * @generated
 		 */
 		EDataType OBJECT = eINSTANCE.getObject();

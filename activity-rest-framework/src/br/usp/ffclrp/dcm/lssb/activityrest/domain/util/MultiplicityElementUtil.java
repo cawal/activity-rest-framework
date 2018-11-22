@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.util;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.MultiplicityElement;
 

@@ -1,8 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
 import java.io.File;
 import org.eclipse.emf.ecore.EClass;
@@ -13,6 +11,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
 
 /**
  * <!-- begin-user-doc -->

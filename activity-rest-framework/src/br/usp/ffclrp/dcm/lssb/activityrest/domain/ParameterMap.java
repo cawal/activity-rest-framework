@@ -1,6 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import java.util.Map;
@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap#getDescriptions <em>Descriptions</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap#getDescriptions <em>Descriptions</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getParameterMap()
+ * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getParameterMap()
  * @model superTypes="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.JavaMap&lt;org.eclipse.emf.ecore.EString, br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Object&gt;"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface ParameterMap extends EObject, Map<String, Object> {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Descriptions</em>' reference list.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getParameterMap_Descriptions()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getParameterMap_Descriptions()
 	 * @model ordered="false"
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated

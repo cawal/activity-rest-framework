@@ -1,6 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.representations;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import lombok.Data;
 
 @Data

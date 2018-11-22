@@ -2,7 +2,7 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions;
 
 import javax.validation.constraints.NotNull;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 
 public class JobNotFoundException extends Throwable {
   /**

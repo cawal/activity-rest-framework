@@ -1,14 +1,15 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.*;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.*;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -35,7 +36,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ParameterMapImpl#getDescriptions
+ * <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ParameterMapImpl#getDescriptions
  * <em>Descriptions</em>}</li>
  * </ul>
  *

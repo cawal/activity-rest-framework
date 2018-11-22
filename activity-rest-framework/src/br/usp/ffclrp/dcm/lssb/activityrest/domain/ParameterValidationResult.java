@@ -1,6 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterValidationResult#getIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterValidationResult#getIsValid <em>Is Valid</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getParameterValidationResult()
+ * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getParameterValidationResult()
  * @model
  * @generated
  */
@@ -31,14 +31,14 @@ public interface ParameterValidationResult extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is Valid</em>' attribute.
 	 * @see #setIsValid(Boolean)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getParameterValidationResult_IsValid()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getParameterValidationResult_IsValid()
 	 * @model
 	 * @generated
 	 */
 	Boolean getIsValid();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterValidationResult#getIsValid <em>Is Valid</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterValidationResult#getIsValid <em>Is Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Valid</em>' attribute.

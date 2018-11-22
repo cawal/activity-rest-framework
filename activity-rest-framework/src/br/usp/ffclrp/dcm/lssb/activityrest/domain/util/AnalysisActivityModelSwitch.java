@@ -1,14 +1,14 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.util;
 
 import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
+
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage
+ * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage
  * @generated
  */
 public class AnalysisActivityModelSwitch<T> extends Switch<T> {

@@ -1,7 +1,12 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -16,11 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelFactory;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +30,12 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ParameterMap;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getId <em>Id</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getInputs <em>Inputs</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getOutputs <em>Outputs</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.AnalysisActivityImpl#getErrorReport <em>Error Report</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl#getId <em>Id</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl#getInputs <em>Inputs</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl#getOutputs <em>Outputs</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.AnalysisActivityImpl#getErrorReport <em>Error Report</em>}</li>
  * </ul>
  *
  * @generated

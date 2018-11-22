@@ -1,9 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.ValidationResult;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
 import java.util.Map;
 
@@ -16,6 +13,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Validation Result</b></em>'.
@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ValidationResultImpl#getIsValid <em>Is Valid</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.ValidationResultImpl#getInvalidValues <em>Invalid Values</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ValidationResultImpl#getIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.ValidationResultImpl#getInvalidValues <em>Invalid Values</em>}</li>
  * </ul>
  *
  * @generated

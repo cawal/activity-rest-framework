@@ -1,9 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl;
-
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.FileAdapter;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -11,6 +8,9 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl#getContent <em>Content</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.impl.FileAdapterImpl#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl#getContent <em>Content</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.impl.FileAdapterImpl#getContentType <em>Content Type</em>}</li>
  * </ul>
  *
  * @generated

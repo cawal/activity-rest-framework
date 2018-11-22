@@ -15,7 +15,7 @@ import javax.ws.rs.ext.Provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
 import io.openapitools.jackson.dataformat.hal.HALLink;
 import io.openapitools.jackson.dataformat.hal.HALMapper;
 

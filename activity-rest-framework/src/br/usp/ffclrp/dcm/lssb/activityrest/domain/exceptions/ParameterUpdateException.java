@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.exceptions;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.exceptions;
 
 public class ParameterUpdateException extends Exception {
 

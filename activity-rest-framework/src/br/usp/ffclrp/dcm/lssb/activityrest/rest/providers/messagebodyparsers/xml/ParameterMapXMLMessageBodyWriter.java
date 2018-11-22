@@ -25,10 +25,10 @@ import javax.xml.bind.Marshaller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBAnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.util.LinkRepresentationToJAXB;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.*;
 import io.openapitools.jackson.dataformat.hal.HALLink;
 import io.openapitools.jackson.dataformat.hal.HALMapper;
 

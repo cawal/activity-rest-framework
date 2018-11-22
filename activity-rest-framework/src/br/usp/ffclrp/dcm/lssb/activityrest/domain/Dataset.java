@@ -1,6 +1,6 @@
 /**
  */
-package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain;
 
 import java.io.File;
 
@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getName <em>Name</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription <em>Description</em>}</li>
- *   <li>{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getFiles <em>Files</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getName <em>Name</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getDescription <em>Description</em>}</li>
+ *   <li>{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getFiles <em>Files</em>}</li>
  * </ul>
  *
- * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getDataset()
+ * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getDataset()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface Dataset extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getDataset_Name()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getDataset_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -63,14 +63,14 @@ public interface Dataset extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' reference.
 	 * @see #setDescription(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset)
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getDataset_Description()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getDataset_Description()
 	 * @model
 	 * @generated
 	 */
 	br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset getDescription();
 
 	/**
-	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset#getDescription <em>Description</em>}' reference.
+	 * Sets the value of the '{@link br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset#getDescription <em>Description</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' reference.
@@ -89,7 +89,7 @@ public interface Dataset extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Files</em>' attribute list.
-	 * @see br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivityModelPackage#getDataset_Files()
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage#getDataset_Files()
 	 * @model dataType="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.File"
 	 *        annotation="http://www.eclipse.org/OCL/Collection nullFree='false'"
 	 * @generated
