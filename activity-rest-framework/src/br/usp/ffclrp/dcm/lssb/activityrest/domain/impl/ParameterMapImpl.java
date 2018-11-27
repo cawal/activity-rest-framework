@@ -2,14 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.*;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterKind;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,12 +13,16 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -124,7 +120,6 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	@SuppressWarnings("serial")
 	public ValidationResult validateParameter(String name, Object value) {
 		ValidationResult valResult =
 				AnalysisActivityModelFactory.eINSTANCE.createValidationResult();

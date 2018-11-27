@@ -16,21 +16,15 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBAnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.util.LinkRepresentationToJAXB;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
-import io.openapitools.jackson.dataformat.hal.HALLink;
-import io.openapitools.jackson.dataformat.hal.HALMapper;
 
 /**
  * This MessageBodyWriter can be registered in order to provide support for 

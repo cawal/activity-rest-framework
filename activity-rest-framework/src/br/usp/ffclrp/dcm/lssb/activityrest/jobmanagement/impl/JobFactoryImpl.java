@@ -8,8 +8,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobFactory;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.NonSupportedFunctionalEntity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.impl.CommandLineToolImpl;
 

@@ -17,7 +17,6 @@ import javax.json.bind.JsonbConfig;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.NotImplementedException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -29,7 +28,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.DatasetDescription;
 
 public class FileSystemActivityRepository implements ActivityRepository {
 	

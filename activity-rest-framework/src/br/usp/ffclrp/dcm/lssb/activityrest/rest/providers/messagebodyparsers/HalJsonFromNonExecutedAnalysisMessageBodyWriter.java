@@ -9,14 +9,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
-import io.openapitools.jackson.dataformat.hal.HALLink;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import io.openapitools.jackson.dataformat.hal.HALMapper;
 
 /**

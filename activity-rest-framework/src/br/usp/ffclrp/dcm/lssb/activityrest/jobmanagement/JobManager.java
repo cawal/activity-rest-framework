@@ -1,7 +1,8 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.*;
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobConfig;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCancellationException;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCantStartException;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
 
 
 /**

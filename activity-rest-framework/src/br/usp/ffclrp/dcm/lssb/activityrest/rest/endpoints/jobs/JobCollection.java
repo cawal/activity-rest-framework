@@ -19,8 +19,6 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
 
-import com.google.inject.Inject;
-
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;

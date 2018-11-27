@@ -2,8 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions;
 
 import javax.validation.constraints.NotNull;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
-
 public class JobCantStartException extends Throwable {
   /**
    * 

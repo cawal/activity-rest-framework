@@ -18,17 +18,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
-import io.openapitools.jackson.dataformat.hal.HALMapper;
 
 /**
  * This MessageBodyWriter can be registered in order to provide support for

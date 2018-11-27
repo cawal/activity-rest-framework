@@ -2,14 +2,8 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobObserver;
-import lombok.Builder;
-import lombok.Singular;
 
 public class CommandLineToolJob extends AbstractJob {
 	protected JobConfig jobConfig; 

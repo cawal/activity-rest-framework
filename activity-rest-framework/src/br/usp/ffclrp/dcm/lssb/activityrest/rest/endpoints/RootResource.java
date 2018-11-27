@@ -6,28 +6,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
-
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemRepositoryProperties;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses.FailedAnalysesCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.JobCollection;
@@ -36,7 +26,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.succeededanalyses.Succ
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import io.swagger.annotations.Api;
 
 /**

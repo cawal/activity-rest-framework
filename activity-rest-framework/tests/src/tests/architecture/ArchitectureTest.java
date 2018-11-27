@@ -3,6 +3,7 @@ package tests.architecture;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
+
 import javax.ws.rs.Path;
 import javax.ws.rs.ext.Provider;
 
@@ -12,7 +13,6 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.junit.ArchUnitRunner;
 import com.tngtech.archunit.lang.ArchRule;
-import com.tngtech.archunit.library.Architectures.LayeredArchitecture;
 
 @RunWith(ArchUnitRunner.class)
 @AnalyzeClasses(packages = "br.usp.ffclrp.dcm.lssb.activityrest")
