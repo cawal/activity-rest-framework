@@ -32,6 +32,7 @@ public class ArchitectureTest {
 	@ArchTest
 	public static ArchRule rule = layeredArchitecture()
 			.layer("rest interface").definedBy("..rest..")
+			.layer("dto").definedBy("..representations..")
 			.layer("job").definedBy("..jobmanagement..")
 			.layer("persistence").definedBy("..dao..")
 			
@@ -43,6 +44,20 @@ public class ArchitectureTest {
 			.whereLayer("persistence")
 			.mayOnlyBeAccessedByLayers("rest interface");
 	
+	
+	
+	@ArchTest
+	public static ArchRule restLayers = layeredArchitecture()
+			.layer("endpoints").definedBy("..endpoints..")
+			.layer("representations").definedBy("..representations..")
+			.layer("messageBodyProviders").definedBy("..messagebodyparsers..")
+
+			.whereLayer("messageBodyProviders").mayNotBeAccessedByAnyLayer()
+			.whereLayer("endpoints").mayNotBeAccessedByAnyLayer()
+			
+			.whereLayer("representations")
+			.mayOnlyBeAccessedByLayers("endpoints","messageBodyProviders")
+			;
 	
 	@ArchTest
 	public static ArchRule messageBodyParsersAreIsolated =

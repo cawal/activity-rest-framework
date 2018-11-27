@@ -55,8 +55,7 @@ public class NewAnalysisResource {
 	@Produces({  MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON})
 	public Response get() {
 		
-		AnalysisActivityRepresentation representation = 
-				new AnalysisActivityRepresentation();
+
 		
 		try {
 			
@@ -81,8 +80,11 @@ public class NewAnalysisResource {
 					.type("GET")
 					.build();
 			
-			representation.setId(aa.getId());
-			representation.setState(AnalysisActivityStateRepresentation.CREATED);
+			AnalysisActivityRepresentation representation = 
+					new AnalysisActivityRepresentation(
+							aa.getId(),
+							AnalysisActivityStateRepresentation.CREATED,
+							null);
 
 			Response.ResponseBuilder response = 
 					Response.ok(representation)

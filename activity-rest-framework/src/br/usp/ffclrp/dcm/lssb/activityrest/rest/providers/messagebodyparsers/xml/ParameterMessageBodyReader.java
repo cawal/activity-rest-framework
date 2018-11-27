@@ -61,16 +61,15 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 			InputStream entityStream)
 			throws IOException, WebApplicationException {
 		
-		ParameterRepresentation entity = new ParameterRepresentation();
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(entityStream);
 			doc.getDocumentElement().normalize();
-			entity.setName(doc.getDocumentElement().getNodeName());
 			List<Object> valueList = new ArrayList<>();
-			entity.setValue(valueList);
-			
+			ParameterRepresentation entity = new ParameterRepresentation(
+					doc.getDocumentElement().getNodeName(),valueList);
+	
 			
 			NodeList nList = doc.getElementsByTagName("value");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -92,13 +91,15 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 				}
 			}
 			
+
+			return entity;
+			
 		} catch (ParserConfigurationException | SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new BadRequestException();
 		}
 		
-		return entity;
 	}
 	
 }

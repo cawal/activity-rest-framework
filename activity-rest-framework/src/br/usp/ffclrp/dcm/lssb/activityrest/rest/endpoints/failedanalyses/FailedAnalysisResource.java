@@ -59,8 +59,7 @@ public class FailedAnalysisResource {
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_HAL_JSON, MediaType.APPLICATION_XML })
 	public Response get() {
 		
-		AnalysisActivityRepresentation representation =
-				new AnalysisActivityRepresentation();
+	
 		
 		try {
 			
@@ -91,8 +90,13 @@ public class FailedAnalysisResource {
 					.type("GET")
 					.build();
 
+
+			AnalysisActivityRepresentation representation =
+					new AnalysisActivityRepresentation(aa.getId(),
+					AnalysisActivityStateRepresentation.FAILED, null);
+			
 			Response.ResponseBuilder response = 
-					Response.ok(aa)
+					Response.ok(representation)
 					.links(selfLink)
 					.links(deleteLink)
 					.links(parameterSetLink)
@@ -100,8 +104,6 @@ public class FailedAnalysisResource {
 					.links(errorReportLink);
 			
 
-			representation.setId(aa.getId());
-			representation.setState(AnalysisActivityStateRepresentation.SUCCEEDED);
 			
 			return response.build();
 			

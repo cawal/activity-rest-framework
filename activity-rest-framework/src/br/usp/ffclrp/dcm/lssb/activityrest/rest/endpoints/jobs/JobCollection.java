@@ -102,10 +102,9 @@ public class JobCollection {
 				URI jobURI = uriInfo.getAbsolutePath();
 				
 				AnalysisActivityRepresentation representation = 
-						new AnalysisActivityRepresentation();
-				
-				representation.setId(analysisId);
-				representation.setState(AnalysisActivityStateRepresentation.RUNNING);
+						new AnalysisActivityRepresentation(analysisId,
+						AnalysisActivityStateRepresentation.RUNNING,
+						null);
 				
 				
 				return Response.created(jobURI).entity(representation).build();
@@ -216,9 +215,9 @@ public class JobCollection {
 	private Response responseForExecutingJob(String analysisId) {
 		
 		AnalysisActivityRepresentation representation = 
-				new AnalysisActivityRepresentation();
-		representation.setId(analysisId);
-		representation.setState(AnalysisActivityStateRepresentation.RUNNING);
+				new AnalysisActivityRepresentation(analysisId,
+						AnalysisActivityStateRepresentation.RUNNING,
+						null);
 		
 		return Response.ok()
 				.entity(representation)
@@ -238,10 +237,10 @@ public class JobCollection {
 			
 			// create representation
 			AnalysisActivityRepresentation representation =
-					new AnalysisActivityRepresentation();
-			representation.setId(analysisId);
-			representation.setState(AnalysisActivityStateRepresentation.FAILED);
-			representation.setErrorReport(errorReport);
+					new AnalysisActivityRepresentation(
+							analysisId,
+							AnalysisActivityStateRepresentation.FAILED,
+							errorReport);
 			
 			URI failedURI = uriInfo.getBaseUriBuilder()
 					.path("failed-analyses")

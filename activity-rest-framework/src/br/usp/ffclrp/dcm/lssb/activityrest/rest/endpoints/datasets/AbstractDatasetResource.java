@@ -98,10 +98,15 @@ public class AbstractDatasetResource {
 				if (file == null)
 					throw new FileNotFoundException();
 				
-				FileRepresentation representation = new FileRepresentation();
-				representation.setName(file.getName());
-				representation.setContent(FileUtils.readFileToString(file));
-				representation.setContentType(d.getDescription().getMimetype());
+//				FileRepresentation representation = new FileRepresentation();
+//				representation.setName(file.getName());
+//				representation.setContent(FileUtils.readFileToString(file));
+//				representation.setContentType(d.getDescription().getMimetype());
+				
+				FileRepresentation representation = new FileRepresentation(
+						file.getName(),
+						FileUtils.readFileToString(file),
+						d.getDescription().getMimetype());
 				
 				return Response.ok(representation)
 						// .header("Content-type",
@@ -141,10 +146,15 @@ public class AbstractDatasetResource {
 				
 				File file = fileOp.get();
 				
-				FileRepresentation representation = new FileRepresentation();
-				representation.setName(file.getName());
-				representation.setContent(FileUtils.readFileToString(file));
-				representation.setContentType(d.getDescription().getMimetype());
+//				FileRepresentation representation = new FileRepresentation();
+//				representation.setName(file.getName());
+//				representation.setContent(FileUtils.readFileToString(file));
+//				representation.setContentType(d.getDescription().getMimetype());
+				FileRepresentation representation = new FileRepresentation(
+						file.getName(),
+						FileUtils.readFileToString(file),
+						d.getDescription().getMimetype());
+				
 				links.add(self);
 				
 				return Response.ok(fileOp.get())

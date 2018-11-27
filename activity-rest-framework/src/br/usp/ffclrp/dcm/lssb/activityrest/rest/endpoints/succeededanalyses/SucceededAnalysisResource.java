@@ -60,8 +60,7 @@ public class SucceededAnalysisResource {
 			})
 	public Response get() {
 		
-		AnalysisActivityRepresentation representation =
-				new AnalysisActivityRepresentation();
+
 		
 		try {
 			
@@ -91,9 +90,10 @@ public class SucceededAnalysisResource {
 							.rel(ResourceRelations.ANALYSYS_OUTPUT_DATASETS_COLLECTION)
 							.type("GET")
 							.build();
-			
-			representation.setId(aa.getId());
-			representation.setState(AnalysisActivityStateRepresentation.SUCCEEDED);
+			AnalysisActivityRepresentation representation =
+					new AnalysisActivityRepresentation(aa.getId(),
+							AnalysisActivityStateRepresentation.SUCCEEDED,
+							null);
 			
 			Response.ResponseBuilder response =
 					Response.ok(representation)
