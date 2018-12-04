@@ -6,6 +6,11 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>org.jetbrains.kotlin.ui.kotlinBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>org.eclipse.ocl.pivot.ui.oclbuilder</name>
 			<arguments>
 				<dictionary>
@@ -66,6 +71,7 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.eclipse.ocl.pivot.ui.oclnature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
+		<nature>org.jetbrains.kotlin.core.kotlinNature</nature>
 	</natures>
 	<linkedResources>
 		<link>
