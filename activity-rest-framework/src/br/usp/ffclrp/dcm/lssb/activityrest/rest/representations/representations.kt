@@ -2,6 +2,11 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.representations
 
 import java.net.URI
 
+/*
+ * These classes are used to share data between the REST interface
+ * components and the HTTP message body providers/parsers. 
+ */
+
 data class AnalysisActivityRepresentation(
 	val id: String,
 	var state: AnalysisActivityStateRepresentation,
