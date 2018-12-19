@@ -1,5 +1,7 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
+import java.io.File;
+
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;
@@ -24,9 +26,13 @@ public interface JobBuilder {
 	 * @param activityInstance The activity instance to be executed.
 	 * @param functionalEntity The description of how to execute the job 
 	 * 		  in the AADM metamodel.
+	 * @param workingDirectory The working directory of the functional entity
+	 * 		  execution.
 	 * @return a job that can be executed.
 	 * @throws JobCreationFail if the JobBuilder cant create the job 
 	 */
-	public Job create(AnalysisActivity activityInstance, FunctionalEntity functionalEntity)
+	public Job create(AnalysisActivity activityInstance, 
+			FunctionalEntity functionalEntity,
+			File workingDirectory)
 			throws JobCreationFail;
 }

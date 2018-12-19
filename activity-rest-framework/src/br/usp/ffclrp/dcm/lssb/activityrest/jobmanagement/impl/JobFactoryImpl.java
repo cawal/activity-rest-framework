@@ -1,5 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,8 @@ public class JobFactoryImpl implements JobFactory {
 	}
 	
 	public Job createJob(AnalysisActivity activityInstance, 
-						FunctionalEntity toolDescription) 
+						FunctionalEntity toolDescription,
+						File workingDirectory) 
 		throws JobCreationFail {
 		
 		try {
@@ -39,7 +41,7 @@ public class JobFactoryImpl implements JobFactory {
 			}
 			
 			JobBuilder builder = (JobBuilder) builderClass.newInstance();
-			job = builder.create(activityInstance, toolDescription);
+			job = builder.create(activityInstance, toolDescription, workingDirectory);
 			
 			return job;
 		} catch (Exception e) {

@@ -14,12 +14,12 @@ public class CommandLineJobBuilder implements JobBuilder{
 	
 	@Override
 	public CommandLineToolJob create(AnalysisActivity activityInstance, 
-			FunctionalEntity functionalEntity) throws JobCreationFail {
+			FunctionalEntity functionalEntity,
+			File workingDirectory) 
+			throws JobCreationFail {
 
 		if(functionalEntity instanceof CommandLineTool ) {
-			
-			File workingDirectory = Files.createTempDir();
-			
+						
 			JobConfig jobConfig;
 			try {
 				jobConfig = CommandLineJobUtil.createJobConfig(activityInstance,workingDirectory);

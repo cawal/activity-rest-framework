@@ -80,11 +80,11 @@ public class JobCollection {
 				
 				// get the new location
 				analysis = runningDao.get(analysisId);
-				/*File workingDirectory = 
+				File workingDirectory = 
 						runningDao.getAnalysisDirectoryInLocalStorage(analysisId);
 				
 				// create the job configuration
-				JobConfig jc = JobUtil.createJobConfig(analysis, workingDirectory);
+				/*JobConfig jc = JobUtil.createJobConfig(analysis, workingDirectory);
 				
 				// start the analysis job or send a batch job and return the
 				// link for polling
@@ -92,7 +92,7 @@ public class JobCollection {
 				
 				// create the job
 				JobFactory jobFactory = new JobFactoryImpl();
-				Job job = jobFactory.createJob(analysis, analysis.getDescription().getFunctionalEntity());
+				Job job = jobFactory.createJob(analysis, analysis.getDescription().getFunctionalEntity(),workingDirectory);
 				// start the analysis job or send a batch job and return the
 				// link for polling
 				jobManager.submit(analysisId, job);
