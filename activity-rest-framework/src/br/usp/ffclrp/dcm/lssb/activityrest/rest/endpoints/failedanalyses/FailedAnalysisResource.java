@@ -65,28 +65,19 @@ public class FailedAnalysisResource {
 			Link selfLink =
 					Link.fromUri(getUriForSelf())
 					.rel(ResourceRelations.SELF)
-					.type("GET")
-					.build();
-			Link deleteLink =
-					Link.fromUri(getUriForSelf())
-					.rel(ResourceRelations.SELF)
-					.type("DELETE")
 					.build();
 			Link parameterSetLink =
 					Link.fromUri(getUriForParameterSet())
 					.rel(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION)
-					.type("GET")
 					.build();
 			Link inputDatasetsLink =
 					Link.fromUri(getUriForInputDatasets())
 					.rel(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION)
-					.type("GET")
 					.build();
 
 			Link errorReportLink =
 					Link.fromUri(getUriForErrorReport())
 					.rel(ResourceRelations.ANALYSYS_ERROR_REPORT)
-					.type("GET")
 					.build();
 
 
@@ -97,7 +88,6 @@ public class FailedAnalysisResource {
 			Response.ResponseBuilder response = 
 					Response.ok(representation)
 					.links(selfLink)
-					.links(deleteLink)
 					.links(parameterSetLink)
 					.links(inputDatasetsLink)
 					.links(errorReportLink);

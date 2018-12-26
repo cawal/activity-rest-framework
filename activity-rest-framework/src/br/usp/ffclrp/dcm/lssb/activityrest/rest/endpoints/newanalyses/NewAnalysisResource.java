@@ -62,28 +62,19 @@ public class NewAnalysisResource {
 			Link selfLink =
 					Link.fromUri(getUriForSelf())
 					.rel(ResourceRelations.SELF)
-					.type("GET")
-					.build();
-			Link deleteLink =
-					Link.fromUri(getUriForSelf())
-					.rel(ResourceRelations.SELF)
-					.type("DELETE")
 					.build();
 			Link parameterSetLink =
 					Link.fromUri(getUriForParameterSet())
 					.rel(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION)
-					.type("GET")
 					.build();
 			Link inputDatasetsLink =
 					Link.fromUri(getUriForInputDatasets())
 					.rel(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION)
-					.type("GET")
 					.build();
 			
 			Response.ResponseBuilder response = 
 					Response.ok()
 					.links(selfLink)
-					.links(deleteLink)
 					.links(parameterSetLink)
 					.links(inputDatasetsLink);
 			
@@ -95,7 +86,6 @@ public class NewAnalysisResource {
 				URI jobURI = getJobInstanceUri();
 				Link jobLink = Link.fromUri(jobURI)
 						.rel(ResourceRelations.SUBMIT_RELATION)
-						.type("POST")
 						.build();
 				
 				response.links(jobLink);

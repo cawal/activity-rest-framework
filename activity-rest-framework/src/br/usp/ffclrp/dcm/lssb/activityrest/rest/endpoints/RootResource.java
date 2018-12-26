@@ -62,28 +62,28 @@ public class RootResource {
 		
 		Link selfLink = Link.fromUri(uriInfo.getAbsolutePath())
 				.rel(ResourceRelations.SELF)
-				.type("GET").build();
+				.build();
 		links.add(selfLink);
 		
 		uriBuilder = uriInfo.getAbsolutePathBuilder();
 		Link createAnalysislink = Link.fromUri(uriBuilder
 				.path("new-analyses").build())
 				.rel(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION)
-				.type("POST").build();
+				.build();
 		links.add(createAnalysislink);
 		
 		uriBuilder = uriInfo.getAbsolutePathBuilder();
 		Link swaggerJson = Link.fromUri(uriBuilder
 				.path("swagger.json").build())
 				.rel(ResourceRelations.SWAGGER_JSON)
-				.type("GET").build();
+				.build();
 		links.add(swaggerJson);
 		
 		uriBuilder = uriInfo.getAbsolutePathBuilder();
 		Link swaggerYaml = Link.fromUri(uriBuilder
 				.path("swagger.yaml").build())
 				.rel(ResourceRelations.SWAGGER_YAML)
-				.type("GET").build();
+				.build();
 		links.add(swaggerYaml);
 		
 		return Response.ok()

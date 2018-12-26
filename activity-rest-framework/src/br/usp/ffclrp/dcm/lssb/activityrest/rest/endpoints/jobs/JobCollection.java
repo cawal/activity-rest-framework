@@ -245,7 +245,6 @@ public class JobCollection {
 			
 			Link failedLink = Link.fromUri(failedURI)
 					.rel("failedAnalysis")
-					.type("GET")
 					.build();
 			
 			return Response.status(Status.GONE)

@@ -52,7 +52,6 @@ public class AbstractDatasetResource {
 		
 		Link self = Link.fromUri(basePath)
 				.rel(ResourceRelations.SELF)
-				.type("GET")
 				.build();
 		links.add(self);
 		
@@ -72,7 +71,6 @@ public class AbstractDatasetResource {
 		List<Link> links = new ArrayList<>();
 		Link self = Link.fromUri(requestAbsolutePathUri)
 				.rel(ResourceRelations.SELF)
-				.type("GET")
 				.build();
 		links.add(self);
 		
@@ -83,7 +81,6 @@ public class AbstractDatasetResource {
 						.build();
 				Link fileLink = Link.fromUri(uri)
 						.rel(ResourceRelations.DATASET_TO_ITEMS_GET_RELATION)
-						.type("GET")
 						.build();
 				links.add(fileLink);
 			}
@@ -91,26 +88,20 @@ public class AbstractDatasetResource {
 			return Response.ok(d)
 					.links(links.toArray(new Link[links.size()]))
 					.build();
-		} else { // single file, stdout or stderr shold have only one file
+		} else { // single file
 			try {
 				File file = d.getFiles().get(0);
 				
-				if (file == null)
+				if (file == null) {
 					throw new FileNotFoundException();
-				
-//				FileRepresentation representation = new FileRepresentation();
-//				representation.setName(file.getName());
-//				representation.setContent(FileUtils.readFileToString(file));
-//				representation.setContentType(d.getDescription().getMimetype());
-				
+				}
+					
 				FileRepresentation representation = new FileRepresentation(
 						file.getName(),
 						FileUtils.readFileToString(file),
 						d.getDescription().getMimetype());
 				
 				return Response.ok(representation)
-						// .header("Content-type",
-						// d.getDescription().getMimetype())
 						.links(links.toArray(new Link[links.size()]))
 						.build();
 				
@@ -131,7 +122,6 @@ public class AbstractDatasetResource {
 		List<Link> links = new ArrayList<>();
 		Link self = Link.fromUri(baseUri)
 				.rel(ResourceRelations.SELF)
-				.type("GET")
 				.build();
 		links.add(self);
 		
@@ -146,10 +136,6 @@ public class AbstractDatasetResource {
 				
 				File file = fileOp.get();
 				
-//				FileRepresentation representation = new FileRepresentation();
-//				representation.setName(file.getName());
-//				representation.setContent(FileUtils.readFileToString(file));
-//				representation.setContentType(d.getDescription().getMimetype());
 				FileRepresentation representation = new FileRepresentation(
 						file.getName(),
 						FileUtils.readFileToString(file),
@@ -159,8 +145,6 @@ public class AbstractDatasetResource {
 				
 				return Response.ok(fileOp.get())
 						.links(links.toArray(new Link[links.size()]))
-						// .header("Content-type",
-						// d.getDescription().getMimetype())
 						.build();
 				
 			} catch (IOException e) {
@@ -189,35 +173,32 @@ public class AbstractDatasetResource {
 		for (Dataset d : datasetList) {
 			br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset description =
 					d.getDescription();
-			Link getDatasetLink =
+			Link datasetLink =
 					Link.fromUri(getLocationUriForDataset(datasetListUri,
 							description.getName()))
 							.rel(description.getName())
-							.type("GET")
 							.build();
-			links.add(getDatasetLink);
+			links.add(datasetLink);
 			
-			if (allowUpdate) {
-				if (MultiplicityElementUtil.acceptsList(description)) {
-					Link postDatasetLink =
-							Link.fromUri(getLocationUriForDataset(
-									datasetListUri, description.getName()))
-									.rel(description.getName())
-									.type("POST")
-									.build();
-					links.add(postDatasetLink);
-					
-				} else {
-					Link putDatasetLink =
-							Link.fromUri(getLocationUriForDataset(
-									datasetListUri, description.getName()))
-									.rel(description.getName())
-									.type("PUT")
-									.build();
-					links.add(putDatasetLink);
-					
-				}
-			}
+//			if (allowUpdate) {
+//				if (MultiplicityElementUtil.acceptsList(description)) {
+//					Link postDatasetLink =
+//							Link.fromUri(getLocationUriForDataset(
+//									datasetListUri, description.getName()))
+//									.rel(description.getName())
+//									.build();
+//					links.add(postDatasetLink);
+//					
+//				} else {
+//					Link putDatasetLink =
+//							Link.fromUri(getLocationUriForDataset(
+//									datasetListUri, description.getName()))
+//									.rel(description.getName())
+//									.build();
+//					links.add(putDatasetLink);
+//					
+//				}
+//			}
 		}
 		
 		return links;

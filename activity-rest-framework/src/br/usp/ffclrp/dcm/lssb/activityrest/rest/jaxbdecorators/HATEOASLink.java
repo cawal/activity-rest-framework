@@ -32,7 +32,7 @@ public class HATEOASLink {
 	
 	public HATEOASLink(Link link) {
 		this.relation = link.getRel();
-		this.method = HTTPMethods.fromValue(link.getType());
+		//this.method = HTTPMethods.fromValue(link.getType());
 		this.uri = link.getUri();
 	}
 
