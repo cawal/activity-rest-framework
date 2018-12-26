@@ -29,7 +29,7 @@ jobs:
            working_directory: ~/
 
       - run:
-           command: mvn clean install
+           command: mvn -DskipTests clean install
            working_directory: ~/RESTaurant
 
       - run:
