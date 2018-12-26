@@ -13,7 +13,7 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class AnalysisActivityDSLUiModule extends AbstractAnalysisActivityDSLUiModule {
-  public AnalysisActivityDSLUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public AnalysisActivityDSLUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }
