@@ -101,8 +101,7 @@ public class JobCollection {
 				
 				AnalysisActivityRepresentation representation = 
 						new AnalysisActivityRepresentation(analysisId,
-						AnalysisActivityStateRepresentation.RUNNING,
-						null);
+						AnalysisActivityStateRepresentation.RUNNING);
 				
 				
 				return Response.created(jobURI).entity(representation).build();
@@ -214,8 +213,7 @@ public class JobCollection {
 		
 		AnalysisActivityRepresentation representation = 
 				new AnalysisActivityRepresentation(analysisId,
-						AnalysisActivityStateRepresentation.RUNNING,
-						null);
+						AnalysisActivityStateRepresentation.RUNNING);
 		
 		return Response.ok()
 				.entity(representation)
@@ -237,8 +235,8 @@ public class JobCollection {
 			AnalysisActivityRepresentation representation =
 					new AnalysisActivityRepresentation(
 							analysisId,
-							AnalysisActivityStateRepresentation.FAILED,
-							errorReport);
+							AnalysisActivityStateRepresentation.FAILED);
+			representation.setErrorReport(errorReport);
 			
 			URI failedURI = uriInfo.getBaseUriBuilder()
 					.path("failed-analyses")

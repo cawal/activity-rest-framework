@@ -12,6 +12,7 @@ import com.sun.research.ws.wadl.HTTPMethods;
  * @author cawal
  *
  */
+@Deprecated
 @XmlRootElement
 public class HATEOASLink {
 	public URI uri;

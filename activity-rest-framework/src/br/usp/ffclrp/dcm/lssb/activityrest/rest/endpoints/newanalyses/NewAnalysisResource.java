@@ -80,21 +80,18 @@ public class NewAnalysisResource {
 					.type("GET")
 					.build();
 			
-			AnalysisActivityRepresentation representation = 
-					new AnalysisActivityRepresentation(
-							aa.getId(),
-							AnalysisActivityStateRepresentation.CREATED,
-							null);
-
 			Response.ResponseBuilder response = 
-					Response.ok(representation)
+					Response.ok()
 					.links(selfLink)
 					.links(deleteLink)
 					.links(parameterSetLink)
 					.links(inputDatasetsLink);
 			
+			AnalysisActivityRepresentation representation;
 			if (AnalysisActivityValidation.isReady(aa)) {
-				representation.setState(AnalysisActivityStateRepresentation.READY);
+				representation = new AnalysisActivityRepresentation(
+						aa.getId(),
+						AnalysisActivityStateRepresentation.READY);
 				URI jobURI = getJobInstanceUri();
 				Link jobLink = Link.fromUri(jobURI)
 						.rel(ResourceRelations.SUBMIT_RELATION)
@@ -102,7 +99,13 @@ public class NewAnalysisResource {
 						.build();
 				
 				response.links(jobLink);
+			} else {
+				representation = new AnalysisActivityRepresentation(
+								aa.getId(),
+								AnalysisActivityStateRepresentation.CREATED);
 			}
+			
+			response.entity(representation);
 			
 			return response.build();
 			

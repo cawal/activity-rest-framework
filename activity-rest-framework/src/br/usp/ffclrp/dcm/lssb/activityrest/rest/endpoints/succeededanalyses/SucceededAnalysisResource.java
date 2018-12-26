@@ -92,8 +92,7 @@ public class SucceededAnalysisResource {
 							.build();
 			AnalysisActivityRepresentation representation =
 					new AnalysisActivityRepresentation(aa.getId(),
-							AnalysisActivityStateRepresentation.SUCCEEDED,
-							null);
+							AnalysisActivityStateRepresentation.SUCCEEDED);
 			
 			Response.ResponseBuilder response =
 					Response.ok(representation)

@@ -92,7 +92,7 @@ public class FailedAnalysisResource {
 
 			AnalysisActivityRepresentation representation =
 					new AnalysisActivityRepresentation(aa.getId(),
-					AnalysisActivityStateRepresentation.FAILED, null);
+					AnalysisActivityStateRepresentation.FAILED);
 			
 			Response.ResponseBuilder response = 
 					Response.ok(representation)

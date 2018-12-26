@@ -59,8 +59,7 @@ public class NewAnalysesCollection {
 			AnalysisActivityRepresentation entityRepresentation = 
 					new AnalysisActivityRepresentation(
 							aa.getId(),
-							AnalysisActivityStateRepresentation.CREATED,
-							null);
+							AnalysisActivityStateRepresentation.CREATED);
 			
 			Response response = Response.created(locationURI)
 					.entity(entityRepresentation)

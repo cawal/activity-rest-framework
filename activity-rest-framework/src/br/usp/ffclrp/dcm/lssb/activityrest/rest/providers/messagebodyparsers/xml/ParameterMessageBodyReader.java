@@ -74,16 +74,7 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 					Element eElement = (Element) nNode;
 					String textContent = eElement.getTextContent();
 					valueList.add(textContent);
-//					NodeList empNodeList = eElement.getChildNodes();
-//					for (int count = 0; count < empNodeList
-//							.getLength(); count++) {
-//						Node node1 = empNodeList.item(count);
-//						if (node1.getNodeType() == Node.ELEMENT_NODE) {
-//							Element ele = (Element) node1;
-//						}
-//					}
 				} else if (nNode.getNodeType() == Node.COMMENT_NODE) {
-//					Comment comment = (Comment) nNode;
 				}
 			}
 			
