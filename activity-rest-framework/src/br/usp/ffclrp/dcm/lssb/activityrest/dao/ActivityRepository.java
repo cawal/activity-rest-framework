@@ -2,7 +2,7 @@ package br.usp.ffclrp.dcm.lssb.activityrest.dao;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 
 public interface ActivityRepository {
 	

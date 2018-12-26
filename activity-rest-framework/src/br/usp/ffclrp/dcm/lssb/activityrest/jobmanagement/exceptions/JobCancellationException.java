@@ -2,8 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions;
 
 import javax.validation.constraints.NotNull;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-
 public class JobCancellationException extends Throwable {
   /**
    * 

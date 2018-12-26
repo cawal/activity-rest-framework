@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.ServerErrorException;

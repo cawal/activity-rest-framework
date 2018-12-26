@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="david-chart-report-0.0.1-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="activity-rest-framework-0.2.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activity-rest-framework/activity-rest-framework">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/david-rest-2/target/classes"/>
+        <property name="context-root" value="david-chart-report"/>
+    </wb-module>
+</project-modules>

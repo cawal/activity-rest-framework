@@ -1,7 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.util;
 
-import java.util.function.Function;
-
 import javax.ws.rs.core.Link;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.messagebodyparsers.xml.representations.JAXBLinkRepresentation;

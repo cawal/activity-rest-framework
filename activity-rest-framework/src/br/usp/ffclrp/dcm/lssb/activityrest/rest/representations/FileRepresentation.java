@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class FileRepresentation {
-	private String name;
-	private String contentType;
-	private String content;
+	private final String name;
+	private final String content;
+	private final String contentType;
 }
+

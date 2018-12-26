@@ -18,17 +18,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
-import io.openapitools.jackson.dataformat.hal.HALMapper;
 
 /**
  * This MessageBodyWriter can be registered in order to provide support for
@@ -61,16 +57,15 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 			InputStream entityStream)
 			throws IOException, WebApplicationException {
 		
-		ParameterRepresentation entity = new ParameterRepresentation();
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(entityStream);
 			doc.getDocumentElement().normalize();
-			entity.setName(doc.getDocumentElement().getNodeName());
 			List<Object> valueList = new ArrayList<>();
-			entity.setValue(valueList);
-			
+			ParameterRepresentation entity = new ParameterRepresentation(
+					doc.getDocumentElement().getNodeName(),valueList);
+	
 			
 			NodeList nList = doc.getElementsByTagName("value");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -79,18 +74,12 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 					Element eElement = (Element) nNode;
 					String textContent = eElement.getTextContent();
 					valueList.add(textContent);
-//					NodeList empNodeList = eElement.getChildNodes();
-//					for (int count = 0; count < empNodeList
-//							.getLength(); count++) {
-//						Node node1 = empNodeList.item(count);
-//						if (node1.getNodeType() == Node.ELEMENT_NODE) {
-//							Element ele = (Element) node1;
-//						}
-//					}
 				} else if (nNode.getNodeType() == Node.COMMENT_NODE) {
-//					Comment comment = (Comment) nNode;
 				}
 			}
+			
+
+			return entity;
 			
 		} catch (ParserConfigurationException | SAXException e) {
 			// TODO Auto-generated catch block
@@ -98,7 +87,6 @@ public class ParameterMessageBodyReader implements MessageBodyReader<Object> {
 			throw new BadRequestException();
 		}
 		
-		return entity;
 	}
 	
 }

@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class JobInstanceRepresentation {
-	private String id;
+	private final String id;
 	private AnalysisActivityStateRepresentation state;
-	private String errorReport;
+	private final String errorReport;
 }
+

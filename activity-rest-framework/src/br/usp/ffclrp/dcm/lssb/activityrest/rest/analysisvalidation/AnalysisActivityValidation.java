@@ -2,8 +2,8 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation;
 
 import java.util.List;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
 
 // TODO Refactor the validation engine to include other constraints
 public class AnalysisActivityValidation {

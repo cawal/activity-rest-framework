@@ -16,10 +16,10 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.apache.commons.io.FileUtils;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.FileRepresentation;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.Dataset;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitymodel.util.MultiplicityElementUtil;
 
 /**
  * Some request/response manipulations are equally executed for input and
@@ -98,10 +98,15 @@ public class AbstractDatasetResource {
 				if (file == null)
 					throw new FileNotFoundException();
 				
-				FileRepresentation representation = new FileRepresentation();
-				representation.setName(file.getName());
-				representation.setContent(FileUtils.readFileToString(file));
-				representation.setContentType(d.getDescription().getMimetype());
+//				FileRepresentation representation = new FileRepresentation();
+//				representation.setName(file.getName());
+//				representation.setContent(FileUtils.readFileToString(file));
+//				representation.setContentType(d.getDescription().getMimetype());
+				
+				FileRepresentation representation = new FileRepresentation(
+						file.getName(),
+						FileUtils.readFileToString(file),
+						d.getDescription().getMimetype());
 				
 				return Response.ok(representation)
 						// .header("Content-type",
@@ -141,10 +146,15 @@ public class AbstractDatasetResource {
 				
 				File file = fileOp.get();
 				
-				FileRepresentation representation = new FileRepresentation();
-				representation.setName(file.getName());
-				representation.setContent(FileUtils.readFileToString(file));
-				representation.setContentType(d.getDescription().getMimetype());
+//				FileRepresentation representation = new FileRepresentation();
+//				representation.setName(file.getName());
+//				representation.setContent(FileUtils.readFileToString(file));
+//				representation.setContentType(d.getDescription().getMimetype());
+				FileRepresentation representation = new FileRepresentation(
+						file.getName(),
+						FileUtils.readFileToString(file),
+						d.getDescription().getMimetype());
+				
 				links.add(self);
 				
 				return Response.ok(fileOp.get())

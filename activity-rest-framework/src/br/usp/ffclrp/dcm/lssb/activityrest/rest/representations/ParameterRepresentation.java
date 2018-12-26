@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class ParameterRepresentation {
-	private String name;
-	private List<Object> value;
+	private final String name;
+	private final List<Object> value;
 }
+

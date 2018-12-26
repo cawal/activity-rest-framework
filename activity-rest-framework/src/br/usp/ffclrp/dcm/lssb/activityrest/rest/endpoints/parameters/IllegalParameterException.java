@@ -1,7 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterDescription;
-
 public class IllegalParameterException extends Exception {
 	
 	/**
