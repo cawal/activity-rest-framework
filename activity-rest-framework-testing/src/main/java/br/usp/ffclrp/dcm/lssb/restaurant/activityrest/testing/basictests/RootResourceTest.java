@@ -5,9 +5,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.util.List;
+
+import javax.ws.rs.core.Link;
 
 import org.apache.http.HttpStatus;
 import org.junit.After;
@@ -19,13 +20,9 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.hal.ServiceResourcesHal;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.jaxbdecorators.HATEOASLink;
 import br.usp.ffclrp.dcm.lssb.restaurant.activityrest.testing.TestBase;
-import io.openapitools.jackson.dataformat.hal.HALMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -59,49 +56,6 @@ public class RootResourceTest extends TestBase {
 	}
 	
 	
-	@Test
-	@Ignore
-	public void rootResourceProvidesHalLinks()
-			throws JsonParseException, JsonMappingException, IOException {
-
-		URI baseUri = URI.create(
-				RestAssured.baseURI
-				+ ":" 
-				+ RestAssured.port
-				+ RestAssured.basePath)
-			.normalize();
-		
-		URI newAnalysisUri = URI.create(
-				RestAssured.baseURI
-				+ ":"+RestAssured.port
-				+ RestAssured.basePath
-				+ "/new-analyses")
-			.normalize();
-		
-		RequestSpecification request = given()
-				.accept("application/hal+json");
-		Response r = request.get()
-				.andReturn();
-		
-		r.prettyPrint();
-		 
-		ObjectMapper halMapper = new HALMapper();
-		ServiceResourcesHal sr = halMapper.readValue(
-			r.body().asString(), ServiceResourcesHal.class
-		);
-		
-
-
-		assertNotNull(sr.self.getHref());
-		assertTrue(URI.create(sr.self.getHref()).normalize()
-				.equals(baseUri.normalize()));
-		
-		assertNotNull(sr.createAnalysis.getHref());
-		assertTrue(
-				URI.create(sr.createAnalysis.getHref()).normalize()
-				.equals(newAnalysisUri.normalize()));
-		
-	}
 	
 	
 	@Test
@@ -128,18 +82,18 @@ public class RootResourceTest extends TestBase {
 				.andReturn();
 				
 		
-		List<HATEOASLink> headerList =  processHeadersForLinks(r.getHeaders());
+		List<Link> headerList =  processHeadersForLinks(r.getHeaders());
 		
 		headerList.stream().forEach(h -> 
-			System.out.println(h.relation + ": " + h.getMethod() + " "+ h.uri.toString()));
+			System.out.println(h.getRel() + ": " + h.getUri().toString()));
 
-		HATEOASLink selfLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.SELF))
+		Link selfLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.SELF))
 				.findFirst().get();
 		
 
-		HATEOASLink newAnalysisLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
+		Link newAnalysisLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
 				.findFirst().get();
 		
 

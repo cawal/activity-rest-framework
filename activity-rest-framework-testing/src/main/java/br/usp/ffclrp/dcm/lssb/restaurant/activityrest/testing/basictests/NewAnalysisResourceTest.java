@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import java.net.URI;
 import java.util.List;
 
+import javax.ws.rs.core.Link;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.http.HttpStatus;
@@ -16,7 +17,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.jaxbdecorators.HATEOASLink;
 import br.usp.ffclrp.dcm.lssb.restaurant.activityrest.testing.TestBase;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -41,9 +41,9 @@ public class NewAnalysisResourceTest extends TestBase {
 				.get()
 				.andReturn();
 		
-		List<HATEOASLink> headerList =  processHeadersForLinks(r.getHeaders());
-		HATEOASLink newAnalysisLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
+		List<Link> headerList =  processHeadersForLinks(r.getHeaders());
+		Link newAnalysisLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
 				.findFirst().get();
 		
 		Response createResponse = given()
@@ -105,21 +105,21 @@ public class NewAnalysisResourceTest extends TestBase {
 				.get(locationUri)
 				.andReturn();
 				
-		List<HATEOASLink> headerList =  processHeadersForLinks(getRequest.getHeaders());
-		HATEOASLink selfLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.SELF))
+		List<Link> headerList =  processHeadersForLinks(getRequest.getHeaders());
+		Link selfLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.SELF))
 				.findFirst().get();
 		
 		assertNotNull(selfLink);
 		
-		HATEOASLink parametersLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION))
+		Link parametersLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION))
 				.findFirst().get();
 		
 		assertNotNull(parametersLink);
 		
-		HATEOASLink inputDatasetsLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION))
+		Link inputDatasetsLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION))
 				.findFirst().get();
 		
 		assertNotNull(inputDatasetsLink);
@@ -133,10 +133,10 @@ public class NewAnalysisResourceTest extends TestBase {
 				.get(locationUri)
 				.andReturn();
 				
-		List<HATEOASLink> headerList =  processHeadersForLinks(getRequest.getHeaders());
+		List<Link> headerList =  processHeadersForLinks(getRequest.getHeaders());
 		
-		HATEOASLink parametersLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION))
+		Link parametersLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ANALYSYS_PARAMETERS_COLLECTION))
 				.findFirst().get();
 		
 		assertNotNull(parametersLink);
@@ -158,10 +158,10 @@ public class NewAnalysisResourceTest extends TestBase {
 				.get(locationUri)
 				.andReturn();
 				
-		List<HATEOASLink> headerList =  processHeadersForLinks(getRequest.getHeaders());
+		List<Link> headerList =  processHeadersForLinks(getRequest.getHeaders());
 		
-		HATEOASLink inputDatasetsCollectionList = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION))
+		Link inputDatasetsCollectionList = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ANALYSYS_INPUT_DATASETS_COLLECTION))
 				.findFirst().get();
 		
 		assertNotNull(inputDatasetsCollectionList);

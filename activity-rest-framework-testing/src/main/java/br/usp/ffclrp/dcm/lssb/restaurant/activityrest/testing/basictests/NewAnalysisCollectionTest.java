@@ -4,27 +4,23 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.util.List;
+
+import javax.ws.rs.core.Link;
 
 import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.hal.ServiceResourcesHal;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.jaxbdecorators.HATEOASLink;
 import br.usp.ffclrp.dcm.lssb.restaurant.activityrest.testing.TestBase;
-import io.openapitools.jackson.dataformat.hal.HALMapper;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -74,13 +70,13 @@ public class NewAnalysisCollectionTest extends TestBase {
 				.get()
 				.andReturn();
 		
-		List<HATEOASLink> headerList =  processHeadersForLinks(r.getHeaders());
+		List<Link> headerList =  processHeadersForLinks(r.getHeaders());
 		
 		headerList.stream().forEach(h -> 
-			System.out.println(h.relation + ": " + h.getMethod() + " "+ h.uri.toString()));
+			System.out.println(h.getRel() + ": "+ h.getUri().toString()));
 
-		HATEOASLink newAnalysisLink = headerList.stream()
-				.filter(h -> h.relation.equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
+		Link newAnalysisLink = headerList.stream()
+				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
 				.findFirst().get();
 		
 		System.err.println(newAnalysisLink.getUri());
@@ -108,30 +104,6 @@ public class NewAnalysisCollectionTest extends TestBase {
 			
 	}
 	
-	
-	@Test
-	@Ignore
-	public void createNewAnalysisHal() 
-			throws JsonParseException, JsonMappingException, IOException {
-		
-		Response r = given()
-				.accept("application/hal+json")
-				.get()
-				.andReturn();
-		 
-		ObjectMapper halMapper = new HALMapper();
-		ServiceResourcesHal sr = halMapper.readValue(
-				r.body().asString(), ServiceResourcesHal.class);
-		
-		Response createResponse = given()
-				.accept("application/json")
-				.post(sr.createAnalysis.getHref())
-				.andReturn();
-		
-		createResponse.prettyPrint();
-		assertEquals(HttpStatus.SC_CREATED, createResponse.getStatusCode());
-			
-	}
 	
 
 	

@@ -2,19 +2,13 @@ package br.usp.ffclrp.dcm.lssb.restaurant.activityrest.testing;
 
 
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-import com.sun.research.ws.wadl.HTTPMethods;
+import javax.ws.rs.core.Link;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.jaxbdecorators.HATEOASLink;
 import io.restassured.RestAssured;
-import io.restassured.http.Header;
 import io.restassured.http.Headers;
 
 public class TestBase {
@@ -54,74 +48,16 @@ public class TestBase {
 		RestAssured.baseURI = baseHost;
 	}
 	
-	public List<HATEOASLink> processHeadersForLinks(Headers headers) {
-		ArrayList<HATEOASLink> list = new ArrayList<HATEOASLink>();
-		
-		for (Header h : headers.asList()) {
-			if (h.getName().equalsIgnoreCase("Link")) {
-				String value = h.getValue();
-				
-				URI uri = getLinkURI(value);
-				HTTPMethods method = getLinkMethod(value);
-				String rel = getLinkRelation(value);
-				
-				list.add(new HATEOASLink(uri, rel, method));
-				
-			}
-			
-		}
-		
-		return list;
-	}
-	
-	private String getLinkRelation(String value) {
-		Pattern p = Pattern.compile("rel=\"([^\"]+)\""); // the pattern to
-		// search for
-		Matcher m = p.matcher(value);
-		
-		// if we find a match, get the group
-		if (m.find()) {
-			// we're only looking for one group, so get it
-			String rel = m.group(1);
-			
-			return rel;
-			
-		}
-		return null;
-	}
-	
-	private HTTPMethods getLinkMethod(String value) {
-		Pattern p = Pattern.compile("type=\"([^\"]+)\""); // the pattern to
-															// search for
-		Matcher m = p.matcher(value);
-		
-		// if we find a match, get the group
-		if (m.find()) {
-			// we're only looking for one group, so get it
-			String method = m.group(1);
-			
-			return HTTPMethods.fromValue(method);
-			
-		}
-		return null;
-	}
-	
-	private URI getLinkURI(String value) {
-		Pattern p = Pattern.compile("<([^>]+)>"); // the pattern to search for
-		Matcher m = p.matcher(value);
-		
-		// if we find a match, get the group
-		if (m.find()) {
-			// we're only looking for one group, so get it
-			String uri = m.group(1);
-			try {
-				return new URI(uri);
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-				return null;
-			}
-		}
-		return null;
+	/**
+	 * Return the links in a HTTP Header (RESTAssured)
+	 * @param headers
+	 * @return
+	 */
+	public List<Link> processHeadersForLinks(Headers headers) {
+		return headers.asList().stream()
+			.filter(h -> h.getName().equalsIgnoreCase("Link"))
+			.map(h -> Link.valueOf(h.getValue()))
+			.collect(Collectors.toList());
 	}
 	
 }
