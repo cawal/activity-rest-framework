@@ -84,9 +84,6 @@ public class RootResourceTest extends TestBase {
 		
 		List<Link> headerList =  processHeadersForLinks(r.getHeaders());
 		
-		headerList.stream().forEach(h -> 
-			System.out.println(h.getRel() + ": " + h.getUri().toString()));
-
 		Link selfLink = headerList.stream()
 				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.SELF))
 				.findFirst().get();

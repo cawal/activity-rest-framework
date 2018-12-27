@@ -72,14 +72,11 @@ public class NewAnalysisCollectionTest extends TestBase {
 		
 		List<Link> headerList =  processHeadersForLinks(r.getHeaders());
 		
-		headerList.stream().forEach(h -> 
-			System.out.println(h.getRel() + ": "+ h.getUri().toString()));
-
+		
 		Link newAnalysisLink = headerList.stream()
 				.filter(h -> h.getRel().equalsIgnoreCase(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION))
 				.findFirst().get();
 		
-		System.err.println(newAnalysisLink.getUri());
 		Response createResponse = given()
 				.accept("application/json")
 				.post(newAnalysisLink.getUri())
