@@ -166,11 +166,12 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			@HeaderParam("Content-type") String contentType,
 			InputStream fileContents) {
 		
+		
+		// Validation
 		if (!allowUpdate)
 			throw new BadRequestException();
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
-		
 		if (d == null)
 			throw new NotFoundException();
 		
@@ -181,24 +182,22 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			throw new BadRequestException();
 		}
 		
-
-		
 		String fileName = UUID.randomUUID().toString();
-		
 		URI locationURI = null;
 		
 		try {
-			
 			File f = new File(fileName);
 			FileWriter fw = new FileWriter(f);
 			IOUtils.copy(fileContents, fw);
 			fileContents.close();
+			fw.close();
 			
+			// remove old dataset file, if exists
 			File old = d.getFiles().get(0);
 			d.getFiles().clear();
 			old.delete();
-			
 			d.getFiles().add(f);
+			
 			analysisActivityDao.update(aa);
 			
 			locationURI = UriBuilder.fromUri(this.absolutePathURI)

@@ -31,6 +31,7 @@ public class CommandLineToolJob extends AbstractJob {
 			
 			Process process = pb.start();
 			process.waitFor();
+			
 			// When the process is finished
 			switch (process.exitValue()) {
 			// If the process was successfully finished

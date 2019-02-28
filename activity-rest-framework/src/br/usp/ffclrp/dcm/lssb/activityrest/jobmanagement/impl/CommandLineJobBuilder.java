@@ -31,10 +31,6 @@ public class CommandLineJobBuilder implements JobBuilder{
 			CommandLineToolJob job = new CommandLineToolJob();
 			job.setId(activityInstance.getId());
 			job.setJobConfig(jobConfig);
-			/*CommandLineToolJob.builder()
-					.id(activityInstance.getId())
-					.jobConfig(jobConfig)
-					.build();*/
 			
 			return job;
 			
