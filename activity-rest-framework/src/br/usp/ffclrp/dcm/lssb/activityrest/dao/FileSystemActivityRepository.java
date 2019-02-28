@@ -9,7 +9,6 @@ import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
@@ -44,9 +43,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	
 	JsonbConfig jsonConfig;
 	Jsonb jsonb;
-	
-	private final static Logger LOGGER =
-			Logger.getLogger(FileSystemActivityRepository.class.getName());
+
 	
 	public FileSystemActivityRepository(
 			@NotNull File localStorage,
