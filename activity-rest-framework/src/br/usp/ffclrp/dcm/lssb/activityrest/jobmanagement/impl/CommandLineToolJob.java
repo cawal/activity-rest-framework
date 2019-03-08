@@ -20,7 +20,7 @@ public class CommandLineToolJob extends AbstractJob {
 			// Create a process builder with the command line
 			ProcessBuilder pb = new ProcessBuilder(
 					jobConfig.getCommandLine().toArray(new String[0]));
-			
+			jobConfig.getCommandLine().stream().forEach(System.err::println);
 			pb.directory(jobConfig.getWorkingDirectory());
 			pb.redirectErrorStream(false);
 			pb.redirectError(Redirect.appendTo(
