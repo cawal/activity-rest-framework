@@ -4,11 +4,12 @@ package br.usp.ffclrp.dcm.lssb.activityrest.domain
  * ActivityInstance is a entity and maintains its identity
  * at all times through its id value.
  */
-class ActivityInstance(val id:String) {
-    
-}
 
 enum class ParameterType {INTEGER,REAL,STRING,BOOLEAN}
+/*
+class ActivityInstance(val id:String) {
+}
+
 
 
 sealed class ParameterValue<X>(val value : X)
@@ -35,4 +36,4 @@ fun main(){
     print(getParameterValue("true",ParameterType.BOOLEAN))
     print(getParameterValue("2",ParameterType.INTEGER))
     print(getParameterValue("2.1",ParameterType.INTEGER)) //NumberFormatException
-}
+}*/
