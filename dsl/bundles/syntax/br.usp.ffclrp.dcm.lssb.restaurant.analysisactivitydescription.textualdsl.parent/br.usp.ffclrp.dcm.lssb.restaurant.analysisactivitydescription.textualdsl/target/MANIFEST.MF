@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: br.usp.ffclrp.dcm.lssb.restaurant.analysisactiv
+ itydescription.textualdsl
+Bundle-SymbolicName: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivit
+ ydescription.textualdsl; singleton:=true
+Export-Package: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydesc
+ ription.textualdsl.services,br.usp.ffclrp.dcm.lssb.restaurant.analysi
+ sactivitydescription.textualdsl.validation,br.usp.ffclrp.dcm.lssb.res
+ taurant.analysisactivitydescription.textualdsl.formatting2,br.usp.ffc
+ lrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl,br.usp
+ .ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.pa
+ rser.antlr.internal,br.usp.ffclrp.dcm.lssb.restaurant.analysisactivit
+ ydescription.textualdsl.scoping,br.usp.ffclrp.dcm.lssb.restaurant.ana
+ lysisactivitydescription.textualdsl.parser.antlr,br.usp.ffclrp.dcm.ls
+ sb.restaurant.analysisactivitydescription.textualdsl.generator,br.usp
+ .ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.se
+ rializer,br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescriptio
+ n.textualdsl.parser.antlr.lexer
+Bundle-Name: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescrip
+ tion.textualdsl
+Bundle-Version: 1.0.0.201904092341
+Require-Bundle: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydesc
+ ription,org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.equinox
+ .common;bundle-version="3.5.0",org.eclipse.xtext.xbase.lib;bundle-ver
+ sion="2.14.0",org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",org.ec
+ lipse.xtext.util,org.eclipse.xtend.lib;bundle-version="2.14.0"
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: My Company
+Import-Package: org.apache.log4j
+
