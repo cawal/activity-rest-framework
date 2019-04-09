@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aad:Activity
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore">
+  <outputDatasets
+      name="output"
+      mimetype="plain/text"/>
+  <tool xsi:type="aad:CommandLineTool"
+      name="ls">
+    <commandLineTemplate
+        xsi:type="aad:ToolNameCommandLineEntry"/>
+  </tool>
+</aad:Activity>

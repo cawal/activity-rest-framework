@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated analysis-activity-description -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionModelWizardID"
+            name="%_UI_AnalysisActivityDescriptionModelWizard_label"
+            class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AnalysisActivityDescriptionModelFile.gif">
+         <description>%_UI_AnalysisActivityDescriptionModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated analysis-activity-description -->
+      <editor
+            id="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionEditorID"
+            name="%_UI_AnalysisActivityDescriptionEditor_label"
+            icon="icons/full/obj16/AnalysisActivityDescriptionModelFile.gif"
+            extensions="aad"
+            class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionEditor"
+            contributorClass="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.presentation.AnalysisActivityDescriptionActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated analysis-activity-description -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.presentation.StringListManipulatorsModelWizardID"
+            name="%_UI_StringListManipulatorsModelWizard_label"
+            class="br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.presentation.StringListManipulatorsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StringListManipulatorsModelFile.gif">
+         <description>%_UI_StringListManipulatorsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated analysis-activity-description -->
+      <editor
+            id="br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.presentation.StringListManipulatorsEditorID"
+            name="%_UI_StringListManipulatorsEditor_label"
+            icon="icons/full/obj16/StringListManipulatorsModelFile.gif"
+            extensions="stringlistmanipulators"
+            class="br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.presentation.StringListManipulatorsEditor"
+            contributorClass="br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.presentation.StringListManipulatorsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

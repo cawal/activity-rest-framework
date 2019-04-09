@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysis-activity-description -->
+      <package
+            uri="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"
+            class="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage"
+            genModel="model/analysis-activity-description.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysis-activity-description -->
+      <package
+            uri="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore"
+            class="br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage"
+            genModel="model/analysis-activity-description.genmodel"/>
+   </extension>
+
+</plugin>
