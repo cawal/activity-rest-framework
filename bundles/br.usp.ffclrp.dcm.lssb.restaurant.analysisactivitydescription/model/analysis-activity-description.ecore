@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="analysisactivitydescription" nsURI="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"
+    nsPrefix="aad">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="slm" value="string-list-manipulators.ecore#/"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiableElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remark" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//IdentifiableElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This metaclass describes the information necessary to execute a command&#xA;line application, as well as its inputs and outputs."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" ordered="false" upperBound="-1" eType="#//Parameter" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputDatasets" upperBound="-1" eType="#//InputDataset" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputDatasets" upperBound="-1" eType="#//OutputDataset" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalEntity" lowerBound="1" eType="#//FunctionalEntity" containment="true"
+        eOpposite="#//FunctionalEntity/activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiplicityElement" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OnlyPositiveNumbersForMinimumCardinality OnlyPositiveNumbersOrMinusOneForMaximumCardinality"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OnlyPositiveNumbersForMinimumCardinality" value="&#xA;            minimumCardinality >= 1"/>
+      <details key="OnlyPositiveNumbersOrMinusOneForMaximumCardinality" value="&#xA;            maximumCardinality >= 1 or maximumCardinality = -1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumCardinality" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumCardinality" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//MultiplicityElement #//IdentifiableElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This metaclass describes a parameter of a command line application.&#xA;A parameter is a argument that is passed by its literal value.&#xA;@SeeOther Dataset"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="defaultValueCardinalityMustBeLessThanMaximun"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="defaultValueCardinalityMustBeLessThanMaximun" value="&#xA;            if maximumCardinality > 1 then&#xA;                defaultValue->size() &lt;= maximumCardinality&#xA;            else true endif"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterType" lowerBound="1" eType="#//ParameterType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" ordered="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//Constraint" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParameterType">
+    <eLiterals name="STRING"/>
+    <eLiterals name="INTEGER"/>
+    <eLiterals name="REAL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Dataset" abstract="true" eSuperTypes="#//MultiplicityElement #//IdentifiableElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This metaclass describes a dataset of the command line application.&#xA;A Dataset is a number of related files. These files contains the data&#xA;of most interest for the analysis and are passed for the underlying tool&#xA;by their file system paths."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" ordered="false" upperBound="-1" eType="#//Constraint" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputDataset" eSuperTypes="#//Dataset"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputDataset" eSuperTypes="#//Dataset"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalEntity" abstract="true" eSuperTypes="#//IdentifiableElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Abstract class to describe a functional entity that can executes&#xA;an analysis activity."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity" eOpposite="#//Activity/functionalEntity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandLineTool" eSuperTypes="#//FunctionalEntity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A command line tool that can be called to execute the activity."/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="stdInMustBeInputDatasetInRelatedActivity stdOutMustBeOutputDatasetInRelatedActivity stdErrMustBeOutputDatasetInRelatedActivity stdInMustHave1AsCardinality stdOutMustHave1AsCardinality stdErrMustHave1AsCardinality"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="stdInMustBeInputDatasetInRelatedActivity" value="&#xA;            if not self.standardInputStream.oclIsUndefined() then&#xA;                self.activity.inputDatasets->includes(self.standardInputStream)&#xA;            else true endif"/>
+      <details key="stdOutMustBeOutputDatasetInRelatedActivity" value="&#xA;            if not self.standardOutputStream.oclIsUndefined() then&#xA;                self.activity.outputDatasets->includes(self.standardOutputStream)&#xA;            else true endif"/>
+      <details key="stdErrMustBeOutputDatasetInRelatedActivity" value="&#xA;            if not self.standardErrorStream.oclIsUndefined() then&#xA;                self.activity.outputDatasets->includes(self.standardErrorStream)&#xA;            else true endif"/>
+      <details key="stdInMustHave1AsCardinality" value="&#xA;            if not self.standardInputStream.oclIsUndefined() then&#xA;                self.standardInputStream.minimumCardinality = 1&#xA;                and self.standardInputStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
+      <details key="stdOutMustHave1AsCardinality" value="&#xA;            if not self.standardOutputStream.oclIsUndefined() then&#xA;                self.standardOutputStream.minimumCardinality = 1&#xA;                and self.standardOutputStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
+      <details key="stdErrMustHave1AsCardinality" value="&#xA;            if not self.standardErrorStream.oclIsUndefined() then&#xA;                self.standardErrorStream.minimumCardinality = 1&#xA;                and self.standardErrorStream.maximumCardinality = 1&#xA;            else &#xA;                true &#xA;            endif"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commandLineTemplate" lowerBound="1" upperBound="-1" eType="#//CommandLineEntryList"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="standardInputStream" eType="#//InputDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="standardOutputStream" eType="#//OutputDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="standardErrorStream" eType="#//OutputDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exitCodes" ordered="false" upperBound="-1" eType="#//ExitCode" containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExitCode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reportMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1" eType="#//TerminationStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TerminationStatus">
+    <eLiterals name="SUCCEEDED"/>
+    <eLiterals name="FAILED" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandLineEntryList" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A list of entries for the command line tool.&#xA;This entry list can be manipulated before being used&#xA;for the command line.&#xA;Each item of the final list will be used as a different&#xA;argument for the command line tool.&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manipulators" ordered="false" upperBound="-1" eType="ecore:EClass string-list-manipulators.ecore#//StringListManipulator"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolNameCommandLineEntry" eSuperTypes="#//CommandLineEntryList"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LiteralCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OneOrMoreLiterals"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OneOrMoreLiterals" value="&#xA;            literals->size() > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literals" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatasetCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" lowerBound="1" eType="#//Dataset"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterCommandLineEntryList" eSuperTypes="#//CommandLineEntryList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1" eType="#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FilePath" instanceClassName="java.lang.String"/>
+</ecore:EPackage>

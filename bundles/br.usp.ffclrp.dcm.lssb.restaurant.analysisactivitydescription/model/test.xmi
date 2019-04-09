@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aad:AnalysisActivityDescription
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore">
+  <parameters
+      name="asdas"/>
+  <inputDatasets
+      name="my-input-dataset"
+      mimetype="text/tsv"/>
+  <commandLineTemplate
+      xsi:type="aad:LiteralCommandLineEntries"/>
+  <readinessContraints
+      xsi:type="aad:MinimunParameterCardinalityConstraint"
+      parameter="asdas"
+      value="1"/>
+  <readinessContraints
+      xsi:type="aad:MaximunDatasetCardinalityConstraint"
+      dataset="my-input-dataset"
+      value="2"/>
+</aad:AnalysisActivityDescription>
