@@ -24,31 +24,19 @@ jobs:
       - checkout
       - run: echo "building"
       - run: pwd
-#      - run:
-#           command: git clone https://github.com/cawal/RESTaurant.git
-#           working_directory: ~/
-#
-#      - run:
-#           command: mvn -DskipTests clean install
-#           working_directory: ~/RESTaurant
-
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - activityrest-dependencies-{{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - activityrest-dependencies-
+      - run: mvn dependency:go-offline # gets the project dependencies
+      - save_cache:
+          paths:
+             - ~/.m2
+          key: activityrest-dependencies-{{ checksum "pom.xml" }}
+      # run tests!
       - run:
            command: mvn -DskipTests clean verify 
-
-#      # Download and cache dependencies
-#      - restore_cache:
-#          keys:
-#          - v1-dependencies-{{ checksum "pom.xml" }}
-#          # fallback to using the latest cache if no exact match is found
-#          - v1-dependencies-
-#
-#      - run: mvn dependency:go-offline
-
-#      - save_cache:
-#          paths:
-#            - ~/.m2
-#          key: v1-dependencies-{{ checksum "pom.xml" }}
-        
-      # run tests!
 #      - run: mvn integration-test
 
