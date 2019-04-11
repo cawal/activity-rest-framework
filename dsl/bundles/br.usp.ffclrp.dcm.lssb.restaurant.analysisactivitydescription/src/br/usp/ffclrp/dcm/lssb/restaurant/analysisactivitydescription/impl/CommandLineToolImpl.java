@@ -116,6 +116,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CommandLineEntryList> getCommandLineTemplate() {
 		if (commandLineTemplate == null) {
 			commandLineTemplate = new EObjectContainmentEList<CommandLineEntryList>(CommandLineEntryList.class, this, AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__COMMAND_LINE_TEMPLATE);
@@ -128,6 +129,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InputDataset getStandardInputStream() {
 		if (standardInputStream != null && standardInputStream.eIsProxy()) {
 			InternalEObject oldStandardInputStream = (InternalEObject)standardInputStream;
@@ -154,6 +156,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStandardInputStream(InputDataset newStandardInputStream) {
 		InputDataset oldStandardInputStream = standardInputStream;
 		standardInputStream = newStandardInputStream;
@@ -166,6 +169,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OutputDataset getStandardOutputStream() {
 		if (standardOutputStream != null && standardOutputStream.eIsProxy()) {
 			InternalEObject oldStandardOutputStream = (InternalEObject)standardOutputStream;
@@ -192,6 +196,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStandardOutputStream(OutputDataset newStandardOutputStream) {
 		OutputDataset oldStandardOutputStream = standardOutputStream;
 		standardOutputStream = newStandardOutputStream;
@@ -204,6 +209,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OutputDataset getStandardErrorStream() {
 		if (standardErrorStream != null && standardErrorStream.eIsProxy()) {
 			InternalEObject oldStandardErrorStream = (InternalEObject)standardErrorStream;
@@ -230,6 +236,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStandardErrorStream(OutputDataset newStandardErrorStream) {
 		OutputDataset oldStandardErrorStream = standardErrorStream;
 		standardErrorStream = newStandardErrorStream;
@@ -242,6 +249,7 @@ public class CommandLineToolImpl extends FunctionalEntityImpl implements Command
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ExitCode> getExitCodes() {
 		if (exitCodes == null) {
 			exitCodes = new EObjectContainmentEList<ExitCode>(ExitCode.class, this, AnalysisActivityDescriptionPackage.COMMAND_LINE_TOOL__EXIT_CODES);

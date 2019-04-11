@@ -91,6 +91,7 @@ public abstract class IdentifiableElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -100,6 +101,7 @@ public abstract class IdentifiableElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -112,6 +114,7 @@ public abstract class IdentifiableElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRemark() {
 		return remark;
 	}
@@ -121,6 +124,7 @@ public abstract class IdentifiableElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRemark(String newRemark) {
 		String oldRemark = remark;
 		remark = newRemark;

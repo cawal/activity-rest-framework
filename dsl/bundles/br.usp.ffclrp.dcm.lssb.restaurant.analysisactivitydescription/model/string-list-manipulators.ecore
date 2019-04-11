@@ -31,4 +31,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="PrependListWith" eSuperTypes="#//StringListManipulator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToFlag" eSuperTypes="#//StringListManipulator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifTrue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifFalse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

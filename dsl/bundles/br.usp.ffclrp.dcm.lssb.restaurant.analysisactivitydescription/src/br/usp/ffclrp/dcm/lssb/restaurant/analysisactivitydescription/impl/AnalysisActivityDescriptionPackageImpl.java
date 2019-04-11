@@ -237,6 +237,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		EValidator.Registry.INSTANCE.put
 			(theAnalysisActivityDescriptionPackage,
 			 new EValidator.Descriptor() {
+				 @Override
 				 public EValidator getEValidator() {
 					 return AnalysisActivityDescriptionValidator.INSTANCE;
 				 }
@@ -255,6 +256,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIdentifiableElement() {
 		return identifiableElementEClass;
 	}
@@ -264,6 +266,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIdentifiableElement_Name() {
 		return (EAttribute)identifiableElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -273,6 +276,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIdentifiableElement_Remark() {
 		return (EAttribute)identifiableElementEClass.getEStructuralFeatures().get(1);
 	}
@@ -282,6 +286,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getActivity() {
 		return activityEClass;
 	}
@@ -291,6 +296,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getActivity_Parameters() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(0);
 	}
@@ -300,6 +306,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getActivity_InputDatasets() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(1);
 	}
@@ -309,6 +316,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getActivity_OutputDatasets() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(2);
 	}
@@ -318,6 +326,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getActivity_FunctionalEntity() {
 		return (EReference)activityEClass.getEStructuralFeatures().get(3);
 	}
@@ -327,6 +336,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiplicityElement() {
 		return multiplicityElementEClass;
 	}
@@ -336,6 +346,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiplicityElement_MinimumCardinality() {
 		return (EAttribute)multiplicityElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -345,6 +356,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiplicityElement_MaximumCardinality() {
 		return (EAttribute)multiplicityElementEClass.getEStructuralFeatures().get(1);
 	}
@@ -354,6 +366,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getParameter() {
 		return parameterEClass;
 	}
@@ -363,6 +376,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getParameter_ParameterType() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
 	}
@@ -372,6 +386,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getParameter_DefaultValue() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
 	}
@@ -381,6 +396,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getParameter_Constraints() {
 		return (EReference)parameterEClass.getEStructuralFeatures().get(2);
 	}
@@ -390,6 +406,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataset() {
 		return datasetEClass;
 	}
@@ -399,6 +416,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataset_Mimetype() {
 		return (EAttribute)datasetEClass.getEStructuralFeatures().get(0);
 	}
@@ -408,6 +426,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataset_Constraints() {
 		return (EReference)datasetEClass.getEStructuralFeatures().get(1);
 	}
@@ -417,6 +436,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInputDataset() {
 		return inputDatasetEClass;
 	}
@@ -426,6 +446,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOutputDataset() {
 		return outputDatasetEClass;
 	}
@@ -435,6 +456,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConstraint() {
 		return constraintEClass;
 	}
@@ -444,6 +466,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getConstraint_Name() {
 		return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -453,6 +476,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCommandLineEntryList() {
 		return commandLineEntryListEClass;
 	}
@@ -462,6 +486,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommandLineEntryList_Manipulators() {
 		return (EReference)commandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
@@ -471,6 +496,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getToolNameCommandLineEntry() {
 		return toolNameCommandLineEntryEClass;
 	}
@@ -480,6 +506,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLiteralCommandLineEntryList() {
 		return literalCommandLineEntryListEClass;
 	}
@@ -489,6 +516,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLiteralCommandLineEntryList_Literals() {
 		return (EAttribute)literalCommandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
@@ -498,6 +526,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDatasetCommandLineEntryList() {
 		return datasetCommandLineEntryListEClass;
 	}
@@ -507,6 +536,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDatasetCommandLineEntryList_Dataset() {
 		return (EReference)datasetCommandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
@@ -516,6 +546,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getParameterCommandLineEntryList() {
 		return parameterCommandLineEntryListEClass;
 	}
@@ -525,6 +556,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getParameterCommandLineEntryList_Parameter() {
 		return (EReference)parameterCommandLineEntryListEClass.getEStructuralFeatures().get(0);
 	}
@@ -534,6 +566,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFunctionalEntity() {
 		return functionalEntityEClass;
 	}
@@ -543,6 +576,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFunctionalEntity_Activity() {
 		return (EReference)functionalEntityEClass.getEStructuralFeatures().get(0);
 	}
@@ -552,6 +586,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCommandLineTool() {
 		return commandLineToolEClass;
 	}
@@ -561,6 +596,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommandLineTool_CommandLineTemplate() {
 		return (EReference)commandLineToolEClass.getEStructuralFeatures().get(0);
 	}
@@ -570,6 +606,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommandLineTool_StandardInputStream() {
 		return (EReference)commandLineToolEClass.getEStructuralFeatures().get(1);
 	}
@@ -579,6 +616,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommandLineTool_StandardOutputStream() {
 		return (EReference)commandLineToolEClass.getEStructuralFeatures().get(2);
 	}
@@ -588,6 +626,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommandLineTool_StandardErrorStream() {
 		return (EReference)commandLineToolEClass.getEStructuralFeatures().get(3);
 	}
@@ -597,6 +636,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommandLineTool_ExitCodes() {
 		return (EReference)commandLineToolEClass.getEStructuralFeatures().get(4);
 	}
@@ -606,6 +646,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getExitCode() {
 		return exitCodeEClass;
 	}
@@ -615,6 +656,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExitCode_Code() {
 		return (EAttribute)exitCodeEClass.getEStructuralFeatures().get(0);
 	}
@@ -624,6 +666,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExitCode_ReportMessage() {
 		return (EAttribute)exitCodeEClass.getEStructuralFeatures().get(1);
 	}
@@ -633,6 +676,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExitCode_Status() {
 		return (EAttribute)exitCodeEClass.getEStructuralFeatures().get(2);
 	}
@@ -642,6 +686,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getParameterType() {
 		return parameterTypeEEnum;
 	}
@@ -651,6 +696,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getTerminationStatus() {
 		return terminationStatusEEnum;
 	}
@@ -660,6 +706,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getFilePath() {
 		return filePathEDataType;
 	}
@@ -669,6 +716,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AnalysisActivityDescriptionFactory getAnalysisActivityDescriptionFactory() {
 		return (AnalysisActivityDescriptionFactory)getEFactoryInstance();
 	}
@@ -869,6 +917,7 @@ public class AnalysisActivityDescriptionPackageImpl extends EPackageImpl impleme
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.STRING);
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.INTEGER);
 		addEEnumLiteral(parameterTypeEEnum, ParameterType.REAL);
+		addEEnumLiteral(parameterTypeEEnum, ParameterType.BOOLEAN);
 
 		initEEnum(terminationStatusEEnum, TerminationStatus.class, "TerminationStatus");
 		addEEnumLiteral(terminationStatusEEnum, TerminationStatus.SUCCEEDED);

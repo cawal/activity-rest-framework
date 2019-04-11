@@ -44,7 +44,15 @@ public enum ParameterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REAL(0, "REAL", "REAL");
+	REAL(0, "REAL", "REAL"), /**
+	 * The '<em><b>BOOLEAN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BOOLEAN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BOOLEAN(0, "BOOLEAN", "BOOLEAN");
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
@@ -92,6 +100,17 @@ public enum ParameterType implements Enumerator {
 	public static final int REAL_VALUE = 0;
 
 	/**
+	 * The '<em><b>BOOLEAN</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BOOLEAN
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BOOLEAN_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Parameter Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,6 +121,7 @@ public enum ParameterType implements Enumerator {
 			STRING,
 			INTEGER,
 			REAL,
+			BOOLEAN,
 		};
 
 	/**
@@ -201,6 +221,7 @@ public enum ParameterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -210,6 +231,7 @@ public enum ParameterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -219,6 +241,7 @@ public enum ParameterType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

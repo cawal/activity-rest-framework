@@ -116,6 +116,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Activity createActivity() {
 		ActivityImpl activity = new ActivityImpl();
 		return activity;
@@ -126,6 +127,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
 		return parameter;
@@ -136,6 +138,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InputDataset createInputDataset() {
 		InputDatasetImpl inputDataset = new InputDatasetImpl();
 		return inputDataset;
@@ -146,6 +149,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OutputDataset createOutputDataset() {
 		OutputDatasetImpl outputDataset = new OutputDatasetImpl();
 		return outputDataset;
@@ -156,6 +160,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Constraint createConstraint() {
 		ConstraintImpl constraint = new ConstraintImpl();
 		return constraint;
@@ -166,6 +171,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LiteralCommandLineEntryList createLiteralCommandLineEntryList() {
 		LiteralCommandLineEntryListImpl literalCommandLineEntryList = new LiteralCommandLineEntryListImpl();
 		return literalCommandLineEntryList;
@@ -176,6 +182,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DatasetCommandLineEntryList createDatasetCommandLineEntryList() {
 		DatasetCommandLineEntryListImpl datasetCommandLineEntryList = new DatasetCommandLineEntryListImpl();
 		return datasetCommandLineEntryList;
@@ -186,6 +193,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterCommandLineEntryList createParameterCommandLineEntryList() {
 		ParameterCommandLineEntryListImpl parameterCommandLineEntryList = new ParameterCommandLineEntryListImpl();
 		return parameterCommandLineEntryList;
@@ -196,6 +204,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CommandLineTool createCommandLineTool() {
 		CommandLineToolImpl commandLineTool = new CommandLineToolImpl();
 		return commandLineTool;
@@ -206,6 +215,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExitCode createExitCode() {
 		ExitCodeImpl exitCode = new ExitCodeImpl();
 		return exitCode;
@@ -216,6 +226,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ToolNameCommandLineEntry createToolNameCommandLineEntry() {
 		ToolNameCommandLineEntryImpl toolNameCommandLineEntry = new ToolNameCommandLineEntryImpl();
 		return toolNameCommandLineEntry;
@@ -284,6 +295,7 @@ public class AnalysisActivityDescriptionFactoryImpl extends EFactoryImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AnalysisActivityDescriptionPackage getAnalysisActivityDescriptionPackage() {
 		return (AnalysisActivityDescriptionPackage)getEPackage();
 	}

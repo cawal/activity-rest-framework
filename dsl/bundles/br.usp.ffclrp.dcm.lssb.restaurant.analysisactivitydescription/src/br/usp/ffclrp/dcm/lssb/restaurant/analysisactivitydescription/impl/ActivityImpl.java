@@ -103,6 +103,7 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, AnalysisActivityDescriptionPackage.ACTIVITY__PARAMETERS);
@@ -115,6 +116,7 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<InputDataset> getInputDatasets() {
 		if (inputDatasets == null) {
 			inputDatasets = new EObjectContainmentEList<InputDataset>(InputDataset.class, this, AnalysisActivityDescriptionPackage.ACTIVITY__INPUT_DATASETS);
@@ -127,6 +129,7 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OutputDataset> getOutputDatasets() {
 		if (outputDatasets == null) {
 			outputDatasets = new EObjectContainmentEList<OutputDataset>(OutputDataset.class, this, AnalysisActivityDescriptionPackage.ACTIVITY__OUTPUT_DATASETS);
@@ -139,6 +142,7 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FunctionalEntity getFunctionalEntity() {
 		return functionalEntity;
 	}
@@ -163,6 +167,7 @@ public class ActivityImpl extends IdentifiableElementImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFunctionalEntity(FunctionalEntity newFunctionalEntity) {
 		if (newFunctionalEntity != functionalEntity) {
 			NotificationChain msgs = null;

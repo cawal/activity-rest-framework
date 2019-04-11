@@ -93,6 +93,7 @@ public abstract class MultiplicityElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigInteger getMinimumCardinality() {
 		return minimumCardinality;
 	}
@@ -102,6 +103,7 @@ public abstract class MultiplicityElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinimumCardinality(BigInteger newMinimumCardinality) {
 		BigInteger oldMinimumCardinality = minimumCardinality;
 		minimumCardinality = newMinimumCardinality;
@@ -114,6 +116,7 @@ public abstract class MultiplicityElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigInteger getMaximumCardinality() {
 		return maximumCardinality;
 	}
@@ -123,6 +126,7 @@ public abstract class MultiplicityElementImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaximumCardinality(BigInteger newMaximumCardinality) {
 		BigInteger oldMaximumCardinality = maximumCardinality;
 		maximumCardinality = newMaximumCardinality;

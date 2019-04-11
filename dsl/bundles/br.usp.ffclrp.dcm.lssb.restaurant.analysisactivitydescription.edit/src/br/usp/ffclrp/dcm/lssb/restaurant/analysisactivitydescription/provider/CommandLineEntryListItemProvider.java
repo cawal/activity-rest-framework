@@ -162,6 +162,11 @@ public class CommandLineEntryListItemProvider
 			(createChildParameter
 				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_ENTRY_LIST__MANIPULATORS,
 				 StringListManipulatorsFactory.eINSTANCE.createPrependListWith()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnalysisActivityDescriptionPackage.Literals.COMMAND_LINE_ENTRY_LIST__MANIPULATORS,
+				 StringListManipulatorsFactory.eINSTANCE.createToFlag()));
 	}
 
 	/**

@@ -172,6 +172,7 @@ public class AnalysisActivityDescriptionModelWizard extends Wizard implements IN
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
@@ -278,6 +279,7 @@ public class AnalysisActivityDescriptionModelWizard extends Wizard implements IN
 				final ISelection targetSelection = new StructuredSelection(modelFile);
 				getShell().getDisplay().asyncExec
 					(new Runnable() {
+						 @Override
 						 public void run() {
 							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
 						 }
@@ -394,6 +396,7 @@ public class AnalysisActivityDescriptionModelWizard extends Wizard implements IN
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void createControl(Composite parent) {
 			Composite composite = new Composite(parent, SWT.NONE); {
 				GridLayout layout = new GridLayout();
@@ -468,6 +471,7 @@ public class AnalysisActivityDescriptionModelWizard extends Wizard implements IN
 		 */
 		protected ModifyListener validator =
 			new ModifyListener() {
+				@Override
 				public void modifyText(ModifyEvent e) {
 					setPageComplete(validatePage());
 				}

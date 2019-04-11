@@ -61,6 +61,7 @@ public class LiteralCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getLiterals() {
 		if (literals == null) {
 			literals = new EDataTypeUniqueEList<String>(String.class, this, AnalysisActivityDescriptionPackage.LITERAL_COMMAND_LINE_ENTRY_LIST__LITERALS);

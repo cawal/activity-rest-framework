@@ -128,6 +128,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -137,6 +138,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -149,6 +151,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRemark() {
 		return remark;
 	}
@@ -158,6 +161,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRemark(String newRemark) {
 		String oldRemark = remark;
 		remark = newRemark;
@@ -170,6 +174,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMimetype() {
 		return mimetype;
 	}
@@ -179,6 +184,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMimetype(String newMimetype) {
 		String oldMimetype = mimetype;
 		mimetype = newMimetype;
@@ -191,6 +197,7 @@ public abstract class DatasetImpl extends MultiplicityElementImpl implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
 			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, AnalysisActivityDescriptionPackage.DATASET__CONSTRAINTS);

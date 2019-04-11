@@ -69,6 +69,7 @@ public abstract class CommandLineEntryListImpl extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<StringListManipulator> getManipulators() {
 		if (manipulators == null) {
 			manipulators = new EObjectContainmentEList<StringListManipulator>(StringListManipulator.class, this, AnalysisActivityDescriptionPackage.COMMAND_LINE_ENTRY_LIST__MANIPULATORS);

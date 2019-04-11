@@ -76,6 +76,7 @@
     <eLiterals name="STRING"/>
     <eLiterals name="INTEGER"/>
     <eLiterals name="REAL"/>
+    <eLiterals name="BOOLEAN"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dataset" abstract="true" eSuperTypes="#//MultiplicityElement #//IdentifiableElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

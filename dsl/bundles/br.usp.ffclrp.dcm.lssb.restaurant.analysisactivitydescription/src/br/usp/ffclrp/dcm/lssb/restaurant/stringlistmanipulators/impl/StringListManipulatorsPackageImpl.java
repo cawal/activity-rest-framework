@@ -13,6 +13,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipu
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsFactory;
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -68,6 +69,13 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * @generated
 	 */
 	private EClass prependListWithEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass toFlagEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -141,6 +149,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStringListManipulator() {
 		return stringListManipulatorEClass;
 	}
@@ -150,6 +159,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getStringListManipulator__Transform__EList() {
 		return stringListManipulatorEClass.getEOperations().get(0);
 	}
@@ -159,6 +169,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getJoin() {
 		return joinEClass;
 	}
@@ -168,6 +179,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getJoin_Delimiter() {
 		return (EAttribute)joinEClass.getEStructuralFeatures().get(0);
 	}
@@ -177,6 +189,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPrependEach() {
 		return prependEachEClass;
 	}
@@ -186,6 +199,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPrependEach_Value() {
 		return (EAttribute)prependEachEClass.getEStructuralFeatures().get(0);
 	}
@@ -195,6 +209,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAppendEach() {
 		return appendEachEClass;
 	}
@@ -204,6 +219,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAppendEach_Value() {
 		return (EAttribute)appendEachEClass.getEStructuralFeatures().get(0);
 	}
@@ -213,6 +229,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAppendListWith() {
 		return appendListWithEClass;
 	}
@@ -222,6 +239,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAppendListWith_Value() {
 		return (EAttribute)appendListWithEClass.getEStructuralFeatures().get(0);
 	}
@@ -231,6 +249,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPrependListWith() {
 		return prependListWithEClass;
 	}
@@ -240,6 +259,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPrependListWith_Value() {
 		return (EAttribute)prependListWithEClass.getEStructuralFeatures().get(0);
 	}
@@ -249,6 +269,37 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getToFlag() {
+		return toFlagEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getToFlag_IfTrue() {
+		return (EAttribute)toFlagEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getToFlag_IfFalse() {
+		return (EAttribute)toFlagEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public StringListManipulatorsFactory getStringListManipulatorsFactory() {
 		return (StringListManipulatorsFactory)getEFactoryInstance();
 	}
@@ -289,6 +340,10 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 
 		prependListWithEClass = createEClass(PREPEND_LIST_WITH);
 		createEAttribute(prependListWithEClass, PREPEND_LIST_WITH__VALUE);
+
+		toFlagEClass = createEClass(TO_FLAG);
+		createEAttribute(toFlagEClass, TO_FLAG__IF_TRUE);
+		createEAttribute(toFlagEClass, TO_FLAG__IF_FALSE);
 	}
 
 	/**
@@ -324,6 +379,7 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 		appendEachEClass.getESuperTypes().add(this.getStringListManipulator());
 		appendListWithEClass.getESuperTypes().add(this.getStringListManipulator());
 		prependListWithEClass.getESuperTypes().add(this.getStringListManipulator());
+		toFlagEClass.getESuperTypes().add(this.getStringListManipulator());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(stringListManipulatorEClass, StringListManipulator.class, "StringListManipulator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -345,6 +401,10 @@ public class StringListManipulatorsPackageImpl extends EPackageImpl implements S
 
 		initEClass(prependListWithEClass, PrependListWith.class, "PrependListWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrependListWith_Value(), ecorePackage.getEString(), "value", null, 1, 1, PrependListWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(toFlagEClass, ToFlag.class, "ToFlag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getToFlag_IfTrue(), ecorePackage.getEString(), "ifTrue", null, 0, 1, ToFlag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getToFlag_IfFalse(), ecorePackage.getEString(), "ifFalse", null, 0, 1, ToFlag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

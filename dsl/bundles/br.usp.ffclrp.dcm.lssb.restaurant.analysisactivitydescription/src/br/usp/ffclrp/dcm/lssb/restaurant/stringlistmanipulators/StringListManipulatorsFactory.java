@@ -67,6 +67,15 @@ public interface StringListManipulatorsFactory extends EFactory {
 	PrependListWith createPrependListWith();
 
 	/**
+	 * Returns a new object of class '<em>To Flag</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>To Flag</em>'.
+	 * @generated
+	 */
+	ToFlag createToFlag();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

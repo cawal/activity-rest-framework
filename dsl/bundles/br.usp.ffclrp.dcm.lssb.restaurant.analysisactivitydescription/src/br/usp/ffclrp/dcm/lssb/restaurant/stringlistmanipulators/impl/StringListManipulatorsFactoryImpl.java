@@ -61,6 +61,7 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 			case StringListManipulatorsPackage.APPEND_EACH: return createAppendEach();
 			case StringListManipulatorsPackage.APPEND_LIST_WITH: return createAppendListWith();
 			case StringListManipulatorsPackage.PREPEND_LIST_WITH: return createPrependListWith();
+			case StringListManipulatorsPackage.TO_FLAG: return createToFlag();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,6 +72,7 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Join createJoin() {
 		JoinImpl join = new JoinImpl();
 		return join;
@@ -81,6 +83,7 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PrependEach createPrependEach() {
 		PrependEachImpl prependEach = new PrependEachImpl();
 		return prependEach;
@@ -91,6 +94,7 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AppendEach createAppendEach() {
 		AppendEachImpl appendEach = new AppendEachImpl();
 		return appendEach;
@@ -101,6 +105,7 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AppendListWith createAppendListWith() {
 		AppendListWithImpl appendListWith = new AppendListWithImpl();
 		return appendListWith;
@@ -111,6 +116,7 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PrependListWith createPrependListWith() {
 		PrependListWithImpl prependListWith = new PrependListWithImpl();
 		return prependListWith;
@@ -121,6 +127,18 @@ public class StringListManipulatorsFactoryImpl extends EFactoryImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public ToFlag createToFlag() {
+		ToFlagImpl toFlag = new ToFlagImpl();
+		return toFlag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public StringListManipulatorsPackage getStringListManipulatorsPackage() {
 		return (StringListManipulatorsPackage)getEPackage();
 	}
