@@ -366,6 +366,11 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 				case REAL:
 					sanitized = Double.parseDouble(value.toString());
 					break;
+					
+				case BOOLEAN:
+					// true if case-insensitive true, false otherwise
+					sanitized = Boolean.parseBoolean(value.toString());
+					break;
 				
 				case STRING:
 					sanitized = value;

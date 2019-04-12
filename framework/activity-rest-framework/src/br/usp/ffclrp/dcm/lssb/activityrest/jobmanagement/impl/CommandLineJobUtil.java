@@ -74,52 +74,75 @@ public class CommandLineJobUtil {
 				((CommandLineTool) description.getFunctionalEntity()).getCommandLineTemplate();
 		
 		commandLine.add(getExecutableString(clt));
+		
 		for (CommandLineEntryList e : entries) {
-			EList<String> stringList = new BasicEList<>();
 			
-			if (e instanceof LiteralCommandLineEntryList) {
-				stringList.addAll(
-						((LiteralCommandLineEntryList) e).getLiterals());
-				
-			} else if (e instanceof DatasetCommandLineEntryList) {
-				br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp =
-						((DatasetCommandLineEntryList) e).getDataset();
-				
-				Dataset dataset = analysis.inputDatasetForName(dp.getName());
-				dataset = (dataset != null) ? dataset
-						: analysis.outputDatasetForName(dp.getName());
-				
-				for (File f : dataset.getFiles()) {
-					stringList.add(f.getAbsolutePath());
-				}
-				
-			} else if (e instanceof ParameterCommandLineEntryList) {
-				Parameter pp =
-						((ParameterCommandLineEntryList) e).getParameter();
-				
-				Object parameterValue =
-						analysis.getParameters().get(pp.getName());
-				
-				if (parameterValue instanceof Collection) {
-					List<String> values =
-							((Collection<Object>) parameterValue).stream()
-									.map(Object::toString)
-									.collect(Collectors.toList());
-					
-					stringList.addAll(values);
-				} else {
-					stringList.add(parameterValue.toString());
-				}
-				
-			}
-			
-			for (StringListManipulator m : e.getManipulators()) {
-				stringList = m.transform(stringList);
-			}
+			EList<String> stringList = getRawValues(analysis, e);
+			stringList = applyStringListManipulators(stringList, e);
 			commandLine.addAll(stringList);
+		
 		}
 		
 		return commandLine;
+	}
+
+	private static EList<String> applyStringListManipulators(
+			EList<String> rawValues, CommandLineEntryList clel) {
+		for (StringListManipulator m : clel.getManipulators()) {
+			rawValues = m.transform(rawValues);
+		}
+		return rawValues;
+	}
+
+	/**
+	 * Gets a list of Strings containing the values/paths of the parameters and 
+	 * input/output datasets. 
+	 * @param activityInstance the analysis activity instance containing parameter
+	 *  values and dataset file's paths 
+	 * @param clel whole set of command line entries definition for the analysis
+	 * 			activity
+	 * @return a list of Strings containing the values to be further processed.
+	 */
+	private static EList<String> getRawValues(AnalysisActivity activityInstance,
+			CommandLineEntryList clel) {
+		EList<String> stringList = new BasicEList<>();
+		
+		if (clel instanceof LiteralCommandLineEntryList) {
+			stringList.addAll(
+					((LiteralCommandLineEntryList) clel).getLiterals());
+			
+		} else if (clel instanceof DatasetCommandLineEntryList) {
+			br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp =
+					((DatasetCommandLineEntryList) clel).getDataset();
+			
+			Dataset dataset = activityInstance.inputDatasetForName(dp.getName());
+			dataset = (dataset != null) ? dataset
+					: activityInstance.outputDatasetForName(dp.getName());
+			
+			for (File f : dataset.getFiles()) {
+				stringList.add(f.getAbsolutePath());
+			}
+			
+		} else if (clel instanceof ParameterCommandLineEntryList) {
+			Parameter pp =
+					((ParameterCommandLineEntryList) clel).getParameter();
+			
+			Object parameterValue =
+					activityInstance.getParameters().get(pp.getName());
+			
+			if (parameterValue instanceof Collection) {
+				List<String> values =
+						((Collection<Object>) parameterValue).stream()
+								.map(Object::toString)
+								.collect(Collectors.toList());
+				
+				stringList.addAll(values);
+			} else {
+				stringList.add(parameterValue.toString());
+			}
+			
+		}
+		return stringList;
 	}
 	
 	
