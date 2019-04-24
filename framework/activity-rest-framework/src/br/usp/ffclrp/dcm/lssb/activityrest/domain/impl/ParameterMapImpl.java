@@ -329,25 +329,8 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 		}
 	}
 	
-	// private List<Object> sanitizeList(Parameter description,
-	// Object value) {
-	// List<Object> list;
-	//
-	// if (value instanceof Collection) {
-	// list = (List<Object>) ((Collection) value).stream()
-	// .map(v -> sanitizeValueItem(description, v))
-	// .filter(a -> a != null)
-	// .collect(Collectors.toList());
-	//
-	// } else {
-	// return Collections.emptyList();
-	// }
-	//
-	// return list;
-	// }
-	
 	private Object sanitizeValueItem(Parameter description,
-			Object value) {
+		Object value) {
 		
 		if (value == null)
 			return null; // nothing to do
@@ -356,7 +339,7 @@ public class ParameterMapImpl extends MinimalEObjectImpl.Container
 			return null; // should not be collection
 			
 		try {
-			if (value instanceof String || value instanceof Number) {
+			if (value instanceof String || value instanceof Number || value instanceof Boolean) {
 				Object sanitized = null;
 				switch (description.getParameterType()) {
 				case INTEGER:
