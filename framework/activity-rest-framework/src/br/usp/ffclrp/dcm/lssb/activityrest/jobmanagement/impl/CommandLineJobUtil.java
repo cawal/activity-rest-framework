@@ -88,9 +88,11 @@ public class CommandLineJobUtil {
 
 	private static EList<String> applyStringListManipulators(
 			EList<String> rawValues, CommandLineEntryList clel) {
+		
 		for (StringListManipulator m : clel.getManipulators()) {
 			rawValues = m.transform(rawValues);
 		}
+		
 		return rawValues;
 	}
 

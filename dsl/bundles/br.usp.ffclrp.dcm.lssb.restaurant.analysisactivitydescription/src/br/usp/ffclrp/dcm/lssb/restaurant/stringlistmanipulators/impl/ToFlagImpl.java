@@ -226,11 +226,14 @@ public class ToFlagImpl extends StringListManipulatorImpl implements ToFlag {
 	public EList<String> transform(EList<String> stringList) {
 		
 		Function<? super String, ? extends String> toFlags = s -> {
-			return (s.equalsIgnoreCase("true"))? getIfTrue(): getIfFalse();
+			if (s.equalsIgnoreCase("true")) 
+				return getIfTrue();
+			else
+				return getIfFalse();
 		};
 		
 		Predicate<? super String> notNull = s -> { 
-			return s!=null && (s.equalsIgnoreCase(""));
+			return s!=null && (!s.equalsIgnoreCase(""));
 		};
 		
 		EList<String> newList = new BasicEList<String>();
