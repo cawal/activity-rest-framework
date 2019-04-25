@@ -133,11 +133,12 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		URI locationURI = null;
 		
 		try {
-			
 			File f = new File(fileName);
 			FileWriter fw = new FileWriter(f);
 			IOUtils.copy(fileContents, fw);
 			fileContents.close();
+			fw.flush();
+			fw.close();
 			
 			if (MultiplicityElementUtil.dontAcceptsList(d.getDescription())) {
 				if (d.getFiles().size() > 0)
