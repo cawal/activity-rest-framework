@@ -29,7 +29,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
 @Api
-@Path("/new-analyses/{analysisID}")
+@Path("/succeeded-analyses/{analysisID}")
 public class SucceededAnalysisResource {
 	
 	UriInfo uriInfo;
