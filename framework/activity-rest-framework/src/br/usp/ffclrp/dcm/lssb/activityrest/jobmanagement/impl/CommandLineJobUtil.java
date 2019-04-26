@@ -52,6 +52,8 @@ public class CommandLineJobUtil {
 		File standardOutput = getStandardOutputPipedFile(aa,clt);
 		File standardError = getStandardErrorPipedFile(aa,clt);
 		File errorReportFile = aa.getErrorReport();
+		List<ExitCode> exitCodes = getExitCodes(clt);
+		ExitCode defaultTerminationStatus = getDefaultTerminationStatus(clt);
 		
 		JobConfig jb = JobConfig.builder()
 				.commandLine(commandLine)
@@ -60,11 +62,35 @@ public class CommandLineJobUtil {
 				.standardErrorPipedFile(standardError)
 				.workingDirectory(workingDirectory)
 				.errorReportFile(errorReportFile)
+				.exitCodes(exitCodes)
+				.defaultTerminationStatus(defaultTerminationStatus)
 				.build();
 		
 		return jb;
 	}
 	
+	
+	private static ExitCode getDefaultTerminationStatus(CommandLineTool clt) {
+		// TODO Auto-generated method stub
+		return new ExitCode(-1,TerminationStatus.FAILED,"Unknown termination status");
+	}
+
+
+	private static List<ExitCode> getExitCodes(CommandLineTool clt) {
+		return clt.getExitCodes().stream()
+				.map(
+					(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode i) 
+					-> {
+						TerminationStatus status = 
+						(i.getStatus() == br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus.SUCCEEDED)?
+						TerminationStatus.SUCCEEDED
+						: TerminationStatus.FAILED;
+						return new ExitCode(i.getCode().intValue(), status, i.getReportMessage());
+				})
+				.collect(Collectors.toList());
+	}
+
+
 	private static List<String> produceCommandLine(AnalysisActivity analysis,CommandLineTool clt)
 			throws InvalidCommandLineDefinition {
 		

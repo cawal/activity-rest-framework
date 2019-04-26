@@ -15,13 +15,20 @@ public class JobConfig {
 	private final File standardErrorPipedFile;
 	private final File workingDirectory;
 	private final File errorReportFile;
+	private final List<ExitCode> exitCodes;
+	/**
+	 * The termination status if the code is not found in the exitCodes list.
+	 */
+	private final ExitCode defaultTerminationStatus;
 	
 	public JobConfig(List<String> commandLine, 
 			File standardInputPipe,
 			File standardOutputPipe, 
 			File standardErrorPipe,
 			File workingDirectory,
-			File errorReportFile) {
+			File errorReportFile,
+			List<ExitCode> exitCodes,
+			ExitCode defaultTerminationStatus) {
 		super();
 		this.commandLine = Collections.unmodifiableList(commandLine);
 		this.standardInputPipedFile = standardInputPipe;
@@ -29,6 +36,9 @@ public class JobConfig {
 		this.standardErrorPipedFile = standardErrorPipe;
 		this.workingDirectory = workingDirectory;
 		this.errorReportFile = errorReportFile;
+		this.exitCodes = exitCodes;
+		this.defaultTerminationStatus = defaultTerminationStatus;
+
 	}
 	
 	/**
@@ -67,5 +77,13 @@ public class JobConfig {
 	 */
 	public File getErrorReportFile() {
 		return errorReportFile;
+	}
+
+	public List<ExitCode> getExitCodes() {
+		return exitCodes;
+	}
+
+	public ExitCode getDefaultTerminationStatus() {
+		return defaultTerminationStatus;
 	}
 }
