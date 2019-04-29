@@ -240,8 +240,10 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		FileWriter parametersStream = new FileWriter(parametersFile);
 		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
-		
-		parametersMap.getDescriptions().addAll(aaDesc.getParameters());
+		System.out.println(aaDesc);
+		parametersMap.getDescriptions().addAll(
+				aaDesc.getParameters()
+		);
 		parametersMap.setDefaultValues();
 		
 		jsonb.toJson(parametersMap, parametersStream);
