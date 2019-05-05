@@ -19,6 +19,7 @@ public class BasicApplicationJAXRSConfig extends Application {
 		// add here all classes with JAX-RS annotations
 		resources.addAll(this.getSupportClasses());
 		resources.addAll(this.getXMLMessageBodyProviders());
+		resources.add(br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.RootResource.class);
 		
 		// user extensions 
 		Optional<Set<Class<?>>> classesExtension = 	this.getExtensionClasses();

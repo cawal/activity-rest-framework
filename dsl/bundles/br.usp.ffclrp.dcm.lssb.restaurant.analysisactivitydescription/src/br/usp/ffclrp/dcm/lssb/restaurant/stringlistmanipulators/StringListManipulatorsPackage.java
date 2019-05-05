@@ -325,6 +325,62 @@ public interface StringListManipulatorsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.ToFlagImpl <em>To Flag</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.ToFlagImpl
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.StringListManipulatorsPackageImpl#getToFlag()
+	 * @generated
+	 */
+	int TO_FLAG = 6;
+
+	/**
+	 * The feature id for the '<em><b>If True</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_FLAG__IF_TRUE = STRING_LIST_MANIPULATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>If False</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_FLAG__IF_FALSE = STRING_LIST_MANIPULATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>To Flag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_FLAG_FEATURE_COUNT = STRING_LIST_MANIPULATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Transform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_FLAG___TRANSFORM__ELIST = STRING_LIST_MANIPULATOR___TRANSFORM__ELIST;
+
+	/**
+	 * The number of operations of the '<em>To Flag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_FLAG_OPERATION_COUNT = STRING_LIST_MANIPULATOR_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulator <em>String List Manipulator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -448,6 +504,38 @@ public interface StringListManipulatorsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPrependListWith_Value();
+
+	/**
+	 * Returns the meta object for class '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag <em>To Flag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>To Flag</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag
+	 * @generated
+	 */
+	EClass getToFlag();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag#getIfTrue <em>If True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>If True</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag#getIfTrue()
+	 * @see #getToFlag()
+	 * @generated
+	 */
+	EAttribute getToFlag_IfTrue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag#getIfFalse <em>If False</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>If False</em>'.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag#getIfFalse()
+	 * @see #getToFlag()
+	 * @generated
+	 */
+	EAttribute getToFlag_IfFalse();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -579,6 +667,32 @@ public interface StringListManipulatorsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PREPEND_LIST_WITH__VALUE = eINSTANCE.getPrependListWith_Value();
+
+		/**
+		 * The meta object literal for the '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.ToFlagImpl <em>To Flag</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.ToFlagImpl
+		 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.impl.StringListManipulatorsPackageImpl#getToFlag()
+		 * @generated
+		 */
+		EClass TO_FLAG = eINSTANCE.getToFlag();
+
+		/**
+		 * The meta object literal for the '<em><b>If True</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TO_FLAG__IF_TRUE = eINSTANCE.getToFlag_IfTrue();
+
+		/**
+		 * The meta object literal for the '<em><b>If False</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TO_FLAG__IF_FALSE = eINSTANCE.getToFlag_IfFalse();
 
 	}
 

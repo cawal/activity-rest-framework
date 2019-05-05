@@ -72,6 +72,7 @@ public class PrependEachImpl extends StringListManipulatorImpl implements Prepen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getValue() {
 		return value;
 	}
@@ -81,6 +82,7 @@ public class PrependEachImpl extends StringListManipulatorImpl implements Prepen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;

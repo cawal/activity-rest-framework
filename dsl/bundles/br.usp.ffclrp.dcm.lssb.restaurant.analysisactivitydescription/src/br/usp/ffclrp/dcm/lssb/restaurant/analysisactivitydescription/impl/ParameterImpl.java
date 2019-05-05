@@ -146,6 +146,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -155,6 +156,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -167,6 +169,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRemark() {
 		return remark;
 	}
@@ -176,6 +179,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRemark(String newRemark) {
 		String oldRemark = remark;
 		remark = newRemark;
@@ -188,6 +192,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterType getParameterType() {
 		return parameterType;
 	}
@@ -197,6 +202,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParameterType(ParameterType newParameterType) {
 		ParameterType oldParameterType = parameterType;
 		parameterType = newParameterType == null ? PARAMETER_TYPE_EDEFAULT : newParameterType;
@@ -209,6 +215,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getDefaultValue() {
 		if (defaultValue == null) {
 			defaultValue = new EDataTypeUniqueEList<String>(String.class, this, AnalysisActivityDescriptionPackage.PARAMETER__DEFAULT_VALUE);
@@ -221,6 +228,7 @@ public class ParameterImpl extends MultiplicityElementImpl implements Parameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
 			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, AnalysisActivityDescriptionPackage.PARAMETER__CONSTRAINTS);

@@ -72,6 +72,7 @@ public class JoinImpl extends StringListManipulatorImpl implements Join {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDelimiter() {
 		return delimiter;
 	}
@@ -81,6 +82,7 @@ public class JoinImpl extends StringListManipulatorImpl implements Join {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDelimiter(String newDelimiter) {
 		String oldDelimiter = delimiter;
 		delimiter = newDelimiter;

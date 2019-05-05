@@ -60,6 +60,7 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Dataset getDataset() {
 		if (dataset != null && dataset.eIsProxy()) {
 			InternalEObject oldDataset = (InternalEObject)dataset;
@@ -86,6 +87,7 @@ public class DatasetCommandLineEntryListImpl extends CommandLineEntryListImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataset(Dataset newDataset) {
 		Dataset oldDataset = dataset;
 		dataset = newDataset;

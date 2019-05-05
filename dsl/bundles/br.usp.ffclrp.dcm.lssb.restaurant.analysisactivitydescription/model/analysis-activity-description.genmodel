@@ -12,6 +12,7 @@
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/INTEGER"/>
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/REAL"/>
+      <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//ParameterType/BOOLEAN"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="analysis-activity-description.ecore#//TerminationStatus">
       <genEnumLiterals ecoreEnumLiteral="analysis-activity-description.ecore#//TerminationStatus/SUCCEEDED"/>
@@ -96,6 +97,10 @@
     </genClasses>
     <genClasses ecoreClass="string-list-manipulators.ecore#//PrependListWith">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute string-list-manipulators.ecore#//PrependListWith/value"/>
+    </genClasses>
+    <genClasses ecoreClass="string-list-manipulators.ecore#//ToFlag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute string-list-manipulators.ecore#//ToFlag/ifTrue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute string-list-manipulators.ecore#//ToFlag/ifFalse"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

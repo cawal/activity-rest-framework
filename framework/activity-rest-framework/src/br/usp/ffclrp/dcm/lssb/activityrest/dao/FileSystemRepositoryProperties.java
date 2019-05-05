@@ -1,5 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.dao;
 
+@Deprecated
 public interface FileSystemRepositoryProperties {
 	
 	public String getNonExecutedAnalysesRootDirectory();

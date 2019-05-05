@@ -45,6 +45,7 @@ public abstract class StringListManipulatorImpl extends MinimalEObjectImpl.Conta
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> transform(EList<String> stringList) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

@@ -4,9 +4,9 @@ package br.usp.ffclrp.dcm.lssb.activityrest.domain
  * ActivityInstance is a entity and maintains its identity
  * at all times through its id value.
  */
-
-enum class ParameterType {INTEGER,REAL,STRING,BOOLEAN}
 /*
+enum class ParameterType {INTEGER,REAL,STRING,BOOLEAN}
+
 class ActivityInstance(val id:String) {
 }
 

@@ -2,6 +2,7 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
+import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 
@@ -33,16 +34,27 @@ public class CommandLineToolJob extends AbstractJob {
 			process.waitFor();
 			
 			// When the process is finished
-			switch (process.exitValue()) {
+			int processExitValue = process.exitValue();
+			// look for its status or the default one
+			ExitCode exitCodeDescription = 
+				jobConfig.getExitCodes().stream()
+					.filter(e -> e.getExitCode() == processExitValue)
+					.findFirst()
+					.orElse(jobConfig.getDefaultTerminationStatus());
+			
+			
+			FileUtils.writeStringToFile(jobConfig.getErrorReportFile(),
+					provideErrorReport(exitCodeDescription),true);
+			
+			switch (exitCodeDescription.getStatus()) {
 			// If the process was successfully finished
-			case 0:
+			case SUCCEEDED:
 				notifySuccess();
 				break;
-			
+	
 			// If the process was not successfully finished
+			case FAILED:
 			default:
-				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(),
-						provideErrorReport(jobConfig, process.exitValue()),true);
 				notifyFailure();
 				break;
 			}
@@ -60,9 +72,9 @@ public class CommandLineToolJob extends AbstractJob {
 	}
 
 
-	private String provideErrorReport(JobConfig jobConfig, int exitValue) {
+	private String provideErrorReport(ExitCode exitCode) {
 		// TODO Better handling of the error report
-		return "Failure code:" + exitValue;
+		return exitCode.toString();
 	}
 
 

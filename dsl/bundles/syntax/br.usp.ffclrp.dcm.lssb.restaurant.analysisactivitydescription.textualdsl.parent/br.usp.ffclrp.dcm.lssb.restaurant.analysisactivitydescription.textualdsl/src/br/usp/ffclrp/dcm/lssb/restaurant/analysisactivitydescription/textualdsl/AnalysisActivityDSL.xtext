@@ -30,7 +30,7 @@ CommandLineEntryList returns analysisactivitydescription::CommandLineEntryList:
 
 
 StringListManipulator returns slm::StringListManipulator:
-	Join | PrependEach | AppendEach | AppendListWith | PrependListWith;
+	Join | PrependEach | AppendEach | AppendListWith | PrependListWith | ToFlag;
 
 EString returns ecore::EString:
 	MULTILINE_STRING | STRING | ID ;
@@ -113,7 +113,7 @@ EBigInteger returns ecore::EBigInteger:
 	'-'? INT;
 
 enum ParameterType returns analysisactivitydescription::ParameterType:
-				STRING = 'STRING' | INTEGER = 'INTEGER' | REAL = 'REAL';
+				STRING = 'STRING' | INTEGER = 'INTEGER' | REAL = 'REAL' | BOOLEAN = 'BOOLEAN';
 
     
 Constraint returns analysisactivitydescription::Constraint:
@@ -135,9 +135,17 @@ CommandLineTool returns analysisactivitydescription::CommandLineTool:
         )
         ENTITY_END
         )?
-        'commandLineTemplate' LIST_START commandLineTemplate+=CommandLineEntryList ( LIST_SEPARATOR commandLineTemplate+=CommandLineEntryList)* LIST_END 
+        'commandLineTemplate' 
+        LIST_START 
+        	commandLineTemplate+=CommandLineEntryList 
+        	( LIST_SEPARATOR commandLineTemplate+=CommandLineEntryList)* 
+        LIST_END 
 
-		('returns' ENTITY_START exitCodes+=ExitCode ( exitCodes+=ExitCode)* ENTITY_END )?
+		('returns' 
+			ENTITY_START 
+				exitCodes+=ExitCode ( exitCodes+=ExitCode)* 
+			ENTITY_END
+		)?
 	ENTITY_END;
 
 FilePath returns analysisactivitydescription::FilePath:
@@ -192,6 +200,15 @@ AppendListWith returns slm::AppendListWith:
 
 PrependListWith returns slm::PrependListWith:
 	'PrependListWith' value=EString;
+	
+ToFlag returns slm::ToFlag:
+	{slm::ToFlag} 'ToFlag' ENTITY_START
+		 (
+		 	('true:' ifTrue=EString)?
+		 	& ('false:' ifFalse=EString )?
+		 ) 
+	 ENTITY_END
+;
 
 enum TerminationStatus returns analysisactivitydescription::TerminationStatus:
 				SUCCEEDED = 'SUCCEEDED' | FAILED = 'FAILED';

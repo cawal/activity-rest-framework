@@ -54,6 +54,7 @@ public abstract class FunctionalEntityImpl extends IdentifiableElementImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Activity getActivity() {
 		if (eContainerFeatureID() != AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY__ACTIVITY) return null;
 		return (Activity)eInternalContainer();
@@ -74,6 +75,7 @@ public abstract class FunctionalEntityImpl extends IdentifiableElementImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer() || (eContainerFeatureID() != AnalysisActivityDescriptionPackage.FUNCTIONAL_ENTITY__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))

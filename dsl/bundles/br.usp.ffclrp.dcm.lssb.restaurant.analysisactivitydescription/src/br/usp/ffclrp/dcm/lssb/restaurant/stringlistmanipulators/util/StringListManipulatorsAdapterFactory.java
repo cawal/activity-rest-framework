@@ -92,6 +92,10 @@ public class StringListManipulatorsAdapterFactory extends AdapterFactoryImpl {
 				return createPrependListWithAdapter();
 			}
 			@Override
+			public Adapter caseToFlag(ToFlag object) {
+				return createToFlagAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +196,20 @@ public class StringListManipulatorsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPrependListWithAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag <em>To Flag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag
+	 * @generated
+	 */
+	public Adapter createToFlagAdapter() {
 		return null;
 	}
 

@@ -36,6 +36,7 @@ public class StringListManipulatorsTests extends TestSuite {
 		suite.addTestSuite(AppendEachTest.class);
 		suite.addTestSuite(AppendListWithTest.class);
 		suite.addTestSuite(PrependListWithTest.class);
+		suite.addTestSuite(ToFlagTest.class);
 		return suite;
 	}
 

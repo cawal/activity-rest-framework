@@ -115,6 +115,7 @@ public class ExitCodeImpl extends MinimalEObjectImpl.Container implements ExitCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigInteger getCode() {
 		return code;
 	}
@@ -124,6 +125,7 @@ public class ExitCodeImpl extends MinimalEObjectImpl.Container implements ExitCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCode(BigInteger newCode) {
 		BigInteger oldCode = code;
 		code = newCode;
@@ -136,6 +138,7 @@ public class ExitCodeImpl extends MinimalEObjectImpl.Container implements ExitCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getReportMessage() {
 		return reportMessage;
 	}
@@ -145,6 +148,7 @@ public class ExitCodeImpl extends MinimalEObjectImpl.Container implements ExitCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReportMessage(String newReportMessage) {
 		String oldReportMessage = reportMessage;
 		reportMessage = newReportMessage;
@@ -157,6 +161,7 @@ public class ExitCodeImpl extends MinimalEObjectImpl.Container implements ExitCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TerminationStatus getStatus() {
 		return status;
 	}
@@ -166,6 +171,7 @@ public class ExitCodeImpl extends MinimalEObjectImpl.Container implements ExitCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStatus(TerminationStatus newStatus) {
 		TerminationStatus oldStatus = status;
 		status = newStatus == null ? STATUS_EDEFAULT : newStatus;

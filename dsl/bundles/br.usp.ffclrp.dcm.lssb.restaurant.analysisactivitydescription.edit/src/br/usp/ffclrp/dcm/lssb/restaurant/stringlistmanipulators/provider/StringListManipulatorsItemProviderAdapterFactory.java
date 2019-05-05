@@ -186,11 +186,35 @@ public class StringListManipulatorsItemProviderAdapterFactory extends StringList
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ToFlagItemProvider toFlagItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.ToFlag}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createToFlagAdapter() {
+		if (toFlagItemProvider == null) {
+			toFlagItemProvider = new ToFlagItemProvider(this);
+		}
+
+		return toFlagItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -201,6 +225,7 @@ public class StringListManipulatorsItemProviderAdapterFactory extends StringList
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -249,6 +274,7 @@ public class StringListManipulatorsItemProviderAdapterFactory extends StringList
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -259,6 +285,7 @@ public class StringListManipulatorsItemProviderAdapterFactory extends StringList
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -269,6 +296,7 @@ public class StringListManipulatorsItemProviderAdapterFactory extends StringList
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
