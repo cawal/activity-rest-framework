@@ -9,8 +9,8 @@
 title: Activity-REST Framework
 email: ricardo.cawal@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  A framework for adapting command-line analysis tools as RESTful web services
-  using model-based development support.
+  A framework for facilitating the adaptation of command-line analysis tools
+  as RESTful web services through model-based development support.
 baseurl: "/activity-rest-framework" # the subpath of your site, e.g. /blog
 url: "https://cawal.github.io" # the base hostname & protocol for your site
 twitter_username: cawal
@@ -18,3 +18,7 @@ github_username:  cawal
 
 # Build settings
 markdown: kramdown
+collections:
+        rim:
+                output: true
+
