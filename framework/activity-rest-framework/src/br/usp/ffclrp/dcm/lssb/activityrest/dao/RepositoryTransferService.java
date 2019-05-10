@@ -6,6 +6,16 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 
 public class RepositoryTransferService {
 	
+	/**
+	 * Move an activity instance from a repository to another.
+	 * @param id the id of the instance in the `from` repository 
+	 * @param from the repository to remove the activity
+	 * @param to the repository to include the activity
+	 * @throws AnalysisActivityNotFoundException if the activity instance
+	 *  is not found in the `from`repository
+	 * @throws AnalysisActivityUpdateFailure if the activity instance cannot be 
+	 * created at the `to` repository 
+	 */
 	public static void moveInstance(String id, 
 			ActivityRepository from, 
 			ActivityRepository to) throws AnalysisActivityNotFoundException, AnalysisActivityUpdateFailure {
@@ -15,12 +25,4 @@ public class RepositoryTransferService {
 		from.delete(id);
 		
 	}
-	
-	
-	/*public static AnalysisActivity moveInstance(String id, 
-			FileSystemActivityRepository from, 
-			FileSystemActivityRepository to) throws AnalysisActivityNotFoundException {
-		return to.moveFrom(id, from);
-	}*/
-	
 }
