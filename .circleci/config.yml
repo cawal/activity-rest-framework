@@ -22,7 +22,6 @@ jobs:
     
     steps:
       - checkout
-      - run: echo "building"
       - run: pwd
       # Download and cache dependencies
 #      - restore_cache:
@@ -37,6 +36,6 @@ jobs:
 #          key: activityrest-dependencies-{{ checksum "pom.xml" }}
       # run tests!
       - run:
-           command: mvn clean install 
+           command: ./mvnw clean install 
 #      - run: mvn integration-test
 
