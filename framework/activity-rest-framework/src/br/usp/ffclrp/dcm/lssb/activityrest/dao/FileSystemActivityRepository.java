@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
@@ -164,6 +165,29 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		}
 		
 	}
+	
+	@Override
+	public void save(AnalysisActivity aa) throws AnalysisActivityUpdateFailure {
+		
+		if (aa == null)
+			throw new AnalysisActivityUpdateFailure();
+		
+		File analysisRoot = getAnalysisDirectoryInLocalStorage(aa.getId());
+		
+		if(!analysisRoot.exists()) analysisRoot.mkdirs();
+		
+		try {
+			saveParameters(aa);
+			saveInputDatasets(aa);
+			saveOutputDatasets(aa);
+			saveErrorReport(aa);
+			
+		} catch (Exception e) {
+			throw new AnalysisActivityUpdateFailure();
+		}
+				
+	}
+	
 	
 	/*
 	 * (non-Javadoc)

@@ -35,8 +35,8 @@ mvn package
 The `dsl` folder contains a number of Java projects related to the support for the Analysis Activity Description Language. 
 These projects include the AADL metamodel created using [EMF](https://www.eclipse.org/modeling/emf/), as well as the AADL textual grammar and supporting editor created using [Xtext](https://www.eclipse.org/Xtext/).
 
-The `framework`folder contains a number of Java projects related to the Activity-REST framework itself.
-These projects includes the main framework project, as well as a additional project for aggregating resources that facilitate Activity-REST service tests and a Maven archetype project to facilitate the creation of new Activity-REST services.
+The `framework` folder contains a number of Java projects related to the Activity-REST framework itself.
+These projects includes the main framework project, as well as a additional project for aggregating resources that facilitate Activity-REST service tests and a [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) project to facilitate the creation of new Activity-REST services.
 
 The `docs` folder contains the main documentation of the project. These docs are compiled using [Jekyll](https://jekyllrb.com/) in order to produce a [github.io site](https://cawal.github.io/activity-rest-framework/).
 

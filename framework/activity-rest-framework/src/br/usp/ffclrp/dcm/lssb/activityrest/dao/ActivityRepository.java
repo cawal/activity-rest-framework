@@ -2,6 +2,7 @@ package br.usp.ffclrp.dcm.lssb.activityrest.dao;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 
 public interface ActivityRepository {
@@ -33,6 +34,9 @@ public interface ActivityRepository {
 	 */
 	void update(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException;
+	
+	void save(AnalysisActivity aa)
+			throws AnalysisActivityUpdateFailure;
 	
 	/**
 	 * Deletes the analysis activity from the storage.

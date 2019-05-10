@@ -1,7 +1,9 @@
 package tests.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +21,8 @@ import org.junit.Test;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.RepositoryTransferService;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
@@ -109,6 +113,32 @@ public class FileSystemRepositoryTest {
 
 		assertEquals(5, aa2.getParameters().get("count"));
 		assertTrue(email.equalsIgnoreCase(aa2.getParameters().get("email").toString()));
+		
+	}
+	
+	@Test
+	public void testActivityTransferBetweenRepos() throws Exception {
+		File localStorage2 = new File("/tmp/dao_test_root_2");
+		localStorage2.mkdirs();
+		///java.nio.file.Files.createTempDirectory("dao_test").toFile();
+		ActivityRepository dao2 = new FileSystemActivityRepository(localStorage2, aaDesc);
+
+		String id = dao.create();
+		System.out.println(id);
+		
+		// transfer
+		RepositoryTransferService.moveInstance(id, dao, dao2);
+		
+		try{
+			dao.get(id);
+			fail();
+		} catch (Exception e) {
+		}
+		
+		AnalysisActivity inDao2 = dao2.get(id);
+		
+		assertNotNull(inDao2);
+		
 		
 	}
 	
