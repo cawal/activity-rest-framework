@@ -36,6 +36,6 @@ jobs:
 #          key: activityrest-dependencies-{{ checksum "pom.xml" }}
       # run tests!
       - run:
-           command: ./mvnw clean install 
+           command: mvn -DskipTests clean verify
 #      - run: mvn integration-test
 
