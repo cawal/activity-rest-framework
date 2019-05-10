@@ -146,7 +146,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	 * br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#update(br.usp
 	 * .ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity)
 	 */
-	@Override
+/*	@Override
 	public void update(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
 		
@@ -164,7 +164,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			throw new AnalysisActivityNotFoundException(aa.getId());
 		}
 		
-	}
+	}*/
 	
 	@Override
 	public void save(AnalysisActivity aa) throws AnalysisActivityUpdateFailure {

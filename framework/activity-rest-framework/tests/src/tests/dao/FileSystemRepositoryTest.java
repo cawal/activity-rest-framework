@@ -107,7 +107,7 @@ public class FileSystemRepositoryTest {
 		aa.getParameters().put("email", email);
 		aa.getParameters().put("count", "5");
 		
-		dao.update(aa);
+		dao.save(aa);
 		
 		AnalysisActivity aa2 = dao.get(aa.getId());
 
@@ -129,12 +129,14 @@ public class FileSystemRepositoryTest {
 		// transfer
 		RepositoryTransferService.moveInstance(id, dao, dao2);
 		
+		// The activity instance must not be found in the first DAO anymore
 		try{
 			dao.get(id);
 			fail();
 		} catch (Exception e) {
 		}
 		
+		// the acti must be found in the second dao
 		AnalysisActivity inDao2 = dao2.get(id);
 		
 		assertNotNull(inDao2);

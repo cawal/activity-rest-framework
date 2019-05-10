@@ -22,6 +22,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
@@ -86,8 +87,8 @@ public class ParameterSetResource {
 	public Response putAllParameters(Map<String, Object> map) {
 		aa.getParameters().putAll(map);
 		try {
-			analysisActivityDao.update(aa);
-		} catch (AnalysisActivityNotFoundException e) {
+			analysisActivityDao.save(aa);
+		} catch (AnalysisActivityUpdateFailure e) {
 			e.printStackTrace();
 			throw new ServerErrorException(500);
 		}
@@ -174,7 +175,7 @@ public class ParameterSetResource {
 			
 			aa.getParameters().put(parameterName, values);
 			
-			// verify if update was suceessfull
+			// verify if update was successfull
 			Object updatedParametersObject =
 					aa.getParameters().get(parameterName);
 			
@@ -195,13 +196,13 @@ public class ParameterSetResource {
 						parameterValue);
 			}
 			
-			analysisActivityDao.update(aa);
+			analysisActivityDao.save(aa);
 			return Response.ok().build();
 			
 		} catch (IllegalParameterException e) {
 			e.printStackTrace();
 			throw new BadRequestException();
-		} catch (AnalysisActivityNotFoundException e) {
+		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
 		}
 	}

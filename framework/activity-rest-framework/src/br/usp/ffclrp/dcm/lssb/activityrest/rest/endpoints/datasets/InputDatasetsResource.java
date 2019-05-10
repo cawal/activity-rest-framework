@@ -28,6 +28,7 @@ import org.apache.commons.io.IOUtils;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
@@ -146,14 +147,14 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			}
 			
 			d.getFiles().add(f);
-			analysisActivityDao.update(aa);
+			analysisActivityDao.save(aa);
 			
 			locationURI = UriBuilder.fromUri(this.absolutePathURI)
 					.path(fileName.toString())
 					.build();
 			
 			return Response.created(locationURI).build();
-		} catch (AnalysisActivityNotFoundException e) {
+		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
 		} catch (IOException e) {
 			throw new ServerErrorException(500);
@@ -199,14 +200,14 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			old.delete();
 			d.getFiles().add(f);
 			
-			analysisActivityDao.update(aa);
+			analysisActivityDao.save(aa);
 			
 			locationURI = UriBuilder.fromUri(this.absolutePathURI)
 					.path(fileName.toString())
 					.build();
 			
 			return Response.created(locationURI).build();
-		} catch (AnalysisActivityNotFoundException e) {
+		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
 		} catch (IOException e) {
 			throw new ServerErrorException(500);
@@ -232,8 +233,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		
 		d.getFiles().clear();
 		try {
-			analysisActivityDao.update(aa);
-		} catch (AnalysisActivityNotFoundException e) {
+			analysisActivityDao.save(aa);
+		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException(e);
 		}
 		
@@ -262,8 +263,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 				});
 		
 		try {
-			analysisActivityDao.update(aa);
-		} catch (AnalysisActivityNotFoundException e) {
+			analysisActivityDao.save(aa);
+		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException(e);
 		}
 		

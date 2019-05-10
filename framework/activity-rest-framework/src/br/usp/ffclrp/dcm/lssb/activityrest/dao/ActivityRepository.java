@@ -27,14 +27,11 @@ public interface ActivityRepository {
 			throws AnalysisActivityNotFoundException;
 	
 	/**
-	 * Updates the analysis activity in the persistent storage.
+	 * Saves/Updates the analysis activity in the persistent storage.
 	 * 
 	 * @param aa
-	 * @throws AnalysisActivityNotFoundException
+	 * @throws AnalysisActivityUpdateFailure
 	 */
-	void update(AnalysisActivity aa)
-			throws AnalysisActivityNotFoundException;
-	
 	void save(AnalysisActivity aa)
 			throws AnalysisActivityUpdateFailure;
 	
