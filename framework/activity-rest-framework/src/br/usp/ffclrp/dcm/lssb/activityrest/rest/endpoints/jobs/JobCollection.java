@@ -19,8 +19,11 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.io.FileUtils;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.RepositoryTransferService;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobFactory;
@@ -34,28 +37,26 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCan
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
 
-@Api
 public class JobCollection {
 	
 	@Context
 	UriInfo uriInfo;
 	Activity activityDescription;
 	
-	FileSystemActivityRepository nonExecutedDao;
+	ActivityRepository nonExecutedDao;
 	FileSystemActivityRepository runningDao;
-	FileSystemActivityRepository succeededDAO;
-	FileSystemActivityRepository failedDAO;
+	ActivityRepository succeededDAO;
+	ActivityRepository failedDAO;
 	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
 			new JobManagerImpl();
 	
 	public JobCollection(Activity activityDescription,
 			UriInfo uriInfo,
-			FileSystemActivityRepository nonExecutedAnalysisActivityDao,
+			ActivityRepository nonExecutedAnalysisActivityDao,
 			FileSystemActivityRepository runningAnalysisActivityDao,
-			FileSystemActivityRepository succeededAnalysisActivityDao,
-			FileSystemActivityRepository failedAnalysisActivityDao) {
+			ActivityRepository succeededAnalysisActivityDao,
+			ActivityRepository failedAnalysisActivityDao) {
 		
 		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
@@ -75,34 +76,31 @@ public class JobCollection {
 			
 			if (AnalysisActivityValidation.isReady(analysis)) {
 				// if analysis is ready, move it for the directory of executing
-				analysis =
-						runningDao.moveFrom(analysis.getId(), nonExecutedDao);
+				RepositoryTransferService.moveInstance(analysis.getId(),
+						nonExecutedDao, runningDao);
+				analysis = runningDao.get(analysisId);
 				
 				// get the new location
 				analysis = runningDao.get(analysisId);
-				File workingDirectory = 
-						runningDao.getAnalysisDirectoryInLocalStorage(analysisId);
+				File workingDirectory =
+						runningDao
+								.getAnalysisDirectoryInLocalStorage(analysisId);
 				
-				// create the job configuration
-				/*JobConfig jc = JobUtil.createJobConfig(analysis, workingDirectory);
-				
-				// start the analysis job or send a batch job and return the
-				// link for polling
-				jobManager.submit(analysisId, jc);*/
 				
 				// create the job
 				JobFactory jobFactory = new JobFactoryImpl();
-				Job job = jobFactory.createJob(analysis, analysis.getDescription().getFunctionalEntity(),workingDirectory);
+				Job job = jobFactory.createJob(analysis,
+						analysis.getDescription().getFunctionalEntity(),
+						workingDirectory);
 				// start the analysis job or send a batch job and return the
 				// link for polling
 				jobManager.submit(analysisId, job);
 				
 				URI jobURI = uriInfo.getAbsolutePath();
 				
-				AnalysisActivityRepresentation representation = 
+				AnalysisActivityRepresentation representation =
 						new AnalysisActivityRepresentation(analysisId,
-						AnalysisActivityStateRepresentation.RUNNING);
-				
+								AnalysisActivityStateRepresentation.RUNNING);
 				
 				return Response.created(jobURI).entity(representation).build();
 				
@@ -115,7 +113,10 @@ public class JobCollection {
 			throw new BadRequestException(e);
 		} catch (JobCreationFail e) {
 			e.printStackTrace();
-			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR,e);
+			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR, e);
+		} catch (AnalysisActivityUpdateFailure e) {
+			e.printStackTrace();
+			throw new BadRequestException(e);
 		}
 	}
 	
@@ -130,9 +131,8 @@ public class JobCollection {
 	public Response
 			poolProcessing(@PathParam("analysisID") String analysisId) {
 		
-		JobState jobState;
 		try {
-			jobState = jobManager.getState(analysisId);
+			JobState jobState = jobManager.getState(analysisId);
 			
 			switch (jobState) {
 			case RUNNING:
@@ -155,9 +155,9 @@ public class JobCollection {
 	@Path("{analysisID}")
 	public Response
 			cancelProcessing(@PathParam("analysisID") String analysisId) {
-		JobState jobState;
+
 		try {
-			jobState = jobManager.getState(analysisId);
+			JobState jobState = jobManager.getState(analysisId);
 			switch (jobState) {
 			case RUNNING:
 				return tryToCancelAndReturnResponse(analysisId);
@@ -174,7 +174,9 @@ public class JobCollection {
 		
 		try {
 			jobManager.cancel(analysisId);
-			nonExecutedDao.moveFrom(analysisId, runningDao);
+			//nonExecutedDao.moveFrom(analysisId, runningDao);
+			RepositoryTransferService.moveInstance(analysisId, runningDao,
+					nonExecutedDao);
 			URI analysisURI = uriInfo.getBaseUriBuilder()
 					.path("new-analyses")
 					.path(analysisId)
@@ -186,23 +188,23 @@ public class JobCollection {
 		}
 	}
 	
-
-	
-	private void moveAnalysisActivityForSuceeededCollection(String analysisId) {
+	private void moveAnalysisActivityForSuceeededCollection(String analysisId)
+			throws AnalysisActivityUpdateFailure {
 		try {
 			AnalysisActivity analysis = runningDao.get(analysisId);
-			analysis = succeededDAO.moveFrom(analysis.getId(), runningDao);
+			RepositoryTransferService.moveInstance(analysis.getId(), runningDao,
+					succeededDAO);
 		} catch (AnalysisActivityNotFoundException e) {
 			// already moved? do nothing
 		}
 	}
 	
-
-	
-	private void moveAnalysisActivityForFailedCollection(String analysisId) {
+	private void moveAnalysisActivityForFailedCollection(String analysisId)
+			throws AnalysisActivityUpdateFailure {
 		try {
 			AnalysisActivity analysis = runningDao.get(analysisId);
-			analysis = failedDAO.moveFrom(analysis.getId(), runningDao);
+			RepositoryTransferService.moveInstance(analysis.getId(), runningDao,
+					failedDAO);
 			
 		} catch (AnalysisActivityNotFoundException e) {
 			// already moved, do nothing
@@ -211,7 +213,7 @@ public class JobCollection {
 	
 	private Response responseForExecutingJob(String analysisId) {
 		
-		AnalysisActivityRepresentation representation = 
+		AnalysisActivityRepresentation representation =
 				new AnalysisActivityRepresentation(analysisId,
 						AnalysisActivityStateRepresentation.RUNNING);
 		
@@ -223,9 +225,10 @@ public class JobCollection {
 	
 	private Response processFailedJob(String analysisId) {
 		
-		moveAnalysisActivityForFailedCollection(analysisId);
-		
 		try {
+			
+			moveAnalysisActivityForFailedCollection(analysisId);
+			
 			AnalysisActivity analysis = failedDAO.get(analysisId);
 			File errorReportFile = analysis.getErrorReport();
 			String errorReport =
@@ -260,14 +263,21 @@ public class JobCollection {
 	
 	private Response processSucceededJob(String analysisId) {
 		
-		moveAnalysisActivityForSuceeededCollection(analysisId);
-		
-		URI succeededURI = uriInfo.getBaseUriBuilder()
-				.path("succeeded-analyses")
-				.path(analysisId)
-				.build();
-		
-		return Response.seeOther(succeededURI).build();
+		try {
+			moveAnalysisActivityForSuceeededCollection(analysisId);
+			
+			URI succeededURI = uriInfo.getBaseUriBuilder()
+					.path("succeeded-analyses")
+					.path(analysisId)
+					.build();
+			
+			return Response.seeOther(succeededURI).build();
+			
+		} catch (AnalysisActivityUpdateFailure e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServerErrorException(500);
+		}
 	}
 	
 }

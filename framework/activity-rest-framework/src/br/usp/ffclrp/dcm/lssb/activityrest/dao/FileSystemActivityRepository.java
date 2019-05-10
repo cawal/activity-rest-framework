@@ -491,9 +491,9 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	
 	private void createOutputDatasetsDirectories(File analysisRoot) {
 		File outputSubdirectory =
-				new File(analysisRoot, inputDatasetsSubpath);
+				new File(analysisRoot, outputDatasetsSubpath);
 		if (!outputSubdirectory.exists()) {
-			outputSubdirectory.mkdir();
+			outputSubdirectory.mkdirs();
 		}
 		
 		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
