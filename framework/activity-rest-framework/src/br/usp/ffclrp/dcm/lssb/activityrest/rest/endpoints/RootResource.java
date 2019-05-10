@@ -110,44 +110,14 @@ public class RootResource {
 		initialize();
 		return new JobCollection(aaDesc,
 				uriInfo,
-				(FileSystemActivityRepository) nonExecutedDao,
+				nonExecutedDao,
 				(FileSystemActivityRepository) runningDao,
-				(FileSystemActivityRepository) succeededDao,
-				(FileSystemActivityRepository) failedDao);
+				succeededDao,
+				failedDao);
 	}
 	
 	
-	/*protected void initializeFileSystemDaos(
-			FileSystemRepositoryProperties properties) {
-		
-		File nonExecutedAnalysisActivityDaoRoot =
-				new File(properties.getNonExecutedAnalysesRootDirectory());
-		
-		this.nonExecutedDao =
-				new FileSystemActivityRepository(
-						nonExecutedAnalysisActivityDaoRoot, aaDesc);
-		
-		File succeededAnalysisActivityDaoRoot =
-				new File(properties.getSucceededAnalysesRootDirectory());
-		
-		this.succeededDao =
-				new FileSystemActivityRepository(
-						succeededAnalysisActivityDaoRoot, aaDesc);
-		
-		File failedAnalysisActivityDaoRoot =
-				new File(properties.getFailedAnalysesRootDirectory());
-		
-		this.failedDao =
-				new FileSystemActivityRepository(failedAnalysisActivityDaoRoot,
-						aaDesc);
-		
-		File runningAnalysisActivityDaoRoot =
-				new File(properties.getRunningAnalysesRootDirectory());
-		
-		this.runningDao =
-				new FileSystemActivityRepository(runningAnalysisActivityDaoRoot,
-						aaDesc);
-	}*/
+
 	
 	private List<Link> getRootResourceHateoasControls() {
 		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
@@ -164,20 +134,7 @@ public class RootResource {
 				.rel(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION)
 				.build();
 		links.add(createAnalysislink);
-		
-		/*uriBuilder = uriInfo.getAbsolutePathBuilder();
-		Link swaggerJson = Link.fromUri(uriBuilder
-				.path("swagger.json").build())
-				.rel(ResourceRelations.SWAGGER_JSON)
-				.build();
-		links.add(swaggerJson);
-		
-		uriBuilder = uriInfo.getAbsolutePathBuilder();
-		Link swaggerYaml = Link.fromUri(uriBuilder
-				.path("swagger.yaml").build())
-				.rel(ResourceRelations.SWAGGER_YAML)
-				.build();
-		links.add(swaggerYaml);*/
+
 		return links;
 	}
 	

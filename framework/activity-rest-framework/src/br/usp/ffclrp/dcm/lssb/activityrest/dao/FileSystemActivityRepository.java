@@ -209,17 +209,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	}
 	
 	public File getAnalysisDirectoryInLocalStorage(String analysisId) {
-		File analysisRoot = new File(localStorage, analysisId);
-		return analysisRoot;
-	}
-	
-	public AnalysisActivity moveFrom(String analysisId,
-			FileSystemActivityRepository from)
-			throws AnalysisActivityNotFoundException {
-		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
-		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);
-		fromDir.renameTo(toDir);
-		return this.get(analysisId);
+		return new File(localStorage, analysisId);
 	}
 	
 	private void setDescriptionForAnalysis(AnalysisActivity aa) {
@@ -255,12 +245,6 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		}
 		
 		// save/overwrite parameters
-		/*
-		 * Map<String, Object> parametersMap =
-		 * ParametersUtil
-		 * .parameterDescriptionsToMap(aaDesc.getParameters());
-		 */
-		
 		FileWriter parametersStream = new FileWriter(parametersFile);
 		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
