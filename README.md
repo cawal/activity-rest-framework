@@ -8,7 +8,8 @@ The Activity-REST framework facilitates the development of RESTful adapter servi
 ## Usage
 
 The Activity-REST framework was not published to a Maven repository yet.
-Thus, in order to use it for your projects, first download the repository and install the bundles at your user's local repository using:
+Thus, in order to use it for your projects, first download the repository and install the bundles at your user's local repository.
+You can follow the following commands for this step:
 
 ```bash
 git clone https://github.com/cawal/activity-rest-framework
@@ -31,17 +32,23 @@ mvn archetype:generate \
 	-DarchetypeVersion=1.0-SNAPSHOT \
 	-DgroupId=${MY_GROUP_ID} \
 	-DartifactId=${MY_SERVICE_ID} \
-	-Dversion=$M{MY_VERSION}
+	-Dversion=${MY_VERSION}
 ```
 
-Then, edit the `activity.aadl` file in the main service folder in order to describe the analysis activity and the underlying command line tool. Finally, compile and package the service code using Maven:
+Then, edit the `activity.aadl` file in the main service folder in order to describe the analysis activity and the underlying command line tool.
+Information obout the Analysis Activity Description Language can be found [here](https://cawal.github.io/activity-rest-framework/aadl).
+Finally, compile the service code and obtain the  deployable WAR using Maven:
 
 ```bash
 mvn clean
 mvn package
 ```
 
+The produced WAR can be deployed to a Java/Jakarta EE application server.
+Nowadays, it is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0-doc/index.html).
+
 ## Repository organization
+
 
 The `dsl` folder contains a number of Java projects related to the support for the Analysis Activity Description Language. 
 These projects include the AADL metamodel created using [EMF](https://www.eclipse.org/modeling/emf/), as well as the AADL textual grammar and supporting editor created using [Xtext](https://www.eclipse.org/Xtext/).
@@ -50,6 +57,9 @@ The `framework` folder contains a number of Java projects related to the Activit
 These projects includes the main framework project, as well as a additional project for aggregating resources that facilitate Activity-REST service tests and a [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) project to facilitate the creation of new Activity-REST services.
 
 The `docs` folder contains the main documentation of the project. These docs are compiled using [Jekyll](https://jekyllrb.com/) in order to produce a [github.io site](https://cawal.github.io/activity-rest-framework/).
+
+The contents in the main folders are organized following independent schemas.
+Refer to the README in each folder for more information about its rationale.
 
 ## Contributing
 
