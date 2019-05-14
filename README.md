@@ -7,7 +7,18 @@ The Activity-REST framework facilitates the development of RESTful adapter servi
 
 ## Usage
 
-The easiest way to use the Activity-REST framework to create a new analysis service is to use the provided Maven artifact.
+The Activity-REST framework was not published to a Maven repository yet.
+Thus, in order to use it for your projects, first download the repository and install the bundles at your user's local repository using:
+
+```bash
+git clone https://github.com/cawal/activity-rest-framework
+cd activity-rest-framework
+mvn clean install -DskipTests
+```
+
+Then, the easiest way to use the Activity-REST framework to create a new analysis service is to use the provided Maven artifact.
+In the example bellow, set the values for the variables `MY_GROUP_ID`, `MY_SERVICE_ID` and `MY_VERSION` with the desired values for these properties in your service. 
+
 
 ```bash
 MY_GROUP_ID=<base package identifier>
@@ -16,7 +27,7 @@ MY_VERSION=<a version string>
 
 mvn archetype:generate \
 	-DarchetypeGroupId=activity-rest \
-	-DarchetypeArtifactId=activity-rest-archetype \
+	-DarchetypeArtifactId=archetype \
 	-DarchetypeVersion=1.0-SNAPSHOT \
 	-DgroupId=${MY_GROUP_ID} \
 	-DartifactId=${MY_SERVICE_ID} \
@@ -42,4 +53,4 @@ The `docs` folder contains the main documentation of the project. These docs are
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests.
+Feel free to [submit issues and enhancement requests](https://github.com/cawal/activity-rest-framework/issues).

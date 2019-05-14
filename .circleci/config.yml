@@ -39,3 +39,10 @@ jobs:
            command: mvn -DskipTests clean verify
 #      - run: mvn integration-test
 
+  testArchetype:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+    working_durectory: ~/repo
+    steps:
+      - echo "Write archetype test logic: Use artifact an successfully build service"
