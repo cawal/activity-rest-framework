@@ -52,4 +52,6 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test_archetype
+      - test_archetype:
+          requires:
+            - build
