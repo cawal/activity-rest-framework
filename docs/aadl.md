@@ -21,8 +21,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 For our purposes, an analysis activity consists of a operation defined to be executed over a number of initial input datasets in order to obtain a number of output datasets.
 A input dataset consists of an ordered list of one or more files containing  biological information that are read during the analysis activity execution. 
-The analysis activity execution may requires zero or more input datasets, each associated to an identifier.
-A output dataset consists of a identified of one or more files containing biological information that are written during the analysis activity execution.
+The analysis activity execution requires zero or more input datasets, each associated to an identifier.
+A output dataset consists of one or more files containing biological information that are written during the analysis activity execution.
 The analysis activity execution MUST create one or more output datasets, each associated to an identifier.
 The intersection of the set of files present in an analysis activity instance's input datasets with the set of files produced for the analysis activity instance's output datasets MUST be empty.
 Further, Input dataset identifiers and output dataset identifiers are unique within the identifiers defined by the analysis activity.
