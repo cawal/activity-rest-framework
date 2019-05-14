@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -22,7 +22,6 @@ jobs:
     
     steps:
       - checkout
-      - run: echo "building"
       - run: pwd
       # Download and cache dependencies
 #      - restore_cache:
@@ -37,6 +36,22 @@ jobs:
 #          key: activityrest-dependencies-{{ checksum "pom.xml" }}
       # run tests!
       - run:
-           command: mvn -DskipTests clean verify 
+           command: mvn -DskipTests clean verify
 #      - run: mvn integration-test
 
+  test_archetype:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+    steps:
+      - run: echo "Write archetype test logic Use artifact an successfully build service"
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test_archetype:
+          requires:
+            - build

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
@@ -145,7 +146,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	 * br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#update(br.usp
 	 * .ffclrp.dcm.lssb.restaurant.analysisactivitymodel.AnalysisActivity)
 	 */
-	@Override
+/*	@Override
 	public void update(AnalysisActivity aa)
 			throws AnalysisActivityNotFoundException {
 		
@@ -163,7 +164,30 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			throw new AnalysisActivityNotFoundException(aa.getId());
 		}
 		
+	}*/
+	
+	@Override
+	public void save(AnalysisActivity aa) throws AnalysisActivityUpdateFailure {
+		
+		if (aa == null)
+			throw new AnalysisActivityUpdateFailure();
+		
+		File analysisRoot = getAnalysisDirectoryInLocalStorage(aa.getId());
+		
+		if(!analysisRoot.exists()) analysisRoot.mkdirs();
+		
+		try {
+			saveParameters(aa);
+			saveInputDatasets(aa);
+			saveOutputDatasets(aa);
+			saveErrorReport(aa);
+			
+		} catch (Exception e) {
+			throw new AnalysisActivityUpdateFailure();
+		}
+				
 	}
+	
 	
 	/*
 	 * (non-Javadoc)
@@ -185,17 +209,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	}
 	
 	public File getAnalysisDirectoryInLocalStorage(String analysisId) {
-		File analysisRoot = new File(localStorage, analysisId);
-		return analysisRoot;
-	}
-	
-	public AnalysisActivity moveFrom(String analysisId,
-			FileSystemActivityRepository from)
-			throws AnalysisActivityNotFoundException {
-		File fromDir = from.getAnalysisDirectoryInLocalStorage(analysisId);
-		File toDir = this.getAnalysisDirectoryInLocalStorage(analysisId);
-		fromDir.renameTo(toDir);
-		return this.get(analysisId);
+		return new File(localStorage, analysisId);
 	}
 	
 	private void setDescriptionForAnalysis(AnalysisActivity aa) {
@@ -231,12 +245,6 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		}
 		
 		// save/overwrite parameters
-		/*
-		 * Map<String, Object> parametersMap =
-		 * ParametersUtil
-		 * .parameterDescriptionsToMap(aaDesc.getParameters());
-		 */
-		
 		FileWriter parametersStream = new FileWriter(parametersFile);
 		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
@@ -467,9 +475,9 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	
 	private void createOutputDatasetsDirectories(File analysisRoot) {
 		File outputSubdirectory =
-				new File(analysisRoot, inputDatasetsSubpath);
+				new File(analysisRoot, outputDatasetsSubpath);
 		if (!outputSubdirectory.exists()) {
-			outputSubdirectory.mkdir();
+			outputSubdirectory.mkdirs();
 		}
 		
 		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc

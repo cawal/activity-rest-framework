@@ -17,6 +17,8 @@ import com.tngtech.archunit.lang.ArchRule;
 @RunWith(ArchUnitRunner.class)
 @AnalyzeClasses(packages = "br.usp.ffclrp.dcm.lssb.activityrest")
 public class ArchitectureTest {
+	
+	
 	@ArchTest
 	public static ArchRule endpointsPackage =
 			classes().that().areAnnotatedWith(Path.class)
