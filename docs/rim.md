@@ -8,7 +8,6 @@ The RESTful Interaction Model for Bioinformatics Analysis Activities (RIM) aims 
 * TOC
 {:toc}
 
-## Definition of an analysis activity (instance)
 
 ## Structure and addressing of the resources in a RIM-compliant service
 
