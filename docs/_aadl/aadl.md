@@ -34,8 +34,6 @@ For our requirements, the value  provided for an execution parameters MUST NOT c
 
 ## Creating an AADL description for a analysis activity
 
-A EBNF grammar for the Analysis Activity Description Language is [provided](./aadl/bnf) and may be consulted for further understanding of the language. 
-
 ### Document structure
 
 In the present version, the AADL description is a single document that abstractly models an analysis activity and a command line tool invocation. 
@@ -191,17 +189,129 @@ The whole section defines a string list that is passed to the command line tool 
 
 
 Different methods can be used to create the initial value for a argument sub-list. 
-Each method is denoted by a special keyword in the `commandLineTemplate [ ]` section:
+Each method is denoted by a special keyword in the `commandLineTemplate [ ]` section.
 
+- **Execution parameter values**: Acts as a 
+- **Input/Output dataset file lists**:
+- **Literal value lists**: Allow to add a sub-list with literal (string) values.
 
-- `parameter <parameter-id>`: Defines a sub-list based on the informed values for a execution parameter.
-- `dataset <dataset-id>`: Defines a sub-list based on the paths of the files submitted to a input dataset or the path of the file that will be created for a output dataset.
-- `literal [ <comma separated string list> ]`: Defines  a initial sub-list containing literal string values.
-
-
-The argument sub-list can be further processed using string list manipulators.
 The pipe symbol (`|`) is used for add `StringListManipulators` to process the templated sub-list.
-A [complete list of StringListManipulators](./aadl/string-list-manipulators) is provided, showing their syntaxes and some examples.
+
+### String List Manipulators
+
+The following string list manipulators are available:
+
+#### Join
+Used to join all the current sub-list values using a delimiter.
+A list with only one item is returned.
+	
+Syntax: `Join 'delimiter'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| Join ':' // returns the sub-list ['a:b:c'] 
+	]
+```
+
+#### PrependEach
+
+Used to prepend a string to each item of the current sub-list.
+A list with the same number of items is returned.
+
+Syntax: `PrependEach 'prefix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| PrependEach 'P' // returns the sub-list ['Pa','Pb', 'Pc'] 
+	]
+```
+
+#### AppendEach
+
+Used to append a string to each item of the current sub-list.
+A list with the same number of items is returned.
+
+Syntax: `AppendEach 'sulfix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| AppendEach 'S' // returns the sub-list ['aS','bS', 'cS'] 
+	]
+```
+
+#### PrependListWith
+
+Used to prepend a string to the head of the current sub-list.
+A list with N+1 values is returned.
+The current list items are not changed.
+
+Syntax: `PrependListWith 'prefix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| PrependListWith 'P' // returns the sub-list ['P', 'a','b', 'c'] 
+	]
+```
+
+#### AppendListWith
+
+Used to append a string to the tail of the current sub-list.
+A list with N+1 values is returned.
+The current list items are not changed.
+
+Syntax: `AppendListWith 'prefix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| AppendListWith 'S' // returns the sub-list ['a','b', 'c','S'] 
+	]
+```
+
+#### ToFlag
+
+Used to substitute each BOOLEAN value in the current sub-list to a string value.
+A list with the same number of items (or less) is returned.
+
+This manipulator is useful for tools that uses flags to activate/deactivate features.
+Two fields are available: `ifTrue` is the string that is returned if the current list value is `true`. 
+`ifFalse` is the string that is returned otherwise.
+If one of these fields is not informed, the produced sub-list will not contain a element for the provided case, suppressing the value. 
+
+Syntax:
+
+`ToFlag { ifTrue: 'value-if-true'  }`: returns `'value-if-true'` for each item of the current list that is `true`, suppresses the value otherwise. 
+
+`ToFlag { ifFalse: 'value-if-false }`: returns `'value-if-false'` for each item of the current list that is `false`, suppresses the value otherwise.
+
+`ToFlag { ifTrue: 'value-if-true' ifFalse: 'value-if-false }`: returns values for both cases;
+
+
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		parameter use-adjust // is defined as BOOLEAN [1,1]
+			| ToFlag {ifTrue: '--use-adj' ifFalse: '--dont-adj' }
+	]
+```
+
+
 
 ## AADL description examples
 
