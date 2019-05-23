@@ -25,6 +25,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.RepositoryTransferService;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobFactory;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
@@ -32,7 +33,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationF
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobFactoryImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobManagerImpl;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation.AnalysisActivityValidation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
@@ -74,7 +74,7 @@ public class JobCollection {
 			AnalysisActivity analysis =
 					nonExecutedDao.get(analysisId);
 			
-			if (AnalysisActivityValidation.isReady(analysis)) {
+			if (ValidationService.isReady(analysis)) {
 				// if analysis is ready, move it for the directory of executing
 				RepositoryTransferService.moveInstance(analysis.getId(),
 						nonExecutedDao, runningDao);

@@ -1,6 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemRepositoryProperties;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses.FailedAnalysesCollection;
@@ -39,11 +37,12 @@ import io.swagger.annotations.Api;
 @Path("/")
 @RequestScoped
 public class RootResource {
-	@Context
-	UriInfo uriInfo;
 	
 	@Context
 	Application app;
+	
+	@Context
+	UriInfo uriInfo;
 	
 	ActivityRestConfig config;
 	

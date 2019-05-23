@@ -3,6 +3,8 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest;
 import java.util.Map;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.InputDatasetValidator;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidator;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import lombok.Data;
 

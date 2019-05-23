@@ -200,10 +200,12 @@ Each method is denoted by a special keyword in the `commandLineTemplate [ ]` sec
 
 
 The argument sub-list can be further processed using string list manipulators.
-The pipe symbol (`|`) is used for add `StringListManipulators` to process the templated sub-list.
+A string list manipulator receives an argument sub-list and executes an operation on it, producing a resulting sub-list that may be used by a subsequent string list manipulator.
+The pipe symbol (`|`) is used for concatenate the string list manipulators to process argument sub-lists.
 A [complete list of StringListManipulators](./aadl/string-list-manipulators) is provided, showing their syntaxes and some examples.
 
-## AADL description examples
+
+## An AADL description example
 
 The following AADL description presents the activity *nucleotide local alignment*, that is supported by the BLAST-N analysis tool.
 
