@@ -40,7 +40,7 @@ mvn archetype:generate \
 ```
 
 Then, edit the `activity.aadl` file in the main service folder in order to describe the analysis activity and the underlying command line tool.
-Information obout the Analysis Activity Description Language can be found [here](https://cawal.github.io/activity-rest-framework/aadl).
+Information about the Analysis Activity Description Language can be found [here](https://cawal.github.io/activity-rest-framework/aadl).
 Finally, compile the service code and obtain the  deployable WAR using Maven:
 
 ```bash
@@ -54,7 +54,8 @@ Nowadays, it is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0
 
 ## Architecture of an Activity-REST service
 
-The following figure presents the main components of an  Activity-REST adapter service.
+The following figure presents the main components of an Activity-REST RIM-compliant adapter service.
+
 
 ![Overview of an Activity-REST service](./activityrest/img/components-c4.png)
 
