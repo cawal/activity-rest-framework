@@ -207,8 +207,38 @@ A [complete list of StringListManipulators](./aadl/string-list-manipulators) is 
 
 ## An AADL description example
 
+An example is probably the easiest way to understand the syntax and semantics of an AADL description.
 The following AADL description presents the activity *nucleotide local alignment*, that is supported by the BLAST-N analysis tool.
+The Basic Local Alignment Search Tool (BLAST)  is a CLI tool used to perform searches and sequence alignments through a similarity score that prioritizes conserved sub-sequences rather than a global alignment score, since conserved sub-sequences may configure putative functional domains.    
+In its simplest use, BLAST-N receives a text-based dataset input dataset (FASTA format) containing the sequence(s) to query the database for homologues.
+Additionally, it also receives an identifier of the desired database as an execution parameter.
+These databases must be deployed in the host machine before being used.
+After execution, a dataset containing the best scored alignments is created.  
 
+In the next code box is presented an example of the command line invocation of the BLAST-N tool.
+In this example,  a file named `sequence.fa` contains the sequences to query database `nt`.
+The file containing the output of the search, named `result`, is created after the successful termination of the processing.
+
+```bash
+blastn --d nt --query sequence.fa --out result 
+```
+
+The next code box depicts the description of the activity *nucleotide local alignment* using BLAST-N in AADL.
+It first declares the activity.
+Then, it declares the input datasets, defining that the activity is performed on a FASTA file with a sequence of interest  (dataset `query-sequence`).
+Next lines declare the parameters used for the activity, which takes as parameter a string that identifies the specific sequence database to be queried (parameter `queried-database`).
+The declaration of the produced output datasets follows, and defines that this activity produces only one dataset  (dataset `result`), which consists of a single file.
+Finally, the functional entity that supports the activity is specified, being a command line tool identified as `blastn`.
+
+The command line template used for calling the `blastn` tool is presented.
+Three sub-lists are created to define the invocation of `blastn`: 
+- the database identifier, provided for the `queried-database` execution parameter, prefixed by the `-d` literal argument;
+- the location of the file provided for the `query-sequence` dataset prefixed by the `--query` literal argument;
+- the location of the file created by the tool for the `result` output dataset, prefixed by the `--out` literal argument.
+
+For example, if the value `nt` is submitted for the parameter `queried-database` and the file `sequences.fa` is submitted for the dataset `query-sequence`, the `blastn` tool is called with the argument list `["-d", "nt", "-query", "sequences.fa", "-out", "result"]`.  
+This is similar to calling the command line presented previously. 
+Finally, all the exit codes `blastn` can return are defined and associated to successful or failed terminations, also providing a report message to give additional information  on the error.
 
 
 ```aadl
