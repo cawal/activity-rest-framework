@@ -19,8 +19,10 @@ github_username:  cawal
 # Build settings
 markdown: kramdown
 collections:
-        rim:
-                output: true
-        aadl:
-                output: true
+  rim:
+    output: true
+  aadl:
+    output: tr
+  activityrest:
+    output: true
 

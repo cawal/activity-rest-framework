@@ -51,6 +51,13 @@ mvn package
 The produced WAR can be deployed to a Java/Jakarta EE application server.
 Nowadays, it is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0-doc/index.html).
 
+
+## Architecture of an Activity-REST service
+
+The following figure presents the main components of an  Activity-REST adapter service.
+
+![Overview of an Activity-REST service](./activityrest/img/components-c4.png)
+
 ## Contributing
 
 Feel free to [submit issues and enhancement requests](https://github.com/cawal/activity-rest-framework/issues).
