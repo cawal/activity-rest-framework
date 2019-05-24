@@ -34,8 +34,6 @@ For our requirements, the value  provided for an execution parameters MUST NOT c
 
 ## Creating an AADL description for a analysis activity
 
-A EBNF grammar for the Analysis Activity Description Language is [provided](./aadl/bnf) and may be consulted for further understanding of the language. 
-
 ### Document structure
 
 In the present version, the AADL description is a single document that abstractly models an analysis activity and a command line tool invocation. 
@@ -191,54 +189,134 @@ The whole section defines a string list that is passed to the command line tool 
 
 
 Different methods can be used to create the initial value for a argument sub-list. 
-Each method is denoted by a special keyword in the `commandLineTemplate [ ]` section:
+Each method is denoted by a special keyword in the `commandLineTemplate [ ]` section.
 
+- **Execution parameter values**: Acts as a 
+- **Input/Output dataset file lists**:
+- **Literal value lists**: Allow to add a sub-list with literal (string) values.
 
-- `parameter <parameter-id>`: Defines a sub-list based on the informed values for a execution parameter.
-- `dataset <dataset-id>`: Defines a sub-list based on the paths of the files submitted to a input dataset or the path of the file that will be created for a output dataset.
-- `literal [ <comma separated string list> ]`: Defines  a initial sub-list containing literal string values.
+The pipe symbol (`|`) is used for add `StringListManipulators` to process the templated sub-list.
 
+### String List Manipulators
 
-The argument sub-list can be further processed using string list manipulators.
-A string list manipulator receives an argument sub-list and executes an operation on it, producing a resulting sub-list that may be used by a subsequent string list manipulator.
-The pipe symbol (`|`) is used for concatenate the string list manipulators to process argument sub-lists.
-A [complete list of StringListManipulators](./aadl/string-list-manipulators) is provided, showing their syntaxes and some examples.
+The following string list manipulators are available:
 
+#### Join
+Used to join all the current sub-list values using a delimiter.
+A list with only one item is returned.
+	
+Syntax: `Join 'delimiter'`
 
-## An AADL description example
-
-An example is probably the easiest way to understand the syntax and semantics of an AADL description.
-The following AADL description presents the activity *nucleotide local alignment*, that is supported by the BLAST-N analysis tool.
-The Basic Local Alignment Search Tool (BLAST)  is a CLI tool used to perform searches and sequence alignments through a similarity score that prioritizes conserved sub-sequences rather than a global alignment score, since conserved sub-sequences may configure putative functional domains.    
-In its simplest use, BLAST-N receives a text-based dataset input dataset (FASTA format) containing the sequence(s) to query the database for homologues.
-Additionally, it also receives an identifier of the desired database as an execution parameter.
-These databases must be deployed in the host machine before being used.
-After execution, a dataset containing the best scored alignments is created.  
-
-In the next code box is presented an example of the command line invocation of the BLAST-N tool.
-In this example,  a file named `sequence.fa` contains the sequences to query database `nt`.
-The file containing the output of the search, named `result`, is created after the successful termination of the processing.
-
-```bash
-blastn --d nt --query sequence.fa --out result 
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| Join ':' // returns the sub-list ['a:b:c'] 
+	]
 ```
 
-The next code box depicts the description of the activity *nucleotide local alignment* using BLAST-N in AADL.
-It first declares the activity.
-Then, it declares the input datasets, defining that the activity is performed on a FASTA file with a sequence of interest  (dataset `query-sequence`).
-Next lines declare the parameters used for the activity, which takes as parameter a string that identifies the specific sequence database to be queried (parameter `queried-database`).
-The declaration of the produced output datasets follows, and defines that this activity produces only one dataset  (dataset `result`), which consists of a single file.
-Finally, the functional entity that supports the activity is specified, being a command line tool identified as `blastn`.
+#### PrependEach
 
-The command line template used for calling the `blastn` tool is presented.
-Three sub-lists are created to define the invocation of `blastn`: 
-- the database identifier, provided for the `queried-database` execution parameter, prefixed by the `-d` literal argument;
-- the location of the file provided for the `query-sequence` dataset prefixed by the `--query` literal argument;
-- the location of the file created by the tool for the `result` output dataset, prefixed by the `--out` literal argument.
+Used to prepend a string to each item of the current sub-list.
+A list with the same number of items is returned.
 
-For example, if the value `nt` is submitted for the parameter `queried-database` and the file `sequences.fa` is submitted for the dataset `query-sequence`, the `blastn` tool is called with the argument list `["-d", "nt", "-query", "sequences.fa", "-out", "result"]`.  
-This is similar to calling the command line presented previously. 
-Finally, all the exit codes `blastn` can return are defined and associated to successful or failed terminations, also providing a report message to give additional information  on the error.
+Syntax: `PrependEach 'prefix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| PrependEach 'P' // returns the sub-list ['Pa','Pb', 'Pc'] 
+	]
+```
+
+#### AppendEach
+
+Used to append a string to each item of the current sub-list.
+A list with the same number of items is returned.
+
+Syntax: `AppendEach 'sulfix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| AppendEach 'S' // returns the sub-list ['aS','bS', 'cS'] 
+	]
+```
+
+#### PrependListWith
+
+Used to prepend a string to the head of the current sub-list.
+A list with N+1 values is returned.
+The current list items are not changed.
+
+Syntax: `PrependListWith 'prefix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| PrependListWith 'P' // returns the sub-list ['P', 'a','b', 'c'] 
+	]
+```
+
+#### AppendListWith
+
+Used to append a string to the tail of the current sub-list.
+A list with N+1 values is returned.
+The current list items are not changed.
+
+Syntax: `AppendListWith 'prefix'`
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		literal ['a', 'b', 'c' ]
+			| AppendListWith 'S' // returns the sub-list ['a','b', 'c','S'] 
+	]
+```
+
+#### ToFlag
+
+Used to substitute each BOOLEAN value in the current sub-list to a string value.
+A list with the same number of items (or less) is returned.
+
+This manipulator is useful for tools that uses flags to activate/deactivate features.
+Two fields are available: `ifTrue` is the string that is returned if the current list value is `true`. 
+`ifFalse` is the string that is returned otherwise.
+If one of these fields is not informed, the produced sub-list will not contain a element for the provided case, suppressing the value. 
+
+Syntax:
+
+`ToFlag { ifTrue: 'value-if-true'  }`: returns `'value-if-true'` for each item of the current list that is `true`, suppresses the value otherwise. 
+
+`ToFlag { ifFalse: 'value-if-false }`: returns `'value-if-false'` for each item of the current list that is `false`, suppresses the value otherwise.
+
+`ToFlag { ifTrue: 'value-if-true' ifFalse: 'value-if-false }`: returns values for both cases;
+
+
+
+Example:
+```aadl
+...
+	commandLineTemplate [
+		parameter use-adjust // is defined as BOOLEAN [1,1]
+			| ToFlag {ifTrue: '--use-adj' ifFalse: '--dont-adj' }
+	]
+```
+
+
+
+## AADL description examples
+
+The following AADL description presents the activity *nucleotide local alignment*, that is supported by the BLAST-N analysis tool.
+
 
 
 ```aadl

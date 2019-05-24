@@ -1,12 +1,17 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.rest.analysisvalidation;
+package br.usp.ffclrp.dcm.lssb.activityrest.domain.validation;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 
 // TODO Refactor the validation engine to include other constraints
-public class AnalysisActivityValidation {
+public class ValidationService {
 	
 	/**
 	 * 
@@ -42,5 +47,27 @@ public class AnalysisActivityValidation {
 		
 	}
 	
+	public static ValidationResult validateParameters(
+			AnalysisActivity activityInstance,
+			List<Parameter> parameterDescriptions,
+			Map<String,ParameterValidator> parameterValidators
+			) {
+		
+		//TODO write the new validation process 
+		
+		return new ValidationResult(true, Optional.empty());
+	}
 
+	public static ValidationResult validateInputDatasets(
+			AnalysisActivity activityInstance,
+			List<InputDataset> datasetDescription,
+			Map<String,InputDatasetValidator> inputDatasetValidators
+			) {
+		
+			
+		//TODO write the new validation process 
+		
+		return new ValidationResult(true, Optional.empty());
+	}
+	
 }
