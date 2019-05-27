@@ -48,16 +48,11 @@ mvn clean
 mvn package
 ```
 
-The produced WAR can be deployed to a Java/Jakarta EE application server.
-Nowadays, it is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0-doc/index.html).
+The produced WAR can be deployed to a Java/Jakarta EE application server **which has the analysis tool already installed** (The analysis tool must be in the application path of the application server and be executable).
+The service root will be accessible at `<host>:<port>/${MY_SERVICE_ID/}`, where `<host>`and  `<port>` are the host and port binded to the application server and `${MY_SERVICE_ID}` is the service id used to create the project using the Maven archetype.
+Nowadays, the Activity-REST framework is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0-doc/index.html).
 
-
-## Architecture of an Activity-REST service
-
-The following figure presents the main components of an Activity-REST RIM-compliant adapter service.
-
-
-![Overview of an Activity-REST service](./activityrest/img/components-c4.png)
+More information about the use can be found in the [extended documentation](activityrest/).
 
 ## Contributing
 
