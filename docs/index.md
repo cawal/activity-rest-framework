@@ -40,7 +40,7 @@ mvn archetype:generate \
 ```
 
 Then, edit the `activity.aadl` file in the main service folder in order to describe the analysis activity and the underlying command line tool.
-Information obout the Analysis Activity Description Language can be found [here](https://cawal.github.io/activity-rest-framework/aadl).
+Information about the Analysis Activity Description Language can be found [here](https://cawal.github.io/activity-rest-framework/aadl).
 Finally, compile the service code and obtain the  deployable WAR using Maven:
 
 ```bash
@@ -48,8 +48,11 @@ mvn clean
 mvn package
 ```
 
-The produced WAR can be deployed to a Java/Jakarta EE application server.
-Nowadays, it is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0-doc/index.html).
+The produced WAR can be deployed to a Java/Jakarta EE application server **which has the analysis tool already installed** (The analysis tool must be in the application path of the application server and be executable).
+The service root will be accessible at `<host>:<port>/${MY_SERVICE_ID/}`, where `<host>`and  `<port>` are the host and port binded to the application server and `${MY_SERVICE_ID}` is the service id used to create the project using the Maven archetype.
+Nowadays, the Activity-REST framework is tested against [Tomcat v9.0](http://tomcat.apache.org/tomcat-9.0-doc/index.html).
+
+More information about the use can be found in the [extended documentation](activityrest/).
 
 ## Contributing
 
