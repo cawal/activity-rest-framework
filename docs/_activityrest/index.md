@@ -18,7 +18,7 @@ The `RIM-compliant adapter` includes the `Activity-REST framework` as one of the
 
 ### Project file organization
 
-After the creation of the adapter project using the provided Maven archetype, a folder containing the project base source code is created. 
+After the creation of the adapter project using the provided Maven archetype [as presented in the usage section](../), a folder containing the project base source code is created. 
 This folder presents the following overall organization:
 
 ```filesystem
