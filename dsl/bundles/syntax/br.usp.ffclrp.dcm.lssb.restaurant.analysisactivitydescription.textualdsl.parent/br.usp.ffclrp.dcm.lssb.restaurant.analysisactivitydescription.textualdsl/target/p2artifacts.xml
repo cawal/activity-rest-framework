@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl' version='1.0.0.201905102123'>
+  <artifact classifier='osgi.bundle' id='br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl' version='1.0.0.201905281915'>
     <properties size='5'>
-      <property name='artifact.size' value='143949'/>
-      <property name='download.size' value='143949'/>
+      <property name='artifact.size' value='160592'/>
+      <property name='download.size' value='160592'/>
       <property name='maven-groupId' value='br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl'/>
       <property name='maven-artifactId' value='br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl'/>
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
