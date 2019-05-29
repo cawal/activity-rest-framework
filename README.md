@@ -29,7 +29,7 @@ MY_VERSION=<a version string>
 mvn archetype:generate \
 	-DarchetypeGroupId=activity-rest \
 	-DarchetypeArtifactId=archetype \
-	-DarchetypeVersion=1.0-SNAPSHOT \
+	-DarchetypeVersion=0.0.1-SNAPSHOT \
 	-DgroupId=${MY_GROUP_ID} \
 	-DartifactId=${MY_SERVICE_ID} \
 	-Dversion=${MY_VERSION}
