@@ -18,6 +18,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
@@ -29,7 +30,7 @@ import io.swagger.annotations.Api;
 
 @Api
 public class NewAnalysisResource {
-	
+	ActivityRestConfig config;
 	UriInfo uriInfo;
 	URI baseApplicationURI;
 	URI absolutePathURI;
@@ -42,13 +43,15 @@ public class NewAnalysisResource {
 			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao) {
+			@Nonnull ActivityRepository analysisActivityDao,
+			ActivityRestConfig config) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
+		this.config = config;
 	}
 
 	@GET
@@ -125,7 +128,7 @@ public class NewAnalysisResource {
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,true);
+		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,true,config);
 	}
 	
 	@Path("/inputs/")

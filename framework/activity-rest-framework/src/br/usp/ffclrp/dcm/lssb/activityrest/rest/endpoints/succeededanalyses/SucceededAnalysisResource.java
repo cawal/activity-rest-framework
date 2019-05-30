@@ -119,7 +119,7 @@ public class SucceededAnalysisResource {
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
 		return new ParameterSetResource(aaDesc, uriInfo, aa,
-				analysisActivityDao, false);
+				analysisActivityDao, false,null);
 	}
 	
 	@Path("/inputs/")

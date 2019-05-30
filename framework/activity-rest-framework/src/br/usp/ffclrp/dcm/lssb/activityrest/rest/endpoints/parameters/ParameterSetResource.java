@@ -16,6 +16,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.ServerErrorException;
+import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -25,6 +27,11 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFou
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidationNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidator;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationResult;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
@@ -32,6 +39,7 @@ import io.swagger.annotations.Api;
 @Api()
 public class ParameterSetResource {
 	
+	ActivityRestConfig config;
 	UriInfo uriInfo;
 	URI baseApplicationURI;
 	URI absolutePathURI;
@@ -46,7 +54,8 @@ public class ParameterSetResource {
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,
-			boolean allowUpdates) {
+			boolean allowUpdates,
+			ActivityRestConfig config) {
 		this.aaDesc = aaDesc;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
@@ -54,6 +63,7 @@ public class ParameterSetResource {
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
 		this.allowUpdates = allowUpdates;
+		this.config = config;
 	}
 	
 	/**
@@ -85,10 +95,23 @@ public class ParameterSetResource {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response putAllParameters(Map<String, Object> map) {
-		aa.getParameters().putAll(map);
+		
 		try {
+			aa.getParameters().putAll(map);
+				
+			Map<String,ParameterValidator> parameterValidators 
+				= config.getParameterConstraints();
+			ValidationResult result = ValidationService.validateParameters(aa, aa.getDescription().getParameters(), parameterValidators);
+			
+			if (!result.isValid()) {
+				throw new BadRequestException(
+						result.getMessage()
+						.orElse("Bad parameter value!")
+				);
+			}
+					
 			analysisActivityDao.save(aa);
-		} catch (AnalysisActivityUpdateFailure e) {
+		} catch (AnalysisActivityUpdateFailure | ParameterValidationNotFoundException e) {
 			e.printStackTrace();
 			throw new ServerErrorException(500);
 		}

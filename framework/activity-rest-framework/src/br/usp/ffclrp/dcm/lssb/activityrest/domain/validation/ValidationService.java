@@ -5,8 +5,10 @@ import java.util.Map;
 import java.util.Optional;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 
@@ -51,9 +53,36 @@ public class ValidationService {
 			AnalysisActivity activityInstance,
 			List<Parameter> parameterDescriptions,
 			Map<String,ParameterValidator> parameterValidators
-			) {
+			) throws ParameterValidationNotFoundException {
 		
-		//TODO write the new validation process 
+		// foreach parameter, get the constraints an apply
+		// returns false 
+		ParameterMap parameters = activityInstance.getParameters();
+		
+		for(String key : parameters.keySet()) {
+			Optional<Parameter> parameterDescriptionOp = parameterDescriptions.stream()
+					.filter(d -> d.getName().equals(key))
+					.findFirst();
+
+			
+			Parameter description = parameterDescriptionOp.get();
+			List<Constraint> constraints = description.getConstraints();
+			
+			for(Constraint c : constraints) {
+				ParameterValidator v = parameterValidators.get(c.getName());
+				
+				if(v == null) {
+					throw new ParameterValidationNotFoundException(c);
+				}
+				
+				ValidationResult validationResult = 
+						v.validate(key, parameters, activityInstance);
+				if(!validationResult.isValid()) {
+					return validationResult;
+				}
+			}
+			
+		}
 		
 		return new ValidationResult(true, Optional.empty());
 	}
