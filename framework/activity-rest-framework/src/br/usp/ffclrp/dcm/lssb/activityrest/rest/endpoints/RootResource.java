@@ -89,7 +89,7 @@ public class RootResource {
 	@Path("/new-analyses")
 	public NewAnalysesCollection getNewAnalysisCollection() {
 		initialize();
-		return new NewAnalysesCollection(aaDesc, uriInfo, nonExecutedDao);
+		return new NewAnalysesCollection(aaDesc, uriInfo, nonExecutedDao, config);
 	}
 	
 	@Path("/failed-analyses")

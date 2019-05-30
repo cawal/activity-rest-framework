@@ -122,7 +122,7 @@ public class FailedAnalysisResource {
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
+		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,false,null);
 	}
 	
 	@Path("/inputs/")

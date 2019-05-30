@@ -17,6 +17,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
@@ -25,7 +26,7 @@ import io.swagger.annotations.Api;
 
 @Api
 public class NewAnalysesCollection {
-	
+	ActivityRestConfig config;
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
 	ActivityRepository analysisActivityDao;
@@ -34,10 +35,12 @@ public class NewAnalysesCollection {
 	public NewAnalysesCollection(
 			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
-			@Nonnull ActivityRepository analysisActivityDao) {
+			@Nonnull ActivityRepository analysisActivityDao,
+			ActivityRestConfig config) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = analysisActivityDao;
+		this.config = config;
 	}
 	
 	
@@ -85,7 +88,7 @@ public class NewAnalysesCollection {
 			AnalysisActivity aa;
 			aa = analysisActivityDao.get(analysisID);
 			
-			return new NewAnalysisResource(aaDesc,uriInfo, aa, analysisActivityDao);
+			return new NewAnalysisResource(aaDesc,uriInfo, aa, analysisActivityDao, config);
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
 		} catch (Exception e) {
