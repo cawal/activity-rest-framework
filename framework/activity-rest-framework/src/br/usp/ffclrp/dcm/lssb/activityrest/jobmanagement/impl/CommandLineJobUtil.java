@@ -77,17 +77,23 @@ public class CommandLineJobUtil {
 
 
 	private static List<ExitCode> getExitCodes(CommandLineTool clt) {
-		return clt.getExitCodes().stream()
+		List<ExitCode> exitCodes = clt.getExitCodes().stream()
 				.map(
-					(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode i) 
-					-> {
-						TerminationStatus status = 
-						(i.getStatus() == br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus.SUCCEEDED)?
-						TerminationStatus.SUCCEEDED
-						: TerminationStatus.FAILED;
-						return new ExitCode(i.getCode().intValue(), status, i.getReportMessage());
-				})
-				.collect(Collectors.toList());
+						(br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ExitCode i) 
+						-> {
+							TerminationStatus status = 
+							(i.getStatus() == br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.TerminationStatus.SUCCEEDED)?
+							TerminationStatus.SUCCEEDED
+							: TerminationStatus.FAILED;
+							return new ExitCode(i.getCode().intValue(), status, i.getReportMessage());
+					})
+					.collect(Collectors.toList());
+		
+		if(exitCodes.isEmpty()) { // add the default unix termination
+			exitCodes.add(new ExitCode(0, TerminationStatus.SUCCEEDED, "Unix normal termination"));
+		}
+		
+		return exitCodes;
 	}
 
 
