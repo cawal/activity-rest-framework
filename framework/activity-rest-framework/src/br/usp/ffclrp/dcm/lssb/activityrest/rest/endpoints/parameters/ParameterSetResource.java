@@ -27,7 +27,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFou
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidationNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidatorNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidator;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationResult;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
@@ -111,7 +111,7 @@ public class ParameterSetResource {
 			}
 					
 			analysisActivityDao.save(aa);
-		} catch (AnalysisActivityUpdateFailure | ParameterValidationNotFoundException e) {
+		} catch (AnalysisActivityUpdateFailure | ParameterValidatorNotFoundException e) {
 			e.printStackTrace();
 			throw new ServerErrorException(500);
 		}

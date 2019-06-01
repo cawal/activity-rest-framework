@@ -95,13 +95,13 @@ public class RootResource {
 	@Path("/failed-analyses")
 	public FailedAnalysesCollection getFailedAnalysisCollection() {
 		initialize();
-		return new FailedAnalysesCollection(aaDesc, uriInfo, failedDao);
+		return new FailedAnalysesCollection(aaDesc, uriInfo, failedDao,config);
 	}
 	
 	@Path("/succeeded-analyses")
 	public SucceededAnalysesCollection getSucceededAnalysesCollection() {
 		initialize();
-		return new SucceededAnalysesCollection(aaDesc, uriInfo, succeededDao);
+		return new SucceededAnalysesCollection(aaDesc, uriInfo, succeededDao,config);
 	}
 	
 	@Path("/instances")

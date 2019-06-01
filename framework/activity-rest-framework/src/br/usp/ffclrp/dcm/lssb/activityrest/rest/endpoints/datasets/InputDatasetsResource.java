@@ -27,17 +27,20 @@ import javax.ws.rs.core.UriInfo;
 import org.apache.commons.io.IOUtils;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityUpdateFailure;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.InputDatasetValidatorNotFoundException;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
 @Api
 public class InputDatasetsResource extends AbstractDatasetResource {
 	
+	ActivityRestConfig config;
 	UriInfo uriInfo;
 	URI baseApplicationURI;
 	URI absolutePathURI;
@@ -52,6 +55,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			@NotNull UriInfo uriInfo,
 			@NotNull AnalysisActivity aa,
 			@NotNull ActivityRepository analysisActivityDao,
+			ActivityRestConfig config,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;
@@ -59,6 +63,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
 		this.aaDesc = aaDesc;
+		this.config = config;
 		this.allowUpdate = allowUpdate;
 	}
 	
@@ -147,6 +152,11 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			}
 			
 			d.getFiles().add(f);
+			
+			ValidationService.validateInputDataset(d, aa, 
+					aa.getDescription().getInputDatasets(), 
+					config.getInputDatasetConstraints());
+			
 			analysisActivityDao.save(aa);
 			
 			locationURI = UriBuilder.fromUri(this.absolutePathURI)
@@ -156,8 +166,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			return Response.created(locationURI).build();
 		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
-		} catch (IOException e) {
-			throw new ServerErrorException(500);
+		} catch (IOException | InputDatasetValidatorNotFoundException e) {
+			throw new ServerErrorException(500,e);
 		}
 	}
 	
@@ -200,6 +210,10 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			old.delete();
 			d.getFiles().add(f);
 			
+			ValidationService.validateInputDataset(d, aa, 
+					aa.getDescription().getInputDatasets(), 
+					config.getInputDatasetConstraints());
+
 			analysisActivityDao.save(aa);
 			
 			locationURI = UriBuilder.fromUri(this.absolutePathURI)
@@ -209,8 +223,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			return Response.created(locationURI).build();
 		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
-		} catch (IOException e) {
-			throw new ServerErrorException(500);
+		} catch (IOException | InputDatasetValidatorNotFoundException e) {
+			throw new ServerErrorException(500,e);
 		}
 	}
 	

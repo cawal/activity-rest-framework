@@ -12,12 +12,13 @@ import javax.ws.rs.core.UriInfo;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
 @Api
 public class SucceededAnalysesCollection {
-	
+	ActivityRestConfig config;
 	@Context
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
@@ -26,10 +27,12 @@ public class SucceededAnalysesCollection {
 	
 	public SucceededAnalysesCollection(Activity aaDesc,
 			UriInfo uriInfo,
-			ActivityRepository succeededAnalysisActivityDao) {
+			ActivityRepository succeededAnalysisActivityDao,
+			ActivityRestConfig config) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
 		this.aaDesc = aaDesc;
+		this.config = config;
 	}
 	
 	// Subresources
@@ -42,7 +45,9 @@ public class SucceededAnalysesCollection {
 			AnalysisActivity aa;
 			aa = analysisActivityDao.get(analysisID);
 			
-			return new SucceededAnalysisResource(aaDesc,uriInfo, aa, analysisActivityDao);
+			return new SucceededAnalysisResource(aaDesc,uriInfo, aa, 
+												analysisActivityDao,config);
+
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
 		} catch (Exception e) {

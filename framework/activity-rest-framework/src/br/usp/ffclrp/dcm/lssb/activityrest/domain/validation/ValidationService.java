@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.util.MultiplicityElementUtil;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
@@ -53,7 +54,7 @@ public class ValidationService {
 			AnalysisActivity activityInstance,
 			List<Parameter> parameterDescriptions,
 			Map<String,ParameterValidator> parameterValidators
-			) throws ParameterValidationNotFoundException {
+			) throws ParameterValidatorNotFoundException {
 		
 		// foreach parameter, get the constraints an apply
 		// returns false 
@@ -72,7 +73,7 @@ public class ValidationService {
 				ParameterValidator v = parameterValidators.get(c.getName());
 				
 				if(v == null) {
-					throw new ParameterValidationNotFoundException(c);
+					throw new ParameterValidatorNotFoundException(c);
 				}
 				
 				ValidationResult validationResult = 
@@ -89,13 +90,57 @@ public class ValidationService {
 
 	public static ValidationResult validateInputDatasets(
 			AnalysisActivity activityInstance,
-			List<InputDataset> datasetDescription,
+			List<InputDataset> datasetDescriptions,
 			Map<String,InputDatasetValidator> inputDatasetValidators
-			) {
+			) throws InputDatasetValidatorNotFoundException {
 		
 			
 		//TODO write the new validation process 
+		for(Dataset d : activityInstance.getInputs()) {
+			ValidationResult datasetResult = 
+					validateInputDataset(d, activityInstance, 
+							datasetDescriptions, inputDatasetValidators);
+			if(!datasetResult.isValid()) {
+				return datasetResult;
+			} else {
+				continue;
+			}
+		}
 		
+		
+		return new ValidationResult(true, Optional.empty());
+	}
+	
+	public static ValidationResult validateInputDataset(
+			Dataset inputDataset,
+			AnalysisActivity activityInstance,
+			List<InputDataset> datasetDescriptions,
+			Map<String,InputDatasetValidator> validators
+			) throws InputDatasetValidatorNotFoundException {
+
+		String datasetName = inputDataset.getName();
+		
+		Optional<InputDataset> descriptionOp = datasetDescriptions.stream()
+			.filter(d -> d.getName().equalsIgnoreCase(datasetName))
+			.findFirst();
+		
+		InputDataset description = descriptionOp.get();
+		List<Constraint> constraints = description.getConstraints();
+		
+		for(Constraint c : constraints) {
+			InputDatasetValidator v = validators.get(c.getName());
+			
+			if(v == null) {
+				throw new InputDatasetValidatorNotFoundException(c);
+			}
+			
+			ValidationResult validationResult = 
+					v.validate(inputDataset, activityInstance);
+			if(!validationResult.isValid()) {
+				return validationResult;
+			}
+		}
+			
 		return new ValidationResult(true, Optional.empty());
 	}
 	

@@ -133,7 +133,8 @@ public class NewAnalysisResource {
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,true);
+		return new InputDatasetsResource(aaDesc,uriInfo, aa,
+				analysisActivityDao,config,true);
 	}
 	
 	
