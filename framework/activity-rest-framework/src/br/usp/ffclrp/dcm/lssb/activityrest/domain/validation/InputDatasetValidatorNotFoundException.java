@@ -2,11 +2,11 @@ package br.usp.ffclrp.dcm.lssb.activityrest.domain.validation;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Constraint;
 
-public class ParameterValidationNotFoundException extends Exception {
+public class InputDatasetValidatorNotFoundException extends Exception {
 	
 	Constraint c;
 
-	public ParameterValidationNotFoundException(Constraint c) {
+	public InputDatasetValidatorNotFoundException(Constraint c) {
 		this.c = c;
 	}
 

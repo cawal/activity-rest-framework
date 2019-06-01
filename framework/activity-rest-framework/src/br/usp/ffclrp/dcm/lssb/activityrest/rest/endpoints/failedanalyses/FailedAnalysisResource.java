@@ -20,6 +20,7 @@ import org.apache.commons.io.FileUtils;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.parameters.ParameterSetResource;
@@ -33,6 +34,7 @@ import io.swagger.annotations.Api;
 @Path("/new-analyses/{analysisID}")
 public class FailedAnalysisResource {
 	
+	ActivityRestConfig config;
 	UriInfo uriInfo;
 	URI baseApplicationURI;
 	URI absolutePathURI;
@@ -45,13 +47,15 @@ public class FailedAnalysisResource {
 			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao) {
+			@Nonnull ActivityRepository analysisActivityDao,
+			ActivityRestConfig config) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
+		this.config = config;
 	}
 
 	@GET
@@ -127,7 +131,7 @@ public class FailedAnalysisResource {
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,false);
+		return new InputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,config,false);
 	}
 	
 	

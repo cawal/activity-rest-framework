@@ -17,6 +17,7 @@ import javax.ws.rs.core.UriInfo;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.AbstractDatasetResource;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets.InputDatasetsResource;
@@ -32,6 +33,7 @@ import io.swagger.annotations.Api;
 @Path("/succeeded-analyses/{analysisID}")
 public class SucceededAnalysisResource {
 	
+	ActivityRestConfig config;
 	UriInfo uriInfo;
 	URI baseApplicationURI;
 	URI absolutePathURI;
@@ -44,13 +46,15 @@ public class SucceededAnalysisResource {
 			@Nonnull Activity aaDesc,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao) {
+			@Nonnull ActivityRepository analysisActivityDao,
+			@Nonnull ActivityRestConfig config) {
 		this.aaDesc = aaDesc;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
+		this.config = config;
 	}
 	
 	@GET
@@ -125,7 +129,7 @@ public class SucceededAnalysisResource {
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
 		return new InputDatasetsResource(aaDesc, uriInfo, aa,
-				analysisActivityDao, false);
+				analysisActivityDao, config, false);
 	}
 	
 	@Path("/outputs/")
