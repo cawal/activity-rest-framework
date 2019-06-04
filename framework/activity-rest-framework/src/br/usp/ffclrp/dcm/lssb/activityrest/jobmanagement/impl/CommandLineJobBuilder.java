@@ -5,6 +5,7 @@ import java.io.File;
 import com.google.common.io.Files;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobBuilder;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.NonSupportedFunctionalEntity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;

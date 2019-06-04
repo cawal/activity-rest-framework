@@ -2,7 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
-import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 

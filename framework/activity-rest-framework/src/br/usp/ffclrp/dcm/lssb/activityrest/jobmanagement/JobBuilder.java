@@ -1,9 +1,8 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
+package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement;
 
 import java.io.File;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.FunctionalEntity;
 
