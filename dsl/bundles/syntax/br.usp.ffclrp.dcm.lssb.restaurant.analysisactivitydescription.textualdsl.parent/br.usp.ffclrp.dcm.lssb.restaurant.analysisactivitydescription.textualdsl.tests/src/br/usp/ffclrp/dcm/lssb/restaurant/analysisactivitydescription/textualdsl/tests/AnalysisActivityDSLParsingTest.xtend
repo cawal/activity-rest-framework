@@ -23,6 +23,7 @@ class AnalysisActivityDSLParsingTest {
 	    
 	}
 	
+	
 	def void loadModel() {
 		val result = parseHelper.parse('''Activity 'teste' {
 		    description 
