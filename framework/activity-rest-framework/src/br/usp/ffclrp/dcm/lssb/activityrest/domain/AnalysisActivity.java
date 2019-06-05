@@ -2,12 +2,12 @@
  */
 package br.usp.ffclrp.dcm.lssb.activityrest.domain;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
+
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 
 /**
  * <!-- begin-user-doc -->

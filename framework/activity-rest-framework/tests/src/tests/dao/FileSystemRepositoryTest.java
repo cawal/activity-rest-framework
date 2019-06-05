@@ -22,7 +22,6 @@ import org.junit.Test;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.RepositoryTransferService;
-import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityCreationFailedException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;

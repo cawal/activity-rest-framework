@@ -18,7 +18,7 @@ Export-Package: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydesc
  n.textualdsl.parser.antlr.lexer
 Bundle-Name: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescrip
  tion.textualdsl
-Bundle-Version: 1.0.0.201905281915
+Bundle-Version: 1.0.0.201906051752
 Require-Bundle: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydesc
  ription,org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.equinox
  .common;bundle-version="3.5.0",org.eclipse.xtext.xbase.lib;bundle-ver

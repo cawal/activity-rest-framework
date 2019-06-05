@@ -2,8 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.File;
 
-import com.google.common.io.Files;
-
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobBuilder;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;

@@ -3,16 +3,21 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
 import java.io.File;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
 
 /**
  * <!-- begin-user-doc -->

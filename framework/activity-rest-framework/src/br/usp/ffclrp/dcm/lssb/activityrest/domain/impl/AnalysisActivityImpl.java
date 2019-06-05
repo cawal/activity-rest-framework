@@ -2,12 +2,6 @@
  */
 package br.usp.ffclrp.dcm.lssb.activityrest.domain.impl;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -21,6 +15,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 
 /**
  * <!-- begin-user-doc -->
