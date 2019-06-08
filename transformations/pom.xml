@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+	<artifactId>aadl2openAPI</artifactId>
+	<version>0.1-SNAPSHOT</version>
+
+	<name>aadl2openAPI</name>
+  <!-- FIXME change it to the project's website -->
+	<url>http://www.example.com</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<xtextVersion>2.14</xtextVersion>
+		<atlVersion>4.0.1</atlVersion>
+	</properties>
+
+	<repositories>
+<!-- 		<repository> -->
+<!-- 			<id>eclipse-release</id> -->
+<!-- 			<url>https://repo.eclipse.org/content/groups/releases/</url> -->
+<!-- 			<layout>p2</layout> -->
+<!-- 		</repository> -->
+
+		<repository>
+			<id>Eclipse</id>
+			<url>https://repo.eclipse.org/content/groups/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+			<artifactId>activity-rest-framework</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>edu.uoc.som.openapi</groupId>
+			<artifactId>edu.uoc.som.openapi</artifactId>
+			<version>1.0.2-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>edu.uoc.som.openapi</groupId>
+			<artifactId>edu.uoc.som.openapi.io</artifactId>
+			<version>1.0.3-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.common</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.ecore</artifactId>
+			<version>2.11.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.ecore.change</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+			<version>2.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+			<version>2.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types</artifactId>
+			<version>${xtextVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+			<version>${xtextVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xbase</artifactId>
+			<version>${xtextVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>xtext-antlr-generator</artifactId>
+			<version>[2.1.1, 3)</version>
+		</dependency>
+
+		<!-- org.eclipse.m2m.atl.core_3.6.0.v201505180909.jar -->
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.core</artifactId>
+			<version>${atlVersion}</version>
+		</dependency>
+
+		<!--         org.eclipse.m2m.atl.common_3.6.0.v201505180909.jar -->
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.common</artifactId>
+			<version>${atlVersion}</version>
+		</dependency>
+
+		<!-- org.eclipse.m2m.atl.core.emf_3.6.0.v201505180909.jar -->
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.core.emf</artifactId>
+			<version>${atlVersion}</version>
+		</dependency>
+
+		<!-- org.eclipse.m2m.atl.engine_3.8.0.v201705182014.jar -->
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.engine</artifactId>
+			<version>${atlVersion}</version>
+		</dependency>
+
+		<!-- org.eclipse.m2m.atl.engine.emfvm_3.8.0.v201705182014.jar -->
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.engine.emfvm</artifactId>
+			<version>${atlVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr-runtime</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr-runtime</artifactId>
+        <version>3.2</version>
+    </dependency>
+   </dependencies>
+</dependencyManagement>
+
+	<build>
+		<pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+			<plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
