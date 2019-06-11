@@ -88,7 +88,7 @@ public class TransformationService {
 	      monitor.subTask("AADL to OpenAPI transformation");
 	    }
 
-		Activity activity = ModelsService.retrieveAADLModel(aadlSource);
+		Activity activity = null; //ModelsService.retrieveAADLModel(aadlSource);
 		System.out.println(activity);
 		API api = transform(activity);
 		OpenAPIExporter exporter = ExporterBuilder.create();
@@ -99,44 +99,32 @@ public class TransformationService {
 
 	  
 	  private static API transform(Activity activity) {
-		 return null; 
-	  }
-//	    try {
-//	      EMFModelFactory modelFactory = new EMFModelFactory();
-//	      EMFVMLauncher transformationLauncher = new EMFVMLauncher();
-//	      EMFInjector injector = new EMFInjector();
-//	      EMFExtractor extractor = new EMFExtractor();
-//
-//	      /*
-//	       * Register packages and metamodels
-//	       */
-//	      ResourceSet resourceSet = UMLResourcesUtil.init(modelFactory.getResourceSet());
-//	      resourceSet.getPackageRegistry().put(obodatamodelPackage.eNS_URI,
-//	          obodatamodelPackage.eINSTANCE);
-//
-//	      
-//
-//	      /*
-//	       * Load the transformation definition
-//	       */
-//	      // InputStream transformationInputStream = TransformationService.class.getResourceAsStream(
-//	      // ODM2UML_BASIC__MODULE_URI_NO_STEREOTYPES);
-//	      // Object basicModule = transformationLauncher.loadModule(transformationInputStream);
-//
-//	      InputStream transformationInputStream =
-//	          TransformationService.class.getResourceAsStream(ODM2UML_BASIC_TRANSFORMATION_MODULE_URI);
-//	      Object basicModule = transformationLauncher.loadModule(transformationInputStream);
-//
-//
-//	      InputStream bfoModuleInputStream = 
-//	          TransformationService.class.getResourceAsStream(ODM2UML_BFO_SUPERIMPOSITION_MODULE_URI);
-//	      Object bfoModule = transformationLauncher.loadModule(bfoModuleInputStream);
-//
-//
-//	      InputStream rocoreModuleInputStream = 
-//	          TransformationService.class.getResourceAsStream(ODM2UML_ROCORE_SUPERIMPOSITION_MODULE_URI);
-//	      Object rocoreModule = transformationLauncher.loadModule(rocoreModuleInputStream);
-//
+	    try {
+	      EMFModelFactory modelFactory = new EMFModelFactory();
+	      EMFVMLauncher transformationLauncher = new EMFVMLauncher();
+	      EMFInjector injector = new EMFInjector();
+	      EMFExtractor extractor = new EMFExtractor();
+
+	      /*
+	       * Register packages and metamodels
+	       */
+	      ResourceSet resourceSet = modelFactory.getResourceSet();
+	      resourceSet.getPackageRegistry().put(AnalysisActivityDescriptionPackage.eNS_URI,
+	          AnalysisActivityDescriptionPackage.eINSTANCE);
+	      resourceSet.getPackageRegistry().put(OpenAPIPackage.eNS_URI,
+	          OpenAPIPackage.eINSTANCE);
+	      
+
+	      /*
+	       * Load the transformation definition
+	       */
+	      InputStream transformationInputStream =
+	          TransformationService.class.getResourceAsStream(
+	        		  ODM2UML_BASIC_TRANSFORMATION_MODULE_URI);
+	      Object basicModule = transformationLauncher.loadModule(transformationInputStream);
+
+
+
 //
 //
 //	      InputStream oboProfileSource = TransformationService.class
@@ -147,27 +135,26 @@ public class TransformationService {
 //
 //	      InputStream rocoreProfileSource = TransformationService.class
 //	          .getResourceAsStream(RO_CORE_PROFILE_LOCATION);
-//
-//
-//
-//	      /*
-//	       * Load metamodels
-//	       */
-//	      IReferenceModel odmMetamodel = modelFactory.newReferenceModel();
-//	      injector.inject(odmMetamodel, ODM_METAMODEL_URI);
-//
-//	      IReferenceModel umlMetamodel = modelFactory.newReferenceModel();
-//	      injector.inject(umlMetamodel, UML_METAMODEL_URI);
-//	      IModel umlModel = modelFactory.newModel(umlMetamodel);
-//
-//	      /*
-//	       * Load models
-//	       */
-//	      IModel odmModel = modelFactory.newModel(odmMetamodel);
-//	      injector.inject(odmModel, oaadlSourcenew HashMap<String, Object>());
-//
+
+
+
+	      /*
+	       * Load metamodels
+	       */
+	      IReferenceModel odmMetamodel = modelFactory.newReferenceModel();
+	      injector.inject(odmMetamodel, ODM_METAMODEL_URI);
+
+	      IReferenceModel umlMetamodel = modelFactory.newReferenceModel();
+	      injector.inject(umlMetamodel, UML_METAMODEL_URI);
+	      IModel umlModel = modelFactory.newModel(umlMetamodel);
+
+	      /*
+	       * Load models
+	       */
+	      IModel odmModel = modelFactory.newModel(odmMetamodel);
+	      injector.inject(odmModel, aadlSource,new HashMap<String, Object>());
+
 //	      System.out.println("Injecting profiles");
-//
 //	      EMFModel oboProfile = (EMFModel) modelFactory.newModel((EMFReferenceModel) umlMetamodel);
 //	      injector.inject(oboProfile, oboProfileSource, new HashMap<String, Object>());
 //	      oboProfile.getResource().setURI(
@@ -184,9 +171,9 @@ public class TransformationService {
 //
 //	      rocoreProfile.getResource().setURI(
 //	          URI.createPlatformPluginURI(RO_CORE_PROFILE_PLATFORM_URI, true));
-//
-//	      
-//	      
+
+	      
+	      
 //	      /*
 //	       * Register profiles
 //	       */
@@ -199,46 +186,41 @@ public class TransformationService {
 //	      p = (Profile)
 //	          rocoreProfile.getResource().getContents().get(0);
 //	      registerProfiles(resourceSet,p); 
-//
-//	      /*
-//	       * Run transformation
-//	       */
-//	      System.out.println("Transforming...");
-//
-//	      transformationLauncher.initialize(new HashMap<String, Object>());
-//	      transformationLauncher.addInModel(odmModel, "IN", "OBO");
-//	      transformationLauncher.addInModel(oboProfile, "PROFILE", "UML");
-//	      transformationLauncher.addInModel(bfoProfile, "BFOPROFILE", "UML");
-//	      transformationLauncher.addInModel(rocoreProfile, "ROPROFILE", "UML");
-//	      transformationLauncher.addOutModel(umlModel, "OUT", "UML");
-//
-//
-//
-//	      transformationLauncher.launch(ILauncher.RUN_MODE, monitor, new HashMap<String, Object>(),
-//	          basicModule
-//	          ,bfoModule
-//	          ,rocoreModule
-//	      );
-//
-//	      /*
-//	       * extract model
-//	       */
-//	      extractor.extract(umlModel, openapiTarget, new HashMap<String, Object>());
-//	      openapiTarget.close();
-//	      /*
-//	       * Unload all models and metamodels (EMF-specific)
-//	       */
-//	      modelFactory.unload((EMFModel) umlModel);
-//	      modelFactory.unload((EMFModel) odmModel);
-//	      modelFactory.unload((EMFReferenceModel) odmMetamodel);
-//	      modelFactory.unload((EMFReferenceModel) umlMetamodel);
-//
-//	    } catch (Exception e) {
-//	      System.err.println(e);
-//	      e.printStackTrace();
-//	    }
-//	  }
-//	  
+
+	      /*
+	       * Run transformation
+	       */
+	      System.out.println("Transforming...");
+
+	      transformationLauncher.initialize(new HashMap<String, Object>());
+	      transformationLauncher.addInModel(odmModel, "IN", "aadl");
+	      transformationLauncher.addOutModel(umlModel, "OUT", "openapi");
+
+
+
+	      transformationLauncher.launch(ILauncher.RUN_MODE, monitor, new HashMap<String, Object>(),
+	          basicModule
+	      );
+
+	      /*
+	       * extract model
+	       */
+	      extractor.extract(umlModel, openapiTarget, new HashMap<String, Object>());
+	      openapiTarget.close();
+	      /*
+	       * Unload all models and metamodels (EMF-specific)
+	       */
+	      modelFactory.unload((EMFModel) umlModel);
+	      modelFactory.unload((EMFModel) odmModel);
+	      modelFactory.unload((EMFReferenceModel) odmMetamodel);
+	      modelFactory.unload((EMFReferenceModel) umlMetamodel);
+
+	    } catch (Exception e) {
+	      System.err.println(e);
+	      e.printStackTrace();
+	    }
+	  }
+	  
 //	  public static Profile getProfileFromResource(String filePath, ResourceSet resSet) throws IOException {
 //
 //	    // Register the XMI resource factory for the .xmi extension

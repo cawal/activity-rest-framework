@@ -1,22 +1,40 @@
 -- @nsURI aadl=http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore
 -- @nsURI slm=http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore
 -- @nsURI openapi=http://som.uoc.edu/openapi/2.0.0
+
+
 module aadl2openAPI;
+create OUT: openapi from IN: aadl;
 
-create OUT : openapi from IN : aadl;
+helper def: port(): Integer =
+	8081;
 
-helper def : host() : String =  'http/kode.ffclrp.usp.br';
-helper def : port() : Integer = 8081;
-helper def : basePath(path : String) : String
-	= thisModule.host() + ':' + 
-		thisModule.port() + '/' + path; 
+helper def: host(): String =
+	'kode.ffclrp.usp.br:' + thisModule.port();
+
+helper def: basePath(path: String): String =
+	'/' + path ;
+
+helper def: apiVersion(): String =
+	'0.8.0';
+
+helper def: contact(): String =
+	'ricardo.cawal@gmail.com';
 
 rule Activity {
 	from
-		activity : aadl!Activity in IN
+		activity: aadl!Activity in IN
 	using {
+		analysisIdProperty: openapi!Property = openapi!Property;
+--		analysisIdProperty.referenceName <- 'my-id';
+--		(
+--			referenceName <- 'my-id',
+--			schema <- openapi!Schema (
+--				type <- #string
+--			)
+--		),
 	}
-	to 
+	to
 		root : openapi!Root (
 			schemas <- schema,
 			api <-api,
@@ -27,14 +45,187 @@ rule Activity {
 			title <- activity.name,
 			description <- activity.remark
 		),
-		api : openapi!API (
+		api: openapi!API (
 			swagger <- '2.0',
+			host <- thisModule.host(),
 			basePath <- thisModule.basePath(activity.name),
+			schemes <- 'http',
 			consumes <- 'application/json',
 			consumes <- 'application/xml',
 			produces <- 'application/json',
-			produces <- 'application/xml'
+			produces <- 'application/xml',
+			info <- apiInfo,
+			paths <- activity.parameters,
+			paths <- activity.inputDatasets,
+			paths <- activity.outputDatasets,
+			definitions <- activityDefinition,
+			definitions <- parameterMapDefiniton,
+			definitions <- datasetDefinition
+		),
+		apiInfo: openapi!Info (
+			description <- activity.remark,
+			title <- activity.name,
+			version <- thisModule.apiVersion(),
+			license <- OclUndefined,
+			termsOfService <- ''
+		),
+		activityDefinition: openapi!Schema (
+			referenceName <- 'AnalysisActivity',
+			type <- #object,
+			properties <- analysisIdProperty,
+			required <- analysisIdProperty
+		),
+		parameterMapDefiniton: openapi!Schema (
+			referenceName <- 'Parameters',
+			type <- #object
+		),
+		datasetDefinition: openapi!Schema (
+			referenceName <- 'InputDataset'
 		)
 	do {
+--		root.paramters <- openapi!Parameter.allInstances();
 	}
+}
+
+rule Parameter {
+	from
+		parameter: aadl!Parameter 
+	to
+		path: openapi!Path (
+			get <- getNewAnalysis,
+			relativePath <- '/new-analyses/{id}/parameters/' + parameter.name,
+			parameters <- activityIdentifier
+		),
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			location <- #path
+		),
+		getNewAnalysis : openapi!Operation (
+			operationId <- 'get-' + parameter.name + 'from-non-executed-analysis',
+			description <- parameter.remark,
+			parameters <- activityIdentifier,
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameter value is retrieved'
+		)
+}
+
+
+
+rule InputDatasetSingleFile {
+	from
+		dataset: aadl!InputDataset ( 1 = dataset.maximumCardinality.debug())
+
+	to 
+		nonExecutedAnalysisPath: openapi!Path (
+			get <- getNewAnalysis,
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name,
+			parameters <- activityIdentifier
+		),
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			location <- #path
+		),
+		getNewAnalysis : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'from-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- activityIdentifier,
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved'
+		)
+}
+
+
+rule InputDatasetMultipleFile {
+	from
+		dataset: aadl!InputDataset (not (1 = dataset.maximumCardinality.debug()))
+
+	to 
+		nonExecutedAnalysisPath: openapi!Path (
+			get <- getNewAnalysis,
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name,
+			parameters <- activityIdentifier
+		),
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			location <- #path
+		),
+		getNewAnalysis : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'from-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- activityIdentifier,
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved'
+		)
+}
+
+rule OutputDatasetSingleFile {
+	from
+		dataset: aadl!OutputDataset ( 1 = dataset.maximumCardinality.debug())
+
+	to 
+		succeededAnalysisPath: openapi!Path (
+			get <- getFromSuccededAnalysis,
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
+			parameters <- activityIdentifier
+		),
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			location <- #path
+		),
+		getFromSuccededAnalysis : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'from-succeeded-analysis',
+			description <- dataset.remark,
+			parameters <- activityIdentifier,
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved'
+		)
+}
+
+
+rule OutputDatasetMultipleFile {
+	from
+		dataset: aadl!OutputDataset (not (1 = dataset.maximumCardinality.debug()))
+
+	to 
+		succeededAnalysisPath: openapi!Path (
+			get <- getFromSuccededAnalysis,
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
+			parameters <- activityIdentifier
+		),
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			location <- #path
+		),
+		getFromSuccededAnalysis : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'from-succeeded-analysis',
+			description <- dataset.remark,
+			parameters <- activityIdentifier,
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved'
+		)
 }

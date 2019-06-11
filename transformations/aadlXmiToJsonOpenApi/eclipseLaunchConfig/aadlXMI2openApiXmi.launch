@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2m.atl.adt.launching.atlTransformation">
+<stringAttribute key="ATL File Name" value="/aadlXmiToJsonOpenApi/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/aadl2openAPI.atl"/>
+<stringAttribute key="ATL VM" value="EMF-specific VM"/>
+<stringAttribute key="ATL_COMPILER" value="atl2006"/>
+<booleanAttribute key="IS_REFINING" value="false"/>
+<mapAttribute key="Input">
+<mapEntry key="IN" value="aadl"/>
+</mapAttribute>
+<mapAttribute key="Libs"/>
+<mapAttribute key="Model Handler">
+<mapEntry key="aadl" value="EMF"/>
+<mapEntry key="openapi" value="EMF"/>
+</mapAttribute>
+<mapAttribute key="ModelType">
+<mapEntry key="IN" value="MODELINPUT"/>
+<mapEntry key="OUT" value="MODELOUTPUT"/>
+<mapEntry key="aadl" value="METAMODELINPUT"/>
+<mapEntry key="openapi" value="METAMODELOUTPUT"/>
+</mapAttribute>
+<mapAttribute key="Options">
+<mapEntry key="OPTION_CLEAR" value="false"/>
+<mapEntry key="OPTION_CONTENT_TYPE" value="false"/>
+<mapEntry key="OPTION_DERIVED" value="true"/>
+<mapEntry key="allowInterModelReferences" value="false"/>
+<mapEntry key="printExecutionTime" value="false"/>
+<mapEntry key="step" value="false"/>
+<mapEntry key="supportUML2Stereotypes" value="false"/>
+</mapAttribute>
+<listAttribute key="OrderedInput">
+<listEntry value="IN"/>
+</listAttribute>
+<listAttribute key="OrderedOutput">
+<listEntry value="OUT"/>
+</listAttribute>
+<mapAttribute key="Output">
+<mapEntry key="OUT" value="openapi"/>
+</mapAttribute>
+<mapAttribute key="Path">
+<mapEntry key="IN" value="/aadlXmiToJsonOpenApi/activity.xmi"/>
+<mapEntry key="OUT" value="/aadlXmiToJsonOpenApi/openapi.xmi"/>
+<mapEntry key="aadl" value="uri:http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore"/>
+<mapEntry key="openapi" value="uri:http://som.uoc.edu/openapi/2.0.0"/>
+</mapAttribute>
+<listAttribute key="Superimpose"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+</launchConfiguration>
