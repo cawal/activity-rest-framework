@@ -25,14 +25,7 @@ rule Activity {
 	from
 		activity: aadl!Activity in IN
 	using {
-		analysisIdProperty: openapi!Property = openapi!Property;
---		analysisIdProperty.referenceName <- 'my-id';
---		(
---			referenceName <- 'my-id',
---			schema <- openapi!Schema (
---				type <- #string
---			)
---		),
+	
 	}
 	to
 		root : openapi!Root (
@@ -60,7 +53,7 @@ rule Activity {
 			paths <- activity.outputDatasets,
 			definitions <- activityDefinition,
 			definitions <- parameterMapDefiniton,
-			definitions <- datasetDefinition
+			definitions <- fileDefinition
 		),
 		apiInfo: openapi!Info (
 			description <- activity.remark,
@@ -73,14 +66,54 @@ rule Activity {
 			referenceName <- 'AnalysisActivity',
 			type <- #object,
 			properties <- analysisIdProperty,
+			properties <- analysisStateProperty,
 			required <- analysisIdProperty
 		),
 		parameterMapDefiniton: openapi!Schema (
 			referenceName <- 'Parameters',
 			type <- #object
 		),
-		datasetDefinition: openapi!Schema (
-			referenceName <- 'InputDataset'
+		fileDefinition: openapi!Schema (
+			referenceName <- 'File',
+			properties <- nameProperty,
+			properties <- contentTypeProperty,
+			properties <- fileContentProperty
+		),
+		analysisIdProperty: openapi!Property (
+			referenceName <- 'id',
+			schema <- stringSchema
+		),
+		analysisStateProperty: openapi!Property (
+			referenceName <- 'state',
+			schema <- stateSchema 
+		),
+		nameProperty : openapi!Property (
+			referenceName <- 'name',
+			schema <- stringSchema
+		),
+		contentTypeProperty : openapi!Property (
+			referenceName <- 'contentType',
+			schema <- stringSchema
+		),
+		fileContentProperty : openapi!Property (
+			referenceName <- 'content',
+			schema <- fileContentsSchema
+		),
+		stringSchema: openapi!Schema (
+			type <- #string
+		),
+		stateSchema: openapi!Schema (
+			type <- #string,
+			enum <- 'CREATED',
+			enum <- 'READY',
+			enum <- 'RUNNING',
+			enum <- 'SUCCEEDED',
+			enum <- 'FAILED',
+			enum <- 'REMOVED'
+		),
+		fileContentsSchema : openapi!Schema (
+			type <- #string,
+			format <- 'application/octet-stream'
 		)
 	do {
 --		root.paramters <- openapi!Parameter.allInstances();
