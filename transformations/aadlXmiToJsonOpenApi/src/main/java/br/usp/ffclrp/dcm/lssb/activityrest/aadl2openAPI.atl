@@ -95,6 +95,11 @@ rule Activity {
 			    thisModule.resolveTemp(p,'schema')),
 			definitions <- fileDefinition,
 			definitions <- jobInstanceDefinition
+			
+--			parameters <- activityIdentifier,
+			
+--			responses <- okResponse,
+--			responses <- deleteOkResponse
 		),
 		
 		-- Schemas
@@ -293,7 +298,6 @@ rule Activity {
 			description <- 'The analysis activity identifier.',
 			location <- #path
 		),
-
 		
 			
 			
@@ -302,12 +306,16 @@ rule Activity {
 		-- commom responses
 		okResponse: openapi!Response (
 			code <- '200',
-			description <- 'Analysis activity representation is retrieved'
+			description <- 'Analysis activity representation is retrieved',
+			schema <- activityDefinition,
+			declaringContext <- api
 		),
+		
 		deleteOkResponse: openapi!Response (
 			code <- '200',
 			description <- 'Analysis activity is removed from server.'
 		)
+		
 		
 		
 	do {
@@ -315,18 +323,6 @@ rule Activity {
 }
 
 
---rule parameterSetDefinition(col : Collection(aadl!Parameter)){
---    to
---    	schema : openapi!Schema (
---    	    referenceName <- 'ParameterMap',
---    	    properties <- col->collect(p |
---			    thisModule.resolveTemp(p,'property'))
---    	        ->flatten()
---    	)
---    do {
---        schema;
---    }
---}
 
 
 --- All elements created from a Parameter Element
@@ -641,3 +637,19 @@ rule OutputDatasetMultipleFile {
 			description <- 'Dataset value is retrieved'
 		)
 }
+
+
+
+
+--rule parameterSetDefinition(col : Collection(aadl!Parameter)){
+--    to
+--    	schema : openapi!Schema (
+--    	    referenceName <- 'ParameterMap',
+--    	    properties <- col->collect(p |
+--			    thisModule.resolveTemp(p,'property'))
+--    	        ->flatten()
+--    	)
+--    do {
+--        schema;
+--    }
+--}
