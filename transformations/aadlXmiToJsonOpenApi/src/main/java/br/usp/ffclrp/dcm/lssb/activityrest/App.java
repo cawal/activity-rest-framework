@@ -17,8 +17,7 @@ import edu.uoc.som.openapi.io.OpenAPIExporter;
  * Hello world!
  *
  */
-public class App 
-{
+public class App {
     public static void main( String[] args ) throws Exception
     {
 //    	InputStream aadlSource = new FileInputStream(new File(args[0]));

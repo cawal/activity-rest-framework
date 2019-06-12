@@ -21,9 +21,12 @@ helper def: apiVersion(): String =
 helper def: contact(): String =
 	'ricardo.cawal@gmail.com';
 
-helper def: definitions : Set(openapi!Schema) = OclUndefined;
 
-
+endpoint rule finish(){
+    do {
+        'Finished'.debug();
+    }
+}
 
 rule Activity {
 	from
@@ -33,40 +36,12 @@ rule Activity {
 	}
 	to
 		root : openapi!Root (
-			schemas <- schema,
 			api <-api,
+			schemas <- OclUndefined,
 			paramters <- OclUndefined,
 			responses <- OclUndefined
 		),
-		schema : openapi!Schema (
-			title <- activity.name,
-			description <- activity.remark
-		),
-		api: openapi!API (
-			swagger <- '2.0',
-			host <- thisModule.host(),
-			basePath <- thisModule.basePath(activity.name),
-			schemes <- 'http',
-			consumes <- 'application/json',
-			consumes <- 'application/xml',
-			produces <- 'application/json',
-			produces <- 'application/xml',
-			info <- apiInfo,
---			paths <- activity.parameters
-			paths <- thisModule.activityEndpoints(activity),
-			paths <- activity.parameters->collect(e 
-			    | thisModule.parameterEndpoints(e))
-			    ->flatten(),
---			paths <- openapi!Path.allInstances(),
-			paths <- activity.inputDatasets,
-			paths <- activity.outputDatasets,
-			definitions <-activityDefinition,
-			definitions <- parameterMapDefiniton,
-			definitions <- fileDefinition,
-			definitions <- jobInstanceDefinition,
-			definitions <- parameterRepresentation,
-			definitions <- thisModule.definitions.debug()
-		),
+		
 		apiInfo: openapi!Info (
 			description <- activity.remark,
 			title <- activity.name,
@@ -74,6 +49,55 @@ rule Activity {
 			license <- OclUndefined,
 			termsOfService <- ''
 		),
+		
+		api: openapi!API (
+			swagger <- '2.0',
+			host <- thisModule.host(),
+			basePath <- thisModule.basePath(activity.name),
+			
+			schemes <- 'http',
+			consumes <- 'application/json',
+			consumes <- 'application/xml',
+			produces <- 'application/json',
+			produces <- 'application/xml',
+			info <- apiInfo,
+			
+			paths <- rootPath,
+			paths <- newAnalysisCollectionPath,
+			
+			paths <-  nonExecutedAnalysisPath,
+			paths <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'nonExecutedAnalysisPath')),
+			    
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'nonExecutedAnalysisPath')),
+			
+			
+			paths <- succededAnalysisPath,
+			paths <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'succeededAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
+			paths <- activity.outputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
+			
+			paths <- failedAnalysisPath,
+			paths <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'failedAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'failedAnalysisPath')),
+			
+
+			
+			definitions <- activityDefinition,
+			definitions <- parameterSetDefinition,
+			definitions <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'schema')),
+			definitions <- fileDefinition,
+			definitions <- jobInstanceDefinition
+		),
+		
+		-- Schemas
 		activityDefinition: openapi!Schema (
 			referenceName <- 'AnalysisActivity',
 			type <- #object,
@@ -94,6 +118,16 @@ rule Activity {
 		    referenceName <- 'errorReport',
 		    schema <- stringSchema
 		),
+		
+		
+		parameterSetDefinition :  openapi!Schema (
+    	    referenceName <- 'ParameterMap',
+    	    properties <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'property'))
+    	        ->flatten()
+    	),
+		
+		
 		jobInstanceDefinition: openapi!Schema (
 			referenceName <- 'JobInstance',
 			type <- #object,
@@ -114,29 +148,8 @@ rule Activity {
 		    referenceName <- 'errorReport',
 		    schema <- stringSchema
 		),
-		parameterRepresentation: openapi!Schema (
-		    referenceName <- 'Parameter',
-		    properties <- parameterNameProperty,
-		    properties <- parameterValueProperty,
-		    required <- parameterNameProperty,
-		    required <- parameterValueProperty
-		),
-		parameterNameProperty : openapi!Property (
-			referenceName <- 'name',
-			schema <- stringSchema
-		),
-		parameterValueProperty: openapi!Property (
-		    referenceName <- 'value',
-		    schema <- parameterValueSchema
-		),
-		parameterValueSchema: openapi!Schema (
-			type <- #array,
-			items <- genericParameterValueSchema
-		),
-		parameterMapDefiniton: openapi!Schema (
-			referenceName <- 'Parameters',
-			type <- #object
-		),
+		
+		
 		fileDefinition: openapi!Schema (
 			referenceName <- 'File',
 			properties <- nameProperty,
@@ -155,6 +168,8 @@ rule Activity {
 			referenceName <- 'content',
 			schema <- fileContentsSchema
 		),
+		
+		
 		stringSchema: openapi!Schema (
 			type <- #string
 		),
@@ -173,121 +188,51 @@ rule Activity {
 		),
 		genericParameterValueSchema : openapi!Schema (
 			type <- #unspecified
-		)
-	do {
---		root.paramters <- openapi!Parameter.allInstances();
-	}
-}
-
---rule Parameter {
---	from
---		parameter: aadl!Parameter 
---	to
---		nonExecutedAnalysisPath: openapi!Path (
---			relativePath <- '/new-analyses/{id}/parameters/' + parameter.name,
---			parameters <- activityIdentifier,
---			get <- getNewAnalysis,
---			put <- putNewAnalysis
---		),
---		succeededAnalysisPath: openapi!Path (
---			relativePath <- '/succeded-analyses/{id}/parameters/' + parameter.name,
---			parameters <- activityIdentifier,
---			get <- getSucceededAnalysis
---		),
---		failedAnalysisPath: openapi!Path (
---			relativePath <- '/failed-analyses/{id}/parameters/' + parameter.name,
---			parameters <- activityIdentifier,
---			get <- getFailedAnalysis
---		),
---		activityIdentifier: openapi!Parameter (
---			name <- 'id',
---			type <- 'string',
---			required <- true,
---			description <- 'The analysis activity identifier.',
---			location <- #path
---		),
---		getNewAnalysis : openapi!Operation (
---			operationId <- 'get-' + parameter.name + 'from-non-executed-analysis',
---			description <- parameter.remark,
---			parameters <- activityIdentifier,
---			responses <- okResponse			
---		),
---		getSucceededAnalysis : openapi!Operation (
---			operationId <- 'get-' + parameter.name + 'from-succeded-analysis',
---			description <- parameter.remark,
---			parameters <- activityIdentifier,
---			responses <- okResponse			
---		),
---		getFailedAnalysis : openapi!Operation (
---			operationId <- 'get-' + parameter.name + 'from-failed-analysis',
---			description <- parameter.remark,
---			parameters <- activityIdentifier,
---			responses <- okResponse			
---		),
---		putNewAnalysis : openapi!Operation (
---			operationId <- 'put-' + parameter.name + 'for-non-executed-analysis',
---			description <- parameter.remark,
---			parameters <- activityIdentifier,
---			responses <- okResponse			
---		),
---		okResponse: openapi!Response (
---			code <- '200',
---			description <- 'Parameter value is retrieved'
---		)
---		do {
---		}
---}
-
-
---- Several endpoints are created from a single Activity element,
---- thus we use a called rule that returns a Sequence in the do{}
---- section.
-rule activityEndpoints(activity: aadl!Activity) {
-    to
-    	rootPath: openapi!Path (
-			relativePath <- '/',
-			get <- getRoot
 		),
-    	newAnalysisCollectionPath: openapi!Path (
-			relativePath <- '/new-analyses',
-			post <- createNewAnalysis
-		),
-		nonExecutedAnalysisPath: openapi!Path (
-			relativePath <- '/new-analyses/{id}',
-			parameters <- activityIdentifier,
-			get <- getNewAnalysis,
-			delete <- deleteNewAnalysis
-		),
-		succededAnalysisPath: openapi!Path (
-			relativePath <- '/succeded-analyses/{id}',
-			parameters <- activityIdentifier,
-			get <- getSuccededAnalysis,
-			delete <- deleteSuccededAnalysis
-		),
-		failedAnalysisPath: openapi!Path (
-			relativePath <- '/failed-analyses/{id}',
-			parameters <- activityIdentifier,
-			get <- getFailedAnalysis,
-			delete <- deleteFailedAnalysis
-		),
-		activityIdentifier: openapi!Parameter (
+		activityIdentifierParameter: openapi!Parameter (
 			name <- 'id',
 			type <- 'string',
 			required <- true,
 			description <- 'The analysis activity identifier.',
 			location <- #path
 		),
+		fileIdentifierParameter: openapi!Parameter (
+			name <- 'file-id',
+			type <- 'string',
+			required <- true,
+			description <- 'The dataset\' file identifier.',
+			location <- #path
+		),
+		
+		-- paths
+		rootPath: openapi!Path (
+			relativePath <- '/',
+			get <- getRoot
+		),
 		getRoot : openapi!Operation (
 			operationId <- 'get-service-root-resource',
 			description <- activity.remark,
 			responses <- okResponse			
+		),
+		
+    	newAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/new-analyses',
+			post <- createNewAnalysis
 		),
 		createNewAnalysis : openapi!Operation (
 			operationId <- 'create-new-analysis-resource',
 			description <- activity.remark,
 			responses <- okResponse
 		),
-		getNewAnalysis : openapi!Operation (
+		
+		
+		nonExecutedAnalysisPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}',
+			parameters <- activityIdentifier,
+			get <- getInNewActivity,
+			delete <- deleteNewAnalysis
+		),
+		getInNewActivity : openapi!Operation (
 			operationId <- 'get-non-executed-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
@@ -298,7 +243,15 @@ rule activityEndpoints(activity: aadl!Activity) {
 			description <- activity.remark,
 			parameters <- activityIdentifier,
 			responses <- deleteOkResponse			
-		),		
+		),	
+		
+		
+		succededAnalysisPath: openapi!Path (
+			relativePath <- '/succeded-analyses/{id}',
+			parameters <- activityIdentifier,
+			get <- getSuccededAnalysis,
+			delete <- deleteSuccededAnalysis
+		),
 		getSuccededAnalysis : openapi!Operation (
 			operationId <- 'get-succeeded-analysis',
 			description <- activity.remark,
@@ -310,7 +263,15 @@ rule activityEndpoints(activity: aadl!Activity) {
 			description <- activity.remark,
 			parameters <- activityIdentifier,
 			responses <- deleteOkResponse			
-		),		
+		),	
+		
+		
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}',
+			parameters <- activityIdentifier,
+			get <- getFailedAnalysis,
+			delete <- deleteFailedAnalysis
+		),
 		getFailedAnalysis : openapi!Operation (
 			operationId <- 'get-failed-analysis',
 			description <- activity.remark,
@@ -323,6 +284,22 @@ rule activityEndpoints(activity: aadl!Activity) {
 			parameters <- activityIdentifier,
 			responses <- deleteOkResponse			
 		),
+		
+		-- common parameters
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			description <- 'The analysis activity identifier.',
+			location <- #path
+		),
+
+		
+			
+			
+		
+		
+		-- commom responses
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Analysis activity representation is retrieved'
@@ -331,106 +308,186 @@ rule activityEndpoints(activity: aadl!Activity) {
 			code <- '200',
 			description <- 'Analysis activity is removed from server.'
 		)
-    do {
-        Sequence{
-            rootPath,
-            newAnalysisCollectionPath,
-            nonExecutedAnalysisPath,
-            succededAnalysisPath,
-            failedAnalysisPath
-        };
-    }
+		
+		
+	do {
+	}
 }
 
 
+--rule parameterSetDefinition(col : Collection(aadl!Parameter)){
+--    to
+--    	schema : openapi!Schema (
+--    	    referenceName <- 'ParameterMap',
+--    	    properties <- col->collect(p |
+--			    thisModule.resolveTemp(p,'property'))
+--    	        ->flatten()
+--    	)
+--    do {
+--        schema;
+--    }
+--}
 
---- Several endpoints are created from a single Parameter element,
---- thus we use a called rule that returns a Sequence in the do{}
---- section.
-rule parameterEndpoints(parameter: aadl!Parameter) {
-	to
-		nonExecutedAnalysisPath: openapi!Path (
+
+--- All elements created from a Parameter Element
+rule Parameter {
+	from 
+		parameter : aadl!Parameter
+    to
+    	schema : openapi!Schema (
+    	    referenceName <- parameter.name,
+    	    properties <- localProperty
+    	),
+    	property : openapi!Property (
+    	    referenceName <- parameter.name
+    	),
+    	localProperty : openapi!Property (
+    	    referenceName <- parameter.name
+    	),
+    	nonExecutedAnalysisPath: openapi!Path (
 			relativePath <- '/new-analyses/{id}/parameters/' + parameter.name,
-			parameters <- activityIdentifier,
-			get <- getNewAnalysis,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInNewActivity,
 			put <- putNewAnalysis
 		),
 		succeededAnalysisPath: openapi!Path (
 			relativePath <- '/succeded-analyses/{id}/parameters/' + parameter.name,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			get <- getSucceededAnalysis
 		),
 		failedAnalysisPath: openapi!Path (
 			relativePath <- '/failed-analyses/{id}/parameters/' + parameter.name,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			get <- getFailedAnalysis
 		),
-		activityIdentifier: openapi!Parameter (
-			name <- 'id',
-			type <- 'string',
-			required <- true,
-			description <- 'The analysis activity identifier.',
-			location <- #path
-		),
-		getNewAnalysis : openapi!Operation (
+		getInNewActivity : openapi!Operation (
 			operationId <- 'get-' + parameter.name + 'from-non-executed-analysis',
 			description <- parameter.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
 		getSucceededAnalysis : openapi!Operation (
 			operationId <- 'get-' + parameter.name + 'from-succeded-analysis',
 			description <- parameter.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
 		getFailedAnalysis : openapi!Operation (
 			operationId <- 'get-' + parameter.name + 'from-failed-analysis',
 			description <- parameter.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
 		putNewAnalysis : openapi!Operation (
 			operationId <- 'put-' + parameter.name + 'for-non-executed-analysis',
 			description <- parameter.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Parameter value is retrieved'
 		)
-		do {
-		    Sequence{
-		        nonExecutedAnalysisPath,
-		        succeededAnalysisPath,
-		        failedAnalysisPath
-		    };
-		}
+    do {
+        -- return
+        schema;
+    }
 }
+
+
+
+
+
 
 rule InputDatasetSingleFile {
 	from
-		dataset: aadl!InputDataset ( 1 = dataset.maximumCardinality.debug())
+		dataset: aadl!InputDataset ( 1 = dataset.maximumCardinality)
 
 	to 
 		nonExecutedAnalysisPath: openapi!Path (
 			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name,
-			parameters <- activityIdentifier,
-			get <- getNewAnalysis
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInNewActivity,
+			put <- putInNewActivity,
+			delete <- deleteInNewActivity
 		),
-		activityIdentifier: openapi!Parameter (
-			name <- 'id',
-			type <- 'string',
-			required <- true,
-			location <- #path
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededActivity
 		),
-		getNewAnalysis : openapi!Operation (
-			operationId <- 'get-' + dataset.name + 'from-non-executed-analysis',
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInFailedActivity
+		),
+		
+		
+		
+		getInNewActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-non-executed-analysis',
 			description <- dataset.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
+		putInNewActivity : openapi!Operation (
+			operationId <- 'put-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		deleteInNewActivity : openapi!Operation (
+			operationId <- 'delete-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		
+		getInFailedActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-failed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved'
@@ -440,26 +497,88 @@ rule InputDatasetSingleFile {
 
 rule InputDatasetMultipleFile {
 	from
-		dataset: aadl!InputDataset (not (1 = dataset.maximumCardinality.debug()))
+		dataset: aadl!InputDataset (not (1 = dataset.maximumCardinality))
 
 	to 
 		nonExecutedAnalysisPath: openapi!Path (
-			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name,
-			parameters <- activityIdentifier,
-			get <- getNewAnalysis
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name + '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInNewActivity,
+			put <- putInNewActivity,
+			delete <- deleteInNewActivity
 		),
-		activityIdentifier: openapi!Parameter (
-			name <- 'id',
-			type <- 'string',
-			required <- true,
-			location <- #path
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/inputs/' + dataset.name+ '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInSuccededActivity
 		),
-		getNewAnalysis : openapi!Operation (
-			operationId <- 'get-' + dataset.name + 'from-non-executed-analysis',
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/inputs/' + dataset.name+ '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInFailedActivity
+		),
+		
+		
+		
+		getInNewActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-non-executed-analysis',
 			description <- dataset.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
+		putInNewActivity : openapi!Operation (
+			operationId <- 'put-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		deleteInNewActivity : openapi!Operation (
+			operationId <- 'delete-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		
+		getInFailedActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-failed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved'
@@ -468,24 +587,23 @@ rule InputDatasetMultipleFile {
 
 rule OutputDatasetSingleFile {
 	from
-		dataset: aadl!OutputDataset ( 1 = dataset.maximumCardinality.debug())
+		dataset: aadl!OutputDataset ( 1 = dataset.maximumCardinality)
 
 	to 
+		
 		succeededAnalysisPath: openapi!Path (
 			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
-			parameters <- activityIdentifier,
-			get <- getFromSuccededAnalysis
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededActivity
 		),
-		activityIdentifier: openapi!Parameter (
-			name <- 'id',
-			type <- 'string',
-			required <- true,
-			location <- #path
-		),
-		getFromSuccededAnalysis : openapi!Operation (
-			operationId <- 'get-' + dataset.name + 'from-succeeded-analysis',
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
 			description <- dataset.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
 		okResponse: openapi!Response (
@@ -497,24 +615,25 @@ rule OutputDatasetSingleFile {
 
 rule OutputDatasetMultipleFile {
 	from
-		dataset: aadl!OutputDataset (not (1 = dataset.maximumCardinality.debug()))
+		dataset: aadl!OutputDataset (not (1 = dataset.maximumCardinality))
 
 	to 
 		succeededAnalysisPath: openapi!Path (
-			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
-			parameters <- activityIdentifier,
-			get <- getFromSuccededAnalysis
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name+ '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInSuccededActivity
 		),
-		activityIdentifier: openapi!Parameter (
-			name <- 'id',
-			type <- 'string',
-			required <- true,
-			location <- #path
-		),
-		getFromSuccededAnalysis : openapi!Operation (
-			operationId <- 'get-' + dataset.name + 'from-succeeded-analysis',
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
 			description <- dataset.remark,
-			parameters <- activityIdentifier,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
 			responses <- okResponse			
 		),
 		okResponse: openapi!Response (
