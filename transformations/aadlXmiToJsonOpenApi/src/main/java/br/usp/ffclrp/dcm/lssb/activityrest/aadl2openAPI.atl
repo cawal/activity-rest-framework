@@ -21,7 +21,37 @@ helper def: apiVersion(): String =
 helper def: contact(): String =
 	'ricardo.cawal@gmail.com';
 
+--- This map helps when setting the type of a Schema from the Parameter::type
+helper def: typeMap : Map(String, String) =
+	Map {
+		('STRING','string'),
+		('REAL', 'number'),
+		('INTEGER','integer'),
+		('BOOLEAN','boolean')
+	};
 
+	
+helper def: stringSchema : openapi!Schema = OclUndefined; 
+	
+helper def: primitiveTypeSchemaMap : Map(String, openapi!Schema) =
+	Map {
+		('STRING',thisModule.stringShema)
+--		('REAL', 'number'),
+--		('INTEGER','integer'),
+--		('BOOLEAN','boolean')
+	};
+
+--entrypoint rule start(){
+--	to	
+--		stringSchema : openapi!Schema(
+--			type <- #string
+--		)
+--	do {
+--		thisModule.stringSchema <- stringSchema;
+--	}
+--}
+
+	
 endpoint rule finish(){
     do {
         'Finished'.debug();
@@ -108,10 +138,10 @@ rule Activity {
 		activityDefinition: openapi!Schema (
 			referenceName <- 'AnalysisActivity',
 			type <- #object,
+			declaringContext <- api,
 			properties <- analysisIdProperty,
 			properties <- analysisStateProperty,
-			properties <- errorReportProperty,
-			required <- analysisIdProperty
+			properties <- errorReportProperty
 		),
 		analysisIdProperty: openapi!Property (
 			referenceName <- 'id',
@@ -129,6 +159,8 @@ rule Activity {
 		
 		parameterSetDefinition :  openapi!Schema (
     	    referenceName <- 'ParameterMap',
+			type <- #object,
+			declaringContext <- api,
     	    properties <- activity.parameters->collect(p |
 			    thisModule.resolveTemp(p,'property'))
     	        ->flatten()
@@ -138,10 +170,11 @@ rule Activity {
 		jobInstanceDefinition: openapi!Schema (
 			referenceName <- 'JobInstance',
 			type <- #object,
+			declaringContext <- api,
 			properties <- jobIdProperty,
 			properties <- jobStateProperty,
-			properties <- jobErrorReportProperty,
-			required <- jobIdProperty
+			properties <- jobErrorReportProperty
+			-- required <- jobIdProperty
 		),
 		jobIdProperty: openapi!Property (
 			referenceName <- 'id',
@@ -159,6 +192,8 @@ rule Activity {
 		
 		fileDefinition: openapi!Schema (
 			referenceName <- 'File',
+			type <- #object,
+			declaringContext <- api,
 			properties <- nameProperty,
 			properties <- contentTypeProperty,
 			properties <- fileContentProperty
@@ -219,7 +254,7 @@ rule Activity {
 		getRoot : openapi!Operation (
 			operationId <- 'get-service-root-resource',
 			description <- activity.remark,
-			responses <- okResponse			
+			responses <- getRootOkResponse			
 		),
 		
     	newAnalysisCollectionPath: openapi!Path (
@@ -229,7 +264,7 @@ rule Activity {
 		createNewAnalysis : openapi!Operation (
 			operationId <- 'create-new-analysis-resource',
 			description <- activity.remark,
-			responses <- okResponse
+			responses <- getActivityOkResponse
 		),
 		
 		
@@ -243,13 +278,13 @@ rule Activity {
 			operationId <- 'get-non-executed-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
-			responses <- okResponse			
+			responses <- getActivityOkResponse			
 		),
 		deleteNewAnalysis : openapi!Operation (
 			operationId <- 'remove-non-executed-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
-			responses <- deleteOkResponse			
+			responses <- deleteActivityOkResponse			
 		),	
 		
 		
@@ -263,13 +298,13 @@ rule Activity {
 			operationId <- 'get-succeeded-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
-			responses <- okResponse			
+			responses <- getActivityOkResponse			
 		),
 		deleteSuccededAnalysis : openapi!Operation (
 			operationId <- 'remove-succeded-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
-			responses <- deleteOkResponse			
+			responses <- deleteActivityOkResponse			
 		),	
 		
 		
@@ -283,13 +318,13 @@ rule Activity {
 			operationId <- 'get-failed-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
-			responses <- okResponse			
+			responses <- getActivityOkResponse			
 		),
 		deleteFailedAnalysis : openapi!Operation (
 			operationId <- 'remove-failed-analysis',
 			description <- activity.remark,
 			parameters <- activityIdentifier,
-			responses <- deleteOkResponse			
+			responses <- deleteActivityOkResponse			
 		),
 		
 		-- common parameters
@@ -306,14 +341,20 @@ rule Activity {
 		
 		
 		-- commom responses
-		okResponse: openapi!Response (
+		getRootOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Retrieve links for other accessible resources',
+			declaringContext <- api
+		),
+		
+		getActivityOkResponse: openapi!Response (
 			code <- '200',
 			description <- 'Analysis activity representation is retrieved',
 			schema <- activityDefinition,
 			declaringContext <- api
 		),
 		
-		deleteOkResponse: openapi!Response (
+		deleteActivityOkResponse: openapi!Response (
 			code <- '200',
 			description <- 'Analysis activity is removed from server.'
 		)
@@ -334,14 +375,32 @@ rule Parameter {
     to
     	schema : openapi!Schema (
     	    referenceName <- parameter.name,
-    	    properties <- localProperty
+    	    properties <- localProperty,
+			declaringContext <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'api'
+			),
+			type <- #object
+
     	),
     	property : openapi!Property (
-    	    referenceName <- parameter.name
+    	    referenceName <- parameter.name,
+			schema <- propertySchema -- thisModule.getJsonSchemaFromParameter(parameter)
     	),
     	localProperty : openapi!Property (
-    	    referenceName <- parameter.name
+    	    referenceName <- parameter.name,
+			schema <- propertySchema
     	),
+		propertySchema : openapi!Schema (
+--			type <- #string,
+--			maxItems <- parameter.maximumCardinality,
+--			minItems <- parameter.minimumCardinality,
+--			items <- if not parameter.maximumCardinality = 1 then
+--				OclUndefined
+--			else
+--				OclUndefined
+--			endif
+		),
+		arrayItemSchema : openapi!Schema(),
     	nonExecutedAnalysisPath: openapi!Path (
 			relativePath <- '/new-analyses/{id}/parameters/' + parameter.name,
 			parameters <- thisModule.resolveTemp(
@@ -370,7 +429,8 @@ rule Parameter {
 			parameters <- thisModule.resolveTemp(
 			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
 			),
-			responses <- okResponse			
+			responses <- notFoundResponse,
+			responses <- getOkResponse			
 		),
 		getSucceededAnalysis : openapi!Operation (
 			operationId <- 'get-' + parameter.name + 'from-succeded-analysis',
@@ -378,7 +438,8 @@ rule Parameter {
 			parameters <- thisModule.resolveTemp(
 			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
 			),
-			responses <- okResponse			
+			responses <- notFoundResponse,
+			responses <- getOkResponse			
 		),
 		getFailedAnalysis : openapi!Operation (
 			operationId <- 'get-' + parameter.name + 'from-failed-analysis',
@@ -386,7 +447,8 @@ rule Parameter {
 			parameters <- thisModule.resolveTemp(
 			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
 			),
-			responses <- okResponse			
+			responses <- notFoundResponse,
+			responses <- getOkResponse			
 		),
 		putNewAnalysis : openapi!Operation (
 			operationId <- 'put-' + parameter.name + 'for-non-executed-analysis',
@@ -394,13 +456,36 @@ rule Parameter {
 			parameters <- thisModule.resolveTemp(
 			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
 			),
-			responses <- okResponse			
+			responses <- putOkResponse,
+			responses <- putBadRequestResponse,
+			responses <- notFoundResponse
 		),
-		okResponse: openapi!Response (
+		getOkResponse: openapi!Response (
 			code <- '200',
-			description <- 'Parameter value is retrieved'
+			description <- 'Parameter value is retrieved',
+			schema <- schema
+		),
+		putOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameter value is set'
+		),
+		putBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Bad values for parameter.'
+		),
+		notFoundResponse: openapi!Response (
+			code <- '404',
+			description <- 'Resource not found.'
 		)
+
     do {
+    	if (parameter.maximumCardinality.toString() = '1') {
+    		propertySchema.type <- thisModule.typeMap.get(parameter.parameterType.toString()); 
+    	} else {
+    		propertySchema.type <- #array.debug();
+    		propertySchema.items <- arrayItemSchema;
+    		arrayItemSchema.type <- thisModule.typeMap.get(parameter.parameterType.toString());
+    	}
         -- return
         schema;
     }

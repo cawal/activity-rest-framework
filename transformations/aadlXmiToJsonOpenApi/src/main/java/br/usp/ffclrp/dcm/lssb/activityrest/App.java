@@ -26,6 +26,7 @@ public class App {
 //    	Activity activity = ModelsService.retrieveActivityFromXmi(resourceUri);
     	//API api = ModelsService.retrieveOpenApiFromXmi(resourceUri);
     	Root root = ModelsService.retrieveOpenApiRootFromXmi(resourceUri);
+//    	root.getApi().getDefinitions().forEach(d -> System.out.println(d.getRef()));
     	//System.out.println(api);
     	OpenAPIExporter exporter = ExporterBuilder.create();
 		JsonObject jsonOb = exporter.toJson(root.getApi());
