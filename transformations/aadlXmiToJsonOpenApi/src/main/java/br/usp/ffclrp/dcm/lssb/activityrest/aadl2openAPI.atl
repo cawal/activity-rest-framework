@@ -344,6 +344,7 @@ rule Activity {
 		getRootOkResponse: openapi!Response (
 			code <- '200',
 			description <- 'Retrieve links for other accessible resources',
+			headers <- thisModule.getLinkHeader(),
 			declaringContext <- api
 		),
 		
@@ -351,7 +352,9 @@ rule Activity {
 			code <- '200',
 			description <- 'Analysis activity representation is retrieved',
 			schema <- activityDefinition,
-			declaringContext <- api
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
 		),
 		
 		deleteActivityOkResponse: openapi!Response (
@@ -359,14 +362,35 @@ rule Activity {
 			description <- 'Analysis activity is removed from server.'
 		)
 		
-		
-		
 	do {
 	}
 }
 
 
+rule getLocationHeader() {
+	to 
+		header : openapi!Header (
+			name <- 'Location',
+			description <- 'The location of the resource.',
+			type <- #string
+		)
+	do {
+		header;
+	}
+}
 
+
+rule getLinkHeader() {
+	to 
+		header : openapi!Header (
+			name <- 'Link',
+			description <- 'Link for another accessible resource.',
+			type <- #string
+		)
+	do {
+		header;
+	}
+}
 
 --- All elements created from a Parameter Element
 rule Parameter {
@@ -457,11 +481,15 @@ rule Parameter {
 		getOkResponse: openapi!Response (
 			code <- '200',
 			description <- 'Parameter value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
 			schema <- schema
 		),
 		putOkResponse: openapi!Response (
 			code <- '200',
-			description <- 'Parameter value is set'
+			description <- 'Parameter value is set',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
 		),
 		putBadRequestResponse: openapi!Response (
 			code <- '400',
@@ -568,6 +596,8 @@ rule InputDatasetSingleFile {
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
@@ -662,6 +692,8 @@ rule InputDatasetMultipleFile {
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
@@ -692,6 +724,8 @@ rule OutputDatasetSingleFile {
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
@@ -725,6 +759,8 @@ rule OutputDatasetMultipleFile {
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
