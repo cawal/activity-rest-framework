@@ -43,11 +43,13 @@ rule Activity {
 		),
 		
 		apiInfo: openapi!Info (
-			description <- activity.remark,
 			title <- activity.name,
 			version <- thisModule.apiVersion(),
 			license <- OclUndefined,
-			termsOfService <- ''
+			termsOfService <- '',
+			description <- if activity.remark.oclIsUndefined() then
+								''
+							else activity.remark endif
 		),
 		
 		api: openapi!API (
