@@ -390,17 +390,11 @@ rule Parameter {
     	    referenceName <- parameter.name,
 			schema <- propertySchema
     	),
-		propertySchema : openapi!Schema (
---			type <- #string,
---			maxItems <- parameter.maximumCardinality,
---			minItems <- parameter.minimumCardinality,
---			items <- if not parameter.maximumCardinality = 1 then
---				OclUndefined
---			else
---				OclUndefined
---			endif
-		),
+		
+		propertySchema : openapi!Schema (),
+		
 		arrayItemSchema : openapi!Schema(),
+		
     	nonExecutedAnalysisPath: openapi!Path (
 			relativePath <- '/new-analyses/{id}/parameters/' + parameter.name,
 			parameters <- thisModule.resolveTemp(
@@ -573,7 +567,10 @@ rule InputDatasetSingleFile {
 		
 		okResponse: openapi!Response (
 			code <- '200',
-			description <- 'Dataset value is retrieved'
+			description <- 'Dataset value is retrieved',
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
 		)
 }
 
@@ -664,7 +661,10 @@ rule InputDatasetMultipleFile {
 		
 		okResponse: openapi!Response (
 			code <- '200',
-			description <- 'Dataset value is retrieved'
+			description <- 'Dataset value is retrieved',
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
 		)
 }
 
@@ -691,7 +691,10 @@ rule OutputDatasetSingleFile {
 		),
 		okResponse: openapi!Response (
 			code <- '200',
-			description <- 'Dataset value is retrieved'
+			description <- 'Dataset value is retrieved',
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
 		)
 }
 
@@ -721,22 +724,9 @@ rule OutputDatasetMultipleFile {
 		),
 		okResponse: openapi!Response (
 			code <- '200',
-			description <- 'Dataset value is retrieved'
+			description <- 'Dataset value is retrieved',
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
 		)
 }
-
-
-
-
---rule parameterSetDefinition(col : Collection(aadl!Parameter)){
---    to
---    	schema : openapi!Schema (
---    	    referenceName <- 'ParameterMap',
---    	    properties <- col->collect(p |
---			    thisModule.resolveTemp(p,'property'))
---    	        ->flatten()
---    	)
---    do {
---        schema;
---    }
---}
