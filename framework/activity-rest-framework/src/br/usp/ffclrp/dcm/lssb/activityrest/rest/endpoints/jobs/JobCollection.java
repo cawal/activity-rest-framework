@@ -184,7 +184,7 @@ public class JobCollection {
 			
 			return Response.seeOther(analysisURI).build();
 		} catch (Throwable e) {
-			throw new ServerErrorException(500);
+			throw new ServerErrorException(510);
 		}
 	}
 	

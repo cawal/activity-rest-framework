@@ -355,20 +355,31 @@ rule Activity {
 			operationId <- 'cancel-job',
 			description <- 'Try to cancel the job.',
 			parameters <- activityIdentifier,
-			responses <- deleteJobOkResponse,
+--			responses <- deleteJobOkResponse,
+			responses <- deleteJobSeeOtherResponse,
 			responses <- deleteJobFailedResponse			
 		),
-		deleteJobOkResponse: openapi!Response (
-			code <- '200',
-			description <- 'The job is removed from proccessing.',
-			declaringContext <- api
-		),
+--		deleteJobOkResponse: openapi!Response (
+--			code <- '200',
+--			description <- 'The job is removed from proccessing.',
+--			declaringContext <- api
+--		),
 		deleteJobFailedResponse: openapi!Response (
-			code <- '500',
+			code <- '510',
 			description <- 'The job could not be canceled.',
 			schema <- activityDefinition,
 			declaringContext <- api
 		),
+		deleteJobSeeOtherResponse: openapi!Response (
+			code <- '303',
+			description <- 'The job was canceled and the resource was returned'
+					+' to the READY state. Location is returned in headers.',
+			schema <- activityDefinition,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		
 		
 		succededAnalysisPath: openapi!Path (
 			relativePath <- '/succeded-analyses/{id}',
