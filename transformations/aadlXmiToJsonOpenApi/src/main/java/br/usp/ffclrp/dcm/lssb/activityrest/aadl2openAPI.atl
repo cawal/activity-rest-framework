@@ -103,7 +103,8 @@ rule Activity {
 			    
 			paths <- activity.inputDatasets->collect(d |
 			    thisModule.resolveTemp(d,'nonExecutedAnalysisPath')),
-			
+		
+			paths <- jobPath,
 			
 			paths <- succededAnalysisPath,
 			paths <- activity.parameters->collect(p |
@@ -287,6 +288,87 @@ rule Activity {
 			responses <- deleteActivityOkResponse			
 		),	
 		
+		jobPath: openapi!Path (
+			relativePath <- '/jobs/{id}',
+			parameters <- activityIdentifier,
+			get <- getJob,
+			delete <- deleteJob,
+			put <- putJob
+		),
+		putJob : openapi!Operation (
+			operationId <- 'put-job',
+			description <- 'Create a new job for the activity identified by {id}.',
+			parameters <- activityIdentifier,
+			responses <- putJobCreatedResponse,			
+			responses <- putJobBadRequestResponse
+		),
+		putJobCreatedResponse: openapi!Response (
+			code <- '201',
+			description <- 'The activity is ready for processing and a new job is started.'
+					+'The location of the new job is also returned in the headers. ',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		putJobBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'The activity is was not ready for its execution'
+							+'and was not started.',
+			declaringContext <- api
+		),
+
+		getJob : openapi!Operation (
+			operationId <- 'get-job',
+			description <- 'Get the processing state.',
+			parameters <- activityIdentifier,
+			responses <- getJobOkResponse,
+			responses <- getJobGoneResponse,
+			responses <- getJobSeeOtherResponse			
+		),
+		getJobOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'The job is runnning. Poll the processing again'+
+				' after a small ammout of time.',
+			schema <- activityDefinition,
+			declaringContext <- api
+		),
+		getJobGoneResponse: openapi!Response (
+			code <- '410',
+			description <- 'The job failed. The location of the results is' +
+			' provided in headers.',
+			schema <- activityDefinition,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		getJobSeeOtherResponse: openapi!Response (
+			code <- '303',
+			description <- 'The job succeeded. The location of the results is' +
+			' provided in headers.',
+			schema <- activityDefinition,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+
+		deleteJob: openapi!Operation (
+			operationId <- 'cancel-job',
+			description <- 'Try to cancel the job.',
+			parameters <- activityIdentifier,
+			responses <- deleteJobOkResponse,
+			responses <- deleteJobFailedResponse			
+		),
+		deleteJobOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'The job is removed from proccessing.',
+			declaringContext <- api
+		),
+		deleteJobFailedResponse: openapi!Response (
+			code <- '500',
+			description <- 'The job could not be canceled.',
+			schema <- activityDefinition,
+			declaringContext <- api
+		),
 		
 		succededAnalysisPath: openapi!Path (
 			relativePath <- '/succeded-analyses/{id}',
