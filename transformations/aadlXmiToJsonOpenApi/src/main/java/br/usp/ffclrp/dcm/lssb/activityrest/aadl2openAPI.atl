@@ -98,6 +98,7 @@ rule Activity {
 			paths <- newAnalysisCollectionPath,
 			
 			paths <-  nonExecutedAnalysisPath,
+			paths <- nonExecutedAnalysisParametersPath,
 			paths <- activity.parameters->collect(p |
 			    thisModule.resolveTemp(p,'nonExecutedAnalysisPath')),
 			    
@@ -107,6 +108,7 @@ rule Activity {
 			paths <- jobPath,
 			
 			paths <- succededAnalysisPath,
+			paths <- succededAnalysisParametersPath,
 			paths <- activity.parameters->collect(p |
 			    thisModule.resolveTemp(p,'succeededAnalysisPath')),
 			paths <- activity.inputDatasets->collect(d |
@@ -115,6 +117,7 @@ rule Activity {
 			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
 			
 			paths <- failedAnalysisPath,
+			paths <- failedAnalysisParametersPath,
 			paths <- activity.parameters->collect(p |
 			    thisModule.resolveTemp(p,'failedAnalysisPath')),
 			paths <- activity.inputDatasets->collect(d |
@@ -246,6 +249,19 @@ rule Activity {
 			description <- 'The dataset\' file identifier.',
 			location <- #path
 		),
+		parameterSetBodyParameter : openapi!Parameter (
+			name <- 'parameter values',
+			schema <- parameterSetDefinition,
+			required <- true,
+			location <- #body
+		),
+		fileBodyParameter : openapi!Parameter (
+			name <- 'Dataset\'s file values',
+			schema <- fileDefinition,
+			required <- true,
+			location <- #body
+		),
+		
 		
 		-- paths
 		rootPath: openapi!Path (
@@ -287,6 +303,73 @@ rule Activity {
 			parameters <- activityIdentifier,
 			responses <- deleteActivityOkResponse			
 		),	
+
+		nonExecutedAnalysisParametersPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/parameters',
+			parameters <- activityIdentifier,
+			get <- getNEAParameters,
+			put <- putNEAParameters
+		),
+		getNEAParameters : openapi!Operation (
+			operationId <- 'get-non-executed-analysis-parameters',
+			description <- 'Get activity\'s parameters.',
+			parameters <- activityIdentifier,
+			responses <- getParametersOkResponse			
+		),
+		putNEAParameters : openapi!Operation (
+			operationId <- 'put-non-executed-analysis-parameters',
+			description <- 'Update all parameters values at once',
+			parameters <- activityIdentifier,
+			parameters <- parameterSetBodyParameter,
+			responses <- putParametersOkResponse,
+			responses <- putParametersBadRequestResponse
+		),	
+
+		succededAnalysisParametersPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/parameters',
+			parameters <- activityIdentifier,
+			get <- getSAParameters
+		),
+		getSAParameters : openapi!Operation (
+			operationId <- 'get-succeded-analysis-parameters',
+			description <- 'Get activity\'s parameters.',
+			parameters <- activityIdentifier,
+			responses <- getParametersOkResponse			
+		),
+		failedAnalysisParametersPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/parameters',
+			parameters <- activityIdentifier,
+			get <- getFAParameters
+		),
+		getFAParameters : openapi!Operation (
+			operationId <- 'get-failed-analysis-parameters',
+			description <- 'Get activity\'s parameters.',
+			parameters <- activityIdentifier,
+			responses <- getParametersOkResponse			
+		),
+		getParametersOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameters representation is retrieved',
+			schema <- parameterSetDefinition,
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putParametersOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameters values are accepted and updated.',
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putParametersBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Parameters values are not accepted.',
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+
 		
 		jobPath: openapi!Path (
 			relativePath <- '/jobs/{id}',
@@ -656,7 +739,11 @@ rule InputDatasetSingleFile {
 			parameters <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
 			),
-			responses <- okResponse			
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileBodyParameter'
+			),
+			responses <- putOkResponse,
+			responses <- putBadRequestResponse
 		),
 		deleteInNewActivity : openapi!Operation (
 			operationId <- 'delete-' + dataset.name + '-into-non-executed-analysis',
@@ -694,7 +781,20 @@ rule InputDatasetSingleFile {
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
+		),
+		
+		putOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is updated',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Dataset value is not accepted.',
+			headers <- thisModule.getLinkHeader()
 		)
+		
 }
 
 
@@ -751,6 +851,9 @@ rule InputDatasetMultipleFile {
 			description <- dataset.remark,
 			parameters <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileBodyParameter'
 			),
 			responses <- okResponse			
 		),
