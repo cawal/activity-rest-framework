@@ -104,6 +104,8 @@ rule Activity {
 			    
 			paths <- activity.inputDatasets->collect(d |
 			    thisModule.resolveTemp(d,'nonExecutedAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'nonExecutedAnalysisCollectionPath')),
 		
 			paths <- jobPath,
 			
@@ -112,7 +114,11 @@ rule Activity {
 			paths <- activity.parameters->collect(p |
 			    thisModule.resolveTemp(p,'succeededAnalysisPath')),
 			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'succededAnalysisCollectionPath')),
+			paths <- activity.inputDatasets->collect(d |
 			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
+			paths <- activity.outputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'nonExecutedAnalysisCollectionPath')),
 			paths <- activity.outputDatasets->collect(d |
 			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
 			
@@ -120,6 +126,8 @@ rule Activity {
 			paths <- failedAnalysisParametersPath,
 			paths <- activity.parameters->collect(p |
 			    thisModule.resolveTemp(p,'failedAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'failedAnalysisCollectionPath')),
 			paths <- activity.inputDatasets->collect(d |
 			    thisModule.resolveTemp(d,'failedAnalysisPath')),
 			
@@ -836,8 +844,7 @@ rule InputDatasetMultipleFile {
 			get <- getInFailedActivity
 		),
 		
-		
-		
+
 		getInNewActivity : openapi!Operation (
 			operationId <- 'get-' + dataset.name + '-from-non-executed-analysis',
 			description <- dataset.remark,
@@ -884,7 +891,7 @@ rule InputDatasetMultipleFile {
 			),
 			responses <- okResponse			
 		),
-		
+
 		okResponse: openapi!Response (
 			code <- '200',
 			description <- 'Dataset value is retrieved',
@@ -893,6 +900,88 @@ rule InputDatasetMultipleFile {
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
+		),
+		putOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is updated',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Dataset value is not accepted.',
+			headers <- thisModule.getLinkHeader()
+		),
+		postOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'File is created in the dataset.',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		postBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'File is not accepted.',
+			headers <- thisModule.getLinkHeader()
+		),
+		nonExecutedAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name ,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInNewCollection,
+			post <- postInCollection
+		),
+		succeededAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededCollection
+		),
+		failedAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInFailedCollection
+		),
+		postInCollection : openapi!Operation (
+			operationId <- 'post-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- postOkResponse,
+			resposnses <- postBadRequestResponse
+		),	
+		getInNewCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		getInSuccededCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		getInFailedCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-failed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		collectionOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Links for dataset files are retrieved',
+			headers <- thisModule.getLinkHeader()
 		)
 }
 
@@ -960,5 +1049,27 @@ rule OutputDatasetMultipleFile {
 			schema <- thisModule.resolveTemp(
 			    	dataset.refImmediateComposite(),'fileDefinition'
 			)
+		),
+		
+		
+		succeededAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededCollection
+		),
+		getInSuccededCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		collectionOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Links for dataset files are retrieved',
+			headers <- thisModule.getLinkHeader()
 		)
 }
