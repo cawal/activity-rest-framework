@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="one-color-microarray-t-test">
+  <parameters name="cutoff" remark="Cutoff (log2-based) for filtering the fold change." parameterType="REAL"/>
+  <parameters name="correction-method"/>
+  <parameters name="p-value" parameterType="REAL">
+    <defaultValue>0.05</defaultValue>
+  </parameters>
+  <inputDatasets name="condition1-input-file" mimetype="text/tsv"/>
+  <inputDatasets name="condition2-input-file" mimetype="text/tsv"/>
+  <outputDatasets name="output-file" mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-one-color-microarray-t-test.R">
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="cutoff">
+      <manipulators xsi:type="slm:PrependListWith" value="--cutoff"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="correction-method">
+      <manipulators xsi:type="slm:PrependListWith" value="--correction-method"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="p-value">
+      <manipulators xsi:type="slm:PrependListWith" value="--p-value"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="condition1-input-file"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="condition2-input-file"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output-file"/>
+    <exitCodes code="0"/>
+    <exitCodes code="2" reportMessage="Bad invocation parameters." status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>

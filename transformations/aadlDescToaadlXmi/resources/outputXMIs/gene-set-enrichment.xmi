@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="gene-set-enrichment">
+  <parameters maximumCardinality="-1" name="reference-conditions" parameterType="INTEGER"/>
+  <parameters maximumCardinality="-1" name="target-conditions" parameterType="INTEGER"/>
+  <parameters name="use-fdr-adjust" parameterType="BOOLEAN">
+    <defaultValue>false</defaultValue>
+  </parameters>
+  <parameters name="experimental-design">
+    <defaultValue>unpaired</defaultValue>
+  </parameters>
+  <inputDatasets name="normalized-gene-expression-file" mimetype="text/tsv"/>
+  <inputDatasets name="gene-set-gmt" mimetype="text/plain"/>
+  <outputDatasets name="output-file" mimetype="text/tsv"/>
+  <outputDatasets name="less-expression-genes" mimetype="text/tsv"/>
+  <outputDatasets name="greater-expression-genes" mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-gene-set-enrichment.R">
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="reference-conditions">
+      <manipulators xsi:type="slm:PrependListWith" value="--reference-conditions"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="target-conditions">
+      <manipulators xsi:type="slm:PrependListWith" value="--target-conditions"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="use-fdr-adjust">
+      <manipulators xsi:type="slm:ToFlag" ifTrue="--use-fdr-adjust"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="experimental-design">
+      <manipulators xsi:type="slm:PrependListWith" value="--experimental-design"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="less-expression-genes">
+      <manipulators xsi:type="slm:PrependListWith" value="--less-expression-genes"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="greater-expression-genes">
+      <manipulators xsi:type="slm:PrependListWith" value="--greater-expression-genes"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="normalized-gene-expression-file"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="gene-set-gmt"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output-file"/>
+    <exitCodes code="0"/>
+    <exitCodes code="2" reportMessage="Bad invocation parameters." status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>

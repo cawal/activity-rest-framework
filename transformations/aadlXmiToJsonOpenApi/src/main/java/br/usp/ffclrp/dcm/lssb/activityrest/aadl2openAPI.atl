@@ -2,7 +2,7 @@
 -- @nsURI slm=http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore
 -- @nsURI openapi=http://som.uoc.edu/openapi/2.0.0
 
-
+--- OpenAPI metamodel at commit 47f4f688ab89dfb29ad9003aff20500c1708cd25
 module aadl2openAPI;
 create OUT: openapi from IN: aadl;
 

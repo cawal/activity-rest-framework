@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="genepix-microarray-normalization">
+  <parameters name="separator">
+    <defaultValue>	</defaultValue>
+  </parameters>
+  <inputDatasets maximumCardinality="-1" name="input-files" mimetype="text/tsv"/>
+  <outputDatasets name="output-file" mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-micro-genepix-norm.R">
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="separator">
+      <manipulators xsi:type="slm:PrependListWith" value="--separator"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="input-files">
+      <manipulators xsi:type="slm:PrependListWith" value="--input-files"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output-file">
+      <manipulators xsi:type="slm:PrependListWith" value="--output-file"/>
+    </commandLineTemplate>
+    <exitCodes code="0"/>
+    <exitCodes code="2" reportMessage="Bad invocation parameters." status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>

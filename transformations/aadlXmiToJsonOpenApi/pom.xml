@@ -21,7 +21,7 @@
 		<artifactId>activity-rest-root</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 	</parent>
-	
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,6 +58,7 @@
 
 
 	<dependencies>
+		<!-- Metamodels -->
 		<dependency>
 			<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
 			<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</artifactId>
@@ -70,38 +71,38 @@
 			<artifactId>edu.uoc.som.openapi</artifactId>
 			<version>1.0.2-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>edu.uoc.som.openapi</groupId>
 			<artifactId>edu.uoc.som.openapi.io</artifactId>
 			<version>1.0.3-SNAPSHOT</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.eclipse.core</groupId>
-            <artifactId>org.eclipse.core.resources</artifactId>
-            <version>${eclipseCoreVersion}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.core</groupId>
-            <artifactId>org.eclipse.core.runtime</artifactId>
-            <version>${eclipseCoreVersion}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.core</groupId>
-            <artifactId>org.eclipse.core.runtime</artifactId>
-            <version>${eclipseCoreVersion}</version>
-        </dependency>
-        
-        
-        <dependency>
-            <groupId>org.eclipse.equinox</groupId>
-            <artifactId>org.eclipse.equinox.common</artifactId>
-            <version>${eclipseCoreVersion}</version>
-        </dependency>
-        
+		<!-- MDD support infrastructure -->
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.resources</artifactId>
+			<version>${eclipseCoreVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>${eclipseCoreVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>${eclipseCoreVersion}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.eclipse.equinox</groupId>
+			<artifactId>org.eclipse.equinox.common</artifactId>
+			<version>${eclipseCoreVersion}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.common</artifactId>
@@ -179,6 +180,13 @@
 <!-- 			<artifactId>antlr-runtime</artifactId> -->
 <!-- 			<version>3.2</version> -->
 <!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli</artifactId>
+			<version>4.0.0-beta-2</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>junit</groupId>

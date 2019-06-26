@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="kegg-pathway-viewer" remark="'' Maps user data on relevant pathways graphs.&#xA;    Allows the mapping and rendering of gene expression data into KEGG pathway &#xA;    graphs. This service is implemented as a wrapper for the pathview R package.&#xA;     Further documentation about the pathview R package can be found at &#xA;     http://www.bioconductor.org/packages/release/bioc/html/pathview.html.&#xA;     ''">
+  <parameters name="species-id"/>
+  <parameters name="pathway-id"/>
+  <parameters name="gene-id-type"/>
+  <parameters name="column-with-row-names">
+    <defaultValue>1</defaultValue>
+  </parameters>
+  <inputDatasets name="input-file" mimetype="text/tsv"/>
+  <outputDatasets maximumCardinality="-1" name="output-files" remark="A directory were the files will be created." mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-kegg-pathway-viewer.R">
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="column-with-row-names">
+      <manipulators xsi:type="slm:PrependListWith" value="--column-with-row-names"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="input-file"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output-files"/>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="species-id"/>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="gene-id-type"/>
+    <exitCodes code="0"/>
+    <exitCodes code="2" reportMessage="Bad invocation parameters." status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>

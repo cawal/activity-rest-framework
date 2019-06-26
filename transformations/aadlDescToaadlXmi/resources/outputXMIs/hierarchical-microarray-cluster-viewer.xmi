@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" name="hierarchical-microarray-cluster-viewer">
+  <inputDatasets name="clustered-data-table" mimetype="text/plain"/>
+  <inputDatasets name="array-tree" mimetype="text/plain"/>
+  <inputDatasets name="gene-tree" mimetype="text/plain"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="cluster3">
+    <exitCodes code="0" reportMessage="SUCCESS"/>
+    <exitCodes code="1" reportMessage="FAILURE"/>
+  </functionalEntity>
+</aad:Activity>

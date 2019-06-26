@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="deseq2-analysis">
+  <parameters name="threshold" parameterType="REAL"/>
+  <parameters name="cutoff" parameterType="INTEGER"/>
+  <parameters name="use-false-discovery-rate" parameterType="BOOLEAN"/>
+  <inputDatasets maximumCardinality="-1" name="reference-samples" mimetype="text/tsv"/>
+  <inputDatasets maximumCardinality="-1" name="target-samples" mimetype="text/tsv"/>
+  <outputDatasets name="output-file" mimetype="text/tsv"/>
+  <outputDatasets name="std-out" mimetype="text/plain"/>
+  <outputDatasets name="std-err" mimetype="text/plain"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-deseq2-analysis.R" standardOutputStream="std-out" standardErrorStream="std-err">
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="reference-samples">
+      <manipulators xsi:type="slm:PrependListWith" value="--reference-samples"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="target-samples">
+      <manipulators xsi:type="slm:PrependListWith" value="--target-samples"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="threshold">
+      <manipulators xsi:type="slm:PrependListWith" value="--threshold"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="cutoff">
+      <manipulators xsi:type="slm:PrependListWith" value="--cutoff"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output-file">
+      <manipulators xsi:type="slm:PrependListWith" value="--output-file"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="use-false-discovery-rate">
+      <manipulators xsi:type="slm:ToFlag" ifTrue="--by-false-discovery-rate"/>
+    </commandLineTemplate>
+    <exitCodes code="0"/>
+    <exitCodes code="1" reportMessage="Input datasets are not correct." status="FAILED"/>
+    <exitCodes code="2" reportMessage="Bad invocation parameters." status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>
