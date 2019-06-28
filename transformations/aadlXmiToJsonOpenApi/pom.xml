@@ -186,8 +186,13 @@
 			<artifactId>picocli</artifactId>
 			<version>4.0.0-beta-2</version>
 		</dependency>
-
-
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>ualberta.edu.guana.tools.atl</groupId> -->
+<!-- 			<artifactId>atlauncher</artifactId> -->
+<!-- 			<version>1.0.0-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

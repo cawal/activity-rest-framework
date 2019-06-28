@@ -6,8 +6,8 @@
 module aadl2openAPI;
 create OUT: openapi from IN: aadl;
 
-helper def: port(): Integer =
-	8081;
+helper def: port(): String =
+	'8081';
 
 helper def: host(): String =
 	'kode.ffclrp.usp.br:' + thisModule.port();
@@ -66,10 +66,10 @@ rule Activity {
 	}
 	to
 		root : openapi!Root (
-			api <-api,
-			schemas <- OclUndefined,
-			paramters <- OclUndefined,
-			responses <- OclUndefined
+			api <-api
+--			schemas <- OclUndefined,
+--			paramters <- OclUndefined,
+--			responses <- OclUndefined
 		),
 		
 		apiInfo: openapi!Info (
