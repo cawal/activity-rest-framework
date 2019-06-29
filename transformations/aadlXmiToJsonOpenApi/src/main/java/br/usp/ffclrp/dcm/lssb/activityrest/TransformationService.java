@@ -38,13 +38,6 @@ import com.google.gson.JsonObject;
 
 
 public class TransformationService {
-	  // TRANSFORMATION MODULES
-	  private static final String RO_CORE_PROFILE_PLATFORM_URI = "/br.usp.ffclrp.lssb.uml.profiles.ro/resources/ROCore/ROCore.profile.uml";
-	  private static final String BFO_PROFILE_PLATFORM_URI = "/br.usp.ffclrp.lssb.uml.profiles.bfo/resources/bfo-minimal/bfo-minimal.profile.uml";
-	  private static final String OBODATAMODEL_PROFILE_PLATFORM_URI = "/br.usp.ffclrp.dcm.lssb.uml.profiles.obodatamodel/resources/profile/obodatamodel.profile.uml";
-	  private static final String RO_CORE_PROFILE_LOCATION = "/br/com/cawal/obo2umlconverter/profiles/ROCore.profile.uml";
-	  private static final String BFO_PROFILE_LOCATION = "/br/com/cawal/obo2umlconverter/profiles/bfo-minimal.profile.uml";
-	  private static final String OBODATAMODEL_PROFILE_LOCATION = "/br/com/cawal/obo2umlconverter/profiles/obodatamodel.profile.uml";
 
 	  // METAMODELS
 	  static final String AADL_METAMODEL_URI = 
@@ -52,33 +45,15 @@ public class TransformationService {
 	  static final String OPENAPI_METAMODEL_URI =
 			  OpenAPIPackage.eNS_URI;
 	  
-	  // PROFILES (IModels)
-	  public static final String OBO_PROFILE_URI =
-	      "platform:/plugin/br.usp.ffclrp.dcm.lssb.uml.profiles.obodatamodel"
-	          + "/resources/profile/obodatamodel.profile.uml";
-	  public static final String BFO_PROFILE_URI =
-	      "platform:/plugin/br.usp.ffclrp.lssb.uml.profiles.bfo"
-	          + "/resources/bfo-minimal/bfo-minimal.profile.uml";
-	  public static final String ROCORE_PROFILE_URI =
-	      "platform:/plugin/br.usp.ffclrp.lssb.uml.profiles.ro"
-	          + "/resources/ROCore/ROCore.profile.uml";
-
 	  /*
 	   * Transformation modules
 	   */
-
-	  private static final String ODM2UML_BASIC_TRANSFORMATION_MODULE_URI =
-	      "/br/com/cawal/obo2umlconverter/transformations/OBODatamodel2UML.asm";
-
-	  private static final String ODM2UML_BFO_SUPERIMPOSITION_MODULE_URI =
-	      "/br/com/cawal/obo2umlconverter/transformations/OBODatamodel2UML-BFOSuperimposition.asm";
-
-	  private static final String ODM2UML_ROCORE_SUPERIMPOSITION_MODULE_URI =
-	      "/br/com/cawal/obo2umlconverter/transformations/OBODatamodel2UML-ROCoreSuperimposition.asm";
+	  private static final String TRANSFORMATION_MODULE_URI = "aadl2openAPI.asm";
 
 
 
-	  public static JsonObject aadl2OpenAPI(
+
+	  public static void aadl2OpenAPI(
 			  					InputStream aadlSource, 
 			  					OutputStream openapiTarget,
 			  					IProgressMonitor monitor) throws IOException {
@@ -88,18 +63,8 @@ public class TransformationService {
 	      monitor.subTask("AADL to OpenAPI transformation");
 	    }
 
-		Activity activity = null; //ModelsService.retrieveAADLModel(aadlSource);
-		System.out.println(activity);
-		API api = transform(activity);
-		OpenAPIExporter exporter = ExporterBuilder.create();
-		JsonObject jsonObject = exporter.toJson(api);
-		return jsonObject;
-		
-	  }
-
-	  
-	  private static API transform(Activity activity) {
 	    try {
+	      // create transformation machinery
 	      EMFModelFactory modelFactory = new EMFModelFactory();
 	      EMFVMLauncher transformationLauncher = new EMFVMLauncher();
 	      EMFInjector injector = new EMFInjector();
@@ -120,39 +85,28 @@ public class TransformationService {
 	       */
 	      InputStream transformationInputStream =
 	          TransformationService.class.getResourceAsStream(
-	        		  ODM2UML_BASIC_TRANSFORMATION_MODULE_URI);
+	        		  TRANSFORMATION_MODULE_URI);
+	      System.out.println(transformationInputStream);
 	      Object basicModule = transformationLauncher.loadModule(transformationInputStream);
 
-
-
-//
-//
-//	      InputStream oboProfileSource = TransformationService.class
-//	          .getResourceAsStream(OBODATAMODEL_PROFILE_LOCATION);
-//
-//	      InputStream bfoProfileSource = TransformationService.class
-//	          .getResourceAsStream(BFO_PROFILE_LOCATION);
-//
-//	      InputStream rocoreProfileSource = TransformationService.class
-//	          .getResourceAsStream(RO_CORE_PROFILE_LOCATION);
 
 
 
 	      /*
 	       * Load metamodels
 	       */
-	      IReferenceModel odmMetamodel = modelFactory.newReferenceModel();
-	      injector.inject(odmMetamodel, ODM_METAMODEL_URI);
+	      IReferenceModel aadlMetamodel = modelFactory.newReferenceModel();
+	      injector.inject(aadlMetamodel, AADL_METAMODEL_URI);
 
-	      IReferenceModel umlMetamodel = modelFactory.newReferenceModel();
-	      injector.inject(umlMetamodel, UML_METAMODEL_URI);
-	      IModel umlModel = modelFactory.newModel(umlMetamodel);
+	      IReferenceModel openapiMetamodel = modelFactory.newReferenceModel();
+	      injector.inject(openapiMetamodel, OPENAPI_METAMODEL_URI);
+	      IModel openapiModel = modelFactory.newModel(openapiMetamodel);
 
 	      /*
 	       * Load models
 	       */
-	      IModel odmModel = modelFactory.newModel(odmMetamodel);
-	      injector.inject(odmModel, aadlSource,new HashMap<String, Object>());
+	      IModel aadlModel = modelFactory.newModel(aadlMetamodel);
+	      injector.inject(aadlModel, aadlSource,new HashMap<String, Object>());
 
 //	      System.out.println("Injecting profiles");
 //	      EMFModel oboProfile = (EMFModel) modelFactory.newModel((EMFReferenceModel) umlMetamodel);
@@ -193,8 +147,8 @@ public class TransformationService {
 	      System.out.println("Transforming...");
 
 	      transformationLauncher.initialize(new HashMap<String, Object>());
-	      transformationLauncher.addInModel(odmModel, "IN", "aadl");
-	      transformationLauncher.addOutModel(umlModel, "OUT", "openapi");
+	      transformationLauncher.addInModel(aadlModel, "IN", "aadl");
+	      transformationLauncher.addOutModel(openapiModel, "OUT", "openapi");
 
 
 
@@ -205,15 +159,15 @@ public class TransformationService {
 	      /*
 	       * extract model
 	       */
-	      extractor.extract(umlModel, openapiTarget, new HashMap<String, Object>());
+	      extractor.extract(openapiModel, openapiTarget, new HashMap<String, Object>());
 	      openapiTarget.close();
 	      /*
 	       * Unload all models and metamodels (EMF-specific)
 	       */
-	      modelFactory.unload((EMFModel) umlModel);
-	      modelFactory.unload((EMFModel) odmModel);
-	      modelFactory.unload((EMFReferenceModel) odmMetamodel);
-	      modelFactory.unload((EMFReferenceModel) umlMetamodel);
+	      modelFactory.unload((EMFModel) openapiModel);
+	      modelFactory.unload((EMFModel) aadlModel);
+	      modelFactory.unload((EMFReferenceModel) aadlMetamodel);
+	      modelFactory.unload((EMFReferenceModel) openapiMetamodel);
 
 	    } catch (Exception e) {
 	      System.err.println(e);

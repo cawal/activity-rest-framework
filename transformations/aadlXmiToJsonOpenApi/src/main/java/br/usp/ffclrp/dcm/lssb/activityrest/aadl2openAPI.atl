@@ -952,7 +952,7 @@ rule InputDatasetMultipleFile {
 			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
 			),
 			responses <- postOkResponse,
-			resposnses <- postBadRequestResponse
+			responses <- postBadRequestResponse
 		),	
 		getInNewCollection : openapi!Operation (
 			operationId <- 'get-' + dataset.name + 'collection-from-non-executed-analysis',

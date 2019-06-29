@@ -2,11 +2,15 @@ package br.usp.ffclrp.dcm.lssb.activityrest;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.gson.Gson;
@@ -48,6 +52,8 @@ public class App implements Callable<Integer> {
 			paramLabel = "output_directory")
 	private File outputJSONDirectory;
 	
+	private boolean verbose = false;
+	
 	public static void main(String[] args) throws Exception {
 		int exitCode = new CommandLine(new App()).execute(args);
 		System.exit(exitCode);
@@ -55,14 +61,13 @@ public class App implements Callable<Integer> {
 	
 	@Override
 	public Integer call() throws Exception {
-		
 		if (inputAADLDirectory.exists() && inputAADLDirectory.isDirectory()) {
 			
 			outputJSONDirectory.mkdirs();
-			Arrays.asList(inputAADLDirectory.listFiles()).stream()
-					.filter(f -> f.getName().endsWith(".xmi"))
-					.forEachOrdered(this::transformOpenApiXmiToJsonFile);
-			
+			for(File f : inputAADLDirectory.listFiles()) {
+				if(f.getName().endsWith(".xmi"))
+					transformOpenApiXmiToJsonFile(f);
+			}
 			return 0;
 			
 		} else {
@@ -71,29 +76,46 @@ public class App implements Callable<Integer> {
 		
 	}
 	
-	private void transformOpenApiXmiToJsonFile(File input) {
+	private void transformOpenApiXmiToJsonFile(File aadlXmi) {
 		
-		try (InputStream aadlSource = new FileInputStream(input);) {
+		System.out.println("Transforming : " + aadlXmi.getName());
+		try  {
+			File tempFile = File.createTempFile(
+					aadlXmi.getName().replaceAll("\\.xmi","")
+					,".xmi");
 			
-			URI resourceUri = URI.createURI(input.getPath());
-			Root root = ModelsService.retrieveOpenApiRootFromXmi(resourceUri);
+			IProgressMonitor monitor = null;
+			InputStream aadlSource = new FileInputStream(aadlXmi);
+			OutputStream openapiTarget = new FileOutputStream(tempFile);
 			
-			OpenAPIExporter exporter = ExporterBuilder.create();
-			JsonObject jsonOb = exporter.toJson(root.getApi());
+			TransformationService.aadl2OpenAPI(aadlSource, openapiTarget, monitor);
+			openapiTarget.close();
 			
-			System.out.println(jsonOb);
-			
-			String newFileName = input.getName()
-					.replaceAll("\\.xmi", ".json");
-			
-			FileWriter writer = new FileWriter(new File(outputJSONDirectory,newFileName));
-			Gson gson = new Gson();
-			gson.toJson(jsonOb, writer);
-			writer.close();
+			String newFileName = aadlXmi.getName()
+				.replaceAll("\\.xmi", ".json");
+			File openapiJson = new File(outputJSONDirectory,newFileName);
+			openapiXmi2Json(tempFile, openapiJson);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
 	}
+
+	private void openapiXmi2Json(File openapiXmi,File openapiJson) throws IOException {
+		URI resourceUri = URI.createURI(openapiXmi.getPath());
+		Root root = ModelsService.retrieveOpenApiRootFromXmi(resourceUri);
+		
+		OpenAPIExporter exporter = ExporterBuilder.create();
+		JsonObject jsonOb = exporter.toJson(root.getApi());
+		
+		log(jsonOb.toString());
+		
+		FileWriter writer = new FileWriter(openapiJson);
+		Gson gson = new Gson();
+		gson.toJson(jsonOb, writer);
+		writer.close();
+	}
+	
+	private void log(String s){ if(verbose) System.out.println(s);}
 }
