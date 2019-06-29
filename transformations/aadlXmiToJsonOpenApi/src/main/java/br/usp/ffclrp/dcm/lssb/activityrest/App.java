@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -16,7 +15,6 @@ import org.eclipse.emf.common.util.URI;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import edu.uoc.som.openapi.Root;
 import edu.uoc.som.openapi.io.ExporterBuilder;
 import edu.uoc.som.openapi.io.OpenAPIExporter;
