@@ -2,9 +2,14 @@ package br.usp.ffclrp.dcm.lssb.activityrest.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
@@ -18,7 +23,6 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.
 /**
  * A number of utility methods for dealing with the Ecore-based models.
  * @author cawal
- *
  */
 public class ModelsService {
 	
@@ -38,7 +42,9 @@ public class ModelsService {
 	 * @return an representation object of the AADL/AADM model
 	 * @throws IOException if fails to load
 	 */
-	public static Activity retrieveAADLModel(InputStream inputStream) throws IOException {
+	public static Activity retrieveAADLModel(InputStream inputStream) 
+			throws IOException {
+		
 		String uri = "dummy:/example.aadl";
 		Activity activity = null;
 		// Needed because Xtext only loads its generated grammar
@@ -54,6 +60,39 @@ public class ModelsService {
 		activity = (Activity) resource.getContents().get(0);
 		
 		return activity;
+		
+	}
+	
+	
+	/**
+	 * Serializes a AADL Activity as XMI into a file.
+	 * Overwrites the file if it exists. 
+	 * @param aadlModel The model to serialize as XMI.
+	 * @param outputPath The path for the new file.
+	 * @throws IOException 
+	 */
+	public static void writeAADLModelToXmi(Activity aadlModel,
+			String outputPath) throws IOException {
+		
+		Resource.Factory.Registry resourceFactoriesRegistry 
+						= Resource.Factory.Registry.INSTANCE;
+        Map<String, Object> extensionFactoryMap 
+        			= resourceFactoriesRegistry.getExtensionToFactoryMap();
+        
+        extensionFactoryMap.put("xmi", new XMIResourceFactoryImpl());
+
+        // Obtain a new resource set
+        ResourceSet resSet = new ResourceSetImpl();
+
+        // create a resource
+        Resource resource = resSet.createResource(
+        		URI.createURI(outputPath));
+        // Get the first model element and cast it to the right type, in my
+        // example everything is hierarchical included in this first node
+        resource.getContents().add(aadlModel);
+
+        // now save the content.
+        resource.save(Collections.EMPTY_MAP);
 		
 	}
 	

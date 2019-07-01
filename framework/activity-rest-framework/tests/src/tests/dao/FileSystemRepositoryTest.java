@@ -117,13 +117,12 @@ public class FileSystemRepositoryTest {
 	
 	@Test
 	public void testActivityTransferBetweenRepos() throws Exception {
+
 		File localStorage2 = new File("/tmp/dao_test_root_2");
 		localStorage2.mkdirs();
-		///java.nio.file.Files.createTempDirectory("dao_test").toFile();
 		ActivityRepository dao2 = new FileSystemActivityRepository(localStorage2, aaDesc);
 
 		String id = dao.create();
-		System.out.println(id);
 		
 		// transfer
 		RepositoryTransferService.moveInstance(id, dao, dao2);
@@ -137,7 +136,6 @@ public class FileSystemRepositoryTest {
 		
 		// the acti must be found in the second dao
 		AnalysisActivity inDao2 = dao2.get(id);
-		
 		assertNotNull(inDao2);
 		
 		
