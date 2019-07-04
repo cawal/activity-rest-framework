@@ -3,10 +3,18 @@
  */
 package br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.generator;
 
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -15,7 +23,28 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class AnalysisActivityDSLGenerator extends AbstractGenerator {
+  @Inject
+  @Extension
+  private IQualifiedNameProvider _iQualifiedNameProvider;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    Iterable<Activity> _filter = Iterables.<Activity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Activity.class);
+    for (final Activity activity : _filter) {
+      fsa.generateFile("activity.wsdl", this.toWsdl(activity));
+    }
+  }
+  
+  public CharSequence toWsdl(final Activity activity) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<wsdl:description>");
+    _builder.newLine();
+    _builder.append("\t");
+    String _name = activity.getName();
+    _builder.append(_name, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("</wsdl:description>");
+    _builder.newLine();
+    return _builder;
   }
 }
