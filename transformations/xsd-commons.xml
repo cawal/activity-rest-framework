@@ -1,0 +1,217 @@
+<xs:simpleType name="AnalysisActivityState_Type">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="CREATED" />
+		<xs:enumeration value="READY" />
+		<xs:enumeration value="RUNNING" />
+		<xs:enumeration value="SUCCEEDED" />
+		<xs:enumeration value="FAILED" />
+		<xs:enumeration value="REMOVED" />
+	</xs:restriction>
+</xs:simpleType>
+
+
+<xs:simpleType name="HTTPMethod_Type">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="GET" />
+		<xs:enumeration value="POST" />
+		<xs:enumeration value="PUT" />
+		<xs:enumeration value="DELETE" />
+	</xs:restriction>
+</xs:simpleType>
+
+
+<xs:simpleType name="Email_Type">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[^@]+@[^\.]+\..+" />
+	</xs:restriction>
+</xs:simpleType>
+
+
+<!-- HATEOAS controls -->
+<xs:complexType name="Link_Type">
+	<xs:attribute
+		name="rel"
+		use="required"
+		type="xs:string" />
+	<xs:attribute
+		name="href"
+		use="required"
+		type="xs:anyURI" />
+	<xs:attribute
+		name="method"
+		use="optional"
+		type="aa:HTTPMethod_Type" />
+</xs:complexType>
+
+
+<xs:element
+	name="link"
+	type="aa:Link_Type" />
+
+
+<xs:complexType name="LinkList_Type">
+	<xs:choice maxOccurs="unbounded">
+		<xs:element ref="aa:link" />
+	</xs:choice>
+</xs:complexType>
+
+
+<xs:element
+	name="links"
+	type="aa:LinkList_Type" />
+
+
+<!-- Activity Representation -->
+<xs:simpleType name="analysis-id">
+	<xs:restriction base="xs:string">
+	</xs:restriction>
+</xs:simpleType>
+
+
+<xs:complexType name="AnalysisActivity_Type">
+	<xs:all>
+		<xs:element
+			ref="aa:links"
+			minOccurs="0"
+			maxOccurs="1" />
+	</xs:all>
+	<xs:attribute
+		name="id"
+		type="aa:analysis-id"
+		use="required" />
+	<xs:attribute
+		name="state"
+		type="aa:AnalysisActivityState_Type"
+		use="required" />
+</xs:complexType>
+
+
+<xs:element
+	name="AnalysisActivity"
+	type="aa:AnalysisActivity_Type" />
+
+
+<xs:complexType name="JobInstance_Type">
+	<xs:all>
+		<xs:element
+			ref="aa:links"
+			minOccurs="0"
+			maxOccurs="1" />
+		<xs:element
+			name="error-report"
+			minOccurs="0"
+			maxOccurs="1" />
+	</xs:all>
+	<xs:attribute
+		name="id"
+		type="aa:analysis-id"
+		use="required" />
+	<xs:attribute
+		name="state"
+		type="aa:AnalysisActivityState_Type"
+		use="required" />
+</xs:complexType>
+
+
+<xs:element
+	name="job-instance"
+	type="aa:JobInstance_Type" />
+
+
+<xs:simpleType name="ParameterValue_Type">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="STRING" />
+		<xs:enumeration value="INTEGER" />
+		<xs:enumeration value="REAL" />
+	</xs:restriction>
+</xs:simpleType>
+
+
+<xs:complexType name="Value_Type">
+	<xs:simpleContent>
+		<xs:extension base="xs:string">
+			<xs:attribute
+				name="type"
+				type="aa:ParameterValue_Type"
+				use="optional" />
+		</xs:extension>
+	</xs:simpleContent>
+</xs:complexType>
+
+
+<xs:element
+	name="value"
+	type="aa:Value_Type" />
+
+
+<xs:complexType name="ValueList_Type">
+	<xs:sequence>
+		<xs:element
+			name="id"
+			type="aa:analysis-id"
+			maxOccurs="1"
+			minOccurs="0" />
+		<xs:element
+			ref="aa:value"
+			maxOccurs="unbounded" />
+	</xs:sequence>
+</xs:complexType>
+
+
+<xs:element
+	name="List"
+	type="aa:ValueList_Type" />
+
+
+<xs:complexType name="ActivityIdBasedRequest_Type">
+	<xs:all>
+		<xs:element
+			name="id"
+			type="aa:analysis-id" />
+	</xs:all>
+</xs:complexType>
+
+
+<xs:element
+	name="ActivityIdBasedRequest"
+	type="aa:ActivityIdBasedRequest_Type" />
+
+
+<xs:complexType name="File_Type">
+	<xs:all>
+		<xs:element
+			name="name"
+			type="xs:string"
+			minOccurs="0"
+			maxOccurs="1" />
+		<xs:element
+			name="content-type"
+			type="xs:string"
+			minOccurs="0"
+			maxOccurs="1" />
+		<xs:element
+			name="content"
+			type="xs:string"
+			minOccurs="1"
+			maxOccurs="1" />
+	</xs:all>
+</xs:complexType>
+
+
+<xs:complexType name="InputDatasetsResponse_Type">
+	<xs:all>
+		<xs:element ref="aa:links" />
+	</xs:all>
+</xs:complexType>
+
+
+<xs:complexType name="OutputDatasetsResponse_Type">
+	<xs:all>
+		<xs:element ref="aa:links" />
+	</xs:all>
+</xs:complexType>
+
+
+<xs:element
+	name="output-dataset"
+	type="OutputDatasetsResponse_Type" />

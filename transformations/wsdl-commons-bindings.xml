@@ -1,0 +1,35 @@
+<wsdl:operation ref="tns:PostNewAnalysisActivity"
+	whttp:method="POST" whttp:location="new-analyses"
+	whttp:inputSerialization="application/xml"
+	whttp:outputSerialization="application/xml">
+</wsdl:operation>
+
+
+<wsdl:operation ref="tns:GetNewAnalysisActivity"
+	whttp:method="GET" whttp:location="new-analyses/{id}"
+	whttp:inputSerialization="application/xml"
+	whttp:outputSerialization="application/xml">
+</wsdl:operation>
+
+
+<wsdl:operation ref="tns:DeleteNewAnalysisActivity"
+	whttp:method="DELETE" whttp:location="new-analyses/{id}"
+	whttp:inputSerialization="application/xml"
+	whttp:outputSerialization="application/xml">
+</wsdl:operation>
+
+
+<!-- job manager -->
+<wsdl:operation ref="tns:PostStartProcessing"
+	whttp:method="POST" whttp:location="instances/{id}"
+	whttp:inputSerialization="application/xml"
+	whttp:outputSerialization="application/xml">
+</wsdl:operation>
+
+
+<wsdl:operation ref="tns:GetPoolProcessing"
+	whttp:method="GET" whttp:location="instances/{id}"
+	whttp:inputSerialization="application/xml"
+	whttp:outputSerialization="application/xml">
+
+</wsdl:operation>
