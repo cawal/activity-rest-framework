@@ -11,12 +11,14 @@ import java.net.InetAddress
 
 val xsdCommonElementsResource = "./xsd-commons.xml"
 
-fun DeploymentModel.serviceRootPath() : String =
-     """${protocol}://${host}:${port}/${basePath}}"""
 
-private fun xsdCommonElements() : String {
-    return object {}.javaClass.getResource(xsdCommonElementsResource).readText()
-} 
+fun DeploymentModel.serviceRootPath() : String =
+     """${protocol}://${host.hostAddress}:${port}/${basePath}"""
+
+
+private fun xsdCommonElements() : String = 
+    object {}.javaClass.getResource(xsdCommonElementsResource).readText()
+
     
 private fun Parameter.isUnbounded() : Boolean = (getMaximumCardinality().toInt() < 0)
 

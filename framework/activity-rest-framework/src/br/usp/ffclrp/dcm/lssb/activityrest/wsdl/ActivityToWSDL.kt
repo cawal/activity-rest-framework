@@ -9,8 +9,10 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDatas
 import java.net.InetAddress
 
 
-fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String {
-   return """ <?xml version="1.0" encoding="UTF-8"?>
+
+
+fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
+   """ <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:description
 	xmlns:wsdl="http://www.w3.org/ns/wsdl"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -24,8 +26,8 @@ fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String {
 
 	<wsdl:types>
 		<xs:import
-			namespace="http://host:port/path/xsd"
-			schemaLocation="http://host:port/path/xsd" />
+			namespace="${deploymentModel.serviceRootPath()}/xsd"
+			schemaLocation="${deploymentModel.serviceRootPath()}/xsd" />
 	</wsdl:types>
 
 	<wsdl:interface name="service-interface">
@@ -236,4 +238,3 @@ fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String {
 
 </wsdl:description>
    """ 
-}
