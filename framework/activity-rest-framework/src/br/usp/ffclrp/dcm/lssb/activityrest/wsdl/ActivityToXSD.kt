@@ -9,7 +9,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDatas
 import java.net.InetAddress
 
 
-val xsdCommonElementsResource = "./xsd-commons.xml"
+val xsdCommonElementsResource = "./activity-xsd.commons"
 
 
 fun DeploymentModel.serviceRootPath() : String =
@@ -22,26 +22,23 @@ private fun xsdCommonElements() : String =
     
 private fun Parameter.isUnbounded() : Boolean = (getMaximumCardinality().toInt() < 0)
 
-private fun Parameter.toXsdElement() : String = """
- <xs:element name="${name}">
- 	<xs:complexType>
- 		<xs:element name="analysis-id" type="aa:analysis-id" maxOccurs="1" />
- 		<xs:element name="value"
- 			type="aa:Value_Type"
- 			minOccurs="0"
- 			maxOccurs="${ if (isUnbounded()) "unbounded"
- 						  else getMaximumCardinality()?.toString()}" />
- 	</xs:complexType>
- </xs:element>
- """
+private fun Parameter.toXsdElement() : String =
+    """<xs:element name="${name}">
+	<xs:complexType>
+		<xs:element name="analysis-id" type="aa:analysis-id" maxOccurs="1" />
+		<xs:element name="value"
+			type="aa:Value_Type"
+			minOccurs="0"
+			maxOccurs="${ if (isUnbounded()) "unbounded"
+						  else getMaximumCardinality()?.toString()}" />
+	</xs:complexType>
+	</xs:element>"""
 
-private fun Dataset.toXsdElement() : String = """
- <xs:element name="${name}" type="aa:File_Type" />
- """ 
+private fun Dataset.toXsdElement() : String =
+    """<xs:element name="${name}" type="aa:File_Type" />""" 
 
 fun toXsd(activity : Activity, deploymentModel : DeploymentModel) : String {
-   return """
-<?xml version="1.0" encoding="UTF-8"?>
+   return """<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
  xmlns="http://www.w3.org/2001/XMLSchema"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -66,6 +63,5 @@ fun toXsd(activity : Activity, deploymentModel : DeploymentModel) : String {
 </xs:schema>
 """ 
 }
-
 
 
