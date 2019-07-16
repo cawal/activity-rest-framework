@@ -4,6 +4,7 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.*;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.DeploymentModel
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.toXsd
 import java.net.InetAddress
@@ -59,7 +60,7 @@ class ActivityToXsdTests {
 		builder.setErrorHandler(SimpleErrorHandler());    
 		// the "parse" method also validates XML, will throw an exception if misformatted
 		val document = builder.parse(xmlString.toInputStream());
-		
+		assertNotNull(document,"XML document parse error!")
 	}
-	
+
 }

@@ -101,6 +101,36 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+			    <!-- For running Junit 5 tests in Maven < 3.6.0. 
+			    Follows https://dzone.com/articles/why-your-junit-5-tests-are-not-running-under-maven -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+
+<!-- 				<configuration> -->
+<!-- 					<argLine> -->
+<!-- 						- - illegal-access=permit -->
+<!-- 					</argLine> -->
+<!-- 				</configuration> -->
+
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.0</version>
+
+<!-- 				<configuration> -->
+<!-- 					<argLine> -->
+<!-- 						- - illegal-access=permit -->
+<!-- 					</argLine> -->
+
+<!-- 				</configuration> -->
+
+			</plugin>
+
 		</plugins>
 
 		<pluginManagement>
@@ -340,10 +370,16 @@
 			<version>0.8.3</version>
 			<scope>test</scope>
 		</dependency>
-
+<!-- 		<dependency> -->
+<!-- 		    Remove SLF4J warnings from archunit -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-simple</artifactId> -->
+<!-- 			<version>[1.7,2.0)</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 
 	</dependencies>
-	
-	
-	
+
+
+
 </project>

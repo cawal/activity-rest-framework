@@ -24,7 +24,7 @@ public class ParametersUtil {
 	 * <!-- end-user-doc -->
 	 * d
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	static public <A> boolean isValidValue(A value, ParameterDescription description) {
 		if(value instanceof List) {
 			return isValidListValue((List) value, description);

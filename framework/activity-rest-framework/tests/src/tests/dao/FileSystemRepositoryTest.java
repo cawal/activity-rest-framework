@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.ws.rs.WebApplicationException;
-
 import org.eclipse.emf.common.util.URI;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -50,13 +48,10 @@ public class FileSystemRepositoryTest {
         	aaDesc = ModelsService.retrieveAADLModel(this.getClass()
     				.getResource(uri.toString())
     				.openStream());
-        	System.out.println(aaDesc);
 		} catch (IOException e) {
+			System.err.println("Failed to load the AADL Description!");
 			e.printStackTrace();
 		};
-        
-        if(aaDesc == null) 
-        	throw new WebApplicationException(uri.toString() + " not found!");
 	}
 	
 	@BeforeClass
@@ -69,13 +64,10 @@ public class FileSystemRepositoryTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		
 		initializeEcoreResources();
-		
-
-		
 		localStorage = new File("/tmp/dao_test_root");
 		localStorage.mkdirs();
-		///java.nio.file.Files.createTempDirectory("dao_test").toFile();
 		dao = new FileSystemActivityRepository(localStorage, aaDesc);
 	}
 	
@@ -86,7 +78,6 @@ public class FileSystemRepositoryTest {
 	@Test
 	public void testCreateAndRetrieve_Parameters() throws Exception {
 		String id = dao.create();
-		System.out.println(id);
 		AnalysisActivity aa = dao.get(id);
 		
 		boolean containAllKeys = keys.stream()
@@ -99,7 +90,6 @@ public class FileSystemRepositoryTest {
 	@Test
 	public void testCreateUpdateAndRetrieve_Parameters() throws Exception {
 		String id = dao.create();
-		System.out.println(id);
 		AnalysisActivity aa = dao.get(id);
 
 		String email = "test@email.net";
@@ -134,7 +124,7 @@ public class FileSystemRepositoryTest {
 		} catch (Exception e) {
 		}
 		
-		// the acti must be found in the second dao
+		// the activity must be found in the second DAO
 		AnalysisActivity inDao2 = dao2.get(id);
 		assertNotNull(inDao2);
 		

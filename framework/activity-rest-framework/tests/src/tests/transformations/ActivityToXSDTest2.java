@@ -61,14 +61,15 @@ class ActivityToXSDTest2 {
 			// factory.setNamespaceAware(true);
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			
-			builder.setErrorHandler(new SimpleErrorHandler());
+			builder.setErrorHandler(new EmptyErrorHandler());
 			// the "parse" method also validates XML, will throw an exception if
 			// misformatted
 			Document document = builder.parse(new StringInputStream(xmlString));
 	}
+
 	
 	
-	class SimpleErrorHandler implements org.xml.sax.ErrorHandler {
+	class EmptyErrorHandler implements org.xml.sax.ErrorHandler {
 
 		@Override
 		public void error(SAXParseException exception) throws SAXException {
