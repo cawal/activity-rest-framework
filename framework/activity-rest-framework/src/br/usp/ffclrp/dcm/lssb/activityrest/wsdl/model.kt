@@ -6,5 +6,9 @@ data class DeploymentModel(
     val protocol : String,
     val host : InetAddress,
     val port : Int,
-    val basePath : String
-);
+    val basePath : String) {
+    
+    fun serviceRootPath() : String =
+     """${protocol}://${host.hostAddress}:${port}/${basePath}"""
+
+};

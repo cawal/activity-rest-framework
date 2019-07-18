@@ -24,8 +24,22 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 
 class ActivityToXSDTest2 {
 	
+	static DeploymentModel deploymentModel;
+	static Activity activityModel;
+	static String xmlString;
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		deploymentModel = new DeploymentModel("http",
+				InetAddress.getByName("localhost"),
+				8080,
+				"test");
+		activityModel =
+				ModelsService.retrieveAADLModel(
+						ActivityToXSDTest2.class
+								.getResourceAsStream("./activity.aadl"));
+		xmlString = ActivityToXsdTransformationService
+				.toXsd(activityModel, deploymentModel);
 	}
 	
 	@AfterAll
@@ -40,53 +54,40 @@ class ActivityToXSDTest2 {
 	void tearDown() throws Exception {
 	}
 	
-	
 	@Test
 	void validXML() throws Exception {
-			DeploymentModel deploymentModel = new DeploymentModel("http",
-					InetAddress.getByName("localhost"),
-					8080,
-					"test");
-			Activity activityModel =
-					ModelsService.retrieveAADLModel(
-							this.getClass()
-									.getResourceAsStream("./activity.aadl"));
-			
-			String xmlString = ActivityToXsdTransformationService
-					.toXsd(activityModel, deploymentModel);
-			
-			DocumentBuilderFactory factory =
-					DocumentBuilderFactory.newInstance();
-			factory.setValidating(false);
-			// factory.setNamespaceAware(true);
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			
-			builder.setErrorHandler(new EmptyErrorHandler());
-			// the "parse" method also validates XML, will throw an exception if
-			// misformatted
-			Document document = builder.parse(new StringInputStream(xmlString));
+		
+		DocumentBuilderFactory factory =
+				DocumentBuilderFactory.newInstance();
+		factory.setValidating(false);
+		factory.setNamespaceAware(true);
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		
+		builder.setErrorHandler(new EmptyErrorHandler());
+		// the "parse" method also validates XML, will throw an exception if
+		// misformatted
+		Document document = builder.parse(new StringInputStream(xmlString));
+		assertNotNull(document, "XSL document is null!");
 	}
-
-	
 	
 	class EmptyErrorHandler implements org.xml.sax.ErrorHandler {
-
+		
 		@Override
 		public void error(SAXParseException exception) throws SAXException {
 			throw exception;
 		}
-
+		
 		@Override
 		public void fatalError(SAXParseException exception)
 				throws SAXException {
 			throw exception;
 		}
-
+		
 		@Override
 		public void warning(SAXParseException exception) throws SAXException {
 			throw exception;
 		}
 		
 	}
-	
 }
+

@@ -12,9 +12,6 @@ import java.net.InetAddress
 val xsdCommonElementsResource = "./activity-xsd.commons"
 
 
-fun DeploymentModel.serviceRootPath() : String =
-     """${protocol}://${host.hostAddress}:${port}/${basePath}"""
-
 
 private fun xsdCommonElements() : String = 
     object {}.javaClass.getResource(xsdCommonElementsResource).readText()

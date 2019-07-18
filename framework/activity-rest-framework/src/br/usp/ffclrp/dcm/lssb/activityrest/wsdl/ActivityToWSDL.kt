@@ -12,12 +12,13 @@ import java.net.InetAddress
 
 
 fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
-   """ <?xml version="1.0" encoding="UTF-8"?>
+   """<?xml version="1.0" encoding="UTF-8"?>
 <wsdl:description
 	xmlns:wsdl="http://www.w3.org/ns/wsdl"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:whttp="http://www.w3.org/ns/wsdl/http"
 	xmlns:wsdlx="http://www.w3.org/ns/wsdl-extension"
+	xmlns:wrpc="http://www.w3.org/ns/wsdl/rpc"
 	targetNamespace="${deploymentModel.serviceRootPath()}/wsdl"
 	xmlns:tns="${deploymentModel.serviceRootPath()}/wsdl"
 	xmlns:aa="${deploymentModel.serviceRootPath()}/xsd"
