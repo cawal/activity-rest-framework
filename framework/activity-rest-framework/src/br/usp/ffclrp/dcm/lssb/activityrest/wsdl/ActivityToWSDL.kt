@@ -25,13 +25,27 @@ fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
     >
 
 
-	<wsdl:types>
+ 	${getXsdImport(deploymentModel)}
+
+ 	${getWsdlInterface(activity)}
+   
+ 	${getWsdlBindings(activity)}
+
+ 	${getWsdlService(deploymentModel)}
+
+</wsdl:description>
+   """ 
+
+private fun getXsdImport(deploymentModel : DeploymentModel) =
+	"""<wsdl:types>
 		<xs:import
 			namespace="${deploymentModel.serviceRootPath()}/xsd"
-			schemaLocation="${deploymentModel.serviceRootPath()}/xsd" />
+			schemaLocation="./xsd" />
 	</wsdl:types>
+    """
 
-	<wsdl:interface name="service-interface">
+private fun getWsdlInterface(activity :Activity) =
+    	"""<wsdl:interface name="interface">
       <!-- ROOT RESOURCE -->
        
       <!-- NEW ANALYSES COLLECTION -->
@@ -144,15 +158,19 @@ fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
 
 
 	</wsdl:interface>
-    
-    <!-- WSDL Bindings 
+ 		"""
+
+
+private fun getWsdlBindings(activity : Activity) =
+    """<!-- WSDL Bindings 
        type: HTTP
     -->
 	<wsdl:binding
-		name="service-bindings"
-		interface="tns:service-interface"
+		name="binding"
+		interface="tns:interface"
 		type="http://www.w3.org/ns/wsdl/http"
 		whttp:methodDefault="GET"
+		wsdlx:safe="true"
 	>
 
 		<wsdl:operation
@@ -225,17 +243,16 @@ fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
 
 
 	</wsdl:binding>
+ """
 
-
-	<wsdl:service
+private fun getWsdlService(deploymentModel : DeploymentModel) =
+   """<wsdl:service
 		name="service"
-		interface="tns:service-interface"
+		interface="tns:interface"
 	>
 		<wsdl:endpoint
 			name="RootResourceHTTPEndpoint"
-			binding="tns:service-bindings"
-			address="http://host:port/path" />
+			binding="tns:binding"
+			address="${deploymentModel.serviceRootPath()}" />
 	</wsdl:service>
-
-</wsdl:description>
-   """ 
+	""" 
