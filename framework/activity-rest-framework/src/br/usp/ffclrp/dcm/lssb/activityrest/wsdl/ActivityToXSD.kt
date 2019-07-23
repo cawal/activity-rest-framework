@@ -19,8 +19,11 @@ private fun xsdCommonElements() : String =
     
 private fun Parameter.isUnbounded() : Boolean = (getMaximumCardinality().toInt() < 0)
 
+
+fun Parameter.xsdElementName() : String = name;
+
 private fun Parameter.toXsdElement() : String =
-    """<xs:element name="${name}">
+    """<xs:element name="${xsdElementName()}">
 	<xs:complexType>
 		<xs:element name="analysis-id" type="aa:analysis-id" maxOccurs="1" />
 		<xs:element name="value"
@@ -31,8 +34,10 @@ private fun Parameter.toXsdElement() : String =
 	</xs:complexType>
 	</xs:element>"""
 
+fun Dataset.xsdElementName() : String = name;
+
 private fun Dataset.toXsdElement() : String =
-    """<xs:element name="${name}" type="aa:File_Type" />""" 
+    """<xs:element name="${xsdElementName()}" type="aa:File_Type" />""" 
 
 fun toXsd(activity : Activity, deploymentModel : DeploymentModel) : String {
    return """<?xml version="1.0" encoding="UTF-8"?>

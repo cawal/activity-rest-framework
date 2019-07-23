@@ -46,6 +46,33 @@ private fun getXsdImport(deploymentModel : DeploymentModel) =
 
 private fun getWsdlInterface(activity :Activity) =
     	"""<wsdl:interface name="interface">
+
+        
+        ${getCommomInterfaceOperations()}
+
+        <!-- for each parameter, operations to set and retrieve its values -->
+        <!-- create elements here -->
+	${activity.getParameters().map {
+		it.getInterfaceOperations()
+	}}
+        
+        <!-- INPUT DATASETS RESOURCE -->
+        <!-- create elements here -->
+        
+        
+        <!-- OUTPUT DATASETS RESOURCE -->
+        <!-- create elements here -->
+
+        
+        
+        
+
+
+	</wsdl:interface>
+ 		"""
+
+private fun getCommomInterfaceOperations() = 
+	"""
       <!-- ROOT RESOURCE -->
        
       <!-- NEW ANALYSES COLLECTION -->
@@ -120,22 +147,6 @@ private fun getWsdlInterface(activity :Activity) =
 			<wsdl:output element="aa:parameters" />
 		</wsdl:operation>
 
-        
-        
-        <!-- for each parameter, operations to set and retrieve its values -->
-        <!-- create elements here -->
-
-        
-        <!-- INPUT DATASETS RESOURCE -->
-        <!-- create elements here -->
-        
-        
-        <!-- OUTPUT DATASETS RESOURCE -->
-        <!-- create elements here -->
-
-        
-        
-        
         <!-- JOB COLLECTION -->
 		<wsdl:operation
 			name="PostStartProcessing"
@@ -155,10 +166,49 @@ private fun getWsdlInterface(activity :Activity) =
 			<wsdl:input element="aa:ActivityIdBasedRequest" />
 			<wsdl:output element="aa:AnalysisActivity" />
 		</wsdl:operation>
+	"""
+
+private fun Parameter.getInterfaceOperations() =
+	"""
+	<wsdl:operation
+		name="get-new-activity-${xsdElementName()}"
+		pattern="http://www.w3.org/ns/wsdl/in-out"
+		wsdlx:safe="true"
+	>
+		<wsdl:input element="aa:ActivityIdBasedRequest">
+		<wsdl:output element="${"aa:"+xsdElementName()}"
+	</wsdl:operation>
 
 
-	</wsdl:interface>
- 		"""
+	<wsdl:operation
+		name="get-succeded-activity-${xsdElementName()}"
+		pattern="http://www.w3.org/ns/wsdl/in-out"
+		wsdlx:safe="true"
+	>
+		<wsdl:input element="aa:ActivityIdBasedRequest">
+		<wsdl:output element="${"aa:"+xsdElementName()}"
+	</wsdl:operation>
+
+
+	<wsdl:operation
+		name="get-failed-activity-${xsdElementName()}"
+		pattern="http://www.w3.org/ns/wsdl/in-out"
+		wsdlx:safe="true"
+	>
+		<wsdl:input element="aa:ActivityIdBasedRequest">
+		<wsdl:output element="${"aa:"+xsdElementName()}"
+	</wsdl:operation>
+
+
+	<wsdl:operation
+		name="put-new-activity-${xsdElementName()}"
+		pattern="http://www.w3.org/ns/wsdl/in-out"
+		wsdlx:safe="true"
+	>
+		<wsdl:input element="${"aa:"+xsdElementName()}"
+	</wsdl:operation>
+
+	"""
 
 
 private fun getWsdlBindings(activity : Activity) =
@@ -172,6 +222,30 @@ private fun getWsdlBindings(activity : Activity) =
 		whttp:methodDefault="GET"
 		wsdlx:safe="true"
 	>
+
+	${getCommonBindingsOperations()}
+
+
+        <!-- PARAMETER SET RESOURCE -->
+        <!-- for each parameter, operations to set and retrieve its values -->
+        ${activity.getParameters()
+		.map { it.getBindings() }
+	}
+		<!-- create elements here -->
+	
+        
+        <!-- INPUT DATASETS RESOURCE -->
+        <!-- create elements here -->
+        
+        
+        <!-- OUTPUT DATASETS RESOURCE -->
+        <!-- create elements here -->
+
+
+	</wsdl:binding>
+ """
+
+private fun getCommonBindingsOperations() = """
 
 		<wsdl:operation
 			ref="tns:PostNewAnalysisActivity"
@@ -204,20 +278,7 @@ private fun getWsdlBindings(activity : Activity) =
 		>
 		</wsdl:operation>
 
-        <!-- PARAMETER SET RESOURCE -->
-        <!-- for each parameter, operations to set and retrieve its values -->
-        <!-- create elements here -->
-
-        
-        <!-- INPUT DATASETS RESOURCE -->
-        <!-- create elements here -->
-        
-        
-        <!-- OUTPUT DATASETS RESOURCE -->
-        <!-- create elements here -->
-
-        
-        <!-- job manager -->
+		<!-- job manager -->
 		<wsdl:operation
 			ref="tns:PostStartProcessing"
 			whttp:method="POST"
@@ -237,13 +298,46 @@ private fun getWsdlBindings(activity : Activity) =
 		>
 
 		</wsdl:operation>
+"""
 
+private fun Parameter.getBindings() = 
+	"""
+		<wsdl:operation
+			ref="tns:get-new-activity-${xsdElementName()}"
+			whttp:method="GET"
+			whttp:location="new-analysis/{id}/parameters/${name}"
+			whttp:inputserialization="application/xml"
+			whttp:outputserialization="application/xml"
+		>
+		</wsdl:operation>
 
+		<wsdl:operation
+			ref="tns:put-new-activity-${xsdElementName()}"
+			whttp:method="PUT"
+			whttp:location="new-analysis/{id}/parameters/${name}"
+			whttp:inputserialization="application/xml"
+			whttp:outputserialization="application/xml"
+		>
+		</wsdl:operation>
 
+		<wsdl:operation
+			ref="tns:get-succeded-activity-${xsdElementName()}"
+			whttp:method="GET"
+			whttp:location="succeded-analysis/{id}/parameters/${name}"
+			whttp:inputSerialization="application/xml"
+			whttp:outputSerialization="application/xml"
+		>
+		</wsdl:operation>
 
-
-	</wsdl:binding>
- """
+		<wsdl:operation
+			ref="tns:get-failed-activity-${xsdElementName()}"
+			whttp:method="GET"
+			whttp:location="failed-analysis/{id}/parameters/${name}"
+			whttp:inputSerialization="application/xml"
+			whttp:outputSerialization="application/xml"
+		>
+		</wsdl:operation>
+	"""
 
 private fun getWsdlService(deploymentModel : DeploymentModel) =
    """<wsdl:service
