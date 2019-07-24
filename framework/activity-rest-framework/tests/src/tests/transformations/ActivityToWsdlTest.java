@@ -340,6 +340,7 @@ class ActivityToWsdlTest {
 					.forEach(p -> {
 						providesRetrievalInterface(p);
 						providesUpdateInterface(p);
+						providesBindings(p);
 					});
 		}
 		
@@ -358,12 +359,10 @@ class ActivityToWsdlTest {
 		
 		void providesRetrievalInterface(Parameter p,
 				String operationIdentifier) {
-			System.out.println(p);
 			
 			String xpathQuery = "/wsdl:description/wsdl:interface"
 					+ "/wsdl:operation[contains(@name,"
 					+ "\"" + operationIdentifier + "\")]";
-			System.out.println(xpathQuery);
 			Iterable<Node> matched =
 					xpathEngine.selectNodes(xpathQuery, source);
 			
@@ -374,8 +373,6 @@ class ActivityToWsdlTest {
 			assertEquals(1, nodes.size(),
 					"(n != 1) wsdl:operations for operation "
 							+ operationIdentifier);
-			
-			System.out.println(nodes);
 			
 			Element wsdlOperation = (Element) nodes.get(0);
 			
@@ -403,14 +400,12 @@ class ActivityToWsdlTest {
 		}
 		
 		void providesUpdateInterface(Parameter p) {
-			System.out.println(p);
 			String operationIdentifier = "put-new-activity-"
 					+ xsdElementName(p);
 			
 			String xpathQuery = "/wsdl:description/wsdl:interface"
 					+ "/wsdl:operation[contains(@name,"
 					+ "\"" + operationIdentifier + "\")]";
-			System.out.println(xpathQuery);
 			Iterable<Node> matched =
 					xpathEngine.selectNodes(xpathQuery, source);
 			
@@ -422,7 +417,6 @@ class ActivityToWsdlTest {
 					"No wsdl:operation for updating parameter.");
 			assertTrue(nodes.size() == 1,
 					"n>1 wsdl:operation for updating parameter. Change THIS TEST.");
-			System.out.println(nodes);
 			
 			Element wsdlOperation = (Element) nodes.get(0);
 			
@@ -441,6 +435,48 @@ class ActivityToWsdlTest {
 			assertEquals(inputIdentifier, inputReference);
 			
 		}
+		
+		
+		void providesBindings(Parameter p) {
+			providesBindings(p, "tns:put-new-activity-" + xsdElementName(p), "PUT");
+			providesBindings(p, "tns:get-failed-activity-" + xsdElementName(p), "GET");
+			providesBindings(p, "tns:get-new-activity-" + xsdElementName(p), "GET");
+			providesBindings(p, "tns:get-succeded-activity-" + xsdElementName(p), "GET");
+		}
+		
+		void providesBindings(Parameter p, String operationIdentifier, String httpMethod) {
+			String xpathQuery = "/wsdl:description/wsdl:binding"
+					+ "/wsdl:operation[contains(@ref,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation binding for parameter.");
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation binding for parameter. Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			String method = wsdlOperation.getAttribute("whttp:method");
+			assertEquals(httpMethod, method);
+			
+			//String location = wsdlOperation.getAttribute("location");
+			//assertEquals("http://www.w3.org/ns/wsdl/in-out", location);
+			
+			String inputSerialization = wsdlOperation.getAttribute("whttp:inputSerialization");
+			assertEquals("application/xml", inputSerialization);
+			
+			String outputSerialization = wsdlOperation.getAttribute("whttp:outputSerialization");
+			assertEquals("application/xml", outputSerialization);
+			
+		}
+
+		
+		
 	}
 	
 }

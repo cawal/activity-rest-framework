@@ -223,16 +223,14 @@ private fun getWsdlBindings(activity : Activity) =
 		wsdlx:safe="true"
 	>
 
-	${getCommonBindingsOperations()}
+		${getCommonBindingsOperations()}
 
 
         <!-- PARAMETER SET RESOURCE -->
         <!-- for each parameter, operations to set and retrieve its values -->
         ${activity.getParameters()
 		.map { it.getBindings() }
-	}
-		<!-- create elements here -->
-	
+        }
         
         <!-- INPUT DATASETS RESOURCE -->
         <!-- create elements here -->
@@ -306,8 +304,8 @@ private fun Parameter.getBindings() =
 			ref="tns:get-new-activity-${xsdElementName()}"
 			whttp:method="GET"
 			whttp:location="new-analysis/{id}/parameters/${name}"
-			whttp:inputserialization="application/xml"
-			whttp:outputserialization="application/xml"
+			whttp:inputSerialization="application/xml"
+			whttp:outputSerialization="application/xml"
 		>
 		</wsdl:operation>
 
@@ -315,8 +313,8 @@ private fun Parameter.getBindings() =
 			ref="tns:put-new-activity-${xsdElementName()}"
 			whttp:method="PUT"
 			whttp:location="new-analysis/{id}/parameters/${name}"
-			whttp:inputserialization="application/xml"
-			whttp:outputserialization="application/xml"
+			whttp:inputSerialization="application/xml"
+			whttp:outputSerialization="application/xml"
 		>
 		</wsdl:operation>
 
