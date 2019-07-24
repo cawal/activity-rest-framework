@@ -175,8 +175,8 @@ private fun Parameter.getInterfaceOperations() =
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
-		<wsdl:input element="aa:ActivityIdBasedRequest">
-		<wsdl:output element="${"aa:"+xsdElementName()}"
+		<wsdl:input element="aa:ActivityIdBasedRequest" />
+		<wsdl:output element="${"aa:"+xsdElementName()}" />
 	</wsdl:operation>
 
 
@@ -185,8 +185,8 @@ private fun Parameter.getInterfaceOperations() =
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
-		<wsdl:input element="aa:ActivityIdBasedRequest">
-		<wsdl:output element="${"aa:"+xsdElementName()}"
+		<wsdl:input element="aa:ActivityIdBasedRequest" />
+		<wsdl:output element="${"aa:"+xsdElementName()}" />
 	</wsdl:operation>
 
 
@@ -195,8 +195,8 @@ private fun Parameter.getInterfaceOperations() =
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
-		<wsdl:input element="aa:ActivityIdBasedRequest">
-		<wsdl:output element="${"aa:"+xsdElementName()}"
+		<wsdl:input element="aa:ActivityIdBasedRequest" />
+		<wsdl:output element="${"aa:"+xsdElementName()}" />
 	</wsdl:operation>
 
 
@@ -205,7 +205,7 @@ private fun Parameter.getInterfaceOperations() =
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
-		<wsdl:input element="${"aa:"+xsdElementName()}"
+		<wsdl:input element="${"aa:"+xsdElementName()}" />
 	</wsdl:operation>
 
 	"""

@@ -30,10 +30,12 @@ import org.xmlunit.xpath.XPathEngine;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
+import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.DeploymentModel;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 
+import static br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService.xsdElementName;
 
 @DisplayName("A WSDL document can be obtained from an AADL model")
 class ActivityToWsdlTest {
@@ -335,19 +337,109 @@ class ActivityToWsdlTest {
 		@DisplayName("for each parameter it provides the operations at the interface")
 		void presentsInterfaceOperationsForParameters() {
 			activityModel.getParameters().stream()
-				.forEach(p -> {
-					providesRetrievalInterface(p);
-					providesUpdateInterface(p);
-				});
+					.forEach(p -> {
+						providesRetrievalInterface(p);
+						providesUpdateInterface(p);
+					});
 		}
-
+		
 		void providesRetrievalInterface(Parameter p) {
-			fail();
+			String[] prefixes = new String[] {
+					"get-failed-activity-",
+					"get-new-activity-",
+					"get-succeded-activity-" };
+			
+			for (String prefix : prefixes) {
+				String operationIdentifier = prefix + xsdElementName(p);
+				providesRetrievalInterface(p, operationIdentifier);
+			}
+			
 		}
+		
+		void providesRetrievalInterface(Parameter p,
+				String operationIdentifier) {
+			System.out.println(p);
+			
+			String xpathQuery = "/wsdl:description/wsdl:interface"
+					+ "/wsdl:operation[contains(@name,"
+					+ "\"" + operationIdentifier + "\")]";
+			System.out.println(xpathQuery);
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertEquals(1, nodes.size(),
+					"(n != 1) wsdl:operations for operation "
+							+ operationIdentifier);
+			
+			System.out.println(nodes);
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			
+			String pattern = wsdlOperation.getAttribute("pattern");
+			assertEquals("http://www.w3.org/ns/wsdl/in-out", pattern);
+			
+			String safe = wsdlOperation.getAttribute("wsdlx:safe");
+			assertEquals("true", safe);
+			
+			String inputIdentifier = "aa:ActivityIdBasedRequest";
+			
+			String inputReference = wsdlOperation
+					.getElementsByTagName("wsdl:input").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
 
+			assertEquals(inputIdentifier, inputReference);
 
+			String outputIdentifier = "aa:" + xsdElementName(p);
+			String outputReference = wsdlOperation
+					.getElementsByTagName("wsdl:output").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+
+			assertEquals(outputIdentifier, outputReference);
+
+		}
+		
 		void providesUpdateInterface(Parameter p) {
-			fail();
+			System.out.println(p);
+			String operationIdentifier = "put-new-activity-"
+					+ xsdElementName(p);
+			
+			String xpathQuery = "/wsdl:description/wsdl:interface"
+					+ "/wsdl:operation[contains(@name,"
+					+ "\"" + operationIdentifier + "\")]";
+			System.out.println(xpathQuery);
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation for updating parameter.");
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation for updating parameter. Change THIS TEST.");
+			System.out.println(nodes);
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			
+			String pattern = wsdlOperation.getAttribute("pattern");
+			assertEquals("http://www.w3.org/ns/wsdl/in-out", pattern);
+			
+			String safe = wsdlOperation.getAttribute("wsdlx:safe");
+			assertEquals("true", safe);
+			
+			String inputIdentifier = "aa:" + xsdElementName(p);
+			
+			String inputReference = wsdlOperation
+					.getElementsByTagName("wsdl:input").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(inputIdentifier, inputReference);
+			
 		}
 	}
 	
