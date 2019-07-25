@@ -9,12 +9,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.ws.rs.HttpMethod;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
 
+import org.apache.http.protocol.HTTP;
 import org.eclipse.xtext.util.StringInputStream;
 import org.junit.jupiter.api.*;
 import org.w3c.dom.Attr;
@@ -28,11 +30,15 @@ import org.xmlunit.builder.Input;
 import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 
+import com.sun.research.ws.wadl.HTTPMethods;
+
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.DeploymentModel;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 
 import static br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService.xsdElementName;
@@ -78,6 +84,8 @@ class ActivityToWsdlTest {
 		xsdLocation = deploymentModel.serviceRootPath() + "/xsd";
 		wsdlLocation = deploymentModel.serviceRootPath() + "/wsdl";
 		setXPathEngine();
+		
+		System.out.println(xmlString);
 	}
 	
 	private static void setXmlDocumentBuilder()
@@ -334,8 +342,8 @@ class ActivityToWsdlTest {
 		}
 		
 		@Test
-		@DisplayName("for each parameter it provides the operations at the interface")
-		void presentsInterfaceOperationsForParameters() {
+		@DisplayName("for each parameter it provides the interface and bindings operations")
+		void presentsOperationsForParameters() {
 			activityModel.getParameters().stream()
 					.forEach(p -> {
 						providesRetrievalInterface(p);
@@ -387,16 +395,16 @@ class ActivityToWsdlTest {
 			String inputReference = wsdlOperation
 					.getElementsByTagName("wsdl:input").item(0)
 					.getAttributes().getNamedItem("element").getNodeValue();
-
+			
 			assertEquals(inputIdentifier, inputReference);
-
+			
 			String outputIdentifier = "aa:" + xsdElementName(p);
 			String outputReference = wsdlOperation
 					.getElementsByTagName("wsdl:output").item(0)
 					.getAttributes().getNamedItem("element").getNodeValue();
-
+			
 			assertEquals(outputIdentifier, outputReference);
-
+			
 		}
 		
 		void providesUpdateInterface(Parameter p) {
@@ -436,15 +444,19 @@ class ActivityToWsdlTest {
 			
 		}
 		
-		
 		void providesBindings(Parameter p) {
-			providesBindings(p, "tns:put-new-activity-" + xsdElementName(p), "PUT");
-			providesBindings(p, "tns:get-failed-activity-" + xsdElementName(p), "GET");
-			providesBindings(p, "tns:get-new-activity-" + xsdElementName(p), "GET");
-			providesBindings(p, "tns:get-succeded-activity-" + xsdElementName(p), "GET");
+			providesBindings(p, "tns:put-new-activity-" + xsdElementName(p),
+					"PUT");
+			providesBindings(p, "tns:get-failed-activity-" + xsdElementName(p),
+					"GET");
+			providesBindings(p, "tns:get-new-activity-" + xsdElementName(p),
+					"GET");
+			providesBindings(p,
+					"tns:get-succeded-activity-" + xsdElementName(p), "GET");
 		}
 		
-		void providesBindings(Parameter p, String operationIdentifier, String httpMethod) {
+		void providesBindings(Parameter p, String operationIdentifier,
+				String httpMethod) {
 			String xpathQuery = "/wsdl:description/wsdl:binding"
 					+ "/wsdl:operation[contains(@ref,"
 					+ "\"" + operationIdentifier + "\")]";
@@ -464,19 +476,376 @@ class ActivityToWsdlTest {
 			String method = wsdlOperation.getAttribute("whttp:method");
 			assertEquals(httpMethod, method);
 			
-			//String location = wsdlOperation.getAttribute("location");
-			//assertEquals("http://www.w3.org/ns/wsdl/in-out", location);
+			// String location = wsdlOperation.getAttribute("location");
+			// assertEquals("http://www.w3.org/ns/wsdl/in-out", location);
 			
-			String inputSerialization = wsdlOperation.getAttribute("whttp:inputSerialization");
+			String inputSerialization =
+					wsdlOperation.getAttribute("whttp:inputSerialization");
 			assertEquals("application/xml", inputSerialization);
 			
-			String outputSerialization = wsdlOperation.getAttribute("whttp:outputSerialization");
+			String outputSerialization =
+					wsdlOperation.getAttribute("whttp:outputSerialization");
 			assertEquals("application/xml", outputSerialization);
 			
 		}
+		
+		@Test
+		@DisplayName("for each inputDataset it provides the interface and bindings operations")
+		void presentsOperationsForInputDatasets() {
+			activityModel.getInputDatasets().stream()
+					.forEach(d -> {
+						providesSubmissionInterfaceForInputDataset(d,
+								getSubmissionOperationIdentifier(d));
+						providesSubmissionBindingsFor(d,
+								"tns:" + getSubmissionOperationIdentifier(d),
+								getSubmissionOperationMethod(d));
+					});
+		}
+		
+		void providesSubmissionInterfaceForInputDataset(InputDataset dataset,
+				String operationIdentifier) {
+			String xpathQuery = "/wsdl:description/wsdl:interface"
+					+ "/wsdl:operation[contains(@name,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation for submitting input dataset."
+							+ operationIdentifier);
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation  for submitting input dataset."
+							+ " Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			
+			String pattern = wsdlOperation.getAttribute("pattern");
+			assertEquals("http://www.w3.org/ns/wsdl/in-out", pattern);
+			
+			String safe = wsdlOperation.getAttribute("wsdlx:safe");
+			assertEquals("true", safe);
+			
+			String inputIdentifier = "aa:" + xsdElementName(dataset);
+			
+			String inputReference = wsdlOperation
+					.getElementsByTagName("wsdl:input").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(inputIdentifier, inputReference);
+		}
+		
+		private void providesSubmissionBindingsFor(
+				InputDataset dataset,
+				String operationIdentifier,
+				String httpMethod) {
+			
+			String xpathQuery = "/wsdl:description/wsdl:binding"
+					+ "/wsdl:operation[contains(@ref,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation binding for dataset: "
+							+ operationIdentifier);
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation binding for dataset. Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			String method = wsdlOperation.getAttribute("whttp:method");
+			assertEquals(httpMethod, method);
+			
+			String inputSerialization =
+					wsdlOperation.getAttribute("whttp:inputSerialization");
+			assertEquals("application/xml", inputSerialization);
+			
+			String outputSerialization =
+					wsdlOperation.getAttribute("whttp:outputSerialization");
+			assertEquals("application/xml", outputSerialization);
+			
+		}
+		
+		private String getSubmissionOperationIdentifier(InputDataset dataset) {
+			String method =
+					(dataset.getMaximumCardinality().intValue() != 1) ? "post"
+							: "put";
+			
+			String operationIdentifier = method
+					+ "-new-activity-input-"
+					+ xsdElementName(dataset);
+			return operationIdentifier;
+		}
+		
+		private String getSubmissionOperationMethod(InputDataset dataset) {
+			return (dataset.getMaximumCardinality().intValue() != 1)
+					? HttpMethod.POST
+					: HttpMethod.PUT;
+		}
+		
+		@Test
+		@DisplayName("for each OutputDataset it provides the interface and bindings operations")
+		void presentsOperationsForOutputDatasets() {
+			activityModel.getOutputDatasets().stream()
+					.filter(d -> d.getMaximumCardinality().intValue() == 1)
+					.forEach(d -> {
+						providesRetrievalInterfaceForSingleOutputDataset(d);
+						providesRetrievalBindingsForSingleOutputDataset(d);
+					});
+			
+			activityModel.getOutputDatasets().stream()
+					.filter(d -> d.getMaximumCardinality().intValue() != 1)
+					.forEach(d -> {
+						providesRetrievalInterfaceForMultipleOutputDataset(d);
+						providesRetrievalBindingsForMultipleOutputDataset(d);
+					});
+		}
+		
+		private void providesRetrievalBindingsForMultipleOutputDataset(
+				OutputDataset d) {
+			provideRetrievalBinding(d,
+					"tns:"+getMultipleOutputDatasetLinksRetrievalOperation(d));
+			provideRetrievalBinding(d,
+					"tns:"+getMultipleOutputDatasetFileRetrievalOperation(d));
+			
+		}
+
+
+
+		private void providesRetrievalInterfaceForMultipleOutputDataset(
+				OutputDataset d) {
+			provideLinksRetrievalInterface(d);
+			provideFileRetrievalInterface(d);
+			
+		}
+		
+		
+		
+
+		private void provideFileRetrievalInterface(OutputDataset dataset) {
+			String operationIdentifier =
+					getMultipleOutputDatasetFileRetrievalOperation(dataset);
+			String xpathQuery = "/wsdl:description/wsdl:interface"
+					+ "/wsdl:operation[contains(@name,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation for submitting input dataset."
+							+ operationIdentifier);
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation  for submitting input dataset."
+							+ " Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			
+			String pattern = wsdlOperation.getAttribute("pattern");
+			assertEquals("http://www.w3.org/ns/wsdl/in-out", pattern);
+			
+			String safe = wsdlOperation.getAttribute("wsdlx:safe");
+			assertEquals("true", safe);
+			
+			String inputIdentifier = "aa:ActivityIdBasedRequest";
+			String inputReference = wsdlOperation
+					.getElementsByTagName("wsdl:input").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(inputIdentifier, inputReference);
+			
+			String outputIdentifier = "aa:"+xsdElementName(dataset);
+			String outputReference = wsdlOperation
+					.getElementsByTagName("wsdl:output").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(outputIdentifier, outputReference);
+			
+		}
+
+		private void provideLinksRetrievalInterface(OutputDataset dataset) {
+			String operationIdentifier =
+					getMultipleOutputDatasetLinksRetrievalOperation(dataset);
+			String xpathQuery = "/wsdl:description/wsdl:interface"
+					+ "/wsdl:operation[contains(@name,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation for submitting input dataset."
+							+ operationIdentifier);
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation  for submitting input dataset."
+							+ " Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			
+			String pattern = wsdlOperation.getAttribute("pattern");
+			assertEquals("http://www.w3.org/ns/wsdl/in-out", pattern);
+			
+			String safe = wsdlOperation.getAttribute("wsdlx:safe");
+			assertEquals("true", safe);
+			
+			String inputIdentifier = "aa:ActivityIdBasedRequest";
+			String inputReference = wsdlOperation
+					.getElementsByTagName("wsdl:input").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(inputIdentifier, inputReference);
+			
+			String outputIdentifier = "aa:output-dataset";
+			String outputReference = wsdlOperation
+					.getElementsByTagName("wsdl:output").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(outputIdentifier, outputReference);
+		}
 
 		
+		private void provideRetrievalBinding(OutputDataset d,String operationIdentifier) {
+					
+			String xpathQuery = "/wsdl:description/wsdl:binding"
+					+ "/wsdl:operation[contains(@ref,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation binding for dataset: "
+							+ operationIdentifier);
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation binding for dataset. Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			String method = wsdlOperation.getAttribute("whttp:method");
+			assertEquals("GET", method);
+			
+			String inputSerialization =
+					wsdlOperation.getAttribute("whttp:inputSerialization");
+			assertEquals("application/xml", inputSerialization);
+			
+			String outputSerialization =
+					wsdlOperation.getAttribute("whttp:outputSerialization");
+			assertEquals("application/xml", outputSerialization);
+			
+		}
 		
+		void providesRetrievalInterfaceForSingleOutputDataset(
+				OutputDataset dataset) {
+			String operationIdentifier =
+					getSingleOutputDatasetRetrievalOperation(dataset);
+			String xpathQuery = "/wsdl:description/wsdl:interface"
+					+ "/wsdl:operation[contains(@name,"
+					+ "\"" + operationIdentifier + "\")]";
+			Iterable<Node> matched =
+					xpathEngine.selectNodes(xpathQuery, source);
+			
+			List<Node> nodes =
+					StreamSupport.stream(matched.spliterator(), false)
+							.collect(Collectors.toList());
+			
+			assertTrue(nodes.size() > 0,
+					"No wsdl:operation for submitting input dataset."
+							+ operationIdentifier);
+			assertTrue(nodes.size() == 1,
+					"n>1 wsdl:operation  for submitting input dataset."
+							+ " Change THIS TEST.");
+			
+			Element wsdlOperation = (Element) nodes.get(0);
+			
+			String pattern = wsdlOperation.getAttribute("pattern");
+			assertEquals("http://www.w3.org/ns/wsdl/in-out", pattern);
+			
+			String safe = wsdlOperation.getAttribute("wsdlx:safe");
+			assertEquals("true", safe);
+			
+			String inputIdentifier = "aa:ActivityIdBasedRequest";
+			String inputReference = wsdlOperation
+					.getElementsByTagName("wsdl:input").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(inputIdentifier, inputReference);
+			
+			String outputIdentifier = "aa:" + xsdElementName(dataset);
+			String outputReference = wsdlOperation
+					.getElementsByTagName("wsdl:output").item(0)
+					.getAttributes().getNamedItem("element").getNodeValue();
+			
+			assertEquals(outputIdentifier, outputReference);
+			
+		}
+	}
+	
+	void providesRetrievalBindingsForSingleOutputDataset(
+			OutputDataset dataset) {
+		String operationIdentifier =
+				getSingleOutputDatasetRetrievalOperation(dataset);
+		String xpathQuery = "/wsdl:description/wsdl:binding"
+				+ "/wsdl:operation[contains(@ref,"
+				+ "\"" + operationIdentifier + "\")]";
+		Iterable<Node> matched =
+				xpathEngine.selectNodes(xpathQuery, source);
+		
+		List<Node> nodes =
+				StreamSupport.stream(matched.spliterator(), false)
+						.collect(Collectors.toList());
+		
+		assertTrue(nodes.size() > 0,
+				"No wsdl:operation binding for parameter.");
+		assertTrue(nodes.size() == 1,
+				"n>1 wsdl:operation binding for parameter. Change THIS TEST.");
+		
+		Element wsdlOperation = (Element) nodes.get(0);
+		String method = wsdlOperation.getAttribute("whttp:method");
+		assertEquals("GET", method);
+		
+		// String location = wsdlOperation.getAttribute("location");
+		// assertEquals("http://www.w3.org/ns/wsdl/in-out", location);
+		
+		String inputSerialization =
+				wsdlOperation.getAttribute("whttp:inputSerialization");
+		assertEquals("application/xml", inputSerialization);
+		
+		String outputSerialization =
+				wsdlOperation.getAttribute("whttp:outputSerialization");
+		assertEquals("application/xml", outputSerialization);
+		
+	}
+	
+	private String getSingleOutputDatasetRetrievalOperation(OutputDataset d) {
+		return "get-succeded-activity-output-"
+				+ xsdElementName(d);
+	}
+	
+	private String
+			getMultipleOutputDatasetLinksRetrievalOperation(OutputDataset d) {
+		return "get-succeded-activity-output-"
+				+ xsdElementName(d) + "-links";
+	}
+	
+	private String
+			getMultipleOutputDatasetFileRetrievalOperation(OutputDataset d) {
+		return "get-succeded-activity-output-"
+				+ xsdElementName(d) + "-file";
 	}
 	
 }

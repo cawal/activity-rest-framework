@@ -1,6 +1,8 @@
 activity gene-chart-report {
 	remark 'Lists the files present in the paths parameter.';
 	on {
+		dataset input-single : 'text/csv' [1,1];
+		dataset input-multiple : 'text/csv' [1,-1];
 	}
 	with {
 		parameter paths : STRING[1,-1] {
@@ -14,10 +16,12 @@ activity gene-chart-report {
 		parameter gene-identifier-type : STRING [1,1];
 	}
 	produces {
-		dataset output.tsv : 'text/tsv' [1,1] {
+		dataset output-single : 'text/tsv' [1,1] {
 			remark 'The output';
 		};
-		
+		dataset output-multiple : 'text/tsv' [1,-1] {
+			remark 'The output';
+		};		
 	}
  	using executable geas-david-chart-report {
 		redirecting {
