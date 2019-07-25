@@ -1,6 +1,9 @@
 package tests.transformations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService.xsdElementName;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.InetAddress;
 import java.util.HashMap;
@@ -10,15 +13,19 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import javax.ws.rs.HttpMethod;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
 
-import org.apache.http.protocol.HTTP;
 import org.eclipse.xtext.util.StringInputStream;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,18 +37,13 @@ import org.xmlunit.builder.Input;
 import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 
-import com.sun.research.ws.wadl.HTTPMethods;
-
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
-import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.DeploymentModel;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
-
-import static br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService.xsdElementName;
 
 @DisplayName("A WSDL document can be obtained from an AADL model")
 class ActivityToWsdlTest {
@@ -538,6 +540,24 @@ class ActivityToWsdlTest {
 			assertEquals(inputIdentifier, inputReference);
 		}
 		
+		@Test
+		@DisplayName("for each OutputDataset it provides the interface and bindings operations")
+		void presentsOperationsForOutputDatasets() {
+			activityModel.getOutputDatasets().stream()
+					.filter(d -> d.getMaximumCardinality().intValue() == 1)
+					.forEach(d -> {
+						providesRetrievalInterfaceForSingleOutputDataset(d);
+						providesRetrievalBindingsForSingleOutputDataset(d);
+					});
+			
+			activityModel.getOutputDatasets().stream()
+					.filter(d -> d.getMaximumCardinality().intValue() != 1)
+					.forEach(d -> {
+						providesRetrievalInterfaceForMultipleOutputDataset(d);
+						providesRetrievalBindingsForMultipleOutputDataset(d);
+					});
+		}
+		
 		private void providesSubmissionBindingsFor(
 				InputDataset dataset,
 				String operationIdentifier,
@@ -590,23 +610,7 @@ class ActivityToWsdlTest {
 					: HttpMethod.PUT;
 		}
 		
-		@Test
-		@DisplayName("for each OutputDataset it provides the interface and bindings operations")
-		void presentsOperationsForOutputDatasets() {
-			activityModel.getOutputDatasets().stream()
-					.filter(d -> d.getMaximumCardinality().intValue() == 1)
-					.forEach(d -> {
-						providesRetrievalInterfaceForSingleOutputDataset(d);
-						providesRetrievalBindingsForSingleOutputDataset(d);
-					});
-			
-			activityModel.getOutputDatasets().stream()
-					.filter(d -> d.getMaximumCardinality().intValue() != 1)
-					.forEach(d -> {
-						providesRetrievalInterfaceForMultipleOutputDataset(d);
-						providesRetrievalBindingsForMultipleOutputDataset(d);
-					});
-		}
+
 		
 		private void providesRetrievalBindingsForMultipleOutputDataset(
 				OutputDataset d) {
