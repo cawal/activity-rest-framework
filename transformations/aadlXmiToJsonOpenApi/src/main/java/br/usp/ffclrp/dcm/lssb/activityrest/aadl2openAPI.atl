@@ -5,7 +5,7 @@
 
 --- OpenAPI metamodel at commit 47f4f688ab89dfb29ad9003aff20500c1708cd25
 module aadl2openAPI;
-create OUT: openapi from IN: aadl;
+create OUT: openapi from IN: aadl, DM : deployment;
 
 helper def: port(): String =
 	'8081';
