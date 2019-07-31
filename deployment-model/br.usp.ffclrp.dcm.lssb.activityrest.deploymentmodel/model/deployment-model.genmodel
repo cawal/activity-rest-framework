@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel/src"
+    modelPluginID="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel" modelName="deployment-model"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>deployment-model.ecore</foreignModel>
+  <genPackages prefix="Deploymentmodel" disposableProviderFactory="true" ecorePackage="deployment-model.ecore#/">
+    <genDataTypes ecoreDataType="deployment-model.ecore#//URL"/>
+    <genClasses ecoreClass="deployment-model.ecore#//Deployment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment-model.ecore#//Deployment/service"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment-model.ecore#//Deployment/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment-model.ecore#//Deployment/contactInformation"/>
+    </genClasses>
+    <genClasses ecoreClass="deployment-model.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Service/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Service/apiVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Service/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="deployment-model.ecore#//ServiceContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//ServiceContainer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//ServiceContainer/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//ServiceContainer/baseUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="deployment-model.ecore#//Contact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/contactName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/url"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
