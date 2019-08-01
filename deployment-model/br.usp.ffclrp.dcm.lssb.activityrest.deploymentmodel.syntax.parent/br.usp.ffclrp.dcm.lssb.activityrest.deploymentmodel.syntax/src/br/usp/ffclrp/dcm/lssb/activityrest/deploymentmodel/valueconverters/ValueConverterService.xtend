@@ -1,59 +1,27 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.valueconverters
 
-import org.eclipse.xtext.common.services.DefaultTerminalConverters
-import org.eclipse.xtext.conversion.ValueConverter
-import org.eclipse.xtext.conversion.IValueConverter
 import java.net.URL
-import org.eclipse.xtext.nodemodel.INode
-import org.eclipse.xtext.conversion.ValueConverterException
-import org.eclipse.xtext.conversion.impl.AbstractNullSafeConverter
+import org.eclipse.xtext.common.services.DefaultTerminalConverters
+import org.eclipse.xtext.conversion.IValueConverter
+import org.eclipse.xtext.conversion.ValueConverter
 
+/**
+ * This class extends/overrides the TerminalConvertes to add new IValueConverters
+ * for user EDatatypes. Register this class in the DSL RuntimeModule class.
+ */
 class ValueConverterService extends DefaultTerminalConverters {
 
 	@ValueConverter(rule="URL")
 	def IValueConverter<URL> URL() {
-		return new IValueConverter<URL> {
-
-			override URL toValue(String string, INode node) throws ValueConverterException {
-				return new URL(clean(string));
-			}
-
-			override String toString(URL value) throws ValueConverterException {
-				if (value === null) {
-					return null;
-				}
-
-				return '''"«value.toString»"''';
-			}
-
-			def String clean(String string) {
-				var s = if (string.startsWith("'") || string.startsWith("\""))
-						string.substring(1)
-					else
-						string
-				s = if (s.endsWith("'") || s.endsWith("\""))
-					s.substring(0, s.length - 1)
-				else
-					s
-
-				return s
-			}
-		};
+		return new UrlValueConverter;
 
 	}
-	
-	@ValueConverter(rule = "EString")
-	def IValueConverter<String> EString() {
-		return new AbstractNullSafeConverter<String>() {
-		
-			override String internalToValue(String string, INode node) {
-				return STRING().toValue(string, node);
-			}
 
-			
-			override String internalToString(String value) {
-				return STRING().toString(value);
-			}
-		};
+	@ValueConverter(rule="EString")
+	def IValueConverter<String> EString() {
+		return new EStringValueConverter
 	}
 }
+
+
+
