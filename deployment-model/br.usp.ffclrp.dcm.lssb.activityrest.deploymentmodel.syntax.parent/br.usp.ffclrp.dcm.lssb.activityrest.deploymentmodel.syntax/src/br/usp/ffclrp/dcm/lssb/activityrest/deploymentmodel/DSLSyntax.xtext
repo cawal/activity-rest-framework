@@ -32,14 +32,14 @@ Service returns Service:
 	'}';
 
 Contact returns Contact:
-	'contact' contactName=EString
+	'contact' name=EString
 	'{'
 		'email' email=EString
 		('url' url=URL)?
 	'}';
 
 EString returns ecore::EString:
-	STRING | ID;
+	STRING;
 
-URL returns URL:
+URL returns URL: /* Implemented in the ValueConverterService class */
 	STRING;

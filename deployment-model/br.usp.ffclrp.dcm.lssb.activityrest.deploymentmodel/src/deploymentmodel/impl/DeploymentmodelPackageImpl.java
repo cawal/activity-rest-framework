@@ -256,7 +256,7 @@ public class DeploymentmodelPackageImpl extends EPackageImpl implements Deployme
 	 * @generated
 	 */
 	@Override
-	public EAttribute getContact_ContactName() {
+	public EAttribute getContact_Name() {
 		return (EAttribute)contactEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -335,7 +335,7 @@ public class DeploymentmodelPackageImpl extends EPackageImpl implements Deployme
 		createEAttribute(serviceContainerEClass, SERVICE_CONTAINER__BASE_URL);
 
 		contactEClass = createEClass(CONTACT);
-		createEAttribute(contactEClass, CONTACT__CONTACT_NAME);
+		createEAttribute(contactEClass, CONTACT__NAME);
 		createEAttribute(contactEClass, CONTACT__EMAIL);
 		createEAttribute(contactEClass, CONTACT__URL);
 
@@ -389,7 +389,7 @@ public class DeploymentmodelPackageImpl extends EPackageImpl implements Deployme
 		initEAttribute(getServiceContainer_BaseUrl(), this.getURL(), "baseUrl", null, 1, 1, ServiceContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contactEClass, Contact.class, "Contact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContact_ContactName(), ecorePackage.getEString(), "contactName", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContact_Name(), ecorePackage.getEString(), "name", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_Email(), ecorePackage.getEString(), "email", null, 1, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_Url(), this.getURL(), "url", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

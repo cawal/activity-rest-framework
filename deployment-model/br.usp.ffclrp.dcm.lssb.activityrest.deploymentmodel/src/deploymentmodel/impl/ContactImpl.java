@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link deploymentmodel.impl.ContactImpl#getContactName <em>Contact Name</em>}</li>
+ *   <li>{@link deploymentmodel.impl.ContactImpl#getName <em>Name</em>}</li>
  *   <li>{@link deploymentmodel.impl.ContactImpl#getEmail <em>Email</em>}</li>
  *   <li>{@link deploymentmodel.impl.ContactImpl#getUrl <em>Url</em>}</li>
  * </ul>
@@ -31,24 +31,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ContactImpl extends MinimalEObjectImpl.Container implements Contact {
 	/**
-	 * The default value of the '{@link #getContactName() <em>Contact Name</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContactName()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CONTACT_NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getContactName() <em>Contact Name</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContactName()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String contactName = CONTACT_NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
@@ -115,8 +115,8 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 	 * @generated
 	 */
 	@Override
-	public String getContactName() {
-		return contactName;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -125,11 +125,11 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 	 * @generated
 	 */
 	@Override
-	public void setContactName(String newContactName) {
-		String oldContactName = contactName;
-		contactName = newContactName;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentmodelPackage.CONTACT__CONTACT_NAME, oldContactName, contactName));
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentmodelPackage.CONTACT__NAME, oldName, name));
 	}
 
 	/**
@@ -186,8 +186,8 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DeploymentmodelPackage.CONTACT__CONTACT_NAME:
-				return getContactName();
+			case DeploymentmodelPackage.CONTACT__NAME:
+				return getName();
 			case DeploymentmodelPackage.CONTACT__EMAIL:
 				return getEmail();
 			case DeploymentmodelPackage.CONTACT__URL:
@@ -204,8 +204,8 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DeploymentmodelPackage.CONTACT__CONTACT_NAME:
-				setContactName((String)newValue);
+			case DeploymentmodelPackage.CONTACT__NAME:
+				setName((String)newValue);
 				return;
 			case DeploymentmodelPackage.CONTACT__EMAIL:
 				setEmail((String)newValue);
@@ -225,8 +225,8 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DeploymentmodelPackage.CONTACT__CONTACT_NAME:
-				setContactName(CONTACT_NAME_EDEFAULT);
+			case DeploymentmodelPackage.CONTACT__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case DeploymentmodelPackage.CONTACT__EMAIL:
 				setEmail(EMAIL_EDEFAULT);
@@ -246,8 +246,8 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DeploymentmodelPackage.CONTACT__CONTACT_NAME:
-				return CONTACT_NAME_EDEFAULT == null ? contactName != null : !CONTACT_NAME_EDEFAULT.equals(contactName);
+			case DeploymentmodelPackage.CONTACT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DeploymentmodelPackage.CONTACT__EMAIL:
 				return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
 			case DeploymentmodelPackage.CONTACT__URL:
@@ -266,8 +266,8 @@ public class ContactImpl extends MinimalEObjectImpl.Container implements Contact
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (contactName: ");
-		result.append(contactName);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(", email: ");
 		result.append(email);
 		result.append(", url: ");

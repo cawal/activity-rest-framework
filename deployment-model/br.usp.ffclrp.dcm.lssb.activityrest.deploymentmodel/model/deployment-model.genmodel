@@ -23,7 +23,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//ServiceContainer/baseUrl"/>
     </genClasses>
     <genClasses ecoreClass="deployment-model.ecore#//Contact">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/contactName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/email"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment-model.ecore#//Contact/url"/>
     </genClasses>

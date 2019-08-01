@@ -60,7 +60,7 @@ public class ContactItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addContactNamePropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 			addEmailPropertyDescriptor(object);
 			addUrlPropertyDescriptor(object);
 		}
@@ -68,19 +68,19 @@ public class ContactItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Contact Name feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addContactNamePropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Contact_contactName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Contact_contactName_feature", "_UI_Contact_type"),
-				 DeploymentmodelPackage.Literals.CONTACT__CONTACT_NAME,
+				 getString("_UI_Contact_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Contact_name_feature", "_UI_Contact_type"),
+				 DeploymentmodelPackage.Literals.CONTACT__NAME,
 				 true,
 				 false,
 				 false,
@@ -152,7 +152,7 @@ public class ContactItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Contact)object).getContactName();
+		String label = ((Contact)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Contact_type") :
 			getString("_UI_Contact_type") + " " + label;
@@ -171,7 +171,7 @@ public class ContactItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Contact.class)) {
-			case DeploymentmodelPackage.CONTACT__CONTACT_NAME:
+			case DeploymentmodelPackage.CONTACT__NAME:
 			case DeploymentmodelPackage.CONTACT__EMAIL:
 			case DeploymentmodelPackage.CONTACT__URL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

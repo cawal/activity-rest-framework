@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link deploymentmodel.Contact#getContactName <em>Contact Name</em>}</li>
+ *   <li>{@link deploymentmodel.Contact#getName <em>Name</em>}</li>
  *   <li>{@link deploymentmodel.Contact#getEmail <em>Email</em>}</li>
  *   <li>{@link deploymentmodel.Contact#getUrl <em>Url</em>}</li>
  * </ul>
@@ -26,26 +26,26 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Contact extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Contact Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contact Name</em>' attribute.
-	 * @see #setContactName(String)
-	 * @see deploymentmodel.DeploymentmodelPackage#getContact_ContactName()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see deploymentmodel.DeploymentmodelPackage#getContact_Name()
 	 * @model
 	 * @generated
 	 */
-	String getContactName();
+	String getName();
 
 	/**
-	 * Sets the value of the '{@link deploymentmodel.Contact#getContactName <em>Contact Name</em>}' attribute.
+	 * Sets the value of the '{@link deploymentmodel.Contact#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contact Name</em>' attribute.
-	 * @see #getContactName()
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	void setContactName(String value);
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Email</b></em>' attribute.

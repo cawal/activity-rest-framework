@@ -233,13 +233,13 @@ public interface DeploymentmodelPackage extends EPackage {
 	int CONTACT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Contact Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTACT__CONTACT_NAME = 0;
+	int CONTACT__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Email</b></em>' attribute.
@@ -428,15 +428,15 @@ public interface DeploymentmodelPackage extends EPackage {
 	EClass getContact();
 
 	/**
-	 * Returns the meta object for the attribute '{@link deploymentmodel.Contact#getContactName <em>Contact Name</em>}'.
+	 * Returns the meta object for the attribute '{@link deploymentmodel.Contact#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Contact Name</em>'.
-	 * @see deploymentmodel.Contact#getContactName()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see deploymentmodel.Contact#getName()
 	 * @see #getContact()
 	 * @generated
 	 */
-	EAttribute getContact_ContactName();
+	EAttribute getContact_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link deploymentmodel.Contact#getEmail <em>Email</em>}'.
@@ -607,12 +607,12 @@ public interface DeploymentmodelPackage extends EPackage {
 		EClass CONTACT = eINSTANCE.getContact();
 
 		/**
-		 * The meta object literal for the '<em><b>Contact Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONTACT__CONTACT_NAME = eINSTANCE.getContact_ContactName();
+		EAttribute CONTACT__NAME = eINSTANCE.getContact_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
