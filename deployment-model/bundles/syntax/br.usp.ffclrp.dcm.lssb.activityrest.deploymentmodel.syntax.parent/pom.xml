@@ -11,7 +11,7 @@
 
 	<parent>
 		<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
-		<artifactId>deployment-model-root</artifactId>
+		<artifactId>deployment-model-syntax</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>

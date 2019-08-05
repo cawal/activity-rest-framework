@@ -1,8 +1,8 @@
 <project>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>restaurant-syntax</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+
+	<artifactId>analysis-activity-description-metamodel-root</artifactId>
 	<packaging>pom</packaging>
 
 	<parent>
@@ -13,6 +13,6 @@
 	</parent>
 
 	<modules>
-		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent</module>
+		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</module>
 	</modules>
 </project>
