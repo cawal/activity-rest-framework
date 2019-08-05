@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="gene-chart-report">
+  <parameters name="email">
+    <constraints name="isEmail"/>
+  </parameters>
+  <parameters name="count" parameterType="INTEGER">
+    <defaultValue>1</defaultValue>
+  </parameters>
+  <parameters name="threshold" parameterType="REAL">
+    <defaultValue>2.0</defaultValue>
+  </parameters>
+  <parameters maximumCardinality="-1" name="gene-ids"/>
+  <parameters maximumCardinality="-1" name="categories-in-result"/>
+  <parameters name="gene-identifier-type"/>
+  <outputDatasets name="output" mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-david-chart-report.py">
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="email"/>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="gene-ids">
+      <manipulators xsi:type="slm:Join" delimiter=","/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="gene-identifier-type"/>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="categories-in-result">
+      <manipulators xsi:type="slm:Join" delimiter=","/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="threshold"/>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="count"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output"/>
+  </functionalEntity>
+</aad:Activity>

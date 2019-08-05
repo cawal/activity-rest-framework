@@ -7,13 +7,6 @@
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	<parent>
-		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
-		<artifactId>tycho-configuration</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>./dsl/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration</relativePath>
-	</parent>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -22,7 +15,7 @@
 	<modules>
 		<module>framework</module>
 		<module>dsl</module>
-<!-- 		<module>bundles</module> -->
+		<module>deployment-model</module>
 	</modules>
 
 

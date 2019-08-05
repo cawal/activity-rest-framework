@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="nucleotide-local-alignment">
+  <parameters name="queried-database"/>
+  <inputDatasets name="query-sequence" mimetype="chemical/seq-na-fasta"/>
+  <outputDatasets name="result" mimetype="text/plain"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="blastn">
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="queried-database">
+      <manipulators xsi:type="slm:PrependListWith" value="-db"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="query-sequence">
+      <manipulators xsi:type="slm:PrependListWith" value="-query"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="result">
+      <manipulators xsi:type="slm:PrependListWith" value="-out"/>
+    </commandLineTemplate>
+    <exitCodes code="0"/>
+    <exitCodes code="1" reportMessage="Error in query sequence(s) or BLAST options" status="FAILED"/>
+    <exitCodes code="2" reportMessage="Error in BLAST database" status="FAILED"/>
+    <exitCodes code="3" reportMessage="Error in BLAST engine" status="FAILED"/>
+    <exitCodes code="4" reportMessage="Out of memory" status="FAILED"/>
+    <exitCodes code="5" reportMessage="Network error connecting to NCBI to fetch sequence data" status="FAILED"/>
+    <exitCodes code="6" reportMessage="Error creating output files" status="FAILED"/>
+    <exitCodes code="255" reportMessage="Unknown error" status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>

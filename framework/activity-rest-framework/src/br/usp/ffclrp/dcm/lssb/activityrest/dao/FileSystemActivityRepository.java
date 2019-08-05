@@ -248,7 +248,6 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		FileWriter parametersStream = new FileWriter(parametersFile);
 		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
-		System.out.println(aaDesc);
 		parametersMap.getDescriptions().addAll(
 				aaDesc.getParameters()
 		);
@@ -418,7 +417,6 @@ public class FileSystemActivityRepository implements ActivityRepository {
 				
 			}
 			
-			// reloadInputDatasetsFiles(aa);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

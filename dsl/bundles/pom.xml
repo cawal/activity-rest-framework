@@ -8,12 +8,11 @@
 		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
 		<artifactId>restaurant-root</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-       		 <relativePath>..</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 
 	<modules>
-        <module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</module>
-	<!--<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivity</module>-->
-        <module>syntax</module>
+		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</module>
+		<module>syntax</module>
 	</modules>
 </project>

@@ -16,6 +16,7 @@ public class JobConfig {
 	private final File workingDirectory;
 	private final File errorReportFile;
 	private final List<ExitCode> exitCodes;
+	
 	/**
 	 * The termination status if the code is not found in the exitCodes list.
 	 */

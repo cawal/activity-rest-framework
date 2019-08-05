@@ -5,7 +5,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.domain;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

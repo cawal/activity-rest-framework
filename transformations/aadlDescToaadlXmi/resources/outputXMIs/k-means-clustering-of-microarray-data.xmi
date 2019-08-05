@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" xmlns:slm="http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore" name="k-means-clustering-of-microarray-data">
+  <parameters name="distance-measure-id" remark="''&#xA;&#x9;&#x9;&#x9;&#x9;Specifies the distance measure for microarray and gene clustering&#xA;                0: No clustering&#xA;                1: Uncentered correlation&#xA;                2: Pearson correlation&#xA;                3: Uncentered correlation, absolute value&#xA;                4: Pearson correlation, absolute value&#xA;                5: Spearman's rank correlation&#xA;                6: Kendall's tau&#xA;                7: Euclidean distance&#xA;                8: City-block distance&#xA;                (default: 0)&#xA;&#x9;&#x9;&#x9;''" parameterType="INTEGER">
+    <defaultValue>0</defaultValue>
+  </parameters>
+  <parameters name="hierarchical-clustering-method-id" remark="''Specifies which hierarchical clustering method to use&#xA;                m: Pairwise complete-linkage&#xA;                s: Pairwise single-linkage&#xA;                c: Pairwise centroid-linkage&#xA;                a: Pairwise average-linkage&#xA;                (default: m)&#xA;&#x9;&#x9;&#x9;''">
+    <defaultValue>m</defaultValue>
+  </parameters>
+  <parameters name="number-of-clusters" parameterType="INTEGER"/>
+  <parameters name="number-of-runs" parameterType="INTEGER">
+    <defaultValue>1</defaultValue>
+  </parameters>
+  <inputDatasets name="input-file" mimetype="text/tsv"/>
+  <outputDatasets maximumCardinality="-1" name="output-files" mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="cluster3">
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="input-file">
+      <manipulators xsi:type="slm:PrependListWith" value="-f"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output-files">
+      <manipulators xsi:type="slm:PrependListWith" value="-u"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="distance-measure-id">
+      <manipulators xsi:type="slm:PrependListWith" value="-g"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="distance-measure-id">
+      <manipulators xsi:type="slm:PrependListWith" value="-e"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="number-of-clusters">
+      <manipulators xsi:type="slm:PrependListWith" value="-k"/>
+    </commandLineTemplate>
+    <commandLineTemplate xsi:type="aad:ParameterCommandLineEntryList" parameter="number-of-runs">
+      <manipulators xsi:type="slm:PrependListWith" value="-r"/>
+    </commandLineTemplate>
+    <exitCodes code="0"/>
+    <exitCodes code="1" reportMessage="Bad invocation parameters." status="FAILED"/>
+  </functionalEntity>
+</aad:Activity>

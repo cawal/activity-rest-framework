@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<aad:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aad="http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore" name="affymetrix-one-color-microarray-normalization">
+  <inputDatasets maximumCardinality="-1" name="cel-files" mimetype="text/tsv"/>
+  <outputDatasets name="output" mimetype="text/tsv"/>
+  <functionalEntity xsi:type="aad:CommandLineTool" name="geas-affymetrix-1-color-microarray-norm.R">
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="cel-files"/>
+    <commandLineTemplate xsi:type="aad:DatasetCommandLineEntryList" dataset="output"/>
+  </functionalEntity>
+</aad:Activity>

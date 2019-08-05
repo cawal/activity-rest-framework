@@ -3,14 +3,18 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.domain.util;
 
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.*;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.FileAdapter;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ParameterMap;
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ValidationResult;
 
 /**
  * <!-- begin-user-doc -->
