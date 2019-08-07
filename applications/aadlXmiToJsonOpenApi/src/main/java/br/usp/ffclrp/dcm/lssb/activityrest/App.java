@@ -39,10 +39,11 @@ public class App implements Callable<Integer> {
 	 * private String outputJsonFilePath;
 	 * 
 	 */
-	
-	private static final int FILE_NOT_FOUND_CODE = 1;
 
+	private static final int SUCCEEDED_CODE = 0;
+	private static final int FILE_NOT_FOUND_CODE = 1;
 	private static final int IO_EXCEPTION_CODE = 2;
+	private static final int UNKNOWN_FAILURE_CODE = 255;
 
 	@Parameters(index = "0",
 			description = "The path of a directory were the AADL XMI "
@@ -67,15 +68,19 @@ public class App implements Callable<Integer> {
 		if (inputAADLDirectory.exists() && inputAADLDirectory.isDirectory()) {
 			
 			outputJSONDirectory.mkdirs();
-			Arrays.asList(inputAADLDirectory.listFiles()).stream()
-					.filter(f -> f.getName().endsWith(".xmi"))
-					.map(this::transformActivityXmiToOpenApiXmi)
-					.forEachOrdered(this::transformOpenApiXmiToJsonFile);
+			for (File f : Arrays.asList(inputAADLDirectory.listFiles())) {
+				
+				String newFileName = f.getName()
+						.replaceAll("\\.xmi", ".json");
+				File tempFile = transformActivityXmiToOpenApiXmi(f);
+				transformOpenApiXmiToJsonFile(tempFile, newFileName);
+				
+			}
 			
-			return 0;
+			return SUCCEEDED_CODE;
 			
 		} else {
-			return 1;
+			return UNKNOWN_FAILURE_CODE;
 		}
 		
 	}
@@ -108,7 +113,7 @@ public class App implements Callable<Integer> {
 		
 	}
 	
-	private void transformOpenApiXmiToJsonFile(File input) {
+	private void transformOpenApiXmiToJsonFile(File input, String newFileName) {
 		
 		try (InputStream aadlSource = new FileInputStream(input);) {
 			
@@ -120,8 +125,7 @@ public class App implements Callable<Integer> {
 			
 			System.out.println(jsonOb);
 			
-			String newFileName = input.getName()
-					.replaceAll("\\.xmi", ".json");
+
 			
 			FileWriter writer =
 					new FileWriter(new File(outputJSONDirectory, newFileName));
