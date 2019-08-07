@@ -253,7 +253,7 @@ rule Activity {
 			location <- #path
 		),
 		fileIdentifierParameter: openapi!Parameter (
-			name <- 'fileId',
+			name <- 'file-id',
 			type <- 'string',
 			required <- true,
 			description <- 'The dataset\' file identifier.',

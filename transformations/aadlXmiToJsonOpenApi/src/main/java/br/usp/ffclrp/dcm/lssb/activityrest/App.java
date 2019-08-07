@@ -2,11 +2,16 @@ package br.usp.ffclrp.dcm.lssb.activityrest;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.gson.Gson;
@@ -35,6 +40,10 @@ public class App implements Callable<Integer> {
 	 * 
 	 */
 	
+	private static final int FILE_NOT_FOUND_CODE = 1;
+
+	private static final int IO_EXCEPTION_CODE = 2;
+
 	@Parameters(index = "0",
 			description = "The path of a directory were the AADL XMI "
 					+ "(*.xmi) will be looked for.",
@@ -60,6 +69,7 @@ public class App implements Callable<Integer> {
 			outputJSONDirectory.mkdirs();
 			Arrays.asList(inputAADLDirectory.listFiles()).stream()
 					.filter(f -> f.getName().endsWith(".xmi"))
+					.map(this::transformActivityXmiToOpenApiXmi)
 					.forEachOrdered(this::transformOpenApiXmiToJsonFile);
 			
 			return 0;
@@ -67,6 +77,34 @@ public class App implements Callable<Integer> {
 		} else {
 			return 1;
 		}
+		
+	}
+	
+	private File transformActivityXmiToOpenApiXmi(File aadlXmi) {
+		
+		try {
+			System.out.println("Transforming : " + aadlXmi.getName());
+			File tempFile = File.createTempFile(
+					aadlXmi.getName().replaceAll("\\.xmi", ""), ".xmi");
+			
+			IProgressMonitor monitor = null;
+			InputStream aadlSource = new FileInputStream(aadlXmi);
+			OutputStream openapiTarget = new FileOutputStream(tempFile);
+			
+			TransformationService.aadl2OpenAPI(aadlSource, openapiTarget, monitor);
+			openapiTarget.flush();
+			openapiTarget.close();
+			return tempFile;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(FILE_NOT_FOUND_CODE);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(IO_EXCEPTION_CODE);
+		}
+		return null;
 		
 	}
 	
@@ -85,7 +123,8 @@ public class App implements Callable<Integer> {
 			String newFileName = input.getName()
 					.replaceAll("\\.xmi", ".json");
 			
-			FileWriter writer = new FileWriter(new File(outputJSONDirectory,newFileName));
+			FileWriter writer =
+					new FileWriter(new File(outputJSONDirectory, newFileName));
 			Gson gson = new Gson();
 			gson.toJson(jsonOb, writer);
 			writer.close();

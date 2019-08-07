@@ -394,7 +394,7 @@
 		<constant value="required"/>
 		<constant value="The analysis activity identifier."/>
 		<constant value="location"/>
-		<constant value="fileId"/>
+		<constant value="file-id"/>
 		<constant value="The dataset' file identifier."/>
 		<constant value="parameter values"/>
 		<constant value="body"/>
@@ -747,8 +747,8 @@
 		<constant value="252:4-252:54"/>
 		<constant value="253:16-253:21"/>
 		<constant value="253:4-253:21"/>
-		<constant value="256:12-256:20"/>
-		<constant value="256:4-256:20"/>
+		<constant value="256:12-256:21"/>
+		<constant value="256:4-256:21"/>
 		<constant value="257:12-257:20"/>
 		<constant value="257:4-257:20"/>
 		<constant value="258:16-258:20"/>
