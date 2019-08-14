@@ -184,9 +184,9 @@
 		<constant value="putParametersOkResponse"/>
 		<constant value="putParametersBadRequestResponse"/>
 		<constant value="jobPath"/>
-		<constant value="putJob"/>
-		<constant value="putJobCreatedResponse"/>
-		<constant value="putJobBadRequestResponse"/>
+		<constant value="postJob"/>
+		<constant value="postJobCreatedResponse"/>
+		<constant value="postJobBadRequestResponse"/>
 		<constant value="getJob"/>
 		<constant value="getJobOkResponse"/>
 		<constant value="getJobGoneResponse"/>
@@ -431,7 +431,7 @@
 		<constant value="400"/>
 		<constant value="Parameters values are not accepted."/>
 		<constant value="/jobs/{id}"/>
-		<constant value="put-job"/>
+		<constant value="post-job"/>
 		<constant value="Create a new job for the activity identified by {id}."/>
 		<constant value="201"/>
 		<constant value="The activity is ready for processing and a new job is started."/>
@@ -923,18 +923,18 @@
 		<constant value="387:4-387:17"/>
 		<constant value="388:14-388:23"/>
 		<constant value="388:4-388:23"/>
-		<constant value="389:11-389:17"/>
-		<constant value="389:4-389:17"/>
-		<constant value="392:19-392:28"/>
-		<constant value="392:4-392:28"/>
+		<constant value="389:12-389:19"/>
+		<constant value="389:4-389:19"/>
+		<constant value="392:19-392:29"/>
+		<constant value="392:4-392:29"/>
 		<constant value="393:19-393:74"/>
 		<constant value="393:4-393:74"/>
 		<constant value="394:18-394:36"/>
 		<constant value="394:4-394:36"/>
-		<constant value="395:17-395:38"/>
-		<constant value="395:4-395:38"/>
-		<constant value="396:17-396:41"/>
-		<constant value="396:4-396:41"/>
+		<constant value="395:17-395:39"/>
+		<constant value="395:4-395:39"/>
+		<constant value="396:17-396:42"/>
+		<constant value="396:4-396:42"/>
 		<constant value="399:12-399:17"/>
 		<constant value="399:4-399:17"/>
 		<constant value="400:19-400:83"/>
@@ -4538,7 +4538,7 @@
 			<getasm/>
 			<load arg="308"/>
 			<call arg="65"/>
-			<set arg="411"/>
+			<set arg="404"/>
 			<pop/>
 			<load arg="308"/>
 			<dup/>

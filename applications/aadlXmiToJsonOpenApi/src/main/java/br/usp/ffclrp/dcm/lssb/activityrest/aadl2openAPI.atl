@@ -386,16 +386,16 @@ rule Activity {
 			parameters <- activityIdentifier,
 			get <- getJob,
 			delete <- deleteJob,
-			put <- putJob
+			post <- postJob
 		),
-		putJob : openapi!Operation (
-			operationId <- 'put-job',
+		postJob : openapi!Operation (
+			operationId <- 'post-job',
 			description <- 'Create a new job for the activity identified by {id}.',
 			parameters <- activityIdentifier,
-			responses <- putJobCreatedResponse,			
-			responses <- putJobBadRequestResponse
+			responses <- postJobCreatedResponse,			
+			responses <- postJobBadRequestResponse
 		),
-		putJobCreatedResponse: openapi!Response (
+		postJobCreatedResponse: openapi!Response (
 			code <- '201',
 			description <- 'The activity is ready for processing and a new job is started.'
 					+'The location of the new job is also returned in the headers. ',
@@ -403,7 +403,7 @@ rule Activity {
 			headers <- thisModule.getLinkHeader(),
 			declaringContext <- api
 		),
-		putJobBadRequestResponse: openapi!Response (
+		postJobBadRequestResponse: openapi!Response (
 			code <- '400',
 			description <- 'The activity is was not ready for its execution'
 							+'and was not started.',
