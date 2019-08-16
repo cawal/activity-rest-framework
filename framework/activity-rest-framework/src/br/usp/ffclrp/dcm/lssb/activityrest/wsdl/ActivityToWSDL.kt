@@ -253,7 +253,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:PostStartProcessing"
 			whttp:method="POST"
-			whttp:location="instances/{id}"
+			whttp:location="jobs/{id}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -263,7 +263,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:GetPoolProcessing"
 			whttp:method="GET"
-			whttp:location="instances/{id}"
+			whttp:location="jobs/{id}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
