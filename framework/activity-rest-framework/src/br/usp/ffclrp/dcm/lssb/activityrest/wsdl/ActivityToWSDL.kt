@@ -221,7 +221,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:PostNewAnalysisActivity"
 			whttp:method="POST"
-			whttp:location="new-analyses"
+			whttp:location="non-executed-instances"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -232,7 +232,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:GetNewAnalysisActivity"
 			whttp:method="GET"
-			whttp:location="new-analyses/{id}"
+			whttp:location="non-executed-instances/{id}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -243,7 +243,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:DeleteNewAnalysisActivity"
 			whttp:method="DELETE"
-			whttp:location="new-analyses/{id}"
+			whttp:location="non-executed-instances/{id}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -253,7 +253,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:PostStartProcessing"
 			whttp:method="POST"
-			whttp:location="jobs/{id}"
+			whttp:location="executions/{id}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -263,7 +263,7 @@ private fun getCommonBindingsOperations() = """
 		<wsdl:operation
 			ref="tns:GetPoolProcessing"
 			whttp:method="GET"
-			whttp:location="jobs/{id}"
+			whttp:location="executions/{id}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -292,7 +292,7 @@ private fun getWsdlService(deploymentModel : DeploymentModel) =
 private fun Parameter.getInterfaceOperations() =
 	"""
 	<wsdl:operation
-		name="get-new-activity-${xsdElementName()}"
+		name="get-non-executed-instance-${xsdElementName()}"
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
@@ -302,7 +302,7 @@ private fun Parameter.getInterfaceOperations() =
 
 
 	<wsdl:operation
-		name="get-succeded-activity-${xsdElementName()}"
+		name="get-succeeded-instance-${xsdElementName()}"
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
@@ -312,7 +312,7 @@ private fun Parameter.getInterfaceOperations() =
 
 
 	<wsdl:operation
-		name="get-failed-activity-${xsdElementName()}"
+		name="get-failed-instance-${xsdElementName()}"
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
@@ -322,7 +322,7 @@ private fun Parameter.getInterfaceOperations() =
 
 
 	<wsdl:operation
-		name="put-new-activity-${xsdElementName()}"
+		name="put-non-executed-instance-${xsdElementName()}"
 		pattern="http://www.w3.org/ns/wsdl/in-out"
 		wsdlx:safe="true"
 	>
@@ -335,36 +335,36 @@ private fun Parameter.getInterfaceOperations() =
 private fun Parameter.getBindings() = 
 	"""
 		<wsdl:operation
-			ref="tns:get-new-activity-${xsdElementName()}"
+			ref="tns:get-non-executed-instance-${xsdElementName()}"
 			whttp:method="GET"
-			whttp:location="new-analysis/{id}/parameters/${name}"
+			whttp:location="non-executed-intances/{id}/parameters/${name}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
 		</wsdl:operation>
 
 		<wsdl:operation
-			ref="tns:put-new-activity-${xsdElementName()}"
+			ref="tns:put-non-executed-instance-${xsdElementName()}"
 			whttp:method="PUT"
-			whttp:location="new-analysis/{id}/parameters/${name}"
+			whttp:location="non-executed-intances/{id}/parameters/${name}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
 		</wsdl:operation>
 
 		<wsdl:operation
-			ref="tns:get-succeded-activity-${xsdElementName()}"
+			ref="tns:get-succeeded-instance-${xsdElementName()}"
 			whttp:method="GET"
-			whttp:location="succeded-analysis/{id}/parameters/${name}"
+			whttp:location="succeded-instances/{id}/parameters/${name}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
 		</wsdl:operation>
 
 		<wsdl:operation
-			ref="tns:get-failed-activity-${xsdElementName()}"
+			ref="tns:get-failed-instance-${xsdElementName()}"
 			whttp:method="GET"
-			whttp:location="failed-analysis/{id}/parameters/${name}"
+			whttp:location="failed-instances/{id}/parameters/${name}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		>
@@ -388,7 +388,7 @@ private fun InputDataset.getBindings() =
 	"""<wsdl:operation
 			ref="tns:${submissionInterfaceName()}"
 			whttp:method="${submissionMethod()}"
-			whttp:location="new-analysis/{id}/inputs/${name}"
+			whttp:location="non-executed-intances/{id}/inputs/${name}"
 			whttp:inputSerialization="application/xml"
 			whttp:outputSerialization="application/xml"
 		/>
@@ -398,7 +398,7 @@ private fun InputDataset.getBindings() =
 
 private fun InputDataset.submissionInterfaceName() =
 	(if (getMaximumCardinality().toInt() != 1) "post" else "put"
-					)+"-new-activity-input-${xsdElementName()}"
+					)+"-non-executed-instance-input-${xsdElementName()}"
 
 private fun InputDataset.submissionMethod() =
 	if (getMaximumCardinality().toInt() != 1) "POST" else "PUT"
@@ -443,14 +443,14 @@ private fun OutputDataset.getInterfaceOperations() : String {
 }
 
 private fun OutputDataset.retrievalInterfaceName() =
-	"get-succeded-activity-output-${xsdElementName()}"
+	"get-succeeded-instance-output-${xsdElementName()}"
 
 private fun OutputDataset.getBindings() :String {
 	return if (getMaximumCardinality().toInt() == 1)
 		"""<wsdl:operation
 				ref="tns:${retrievalInterfaceName()}"
 				whttp:method="GET"
-				whttp:location="succeded-analysis/{id}/outputs/${name}"
+				whttp:location="succeded-instances/{id}/outputs/${name}"
 				whttp:inputSerialization="application/xml"
 				whttp:outputSerialization="application/xml"
 			/>
@@ -460,7 +460,7 @@ private fun OutputDataset.getBindings() :String {
 		"""<wsdl:operation
 				ref="tns:${retrievalLinksInterfaceName()}"
 				whttp:method="GET"
-				whttp:location="succeded-analysis/{id}/outputs/${name}"
+				whttp:location="succeded-instances/{id}/outputs/${name}"
 				whttp:inputSerialization="application/xml"
 				whttp:outputSerialization="application/xml"
 			/>
@@ -468,7 +468,7 @@ private fun OutputDataset.getBindings() :String {
 			<wsdl:operation
 				ref="tns:${retrievalFileInterfaceName()}"
 				whttp:method="GET"
-				whttp:location="succeded-analysis/{id}/outputs/${name}/{filename}"
+				whttp:location="succeded-instances/{id}/outputs/${name}/{filename}"
 				whttp:inputSerialization="application/xml"
 				whttp:outputSerialization="application/xml"
 			/>
@@ -477,8 +477,8 @@ private fun OutputDataset.getBindings() :String {
 
 
 private fun OutputDataset.retrievalLinksInterfaceName() =
-	"get-succeded-activity-output-${xsdElementName()}-links";
+	"get-succeeded-instance-output-${xsdElementName()}-links";
 	
 private fun OutputDataset.retrievalFileInterfaceName() =
-	"get-succeded-activity-output-${xsdElementName()}-file";
+	"get-succeeded-instance-output-${xsdElementName()}-file";
 	

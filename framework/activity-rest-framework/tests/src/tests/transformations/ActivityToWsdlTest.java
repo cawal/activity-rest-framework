@@ -356,9 +356,9 @@ class ActivityToWsdlTest {
 		
 		void providesRetrievalInterface(Parameter p) {
 			String[] prefixes = new String[] {
-					"get-failed-activity-",
-					"get-new-activity-",
-					"get-succeded-activity-" };
+					"get-failed-instance-",
+					"get-non-executed-instance-",
+					"get-succeeded-instance-" };
 			
 			for (String prefix : prefixes) {
 				String operationIdentifier = prefix + xsdElementName(p);
@@ -410,7 +410,7 @@ class ActivityToWsdlTest {
 		}
 		
 		void providesUpdateInterface(Parameter p) {
-			String operationIdentifier = "put-new-activity-"
+			String operationIdentifier = "put-non-executed-instance-"
 					+ xsdElementName(p);
 			
 			String xpathQuery = "/wsdl:description/wsdl:interface"
@@ -447,14 +447,14 @@ class ActivityToWsdlTest {
 		}
 		
 		void providesBindings(Parameter p) {
-			providesBindings(p, "tns:put-new-activity-" + xsdElementName(p),
+			providesBindings(p, "tns:put-non-executed-instance-" + xsdElementName(p),
 					"PUT");
-			providesBindings(p, "tns:get-failed-activity-" + xsdElementName(p),
+			providesBindings(p, "tns:get-failed-instance-" + xsdElementName(p),
 					"GET");
-			providesBindings(p, "tns:get-new-activity-" + xsdElementName(p),
+			providesBindings(p, "tns:get-non-executed-instance-" + xsdElementName(p),
 					"GET");
 			providesBindings(p,
-					"tns:get-succeded-activity-" + xsdElementName(p), "GET");
+					"tns:get-succeeded-instance-" + xsdElementName(p), "GET");
 		}
 		
 		void providesBindings(Parameter p, String operationIdentifier,
@@ -599,7 +599,7 @@ class ActivityToWsdlTest {
 							: "put";
 			
 			String operationIdentifier = method
-					+ "-new-activity-input-"
+					+ "-non-executed-instance-input-"
 					+ xsdElementName(dataset);
 			return operationIdentifier;
 		}
@@ -836,19 +836,19 @@ class ActivityToWsdlTest {
 	}
 	
 	private String getSingleOutputDatasetRetrievalOperation(OutputDataset d) {
-		return "get-succeded-activity-output-"
+		return "get-succeeded-instance-output-"
 				+ xsdElementName(d);
 	}
 	
 	private String
 			getMultipleOutputDatasetLinksRetrievalOperation(OutputDataset d) {
-		return "get-succeded-activity-output-"
+		return "get-succeeded-instance-output-"
 				+ xsdElementName(d) + "-links";
 	}
 	
 	private String
 			getMultipleOutputDatasetFileRetrievalOperation(OutputDataset d) {
-		return "get-succeded-activity-output-"
+		return "get-succeeded-instance-output-"
 				+ xsdElementName(d) + "-file";
 	}
 	

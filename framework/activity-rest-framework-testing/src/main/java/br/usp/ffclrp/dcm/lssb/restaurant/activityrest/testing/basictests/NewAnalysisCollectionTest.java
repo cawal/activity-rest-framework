@@ -47,14 +47,14 @@ public class NewAnalysisCollectionTest extends TestBase {
 				
 		RequestSpecification request = given()
 				.accept("application/json");
-		Response response = request.put("new-analyses")
+		Response response = request.put(NEW_ANALYSES_URI_FRAGMENT)
 				.andReturn();
 		assertEquals("PUT should not be allowed for new-analyses resource.", 
 				HttpStatus.SC_METHOD_NOT_ALLOWED,response.statusCode());
 		
 		request = given()
 				.accept("application/json");
-		response = request.delete("new-analyses")
+		response = request.delete(NEW_ANALYSES_URI_FRAGMENT)
 				.andReturn();
 		assertEquals("DELETE should not be allowed for new-analyses resource.", 
 				HttpStatus.SC_METHOD_NOT_ALLOWED,response.statusCode());

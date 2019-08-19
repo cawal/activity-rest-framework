@@ -30,7 +30,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
 @Api
-@Path("/succeeded-analyses/{analysisID}")
+//@Path("/succeeded-analyses/{analysisID}")
 public class SucceededAnalysisResource {
 	
 	ActivityRestConfig config;

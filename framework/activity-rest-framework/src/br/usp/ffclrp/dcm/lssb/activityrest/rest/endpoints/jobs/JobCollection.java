@@ -178,7 +178,7 @@ public class JobCollection {
 			RepositoryTransferService.moveInstance(analysisId, runningDao,
 					nonExecutedDao);
 			URI analysisURI = uriInfo.getBaseUriBuilder()
-					.path("new-analyses")
+					.path("non-executed-instances")
 					.path(analysisId)
 					.build();
 			
@@ -242,12 +242,12 @@ public class JobCollection {
 			representation.setErrorReport(errorReport);
 			
 			URI failedURI = uriInfo.getBaseUriBuilder()
-					.path("failed-analyses")
+					.path("failed-instances")
 					.path(analysisId)
 					.build();
 			
 			Link failedLink = Link.fromUri(failedURI)
-					.rel("failedAnalysis")
+					.rel("failedInstance")
 					.build();
 			
 			return Response.status(Status.GONE)
@@ -267,7 +267,7 @@ public class JobCollection {
 			moveAnalysisActivityForSuceeededCollection(analysisId);
 			
 			URI succeededURI = uriInfo.getBaseUriBuilder()
-					.path("succeeded-analyses")
+					.path("succeeded-instances")
 					.path(analysisId)
 					.build();
 			

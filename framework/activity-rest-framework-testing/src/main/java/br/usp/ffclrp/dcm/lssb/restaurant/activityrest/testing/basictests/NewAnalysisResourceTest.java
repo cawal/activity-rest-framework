@@ -71,9 +71,9 @@ public class NewAnalysisResourceTest extends TestBase {
 				
 		RequestSpecification request = given()
 				.accept("application/json");
-		Response response = request.put("new-analyses")
+		Response response = request.put(NEW_ANALYSES_URI_FRAGMENT)
 				.andReturn();
-		assertEquals("PUT should not be allowed for /new-analyses/{analysisId} resource.", 
+		assertEquals("PUT should not be allowed for /non-executed-instances/{analysisId} resource.", 
 				HttpStatus.SC_METHOD_NOT_ALLOWED,response.statusCode());
 		
 	}

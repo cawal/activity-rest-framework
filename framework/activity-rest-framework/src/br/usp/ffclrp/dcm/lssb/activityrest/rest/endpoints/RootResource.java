@@ -86,25 +86,25 @@ public class RootResource {
 	
 	
 	// SUB-RESOURCES ----------------------------------------------------------
-	@Path("/new-analyses")
+	@Path("/non-executed-instances")
 	public NewAnalysesCollection getNewAnalysisCollection() {
 		initialize();
 		return new NewAnalysesCollection(aaDesc, uriInfo, nonExecutedDao, config);
 	}
 	
-	@Path("/failed-analyses")
+	@Path("/failed-instances")
 	public FailedAnalysesCollection getFailedAnalysisCollection() {
 		initialize();
 		return new FailedAnalysesCollection(aaDesc, uriInfo, failedDao,config);
 	}
 	
-	@Path("/succeeded-analyses")
+	@Path("/succeeded-instances")
 	public SucceededAnalysesCollection getSucceededAnalysesCollection() {
 		initialize();
 		return new SucceededAnalysesCollection(aaDesc, uriInfo, succeededDao,config);
 	}
 	
-	@Path("/instances")
+	@Path("/executions")
 	public JobCollection getJobManager() {
 		initialize();
 		return new JobCollection(aaDesc,
@@ -129,7 +129,7 @@ public class RootResource {
 		
 		uriBuilder = uriInfo.getAbsolutePathBuilder();
 		Link createAnalysislink = Link.fromUri(uriBuilder
-				.path("new-analyses").build())
+				.path("non-executed-instances").build())
 				.rel(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION)
 				.build();
 		links.add(createAnalysislink);

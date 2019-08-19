@@ -28,7 +28,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
-@Api
 public class NewAnalysisResource {
 	ActivityRestConfig config;
 	UriInfo uriInfo;
@@ -152,7 +151,7 @@ public class NewAnalysisResource {
 	}
 	
 	private URI getJobManagerUri() {
-		return UriBuilder.fromUri(this.baseApplicationURI).path("/instances/").build();
+		return UriBuilder.fromUri(this.baseApplicationURI).path("/executions/").build();
 	}
 	
 	private URI getJobInstanceUri() {
