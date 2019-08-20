@@ -23,15 +23,15 @@ public class FailedAnalysesCollection {
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
-	public FailedAnalysesCollection(Activity aaDesc,
+	public FailedAnalysesCollection(Activity activityDescription,
 			UriInfo uriInfo,
 			ActivityRepository succeededAnalysisActivityDao,
 			ActivityRestConfig config) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.config = config;
 	}
 	
@@ -45,7 +45,7 @@ public class FailedAnalysesCollection {
 			AnalysisActivity aa;
 			aa = analysisActivityDao.get(analysisID);
 			
-			return new FailedAnalysisResource(aaDesc,uriInfo, aa, analysisActivityDao,config);
+			return new FailedAnalysisResource(activityDescription,uriInfo, aa, analysisActivityDao,config);
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
 		} catch (Exception e) {

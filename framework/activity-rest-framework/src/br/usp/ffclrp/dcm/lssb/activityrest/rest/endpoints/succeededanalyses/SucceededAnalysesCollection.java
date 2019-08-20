@@ -23,15 +23,15 @@ public class SucceededAnalysesCollection {
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
-	public SucceededAnalysesCollection(Activity aaDesc,
+	public SucceededAnalysesCollection(Activity activityDescription,
 			UriInfo uriInfo,
 			ActivityRepository succeededAnalysisActivityDao,
 			ActivityRestConfig config) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.config = config;
 	}
 	
@@ -45,7 +45,7 @@ public class SucceededAnalysesCollection {
 			AnalysisActivity aa;
 			aa = analysisActivityDao.get(analysisID);
 			
-			return new SucceededAnalysisResource(aaDesc,uriInfo, aa, 
+			return new SucceededAnalysisResource(activityDescription,uriInfo, aa, 
 												analysisActivityDao,config);
 
 		} catch (AnalysisActivityNotFoundException e) {

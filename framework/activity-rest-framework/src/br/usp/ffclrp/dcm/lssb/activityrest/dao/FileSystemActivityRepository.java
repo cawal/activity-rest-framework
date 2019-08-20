@@ -34,7 +34,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	private static final String SINGLE_FILE_DATASETS_DIR_PATH =
 			"SINGLE_FILE_DATASETS";
 	File localStorage;
-	final protected Activity aaDesc;
+	final protected Activity activityDescription;
 	final String parametersSubpath = "/parameters.json";
 	final String inputDatasetsSubpath = "/inputs/";
 	final String outputDatasetsSubpath = "/outputs/";
@@ -48,10 +48,10 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	
 	public FileSystemActivityRepository(
 			@NotNull File localStorage,
-			@NotNull Activity aaDesc) {
+			@NotNull Activity activityDescription) {
 		
 		this.localStorage = localStorage;
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		
 		if (!localStorage.exists()) {
 			localStorage.mkdirs();
@@ -63,6 +63,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		jsonb = JsonbBuilder.create(jsonConfig);
 	}
 	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -72,11 +73,22 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	public String create() throws AnalysisActivityCreationFailedException {
 		
 		UUID newAnalysisId = UUID.randomUUID();
-		
+		return create(newAnalysisId.toString());	
+	}
+	
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.usp.ffclrp.dcm.lssb.activityrest.dao.AnalysisActivityDao#create()
+	 */
+	@Override
+	public String create(String identifier)
+			throws AnalysisActivityCreationFailedException {
 		AnalysisActivity analysis =
 				AnalysisActivityModelFactory.eINSTANCE.createAnalysisActivity();
 		
-		analysis.setId(newAnalysisId.toString());
+		analysis.setId(identifier);
 		File analysisRoot = new File(localStorage, analysis.getId());
 		
 		try {
@@ -97,6 +109,9 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			throw aacfe;
 		}
 	}
+			
+	
+	
 	
 	/*
 	 * (non-Javadoc)
@@ -213,7 +228,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 	}
 	
 	private void setDescriptionForAnalysis(AnalysisActivity aa) {
-		Activity descCopy = EcoreUtil.copy(aaDesc);
+		Activity descCopy = EcoreUtil.copy(activityDescription);
 		aa.setDescription(descCopy);
 		
 		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : descCopy
@@ -249,7 +264,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 		ParameterMap parametersMap =
 				AnalysisActivityModelFactory.eINSTANCE.createParameterMap();
 		parametersMap.getDescriptions().addAll(
-				aaDesc.getParameters()
+				activityDescription.getParameters()
 		);
 		parametersMap.setDefaultValues();
 		
@@ -309,7 +324,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			inputSubdirectory.mkdir();
 		}
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : activityDescription
 				.getInputDatasets()) {
 			
 			if (MultiplicityElementUtil.acceptsList(dp)) {
@@ -368,7 +383,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			File inputSubdirectory =
 					new File(analysisRoot, inputDatasetsSubpath);
 			
-			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : activityDescription
 					.getInputDatasets()) {
 				
 				Dataset dataset = aa.inputDatasetForName(dp.getName());
@@ -478,7 +493,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			outputSubdirectory.mkdirs();
 		}
 		
-		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+		for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : activityDescription
 				.getOutputDatasets()) {
 			
 			if(MultiplicityElementUtil.acceptsList(dp)) {
@@ -505,7 +520,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			File outputSubdirectory =
 					new File(analysisRoot, outputDatasetsSubpath);
 			
-			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : aaDesc
+			for (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset dp : activityDescription
 					.getOutputDatasets()) {
 				
 				Dataset dataset = aa.outputDatasetForName(dp.getName());
@@ -589,5 +604,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 			aa.setErrorReport(expectedFile);
 		}
 	}
+
+
 	
 }

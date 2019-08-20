@@ -8,12 +8,21 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 public interface ActivityRepository {
 	
 	/**
-	 * Creates a new AnalysisActivity.
+	 * Creates a new AnalysisActivity instance.
 	 * 
 	 * @return the ID of the created analysis activity.
 	 * @throws AnalysisActivityCreationFailedException
 	 */
 	String create() throws AnalysisActivityCreationFailedException;
+	
+	/**
+	 * Creates a new AnalysisActivity instance under a specific string identifier.
+	 * 
+	 * @param identifier the identifier to associate the instance to.
+	 * @return the ID of the created analysis activity.
+	 * @throws AnalysisActivityCreationFailedException
+	 */
+	String create(String identifier) throws AnalysisActivityCreationFailedException;
 	
 	/**
 	 * Gets the analysis activity by its id.

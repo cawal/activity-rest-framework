@@ -48,10 +48,10 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public InputDatasetsResource(
-			@NotNull Activity aaDesc,
+			@NotNull Activity activityDescription,
 			@NotNull UriInfo uriInfo,
 			@NotNull AnalysisActivity aa,
 			@NotNull ActivityRepository analysisActivityDao,
@@ -62,7 +62,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		this.analysisActivityDao = analysisActivityDao;
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.config = config;
 		this.allowUpdate = allowUpdate;
 	}

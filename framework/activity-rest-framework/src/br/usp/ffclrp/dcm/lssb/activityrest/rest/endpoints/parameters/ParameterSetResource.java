@@ -43,17 +43,17 @@ public class ParameterSetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	boolean allowUpdates;
 	
 	public ParameterSetResource(
-			@Nonnull Activity aaDesc,
+			@Nonnull Activity activityDescription,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,
 			boolean allowUpdates,
 			ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
 		
@@ -177,7 +177,7 @@ public class ParameterSetResource {
 
 	private boolean existsParameterForName(String parameterName) {
 		boolean parameterExist = 
-				aaDesc.getParameters().stream()
+				activityDescription.getParameters().stream()
 					.anyMatch(p -> p.getName().equalsIgnoreCase(parameterName));
 		return parameterExist;
 	}

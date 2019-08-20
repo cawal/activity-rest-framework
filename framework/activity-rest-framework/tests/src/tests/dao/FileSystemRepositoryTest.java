@@ -28,7 +28,7 @@ public class FileSystemRepositoryTest {
 
 	static File localStorage;
 	static ActivityRepository dao;
-	static Activity aaDesc;
+	static Activity activityDescription;
 	private static final String ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI = 
 			"./AnalysisActivityDescription.aadl";
 	
@@ -45,7 +45,7 @@ public class FileSystemRepositoryTest {
         URI uri = URI
                 .createURI(ANALYSIS_ACTIVITY_DESCRIPTION_XMI_URI);
         try {
-        	aaDesc = ModelsService.retrieveAADLModel(this.getClass()
+        	activityDescription = ModelsService.retrieveAADLModel(this.getClass()
     				.getResource(uri.toString())
     				.openStream());
 		} catch (IOException e) {
@@ -68,7 +68,7 @@ public class FileSystemRepositoryTest {
 		initializeEcoreResources();
 		localStorage = new File("/tmp/dao_test_root");
 		localStorage.mkdirs();
-		dao = new FileSystemActivityRepository(localStorage, aaDesc);
+		dao = new FileSystemActivityRepository(localStorage, activityDescription);
 	}
 	
 	@After
@@ -110,7 +110,7 @@ public class FileSystemRepositoryTest {
 
 		File localStorage2 = new File("/tmp/dao_test_root_2");
 		localStorage2.mkdirs();
-		ActivityRepository dao2 = new FileSystemActivityRepository(localStorage2, aaDesc);
+		ActivityRepository dao2 = new FileSystemActivityRepository(localStorage2, activityDescription);
 
 		String id = dao.create();
 		

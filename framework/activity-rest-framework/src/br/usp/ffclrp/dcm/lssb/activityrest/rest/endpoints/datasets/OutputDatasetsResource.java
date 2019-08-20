@@ -28,10 +28,10 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public OutputDatasetsResource(
-			@Nonnull Activity aaDesc,
+			@Nonnull Activity activityDescription,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,
@@ -41,7 +41,7 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 		this.analysisActivityDao = analysisActivityDao;
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.allowUpdate = allowUpdate;
 	}
 	

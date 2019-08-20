@@ -46,7 +46,7 @@ public class RootResource {
 	
 	ActivityRestConfig config;
 	
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	ActivityRepository nonExecutedDao;
 	ActivityRepository succeededDao;
@@ -62,7 +62,7 @@ public class RootResource {
 				(ActivityRestConfig) app.getProperties()
 						.get("activityrest.config");
 		
-		aaDesc = config.getActivityModel();
+		activityDescription = config.getActivityModel();
 		
 		nonExecutedDao = config.getNewAnalysisRepository();
 		succeededDao = config.getSuccededAnalysisRepository();
@@ -89,25 +89,25 @@ public class RootResource {
 	@Path("/non-executed-instances")
 	public NewAnalysesCollection getNewAnalysisCollection() {
 		initialize();
-		return new NewAnalysesCollection(aaDesc, uriInfo, nonExecutedDao, config);
+		return new NewAnalysesCollection(activityDescription, uriInfo, nonExecutedDao, config);
 	}
 	
 	@Path("/failed-instances")
 	public FailedAnalysesCollection getFailedAnalysisCollection() {
 		initialize();
-		return new FailedAnalysesCollection(aaDesc, uriInfo, failedDao,config);
+		return new FailedAnalysesCollection(activityDescription, uriInfo, failedDao,config);
 	}
 	
 	@Path("/succeeded-instances")
 	public SucceededAnalysesCollection getSucceededAnalysesCollection() {
 		initialize();
-		return new SucceededAnalysesCollection(aaDesc, uriInfo, succeededDao,config);
+		return new SucceededAnalysesCollection(activityDescription, uriInfo, succeededDao,config);
 	}
 	
 	@Path("/executions")
 	public JobCollection getJobManager() {
 		initialize();
-		return new JobCollection(aaDesc,
+		return new JobCollection(activityDescription,
 				uriInfo,
 				nonExecutedDao,
 				(FileSystemActivityRepository) runningDao,

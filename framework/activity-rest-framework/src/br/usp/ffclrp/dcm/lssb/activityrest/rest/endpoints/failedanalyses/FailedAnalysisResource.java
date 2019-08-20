@@ -41,15 +41,15 @@ public class FailedAnalysisResource {
 	
 	AnalysisActivity aa;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public FailedAnalysisResource(
-			@Nonnull Activity aaDesc,
+			@Nonnull Activity activityDescription,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,
 			ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
@@ -126,12 +126,12 @@ public class FailedAnalysisResource {
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,false,null);
+		return new ParameterSetResource(activityDescription,uriInfo, aa, analysisActivityDao,false,null);
 	}
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc,uriInfo, aa, analysisActivityDao,config,false);
+		return new InputDatasetsResource(activityDescription,uriInfo, aa, analysisActivityDao,config,false);
 	}
 	
 	

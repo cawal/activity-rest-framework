@@ -29,14 +29,14 @@ public class NewAnalysesCollection {
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public NewAnalysesCollection(
-			@Nonnull Activity aaDesc,
+			@Nonnull Activity activityDescription,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull ActivityRepository analysisActivityDao,
 			ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = analysisActivityDao;
 		this.config = config;
@@ -87,7 +87,7 @@ public class NewAnalysesCollection {
 			AnalysisActivity aa;
 			aa = analysisActivityDao.get(analysisID);
 			
-			return new NewAnalysisResource(aaDesc,uriInfo, aa, analysisActivityDao, config);
+			return new NewAnalysisResource(activityDescription,uriInfo, aa, analysisActivityDao, config);
 		} catch (AnalysisActivityNotFoundException e) {
 			throw new NotFoundException();
 		} catch (Exception e) {

@@ -40,15 +40,15 @@ public class SucceededAnalysisResource {
 	
 	AnalysisActivity aa;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public SucceededAnalysisResource(
-			@Nonnull Activity aaDesc,
+			@Nonnull Activity activityDescription,
 			@Nonnull UriInfo uriInfo,
 			@Nonnull AnalysisActivity aa,
 			@Nonnull ActivityRepository analysisActivityDao,
 			@Nonnull ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
@@ -122,19 +122,19 @@ public class SucceededAnalysisResource {
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc, uriInfo, aa,
+		return new ParameterSetResource(activityDescription, uriInfo, aa,
 				analysisActivityDao, false,null);
 	}
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc, uriInfo, aa,
+		return new InputDatasetsResource(activityDescription, uriInfo, aa,
 				analysisActivityDao, config, false);
 	}
 	
 	@Path("/outputs/")
 	public AbstractDatasetResource getOutputDatasetsResource() {
-		return new OutputDatasetsResource(aaDesc, uriInfo, aa,
+		return new OutputDatasetsResource(activityDescription, uriInfo, aa,
 				analysisActivityDao, false);
 	}
 	
