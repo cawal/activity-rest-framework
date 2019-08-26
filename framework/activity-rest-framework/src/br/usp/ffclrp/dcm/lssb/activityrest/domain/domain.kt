@@ -22,8 +22,14 @@ class ActivityInstance(
 	val id: String,
 	var state: InstanceState,
 	var parameters: Map<String, List<Any>> = mapOf(),
-	var inputDatasets: Map<String, List<File>> = mapOf(),
-	var outputDatasets: Map<String, List<File>> = mapOf()
+	var inputDatasets: Map<String, List<DatasetFile>> = mapOf(),
+	var outputDatasets: Map<String, List<DatasetFile>> = mapOf()
 ){
 }
 
+
+class DatasetFile (
+	val name : String,
+	val contentType : String,
+	val contents : ByteArray
+)
