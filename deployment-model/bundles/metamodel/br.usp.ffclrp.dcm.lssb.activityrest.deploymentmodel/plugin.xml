@@ -10,7 +10,7 @@
       <!-- @generated deployment-model -->
       <package
             uri="http://dcm.ffclrp.usp.br/lssb/metamodels/deployment-model.ecore"
-            class="deploymentmodel.DeploymentmodelPackage"
+            class="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage"
             genModel="model/deployment-model.genmodel"/>
    </extension>
 

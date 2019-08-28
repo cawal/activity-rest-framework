@@ -12,12 +12,12 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="deploymentmodel.presentation.DeploymentmodelModelWizardID"
-            name="%_UI_DeploymentmodelModelWizard_label"
-            class="deploymentmodel.presentation.DeploymentmodelModelWizard"
+            id="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation.DeploymentModelModelWizardID"
+            name="%_UI_DeploymentModelModelWizard_label"
+            class="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation.DeploymentModelModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/DeploymentmodelModelFile.gif">
-         <description>%_UI_DeploymentmodelModelWizard_description</description>
+            icon="icons/full/obj16/DeploymentModelModelFile.gif">
+         <description>%_UI_DeploymentModelModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
@@ -25,13 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated deployment-model -->
       <editor
-            id="deploymentmodel.presentation.DeploymentmodelEditorID"
-            name="%_UI_DeploymentmodelEditor_label"
-            icon="icons/full/obj16/DeploymentmodelModelFile.gif"
+            id="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation.DeploymentModelEditorID"
+            name="%_UI_DeploymentModelEditor_label"
+            icon="icons/full/obj16/DeploymentModelModelFile.gif"
             extensions="deploymentmodel"
-            class="deploymentmodel.presentation.DeploymentmodelEditor"
-            contributorClass="deploymentmodel.presentation.DeploymentmodelActionBarContributor">
+            class="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation.DeploymentModelEditor"
+            contributorClass="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation.DeploymentModelActionBarContributor">
       </editor>
    </extension>
-
 </plugin>

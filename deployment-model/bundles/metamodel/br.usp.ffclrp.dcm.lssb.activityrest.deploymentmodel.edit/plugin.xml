@@ -10,7 +10,7 @@
       <!-- @generated deployment-model -->
       <factory
             uri="http://dcm.ffclrp.usp.br/lssb/metamodels/deployment-model.ecore"
-            class="deploymentmodel.provider.DeploymentmodelItemProviderAdapterFactory"
+            class="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.provider.DeploymentModelItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

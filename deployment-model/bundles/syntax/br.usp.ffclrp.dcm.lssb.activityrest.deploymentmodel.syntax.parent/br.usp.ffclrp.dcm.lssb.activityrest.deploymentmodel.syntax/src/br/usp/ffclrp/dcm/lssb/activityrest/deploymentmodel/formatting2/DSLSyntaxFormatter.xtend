@@ -5,9 +5,9 @@ package br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.formatting2
 
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.services.DSLSyntaxGrammarAccess
 import com.google.inject.Inject
-import deploymentmodel.Deployment
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 
 class DSLSyntaxFormatter extends AbstractFormatter2 {
 	

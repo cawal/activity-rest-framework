@@ -5,7 +5,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>deployment-model.ecore</foreignModel>
-  <genPackages prefix="Deploymentmodel" disposableProviderFactory="true" ecorePackage="deployment-model.ecore#/">
+  <genPackages prefix="DeploymentModel" basePackage="br.usp.ffclrp.dcm.lssb.activityrest"
+      disposableProviderFactory="true" ecorePackage="deployment-model.ecore#/">
     <genDataTypes ecoreDataType="deployment-model.ecore#//URL"/>
     <genClasses ecoreClass="deployment-model.ecore#//Deployment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment-model.ecore#//Deployment/service"/>
