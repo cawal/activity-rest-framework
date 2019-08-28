@@ -6,7 +6,9 @@
 >
 
 	<modelVersion>4.0.0</modelVersion>
+	
 	<artifactId>activity-rest-framework</artifactId>
+	
 	<properties>
 		<kotlin.version>1.3.10</kotlin.version>
 		<xtextVersion>2.14.0</xtextVersion>
@@ -177,6 +179,23 @@
 		</dependency>
 
 		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib</artifactId>
 			<version>${kotlin.version}</version>
@@ -321,11 +340,6 @@
 
 
 
-		<dependency>
-			<groupId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</groupId>
-			<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
 
         <!-- TESTS -->
 		<dependency>

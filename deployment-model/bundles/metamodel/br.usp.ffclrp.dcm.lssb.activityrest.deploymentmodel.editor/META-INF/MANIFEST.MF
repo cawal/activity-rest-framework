@@ -9,8 +9,7 @@ Bundle-Activator: br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentati
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: deploymentmodel.presentation,
- br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation
+Export-Package: br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.edit;visibility:=reexport,

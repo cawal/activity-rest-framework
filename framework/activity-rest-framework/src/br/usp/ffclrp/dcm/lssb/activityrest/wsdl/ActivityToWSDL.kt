@@ -7,11 +7,13 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset
 import java.net.InetAddress
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 
 
+private fun Deployment.serviceRootPath() =
+	this.getContainer().getBaseUrl().toString()
 
-
-fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
+fun toWsdl(activity : Activity, deploymentModel : Deployment) : String =
    """<?xml version="1.0" encoding="UTF-8"?>
 <wsdl:description
 	xmlns:wsdl="http://www.w3.org/ns/wsdl"
@@ -36,7 +38,7 @@ fun toWsdl(activity : Activity, deploymentModel : DeploymentModel) : String =
 </wsdl:description>
    """ 
 
-private fun getXsdImport(deploymentModel : DeploymentModel) =
+private fun getXsdImport(deploymentModel : Deployment) =
 	"""<wsdl:types>
 		<xs:import
 			namespace="${deploymentModel.serviceRootPath()}/xsd"
@@ -273,7 +275,7 @@ private fun getCommonBindingsOperations() = """
 
 
 
-private fun getWsdlService(deploymentModel : DeploymentModel) =
+private fun getWsdlService(deploymentModel : Deployment) =
    """<wsdl:service
 		name="service"
 		interface="tns:interface"

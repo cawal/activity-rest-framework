@@ -8,10 +8,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: deploymentmodel,
- deploymentmodel.impl,
- deploymentmodel.util,
- br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel,
+Export-Package: br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel,
  br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.impl,
  br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.util
 Require-Bundle: org.eclipse.core.runtime,

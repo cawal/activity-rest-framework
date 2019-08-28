@@ -15,13 +15,13 @@ import java.net.InetAddress
  * @property port the service port
  * @property basePath the base path for the service's root resource
  */
-data class DeploymentModel(
-    val protocol : String,
-    val host : InetAddress,
-    val port : Int,
-    val basePath : String) {
-    
-    fun serviceRootPath() : String =
-     """${protocol}://${host.hostAddress}:${port}/${basePath}"""
-
-};
+//data class DeploymentModel(
+//    val protocol : String,
+//    val host : InetAddress,
+//    val port : Int,
+//    val basePath : String) {
+//    
+//    fun serviceRootPath() : String =
+//     """${protocol}://${host.hostAddress}:${port}/${basePath}"""
+//
+//};

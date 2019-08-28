@@ -4,8 +4,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.tests
 
 import com.google.inject.Inject
-import deploymentmodel.Deployment
-import deploymentmodel.DeploymentmodelPackage
 import java.net.URL
 import org.eclipse.xtext.serializer.impl.Serializer
 import org.eclipse.xtext.testing.InjectWith
@@ -15,6 +13,8 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLSyntaxInjectorProvider)
@@ -58,7 +58,7 @@ class DSLSyntaxParsingTest {
 	}
 	
 	def Deployment sampleDeploymentModel() {
-		val factory = DeploymentmodelPackage.eINSTANCE.deploymentmodelFactory;
+		val factory = DeploymentModelPackage.eINSTANCE.deploymentModelFactory;
 		
 		val deployment = factory.createDeployment;
 		
