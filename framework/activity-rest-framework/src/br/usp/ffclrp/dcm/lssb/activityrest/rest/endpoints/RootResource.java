@@ -16,6 +16,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses.FailedAnalysesCollection;
@@ -23,6 +24,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.JobCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.newanalyses.NewAnalysesCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.succeededanalyses.SucceededAnalysesCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
+import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
+import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
@@ -45,6 +48,7 @@ public class RootResource {
 	UriInfo uriInfo;
 	
 	ActivityRestConfig config;
+	Deployment deploymentModel;
 	
 	Activity activityDescription;
 	
@@ -53,9 +57,8 @@ public class RootResource {
 	ActivityRepository failedDao;
 	ActivityRepository runningDao;
 	
-	public RootResource() {
-		
-	};
+	
+	public RootResource() {	};
 	
 	protected void initialize() {
 		config =
@@ -63,6 +66,7 @@ public class RootResource {
 						.get("activityrest.config");
 		
 		activityDescription = config.getActivityModel();
+		deploymentModel = config.getDeploymentModel();
 		
 		nonExecutedDao = config.getNewAnalysisRepository();
 		succeededDao = config.getSuccededAnalysisRepository();
@@ -115,7 +119,30 @@ public class RootResource {
 				failedDao);
 	}
 	
+	@GET @Path("xsd")
+	public Response getServiceXsd() {
+		initialize();
+		if(deploymentModel != null) {
+			String xsd = ActivityToXsdTransformationService.toXsd(activityDescription, deploymentModel);
+			return Response.ok(xsd).build();
+		} else {
+			return Response.serverError().build();
+		}
+		
+	}
 	
+
+	@GET @Path("xsd")
+	public Response getServiceWsdl() {
+		initialize();
+		if(deploymentModel != null) {
+			String wsdl = ActivityToWsdlTransformationService.toWsdl(activityDescription, deploymentModel);
+			return Response.ok(wsdl).build();
+		} else {
+			return Response.serverError().build();
+		}
+		
+	}
 
 	
 	private List<Link> getRootResourceHateoasControls() {
