@@ -72,10 +72,6 @@ private fun getWsdlInterface(activity :Activity) =
         .map { it.getInterfaceOperations()}
         .joinToString(separator="\n")
 		}
-        
-        
-        
-
 
 	</wsdl:interface>
  		"""
