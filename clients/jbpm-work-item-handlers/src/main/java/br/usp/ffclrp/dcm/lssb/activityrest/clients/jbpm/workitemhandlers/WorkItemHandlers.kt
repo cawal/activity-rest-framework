@@ -46,9 +46,6 @@ abstract class JaxRsClientWorkItemHandler : WorkItemHandler {
 }
 
 class CreateActivityInstance() : JaxRsClientWorkItemHandler() {
-//val  cc = DefaultClientConfig();
-//cc.getClasses().add(JacksonJsonProvider.class);
-//Client clientWithJacksonSerializer = Client.create(cc);
 
     override fun executeWorkItem(item: WorkItem, manager: WorkItemManager) {
         println("ENTROU")
@@ -84,6 +81,7 @@ class CreateActivityInstance() : JaxRsClientWorkItemHandler() {
 
     }
 }
+
 
 class SubmitParametersValues() : JaxRsClientWorkItemHandler() {
 
