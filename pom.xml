@@ -10,6 +10,12 @@
 	<artifactId>activity-rest-root</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<parent>
+		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+		<artifactId>tycho-configuration</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration</relativePath>
+	</parent>
 
 	<properties>
 		<activityrest.framework.version></activityrest.framework.version>

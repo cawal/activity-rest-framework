@@ -1,17 +1,18 @@
-package org.br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy
+package r.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy
 
-import org.br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.ClientGenerator
+import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.ClientGenerator
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 import java.io.File
 import java.nio.file.Files
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.util.AnalysisActivityDescriptionAdapterFactory
+import AadlToBpmn
 
 class GalaxyClientGenerator : ClientGenerator {
     override fun generateClient(activity: Activity, deployment: Deployment): File {
         val tempDirectory = createTempDir();
         
-        val bpmn = generateBpmn(activity,deployment)
+        val bpmn = AadlToBpmn().generateBpmn(activity,deployment)
         val xmlWrapper = generateXmlWrapper(activity)
         val javaProject = generateJavaProject(activity,deployment)
         

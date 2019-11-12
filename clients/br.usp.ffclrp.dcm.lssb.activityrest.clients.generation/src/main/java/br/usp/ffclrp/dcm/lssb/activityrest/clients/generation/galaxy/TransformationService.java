@@ -1,4 +1,4 @@
-package org.br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy;
+package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,9 @@ import org.eclipse.m2m.atl.core.emf.EMFModelFactory;
 import org.eclipse.m2m.atl.core.emf.EMFReferenceModel;
 import org.eclipse.m2m.atl.core.launch.ILauncher;
 import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
+import org.jboss.drools.DroolsPackage;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 import edu.uoc.som.openapi.OpenAPIPackage;
 
@@ -27,7 +29,7 @@ public class TransformationService {
 	  static final String AADL_METAMODEL_URI = 
 			  AnalysisActivityDescriptionPackage.eNS_URI;
 	  static final String BPMN_METAMODEL_URI =
-			  OpenAPIPackage.eNS_URI;
+			  BPMNPackage.eNS_URI;
 	  
 	  /*
 	   * Transformation modules
@@ -60,8 +62,8 @@ public class TransformationService {
 	      ResourceSet resourceSet = modelFactory.getResourceSet();
 	      resourceSet.getPackageRegistry().put(AnalysisActivityDescriptionPackage.eNS_URI,
 	          AnalysisActivityDescriptionPackage.eINSTANCE);
-	      resourceSet.getPackageRegistry().put(OpenAPIPackage.eNS_URI,
-	          OpenAPIPackage.eINSTANCE);
+	      resourceSet.getPackageRegistry().put(DeploymentModelPackage.eNS_URI,
+	          DeploymentModelPackage.eINSTANCE);
 	      
 
 	      /*
@@ -83,7 +85,7 @@ public class TransformationService {
 	      injector.inject(aadlMetamodel, AADL_METAMODEL_URI);
 
 	      IReferenceModel openapiMetamodel = modelFactory.newReferenceModel();
-	      injector.inject(openapiMetamodel, OPENAPI_METAMODEL_URI);
+	      injector.inject(openapiMetamodel, );
 	      IModel openapiModel = modelFactory.newModel(openapiMetamodel);
 
 	      /*

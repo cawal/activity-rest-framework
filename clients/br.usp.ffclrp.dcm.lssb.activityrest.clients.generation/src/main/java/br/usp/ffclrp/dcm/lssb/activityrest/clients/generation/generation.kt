@@ -1,4 +1,4 @@
-package org.br.usp.ffclrp.dcm.lssb.activityrest.clients.generation
+package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation
 
 import java.io.File
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity

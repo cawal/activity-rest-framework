@@ -21,29 +21,42 @@
 	</parent>
 
 
-    <repositories>
-        <repository>
-            <id>eclipse-release</id>
-            <url>https://repo.eclipse.org/content/groups/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>atl</id>
-            <url>https://repo.eclipse.org/content/groups/atl</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+	<repositories>
+		<repository>
+			<id>eclipse-release</id>
+			<url>https://repo.eclipse.org/content/groups/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		
+		<repository>
+			<id>atl</id>
+			<url>https://repo.eclipse.org/content/groups/atl</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 
-    </repositories>
+		<repository>
+			<id>eclipse-bpmn2</id>
+			<url>http://download.eclipse.org/modeling/mdt/bpmn2/updates/photon/1.5.0/</url>
+			<layout>p2</layout>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -64,6 +77,20 @@
 			<groupId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax</groupId>
 			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.bpmn2</groupId>
+			<artifactId>org.eclipse.bpmn2</artifactId>
+			<version>[1.5.0,)</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jbpm/jbpm-bpmn2-emfextmodel -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-bpmn2-emfextmodel</artifactId>
+			<version>7.28.0.Final</version>
+		</dependency>
+		
 
 		<!-- MDD support infrastructure -->
 		<dependency>
@@ -104,6 +131,34 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xbase</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>xtext-antlr-generator</artifactId>
 		</dependency>
 
 		<!-- org.eclipse.m2m.atl.core_3.6.0.v201505180909.jar -->
@@ -194,10 +249,11 @@
 			<artifactId>xmlunit-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src/main/kotlin</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/kotlin</testSourceDirectory>
 
 		<plugins>
@@ -221,6 +277,12 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
 			</plugin>
 		</plugins>
 	</build>
