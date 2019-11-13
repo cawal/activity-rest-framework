@@ -12,6 +12,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.ModelsServi
 import java.net.URI
 import org.eclipse.emf.common.util.URI as EmfUri
 import java.io.InputStream
+import java.io.File
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AadlToBpmnTests {
@@ -41,24 +42,27 @@ class AadlToBpmnTests {
     }
 
     @Test
-    fun `Execution creates a BPMN file`() {
-        val activity = AnalysisActivityDescriptionFactory
-                .eINSTANCE.createActivity();
-        val deploymentModel = DeploymentModelFactory
-                .eINSTANCE.createDeployment();
+    fun `Execution creates a valid BPMN file`() {
 
-        val file = transformationEngine.generateBpmn(activity, deploymentModel);
+        val file = transformationEngine.generateBpmn(activity, deployment);
 
+        print(file)
         assertAll("File exists",
                 { assertNotNull(file, "Returned a null File instance.") },
                 { assertTrue(file.exists(), "BPMN file does not exists") },
-                { assertEquals("bpmn2", file.extension, "Wrong extension!") }
+                { assertEquals("bpmn2", file.extension, "Wrong extension!") },
+                {
+                    assertTrue(isValidBpmnFile(file))
+                }
         )
     }
 
-    @Test
-    fun `Retuned type is a valid BPMN file`() {
-
+    fun isValidBpmnFile(file : File) : Boolean{
+        val bpmnObject = ModelsService.retrieveBPMN(
+                	EmfUri.createFileURI(file.getAbsolutePath())
+        )
+        
+        return bpmnObject != null
     }
 
 }

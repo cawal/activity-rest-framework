@@ -1,0 +1,361 @@
+--- @atlcompiler emftvm
+-- @nsURI AADL=http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore
+-- @nsURI DEPL=http://dcm.ffclrp.usp.br/lssb/metamodels/deployment-model.ecore
+-- @nsURI slm=http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore
+-- @nsURI BPMN=http://www.omg.org/spec/BPMN/20100524/MODEL
+--- @nsURI bpmna=http://www.omg.org/spec/BPMN/20100524/MODEL-XMI
+-- @nsURI drools=http://www.jboss.org/drools
+-- @nsURI ECORE=http://www.eclipse.org/emf/2002/Ecore
+--- @nsURI BPMN=http://www.omg.org/spec/BPMN/20100524/MODEL-XMI
+--- @nsURI DI=http://www.omg.org/spec/DD/20100524/DI-XMI
+
+
+--- Se tentar EMFTVM:
+--- https://wiki.eclipse.org/ATL/EMFTVM#Invoking_native_Java_methods
+
+module aadl2bpmn;
+create OUT: BPMN from IN: AADL;
+
+helper context String def: sanitizeIdentifier(): String =
+	self;
+--	self.replaceAll('-', '_');
+--- Returns a random UUID for the given object.
+-- helper context OclAny def : randomUUID : String =
+-- 	"#native"!"java::util::UUID".refInvokeStaticOperation('randomUUID',
+-- Sequence{}).toString();o
+
+helper def: getBaseUrl(): String =
+	DEPLOY!Container.allInstances()->first().baseUrl;
+
+helper def: itemDefinitions : Map(String, BPMN!ItemDefinition) = 
+	Map{};
+
+entrypoint rule createItemDefinitions(){
+	to
+		integerDefinition : BPMN!ItemDefinition (
+			id <- 'xs:integer',
+			isCollection <- false,
+			itemKind <-#Information 
+		),
+		realDefinition : BPMN!ItemDefinition (
+			id <- 'xs:double',
+			isCollection <- false,
+			itemKind <-#Information 
+		),
+		stringDefinition : BPMN!ItemDefinition (
+			id <- 'xs:string',
+			isCollection <- false,
+			itemKind <-#Information 
+		),
+		anyUriDefinition : BPMN!ItemDefinition (
+			id <- 'xs:anyURI',
+			isCollection <- false,
+			itemKind <-#Information 
+		),
+		booleanDefinition : BPMN!ItemDefinition (
+			id <- 'xs:boolean',
+			isCollection <- false,
+			itemKind <-#Information 
+		),
+		base64BinaryDefinition :  BPMN!ItemDefinition (
+			id <- 'xs:base64Binary',
+			isCollection <- false,
+			itemKind <-#Information 
+		)
+	do {
+		thisModule.itemDefinitions <- 
+			Map{}.including('INTEGER', integerDefinition)
+				. including('REAL',realDefinition)
+				. including('STRING',stringDefinition)
+				. including('anyUri',anyUriDefinition)
+				. including('BOOLEAN',booleanDefinition)
+				. including('base64',base64BinaryDefinition)
+				.debug();
+--		}
+	}
+}
+
+endpoint rule finish(){
+	do {
+		'finished'.debug();
+	}
+}
+
+rule Activity {
+	from
+		activity: AADL!Activity
+	to
+		root: BPMN!DocumentRoot (
+			definitions <- definitions
+		),
+
+		definitions: BPMN!Definitions (
+			id <- 'definitions'.sanitizeIdentifier(),
+			exporter <- 'org.eclipse.bpmn2.modeler.core',
+			exporterVersion <- '1.5.1.Final-v20190425-2005-B1',
+			expressionLanguage <- 'http://www.mvel.org/2.0',
+			targetNamespace <- 'http://www.jboss.org/drools',
+--			typeLanguage <- 'http://www.w3.org/2001/XMLSchema',
+			typeLanguage <- 'http://www.java.com/javaTypes',
+			rootElements <- thisModule.itemDefinitions->getValues(),
+			rootElements <- process
+		),
+
+		process: BPMN!Process (
+			id <- activity.name.sanitizeIdentifier(),
+			name <- activity.name,
+			processType <- #Private,
+			isClosed <- false,
+			isExecutable <- true,
+			--extensionValues <- processExtension,
+			
+			flowElements <- activity.parameters,
+			flowElements <- activity.inputDatasets,
+			flowElements <- activity.outputDatasets,
+			flowElements <- startEvent,
+			flowElements <- successfulEndEvent,
+			flowElements <- failedEndEvent
+			
+		),
+		
+		
+		
+		baseUrlDataObject : BPMN!DataObject (
+			id <- 'service-base-url'.sanitizeIdentifier(),
+			name <- 'Service base URL',
+			itemSubjectRef <- thisModule.itemDefinitions->get('anyUri')
+		),
+		errorReport: BPMN!DataObject (
+			id <- 'error-report'.sanitizeIdentifier(),
+			name <- 'Error report',
+			itemSubjectRef <- thisModule.itemDefinitions->get('STRING')
+		),
+		
+		
+		startEvent: BPMN!StartEvent (
+			name <- 'Start'
+		),
+		successfulEndEvent: BPMN!EndEvent (
+			name <- 'Success'
+		),
+		failedEndEvent: BPMN!EndEvent (
+			name <- 'Failure'
+		),
+
+		
+		
+		pollingTask: BPMN!Task (
+			id <- 'poll-processing-task',
+			name <- 'Poll processing'
+		),
+		retrieveErrorReportTask: BPMN!Task (
+			id <- 'retrieve-error-report-task',
+			name <- 'Retrieve error report'
+		),
+		timedWait: BPMN!Task (
+			id <- 'timed-wait',
+			name <- 'Timed wait'
+		),
+		
+		
+		submissionParallelGateway: BPMN!ParallelGateway (
+			gatewayDirection <- #Diverging,
+			outgoing <- activity.parameters -> collect(p | thisModule.
+					resolveTemp(p, 'incomingFlow')),
+			outgoing <- activity.inputDatasets -> collect(p | thisModule.
+					resolveTemp(p, 'incomingFlow'))
+		),
+		readyConvergingGateway: BPMN!InclusiveGateway (
+			gatewayDirection <- #Converging,
+			incoming <- activity.parameters -> collect(p | thisModule.
+					resolveTemp(p, 'outgoingFlow')),
+			incoming <- activity.inputDatasets -> collect(p | thisModule.
+					resolveTemp(p, 'outgoingFlow'))
+		),
+		prePollingConvergingGateway: BPMN!ExclusiveGateway (
+			gatewayDirection <- #Converging
+		),
+		postPollingDivergingGateway: BPMN!ExclusiveGateway (
+			gatewayDirection <- #Diverging
+		),
+		retrievalParallelGateway: BPMN!ParallelGateway (
+			gatewayDirection <- #Diverging,
+			outgoing <- activity.outputDatasets -> collect(p | thisModule.
+					resolveTemp(p, 'incomingFlow'))
+		),
+		retrievalEndConvergingGateway: BPMN!InclusiveGateway (
+			gatewayDirection <- #Converging,
+			incoming <- activity.outputDatasets -> collect(p | thisModule.
+					resolveTemp(p, 'outgoingFlow'))
+		),
+		
+		
+		
+		
+		startFlow: BPMN!SequenceFlow (
+			sourceRef <- startEvent,
+			targetRef <- submissionParallelGateway
+		),
+		prePollingFlow: BPMN!SequenceFlow (
+			sourceRef <- readyConvergingGateway,
+			targetRef <- prePollingConvergingGateway
+		),
+		incomingPollingTaskFlow: BPMN!SequenceFlow (
+			sourceRef <- prePollingConvergingGateway,
+			targetRef <- pollingTask
+		),
+		outgoingPollingTaskFlow: BPMN!SequenceFlow (
+			sourceRef <- pollingTask,
+			targetRef <- postPollingDivergingGateway
+		),
+		activityFailureFlow: BPMN!SequenceFlow (
+			sourceRef <- postPollingDivergingGateway,
+			targetRef <- retrieveErrorReportTask
+		),
+		failedEndFlow: BPMN!SequenceFlow (
+			sourceRef <- retrieveErrorReportTask,
+			targetRef <- failedEndEvent
+		),
+		timedWaitIncomingFlow: BPMN!SequenceFlow (
+			sourceRef <- postPollingDivergingGateway,
+			targetRef <- timedWait
+		),
+		timedWaitOutgoingFlow: BPMN!SequenceFlow (
+			sourceRef <- timedWait,
+			targetRef <- prePollingConvergingGateway
+		),
+		pollingToRetrievalFlow: BPMN!SequenceFlow (
+			sourceRef <- postPollingDivergingGateway,
+			targetRef <- retrievalParallelGateway
+		),
+		succeededFlow: BPMN!SequenceFlow (
+			sourceRef <- retrievalEndConvergingGateway,
+			targetRef <- successfulEndEvent
+		)
+		
+		
+
+	do {
+	    process.flowElements <- BPMN!FlowElement.allInstances();
+	    process.flowElements <- BPMN!DataObject.allInstances();
+	}
+}
+
+
+rule Parameter {
+	from
+		p: AADL!Parameter
+	using {
+	}
+	to
+		sendParameterTask: BPMN!Task (
+			id <- 'submit-parameter-' + p.name + '-task'.sanitizeIdentifier(),
+			name <- 'Submit ' + p.name + ' parameter value',
+			dataInputAssociations <- inputAssociation,
+			ioSpecification <- ioSpecification
+		),
+	    ioSpecification : BPMN!InputOutputSpecification(
+	    	dataInputs <- dataInput
+		),
+		dataInput : BPMN!DataInput (
+			id <- p.name.sanitizeIdentifier()
+		),
+		inputAssociation : BPMN!DataInputAssociation (
+			sourceRef <- dataObject,
+			targetRef <- dataInput
+		),
+		dataObject: BPMN!DataObject (
+			name <- p.name.sanitizeIdentifier(),
+			isCollection <- if 1 > p.maximumCardinality then
+					true
+				else
+					false
+				endif,
+			itemSubjectRef <- thisModule.itemDefinitions
+						->get(p.parameterType.toString()) 
+				
+		),
+		incomingFlow: BPMN!SequenceFlow (
+			targetRef <- sendParameterTask
+		),
+		outgoingFlow: BPMN!SequenceFlow (
+			sourceRef <- sendParameterTask
+		)
+}
+
+rule InputDataset {
+	from
+		d: AADL!InputDataset
+	to
+		sendDatasetTask: BPMN!Task (
+			id <- 'submit-dataset-' + d.name + '-task'.sanitizeIdentifier(),
+			name <- 'Submit ' + d.name + ' dataset files',
+			dataInputAssociations <- inputAssociation,
+			ioSpecification <- ioSpecification
+		),
+	    ioSpecification : BPMN!InputOutputSpecification(
+	    	dataInputs <- dataInput
+		),
+		inputAssociation : BPMN!DataInputAssociation (
+			sourceRef <- dataObject,
+			targetRef <- dataInput
+		),
+		dataInput : BPMN!DataInput (
+			id <-d.name.sanitizeIdentifier()
+		),
+		dataObject: BPMN!DataObject (
+			name <- d.name.sanitizeIdentifier(),
+			isCollection <- if 1 > d.maximumCardinality then
+					true
+				else
+					false
+				endif,
+			itemSubjectRef <- thisModule.itemDefinitions
+						->get('base64') 
+		),
+		incomingFlow: BPMN!SequenceFlow (
+			targetRef <- sendDatasetTask
+		),
+		outgoingFlow: BPMN!SequenceFlow (
+			sourceRef <- sendDatasetTask
+		)
+}
+
+rule OutputDataset {
+	from
+		d: AADL!OutputDataset
+	to
+		retrieveDatasetTask: BPMN!Task (
+			id <- 'retrieve-dataset-' + d.name + '-task'.sanitizeIdentifier(),
+			name <- 'Retrieve ' + d.name + ' dataset files',
+			dataOutputAssociations <- outputAssociation,
+			ioSpecification <- ioSpecification
+		),
+	    ioSpecification : BPMN!InputOutputSpecification(
+	    	dataOutputs <- dataOutput
+		),
+		outputAssociation : BPMN!DataOutputAssociation (
+			sourceRef <- dataObject,
+			targetRef <- dataOutput
+		),
+		dataOutput : BPMN!DataOutput (
+			id <-d.name.sanitizeIdentifier()
+		),
+		dataObject: BPMN!DataObject (
+			name <- d.name.sanitizeIdentifier(),
+			isCollection <- if 1 > d.maximumCardinality then
+					true
+				else
+					false
+				endif,
+			itemSubjectRef <- thisModule.itemDefinitions
+						->get('base64') 
+		
+		),
+		incomingFlow: BPMN!SequenceFlow (
+			targetRef <- retrieveDatasetTask
+		),
+		outgoingFlow: BPMN!SequenceFlow (
+			sourceRef <- retrieveDatasetTask
+		)
+}

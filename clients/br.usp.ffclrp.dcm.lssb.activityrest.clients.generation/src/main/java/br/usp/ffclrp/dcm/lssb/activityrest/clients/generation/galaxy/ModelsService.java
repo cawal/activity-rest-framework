@@ -2,8 +2,16 @@ package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.util.Collections;
 import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Stream;
 
+import org.eclipse.bpmn2.Bpmn2Package;
+import org.eclipse.bpmn2.DocumentRoot;
+import org.eclipse.bpmn2.util.Bpmn2XMIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -23,28 +31,34 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.
 
 /**
  * A number of utility methods for dealing with the Ecore-based models.
+ * 
  * @author cawal
  *
  */
 public class ModelsService {
 	
 	/**
-	 * Utility method to initialize the resources needed to 
+	 * Utility method to initialize the resources needed to
 	 * load AADM models using EMF's Resource API.
 	 */
 	private static void initializeEcoreModelsResources() {
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
 		DeploymentModelPackage.eINSTANCE.eClass();
+		Bpmn2Package.eINSTANCE.eClass();
 	}
-
+	
 	/**
 	 * Loads a AADM model represented as AADL from a InputStream.
-	 * More info can be obtained at https://wiki.eclipse.org/Xtext/FAQ#How_do_I_load_my_model_in_a_standalone_Java_application.C2.A0.3F
-	 * @param inputStream The InputStream to read the AADL description
+	 * More info can be obtained at
+	 * https://wiki.eclipse.org/Xtext/FAQ#How_do_I_load_my_model_in_a_standalone_Java_application.C2.A0.3F
+	 * 
+	 * @param inputStream
+	 *            The InputStream to read the AADL description
 	 * @return an representation object of the AADL/AADM model
-	 * @throws IOException if fails to load
+	 * @throws IOException
+	 *             if fails to load
 	 */
-	public static Activity retrieveAADLModel(InputStream inputStream) 
+	public static Activity retrieveAADLModel(InputStream inputStream)
 			throws IOException {
 		
 		String uri = "dummy:/example.aadl";
@@ -53,9 +67,12 @@ public class ModelsService {
 		initializeEcoreModelsResources();
 		
 		// Register the grammar
-		Injector injector = new AnalysisActivityDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
-		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+		Injector injector = new AnalysisActivityDSLStandaloneSetup()
+				.createInjectorAndDoEMFRegistration();
+		XtextResourceSet resourceSet =
+				injector.getInstance(XtextResourceSet.class);
+		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL,
+				Boolean.TRUE);
 		
 		Resource resource = resourceSet.createResource(URI.createURI(uri));
 		resource.load(inputStream, resourceSet.getLoadOptions());
@@ -65,9 +82,7 @@ public class ModelsService {
 		
 	}
 	
-	
-	
-	public static Deployment retrieveDeploymentModel(InputStream inputStream) 
+	public static Deployment retrieveDeploymentModel(InputStream inputStream)
 			throws IOException {
 		
 		String uri = "dummy:/example.deployment";
@@ -78,8 +93,10 @@ public class ModelsService {
 		// Register the grammar
 		Injector injector = new DSLSyntaxStandaloneSetupGenerated()
 				.createInjectorAndDoEMFRegistration();
-		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+		XtextResourceSet resourceSet =
+				injector.getInstance(XtextResourceSet.class);
+		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL,
+				Boolean.TRUE);
 		
 		Resource resource = resourceSet.createResource(URI.createURI(uri));
 		resource.load(inputStream, resourceSet.getLoadOptions());
@@ -89,27 +106,120 @@ public class ModelsService {
 		
 	}
 	
-	
-
 	public static Activity retrieveActivityFromXmi(URI resourceUri) {
 		// Initialize the model
 		initializeEcoreModelsResources();
-
-        // Register the XMI resource factory for the .xmi extension
-        Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-        Map<String, Object> m = reg.getExtensionToFactoryMap();
-        m.put("xmi", new XMIResourceFactoryImpl());
-
-        // Obtain a new resource set
-        ResourceSet resSet = new ResourceSetImpl();
-
-        // Get the resource
-        Resource resource = resSet.getResource(resourceUri, true);
-        // Get the first model element and cast it to the right type, in my
-        // example everything is hierarchical included in this first node
-        Activity activityObject = (Activity) resource.getContents().get(0);
-        return activityObject;
+		
+		// Register the XMI resource factory for the .xmi extension
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("xmi", new XMIResourceFactoryImpl());
+		
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		// Get the resource
+		Resource resource = resSet.getResource(resourceUri, true);
+		// Get the first model element and cast it to the right type, in my
+		// example everything is hierarchical included in this first node
+		Activity activityObject = (Activity) resource.getContents().get(0);
+		return activityObject;
 	}
 	
+	public static void writeAADLModelToXmi(Activity aadlModel,
+			String outputPath) {
+		// TODO Auto-generated method stub i
+		initializeEcoreModelsResources();
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("xmi", new XMIResourceFactoryImpl());
+		
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		// create a resource
+		Resource resource = resSet.createResource(URI
+				.createURI(outputPath));
+		// Get the first model element and cast it to the right type, in my
+		// example everything is hierarchical included in this first node
+		resource.getContents().add(aadlModel);
+		
+		// now save the content.
+		try {
+			resource.save(Collections.EMPTY_MAP);
+			System.out.println(resource + "is saved");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
+	public static InputStream writeAADLModelToStream(final Activity aadlModel)
+			throws IOException {
+		
+		initializeEcoreModelsResources();
+		
+		PipedInputStream in = new PipedInputStream();
+		final PipedOutputStream out = new PipedOutputStream(in);
+		
+		Thread t = new Thread(new Runnable() {
+			
+			public void run() {
+				String outputPath = UUID.randomUUID().toString() + ".xmi";
+				Resource.Factory.Registry reg =
+						Resource.Factory.Registry.INSTANCE;
+				Map<String, Object> m = reg.getExtensionToFactoryMap();
+				m.put("xmi", new XMIResourceFactoryImpl());
+				
+				// Obtain a new resource set
+				ResourceSet resSet = new ResourceSetImpl();
+				
+				// create a resource
+				Resource resource = resSet.createResource(URI
+						.createURI(outputPath));
+				// Get the first model element and cast it to the right type, in
+				// my
+				// example everything is hierarchical included in this first
+				// node
+				resource.getContents().add(aadlModel);
+				
+				// now save the content.
+				try {
+					resource.save(out, Collections.EMPTY_MAP);
+					out.flush();
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					System.exit(1);
+				}
+				
+			}
+		});
+		t.start();
+		
+		return in;
+		
+	}
+	
+	public static DocumentRoot retrieveBPMN(URI resourceUri) {
+		
+		// Initialize the model
+		initializeEcoreModelsResources();
+		
+		// Register the XMI resource factory for the .xmi extension
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("bpmn2", new Bpmn2XMIResourceFactoryImpl());
+		
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		// Get the resource
+		Resource resource = resSet.getResource(resourceUri, true);
+		// Get the first model element and cast it to the right type, in my
+		// example everything is hierarchical included in this first node
+		DocumentRoot bomn2Object = (DocumentRoot) resource.getContents().get(0);
+		return bomn2Object;
+	}
 }

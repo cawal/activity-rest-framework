@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 
+import org.eclipse.bpmn2.Bpmn2Package;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.m2m.atl.core.IModel;
@@ -16,11 +17,9 @@ import org.eclipse.m2m.atl.core.emf.EMFModelFactory;
 import org.eclipse.m2m.atl.core.emf.EMFReferenceModel;
 import org.eclipse.m2m.atl.core.launch.ILauncher;
 import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
-import org.jboss.drools.DroolsPackage;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import edu.uoc.som.openapi.OpenAPIPackage;
 
 
 public class TransformationService {
@@ -29,19 +28,19 @@ public class TransformationService {
 	  static final String AADL_METAMODEL_URI = 
 			  AnalysisActivityDescriptionPackage.eNS_URI;
 	  static final String BPMN_METAMODEL_URI =
-			  BPMNPackage.eNS_URI;
+			  Bpmn2Package.eNS_URI;
 	  
 	  /*
 	   * Transformation modules
 	   */
-	  private static final String TRANSFORMATION_MODULE_URI = "aadl2openAPI.asm";
+	  private static final String TRANSFORMATION_MODULE_URI = "aadl2bpmn.asm";
 
 
 
 
-	  public static void aadl2OpenAPI(
+	  public static void aadl2bpmn(
 			  					InputStream aadlSource, 
-			  					OutputStream openapiTarget,
+			  					OutputStream bpmnTarget,
 			  					IProgressMonitor monitor) throws IOException {
 
 	    
@@ -84,9 +83,9 @@ public class TransformationService {
 	      IReferenceModel aadlMetamodel = modelFactory.newReferenceModel();
 	      injector.inject(aadlMetamodel, AADL_METAMODEL_URI);
 
-	      IReferenceModel openapiMetamodel = modelFactory.newReferenceModel();
-	      injector.inject(openapiMetamodel, );
-	      IModel openapiModel = modelFactory.newModel(openapiMetamodel);
+	      IReferenceModel bpmnMetamodel = modelFactory.newReferenceModel();
+	      injector.inject(bpmnMetamodel, BPMN_METAMODEL_URI );
+	      IModel bpmnModel = modelFactory.newModel(bpmnMetamodel);
 
 	      /*
 	       * Load models
@@ -100,8 +99,8 @@ public class TransformationService {
 	      System.out.println("Transforming...");
 
 	      transformationLauncher.initialize(new HashMap<String, Object>());
-	      transformationLauncher.addInModel(aadlModel, "IN", "aadl");
-	      transformationLauncher.addOutModel(openapiModel, "OUT", "openapi");
+	      transformationLauncher.addInModel(aadlModel, "IN", "AADL");
+	      transformationLauncher.addOutModel(bpmnModel, "OUT", "BPMN");
 
 	      transformationLauncher.launch(ILauncher.RUN_MODE, monitor, new HashMap<String, Object>(),
 	          basicModule
@@ -110,15 +109,15 @@ public class TransformationService {
 	      /*
 	       * extract model
 	       */
-	      extractor.extract(openapiModel, openapiTarget, new HashMap<String, Object>());
-	      openapiTarget.close();
+	      extractor.extract(bpmnModel, bpmnTarget, new HashMap<String, Object>());
+	      bpmnTarget.close();
 	      /*
 	       * Unload all models and metamodels (EMF-specific)
 	       */
-	      modelFactory.unload((EMFModel) openapiModel);
+	      modelFactory.unload((EMFModel) bpmnModel);
 	      modelFactory.unload((EMFModel) aadlModel);
 	      modelFactory.unload((EMFReferenceModel) aadlMetamodel);
-	      modelFactory.unload((EMFReferenceModel) openapiMetamodel);
+	      modelFactory.unload((EMFReferenceModel) bpmnMetamodel);
 
 	    } catch (Exception e) {
 	      System.err.println(e);
