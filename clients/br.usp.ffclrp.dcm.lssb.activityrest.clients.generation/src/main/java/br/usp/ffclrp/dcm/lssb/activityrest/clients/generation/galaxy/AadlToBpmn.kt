@@ -7,14 +7,12 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.Transformat
 import java.io.FileOutputStream
 
 class AadlToBpmn () {
-    fun generateBpmn(activity: Activity, deployment: Deployment): File {
+    fun generateBpmn(activity: Activity): File {
         val activityInStream = ModelsService.writeAADLModelToStream(activity)
         val bpmnFile = File.createTempFile("temp",".bpmn2")
         val bpmnOutStream = FileOutputStream(bpmnFile)
         TransformationService.aadl2bpmn(activityInStream,bpmnOutStream,null)
-        
-        
+
         return bpmnFile
     }
-    
 }

@@ -7,7 +7,6 @@ import java.io.PipedOutputStream;
 import java.util.Collections;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 import org.eclipse.bpmn2.Bpmn2Package;
 import org.eclipse.bpmn2.DocumentRoot;

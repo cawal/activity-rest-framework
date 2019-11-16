@@ -13,9 +13,10 @@ import java.net.URI
 import org.eclipse.emf.common.util.URI as EmfUri
 import java.io.InputStream
 import java.io.File
+import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.BpmnToJbpm
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class AadlToBpmnTests {
+class BpmnToJbpmTest {
 
     private val transformationEngine = AadlToBpmn();
 
@@ -31,18 +32,10 @@ class AadlToBpmnTests {
     }
 
     @Test
-    fun `Finds activity test files`() {
-        assertNotNull(activity)
-        assertEquals("gene-chart-report", activity.name)
-        
-        assertNotNull(deployment)
-        assertEquals("gene-chart-report", deployment.service.name)
-    }
-
-    @Test
     fun `Execution creates a valid BPMN file`() {
 
-        val file = transformationEngine.generateBpmn(activity);
+        val bpmn = transformationEngine.generateBpmn(activity);
+        val file = BpmnToJbpm().transform(bpmn);
 
         print(file)
         assertAll("File exists",

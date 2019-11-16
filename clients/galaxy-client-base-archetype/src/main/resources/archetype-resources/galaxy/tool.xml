@@ -1,0 +1,126 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<tool
+	id="kode-david-char-report-by-dataset"
+	name="Get DAVID chart report"
+	version="1.0.0"
+	profile="16.04"
+>
+	<description>Obtain a chart report from DAVID</description>
+	<command
+		detect_errors="exit_code"
+	><![CDATA[
+	java -jar ${symbol_dollar}__tool_directory__/client.jar  
+	   --count-cutoff ${symbol_dollar}{countCutoff}
+	   --categories-in-result
+		${symbol_pound}for ${symbol_dollar}cat in ${symbol_dollar}categoriesInResult.split(','):
+			'${symbol_dollar}{cat}'
+		${symbol_pound}end for
+	   --threshold ${symbol_dollar}{threshold}
+       --column-name ${symbol_dollar}{columnName}
+       '${symbol_dollar}{geneIdTable}'
+       '${symbol_dollar}{output}'
+	   '${symbol_dollar}{email}'
+	]]></command>
+	<inputs>
+<!-- 		<section -->
+<!-- 			name="required" -->
+<!-- 			title="Required parameters" -->
+<!-- 			expanded="true" -->
+<!-- 		> -->
+			<param
+				name="geneIdTable"
+				type="data"
+				format="tsv"
+				label="Input TSV file with gene IDs" />
+			<param
+				name="email"
+				type="text"
+				label="Email for authentication at DAVID">
+				<sanitizer>
+					<valid initial="string.ascii_letters,string.digits">
+						<add value="_" />
+						<add value="-" />
+						<add value="." />
+						<add value="@" />
+					</valid>
+				</sanitizer>
+			</param>
+			<param
+				name="columnName"
+				type="text"
+				label="Column with gene ids" />
+<!-- 		</section> -->
+<!-- 		<section -->
+<!-- 			name="optional" -->
+<!-- 			title="Optional parameters" -->
+<!-- 			expanded="true" -->
+<!-- 		> -->
+			<param
+				name="countCutoff"
+				type="integer"
+				value="2"
+				label="Count cutoff" />
+			<param
+				name="threshold"
+				type="float"
+				value="0.1"
+				label="Threshold" />
+			<param
+				name="categoriesInResult"
+				type="text"
+				area="true"
+				label="Comma separated categories for result" />
+			<param
+				name="geneIdentifierTypes"
+				type="text"
+				label="Gene identifiers type" />
+<!-- 		</section> -->
+	</inputs>
+	<outputs>
+		<data
+				type="tabular"
+				format="tsv"
+			name="output" />
+	</outputs>
+
+	<tests>
+		<test>
+			<param
+				name="geneIdTable"
+				value="input.tsv"
+				/>
+			<param
+				name="email"
+				value="ricardocawal@usp.br"
+				/>
+			<param
+				name="columnName"
+				value="gene_ids"
+				/>
+			<param
+				name="countCutoff"
+				value="2"
+				/>
+			<param
+				name="threshold"
+				value="0.1"
+				/>
+			<param
+				name="categoriesInResult"
+				value="BBID,BIOCARTA,COG_ONTOLOGY,GOTERM_BP_FAT,GOTERM_CC_FAT,GOTERM_MF_FAT,INTERPRO,KEGG_PATHWAY,OMIM_DISEASE,PIR_SUPERFAMILY,SMART,SP_PIR_KEYWORDS,UP_SEQ_FEATURE"
+				/>
+			<param
+				name="geneIdentifierTypes"
+				value="AFFYMETRIX_3PRIME_IVT_ID"
+				/>
+			<output
+				name="output"
+				value="output.tsv"
+				/>
+		</test>
+	</tests>
+
+</tool>
