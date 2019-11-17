@@ -1,8 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation
 
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import AadlToBpmn
@@ -19,13 +16,13 @@ class AadlToBpmnTests {
 
     private val transformationEngine = AadlToBpmn();
 
-    val activity by lazy {  
+    val activity by lazy {
         var inputStream = this::class.java.getResourceAsStream("./david.aadl")
         ModelsService.retrieveAADLModel(inputStream)
     }
-    
-    
-    val deployment by lazy {  
+
+
+    val deployment by lazy {
         var inputStream = this::class.java.getResourceAsStream("./david.deployment")
         ModelsService.retrieveDeploymentModel(inputStream)
     }
@@ -34,7 +31,7 @@ class AadlToBpmnTests {
     fun `Finds activity test files`() {
         assertNotNull(activity)
         assertEquals("gene-chart-report", activity.name)
-        
+
         assertNotNull(deployment)
         assertEquals("gene-chart-report", deployment.service.name)
     }
@@ -49,17 +46,15 @@ class AadlToBpmnTests {
                 { assertNotNull(file, "Returned a null File instance.") },
                 { assertTrue(file.exists(), "BPMN file does not exists") },
                 { assertEquals("bpmn2", file.extension, "Wrong extension!") },
-                {
-                    assertTrue(isValidBpmnFile(file))
-                }
+                { assertTrue(isValidBpmnFile(file)) }
         )
     }
 
-    fun isValidBpmnFile(file : File) : Boolean{
+    fun isValidBpmnFile(file: File): Boolean {
         val bpmnObject = ModelsService.retrieveBPMN(
-                	EmfUri.createFileURI(file.getAbsolutePath())
+                EmfUri.createFileURI(file.getAbsolutePath())
         )
-        
+
         return bpmnObject != null
     }
 

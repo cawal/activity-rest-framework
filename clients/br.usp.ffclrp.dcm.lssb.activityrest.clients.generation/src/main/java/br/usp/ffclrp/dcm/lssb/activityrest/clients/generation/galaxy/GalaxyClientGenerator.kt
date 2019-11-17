@@ -1,4 +1,4 @@
-package r.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy
+package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy
 
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.ClientGenerator
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
@@ -14,7 +14,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProject
 class GalaxyClientGenerator : ClientGenerator {
     
     override fun generateClient(activity: Activity, deployment: Deployment): File {
-        val tempDirectory = createTempDir();
+        
+        val tempDirectory = createTempDir()
         
         val bpmn = AadlToBpmn().generateBpmn(activity)
         val jBpm = BpmnToJbpm().transform(bpmn)
@@ -23,16 +24,23 @@ class GalaxyClientGenerator : ClientGenerator {
         
         combineArtifacts(javaProject,bpmn,jBpm,xmlWrapper)
         
-        return tempDirectory;
-    }
-    
-    fun generateJavaProject(activity: Activity, deployment: Deployment): File{
-        TODO()
+        return tempDirectory
     }
     
     
     fun combineArtifacts(project : File, bpmn : File, jbpmn : File, xmlWrapper : File){
-        TODO()
+        addBpmnFileToProject(project,bpmn)
+        addJbpmFileToProject(project,jbpmn)
+        addXmlWrapperToProject(project,xmlWrapper)
     }
     
+    fun addBpmnFileToProject(project : File, bpmn : File){
+    }
+    
+    fun addJbpmFileToProject(project : File, jbpm : File){
+    }
+    
+    fun addXmlWrapperToProject(project : File, xmlWrapper : File){
+        xmlWrapper.renameTo(File(project,"tool.xml"))
+    }
 }
