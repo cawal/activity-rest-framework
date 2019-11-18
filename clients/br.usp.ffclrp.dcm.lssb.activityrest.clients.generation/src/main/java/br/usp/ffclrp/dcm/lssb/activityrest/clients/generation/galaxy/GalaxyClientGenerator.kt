@@ -38,6 +38,7 @@ class GalaxyClientGenerator : ClientGenerator {
     }
     
     fun addJbpmFileToProject(project : File, jbpm : File){
+        
     }
     
     fun addXmlWrapperToProject(project : File, xmlWrapper : File){

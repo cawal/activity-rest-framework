@@ -47,18 +47,36 @@ class JavaProjectGeneratorTests {
         ModelsService.retrieveDeploymentModel(inputStream)
     }
     
+    val generatedProject by lazy {
+        generator.generate(activity,deployment);
+    }
+    
 
     @Test
     fun `Execution creates a directory`() {
 
-        val file = generator.generate(activity,deployment);
-
-        print(file)
         assertAll("File exists",
-                { assertNotNull(file, "Returned a null File instance.") },
-                { assertTrue(file.exists(), "Root directory does not exists") },
-                { assertTrue(file.isDirectory(),"generated root is not a directory.")}
+                { assertNotNull(generatedProject, "Returned a null File instance.") },
+                { assertTrue(generatedProject.exists(), "Root directory does not exists") },
+                { assertTrue(generatedProject.isDirectory(),"generated root is not a directory.")}
         )
+    }
+    
+    @Test
+    fun `Execution creates a Maven project`() {
+
+        File(generatedProject,"pom.xml")
+                .also{print(it)}
+                .renameTo(File(generatedProject,"pommm.xml"))
+        
+        assertAll("Returned file is not a Maven project!",
+                { assertTrue(File(generatedProject, "pom.xml")
+                        	.also { print("File: ${it}") }
+                            .exists(),
+                		"POM file does not exists")
+                }
+        )
+
     }
 
 }

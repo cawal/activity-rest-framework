@@ -20,18 +20,26 @@ class GalaxyClientGeneratorTests {
     }
 
 
+
     @Test
     fun `Execution creates a Maven project`() {
         val generator = GalaxyClientGenerator();
         val project = generator.generateClient(activity, deployment)
 
+
+        File(project,"pom.xml").also{print(it)}.renameTo(File(project,"pommm.xml"))
+        
         assertAll("Returned file is not a Maven project!",
                 { assertNotNull(project, "Returned null") },
                 { assertTrue(project.exists(), "Directory does not exists")},
-                { assertTrue(File(project, "pom.xml").also { print(it) }.exists(),"POM file does not exists") }
+                { assertTrue(
+                        File(project, "pom.xml")
+                        	.also { print("File: ${it}") }
+                            .exists(),
+                		"POM file does not exists")
+                }
         )
 
     }
-
 
 }
