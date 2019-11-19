@@ -65,15 +65,12 @@ class JavaProjectGeneratorTests {
     @Test
     fun `Execution creates a Maven project`() {
 
-        File(generatedProject,"pom.xml")
-                .also{print(it)}
-                .renameTo(File(generatedProject,"pommm.xml"))
-        
+        println("generated project: ${generatedProject.getAbsolutePath()}")
+        val pomFile = File(generatedProject, "pom.xml")
+        println("pomfile: ${pomFile.getAbsolutePath()}")
         assertAll("Returned file is not a Maven project!",
-                { assertTrue(File(generatedProject, "pom.xml")
-                        	.also { print("File: ${it}") }
-                            .exists(),
-                		"POM file does not exists")
+                { assertTrue((pomFile.exists()),
+                         "POM file does not exists")
                 }
         )
 

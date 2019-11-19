@@ -47,14 +47,11 @@ class AadlToGalaxyToolWrapperTest {
 
         val file = transformationEngine.generate(activity);
 
-        print(file)
         assertAll("File exists",
                 { assertNotNull(file, "Returned a null File instance.") },
                 { assertTrue(file.exists(), "XML file does not exists") },
                 { assertEquals("xml", file.extension, "Wrong extension!") },
-                {
-                    assertTrue(isValidXmlFile(file))
-                }
+                { assertTrue(isValidXmlFile(file)) }
         )
     }
 

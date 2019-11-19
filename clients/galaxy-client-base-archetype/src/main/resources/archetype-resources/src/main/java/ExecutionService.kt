@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.davidchartreport.jbpmclient
+package br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstance
 import br.usp.ffclrp.dcm.lssb.activityrest.jbpm.workitemhandlers.*
@@ -15,24 +15,9 @@ import org.kie.api.runtime.process.WorkItemHandler
 import org.kie.api.KieServices
 import org.kie.api.builder.Message.Level
 
-data class BpmProcessResource(
-	val processId: String,
-	val path: String,
-	val type: ResourceType
-)
 
-interface ExecutionService {
-	fun execute(activityInstance: ActivityInstance): ActivityInstance 
-}
-
-class DavidExecutionService : ExecutionService {
-
-	val executedProcessId = "davidChartReport"
-
-	private val bpmnResources = listOf(
-		//BpmProcessResource("davidChartReport", "process.bpmn2", ResourceType.BPMN2)
-		BpmProcessResource("davidChartReport", "david-chart-report-by-dataset.bpmn2", ResourceType.BPMN2)
-	)
+class ExecutionService (val bpmnResources : BpmnProcessResource,
+                             val executedProcessId : String) {
 
 	private val session: KieSession by lazy {
 		preparejBpmEngine(bpmnResources)

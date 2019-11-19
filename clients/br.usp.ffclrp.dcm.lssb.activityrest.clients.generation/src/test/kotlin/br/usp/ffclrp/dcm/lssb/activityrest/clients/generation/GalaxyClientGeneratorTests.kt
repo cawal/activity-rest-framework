@@ -19,27 +19,45 @@ class GalaxyClientGeneratorTests {
         ModelsService.retrieveDeploymentModel(inputStream)
     }
 
+    val generator = GalaxyClientGenerator();
+    val generatedProject by lazy {
+        generator.generateClient(activity, deployment)
+    }
 
 
     @Test
     fun `Execution creates a Maven project`() {
-        val generator = GalaxyClientGenerator();
-        val project = generator.generateClient(activity, deployment)
+        val pomFile = File(generatedProject, "pom.xml")
 
-
-        File(project,"pom.xml").also{print(it)}.renameTo(File(project,"pommm.xml"))
-        
         assertAll("Returned file is not a Maven project!",
-                { assertNotNull(project, "Returned null") },
-                { assertTrue(project.exists(), "Directory does not exists")},
-                { assertTrue(
-                        File(project, "pom.xml")
-                        	.also { print("File: ${it}") }
-                            .exists(),
-                		"POM file does not exists")
+                { assertNotNull(generatedProject, "Returned null") },
+                { assertTrue(generatedProject.exists(), "Directory does not exists") },
+                {
+                    assertTrue(pomFile.exists(),
+                            "POM file does not exists")
                 }
         )
 
     }
+    
+    @Test
+    fun `Execution includes tool xml file`() {
+        val toolFile = File(generatedProject,"galaxy/tool.xml")
+        assertTrue(toolFile.exists())
+    }
 
+    
+    @Test
+    fun `Execution includes basic BPMN2 file`() {
+        val bpmn = File(generatedProject,"activity.bpmn2")
+        assertTrue(bpmn.exists())
+    }
+    
+    
+    @Test
+    fun `Execution includes jBPM BPMN2 file`() {
+        val jbpm = File(generatedProject,"src/java/activity-jbpm.bpmn2")
+        assertTrue(jbpm.exists())
+    }
+    
 }

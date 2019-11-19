@@ -12,36 +12,44 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.AadlToGalax
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProjectGenerator
 
 class GalaxyClientGenerator : ClientGenerator {
-    
+
+
     override fun generateClient(activity: Activity, deployment: Deployment): File {
-        
-        val tempDirectory = createTempDir()
-        
+
+
         val bpmn = AadlToBpmn().generateBpmn(activity)
         val jBpm = BpmnToJbpm().transform(bpmn)
         val xmlWrapper = AadlToGalaxyToolWrapper().generate(activity)
-        val javaProject = JavaProjectGenerator().generate(activity,deployment)
-        
-        combineArtifacts(javaProject,bpmn,jBpm,xmlWrapper)
-        
-        return tempDirectory
+        val javaProject = JavaProject(
+                JavaProjectGenerator().generate(activity, deployment)
+        )
+
+        javaProject.combineArtifacts(bpmn, jBpm, xmlWrapper)
+
+        return javaProject.directory
     }
-    
-    
-    fun combineArtifacts(project : File, bpmn : File, jbpmn : File, xmlWrapper : File){
-        addBpmnFileToProject(project,bpmn)
-        addJbpmFileToProject(project,jbpmn)
-        addXmlWrapperToProject(project,xmlWrapper)
+
+
+}
+
+class JavaProject(val directory: File) {
+    fun combineArtifacts( bpmn: File, jbpmn: File, xmlWrapper: File) {
+        addBpmnFileToProject(bpmn)
+        addJbpmFileToProject(jbpmn)
+        addXmlWrapperToProject(xmlWrapper)
     }
-    
-    fun addBpmnFileToProject(project : File, bpmn : File){
+
+
+    fun addBpmnFileToProject(bpmn: File) {
+        bpmn.renameTo(File(directory,"activity.bpmn2"))
     }
-    
-    fun addJbpmFileToProject(project : File, jbpm : File){
-        
+
+    fun addJbpmFileToProject(jbpm: File) {
+    	jbpm.renameTo(File(directory,"src/main/java/activity-jbpm.bpmn2"))
     }
-    
-    fun addXmlWrapperToProject(project : File, xmlWrapper : File){
-        xmlWrapper.renameTo(File(project,"tool.xml"))
+
+    fun addXmlWrapperToProject(xmlWrapper: File) {
+        xmlWrapper.renameTo(File(directory, "galaxy/tool.xml"))
     }
+
 }

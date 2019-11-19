@@ -1,4 +1,4 @@
-package br.usp.ffclrp.dcm.lssb.activityrest.jbpm.workitemhandlers
+package br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.workitemhandlers
 
 import org.kie.api.runtime.process.WorkItemHandler
 
