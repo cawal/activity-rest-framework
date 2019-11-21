@@ -11,12 +11,14 @@ import org.kie.internal.io.ResourceFactory
 import org.kie.internal.utils.KieHelper
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.DatasetItem
 import java.io.File
+import java.net.URI
 import org.kie.api.runtime.process.WorkItemHandler
 import org.kie.api.KieServices
 import org.kie.api.builder.Message.Level
 
 
-class ExecutionService (val bpmnResources : BpmnProcessResource,
+class ActivityRestService (val serviceRoot : URI,
+                           val bpmnResources : BpmnProcessResource,
                              val executedProcessId : String) {
 
 	private val session: KieSession by lazy {

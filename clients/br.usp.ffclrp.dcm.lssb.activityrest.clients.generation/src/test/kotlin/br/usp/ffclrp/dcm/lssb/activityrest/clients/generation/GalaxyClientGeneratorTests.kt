@@ -56,7 +56,7 @@ class GalaxyClientGeneratorTests {
     
     @Test
     fun `Execution includes jBPM BPMN2 file`() {
-        val jbpm = File(generatedProject,"src/java/activity-jbpm.bpmn2")
+        val jbpm = File(generatedProject,"src/main/java/activity-jbpm.bpmn2")
         assertTrue(jbpm.exists())
     }
     
