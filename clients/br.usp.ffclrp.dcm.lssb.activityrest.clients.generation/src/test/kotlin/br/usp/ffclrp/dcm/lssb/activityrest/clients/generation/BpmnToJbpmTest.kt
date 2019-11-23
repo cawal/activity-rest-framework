@@ -1,8 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation
 
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import AadlToBpmn
