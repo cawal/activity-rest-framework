@@ -197,8 +197,8 @@ class JavaProjectGenerator {
             description = [""]
         )
         var email: String? = null
-    """.trimIndent()()()
-    
+    """.trimIndent()
+
     val Parameter.optionText get() =
     """
     	@Option(
@@ -208,7 +208,7 @@ class JavaProjectGenerator {
     		description = ["${getRemark()}"]
     	)
     	var ${getName()} : ${getParameterType().javaType} = ${formatedDefaultValue}
-    """
+    """.trimIndent()
     
     val ParameterType.javaType get() : String {
         return when (this) {

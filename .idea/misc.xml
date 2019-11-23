@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide/target/com.googlecode.addjars.mojo.AddJarsMojo/pom.xml" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web/target/m2e-wtp/web-resources/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web/pom.xml" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web/target/m2e-wtp/web-resources/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.tests/target/work/plugins/org.apache.ant_1.10.6.v20190516-0412/META-INF/maven/org.eclipse.orbit.bundles/org.apache.ant/pom.xml" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.tests/target/work/plugins/org.apache.ant_1.10.6.v20190516-0412/META-INF/maven/org.eclipse.orbit.bundles/org.apache.ant/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.tests/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/dsl/bundles/metamodel/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/releng/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/jbpm-work-item-handlers/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.davidchartreport.jbpmclient/jbppm-client-library/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/jbpm-work-item-handlers/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.davidchartreport.jbpmclient/jbppm-client-library/pom.properties" />
+        <option value="$PROJECT_DIR$/clients/jbpm-work-item-handlers/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/jbpm-work-item-handlers/dependency-reduced-pom.xml" />
+        <option value="$PROJECT_DIR$/clients/galaxy-client-base-archetype/src/main/resources/archetype-resources/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/galaxy-client-base-archetype/target/classes/archetype-resources/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/galaxy-client-base-archetype/target/test-classes/projects/basic/project/basic/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/galaxy-client-base-archetype/target/test-classes/projects/basic/project/basic/dependency-reduced-pom.xml" />
+        <option value="$PROJECT_DIR$/clients/galaxy-client-base-archetype/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/pom.xml" />
+        <option value="$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/pom.properties" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/framework/archetype/pom.xml" />
+        <option value="$PROJECT_DIR$/framework/activity-rest-framework/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant/activity-rest-framework/pom.xml" />
+        <option value="$PROJECT_DIR$/framework/activity-rest-framework/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant/activity-rest-framework/pom.properties" />
+        <option value="$PROJECT_DIR$/framework/activity-rest-framework/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/framework/activity-rest-framework-testing/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant/activity-rest-framework-testing/pom.xml" />
+        <option value="$PROJECT_DIR$/framework/activity-rest-framework-testing/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant/activity-rest-framework-testing/pom.properties" />
+        <option value="$PROJECT_DIR$/framework/activity-rest-framework-testing/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/applications/aadlDescToaadlXmi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadl2openAPI/pom.xml" />
+        <option value="$PROJECT_DIR$/applications/aadlDescToaadlXmi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadl2openAPI/pom.properties" />
+        <option value="$PROJECT_DIR$/applications/aadlXmiToJsonOpenApi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadlXmiToOpenAPI/pom.xml" />
+        <option value="$PROJECT_DIR$/applications/aadlXmiToJsonOpenApi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadlXmiToOpenAPI/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide/target/com.googlecode.addjars.mojo.AddJarsMojo/pom.xml" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web/target/m2e-wtp/web-resources/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web/pom.xml" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web/target/m2e-wtp/web-resources/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.tests/target/work/plugins/org.apache.ant_1.10.6.v20190516-0412/META-INF/maven/org.eclipse.orbit.bundles/org.apache.ant/pom.xml" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.tests/target/work/plugins/org.apache.ant_1.10.6.v20190516-0412/META-INF/maven/org.eclipse.orbit.bundles/org.apache.ant/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.tests/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.tests/target/work/plugins/org.apache.ant_1.10.6.v20190516-0412/META-INF/maven/org.eclipse.orbit.bundles/org.apache.ant/pom.xml" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.tests/target/work/plugins/org.apache.ant_1.10.6.v20190516-0412/META-INF/maven/org.eclipse.orbit.bundles/org.apache.ant/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.tests/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/deployment-model/bundles/metamodel/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel/target/maven-archiver/pom.properties" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
