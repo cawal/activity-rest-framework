@@ -6,9 +6,7 @@ import AadlToBpmn
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelFactory
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.ModelsService
-import java.net.URI
 import org.eclipse.emf.common.util.URI as EmfUri
-import java.io.InputStream
 import java.io.File
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

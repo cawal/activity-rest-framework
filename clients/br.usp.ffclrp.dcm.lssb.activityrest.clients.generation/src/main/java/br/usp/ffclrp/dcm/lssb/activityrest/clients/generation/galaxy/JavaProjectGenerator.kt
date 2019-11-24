@@ -1,36 +1,39 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy
 
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.*
 import org.apache.maven.cli.MavenCli
 import java.io.File
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.ParameterType
+
+
+fun String.sanitized(): String {
+    return this.replace("-", "_")
+}
 
 class JavaProjectGenerator {
 
     val archetypeGroup = "br.usp.ffclrp.dcm.lssb.activityrest"
     val archetypeId = "galaxy-client-base-archetype"
     val archetypeVersion = "1.0-SNAPSHOT"
-    
+
     val bpmnFile = "actvity-jbpm-bpmn2"
 
     fun generate(activity: Activity, deployment: Deployment): File {
-       
-        val projectRoot = generateBaseMavenProject(activity,deployment)
-        
-        val cliFile = getCliFile(activity,deployment)
-       
-        cliFile.renameTo(File(projectRoot,"src/main/java/app-activity-specific.kt"))
-        
-       return projectRoot
-        
+
+        val projectRoot = generateBaseMavenProject(activity, deployment)
+
+        val cliFile = getCliFile(activity, deployment)
+
+        cliFile.renameTo(File(projectRoot, "src/main/java/app-activity-specific.kt"))
+
+        return projectRoot
+
     }
 
-    fun generateBaseMavenProject(activity : Activity, deployment : Deployment)
-    	: File {
+    fun generateBaseMavenProject(activity: Activity, deployment: Deployment)
+            : File {
         val artifactId = "${activity.name}-client"
         val artifactGroupId = activity.name
         val artifactVersion = deployment.getService().getApiVersion() ?: "1.0"
@@ -69,19 +72,19 @@ class JavaProjectGenerator {
         println(projectRoot.getAbsolutePath())
         return projectRoot
     }
-    
-    fun getCliFile(activity : Activity,
-                                 deployment : Deployment) : File {
-        val tempCliFile = File.createTempFile("app-activity-specific",".kt")
-        
-        tempCliFile.writeText(getCliFileContents(activity,deployment))
-        
-        return  tempCliFile
+
+    fun getCliFile(activity: Activity,
+                   deployment: Deployment): File {
+        val tempCliFile = File.createTempFile("app-activity-specific", ".kt")
+
+        tempCliFile.writeText(getCliFileContents(activity, deployment))
+
+        return tempCliFile
     }
 
-    
-    fun getCliFileContents(activity : Activity, deployment : Deployment) =
-    """
+
+    fun getCliFileContents(activity: Activity, deployment: Deployment) =
+            """
     @file:JvmName("App")
     @file:JvmMultifileClass
     
@@ -105,25 +108,15 @@ class JavaProjectGenerator {
     @Command(name = "${activity.name}", version = ["${deployment.getService().getApiVersion()}"])
     class AppCallable() : Callable<Int> {
     
-        ${createParameters(activity,deployment)}
+        ${createParameters(activity)}
     
-        ${createOptions(activity,deployment)}
+        ${createOptions(activity, deployment)}
  
-    
-    
-    
         override fun call(): Int {
-    
             return execute(this)
-    
         }
-    
-    
     }
     
-    /**
-     * Activity-specific
-     */
     fun writeOutputDatasets(
         config: AppCallable,
         datasets: Map<String, List<DatasetItem>>
@@ -137,23 +130,27 @@ class JavaProjectGenerator {
      */
     fun getActivityInstance(config: AppCallable): ActivityInstance {
         val parameters = mapOf<String, Any>(
-            "email" to (config.email ?: ""),
-            "countCutoff" to config.countCutoff,
-            "threshold" to config.threshold,
-            "categoriesInResult" to config.categoriesInResult,
-            "geneIdentifierType" to config.geneIdentifiersType,
-            "columnName" to config.columnName
+        	${activity.getParameters().map {
+                """ "${it.getName()}" to config.${it.getName().sanitized()}"""
+            }.joinToString(",\n")}
         )
     
         val inputDatasets = mapOf<String, List<DatasetItem>>(
-            "geneIdTable" to listOfNotNull(config.geneIdTable)
-                .map { datasetItemFrom(it) }
+        	${activity.getInputDatasets().map {
+                """ "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+                	.map { datasetItemFrom(it) }
+            """
+            }.joinToString(",\n")}
         )
     
         val outputDatasets = mapOf<String, List<DatasetItem>>(
-            "output" to listOfNotNull(config.output)
-                .map { datasetItemFrom(it) }
+        	${activity.getOutputDatasets().map {
+                """ "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+                		.map { datasetItemFrom(it) }
+            """
+            }.joinToString(",\n")}
         )
+    
     
         val instance = ActivityInstance(
             state = ActivityInstanceState.CREATED,
@@ -170,112 +167,143 @@ class JavaProjectGenerator {
     )
     
     val executedProcessId = "${activity.name}"
-    """.trimIndent()()();
-    
-    fun createParameters(activity : Activity, deployment : Deployment) =
-    """
-        @Parameters(
-            parameterLabel = "INPUT",
-            index = "0",
-            arity = "1..1",
-            description = [""]
-        )
-        var geneIdTable: File? = null // 'text/tsv' [1,1];
-    
-        @Parameters(
-            parameterLabel = "OUTPUT",
-            index = "1",
-            arity = "1..1",
-            description = [""]
-        )
-        var output: File? = null // 'text/tsv' [1,1];
-    
-        @Parameters(
-            parameterLabel = "EMAIL",
-            index = "2",
-            arity = "1..1",
-            description = [""]
-        )
-        var email: String? = null
-    """.trimIndent()
+    """.trimIndent();
 
-    val Parameter.optionText get() =
-    """
-    	@Option(
-    		names = ["${getName()}"],
-    		paramLabel = "${getName().toUpperCase()}",
-    		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-    		description = ["${getRemark()}"]
-    	)
-    	var ${getName()} : ${getParameterType().javaType} = ${formatedDefaultValue}
-    """.trimIndent()
-    
-    val ParameterType.javaType get() : String {
-        return when (this) {
-            ParameterType.BOOLEAN -> "Boolean"
-            ParameterType.INTEGER -> "Int"
-            ParameterType.REAL -> "Double"
-            ParameterType.STRING -> "String"
-        }
-    }
-    
-    val Parameter.formatedDefaultValue get() : String {
-        return when (this.getMaximumCardinality().toInt()) {
-        	1 -> this.getDefaultValue().first()
-            else -> "listOf(${this.getDefaultValue()
-            		.joinToString(",","\"","\"")})"
-        }
-    }
-    
-    fun createOptions(activity : Activity, deployment : Deployment) =
-    """
-    ${activity.getParameters()
-            .filter { it.getDefaultValue().size > 0 }
-    		.map {it.optionText}
-    } """.trimIndent()
 
-//    |    @Option(
-//    |        names = ["--count-cutoff"],
-//    |        paramLabel = "CUTOFF",
-//    |        arity = "1..1",
-//    |        description = [""]
-//    |    )
-//    |    var countCutoff: Int = 1
-//    
-//    |    @Option(
-//    |        names = ["--threshold"],
-//    |        paramLabel = "THRESHOLD",
-//    |        arity = "1..1",
-//    |        description = [""]
-//    |    )
-//    |    var threshold: Double = 2.0
-//    
-//    |    @Option(
-//    |        names = ["--categories-in-result"],
-//    |        paramLabel = "CATEGORIES",
-//    |        arity = "1..*",
-//    |        description = [""]
-//    |    )
-//    |    var categoriesInResult: List<String> = listOf(
-//    |        "BBID", "BIOCARTA", "COG_ONTOLOGY",
-//    |        "GOTERM_BP_FAT", "GOTERM_CC_FAT", "GOTERM_MF_FAT", "INTERPRO",
-//    |        "KEGG_PATHWAY", "OMIM_DISEASE", "PIR_SUPERFAMILY", "SMART",
-//    |        "SP_PIR_KEYWORDS", "UP_SEQ_FEATURE"
-//    |    )
-//    
-//    |    @Option(
-//    |        names = ["--gene-identifiers-type"],
-//    |        paramLabel = "GENE_IDENTIFIERS_TYPE",
-//    |        arity = "1..1",
-//    |        description = [""]
-//    |    )
-//    |    var geneIdentifiersType: String = "AFFYMETRIX_3PRIME_IVT_ID"
-//    
-//    |    @Option(
-//    |        names = ["--column-name"],
-//    |        paramLabel = "COLUMN",
-//    |        arity = "1..1",
-//    |        description = [""]
-//    |    )
-//    |    var columnName: String = "1"
+    fun createParameters(activity: Activity) =
+            """
+			${activity.getInputDatasets()
+                    .map { it.parameterText }
+                    .joinToString("\n\n")
+            }
+
+			${activity.getOutputDatasets()
+                    .map { it.parameterText }
+                    .joinToString("\n\n")
+            }
+
+
+			${activity.getParameters()
+                    .filter { it.getDefaultValue().size == 0 }
+                    .map { it.parameterText }
+                    .joinToString("\n\n")
+            } """.trimIndent()
+
+
+    fun createOptions(activity: Activity, deployment: Deployment) =
+            """
+			@Option(
+				names = ["service-url"],
+				paramLabel = "SERVICE_BASE_URL",
+				arity = "1..1",
+				description = ["The Activity-REST service base URL"]
+			)
+			var service_url : String
+			= "${deployment.getContainer().getBaseUrl()}"
+ 
+			${activity.getParameters()
+                    .filter { it.getDefaultValue().size > 0 }
+                    .map { it.optionText }
+                    .joinToString("\n\n")
+            } """.trimIndent()
+
+    val InputDataset.parameterText: String
+        get() =
+            """
+			@Parameters(
+				names = ["${getName()}"],
+				paramLabel = "${getName().toUpperCase()}",
+				arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+				description = ["${getRemark()}"]
+			)
+			var ${getName().sanitized()} : ${
+            if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
+            }""".trimIndent()
+
+    val OutputDataset.parameterText: String
+        get() =
+            """
+			@Parameters(
+				names = ["${getName()}"],
+				paramLabel = "${getName().toUpperCase()}",
+				arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+				description = ["${getRemark()}"]
+			)
+			var ${getName().sanitized()} : ${
+            if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
+            }""".trimIndent()
+
+    val Parameter.parameterText
+        get() =
+            """
+	@Parameters(
+		names = ["${getName()}"],
+		paramLabel = "${getName().toUpperCase()}",
+		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+		description = ["${getRemark()}"]
+	)
+	var ${getName().sanitized()} : ${typeText}?
+""".trimIndent()
+
+
+    val Parameter.optionText
+        get() =
+            """
+	@Option(
+		names = ["${getName().sanitized()}"],
+		paramLabel = "${getName().toUpperCase()}",
+		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+		description = ["${getRemark()}"]
+	)
+	var ${getName().sanitized()} : ${typeText}
+		= ${formatedDefaultValue}
+""".trimIndent()
+
+    val Parameter.typeText: String
+        get() {
+            return when (getMaximumCardinality().toInt()) {
+                1 -> "${getParameterType().javaType}"
+                else -> "List<${getParameterType().javaType}>"
+            }
+        }
+
+    val Parameter.formattedDefaultValue: String
+        get() {
+            return when (getMaximumCardinality().toInt()) {
+                1 -> formatParameterValue(
+                        getDefaultValue().first(),
+                        getParameterType()
+                )
+                else -> """listOf(${getDefaultValue()
+                        .map { formatParameterValue(it, getParameterType()) }
+                        .joinToString(",")})""""
+            }
+        }
+
+    fun formatParameterValue(value: String, type: ParameterType): String {
+        return when (type) {
+            ParameterType.REAL, ParameterType.INTEGER -> value.toString()
+            else -> "\"${value.toString()}\""
+        }
+
+    }
+
+    val ParameterType.javaType
+        get() : String {
+            return when (this) {
+                ParameterType.BOOLEAN -> "Boolean"
+                ParameterType.INTEGER -> "Int"
+                ParameterType.REAL -> "Double"
+                ParameterType.STRING -> "String"
+            }
+        }
+
+    val Parameter.formatedDefaultValue
+        get() : String {
+            return when (this.getMaximumCardinality().toInt()) {
+                1 -> this.getDefaultValue().first()
+                else -> "listOf(${this.getDefaultValue()
+                        .joinToString(",", "\"", "\"")})"
+            }
+        }
 }
