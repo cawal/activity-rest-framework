@@ -19,7 +19,7 @@ class GalaxyClientGenerator : ClientGenerator {
 
         val bpmn = AadlToBpmn().generateBpmn(activity)
         val jBpm = BpmnToJbpm().transform(bpmn)
-        val xmlWrapper = AadlToGalaxyToolWrapper().generate(activity)
+        val xmlWrapper = AadlToGalaxyToolWrapper().generate(activity,deployment)
         val javaProject = JavaProject(
                 JavaProjectGenerator().generate(activity, deployment)
         )
@@ -45,7 +45,7 @@ class JavaProject(val directory: File) {
     }
 
     fun addJbpmFileToProject(jbpm: File) {
-    	jbpm.renameTo(File(directory,"src/main/java/activity-jbpm.bpmn2"))
+    	jbpm.renameTo(File(directory,"src/main/resources/activity-jbpm.bpmn2"))
     }
 
     fun addXmlWrapperToProject(xmlWrapper: File) {

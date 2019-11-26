@@ -18,6 +18,8 @@
     </parent>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <activityrest.framework.version></activityrest.framework.version>
         <activityrest.aadl.version></activityrest.aadl.version>
         <activityrest.deploymentDSL.version></activityrest.deploymentDSL.version>

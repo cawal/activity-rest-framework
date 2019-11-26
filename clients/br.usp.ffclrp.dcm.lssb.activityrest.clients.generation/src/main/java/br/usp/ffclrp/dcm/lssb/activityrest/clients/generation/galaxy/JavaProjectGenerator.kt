@@ -6,11 +6,10 @@ import org.apache.maven.cli.MavenCli
 import java.io.File
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
+//import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.sanitized
 
 
-fun String.sanitized(): String {
-    return this.replace("-", "_")
-}
+
 
 class JavaProjectGenerator {
 
@@ -121,8 +120,28 @@ class JavaProjectGenerator {
         config: AppCallable,
         datasets: Map<String, List<DatasetItem>>
     ): Unit {
-        IOUtils.write(datasets.get("output")?.first()?.content, FileWriter(config.output))
-        println(config.output?.getAbsolutePath())
+    	${activity.getOutputDatasets()
+            .filter { it.getMaximumCardinality().toInt() == 1}
+            .map {
+                """IOUtils.write(datasets.get("${it.getName()}")?
+                	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
+        		println(config.${it.getName().sanitized()}?.getAbsolutePath())
+           """}.joinToString("\n")}
+ 
+    	${activity.getOutputDatasets()
+            .filter { it.getMaximumCardinality().toInt() != 1}
+            .map {
+                """datasets.get("${it.getName()}")?
+                	.forEach {
+                		val fileName = config.${it.getName().sanitized()}+"/"+${it.getName()}
+                		IOUtils.write(it.content,
+                				FileWriter(fileName))
+					println(fileName)
+                		
+                	}
+           """}.joinToString("\n")}
+ 
+         }
     }
     
     /**
