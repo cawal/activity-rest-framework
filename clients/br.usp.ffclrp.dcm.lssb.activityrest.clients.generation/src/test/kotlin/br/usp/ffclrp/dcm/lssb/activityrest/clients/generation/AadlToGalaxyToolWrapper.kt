@@ -40,12 +40,17 @@ class AadlToGalaxyToolWrapperTest {
         var inputStream = this::class.java.getResourceAsStream("./david.aadl")
         ModelsService.retrieveAADLModel(inputStream)
     }
+
+    val deployment by lazy {
+        var inputStream = this::class.java.getResourceAsStream("./david.deployment")
+        ModelsService.retrieveDeploymentModel(inputStream)
+    }
     
 
     @Test
     fun `Execution creates a valid Xml file`() {
 
-        val file = transformationEngine.generate(activity);
+        val file = transformationEngine.generate(activity,deployment);
 
         assertAll("File exists",
                 { assertNotNull(file, "Returned a null File instance.") },

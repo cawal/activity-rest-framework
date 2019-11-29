@@ -41,61 +41,15 @@ class AadlToGalaxyToolWrapper {
     		.joinToString("\n")}
 |	]]></command>
 |	<inputs>
-|<!-- 		<section -->
-|<!-- 			name="required" -->
-|<!-- 			title="Required parameters" -->
-|<!-- 			expanded="true" -->
-|<!-- 		> -->
 |       ${activity.getParameters()
             .map{it.getInputSectionDeclaration()}
     		.joinToString("\n")}
+|
 |       ${activity.getInputDatasets()
             .map{it.getInputSectionDeclaration()}
     		.joinToString("\n")}
-|			<param
-|				name="email"
-|				type="text"
-|				label="Email for authentication at DAVID">
-|				<sanitizer>
-|					<valid initial="string.ascii_letters,string.digits">
-|						<add value="_" />
-|						<add value="-" />
-|						<add value="." />
-|						<add value="@" />
-|					</valid>
-|				</sanitizer>
-|			</param>
-|			<param
-|				name="columnName"
-|				type="text"
-|				label="Column with gene ids" />
-|<!-- 		</section> -->
-|<!-- 		<section -->
-|<!-- 			name="optional" -->
-|<!-- 			title="Optional parameters" -->
-|<!-- 			expanded="true" -->
-|<!-- 		> -->
-|			<param
-|				name="countCutoff"
-|				type="integer"
-|				value="2"
-|				label="Count cutoff" />
-|			<param
-|				name="threshold"
-|				type="float"
-|				value="0.1"
-|				label="Threshold" />
-|			<param
-|				name="categoriesInResult"
-|				type="text"
-|				area="true"
-|				label="Comma separated categories for result" />
-|			<param
-|				name="geneIdentifierTypes"
-|				type="text"
-|				label="Gene identifiers type" />
-|<!-- 		</section> -->
 |	</inputs>
+|
 |	<outputs>
 |           ${activity.getOutputDatasets()
     			.map {it.getOutputSectionDeclaration()}
@@ -103,81 +57,123 @@ class AadlToGalaxyToolWrapper {
 |	</outputs>
 |
 |	<tests>
-|		<test>
-|			<param
-|				name="geneIdTable"
-|				value="input.tsv"
-|				/>
-|			<param
-|				name="email"
-|				value="ricardocawal@usp.br"
-|				/>
-|			<param
-|				name="columnName"
-|				value="gene_ids"
-|				/>
-|			<param
-|				name="countCutoff"
-|				value="2"
-|				/>
-|			<param
-|				name="threshold"
-|				value="0.1"
-|				/>
-|			<param
-|				name="categoriesInResult"
-|				value="BBID,BIOCARTA,COG_ONTOLOGY,GOTERM_BP_FAT,GOTERM_CC_FAT,GOTERM_MF_FAT,INTERPRO,KEGG_PATHWAY,OMIM_DISEASE,PIR_SUPERFAMILY,SMART,SP_PIR_KEYWORDS,UP_SEQ_FEATURE"
-|				/>
-|			<param
-|				name="geneIdentifierTypes"
-|				value="AFFYMETRIX_3PRIME_IVT_ID"
-|				/>
-|			<output
-|				name="output"
-|				value="output.tsv"
-|				/>
-|		</test>
+|       <!-- Include your tests here -->
 |	</tests>
 |
 |</tool>
     """.trimMargin();
     
+//       --count-cutoff ${countCutoff}
+//       --categories-in-result
+//        #for $cat in $categoriesInResult.split(','):
+//            '${cat}'
+//        #end for
+//       --threshold ${threshold}
+//       --column-name ${columnName}
+//       '${geneIdTable}'
+//       '${output}'
+//       '${email}'
+ 
  	fun Parameter.getCallSyntax() : String =
-            """
- 			""".trimMargin()
+            if (this.getMaximumCardinality().toInt() == 1)
+				""" --${this.getName()} ${'$'}{${this.getName().sanitized()}}
+				""".trimMargin()
+            else 
+				""" --${this.getName()}
+					 #for ${'$'}i, ${'$'}value in enumerate(${'$'}${this.getName().sanitized()}V)
+						'${'$'}value'
+					#end for
+				""".trimMargin()
     
  	fun InputDataset.getCallSyntax() : String =
-            """
- 			""".trimMargin()
+            if (this.getMaximumCardinality().toInt() == 1)
+				""" --${this.getName()} ${'$'}{${this.getName().sanitized()}}
+				""".trimMargin()
+            else 
+				""" --${this.getName()}
+					 #for ${'$'}i, ${'$'}value in enumerate(${'$'}${this.getName().sanitized()}V)
+						'${'$'}value'
+					#end for
+				""".trimMargin()
     
  	fun OutputDataset.getCallSyntax() : String =
-            """
- 			""".trimMargin()
+            if (this.getMaximumCardinality().toInt() == 1)
+				""" --${this.getName()} ${'$'}{${this.getName().sanitized()}}
+				""".trimMargin()
+            else 
+				""" --${this.getName()}
+					 #for ${'$'}i, ${'$'}value in enumerate(${'$'}${this.getName().sanitized()}V)
+						'${'$'}value'
+					#end for
+				""".trimMargin()
 
     fun Parameter.getInputSectionDeclaration() : String =
+            if(this.getMaximumCardinality().toInt() == 1)
             """
 			|			<param
 			|				name="${this.getName().sanitized()}"
 			|				type="${this.getGalaxyType()}"
 			|				value="${this.getDefaultValue().joinToString(",")}"
-			|				label="${this.getRemark()}" />
+			|				label="${this.getRemark()}">
+    		|               ${if (this.getParameterType() == ParameterType.STRING)
+                				includeSanitizerConfig()
+                			 else ""}
+			|            </param>
     		""".trimMargin()
-    
-    fun InputDataset.getInputSectionDeclaration() : String =
+			else
             """
-    		|			<param
+			|        <repeat name="${this.getName().sanitized()}" title="${this.getName()}">
+			|			<param
+			|				name="value"
+			|				type="${this.getGalaxyType()}"
+			|				value="${this.getDefaultValue().joinToString(",")}"
+			|				label="${this.getRemark()}">
+
+    		|               ${if (this.getParameterType() == ParameterType.STRING)
+                				includeSanitizerConfig()
+                			 else ""}
+			|            </param>
+			|        </repeat>
+			""".trimMargin()
+    
+    fun includeSanitizerConfig() : String =
+            """
+			|				<sanitizer>
+			|					<valid initial="string.ascii_letters,string.digits">
+			|						<add value="_" />
+			|						<add value="-" />
+			|						<add value="." />
+			|						<add value="@" />
+			|					</valid>
+			|				</sanitizer>
+			""".trimMargin()
+ 
+    fun InputDataset.getInputSectionDeclaration() : String =
+            if(this.getMaximumCardinality().toInt() == 1)
+            """
+			|			<param
 			|				name="${this.getName().sanitized()}"
 			|				type="data"
-			|				format="${this.getGalaxyFormat()}"
-			|				label="${this.getRemark()}" />
+			|				format="${this.getGalaxyFormat()}">
+			|            </param>
     		""".trimMargin()
+			else
+            """
+			|        <repeat name="${this.getName().sanitized()}" title="${this.getName()}">
+			|			<param
+			|				name="value"
+			|				type="data"
+			|				format="${this.getGalaxyFormat()}">
+			|            </param>
+			|        </repeat>
+			""".trimMargin()
     
     
     fun OutputDataset.getOutputSectionDeclaration() : String =
             """
 			|		<data
 			|				type="${this.getGalaxyType()}"
-			|				format="${this.getGalaxyFormat()}""
+			|				format="${this.getGalaxyFormat()}"
 			|			name="${this.getName().sanitized()}" />
     		""".trimMargin()
     

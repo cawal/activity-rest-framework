@@ -212,7 +212,7 @@ class JavaProjectGenerator {
     fun createOptions(activity: Activity, deployment: Deployment) =
             """
 			@Option(
-				names = ["service-url"],
+				names = ["--service-url"],
 				paramLabel = "SERVICE_BASE_URL",
 				arity = "1..1",
 				description = ["The Activity-REST service base URL"]
@@ -229,11 +229,12 @@ class JavaProjectGenerator {
     val InputDataset.parameterText: String
         get() =
             """
-			@Parameters(
-				names = ["${getName()}"],
+			@Option(
+				names = ["--${getName()}"],
 				paramLabel = "${getName().toUpperCase()}",
 				arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
 				description = ["${getRemark()}"]
+				required = true
 			)
 			var ${getName().sanitized()} : ${
             if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
@@ -242,11 +243,12 @@ class JavaProjectGenerator {
     val OutputDataset.parameterText: String
         get() =
             """
-			@Parameters(
-				names = ["${getName()}"],
+			@Option(
+				names = ["--${getName()}"],
 				paramLabel = "${getName().toUpperCase()}",
 				arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-				description = ["${getRemark()}"]
+				description = ["${getRemark()}"],
+				required = true
 			)
 			var ${getName().sanitized()} : ${
             if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
@@ -256,7 +258,7 @@ class JavaProjectGenerator {
         get() =
             """
 	@Parameters(
-		names = ["${getName()}"],
+		names = ["--${getName()}"],
 		paramLabel = "${getName().toUpperCase()}",
 		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
 		description = ["${getRemark()}"]
