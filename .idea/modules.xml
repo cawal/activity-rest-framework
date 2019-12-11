@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/clients/galaxy-client-base-archetype/target/test-classes/projects/basic/project/basic/basic (2) (archetype.it).iml" filepath="$PROJECT_DIR$/clients/galaxy-client-base-archetype/target/test-classes/projects/basic/project/basic/basic (2) (archetype.it).iml" />
-      <module fileurl="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (1).iml" filepath="$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (1).iml" group="activity-rest-root and modules/client-support-infrastructure and modules" />
+      <module fileurl="file://$PROJECT_DIR$/clients/galaxy-client-base-archetype/src/main/resources/archetype-resources/archetype-resources.iml" filepath="$PROJECT_DIR$/clients/galaxy-client-base-archetype/src/main/resources/archetype-resources/archetype-resources.iml" />
     </modules>
   </component>
 </project>

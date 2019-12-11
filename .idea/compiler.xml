@@ -17,11 +17,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="aadlXmiToOpenAPI (2) (br.usp.ffclrp.dcm.lssb.activityrest)" />
         <module name="galaxy-client-base-archetype" />
-        <module name="aadl2openAPI (2) (br.usp.ffclrp.dcm.lssb.activityrest)" />
-        <module name="activity-rest-framework (1)" />
-        <module name="activity-rest-framework-testing (1)" />
       </profile>
       <profile name="Annotation profile for br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web (1)" enabled="true">
         <sourceOutputDir name="../../../../target/generated-sources/annotations" />
@@ -101,37 +97,51 @@
         <outputRelativeToContentRoot value="true" />
         <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide (1)" />
       </profile>
-      <profile name="Annotation profile for Unknown" enabled="true">
+      <profile name="Annotation profile for activity-rest-framework" enabled="true">
         <sourceOutputDir name="../../../../../../../../target/generated-sources/annotations" />
         <sourceTestOutputDir name="../../../../../../../../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="aadlXmiToOpenAPI (1)" />
         <module name="basic (2) (archetype.it)" />
-        <module name="jbppm-client-library (2)" />
         <module name="aadl2openAPI (1)" />
-        <module name="jbppm-client-library (3)" />
+        <module name="aadlXmiToOpenAPI (2) (br.usp.ffclrp.dcm.lssb.activityrest)" />
+        <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (1)" />
+        <module name="aadlXmiToOpenAPI (1)" />
+        <module name="activity-rest-framework-testing (3) (br.usp.ffclrp.dcm.lssb.restaurant)" />
+        <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (2) (br.usp.ffclrp.dcm.lssb.activityrest.clients.generation)" />
+        <module name="activity-rest-framework-testing (2)" />
+        <module name="activity-rest-framework (2)" />
+        <module name="aadl2openAPI (2) (br.usp.ffclrp.dcm.lssb.activityrest)" />
+        <module name="basic (1) (it.pkg.davidchartreport.jbpmclient)" />
+        <module name="activity-rest-framework (3) (br.usp.ffclrp.dcm.lssb.restaurant)" />
       </profile>
-      <profile name="Annotation profile for maven-archiver" enabled="true">
+      <profile name="Annotation profile for ${artifactId}" enabled="true">
         <sourceOutputDir name="../../../../../target/generated-sources/annotations" />
         <sourceTestOutputDir name="../../../../../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="maven-archiver" />
-      </profile>
-      <profile name="Annotation profile for maven-archiver (1)" enabled="true">
-        <sourceOutputDir name="../../../../../target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../../../../target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
+        <module name="archetype-resources (2)" />
         <module name="maven-archiver (1)" />
       </profile>
-      <profile name="Annotation profile for Apache Ant (all-in-one)" enabled="true">
-        <sourceOutputDir name="../../../../../../../../../../../../target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../../../../../../../../../../../target/generated-test-sources/test-annotations" />
+      <profile name="Annotation profile for jbppm-client-library (3)" enabled="true">
+        <sourceOutputDir name="../../../../../../../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../../../../../../../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="org.apache.ant (3)" />
-        <module name="org.apache.ant (4)" />
-        <module name="org.apache.ant (6)" />
-        <module name="org.apache.ant (1)" />
-        <module name="org.apache.ant (2)" />
+        <module name="jbppm-client-library (3)" />
+      </profile>
+      <profile name="Annotation profile for jbppm-client-library (2)" enabled="true">
+        <sourceOutputDir name="../../../../../../../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../../../../../../../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jbppm-client-library (2)" />
+      </profile>
+      <profile name="Annotation profile for br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web" enabled="true">
+        <sourceOutputDir name="../../../../../../../../../../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../../../../../../../../../../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web (3) (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl)" />
+        <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web (2)" />
+        <module name="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web (3) (br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax)" />
+        <module name="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web (2)" />
       </profile>
       <profile name="Annotation profile for br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide" enabled="true">
         <sourceOutputDir name="../../../../../../target/generated-sources/annotations" />
@@ -150,6 +160,7 @@
         <module name="maven-archiver (5)" />
         <module name="maven-archiver (2)" />
         <module name="maven-archiver (3)" />
+        <module name="archetype-resources (1)" />
         <module name="maven-archiver (10)" />
       </profile>
       <profile name="Annotation profile for activity-rest-archetype" enabled="true">
@@ -157,7 +168,8 @@
         <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jbppm-client-library (1)" />
-        <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (1)" />
+        <module name="activity-rest-framework-testing (1)" />
+        <module name="activity-rest-framework (1)" />
         <module name="david-jbpm-test" />
         <module name="archetype" />
       </profile>
@@ -167,11 +179,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="br.usp.ffclrp.dcm.lssb.restaurant.feature" />
       </profile>
-      <profile name="Annotation profile for org.apache.ant (5)" enabled="true">
+      <profile name="Annotation profile for Unknown" enabled="true">
         <sourceOutputDir name="../../../../../../../../../../../../target/generated-sources/annotations" />
         <sourceTestOutputDir name="../../../../../../../../../../../../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="org.apache.ant (3)" />
+        <module name="org.apache.ant (4)" />
         <module name="org.apache.ant (5)" />
+        <module name="org.apache.ant (6)" />
+        <module name="org.apache.ant (1)" />
+        <module name="org.apache.ant (2)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -181,32 +198,20 @@
       <module name="aadlXmiToOpenAPI (2)" target="1.5" />
       <module name="aadlXmiToOpenAPI (3)" target="1.8" />
       <module name="aadlXmiToOpenAPI (3) (br.usp.ffclrp.dcm.lssb.activityrest)" target="1.8" />
-      <module name="activity-rest-framework (2)" target="1.5" />
       <module name="activity-rest-framework (3)" target="1.5" />
-      <module name="activity-rest-framework (3) (br.usp.ffclrp.dcm.lssb.restaurant)" target="1.8" />
-      <module name="activity-rest-framework-testing (2)" target="1.5" />
       <module name="activity-rest-framework-testing (3)" target="1.5" />
-      <module name="activity-rest-framework-testing (3) (br.usp.ffclrp.dcm.lssb.restaurant)" target="1.8" />
-      <module name="archetype-resources (1)" target="1.8" />
-      <module name="archetype-resources (2)" target="1.8" />
+      <module name="archetype-resources" target="1.8" />
       <module name="archetype-resources (3)" target="1.5" />
       <module name="archetype-resources (4)" target="1.5" />
       <module name="basic" target="1.8" />
-      <module name="basic (1) (it.pkg.davidchartreport.jbpmclient)" target="1.8" />
-      <module name="basic (2) (archetype.it)" target="1.8" />
-      <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (1)" target="1.5" />
       <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (2)" target="1.5" />
       <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (3)" target="1.5" />
       <module name="br.usp.ffclrp.dcm.lssb.activityrest.clients.generation (3) (br.usp.ffclrp.dcm.lssb.activityrest.clients.generation)" target="1.5" />
       <module name="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide (2)" target="1.8" />
-      <module name="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web (2)" target="1.5" />
       <module name="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web (3)" target="1.8" />
-      <module name="br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web (3) (br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax)" target="1.8" />
       <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide (2)" target="1.8" />
       <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.tests" target="1.8" />
-      <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web (2)" target="1.5" />
       <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web (3)" target="1.8" />
-      <module name="br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web (3) (br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl)" target="1.8" />
       <module name="maven-archiver (13)" target="1.5" />
       <module name="maven-archiver (14)" target="1.5" />
       <module name="maven-archiver (15)" target="1.5" />

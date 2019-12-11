@@ -119,7 +119,7 @@ public class RootResource {
 				failedDao);
 	}
 	
-	@GET @Path("xsd")
+	@GET @Path("/xsd")
 	public Response getServiceXsd() {
 		initialize();
 		if(deploymentModel != null) {
@@ -132,7 +132,7 @@ public class RootResource {
 	}
 	
 
-	@GET @Path("xsd")
+	@GET @Path("/wsdl")
 	public Response getServiceWsdl() {
 		initialize();
 		if(deploymentModel != null) {
