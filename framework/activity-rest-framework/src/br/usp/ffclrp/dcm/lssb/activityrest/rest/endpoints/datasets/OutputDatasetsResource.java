@@ -1,10 +1,14 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Nonnull;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -79,13 +83,23 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
-	public Response getFileFromCollectionDataset(
+	public File getFileFromCollectionDataset(
 			@PathParam("datasetName") @Nonnull String datasetName,
 			@PathParam("fileName") @Nonnull String fileName) {
 		
 		Dataset d = aa.outputDatasetForName(datasetName);
 		URI baseUri = uriInfo.getAbsolutePath();
-		return getResponseForGetDatasetFileRequest(baseUri, d, fileName);
+		
+		Optional<File> fileOp = d.getFiles().stream()
+				.filter(f -> f.getName().equalsIgnoreCase(fileName))
+				.findFirst();
+		
+		if (!fileOp.isPresent())
+			throw new NotFoundException();
+		
+		File file = fileOp.get();
+		return file;
+		//return getResponseForGetDatasetFileRequest(baseUri, d, fileName);
 		
 	}
 

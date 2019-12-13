@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -395,20 +397,26 @@ public class FileSystemActivityRepository implements ActivityRepository {
 					// name
 					File datasetSubdirectory =
 							new File(inputSubdirectory, dp.getName());
+
+					List<File> oldFiles = new ArrayList<>();
+					
 					for (int i = 0; i < dataset.getFiles().size(); i++) {
 						File f = dataset.getFiles().get(i);
 						File expectedFile =
 								new File(datasetSubdirectory, f.getName());
 						
+						
 						if (!f.getAbsolutePath()
 								.equalsIgnoreCase(
 										expectedFile.getAbsolutePath())) {
 							Files.move(f.toPath(), expectedFile.toPath());
-							dataset.getFiles().remove(i);
+							oldFiles.add(f);
+							//dataset.getFiles().remove(i);
 							dataset.getFiles().add(expectedFile);
-							
 						}
 					}
+					
+					//dataset.getFiles().removeAll(oldFiles);
 					
 				} else { // file has the dataset name
 					File singleFileDatasetDir =
@@ -538,7 +546,7 @@ public class FileSystemActivityRepository implements ActivityRepository {
 								.equalsIgnoreCase(
 										expectedFile.getAbsolutePath())) {
 							Files.move(f.toPath(), expectedFile.toPath());
-							dataset.getFiles().remove(i);
+							//dataset.getFiles().remove(i);
 							dataset.getFiles().add(expectedFile);
 							
 						}
