@@ -53,8 +53,10 @@ public class CommandLineToolJob extends AbstractJob {
 	
 			// If the process was not successfully finished
 			case FAILED:
-			default:
 				notifyFailure();
+				break;
+			default:
+				notifySuccess();
 				break;
 			}
 			

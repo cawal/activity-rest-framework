@@ -16,7 +16,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
-@Api
 public class SucceededAnalysesCollection {
 	ActivityRestConfig config;
 	@Context
@@ -49,7 +48,7 @@ public class SucceededAnalysesCollection {
 												analysisActivityDao,config);
 
 		} catch (AnalysisActivityNotFoundException e) {
-			throw new NotFoundException();
+			throw new NotFoundException("for id" + analysisID);
 		} catch (Exception e) {
 			throw new ServerErrorException(500, e);
 		}

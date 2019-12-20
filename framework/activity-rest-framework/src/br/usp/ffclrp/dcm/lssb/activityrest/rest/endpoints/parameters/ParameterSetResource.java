@@ -33,7 +33,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterReprese
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
-@Api()
 public class ParameterSetResource {
 	
 	ActivityRestConfig config;

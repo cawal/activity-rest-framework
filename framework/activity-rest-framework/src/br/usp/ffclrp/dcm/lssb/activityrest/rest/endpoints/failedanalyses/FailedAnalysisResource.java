@@ -30,8 +30,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import io.swagger.annotations.Api;
 
-@Api
-@Path("/new-analyses/{analysisID}")
 public class FailedAnalysisResource {
 	
 	ActivityRestConfig config;
