@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
-import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.InvalidCommandLineDefinition;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.InvalidCommandLineDefinition;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineEntryList;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.CommandLineTool;
