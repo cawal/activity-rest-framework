@@ -250,7 +250,7 @@ rule Parameter {
 	to
 		sendParameterTask: BPMN!Task (
 			id <- 'submit-parameter-' + p.name + '-task'.sanitizeIdentifier(),
-			name <- 'Submit ' + p.name + ' parameter value',
+			name <- 'Submit parameter value',
 			dataInputAssociations <- inputAssociation,
 			ioSpecification <- ioSpecification
 		),
@@ -289,7 +289,7 @@ rule InputDataset {
 	to
 		sendDatasetTask: BPMN!Task (
 			id <- 'submit-dataset-' + d.name + '-task'.sanitizeIdentifier(),
-			name <- 'Submit ' + d.name + ' dataset files',
+			name <- 'Submit dataset files',
 			dataInputAssociations <- inputAssociation,
 			ioSpecification <- ioSpecification
 		),
@@ -327,7 +327,7 @@ rule OutputDataset {
 	to
 		retrieveDatasetTask: BPMN!Task (
 			id <- 'retrieve-dataset-' + d.name + '-task'.sanitizeIdentifier(),
-			name <- 'Retrieve ' + d.name + ' dataset files',
+			name <- 'Retrieve dataset files',
 			dataOutputAssociations <- outputAssociation,
 			ioSpecification <- ioSpecification
 		),
