@@ -53,7 +53,10 @@ class AadlToBpmnTests {
                 EmfUri.createFileURI(file.getAbsolutePath())
         )
 
+
         return bpmnObject != null
+        //return true
     }
+    
 
 }

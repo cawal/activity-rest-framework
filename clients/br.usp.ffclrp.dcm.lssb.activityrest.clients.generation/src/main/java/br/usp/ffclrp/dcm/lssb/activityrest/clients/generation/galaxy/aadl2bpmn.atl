@@ -1,19 +1,20 @@
 --- @atlcompiler emftvm
+-- @atlcompiler atl2010
 -- @nsURI AADL=http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore
 -- @nsURI DEPL=http://dcm.ffclrp.usp.br/lssb/metamodels/deployment-model.ecore
 -- @nsURI slm=http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore
 -- @nsURI BPMN=http://www.omg.org/spec/BPMN/20100524/MODEL
+
+--- @nsURI ECORE=http://www.eclipse.org/emf/2002/Ecore
 --- @nsURI bpmna=http://www.omg.org/spec/BPMN/20100524/MODEL-XMI
--- @nsURI drools=http://www.jboss.org/drools
--- @nsURI ECORE=http://www.eclipse.org/emf/2002/Ecore
+--- @nsURI BPMN=http://www.jboss.org/drools
 --- @nsURI BPMN=http://www.omg.org/spec/BPMN/20100524/MODEL-XMI
 --- @nsURI DI=http://www.omg.org/spec/DD/20100524/DI-XMI
-
 
 --- Se tentar EMFTVM:
 --- https://wiki.eclipse.org/ATL/EMFTVM#Invoking_native_Java_methods
 
-module aadl2bpmn;
+module aadl2bpmn; 
 create OUT: BPMN from IN: AADL;
 
 helper context String def: sanitizeIdentifier(): String =
@@ -91,8 +92,8 @@ rule Activity {
 
 		definitions: BPMN!Definitions (
 			id <- 'definitions'.sanitizeIdentifier(),
-			exporter <- 'org.eclipse.bpmn2.modeler.core',
-			exporterVersion <- '1.5.1.Final-v20190425-2005-B1',
+--			exporter <- 'org.eclipse.bpmn2.modeler.core',
+--			exporterVersion <- '1.5.1.Final-v20190425-2005-B1',
 			expressionLanguage <- 'http://www.mvel.org/2.0',
 			targetNamespace <- 'http://www.jboss.org/drools',
 --			typeLanguage <- 'http://www.w3.org/2001/XMLSchema',

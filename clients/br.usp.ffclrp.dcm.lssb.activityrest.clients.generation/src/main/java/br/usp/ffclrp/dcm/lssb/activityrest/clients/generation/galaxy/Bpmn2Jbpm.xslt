@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- A guide: https://www.vogella.com/tutorials/XSLT/article.html -->
-<xsl:stylesheet
+<!-- <xsl:stylesheet
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
     xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
@@ -9,6 +9,12 @@
     xmlns:java="http://www.java.com/javaTypes" 
     xmlns:tns="http://www.jboss.org/drools" 
     xmlns="http://www.jboss.org/drools" 
+	version="1.0"
+>
+ --><xsl:stylesheet
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:tns="http://www.jboss.org/drools" 
 	version="1.0"
 >
 <!--     xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd"  -->
@@ -30,8 +36,9 @@
 	</xsl:template>
 
 	<xsl:template match="bpmn2:task">
-	<xsl:message>teste</xsl:message>
-		<bpmn2:task>
+		<xsl:message>teste</xsl:message>
+		<bpmn2:task >
+			<xsl:copy-of select="@*" />
 			<bpmn2:extensionElements>
 				<tns:metaData name="elementname">
 					<tns:metaValue>

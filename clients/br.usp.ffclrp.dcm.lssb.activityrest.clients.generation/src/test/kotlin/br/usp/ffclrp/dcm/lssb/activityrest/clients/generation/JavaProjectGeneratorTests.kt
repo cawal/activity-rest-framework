@@ -31,7 +31,9 @@ import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 import java.io.FileInputStream
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProjectGenerator
+import org.junit.Ignore
 
+@Ignore
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class JavaProjectGeneratorTests {
 

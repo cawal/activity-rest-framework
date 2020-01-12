@@ -6,8 +6,13 @@ import java.io.OutputStream;
 import java.util.HashMap;
 
 import org.eclipse.bpmn2.Bpmn2Package;
+import org.eclipse.bpmn2.util.Bpmn2ResourceFactoryImpl;
+import org.eclipse.bpmn2.util.Bpmn2XMIResourceFactoryImpl;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.m2m.atl.core.IModel;
 import org.eclipse.m2m.atl.core.IReferenceModel;
 import org.eclipse.m2m.atl.core.emf.EMFExtractor;
@@ -21,108 +26,108 @@ import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
 
-
 public class TransformationService {
+	
+	// METAMODELS
+	static final String AADL_METAMODEL_URI =
+			AnalysisActivityDescriptionPackage.eNS_URI;
+	static final String BPMN_METAMODEL_URI =
+			Bpmn2Package.eNS_URI;
+	protected static final String EXTENSION_BPMN2_XML = "bpmn2";
 
-	  // METAMODELS
-	  static final String AADL_METAMODEL_URI = 
-			  AnalysisActivityDescriptionPackage.eNS_URI;
-	  static final String BPMN_METAMODEL_URI =
-			  Bpmn2Package.eNS_URI;
-	  
-	  /*
-	   * Transformation modules
-	   */
-	  private static final String TRANSFORMATION_MODULE_URI = "aadl2bpmn.asm";
-
-
-
-
-	  public static void aadl2bpmn(
-			  					InputStream aadlSource, 
-			  					OutputStream bpmnTarget,
-			  					IProgressMonitor monitor) throws IOException {
-
-	    
+    protected static final String EXTENSION_BPMN2_XMI = "bpmn2xmi";
+	/*
+	 * Transformation modules
+	 */
+	private static final String TRANSFORMATION_MODULE_URI = "aadl2bpmn.asm";
+	
+	public static void aadl2bpmn(
+			InputStream aadlSource,
+			OutputStream bpmnTarget,
+			IProgressMonitor monitor) throws IOException, ATLCoreException {
+		
 		if (monitor != null) {
-	      monitor.subTask("AADL to OpenAPI transformation");
-	    }
+			monitor.subTask("ActDL to BPMN transformation");
+		}
+		
+		if (!EMFPlugin.IS_ECLIPSE_RUNNING) {
+			System.out.println("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEYOOOOOOOU");
+            Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(EXTENSION_BPMN2_XML,
+                    new Bpmn2ResourceFactoryImpl());
 
-	    try {
-	      // create transformation machinery
-	      EMFModelFactory modelFactory = new EMFModelFactory();
-	      EMFVMLauncher transformationLauncher = new EMFVMLauncher();
-	      EMFInjector injector = new EMFInjector();
-	      EMFExtractor extractor = new EMFExtractor();
-
-	      /*
-	       * Register packages and metamodels
-	       */
-	      ResourceSet resourceSet = modelFactory.getResourceSet();
-	      resourceSet.getPackageRegistry().put(AnalysisActivityDescriptionPackage.eNS_URI,
-	          AnalysisActivityDescriptionPackage.eINSTANCE);
-	      resourceSet.getPackageRegistry().put(DeploymentModelPackage.eNS_URI,
-	          DeploymentModelPackage.eINSTANCE);
-	      
-
-	      /*
-	       * Load the transformation definition
-	       */
-	      InputStream transformationInputStream =
-	          TransformationService.class.getResourceAsStream(
-	        		  TRANSFORMATION_MODULE_URI);
-	      System.out.println(transformationInputStream);
-	      Object basicModule = transformationLauncher.loadModule(transformationInputStream);
-
-
-
-
-	      /*
-	       * Load metamodels
-	       */
-	      IReferenceModel aadlMetamodel = modelFactory.newReferenceModel();
-	      injector.inject(aadlMetamodel, AADL_METAMODEL_URI);
-
-	      IReferenceModel bpmnMetamodel = modelFactory.newReferenceModel();
-	      injector.inject(bpmnMetamodel, BPMN_METAMODEL_URI );
-	      IModel bpmnModel = modelFactory.newModel(bpmnMetamodel);
-
-	      /*
-	       * Load models
-	       */
-	      IModel aadlModel = modelFactory.newModel(aadlMetamodel);
-	      injector.inject(aadlModel, aadlSource,new HashMap<String, Object>());
-
-	      /*
-	       * Run transformation
-	       */
-	      System.out.println("Transforming...");
-
-	      transformationLauncher.initialize(new HashMap<String, Object>());
-	      transformationLauncher.addInModel(aadlModel, "IN", "AADL");
-	      transformationLauncher.addOutModel(bpmnModel, "OUT", "BPMN");
-
-	      transformationLauncher.launch(ILauncher.RUN_MODE, monitor, new HashMap<String, Object>(),
-	          basicModule
-	      );
-
-	      /*
-	       * extract model
-	       */
-	      extractor.extract(bpmnModel, bpmnTarget, new HashMap<String, Object>());
-	      bpmnTarget.close();
-	      /*
-	       * Unload all models and metamodels (EMF-specific)
-	       */
-	      modelFactory.unload((EMFModel) bpmnModel);
-	      modelFactory.unload((EMFModel) aadlModel);
-	      modelFactory.unload((EMFReferenceModel) aadlMetamodel);
-	      modelFactory.unload((EMFReferenceModel) bpmnMetamodel);
-
-	    } catch (Exception e) {
-	      System.err.println(e);
-	      e.printStackTrace();
-	    }
-	  }
+            Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(EXTENSION_BPMN2_XMI,
+                    new Bpmn2XMIResourceFactoryImpl());
+        }
+		// create transformation machinery
+		EMFModelFactory modelFactory = new EMFModelFactory();
+		EMFVMLauncher transformationLauncher = new EMFVMLauncher();
+		EMFInjector injector = new EMFInjector();
+		EMFExtractor extractor = new EMFExtractor();
+		
+		/*
+		 * Register packages and metamodels
+		 */
+		ResourceSet resourceSet = modelFactory.getResourceSet();
+		resourceSet.getPackageRegistry().put(
+				AnalysisActivityDescriptionPackage.eNS_URI,
+				AnalysisActivityDescriptionPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(DeploymentModelPackage.eNS_URI,
+				DeploymentModelPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(Bpmn2Package.eNS_URI, Bpmn2Package.eINSTANCE);
+		
+		
+		/*
+		 * Load the transformation definition
+		 */
+		InputStream transformationInputStream =
+				TransformationService.class.getResourceAsStream(
+						TRANSFORMATION_MODULE_URI);
+		System.out.println(transformationInputStream);
+		Object basicModule =
+				transformationLauncher.loadModule(transformationInputStream);
+		
+		/*
+		 * Load metamodels
+		 */
+		IReferenceModel aadlMetamodel = modelFactory.newReferenceModel();
+		injector.inject(aadlMetamodel, AADL_METAMODEL_URI);
+		
+		IReferenceModel bpmnMetamodel = modelFactory.newReferenceModel();
+		injector.inject(bpmnMetamodel, BPMN_METAMODEL_URI);
+		IModel bpmnModel = modelFactory.newModel(bpmnMetamodel);
+		
+		/*
+		 * Load models
+		 */
+		IModel aadlModel = modelFactory.newModel(aadlMetamodel);
+		injector.inject(aadlModel, aadlSource, new HashMap<String, Object>());
+		
+		/*
+		 * Run transformation
+		 */
+		System.out.println("Transforming...");
+		
+		transformationLauncher.initialize(new HashMap<String, Object>());
+		transformationLauncher.addInModel(aadlModel, "IN", "AADL");
+		transformationLauncher.addOutModel(bpmnModel, "OUT", "BPMN");
+		
+		transformationLauncher.launch(ILauncher.RUN_MODE, monitor,
+				new HashMap<String, Object>(),
+				basicModule);
+		
+		/*
+		 * extract model
+		 */
+		extractor.extract(bpmnModel, bpmnTarget, new HashMap<String, Object>());
+		bpmnTarget.close();
+		/*
+		 * Unload all models and metamodels (EMF-specific)
+		 */
+		modelFactory.unload((EMFModel) bpmnModel);
+		modelFactory.unload((EMFModel) aadlModel);
+		modelFactory.unload((EMFReferenceModel) aadlMetamodel);
+		modelFactory.unload((EMFReferenceModel) bpmnMetamodel);
+		
+	}
 	
 }

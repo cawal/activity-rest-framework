@@ -5,7 +5,9 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.GalaxyClientGenerator
 import java.io.File
+import org.junit.Ignore
 
+@Ignore
 class GalaxyClientGeneratorTests {
 
     val activity by lazy {

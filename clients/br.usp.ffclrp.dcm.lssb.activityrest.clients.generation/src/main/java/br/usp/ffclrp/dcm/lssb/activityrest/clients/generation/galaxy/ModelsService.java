@@ -9,8 +9,10 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.eclipse.bpmn2.Bpmn2Package;
+import org.eclipse.bpmn2.Definitions;
 import org.eclipse.bpmn2.DocumentRoot;
 import org.eclipse.bpmn2.util.Bpmn2XMIResourceFactoryImpl;
+import org.eclipse.bpmn2.util.Bpmn2ResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -18,6 +20,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.jboss.drools.DroolsPackage;
+import org.jboss.drools.util.DroolsResourceFactoryImpl;
 
 import com.google.inject.Injector;
 
@@ -209,6 +213,30 @@ public class ModelsService {
 		// Register the XMI resource factory for the .xmi extension
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("bpmn2", 
+             new Bpmn2ResourceFactoryImpl());
+		
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+		
+        resSet.getPackageRegistry().put(Bpmn2Package.eNS_URI,Bpmn2Package.eINSTANCE);
+		// Get the resource
+		Resource resource = resSet.getResource(resourceUri, true);
+		// Get the first model element and cast it to the right type, in my
+		// example everything is hierarchical included in this first node
+		DocumentRoot bpmn2Object = (DocumentRoot) resource.getContents().get(0);
+		return bpmn2Object;
+	}
+	
+	public static DocumentRoot retrieveBpmnFromXmi(URI resourceUri) {
+		
+		// Initialize the model
+		initializeEcoreModelsResources();
+		
+		// Register the XMI resource factory for the .xmi extension
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("bpmn2", new Bpmn2XMIResourceFactoryImpl());
 		m.put("bpmn2", new Bpmn2XMIResourceFactoryImpl());
 		
 		// Obtain a new resource set
@@ -221,4 +249,47 @@ public class ModelsService {
 		DocumentRoot bomn2Object = (DocumentRoot) resource.getContents().get(0);
 		return bomn2Object;
 	}
+	
+	public static void writeBpmn2Model(DocumentRoot documentRoot,
+			String outputPath) {
+		// TODO Auto-generated method stub i
+		initializeEcoreModelsResources();
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("bpmn2", new Bpmn2ResourceFactoryImpl());
+		
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+		 
+//        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+//            (Resource.Factory.Registry.DEFAULT_EXTENSION, 
+//             new DroolsResourceFactoryImpl());
+//        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+//            ("bpmn2", 
+//             new DroolsResourceFactoryImpl());
+//        resSet.getPackageRegistry().put
+//            (DroolsPackage.eNS_URI, 
+//            		DroolsPackage.eINSTANCE);
+        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+            ("bpmn2", 
+             new Bpmn2ResourceFactoryImpl());
+        resSet.getPackageRegistry().put(Bpmn2Package.eNS_URI,Bpmn2Package.eINSTANCE);
+		// create a resource
+		Resource resource = resSet.createResource(URI
+				.createURI(outputPath));
+		// Get the first model element and cast it to the right type, in my
+		// example everything is hierarchical included in this first node
+		resource.getContents().add(documentRoot);
+		
+		// now save the content.
+		try {
+			resource.save(Collections.EMPTY_MAP);
+			System.out.println(resource + "is saved");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 }

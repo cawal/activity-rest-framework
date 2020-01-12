@@ -30,7 +30,9 @@ import org.xmlunit.builder.Input;
 import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 import java.io.FileInputStream
+import org.junit.Ignore
 
+@Ignore
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AadlToGalaxyToolWrapperTest {
 
