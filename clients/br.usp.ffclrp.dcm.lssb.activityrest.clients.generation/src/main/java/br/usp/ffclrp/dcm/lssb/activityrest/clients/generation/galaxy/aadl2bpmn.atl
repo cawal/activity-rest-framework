@@ -253,7 +253,7 @@ rule Parameter {
 			id <- 'submit-parameter-' + p.name + '-task'.sanitizeIdentifier(),
 			name <- 'Submit parameter value',
 			dataInputAssociations <- inputAssociation,
-			ioSpecification <- ioSpecification
+		    ioSpecification <- ioSpecification
 		),
 	    ioSpecification : BPMN!InputOutputSpecification(
 	    	dataInputs <- dataInput
@@ -266,7 +266,8 @@ rule Parameter {
 			targetRef <- dataInput
 		),
 		dataObject: BPMN!DataObject (
-			name <- p.name.sanitizeIdentifier(),
+			id <- p.name.sanitizeIdentifier(),
+			name <- p.name,
 			isCollection <- if 1 > p.maximumCardinality then
 					true
 				else

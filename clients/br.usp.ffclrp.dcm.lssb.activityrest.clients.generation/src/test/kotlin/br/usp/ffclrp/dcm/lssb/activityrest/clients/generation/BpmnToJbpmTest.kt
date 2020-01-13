@@ -35,6 +35,7 @@ class BpmnToJbpmTest {
         val file = BpmnToJbpm().transform(bpmn);
 
         print(file)
+//        file.renameTo(File("/home/cawal/git/lssb/phd-tests-scratch-project/a.bpmn2"))
         assertAll("File exists",
                 { assertNotNull(file, "Returned a null File instance.") },
                 { assertTrue(file.exists(), "BPMN file does not exists") },
