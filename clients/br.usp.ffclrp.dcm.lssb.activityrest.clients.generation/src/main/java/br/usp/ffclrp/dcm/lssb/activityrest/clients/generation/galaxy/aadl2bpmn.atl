@@ -181,11 +181,37 @@ rule Activity {
 		),
 
 		
+		-- TODO: Add data objects associated to these tasks 
 		
+		pollResultDataObject: BPMN!DataObject (
+			id <- 'poll-result',
+			name <- 'poll-result',
+			isCollection <- false,
+			itemSubjectRef <- thisModule.itemDefinitions
+						->get('STRING') 
+		),
 		pollingTask: BPMN!Task (
 			id <- 'poll-processing-task',
-			name <- 'Poll processing'
+			name <- 'Poll processing',
+			dataOutputAssociations <- pollOutputAssociation,
+		    ioSpecification <- pollIoSpecification
 		),
+	    pollIoSpecification : BPMN!InputOutputSpecification(
+	    	dataOutputs <- pollDataOutput,
+			outputSets <- pollOutputSet
+		),
+		pollOutputSet : BPMN!OutputSet (
+			dataOutputRefs <- pollDataOutput
+		),
+		pollDataOutput : BPMN!DataOutput (
+			id <- 'poll-result-string',
+			name <- 'poll-result'
+		),
+		pollOutputAssociation : BPMN!DataOutputAssociation (
+			targetRef <- pollResultDataObject,
+			sourceRef <- pollDataOutput
+		),
+		
 		retrieveErrorReportTask: BPMN!Task (
 			id <- 'retrieve-error-report-task',
 			name <- 'Retrieve error report'
@@ -300,7 +326,8 @@ rule Parameter {
 			dataInputRefs <- dataInput
 		),
 		dataInput : BPMN!DataInput (
-			id <- p.name.sanitizeIdentifier()
+			id <- p.name.sanitizeIdentifier(),
+			name <- 'parameter-value'
 		),
 		inputAssociation : BPMN!DataInputAssociation (
 			sourceRef <- dataObject,
@@ -348,7 +375,8 @@ rule InputDataset {
 			targetRef <- dataInput
 		),
 		dataInput : BPMN!DataInput (
-			id <-d.name.sanitizeIdentifier()
+			id <-d.name.sanitizeIdentifier(),
+			name <-'input-dataset'
 		),
 		dataObject: BPMN!DataObject (
 			name <- d.name.sanitizeIdentifier(),
@@ -390,7 +418,8 @@ rule OutputDataset {
 			targetRef <- dataOutput
 		),
 		dataOutput : BPMN!DataOutput (
-			id <-d.name.sanitizeIdentifier()
+			id <-d.name.sanitizeIdentifier(),
+			name <-'output-dataset'
 		),
 		dataObject: BPMN!DataObject (
 			name <- d.name.sanitizeIdentifier(),
