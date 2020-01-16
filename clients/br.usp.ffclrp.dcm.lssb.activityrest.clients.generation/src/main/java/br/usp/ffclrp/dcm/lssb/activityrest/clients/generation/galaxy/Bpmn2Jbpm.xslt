@@ -25,6 +25,9 @@
 	xmlns:tns="http://www.jboss.org/drools"
 	version="2.0"
 >
+<xsl:variable name="allowedChars" select="'abcdefghijklmnopqrstuvwxyz-'" />
+<xsl:variable name="deniedChars" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ '" />
+
 
 	<xsl:output
 		method="xml"
@@ -81,7 +84,7 @@
 		<xsl:message>
 			bpmn2:task
 		</xsl:message>
-		<bpmn2:task>
+		<bpmn2:task tns:taskName="{translate(@name,$deniedChars,$allowedChars)}" tns:displayName="{@name}" tns:icon="task.png">
 			<xsl:copy-of select="@*" />
 			<bpmn2:extensionElements>
 				<tns:metaData name="elementname">

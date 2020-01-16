@@ -62,6 +62,37 @@ entrypoint rule createItemDefinitions(){
 			id <- 'xs:base64Binary',
 			isCollection <- false,
 			itemKind <-#Information 
+		),
+		
+		integerCollectionDefinition : BPMN!ItemDefinition (
+			id <- 'xs:integerCollection',
+			isCollection <- true,
+			itemKind <-#Information 
+		),
+		realCollectionDefinition : BPMN!ItemDefinition (
+			id <- 'xs:doubleCollection',
+			isCollection <- true,
+			itemKind <-#Information 
+		),
+		stringCollectionDefinition : BPMN!ItemDefinition (
+			id <- 'xs:stringCollection',
+			isCollection <- true,
+			itemKind <-#Information 
+		),
+		anyUriCollectionDefinition : BPMN!ItemDefinition (
+			id <- 'xs:anyURICollection',
+			isCollection <- true,
+			itemKind <-#Information 
+		),
+		booleanCollectionDefinition : BPMN!ItemDefinition (
+			id <- 'xs:booleanCollection',
+			isCollection <- true,
+			itemKind <-#Information 
+		),
+		base64BinaryCollectionDefinition :  BPMN!ItemDefinition (
+			id <- 'xs:base64BinaryCollection',
+			isCollection <- true,
+			itemKind <-#Information 
 		)
 	do {
 		thisModule.itemDefinitions <- 
@@ -71,6 +102,12 @@ entrypoint rule createItemDefinitions(){
 				. including('anyUri',anyUriDefinition)
 				. including('BOOLEAN',booleanDefinition)
 				. including('base64',base64BinaryDefinition)
+				.including('INTEGERCollection', integerCollectionDefinition)
+				. including('REALCollection',realCollectionDefinition)
+				. including('STRINGCollection',stringCollectionDefinition)
+				. including('anyUriCollection',anyUriCollectionDefinition)
+				. including('BOOLEANCollection',booleanCollectionDefinition)
+				. including('base64Collection',base64BinaryCollectionDefinition)
 				.debug();
 --		}
 	}
