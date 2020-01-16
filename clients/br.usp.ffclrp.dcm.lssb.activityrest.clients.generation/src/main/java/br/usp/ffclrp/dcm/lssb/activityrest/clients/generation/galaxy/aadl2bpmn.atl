@@ -293,7 +293,11 @@ rule Parameter {
 		    ioSpecification <- ioSpecification
 		),
 	    ioSpecification : BPMN!InputOutputSpecification(
-	    	dataInputs <- dataInput
+	    	dataInputs <- dataInput,
+			inputSets <- inputSet
+		),
+		inputSet : BPMN!InputSet (
+			dataInputRefs <- dataInput
 		),
 		dataInput : BPMN!DataInput (
 			id <- p.name.sanitizeIdentifier()
@@ -333,7 +337,11 @@ rule InputDataset {
 			ioSpecification <- ioSpecification
 		),
 	    ioSpecification : BPMN!InputOutputSpecification(
-	    	dataInputs <- dataInput
+	    	dataInputs <- dataInput,
+			inputSets <- inputSet
+		),
+		inputSet : BPMN!InputSet (
+			dataInputRefs <- dataInput
 		),
 		inputAssociation : BPMN!DataInputAssociation (
 			sourceRef <- dataObject,
@@ -371,7 +379,11 @@ rule OutputDataset {
 			ioSpecification <- ioSpecification
 		),
 	    ioSpecification : BPMN!InputOutputSpecification(
-	    	dataOutputs <- dataOutput
+	    	dataOutputs <- dataOutput,
+			outputSets <- outputSet
+		),
+		outputSet : BPMN!OutputSet (
+			dataOutputRefs <- dataOutput
 		),
 		outputAssociation : BPMN!DataOutputAssociation (
 			sourceRef <- dataObject,
