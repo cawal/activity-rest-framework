@@ -18,8 +18,7 @@ module aadl2bpmn;
 create OUT: BPMN from IN: AADL;
 
 helper context String def: sanitizeIdentifier(): String =
-	self;
---	self.replaceAll('-', '_');
+	self.replaceAll('-', '_');
 --- Returns a random UUID for the given object.
 -- helper context OclAny def : randomUUID : String =
 -- 	"#native"!"java::util::UUID".refInvokeStaticOperation('randomUUID',
@@ -133,8 +132,8 @@ rule Activity {
 --			exporterVersion <- '1.5.1.Final-v20190425-2005-B1',
 			expressionLanguage <- 'http://www.mvel.org/2.0',
 			targetNamespace <- 'http://www.jboss.org/drools',
---			typeLanguage <- 'http://www.w3.org/2001/XMLSchema',
-			typeLanguage <- 'http://www.java.com/javaTypes',
+			typeLanguage <- 'http://www.w3.org/2001/XMLSchema',
+--			typeLanguage <- 'http://www.java.com/javaTypes',
 			rootElements <- thisModule.itemDefinitions->getValues(),
 			rootElements <- process
 		),
@@ -153,7 +152,6 @@ rule Activity {
 			flowElements <- startEvent,
 			flowElements <- successfulEndEvent,
 			flowElements <- failedEndEvent
-			
 		),
 		
 		
@@ -179,20 +177,23 @@ rule Activity {
 		failedEndEvent: BPMN!EndEvent (
 			name <- 'Failure'
 		),
+--		errorEventDefinition: BPMN!ErrorEventDefinition(
+--			name <- 'Processing failure'
+--		),
 
 		
 		-- TODO: Add data objects associated to these tasks 
 		
 		pollResultDataObject: BPMN!DataObject (
-			id <- 'poll-result',
-			name <- 'poll-result',
+			id <- 'processing-state'.sanitizeIdentifier(),
+			name <- 'processingState',
 			isCollection <- false,
 			itemSubjectRef <- thisModule.itemDefinitions
 						->get('STRING') 
 		),
 		pollingTask: BPMN!Task (
-			id <- 'poll-processing-task',
-			name <- 'Poll processing',
+			id <- 'poll-processing-task'.sanitizeIdentifier(),
+			name <- 'Poll processing state',
 			dataOutputAssociations <- pollOutputAssociation,
 		    ioSpecification <- pollIoSpecification
 		),
@@ -204,7 +205,7 @@ rule Activity {
 			dataOutputRefs <- pollDataOutput
 		),
 		pollDataOutput : BPMN!DataOutput (
-			id <- 'poll-result-string',
+			id <- 'poll-result-string'.sanitizeIdentifier(),
 			name <- 'poll-result'
 		),
 		pollOutputAssociation : BPMN!DataOutputAssociation (
@@ -213,11 +214,11 @@ rule Activity {
 		),
 		
 		retrieveErrorReportTask: BPMN!Task (
-			id <- 'retrieve-error-report-task',
+			id <- 'retrieve-error-report-task'.sanitizeIdentifier(),
 			name <- 'Retrieve error report'
 		),
 		timedWait: BPMN!Task (
-			id <- 'timed-wait',
+			id <- 'timed-wait'.sanitizeIdentifier(),
 			name <- 'Timed wait'
 		),
 		
@@ -240,7 +241,8 @@ rule Activity {
 			gatewayDirection <- #Converging
 		),
 		postPollingDivergingGateway: BPMN!ExclusiveGateway (
-			gatewayDirection <- #Diverging
+			gatewayDirection <- #Diverging,
+			name <- 'Processing ended?'
 		),
 		retrievalParallelGateway: BPMN!ParallelGateway (
 			gatewayDirection <- #Diverging,
@@ -274,15 +276,30 @@ rule Activity {
 		),
 		activityFailureFlow: BPMN!SequenceFlow (
 			sourceRef <- postPollingDivergingGateway,
-			targetRef <- retrieveErrorReportTask
+			targetRef <- retrieveErrorReportTask,
+			name <- 'yes, and failed',
+			conditionExpression <- activityFailureFlowCondition
 		),
+		activityFailureFlowCondition : BPMN!FormalExpression (
+			id <- ('processing-failed-flow-condition').sanitizeIdentifier(),
+			language <- 'http://www.java.com/java',
+			body <- 'return processingState == "FAILED";'
+		),
+		
 		failedEndFlow: BPMN!SequenceFlow (
 			sourceRef <- retrieveErrorReportTask,
 			targetRef <- failedEndEvent
 		),
 		timedWaitIncomingFlow: BPMN!SequenceFlow (
 			sourceRef <- postPollingDivergingGateway,
-			targetRef <- timedWait
+			targetRef <- timedWait,
+			name <- 'no, it continues',
+			conditionExpression <- processingContinuesFlowCondition
+		),
+		processingContinuesFlowCondition : BPMN!FormalExpression (
+			id <- ('processing-continues-flow-condition').sanitizeIdentifier(),
+			language <- 'http://www.java.com/java',
+			body <- 'return processingState == "RUNNING";'
 		),
 		timedWaitOutgoingFlow: BPMN!SequenceFlow (
 			sourceRef <- timedWait,
@@ -290,7 +307,14 @@ rule Activity {
 		),
 		pollingToRetrievalFlow: BPMN!SequenceFlow (
 			sourceRef <- postPollingDivergingGateway,
-			targetRef <- retrievalParallelGateway
+			targetRef <- retrievalParallelGateway,
+			name <- 'yes, and succeeded',
+			conditionExpression <- processingSucceededFlowCondition
+		),
+		processingSucceededFlowCondition : BPMN!FormalExpression (
+			id <- 'processing-succeeded-flow-condition'.sanitizeIdentifier(),
+			language <- 'http://www.java.com/java',
+			body <- 'return processingState == "SUCCEEDED";'
 		),
 		succeededFlow: BPMN!SequenceFlow (
 			sourceRef <- retrievalEndConvergingGateway,
@@ -313,7 +337,7 @@ rule Parameter {
 	}
 	to
 		sendParameterTask: BPMN!Task (
-			id <- 'submit-parameter-' + p.name + '-task'.sanitizeIdentifier(),
+			id <- ('submit-parameter-' + p.name + '-task').sanitizeIdentifier(),
 			name <- 'Submit parameter value',
 			dataInputAssociations <- inputAssociation,
 		    ioSpecification <- ioSpecification
@@ -326,7 +350,7 @@ rule Parameter {
 			dataInputRefs <- dataInput
 		),
 		dataInput : BPMN!DataInput (
-			id <- p.name.sanitizeIdentifier(),
+			id <- (p.name+'-input').sanitizeIdentifier(),
 			name <- 'parameter-value'
 		),
 		inputAssociation : BPMN!DataInputAssociation (
@@ -358,7 +382,7 @@ rule InputDataset {
 		d: AADL!InputDataset
 	to
 		sendDatasetTask: BPMN!Task (
-			id <- 'submit-dataset-' + d.name + '-task'.sanitizeIdentifier(),
+			id <- ('submit-dataset-' + d.name + '-task').sanitizeIdentifier(),
 			name <- 'Submit dataset files',
 			dataInputAssociations <- inputAssociation,
 			ioSpecification <- ioSpecification
@@ -375,7 +399,7 @@ rule InputDataset {
 			targetRef <- dataInput
 		),
 		dataInput : BPMN!DataInput (
-			id <-d.name.sanitizeIdentifier(),
+			id <-(d.name +'-input').sanitizeIdentifier(),
 			name <-'input-dataset'
 		),
 		dataObject: BPMN!DataObject (
@@ -401,7 +425,7 @@ rule OutputDataset {
 		d: AADL!OutputDataset
 	to
 		retrieveDatasetTask: BPMN!Task (
-			id <- 'retrieve-dataset-' + d.name + '-task'.sanitizeIdentifier(),
+			id <- ('retrieve-dataset-' + d.name + '-task').sanitizeIdentifier(),
 			name <- 'Retrieve dataset files',
 			dataOutputAssociations <- outputAssociation,
 			ioSpecification <- ioSpecification
@@ -418,7 +442,7 @@ rule OutputDataset {
 			targetRef <- dataOutput
 		),
 		dataOutput : BPMN!DataOutput (
-			id <-d.name.sanitizeIdentifier(),
+			id <-(d.name+'-output').sanitizeIdentifier(),
 			name <-'output-dataset'
 		),
 		dataObject: BPMN!DataObject (
