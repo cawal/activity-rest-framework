@@ -5,7 +5,7 @@
 -- @nsURI slm=http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore
 -- @nsURI BPMN=http://www.omg.org/spec/BPMN/20100524/MODEL
 
---- @nsURI ECORE=http://www.eclipse.org/emf/2002/Ecore
+-- @nsURI ECORE=http://www.eclipse.org/emf/2002/Ecore
 --- @nsURI bpmna=http://www.omg.org/spec/BPMN/20100524/MODEL-XMI
 --- @nsURI BPMN=http://www.jboss.org/drools
 --- @nsURI BPMN=http://www.omg.org/spec/BPMN/20100524/MODEL-XMI
@@ -33,63 +33,63 @@ helper def: itemDefinitions : Map(String, BPMN!ItemDefinition) =
 entrypoint rule createItemDefinitions(){
 	to
 		integerDefinition : BPMN!ItemDefinition (
-			id <- 'xs:integer',
+			id <- 'xssinteger',
 			isCollection <- false,
 			itemKind <-#Information 
 		),
 		realDefinition : BPMN!ItemDefinition (
-			id <- 'xs:double',
+			id <- 'xssdouble',
 			isCollection <- false,
 			itemKind <-#Information 
 		),
 		stringDefinition : BPMN!ItemDefinition (
-			id <- 'xs:string',
+			id <- 'xssstring',
 			isCollection <- false,
 			itemKind <-#Information 
 		),
 		anyUriDefinition : BPMN!ItemDefinition (
-			id <- 'xs:anyURI',
+			id <- 'xssanyURI',
 			isCollection <- false,
 			itemKind <-#Information 
 		),
 		booleanDefinition : BPMN!ItemDefinition (
-			id <- 'xs:boolean',
+			id <- 'xssboolean',
 			isCollection <- false,
 			itemKind <-#Information 
 		),
 		base64BinaryDefinition :  BPMN!ItemDefinition (
-			id <- 'xs:base64Binary',
+			id <- 'xssbase64Binary',
 			isCollection <- false,
 			itemKind <-#Information 
 		),
 		
 		integerCollectionDefinition : BPMN!ItemDefinition (
-			id <- 'xs:integerCollection',
+			id <- 'xssintegerCollection',
 			isCollection <- true,
 			itemKind <-#Information 
 		),
 		realCollectionDefinition : BPMN!ItemDefinition (
-			id <- 'xs:doubleCollection',
+			id <- 'xssdoubleCollection',
 			isCollection <- true,
 			itemKind <-#Information 
 		),
 		stringCollectionDefinition : BPMN!ItemDefinition (
-			id <- 'xs:stringCollection',
+			id <- 'xssstringCollection',
 			isCollection <- true,
 			itemKind <-#Information 
 		),
 		anyUriCollectionDefinition : BPMN!ItemDefinition (
-			id <- 'xs:anyURICollection',
+			id <- 'xssanyURICollection',
 			isCollection <- true,
 			itemKind <-#Information 
 		),
 		booleanCollectionDefinition : BPMN!ItemDefinition (
-			id <- 'xs:booleanCollection',
+			id <- 'xssbooleanCollection',
 			isCollection <- true,
 			itemKind <-#Information 
 		),
 		base64BinaryCollectionDefinition :  BPMN!ItemDefinition (
-			id <- 'xs:base64BinaryCollection',
+			id <- 'xssbase64BinaryCollection',
 			isCollection <- true,
 			itemKind <-#Information 
 		)
@@ -137,7 +137,6 @@ rule Activity {
 			rootElements <- thisModule.itemDefinitions->getValues(),
 			rootElements <- process
 		),
-
 		process: BPMN!Process (
 			id <- activity.name.sanitizeIdentifier(),
 			name <- activity.name,

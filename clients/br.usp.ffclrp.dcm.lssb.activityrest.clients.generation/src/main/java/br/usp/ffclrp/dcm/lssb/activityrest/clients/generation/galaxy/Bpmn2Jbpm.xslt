@@ -1,30 +1,21 @@
 <?xml version="1.0"?>
 <!-- A guide: https://www.vogella.com/tutorials/XSLT/article.html -->
-<!-- <xsl:stylesheet
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
-    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
-    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
-    xmlns:di="http://www.omg.org/spec/DD/20100524/DI" 
-    xmlns:java="http://www.java.com/javaTypes" 
-    xmlns:tns="http://www.jboss.org/drools" 
-    xmlns="http://www.jboss.org/drools" 
-	version="1.0"
->
- -->
-<!--     xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd"  -->
-<!--     id="Definition"  -->
-<!--     exporter="org.eclipse.bpmn2.modeler.core"  -->
-<!--     exporterVersion="1.5.1.Final-v20190425-2005-B1"  -->
-<!--     expressionLanguage="http://www.mvel.org/2.0"  -->
-<!--     targetNamespace="http://www.jboss.org/drools"  -->
-<!--     typeLanguage="http://www.java.com/javaTypes" -->
+
 <xsl:stylesheet
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
-	xmlns:tns="http://www.jboss.org/drools"
-	version="2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+	xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+	xmlns:di="http://www.omg.org/spec/DD/20100524/DI" 
+	xmlns:java="http://www.java.com/javaTypes" 
+	xmlns:tns="http://www.jboss.org/drools" 
+	xmlns="http://www.jboss.org/drools" 
+	xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" 
+	version="1.0"
 >
+<!-- 	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"  -->
+<!-- 	xmlns:tns="http://www.jboss.org/drools" -->
 	<xsl:variable
 		name="allowedChars"
 		select="'abcdefghijklmnopqrstuvwxyz___'" />
@@ -50,10 +41,29 @@
 	</xsl:template>
 
 	<xsl:template match="bpmn2:definitions">
-		<xsl:copy>
-			<xsl:attribute name="typeLanguage">http://www.java.com/javaTypes</xsl:attribute>
-
-<!-- 			<xsl:attribute name="xmlns:xsi">http://www.w3.org/2001/XMLSchema-instance</xsl:attribute> -->
+		<bpmn2:definitions
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+	xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+	xmlns:di="http://www.omg.org/spec/DD/20100524/DI" 
+	xmlns:java="http://www.java.com/javaTypes" 
+	xmlns:tns="http://www.jboss.org/drools" 
+	xmlns="http://www.jboss.org/drools" 
+	xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" 
+	exporter="org.eclipse.bpmn2.modeler.core" 
+	exporterVersion="1.5.1.Final-v20190425-2005-B1" 
+	expressionLanguage="http://www.mvel.org/2.0" 
+	targetNamespace="http://www.jboss.org/drools" 
+	typeLanguage="http://www.java.com/javaTypes"
+	version="1.0"
+			>
+			<xsl:apply-templates></xsl:apply-templates>
+		</bpmn2:definitions>
+	</xsl:template>
+	
 <!-- 			<xsl:attribute name="xmlns:bpmn2">http//www.omg.org/spec/BPMN/20100524/MODEL</xsl:attribute> -->
 <!-- 			<xsl:attribute name="xmlns:bpmndi">http://www.omg.org/spec/BPMN/20100524/DI</xsl:attribute> -->
 <!-- 			<xsl:attribute name="xmlns:dc">http://ww.omg.org/spec/DD/20100524/DC</xsl:attribute> -->
@@ -63,49 +73,55 @@
 <!-- 			<xsl:attribute name="xmlns">http://wwwjboss.org/drools</xsl:attribute> -->
 <!-- 			<xsl:attribute name="xsi:schemaLocation">http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd _id</xsl:attribute> -->
 <!-- 			<xsl:attribute name="expressionLanguage">http://www.mvel.org/2.0</xsl:attribute> -->
-			<xsl:apply-templates></xsl:apply-templates>
-		</xsl:copy>
-	</xsl:template>
 	
-	
-<!-- 	<xsl:template match="@id"> -->
+<!-- 	<xsl:template match="@itemSubjectRef"> -->
 <!-- 	    <xsl:attribute name="{name(.)}"> -->
-<!--             <xsl:value-of select="translate(.,$deniedChars,$allowedChars)"/> -->
+<!--             <xsl:value-of select="substring-after(.,'#')"/> -->
 <!--         </xsl:attribute> -->
 <!-- 	</xsl:template> -->
 	
+	<xsl:template match="bpmn2:dataObject">
+<xsl:copy>
+
+            <xsl:copy-of select="@*" /> <!-- Copy the attributes -->
+        <xsl:attribute name="itemSubjectRef">
+            <xsl:value-of select="concat('#',substring-after(@itemSubjectRef,'#'))"/>
+        </xsl:attribute>
+</xsl:copy>
+    </xsl:template> 
+	
 	<!-- ITEM DEFINITIONS -->
-	<xsl:template match="bpmn2:itemDefinition[@id='xs:double']">
+	<xsl:template match="bpmn2:itemDefinition[@id='xssdouble']">
 		<bpmn2:itemDefinition structureRef="java.lang.Double">
 			<xsl:copy-of select="@*" />
 		</bpmn2:itemDefinition>
 	</xsl:template>
 
-	<xsl:template match="bpmn2:itemDefinition[@id='xs:integer']">
+	<xsl:template match="bpmn2:itemDefinition[@id='xssinteger']">
 		<bpmn2:itemDefinition structureRef="java.lang.Integer">
 			<xsl:copy-of select="@*" />
 		</bpmn2:itemDefinition>
 	</xsl:template>
 
-	<xsl:template match="bpmn2:itemDefinition[@id='xs:string']">
+	<xsl:template match="bpmn2:itemDefinition[@id='xssstring']">
 		<bpmn2:itemDefinition structureRef="java.lang.String">
 			<xsl:copy-of select="@*" />
 		</bpmn2:itemDefinition>
 	</xsl:template>
 
-	<xsl:template match="bpmn2:itemDefinition[@id='xs:boolean']">
+	<xsl:template match="bpmn2:itemDefinition[@id='xssboolean']">
 		<bpmn2:itemDefinition structureRef="java.lang.Boolean">
 			<xsl:copy-of select="@*" />
 		</bpmn2:itemDefinition>
 	</xsl:template>
 
-	<xsl:template match="bpmn2:itemDefinition[@id='xs:base64Binary']">
+	<xsl:template match="bpmn2:itemDefinition[@id='xssbase64Binary']">
 		<bpmn2:itemDefinition structureRef="java.io.File">
 			<xsl:copy-of select="@*" />
 		</bpmn2:itemDefinition>
 	</xsl:template>
 
-	<xsl:template match="bpmn2:itemDefinition[@id='xs:anyURI']">
+	<xsl:template match="bpmn2:itemDefinition[@id='xssanyURI']">
 		<bpmn2:itemDefinition structureRef="java.util.URI">
 			<xsl:copy-of select="@*" />
 		</bpmn2:itemDefinition>

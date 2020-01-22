@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,6 +17,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -274,13 +277,25 @@ public class ModelsService {
 		// create a resource
 		Resource resource = resSet.createResource(URI
 				.createURI(outputPath));
+
+
+//	    re.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+//	    result.getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, 80);
+//	    result.getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, 
+//	    		new URIHandlerImpl.PlatformSchemeAware());
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
 		resource.getContents().add(documentRoot);
 		
 		// now save the content.
 		try {
-			resource.save(Collections.EMPTY_MAP);
+			final Map<Object, Object> saveOptions = new HashMap<Object, Object>(); 
+//			final Map<Object, Object> saveOptions = new HashMap<Object, Object>(); 
+//			final Map<Object, Object> saveOptions = xmiresource.getDefaultSaveOptions();
+			saveOptions.put(XMIResource.OPTION_SCHEMA_LOCATION,Boolean.TRUE);
+//			saveOptions.put(XMLResource.OPTIOOPTION_PROXY_ATTRIBUTES, Boolean.TRUE);
+			resource.save(saveOptions);
+//			resource.save(Collections.EMPTY_MAP);
 			System.out.println(resource + "is saved");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
