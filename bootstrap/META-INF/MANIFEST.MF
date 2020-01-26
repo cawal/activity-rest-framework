@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: activity-rest-framework;singleton:=true
+Automatic-Module-Name: activity-rest-framework
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: br.usp.ffclrp.dcm.lssb.activityrest.model.model,
+ br.usp.ffclrp.dcm.lssb.activityrest.model.model.impl,
+ br.usp.ffclrp.dcm.lssb.activityrest.model.model.util,
+ br.usp.ffclrp.dcm.lssb.activityrest.model,
+ br.usp.ffclrp.dcm.lssb.activityrest.model.impl,
+ br.usp.ffclrp.dcm.lssb.activityrest.model.util
+Bundle-ActivationPolicy: lazy
