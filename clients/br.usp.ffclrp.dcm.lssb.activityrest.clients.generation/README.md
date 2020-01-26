@@ -2,19 +2,19 @@
 
 ### 1: Getting non-mavenized dependencies:
 
-1. Download the [Eclipse BPMN2 metamodel project](https://git.eclipse.org/c/bpmn2/org.eclipse.bpmn2.git/commit/),
+1. Download or clone the [Eclipse BPMN2 metamodel project](https://git.eclipse.org/c/bpmn2/org.eclipse.bpmn2.git/commit/),
 
-2. Add the following information to the `<properties>` section of the `pom.xml` file at the root of the Eclipse project:
+2 .Change the address of Maven Central Respository from `http:` to `https:` in the `pom.xml` file;
 
-```xml
-<properties>
-		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
-</properties>
+3. Add execution permission to the `.build.sh` file: 
+
+```
+chmod +x build.sh
 ```
 
-1. Compile the bundles and install it into the local maven repository.
-```sh
-mvn clean install
+4. Compile and install the bundles:
+```
+	./build.sh
 ```
 
-### 2: Compiling the project
+An already updated version can bee found a [the branch https-in-maven  my fork of the BPMN2 Eclipse's Project](https://github.com/cawal/org.eclipse.bpmn2/tree/https-in-maven).
