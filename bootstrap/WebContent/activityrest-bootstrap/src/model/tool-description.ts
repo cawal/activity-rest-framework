@@ -3,53 +3,21 @@ import { FunctionalEntity, Parameter, Dataset, InputDataset, OutputDataset } fro
 * A command line tool that can be called to execute the activity.
 */
 export class CommandLineTool extends FunctionalEntity {
-  commandLineTemplate: CommandLineEntryList[];
+  commandLineTemplate: CommandLineEntryList[] = [];
   standardInputStream: InputDataset | null;
   standardOutputStream: OutputDataset | null;
   standardErrorStream: OutputDataset | null;
-  exitCodes: ExitCode[];
-  /*       invariant stdInMustBeInputDatasetInRelatedActivity:
-             if not self.standardInputStream.oclIsUndefined() then
-                 self.activity.inputDatasets->includes(self.standardInputStream)
-             else true endif;
-         invariant stdOutMustBeOutputDatasetInRelatedActivity:
-             if not self.standardOutputStream.oclIsUndefined() then
-                 self.activity.outputDatasets->includes(self.standardOutputStream)
-             else true endif;
-         invariant stdErrMustBeOutputDatasetInRelatedActivity:
-             if not self.standardErrorStream.oclIsUndefined() then
-                 self.activity.outputDatasets->includes(self.standardErrorStream)
-             else true endif;
-         invariant stdInMustHave1AsCardinality:
-             if not self.standardInputStream.oclIsUndefined() then
-                 self.standardInputStream.minimumCardinality = 1
-                 and self.standardInputStream.maximumCardinality = 1
-             else
-                 true
-             endif;
-         invariant stdOutMustHave1AsCardinality:
-             if not self.standardOutputStream.oclIsUndefined() then
-                 self.standardOutputStream.minimumCardinality = 1
-                 and self.standardOutputStream.maximumCardinality = 1
-             else
-                 true
-             endif;
-         invariant stdErrMustHave1AsCardinality:
-             if not self.standardErrorStream.oclIsUndefined() then
-                 self.standardErrorStream.minimumCardinality = 1
-                 and self.standardErrorStream.maximumCardinality = 1
-             else
-                 true
-             endif;*/
+  exitCodes: ExitCode[] = [];
+
 }
-class ExitCode {
+export class ExitCode {
   code: number;
   reportMessage: string | null;
   status: TerminationStatus;
 }
-enum TerminationStatus {
-  SUCCEEDED = 0,
-  FAILED = 1,
+export enum TerminationStatus {
+  SUCCEEDED = 'SUCCEEDED',
+  FAILED = 'FAILED',
 }
 
 /*
@@ -61,15 +29,15 @@ enum TerminationStatus {
 *
 */
 abstract class CommandLineEntryList {
-  manipulators: StringListManipulator[];
+  manipulators: StringListManipulator[] = [];
 }
 class ToolNameCommandLineEntry extends CommandLineEntryList { }
-class LiteralCommandLineEntryList extends CommandLineEntryList {
-  literals: string[];
+export class LiteralCommandLineEntryList extends CommandLineEntryList {
+  literals: string[] = [];
   /*invariant OneOrMoreLiterals:
   literals -> size() > 0;*/
 }
-class DatasetCommandLineEntryList extends CommandLineEntryList {
+export class DatasetCommandLineEntryList extends CommandLineEntryList {
   dataset: Dataset;
 }
 export class ParameterCommandLineEntryList extends CommandLineEntryList {

@@ -10,9 +10,9 @@ interface IdentifiableElement {
 export class Activity implements IdentifiableElement {
   name: string;
   remark: string;
-  parameters: Parameter[];
-  inputDatasets: InputDataset[];
-  outputDatasets: OutputDataset[];
+  parameters: Parameter[] = [];
+  inputDatasets: InputDataset[] = [];
+  outputDatasets: OutputDataset[] = [];
   //functionalEntity: FunctionalEntity | null;
 }
 
@@ -34,7 +34,7 @@ export class Parameter implements MultiplicityElement, IdentifiableElement {
   minimumCardinality: number;
   maximumCardinality: number;
   name: string;
-  remark: string;
+  remark: string | null;
   parameterType: ParameterType;
   defaultValue: string[];
   constraints: Constraint[];
@@ -43,11 +43,11 @@ export class Parameter implements MultiplicityElement, IdentifiableElement {
   defaultValue -> size() <= maximumCardinality
               else true endif;*/
 }
-enum ParameterType {
-  STRING,
-  int,
-  REAL,
-  BOOLEAN,
+export enum ParameterType {
+  STRING = 'STRING',
+  INTEGER = 'INTEGER',
+  REAL = 'REAL',
+  BOOLEAN = 'BOOLEAN',
 }
 
 /*
