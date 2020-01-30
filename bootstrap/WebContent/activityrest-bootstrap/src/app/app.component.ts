@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
     this.functionalEntity = new CommandLineTool();
     this.functionalEntity.name = "tool";
     this.deployment = new Deployment();
-    console.log(this.activity);
   }
 
 

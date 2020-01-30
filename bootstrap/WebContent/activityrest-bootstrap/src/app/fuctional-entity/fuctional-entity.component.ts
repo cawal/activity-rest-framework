@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FunctionalEntity, Activity } from 'src/model/activity-description';
-import { CommandLineTool, ExitCode, TerminationStatus } from 'src/model/tool-description';
+import { CommandLineTool, ExitCode, TerminationStatus, ParameterCommandLineEntryList, LiteralCommandLineEntryList, DatasetCommandLineEntryList } from 'src/model/tool-description';
 
 @Component({
   selector: 'app-fuctional-entity',
@@ -20,6 +20,7 @@ export class FuctionalEntityComponent implements OnInit {
   /** @internal */ isCommandLineTool(f: FunctionalEntity): f is CommandLineTool {
     return f instanceof CommandLineTool;
   }
+
 
   addExitCode() {
     let newExitCode = new ExitCode();

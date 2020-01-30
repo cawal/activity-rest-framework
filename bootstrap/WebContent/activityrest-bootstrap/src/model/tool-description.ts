@@ -28,7 +28,7 @@ export enum TerminationStatus {
 * argument for the command line tool.
 *
 */
-abstract class CommandLineEntryList {
+export abstract class CommandLineEntryList {
   manipulators: StringListManipulator[] = [];
 }
 class ToolNameCommandLineEntry extends CommandLineEntryList { }

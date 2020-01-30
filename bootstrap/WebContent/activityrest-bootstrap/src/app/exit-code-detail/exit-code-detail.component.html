@@ -1,1 +1,15 @@
-<p>exit-code-detail works!</p>
+<label>Code:
+  <input type="number" [(ngModel)]="exitCode.code">
+</label>
+
+<label>Status:
+  <select>
+    <option *ngFor="let t of keys(terminationStatus);" (ngValue)="terminationStatus[t]">
+      {{t}}
+    </option>
+  </select>
+</label>
+
+<label>Description:
+  <input [(ngModel)]="exitCode.reportMessage">
+</label>

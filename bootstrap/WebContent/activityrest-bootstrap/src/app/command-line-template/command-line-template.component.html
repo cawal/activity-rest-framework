@@ -1,0 +1,38 @@
+<p>command-line-template works!</p>
+
+<div *ngFor="let t of commandLineTemplate">
+
+  <span *ngIf="isLiteralTemplate(t)">
+    Literals:
+  </span>
+
+  <span *ngIf="isParameterTemplate(t)">
+    Parameter:
+    <select [(ngModel)]="t.parameter">
+      <option *ngFor="let p of parameters"
+              (ngValue)="p">
+        {{p.name}}
+      </option>
+    </select>
+  </span>
+
+  <span *ngIf="isDatasetTemplate(t)">
+    Dataset
+    <select [(ngModel)]="t.dataset">
+      <option *ngFor="let d of inputDatasets.concat(outputDatasets)"
+              (ngValue)="d">
+        {{d.name}}
+      </option>
+    </select>
+  </span>
+
+</div>
+<button (click)="addLiteralCommandLineEntry()">
+  Add literal command line entry
+</button>
+<button (click)="addParameterCommandLineEntry()">
+  Add parameter command line entry
+</button>
+<button (click)="addDatasetCommandLineEntry()">
+  Add dataset command line entry
+</button>

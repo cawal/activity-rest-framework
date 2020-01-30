@@ -7,6 +7,7 @@ import { ActivityDescriptionComponent } from './activity-description/activity-de
 import { FuctionalEntityComponent } from './fuctional-entity/fuctional-entity.component';
 import { DeploymentModelComponent } from './deployment-model/deployment-model.component';
 import { ExitCodeDetailComponent } from './exit-code-detail/exit-code-detail.component';
+import { CommandLineTemplateComponent } from './command-line-template/command-line-template.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ExitCodeDetailComponent } from './exit-code-detail/exit-code-detail.com
     FuctionalEntityComponent,
     DeploymentModelComponent,
     ExitCodeDetailComponent,
+    CommandLineTemplateComponent,
   ],
   imports: [
     BrowserModule,
