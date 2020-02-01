@@ -2,6 +2,12 @@ export class Deployment {
   service: Service;
   container: ServiceContainer;
   contactInformation: Contact;
+
+  constructor() {
+    this.service = new Service();
+    this.container = new ServiceContainer();
+    this.contactInformation = new Contact();
+  }
 }
 export class Service {
   name: string;

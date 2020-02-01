@@ -1,4 +1,8 @@
-<h1>{{title}}</h1>
-<app-activity-description [activity]="activity"></app-activity-description>
-<app-fuctional-entity [commandLineTool]="functionalEntity" [activity]="activity"></app-fuctional-entity>
-<button (click)="log()">Print</button>
+<body>
+  <h1>{{title}}</h1>
+  <app-activity-description [activity]="activity"></app-activity-description>
+  <app-fuctional-entity [commandLineTool]="functionalEntity"
+                        [activity]="activity"></app-fuctional-entity>
+  <app-deployment-model [deploymentModel]="deployment"></app-deployment-model>
+  <button (click)="log()">Print</button>
+</body>

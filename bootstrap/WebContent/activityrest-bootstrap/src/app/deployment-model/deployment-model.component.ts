@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Deployment } from 'src/model/deployment-description';
 
 @Component({
   selector: 'app-deployment-model',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deployment-model.component.css']
 })
 export class DeploymentModelComponent implements OnInit {
+
+  @Input() deploymentModel: Deployment;
 
   constructor() { }
 
