@@ -1,0 +1,7 @@
+<div *ngFor="let l of literals.literals">
+  <input type="text"
+         [(ngModel)]="l">
+</div>
+<button (click)="addLiteral()">Add</button>
+<button (click)="removeLiteral()">Remove last</button>
+<app-string-list-manipulators [manipulators]="literals.manipulators"></app-string-list-manipulators>

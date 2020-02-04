@@ -4,6 +4,7 @@
 
   <span *ngIf="isLiteralTemplate(t)">
     Literals:
+    <app-literal-command-line-template [literals]=t></app-literal-command-line-template>
   </span>
 
   <span *ngIf="isParameterTemplate(t)">
@@ -14,6 +15,8 @@
         {{p.name}}
       </option>
     </select>
+
+    <app-string-list-manipulators [manipulators]="t.manipulators"></app-string-list-manipulators>
   </span>
 
   <span *ngIf="isDatasetTemplate(t)">
@@ -24,6 +27,8 @@
         {{d.name}}
       </option>
     </select>
+
+    <app-string-list-manipulators [manipulators]="t.manipulators"></app-string-list-manipulators>
   </span>
 
 </div>

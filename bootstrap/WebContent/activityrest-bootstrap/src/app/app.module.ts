@@ -8,6 +8,8 @@ import { FuctionalEntityComponent } from './fuctional-entity/fuctional-entity.co
 import { DeploymentModelComponent } from './deployment-model/deployment-model.component';
 import { ExitCodeDetailComponent } from './exit-code-detail/exit-code-detail.component';
 import { CommandLineTemplateComponent } from './command-line-template/command-line-template.component';
+import { LiteralCommandLineTemplateComponent } from './literal-command-line-template/literal-command-line-template.component';
+import { StringListManipulatorsComponent } from './string-list-manipulators/string-list-manipulators.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CommandLineTemplateComponent } from './command-line-template/command-li
     DeploymentModelComponent,
     ExitCodeDetailComponent,
     CommandLineTemplateComponent,
+    LiteralCommandLineTemplateComponent,
+    StringListManipulatorsComponent,
   ],
   imports: [
     BrowserModule,

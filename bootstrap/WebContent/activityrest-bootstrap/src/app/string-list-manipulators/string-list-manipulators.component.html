@@ -1,0 +1,44 @@
+<div *ngFor="let m of manipulators">
+
+  <div *ngIf="isJoin(m)">
+    Join with delimiter
+    <input [(ngModel)]="m.delimiter">
+  </div>
+
+  <div *ngIf="isPrependEach(m)">
+    Prepend each with
+    <input [(ngModel)]="m.value">
+  </div>
+
+  <div *ngIf="isAppendEach(m)">
+    Append each with
+    <input [(ngModel)]="m.value">
+  </div>
+
+  <div *ngIf="isPrependListWith(m)">
+    Prepend list with
+    <input [(ngModel)]="m.value">
+  </div>
+
+  <div *ngIf="isAppendListWith(m)">
+    Append list with
+    <input [(ngModel)]="m.value">
+  </div>
+
+
+  <div *ngIf="isToFlag(m)">
+    If true: <input [(ngModel)]="m.ifTrue">
+    If false: <input [(ngModel)]="m.ifFalse">
+  </div>
+
+</div>
+
+<select [(ngModel)]="selectedManipulatorClass">
+  <option value="Join">Join</option>
+  <option value="PrependEach">PrependEach</option>
+  <option value="AppendEach">AppendEach</option>
+  <option value="AppendListWith">AppendListWith</option>
+  <option value="PrependListWith">PrependListWith</option>
+  <option value="ToFlag">ToFlag</option>
+</select>
+<button (click)="add(this.selectedManipulator)">Add</button>

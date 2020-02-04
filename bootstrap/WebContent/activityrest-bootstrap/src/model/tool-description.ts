@@ -62,26 +62,44 @@ export class ParameterCommandLineEntryList extends CommandLineEntryList {
 /*
    * Subclasses must implement a closure on lists of strings.
    */
-abstract class StringListManipulator {
+export abstract class StringListManipulator {
   // abstract transform(stringList: string[]): string[];
 }
 export class Join extends StringListManipulator {
   delimiter: string;
+  readonly identifier: "Join";
 }
 export class PrependEach extends StringListManipulator {
   value: string;
+  readonly identifier: "PrependEach";
 }
 export class AppendEach extends StringListManipulator {
   value: string;
+  readonly identifier: "AppendEach";
 }
 export class AppendListWith extends StringListManipulator {
   value: string;
+  readonly identifier: "AppendListWith";
 }
 export class PrependListWith extends StringListManipulator {
   value: string;
+  readonly identifier: "PrependListWith";
 }
 export class ToFlag extends StringListManipulator {
   ifTrue: string | null;
   ifFalse: string | null;
+  readonly identifier: "ToFlag";
 }
 
+export class StringListManipulatorFactory {
+  static create(className: string): StringListManipulator {
+    switch (className) {
+      case "Join": { return new Join(); }
+      case "PrependEach": { return new PrependEach(); }
+      case "AppendEach": { return new AppendEach(); }
+      case "AppendListWith": { return new AppendListWith(); }
+      case "PrependListWith": { return new PrependListWith(); }
+      case "ToFlag": { return new ToFlag(); }
+    }
+  }
+}
