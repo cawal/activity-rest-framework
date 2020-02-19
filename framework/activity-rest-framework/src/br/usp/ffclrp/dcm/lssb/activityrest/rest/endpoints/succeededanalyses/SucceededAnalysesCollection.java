@@ -1,6 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.succeededanalyses;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,7 +13,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFou
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
 public class SucceededAnalysesCollection {
 	ActivityRestConfig config;
@@ -38,7 +37,7 @@ public class SucceededAnalysesCollection {
 	
 	@Path("/{analysisID}")
 	public SucceededAnalysisResource getSucceededAnalysisResource(
-			@PathParam("analysisID") @Nonnull String analysisID) {
+			@PathParam("analysisID") @NonNull String analysisID) {
 
 		try {
 			AnalysisActivity aa;

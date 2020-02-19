@@ -27,7 +27,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+
 
 /**
  * Root resource of the API.
@@ -36,7 +36,7 @@ import io.swagger.annotations.Api;
  * @author cawal
  *
  */
-@Api
+//@Api
 @Path("/")
 @RequestScoped
 public class RootResource {

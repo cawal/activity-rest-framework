@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
@@ -31,7 +30,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
 public class ParameterSetResource {
 	
@@ -46,10 +45,10 @@ public class ParameterSetResource {
 	boolean allowUpdates;
 	
 	public ParameterSetResource(
-			@Nonnull Activity activityDescription,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao,
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull AnalysisActivity aa,
+			@NonNull ActivityRepository analysisActivityDao,
 			boolean allowUpdates,
 			ActivityRestConfig config) {
 		this.activityDescription = activityDescription;

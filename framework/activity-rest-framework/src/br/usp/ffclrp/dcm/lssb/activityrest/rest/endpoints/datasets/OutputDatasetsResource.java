@@ -1,12 +1,10 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
@@ -20,9 +18,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
-@Api
 public class OutputDatasetsResource extends AbstractDatasetResource {
 	
 	UriInfo uriInfo;
@@ -35,10 +32,10 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	Activity activityDescription;
 	
 	public OutputDatasetsResource(
-			@Nonnull Activity activityDescription,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao,
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull AnalysisActivity aa,
+			@NonNull ActivityRepository analysisActivityDao,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;
@@ -73,7 +70,7 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("/{datasetName : [A-Za-z0-9-.]+}")
 	public Response getDataset(
-			@PathParam("datasetName") @Nonnull String datasetName) {
+			@PathParam("datasetName") @NonNull String datasetName) {
 		
 		Dataset d = aa.outputDatasetForName(datasetName);
 		return getResponseForGetDatasetRequest(d, uriInfo.getAbsolutePath());
@@ -84,8 +81,8 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
 	public File getFileFromCollectionDataset(
-			@PathParam("datasetName") @Nonnull String datasetName,
-			@PathParam("fileName") @Nonnull String fileName) {
+			@PathParam("datasetName") @NonNull String datasetName,
+			@PathParam("fileName") @NonNull String fileName) {
 		
 		Dataset d = aa.outputDatasetForName(datasetName);
 		URI baseUri = uriInfo.getAbsolutePath();

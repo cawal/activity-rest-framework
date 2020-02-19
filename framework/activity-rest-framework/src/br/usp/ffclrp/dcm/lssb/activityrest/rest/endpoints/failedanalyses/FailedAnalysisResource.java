@@ -3,7 +3,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses;
 import java.io.IOException;
 import java.net.URI;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -28,7 +27,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivity
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
 public class FailedAnalysisResource {
 	
@@ -42,10 +41,10 @@ public class FailedAnalysisResource {
 	Activity activityDescription;
 	
 	public FailedAnalysisResource(
-			@Nonnull Activity activityDescription,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao,
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull AnalysisActivity aa,
+			@NonNull ActivityRepository analysisActivityDao,
 			ActivityRestConfig config) {
 		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;

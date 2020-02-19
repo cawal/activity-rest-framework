@@ -2,7 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.newanalyses;
 
 import java.net.URI;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -22,7 +21,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivity
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
 public class NewAnalysesCollection {
 	ActivityRestConfig config;
@@ -32,9 +31,9 @@ public class NewAnalysesCollection {
 	Activity activityDescription;
 	
 	public NewAnalysesCollection(
-			@Nonnull Activity activityDescription,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull ActivityRepository analysisActivityDao,
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull ActivityRepository analysisActivityDao,
 			ActivityRestConfig config) {
 		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
@@ -81,7 +80,7 @@ public class NewAnalysesCollection {
 	
 	@Path("/{analysisID}")
 	public NewAnalysisResource getNewAnalysisResource(
-			@PathParam("analysisID") @Nonnull String analysisID) {
+			@PathParam("analysisID") @NonNull String analysisID) {
 
 		try {
 			AnalysisActivity aa;

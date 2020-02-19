@@ -8,7 +8,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Nonnull;
+import lombok.NonNull;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.DELETE;
@@ -35,9 +35,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.InputDatasetValidat
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
 
-@Api
 public class InputDatasetsResource extends AbstractDatasetResource {
 	
 	ActivityRestConfig config;
@@ -89,7 +87,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}")
 	public Response getDataset(
-			@PathParam("datasetName") @Nonnull String datasetName) {
+			@PathParam("datasetName") @NonNull String datasetName) {
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		return getResponseForGetDatasetRequest(d, uriInfo.getAbsolutePath());
@@ -98,8 +96,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
 	public Response getFileFromCollectionDataset(
-			@PathParam("datasetName") @Nonnull String datasetName,
-			@PathParam("fileName") @Nonnull String fileName) {
+			@PathParam("datasetName") @NonNull String datasetName,
+			@PathParam("fileName") @NonNull String fileName) {
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		URI baseUri = uriInfo.getAbsolutePath();
