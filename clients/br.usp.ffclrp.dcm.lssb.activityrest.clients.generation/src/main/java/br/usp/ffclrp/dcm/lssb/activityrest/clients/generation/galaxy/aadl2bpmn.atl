@@ -180,7 +180,34 @@ rule Activity {
 --			name <- 'Processing failure'
 --		),
 
-		
+		createActivityInstanceTask : BPMN!Task (
+			id <- 'create-activity-instance',
+			name <- 'Create activity instance',
+			dataOutputAssociations <- createActivityInstanceOutputAssociation,
+		    ioSpecification <- createActivityInstanceIoSpecification
+		),
+	    createActivityInstanceIoSpecification : BPMN!InputOutputSpecification(
+	    	dataOutputs <- createActivityInstanceDataOutput,
+			outputSets <- createActivityInstanceOutputSet
+		),
+		createActivityInstanceOutputSet : BPMN!OutputSet (
+			dataOutputRefs <- createActivityInstanceDataOutput
+		),
+		createActivityInstanceDataOutput : BPMN!DataOutput (
+			id <- 'create-activity-instance-data-output',
+			name <- 'create-activity-instance-data-output'
+		),
+		createActivityInstanceOutputAssociation : BPMN!DataOutputAssociation (
+			targetRef <- createActivityInstanceResultDataObject,
+			sourceRef <- createActivityInstanceDataOutput
+		),
+		createActivityInstanceResultDataObject: BPMN!DataObject (
+			id <- 'activity_id',
+			name <- 'Activity Id',
+			isCollection <- false,
+			itemSubjectRef <- thisModule.itemDefinitions
+						->get('STRING') 
+		),	
 		-- TODO: Add data objects associated to these tasks 
 		
 		pollResultDataObject: BPMN!DataObject (
@@ -259,6 +286,10 @@ rule Activity {
 		
 		startFlow: BPMN!SequenceFlow (
 			sourceRef <- startEvent,
+			targetRef <- createActivityInstanceTask
+		),
+		activityCreatedFlow: BPMN!SequenceFlow (
+			sourceRef <- createActivityInstanceTask,
 			targetRef <- submissionParallelGateway
 		),
 		prePollingFlow: BPMN!SequenceFlow (
@@ -402,6 +433,7 @@ rule InputDataset {
 			name <-'input-dataset'
 		),
 		dataObject: BPMN!DataObject (
+			id <- d.name.sanitizeIdentifier(),
 			name <- d.name.sanitizeIdentifier(),
 			isCollection <- if 1 > d.maximumCardinality then
 					true
@@ -445,6 +477,7 @@ rule OutputDataset {
 			name <-'output-dataset'
 		),
 		dataObject: BPMN!DataObject (
+			id <- d.name.sanitizeIdentifier(),
 			name <- d.name.sanitizeIdentifier(),
 			isCollection <- if 1 > d.maximumCardinality then
 					true
