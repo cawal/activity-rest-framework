@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>${groupId}</groupId>
@@ -17,6 +21,7 @@
 		<kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
 
+		<activityrest.version>1.0.0</activityrest.version>
 		<version.org.drools>7.26.0.Final</version.org.drools>
 		<version.org.jbpm>7.26.0.Final</version.org.jbpm><!-- 6.0 doesn't work with shaded jar -->
 		<hibernate.version>4.2.0.Final</hibernate.version>
@@ -50,6 +55,19 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.domain</artifactId>
+			<version>${activityrest.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId>
+			<version>${activityrest.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
@@ -327,7 +345,9 @@
 						</goals>
 						<configuration>
 							<transformers>
-								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"
+								>
 									<resource>META-INF/kie.conf</resource>
 								</transformer>
 							</transformers>
