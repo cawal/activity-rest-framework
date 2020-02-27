@@ -58,7 +58,6 @@
 	expressionLanguage="http://www.mvel.org/2.0" 
 	targetNamespace="http://www.jboss.org/drools" 
 	typeLanguage="http://www.java.com/javaTypes"
-	version="1.0"
 			>
 			<xsl:apply-templates></xsl:apply-templates>
 		</bpmn2:definitions>
