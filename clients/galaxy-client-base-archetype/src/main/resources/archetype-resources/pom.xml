@@ -61,8 +61,6 @@
 			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.domain</artifactId>
 			<version>${activityrest.version}</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
 			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId>

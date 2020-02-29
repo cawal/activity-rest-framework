@@ -26,6 +26,17 @@
 		<junit.version>4.12</junit.version>
 		<version.org.drools>7.26.0.Final</version.org.drools>
 		<version.org.jbpm>7.26.0.Final</version.org.jbpm><!-- 6.0 doesn't work with shaded jar -->
+		
+		
+		<hibernate.version>4.2.0.Final</hibernate.version>
+		<hibernate.core.version>4.2.0.Final</hibernate.core.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<jboss.javaee.version>1.0.0.Final</jboss.javaee.version>
+		<logback.version>1.0.9</logback.version>
+		<h2.version>1.3.161</h2.version>
+		<narayana.version>5.9.0.Final</narayana.version>
+		<jta.version>1.0.1.Final</jta.version>
+		
 	</properties>
 
 
