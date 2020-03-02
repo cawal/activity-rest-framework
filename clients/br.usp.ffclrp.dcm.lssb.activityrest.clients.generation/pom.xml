@@ -33,7 +33,7 @@
 		<h2.version>1.3.161</h2.version>
 		<narayana.version>5.9.0.Final</narayana.version>
 		<jta.version>1.0.1.Final</jta.version>
-		
+
 	</properties>
 
 	<repositories>
@@ -125,15 +125,7 @@
 
 		<!-- https://mvnrepository.com/artifact/org.jbpm/jbpm-bpmn2-emfextmodel -->
 		<dependency>
-			<groupId>org.jbpm</groupId>      <hibernate.version>4.2.0.Final</hibernate.version>
-        <hibernate.core.version>4.2.0.Final</hibernate.core.version>
-        <slf4j.version>1.6.4</slf4j.version>
-        <jboss.javaee.version>1.0.0.Final</jboss.javaee.version>
-        <logback.version>1.0.9</logback.version>
-        <h2.version>1.3.161</h2.version>
-        <narayana.version>5.9.0.Final</narayana.version>
-        <jta.version>1.0.1.Final</jta.version>
-			
+			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-bpmn2-emfextmodel</artifactId>
 			<version>7.28.0.Final</version>
 		</dependency>
@@ -304,6 +296,14 @@
 			<version>${version.org.jbpm}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<version>${version.org.jbpm}</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-human-task-core</artifactId>

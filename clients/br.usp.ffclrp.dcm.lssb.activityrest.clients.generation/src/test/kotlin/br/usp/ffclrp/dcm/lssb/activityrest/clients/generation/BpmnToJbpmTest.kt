@@ -14,9 +14,12 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.BpmnToJbpm
 import org.kie.api.io.ResourceType
 import br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.*
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstance
+import org.jbpm.test.JbpmJUnitBaseTestCase
+import org.kie.api.runtime.manager.RuntimeEngine
+import org.kie.api.runtime.KieSession
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class BpmnToJbpmTest {
+class BpmnToJbpmTest : JbpmJUnitBaseTestCase(true,false){
 
     private val transformationEngine = AadlToBpmn();
 
@@ -38,7 +41,27 @@ class BpmnToJbpmTest {
         val file = BpmnToJbpm().transform(bpmn);
 
         print(file)
-        executeFile(file);
+
+        // create runtime manager with single process - hello.bpmn
+        createRuntimeManager("hello.bpmn");
+
+        // take RuntimeManager to work with jBPM engine
+        val runtimeEngine = getRuntimeEngine();
+
+        // get access to KieSession instance
+        val ksession = runtimeEngine.getKieSession();
+
+        // start process
+        val processInstance = ksession.startProcess("com.sample.bpmn.hello");
+
+        // check whether the process instance has completed successfully
+        assertProcessInstanceCompleted(processInstance.getId(), ksession);
+
+        // check what nodes have been triggered
+        assertNodeTriggered(processInstance.getId(), "StartProcess", "Hello", "EndProcess");
+
+
+//        executeFile(file);
 //        file.renameTo(File("/home/cawal/git/lssb/phd-tests-scratch-project/a.bpmn2"))
         assertAll("File exists",
                 { assertNotNull(file, "Returned a null File instance.") },
