@@ -110,13 +110,13 @@ public class JobCollection {
 			}
 		} catch (AnalysisActivityNotFoundException
 				| br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCantStartException e) {
-			throw new BadRequestException(e);
+			throw new NotFoundException(e);
 		} catch (JobCreationFail e) {
 			e.printStackTrace();
 			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR, e);
 		} catch (AnalysisActivityUpdateFailure e) {
 			e.printStackTrace();
-			throw new BadRequestException(e);
+			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR,e);
 		}
 	}
 	
