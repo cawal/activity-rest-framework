@@ -9,6 +9,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.client.ActivityRestClient
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory
 import java.net.URI
 import java.io.File
+import java.math.BigInteger
 
 class ActivityRestClientTest {
 
@@ -16,9 +17,22 @@ class ActivityRestClientTest {
     fun `Creates new activities`() {
         val activity = ActivityInstance();
         val baseUrl = URI.create(
-                "http://kode.ffclrp.usp.br:8081/david-chart-report-by-dataset"
+//                "http://kode.ffclrp.usp.br:8081/david-chart-report-by-dataset"
+                "http://localhost:8080/david-chart-report-by-dataset"
         )
         val description = AnalysisActivityDescriptionFactory.eINSTANCE.createActivity()
+        val inputDataset = AnalysisActivityDescriptionFactory.eINSTANCE.createInputDataset()
+        
+        inputDataset.setName("gene-id-table")
+        inputDataset.setMaximumCardinality(BigInteger.valueOf(1))
+        description.getInputDatasets().add(inputDataset)
+        
+        val outputDataset = AnalysisActivityDescriptionFactory.eINSTANCE.createOutputDataset()
+        outputDataset.setName("output");
+        outputDataset.setMaximumCardinality(BigInteger.valueOf(1))
+        description.getOutputDatasets().add(outputDataset)
+        
+        
         val client = ActivityRestClient(baseUrl, description)
 
         activity.parameters =
@@ -63,7 +77,7 @@ class ActivityRestClientTest {
         //print(client.createInstanceOnService(activity).id)
 
 
-       // assertEquals(ActivityInstanceState.CREATED, activity.state)
+        assertEquals(ActivityInstanceState.SUCCEEDED, activity.state)
     }
 
 

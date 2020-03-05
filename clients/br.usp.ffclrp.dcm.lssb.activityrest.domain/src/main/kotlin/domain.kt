@@ -44,7 +44,7 @@ class DatasetItem() {
     }
 }
 
-data class DatasetContent(val content : String?);
+inline class DatasetContent(val content : String?);
 
 fun datasetItemFrom(file: File): DatasetItem {
     if (file.exists()) {
