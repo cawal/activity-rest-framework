@@ -12,17 +12,10 @@
 		<artifactId>activity-rest-root</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
-<!-- 	<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId> -->
-<!-- 		<artifactId>tycho-configuration</artifactId> -->
-<!-- 		<version>1.0.0-SNAPSHOT</version> -->
-<!-- 		<relativePath>../releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration</relativePath> -->
 	</parent>
 
 	<modules>
-<!--		<module>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</module>-->
-<!--		<module>galaxy-client-base-archetype</module>-->
 		<module>br.usp.ffclrp.dcm.lssb.activityrest.domain</module>
 		<module>br.usp.ffclrp.dcm.lssb.activityrest.client</module>
-<!-- 		<module>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.workitemhandlers</module> -->
   </modules>
 </project>

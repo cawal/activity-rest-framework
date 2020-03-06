@@ -6,9 +6,8 @@ import org.apache.maven.cli.MavenCli
 import java.io.File
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
+
 //import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.sanitized
-
-
 
 
 class JavaProjectGenerator {
@@ -81,24 +80,29 @@ class JavaProjectGenerator {
         return tempCliFile
     }
 
+    private fun cliFileHeader() =
+            """
+			|@file:JvmName("App")
+			|@file:JvmMultifileClass
+			|
+			|package br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient
+			|
+			|import br.usp.ffclrp.dcm.lssb.activityrest.domain.*
+			|import picocli.CommandLine
+			|import picocli.CommandLine.Command
+			|import picocli.CommandLine.Option
+			|import picocli.CommandLine.Parameters
+			|import java.io.File
+			|import java.util.concurrent.Callable
+			|import org.apache.commons.io.IOUtils
+			|import java.io.FileWriter
+    		""".trimMargin("|")
+
 
     fun getCliFileContents(activity: Activity, deployment: Deployment) =
             """
-    @file:JvmName("App")
-    @file:JvmMultifileClass
-    
-    package br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient
-    
-    import br.usp.ffclrp.dcm.lssb.activityrest.domain.*
-    import picocli.CommandLine
-    import picocli.CommandLine.Command
-    import picocli.CommandLine.Option
-    import picocli.CommandLine.Parameters
-    import java.io.File
-    import java.util.concurrent.Callable
-    import org.apache.commons.io.IOUtils
-    import java.io.FileWriter
-    
+   
+ ${cliFileHeader()}
     
     
     /**
@@ -121,17 +125,18 @@ class JavaProjectGenerator {
         datasets: Map<String, List<DatasetItem>>
     ): Unit {
     	${activity.getOutputDatasets()
-            .filter { it.getMaximumCardinality().toInt() == 1}
-            .map {
-                """IOUtils.write(datasets.get("${it.getName()}")?
+                    .filter { it.getMaximumCardinality().toInt() == 1 }
+                    .map {
+                        """IOUtils.write(datasets.get("${it.getName()}")?
                 	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
         		println(config.${it.getName().sanitized()}?.getAbsolutePath())
-           """}.joinToString("\n")}
+           """
+                    }.joinToString("\n")}
  
     	${activity.getOutputDatasets()
-            .filter { it.getMaximumCardinality().toInt() != 1}
-            .map {
-                """datasets.get("${it.getName()}")?
+                    .filter { it.getMaximumCardinality().toInt() != 1 }
+                    .map {
+                        """datasets.get("${it.getName()}")?
                 	.forEach {
                 		val fileName = config.${it.getName().sanitized()}+"/"+${it.getName()}
                 		IOUtils.write(it.content,
@@ -139,7 +144,8 @@ class JavaProjectGenerator {
 					println(fileName)
                 		
                 	}
-           """}.joinToString("\n")}
+           """
+                    }.joinToString("\n")}
  
          }
     }

@@ -1,7 +1,7 @@
 @file:JvmName("App")
 @file:JvmMultifileClass
 
-package br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient
+package br.usp.ffclrp.dcm.lssb.activityrest.clientapp
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.*
 import picocli.CommandLine
@@ -24,11 +24,23 @@ fun test(args: Array<String>) = CommandLine(AppCallable()).execute(*(args.also{i
 fun execute(config: AppCallable): Int {
 
     val activityInstance = getActivityInstance(config)
+
     val executionService = ExecutionService(bpmnResources,executedProcessId)
     val resultActivityInstance = executionService.execute(activityInstance)
-    val outputDatasets = resultActivityInstance.outputDatasets
-    writeOutputDatasets(config, outputDatasets)
-    return 0
+    
+	val client = ActivityRestClient(baseUrl, description)
+    val executedInstance = client.execute(activity);
+    
+    if(executedInstance.state == ActivityInstanceState.SUCCEEDED){
+    	val outputDatasets = executedInstance.outputDatasets
+    	writeOutputDatasets(config, outputDatasets)
+    	return 0
+        
+    } else {
+        val errorReport = executedInstance.errorReport
+        System.err.prinln(errorReport)
+        return 1;
+    }
 }
 
 
