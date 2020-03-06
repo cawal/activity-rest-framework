@@ -1,0 +1,45 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>jbpm-based</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.jetbrains.kotlin.ui.kotlinBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.bpmn2.modeler.core.bpmn2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.jetbrains.kotlin.core.kotlinNature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+		<nature>org.eclipse.bpmn2.modeler.core.bpmn2Nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>kotlin_bin</name>
+			<type>2</type>
+			<locationURI>org.jetbrains.kotlin.core.filesystem:/jbpm-based/kotlin_bin</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

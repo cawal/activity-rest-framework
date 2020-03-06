@@ -1,0 +1,122 @@
+import org.drools.core.process.core.datatype.impl.type.StringDataType;
+import org.drools.core.process.core.datatype.impl.type.IntegerDataType;
+import org.drools.core.process.core.datatype.impl.type.BooleanDataType;
+import org.jbpm.process.core.datatype.impl.type.ObjectDataType;
+import org.jbpm.process.core.datatype.impl.type.ListDataType;
+
+[
+	[
+		"name" : "create-activity-instance",
+		"displayName" : "Create activity instance",
+		"parameters" [
+		],
+		"result" : [
+			"activityId" : new StringDataType();
+			"location" : new StringDataType();
+			"activityInstance" : new ObjectDataType();
+		]
+	],
+	[
+		"name" : "submit-parameters-values",
+		"displayName" : "Submit parameter's values",
+		"parameters" [
+			"activityId" : new StringDataType();
+			"email" : new StringDataType();
+			"countCutoff" : new IntegerDataType();
+			"threshold" : new StringDataType();
+			"categoriesInResult" : new ListDataType();
+			"geneIdentifierType" : new StringDataType();
+			"columnName" : new StringDataType();
+		],
+		"result" : [
+			"activityId" : new StringDataType()
+		]
+	],
+	[
+		"name" : "submit-single-dataset",
+		"displayName" : "Submit single file dataset",
+		"parameters" [
+			"activityId" : new StringDataType(),
+			"datasetName" : new StringDataType();
+			"datasetItem" : new ListDataType();
+		],
+		"result" : [
+			"responseStatus" : new IntegerDataType();
+		]
+	],
+	[
+		"name" : "submit-collection-dataset",
+		"displayName" : "Submit collection file dataset",
+		"parameters" [
+			"activityId" : new StringDataType(),
+			"datasetName" : new StringDataType();
+			"datasetItems" : new ListDataType();
+		],
+		"result" : [
+			"responseStatuses" : new ListDataType();
+		]
+	],
+	[
+		"name" : "submit-instance-for-processing",
+		"displayName" : "Submit activity instance for processing",
+		"parameters" [
+			"activityId" : new StringDataType();
+		],
+		"result" : [
+			"responseStatus" : new ListDataType();
+            "processingStarted" : new BooleanDataType();
+		]
+	],
+	[
+		"name" : "timed-wait",
+		"displayName" : "Timed wait. Default 1000 ms",
+		"parameters" [
+			"delayInMilliseconds" : new IntegerDataType();
+		],
+		"result" : [
+			"delayedTimeInMillis" : new IntegerDataType();
+		]
+	],
+	[
+		"name" : "poll-processing-state",
+		"displayName" : "Poll the processing state of activity instance",
+		"parameters" [
+			"activityId" : new StringDataType();
+		],
+		"result" : [
+			"finalProcessingState" : new StringDataType();
+		]
+	],
+	[
+		"name" : "wait-activity-instance-to-complete",
+		"displayName" : "Waits until activity instance completes",
+		"parameters" [
+			"activityId" : new StringDataType();
+			"delayInMilliseconds" : new IntegerDataType();
+		],
+		"result" : [
+			"finalProcessingState" : new StringDataType();
+		]
+	],
+	[
+		"name" : "retrieve-single-item-output-dataset",
+		"displayName" : "Retrieve single file output dataset",
+		"parameters" [
+			"activityId" : new StringDataType(),
+			"datasetName" : new StringDataType();
+		],
+		"result" : [
+			"responseStatus" : new IntegerDataType();
+			"datasetItem" : new ListDataType();
+		]
+	],
+	[
+		"name" : "Timed wait",
+		"parameters" : [
+			"milliseconds" : new IntegerDataType()
+		],
+		"defaultHandler" :  new br.usp.ffclrp.dcm.lssb.activityrest.jbpm.workitemhandlers.TimedWaitHandler(),
+		"displayName" : "Timed wait",
+		"icon" : "icon-info.gif"
+	]
+]

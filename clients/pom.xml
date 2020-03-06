@@ -22,6 +22,7 @@
 <!--		<module>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</module>-->
 <!--		<module>galaxy-client-base-archetype</module>-->
 		<module>br.usp.ffclrp.dcm.lssb.activityrest.domain</module>
-		<module>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.workitemhandlers</module>
+		<module>br.usp.ffclrp.dcm.lssb.activityrest.client</module>
+<!-- 		<module>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.workitemhandlers</module> -->
   </modules>
 </project>
