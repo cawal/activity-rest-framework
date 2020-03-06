@@ -22,6 +22,9 @@ import org.glassfish.jersey.client.ClientProperties
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.DatasetContent
 import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.InstanceExecutionFailed
+import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.InvalidActivityInstance
+
+typealias HateoasControls = MutableMap<String,URI>
 
 class ActivityRestClient(
         val baseUrl: URI,
@@ -34,34 +37,42 @@ class ActivityRestClient(
             .build()
 
     val target = restClient.target(baseUrl)
-    val hateoasControls = HashMap<String, URI>()
 
 
     fun execute(instance: ActivityInstance): ActivityInstance {
 
-        hateoasControls.clear()
-
         validate(instance)
-        println("começando")
-        connectToService()
+        
+        val hateoasControls = connectToService()
+
 
         when (validate(instance)) {
             true -> {
-                val createdInstance = createInstanceOnService(instance)
-                sendInputs(createdInstance.inputDatasets)
-                sendParameters(createdInstance.parameters)
-                val readyInstance = updateInstance(createdInstance)
-                val completedInstance = submitForProcessing(readyInstance)
-                waitForProcessingAndReturnState(completedInstance)
-                updateInstance(completedInstance)
+                val createdInstance =
+                        createInstanceOnService(instance, hateoasControls)
+
+                sendInputs(createdInstance.inputDatasets, hateoasControls)
+                sendParameters(createdInstance.parameters, hateoasControls)
+
+                val readyInstance =
+                        updateInstance(createdInstance, hateoasControls)
+                val runningInstance =
+                        submitForProcessing(readyInstance, hateoasControls)
+
+                waitForProcessingAndReturnState(runningInstance, hateoasControls)
+
+                val completedInstance =
+                        updateInstance(runningInstance, hateoasControls)
                 when (completedInstance.state) {
                     State.SUCCEEDED -> {
                         println("SUCCEEDED! =)")
-                        instance.outputDatasets = retrieveOutputs(createdInstance)
+                        instance.outputDatasets =
+                                retrieveOutputs(createdInstance, hateoasControls)
                     }
                     State.FAILED -> {
                         println("FAILED! =(")
-                        instance.errorReport = retrieveErrorLog(createdInstance)
+                        instance.errorReport =
+                                retrieveErrorLog(createdInstance, hateoasControls)
                     }
                     else -> {
                     }
@@ -70,24 +81,22 @@ class ActivityRestClient(
                 return instance
             }
             false -> {
-                instance.state = State.FAILED
-                instance.errorReport = """
-            	{
-                	"error": "Invalid inputs or parameters. Check the activity description."
-            	}
-                """.trimMargin()
-                return instance
+                throw InvalidActivityInstance()
             }
         }
     }
 
 
     private fun validate(instance: ActivityInstance): Boolean {
-        return true
+        return validParameters(instance)
+                && validInputDatasets(instance)
     }
 
+    private fun validParameters(instance: ActivityInstance) = true;
 
-    public fun connectToService(): Map<String, URI> {
+    private fun validInputDatasets(instance: ActivityInstance) = true;
+
+    public fun connectToService(): HateoasControls {
         val response = restClient
                 .target(baseUrl)
                 .request(MediaType.APPLICATION_JSON)
@@ -95,13 +104,15 @@ class ActivityRestClient(
                 .get()
 
         return when (response.getStatus()) {
-            200 -> getHateoasControls(response.getLinks())
+            200 -> getHateoasControls(response.getLinks(),HashMap<String,URI>())
             else -> throw ServiceUnavailable()
         }
     }
 
 
-    fun getHateoasControls(links: Set<Link>): Map<String, URI> {
+    fun getHateoasControls(links: Set<Link>,
+                           hateoasControls: HateoasControls)
+            : HateoasControls {
         links.forEach {
             hateoasControls.set(it.getRel(), it.getUri())
         }
@@ -110,7 +121,8 @@ class ActivityRestClient(
     }
 
 
-    public fun createInstanceOnService(instance: ActivityInstance)
+    public fun createInstanceOnService(instance: ActivityInstance,
+                                       hateoasControls: HateoasControls)
             : ActivityInstance {
 
         val response = restClient
@@ -123,9 +135,9 @@ class ActivityRestClient(
 
             val location = response.getLocation()
             hateoasControls.put("instance", location)
-            getHateoasControls(response.getLinks())
+            getHateoasControls(response.getLinks(),hateoasControls)
 
-            updateInstance(instance)
+            updateInstance(instance,hateoasControls)
 
             println(hateoasControls)
 
@@ -135,41 +147,24 @@ class ActivityRestClient(
         }
     }
 
-//    fun updateInstance(instance : ActivityInstance)
-//            : ActivityInstance {
-//            val entity = response.readEntity(
-//                    object : GenericType<ActivityInstance>() {})
-//            val activityId = entity.id
-//
-//            instance.id = activityId
-//
-//            val instanceResponse = restClient
-//                    .target(hateoasControls.get("instance"))
-//                    .request(MediaType.APPLICATION_JSON)
-//                    .accept(MediaType.APPLICATION_JSON)
-//                    .get()
-//            getHateoasControls(instanceResponse.getLinks())
-//
-//            println(hateoasControls)
-//
-//            return instance
-//    }
 
-    private fun sendInputs(datasets: Map<String, List<DatasetItem>>): Boolean {
-        getInputDatasetsHateoasControls()
+    private fun sendInputs(datasets: Map<String, List<DatasetItem>>,
+                           hateoasControls: HateoasControls): Boolean {
+        getInputDatasetsHateoasControls(hateoasControls)
 
         return description.getInputDatasets().map {
             val items = datasets.get(it.getName()) ?: emptyList()
 
             if (it.getMaximumCardinality().toInt() > 1)
                 sendCollectionInputDataset(
-                        it.getName(), items)
+                        it.getName(), items,hateoasControls)
             else sendSingleFileInputDataset(
-                    it.getName(), items)
+                    it.getName(), items,hateoasControls)
         }.all { it == true }
     }
 
-    fun sendCollectionInputDataset(name: String, items: List<DatasetItem>)
+    fun sendCollectionInputDataset(name: String, items: List<DatasetItem>,
+                                   hateoasControls: HateoasControls)
             : Boolean {
         println("collection file dataset")
         return items.map {
@@ -183,14 +178,15 @@ class ActivityRestClient(
                                     MediaType.APPLICATION_JSON
                             ))
         }.map {
-            getHateoasControls(it.getLinks())
+            getHateoasControls(it.getLinks(),hateoasControls)
             it.getStatus() in listOf(200, 201)
         }.all { it == true }
     }
 
     fun inputDatasetControlFor(datasetName: String) = datasetName;
 
-    fun sendSingleFileInputDataset(name: String, items: List<DatasetItem>)
+    fun sendSingleFileInputDataset(name: String, items: List<DatasetItem>,
+                                   hateoasControls: HateoasControls)
             : Boolean {
         println(items)
         println("single file dataset")
@@ -207,48 +203,50 @@ class ActivityRestClient(
                                     MediaType.APPLICATION_JSON
                             ))
         }.map {
-            getHateoasControls(it.getLinks())
+            getHateoasControls(it.getLinks(),hateoasControls)
             it.getStatus() in listOf(200, 201)
         }.all { it == true }
     }
 
-    fun getInputDatasetsHateoasControls() {
+    fun getInputDatasetsHateoasControls(hateoasControls: HateoasControls) {
         val inputsResourceResponse = restClient
                 .target(hateoasControls.get("inputs"))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .get()
-        getHateoasControls(inputsResourceResponse.getLinks())
+        getHateoasControls(inputsResourceResponse.getLinks(),hateoasControls)
 
         println(hateoasControls)
     }
 
-    private fun sendParameters(parameters: Map<String, Any>): Boolean {
-        getParametersHateoasControls()
+    private fun sendParameters(parameters: Map<String, Any>,
+                               hateoasControls: HateoasControls): Boolean {
+        getParametersHateoasControls(hateoasControls)
 
         return restClient.target(hateoasControls.get("parameters"))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .put(Entity.entity(parameters, MediaType.APPLICATION_JSON))
 
-                .also { getHateoasControls(it.getLinks()) }
+                .also { getHateoasControls(it.getLinks(),hateoasControls) }
                 .let {
                     it.getStatus() in listOf(200, 201)
                 }
     }
 
-    fun getParametersHateoasControls() {
+    fun getParametersHateoasControls(hateoasControls: HateoasControls) {
         val parameterResourceResponse = restClient
                 .target(hateoasControls.get("parameters"))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .get()
-        getHateoasControls(parameterResourceResponse.getLinks())
+        getHateoasControls(parameterResourceResponse.getLinks(),hateoasControls)
 
         println(hateoasControls)
     }
 
-    fun updateInstance(instance: ActivityInstance): ActivityInstance {
+    fun updateInstance(instance: ActivityInstance,
+                       hateoasControls: HateoasControls): ActivityInstance {
         println(hateoasControls.get("instance"))
         restClient
                 .target(hateoasControls.get("instance"))
@@ -256,7 +254,7 @@ class ActivityRestClient(
                 .accept(MediaType.APPLICATION_JSON)
                 .get()
                 .also { println(it.getStatus()) }
-                .also { getHateoasControls(it.getLinks()) }
+                .also { getHateoasControls(it.getLinks(),hateoasControls) }
                 .also {
                     println(hateoasControls)
                     val serviceInstance = it.readEntity(object : GenericType<ActivityInstance>() {})
@@ -267,14 +265,15 @@ class ActivityRestClient(
                 }
     }
 
-    fun submitForProcessing(instance: ActivityInstance): ActivityInstance {
+    fun submitForProcessing(instance: ActivityInstance,
+                            hateoasControls: HateoasControls): ActivityInstance {
         restClient
                 .target(hateoasControls.get("start-execution"))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .post(null)
 
-                .also { getHateoasControls(it.getLinks()) }
+                .also { getHateoasControls(it.getLinks(),hateoasControls) }
                 .also {
                     println(hateoasControls)
                     println(it.getStatus())
@@ -288,7 +287,8 @@ class ActivityRestClient(
                 }
     }
 
-    private fun waitForProcessingAndReturnState(instance: ActivityInstance)
+    private fun waitForProcessingAndReturnState(instance: ActivityInstance,
+                                                hateoasControls: HateoasControls)
             : ActivityInstance {
         var response: Response;
         do {
@@ -317,30 +317,33 @@ class ActivityRestClient(
         return instance
     }
 
-    private fun retrieveOutputs(succeededInstance: ActivityInstance)
+    private fun retrieveOutputs(succeededInstance: ActivityInstance,
+                                hateoasControls: HateoasControls)
             : Map<String, List<DatasetItem>> {
-        getOutputDatasetsHateoasControls()
+        getOutputDatasetsHateoasControls(hateoasControls)
 
         return description.getOutputDatasets().map {
-            retrieveOutputDataset(it).also{println(it)}
-        }.toMap().also{println(it)}
+            retrieveOutputDataset(it,hateoasControls).also { println(it) }
+        }.toMap().also { println(it) }
     }
 
-    fun retrieveOutputDataset(dataset: OutputDataset)
+    fun retrieveOutputDataset(dataset: OutputDataset,
+                              hateoasControls: HateoasControls)
             : Pair<String, List<DatasetItem>> {
         println(hateoasControls)
         return if (dataset.getMaximumCardinality().toInt() > 1) {
             val items = retrieveCollectionOutputDataset(
-                    dataset.getName())
+                    dataset.getName(),hateoasControls)
             Pair(dataset.getName(), items)
         } else {
             val item = retrieveSingleFileOutputDataset(
-                    dataset.getName())
+                    dataset.getName(),hateoasControls)
             Pair(dataset.getName(), listOf(item))
         }
     }
 
-    fun retrieveCollectionOutputDataset(name: String)
+    fun retrieveCollectionOutputDataset(name: String,
+                                        hateoasControls: HateoasControls)
             : List<DatasetItem> {
         println("collection file dataset")
 
@@ -373,7 +376,8 @@ class ActivityRestClient(
 
     fun outputDatasetControlFor(datasetName: String) = datasetName;
 
-    fun retrieveSingleFileOutputDataset(name: String)
+    fun retrieveSingleFileOutputDataset(name: String,
+                                        hateoasControls: HateoasControls)
             : DatasetItem {
         println("single file dataset")
 
@@ -394,19 +398,35 @@ class ActivityRestClient(
 
     }
 
-    private fun getOutputDatasetsHateoasControls() {
+    private fun getOutputDatasetsHateoasControls(
+            hateoasControls: HateoasControls) {
         val inputsResourceResponse = restClient
                 .target(hateoasControls.get("outputs"))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .get()
-        getHateoasControls(inputsResourceResponse.getLinks())
+        getHateoasControls(inputsResourceResponse.getLinks(),hateoasControls)
 
         println(hateoasControls)
     }
 
-    private fun retrieveErrorLog(suceededInstance: ActivityInstance): String {
-        return ""
+    private fun retrieveErrorLog(suceededInstance: ActivityInstance,
+                                 hateoasControls: HateoasControls): String {
+        return restClient
+                .target(hateoasControls.get("instance"))
+                .request(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .get()
+                .also { println(it.getStatus()) }
+                .also { getHateoasControls(it.getLinks(),hateoasControls) }
+                .let {
+                    println(hateoasControls)
+                    val serviceInstance =
+                            it.readEntity(
+                                    object : GenericType<ActivityInstance>() {})
+
+                    serviceInstance.errorReport ?: ""
+                }
     }
 
 

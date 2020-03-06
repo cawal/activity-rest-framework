@@ -67,15 +67,7 @@ class ActivityRestClientTest {
                 "gene-id-table" to listOf(geneIdTable)
         )
         
-        println(activity.inputDatasets)
-        println(geneIdTableFile.getAbsolutePath())
-        println(geneIdTable.content)
-        
         client.execute(activity);
-
-        //client.connectToService()
-        //print(client.createInstanceOnService(activity).id)
-
 
         assertEquals(ActivityInstanceState.SUCCEEDED, activity.state)
     }
