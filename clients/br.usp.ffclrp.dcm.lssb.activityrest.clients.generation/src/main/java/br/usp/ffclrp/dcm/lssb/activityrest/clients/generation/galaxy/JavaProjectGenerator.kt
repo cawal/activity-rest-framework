@@ -80,6 +80,17 @@ class JavaProjectGenerator {
         return tempCliFile
     }
 
+    fun getCliFileContents(activity: Activity, deployment: Deployment) =
+            """
+			|${cliFileHeader()}
+			|    
+			|${createCallable(activity, deployment)}
+			|
+			|${createWriteOutputDatasets(activity)}
+			|
+			|${createGetActivityInstance(activity)}    
+			""".trimMargin("|");
+
     private fun cliFileHeader() =
             """
 			|@file:JvmName("App")
@@ -99,192 +110,115 @@ class JavaProjectGenerator {
     		""".trimMargin("|")
 
 
-    fun getCliFileContents(activity: Activity, deployment: Deployment) =
+    private fun createCallable(activity: Activity, deployment: Deployment) =
             """
-   
- ${cliFileHeader()}
-    
-    
-    /**
-     * Activity-specific
-     */
-    @Command(name = "${activity.name}", version = ["${deployment.getService().getApiVersion()}"])
-    class AppCallable() : Callable<Int> {
-    
-        ${createParameters(activity)}
-    
-        ${createOptions(activity, deployment)}
+			|@Command(name = "${activity.name}", version = ["${
+						deployment.getService().getApiVersion()}"])
+			|class AppCallable() : Callable<Int> {
+			|
+			|    ${createParameters(activity)}
+			|
+			|    ${createOptions(activity, deployment)}
+			|
+			|    override fun call(): Int {
+			|        return execute(this)
+			|    }
+			|}
+			 """.trimMargin("|")
+
+    private fun createParameters(activity: Activity) =
+            """
+			|    ${activity.getInputDatasets()
+                        .map { it.parameterText }
+                        .joinToString("\n\n")
+                }
+			|
+			|    ${activity.getOutputDatasets()
+                        .map { it.parameterText }
+                        .joinToString("\n\n")
+                }
+			|
+			|
+			|    ${activity.getParameters()
+                        .filter { it.getDefaultValue().size == 0 }
+                        .map { it.parameterText }
+                        .joinToString("\n\n")
+                } """.trimMargin("|")
+
+
+    private fun createOptions(activity: Activity, deployment: Deployment) =
+			"""
+			|    @Option(
+			|    	names = ["--service-url"],
+			|    	paramLabel = "SERVICE_BASE_URL",
+			|    	arity = "1..1",
+			|    	description = ["The Activity-REST service base URL"]
+			|    )
+			|    var service_url : String
+			|    = "${deployment.getContainer().getBaseUrl()}"
  
-        override fun call(): Int {
-            return execute(this)
-        }
-    }
-    
-    fun writeOutputDatasets(
-        config: AppCallable,
-        datasets: Map<String, List<DatasetItem>>
-    ): Unit {
-    	${activity.getOutputDatasets()
-                    .filter { it.getMaximumCardinality().toInt() == 1 }
-                    .map {
-                        """IOUtils.write(datasets.get("${it.getName()}")?
-                	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
-        		println(config.${it.getName().sanitized()}?.getAbsolutePath())
-           """
-                    }.joinToString("\n")}
- 
-    	${activity.getOutputDatasets()
-                    .filter { it.getMaximumCardinality().toInt() != 1 }
-                    .map {
-                        """datasets.get("${it.getName()}")?
-                	.forEach {
-                		val fileName = config.${it.getName().sanitized()}+"/"+${it.getName()}
-                		IOUtils.write(it.content,
-                				FileWriter(fileName))
-					println(fileName)
-                		
-                	}
-           """
-                    }.joinToString("\n")}
- 
-         }
-    }
-    
-    /**
-     * Activity-specific
-     */
-    fun getActivityInstance(config: AppCallable): ActivityInstance {
-        val parameters = mapOf<String, Any>(
-        	${activity.getParameters().map {
-                """ "${it.getName()}" to config.${it.getName().sanitized()}"""
-            }.joinToString(",\n")}
-        )
-    
-        val inputDatasets = mapOf<String, List<DatasetItem>>(
-        	${activity.getInputDatasets().map {
-                """ "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
-                	.map { datasetItemFrom(it) }
-            """
-            }.joinToString(",\n")}
-        )
-    
-        val outputDatasets = mapOf<String, List<DatasetItem>>(
-        	${activity.getOutputDatasets().map {
-                """ "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
-                		.map { datasetItemFrom(it) }
-            """
-            }.joinToString(",\n")}
-        )
-    
-    
-        val instance = ActivityInstance(
-            state = ActivityInstanceState.CREATED,
-            parameters = parameters,
-            inputDatasets = inputDatasets,
-            outputDatasets = outputDatasets
-        )
-    
-        return instance
-    } 
-    
-    val bpmnResources = listOf(
-            BpmnProcessResource("${activity.name}", "${bpmnFile}", ResourceType.BPMN2)
-    )
-    
-    val executedProcessId = "${activity.name}"
-    """.trimIndent();
-
-
-    fun createParameters(activity: Activity) =
-            """
-			${activity.getInputDatasets()
-                    .map { it.parameterText }
-                    .joinToString("\n\n")
-            }
-
-			${activity.getOutputDatasets()
-                    .map { it.parameterText }
-                    .joinToString("\n\n")
-            }
-
-
-			${activity.getParameters()
-                    .filter { it.getDefaultValue().size == 0 }
-                    .map { it.parameterText }
-                    .joinToString("\n\n")
-            } """.trimIndent()
-
-
-    fun createOptions(activity: Activity, deployment: Deployment) =
-            """
-			@Option(
-				names = ["--service-url"],
-				paramLabel = "SERVICE_BASE_URL",
-				arity = "1..1",
-				description = ["The Activity-REST service base URL"]
-			)
-			var service_url : String
-			= "${deployment.getContainer().getBaseUrl()}"
- 
-			${activity.getParameters()
-                    .filter { it.getDefaultValue().size > 0 }
-                    .map { it.optionText }
-                    .joinToString("\n\n")
-            } """.trimIndent()
+			|    ${activity.getParameters()
+                        .filter { it.getDefaultValue().size > 0 }
+                        .map { it.optionText }
+                        .joinToString("\n\n")
+                }""".trimMargin("|")
 
     val InputDataset.parameterText: String
         get() =
             """
-			@Option(
-				names = ["--${getName()}"],
-				paramLabel = "${getName().toUpperCase()}",
-				arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-				description = ["${getRemark()}"]
-				required = true
-			)
-			var ${getName().sanitized()} : ${
-            if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
-            }""".trimIndent()
+			|    	@Option(
+			|    		names = ["--${getName()}"],
+			|    		paramLabel = "${getName().toUpperCase()}",
+			|    		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|    		description = ["${getRemark()}"]
+			|    		required = true
+			|    	)
+			|    	var ${getName().sanitized()} : ${
+						if (getMaximumCardinality().toInt() != 1)
+							"List<File>?"
+						else "File?"
+					}
+			""".trimIndent()
 
-    val OutputDataset.parameterText: String
+	val OutputDataset.parameterText: String
         get() =
             """
-			@Option(
-				names = ["--${getName()}"],
-				paramLabel = "${getName().toUpperCase()}",
-				arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-				description = ["${getRemark()}"],
-				required = true
-			)
-			var ${getName().sanitized()} : ${
-            if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
+			|		@Option(
+			|			names = ["--${getName()}"],
+			|			paramLabel = "${getName().toUpperCase()}",
+			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|			description = ["${getRemark()}"],
+			|			required = true
+			|		)
+			|		var ${getName().sanitized()} : ${
+					if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
             }""".trimIndent()
 
     val Parameter.parameterText
         get() =
             """
-	@Parameters(
-		names = ["--${getName()}"],
-		paramLabel = "${getName().toUpperCase()}",
-		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-		description = ["${getRemark()}"]
-	)
-	var ${getName().sanitized()} : ${typeText}?
-""".trimIndent()
+			|		@Parameters(
+			|			names = ["--${getName()}"],
+			|			paramLabel = "${getName().toUpperCase()}",
+			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|			description = ["${getRemark()}"]
+			|		)
+			|		var ${getName().sanitized()} : ${typeText}?
+			""".trimIndent()
 
 
     val Parameter.optionText
         get() =
             """
-	@Option(
-		names = ["${getName().sanitized()}"],
-		paramLabel = "${getName().toUpperCase()}",
-		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-		description = ["${getRemark()}"]
-	)
-	var ${getName().sanitized()} : ${typeText}
-		= ${formatedDefaultValue}
-""".trimIndent()
+			|		@Option(
+			|			names = ["${getName())}"],
+			|			paramLabel = "${getName().toUpperCase()}",
+			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|			description = ["${getRemark()}"]
+			|		)
+			|		var ${getName().sanitized()} : ${typeText}
+			|			= ${formatedDefaultValue}
+			""".trimIndent()
 
     val Parameter.typeText: String
         get() {
@@ -333,4 +267,75 @@ class JavaProjectGenerator {
                         .joinToString(",", "\"", "\"")})"
             }
         }
+
+
+    private fun createWriteOutputDatasets(activity: Activity) =
+            """
+			|    fun writeOutputDatasets(
+			|        config: AppCallable,
+			|        datasets: Map<String, List<DatasetItem>>
+			|    ): Unit {
+			|    	${activity.getOutputDatasets()
+								.filter { it.getMaximumCardinality().toInt() == 1 }
+								.map {
+									"""IOUtils.write(datasets.get("${it.getName()}")?
+			|                	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
+			|        		println(config.${it.getName().sanitized()}?.getAbsolutePath())
+			|           """
+								}.joinToString("\n")}
+			| 
+			|    	${activity.getOutputDatasets()
+								.filter { it.getMaximumCardinality().toInt() != 1 }
+								.map {
+									"""datasets.get("${it.getName()}")?
+			|                	.forEach {
+			|                		val fileName = config.${it.getName().sanitized()}+"/"+${it.getName()}
+			|                		IOUtils.write(it.content,
+			|                				FileWriter(fileName))
+			|					println(fileName)
+			|                		
+			|                	}
+			|           """
+								}.joinToString("\n")}
+			| 
+			|         }
+			|    }
+			 """.trimMargin("|")
+
+
+    private fun createGetActivityInstance(activity: Activity) = """
+			|    fun getActivityInstance(config: AppCallable): ActivityInstance {
+			|        val parameters = mapOf<String, Any>(
+			|        	${activity.getParameters().map {
+					""" "${it.getName()}" to config.${it.getName().sanitized()}"""
+				}.joinToString(",\n")}
+			|        )
+			|    
+			|        val inputDatasets = mapOf<String, List<DatasetItem>>(
+			|        	${activity.getInputDatasets().map {
+					""" "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+			|                	.map { datasetItemFrom(it) }
+			|            """
+				}.joinToString(",\n")}
+			|        )
+			|    
+			|        val outputDatasets = mapOf<String, List<DatasetItem>>(
+			|        	${activity.getOutputDatasets().map {
+					""" "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+			|                		.map { datasetItemFrom(it) }
+			|            """
+				}.joinToString(",\n")}
+			|        )
+			|    
+			|    
+			|        val instance = ActivityInstance(
+			|            state = ActivityInstanceState.CREATED,
+			|            parameters = parameters,
+			|            inputDatasets = inputDatasets,
+			|            outputDatasets = outputDatasets
+			|        )
+			|    
+			|        return instance
+			|    } 
+			""".trimMargin("|")
 }
