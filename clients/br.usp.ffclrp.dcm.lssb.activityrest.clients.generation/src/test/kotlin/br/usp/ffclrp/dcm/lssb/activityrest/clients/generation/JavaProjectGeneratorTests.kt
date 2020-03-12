@@ -80,7 +80,7 @@ class JavaProjectGeneratorTests {
     
     @Test
     fun `Execution creates activity-specific files`(){
-        val cliFile = File(generatedProject,"src/main/java/app-activity-specific.kt")
+        val cliFile = File(generatedProject,"src/main/java/${activity.name}/app-activity-specific.kt")
         assertAll("Do not generates the activity-specific files!",
                 { assertTrue(cliFile.exists())}
         )

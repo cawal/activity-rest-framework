@@ -13,10 +13,8 @@ import java.io.PrintStream
 class JavaProjectGenerator {
 
     val archetypeGroup = "br.usp.ffclrp.dcm.lssb.activityrest"
-    val archetypeId = "galaxy-client-base-archetype"
+    val archetypeId = "br.usp.ffclrp.dcm.lssb.activityrest.client.basearchetype"
     val archetypeVersion = "1.0-SNAPSHOT"
-
-    val bpmnFile = "actvity-jbpm-bpmn2"
 
     fun generate(activity: Activity, deployment: Deployment): File {
 
@@ -24,7 +22,7 @@ class JavaProjectGenerator {
 
         val cliFile = getCliFile(activity, deployment)
 
-        cliFile.renameTo(File(projectRoot, "src/main/java/app-activity-specific.kt"))
+        cliFile.renameTo(File(projectRoot, "src/main/java/${activity.name}/app-activity-specific.kt"))
 
         return projectRoot
 
@@ -36,7 +34,7 @@ class JavaProjectGenerator {
         val artifactGroupId = activity.name
         val artifactVersion = deployment.getService().getApiVersion() ?: "1.0"
 
-        val tempDir = createTempDir(prefix = "root", suffix = "")
+        val tempDir = createTempDir(prefix = "activityrest-client-", suffix = "")
         val arguments = arrayOf(
                 "archetype:generate",
                 "-DarchetypeGroupId=${archetypeGroup}",
@@ -96,7 +94,7 @@ class JavaProjectGenerator {
 			|@file:JvmName("App")
 			|@file:JvmMultifileClass
 			|
-			|package br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient
+			|package br.usp.ffclrp.dcm.lssb.activityrest.client
 			|
 			|import br.usp.ffclrp.dcm.lssb.activityrest.domain.*
 			|import picocli.CommandLine
@@ -211,7 +209,7 @@ class JavaProjectGenerator {
         get() =
             """
 			|		@Option(
-			|			names = ["${getName())}"],
+			|			names = ["${getName()}"],
 			|			paramLabel = "${getName().toUpperCase()}",
 			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
 			|			description = ["${getRemark()}"]
@@ -271,71 +269,72 @@ class JavaProjectGenerator {
 
     private fun createWriteOutputDatasets(activity: Activity) =
             """
-			|    fun writeOutputDatasets(
-			|        config: AppCallable,
-			|        datasets: Map<String, List<DatasetItem>>
-			|    ): Unit {
-			|    	${activity.getOutputDatasets()
-								.filter { it.getMaximumCardinality().toInt() == 1 }
-								.map {
-									"""IOUtils.write(datasets.get("${it.getName()}")?
-			|                	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
-			|        		println(config.${it.getName().sanitized()}?.getAbsolutePath())
-			|           """
-								}.joinToString("\n")}
-			| 
-			|    	${activity.getOutputDatasets()
-								.filter { it.getMaximumCardinality().toInt() != 1 }
-								.map {
-									"""datasets.get("${it.getName()}")?
-			|                	.forEach {
-			|                		val fileName = config.${it.getName().sanitized()}+"/"+${it.getName()}
-			|                		IOUtils.write(it.content,
-			|                				FileWriter(fileName))
-			|					println(fileName)
-			|                		
-			|                	}
-			|           """
-								}.joinToString("\n")}
-			| 
-			|         }
-			|    }
+			|fun writeOutputDatasets(
+			|    config: AppCallable,
+			|    datasets: Map<String, List<DatasetItem>>
+			|): Unit {
+			|	${activity.getOutputDatasets()
+						.filter { it.getMaximumCardinality().toInt() == 1 }
+						.map {
+							"""IOUtils.write(datasets.get("${it.getName()}")?
+			|            	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
+			|    		println(config.${it.getName().sanitized()}?.getAbsolutePath())
+			|       """
+						}.joinToString("\n")}
+			|
+			|	${activity.getOutputDatasets()
+						.filter { it.getMaximumCardinality().toInt() != 1 }
+						.map {
+							"""datasets.get("${it.getName()}")?
+			|            	.forEach {
+			|            		val fileName = config.${it.getName().sanitized()}+"/"+${it.getName()}
+			|            		IOUtils.write(it.content,
+			|            				FileWriter(fileName))
+			|			println(fileName)
+			|            		
+			|            	}
+			|       """
+						}.joinToString("\n")}
+			|
+			|     }
+			|}
 			 """.trimMargin("|")
 
 
     private fun createGetActivityInstance(activity: Activity) = """
-			|    fun getActivityInstance(config: AppCallable): ActivityInstance {
-			|        val parameters = mapOf<String, Any>(
-			|        	${activity.getParameters().map {
-					""" "${it.getName()}" to config.${it.getName().sanitized()}"""
-				}.joinToString(",\n")}
-			|        )
-			|    
-			|        val inputDatasets = mapOf<String, List<DatasetItem>>(
-			|        	${activity.getInputDatasets().map {
-					""" "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
-			|                	.map { datasetItemFrom(it) }
-			|            """
-				}.joinToString(",\n")}
-			|        )
-			|    
-			|        val outputDatasets = mapOf<String, List<DatasetItem>>(
-			|        	${activity.getOutputDatasets().map {
-					""" "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
-			|                		.map { datasetItemFrom(it) }
-			|            """
-				}.joinToString(",\n")}
-			|        )
-			|    
-			|    
-			|        val instance = ActivityInstance(
-			|            state = ActivityInstanceState.CREATED,
-			|            parameters = parameters,
-			|            inputDatasets = inputDatasets,
-			|            outputDatasets = outputDatasets
-			|        )
-			|    
-			|        return instance
-			|    } 
+			|fun getActivityInstance(config: AppCallable): ActivityInstance {
+			|    val parameters = mapOf<String, Any>(
+			|${activity.getParameters().map {
+			"""|       "${it.getName()}" to config.${it.getName().sanitized()}
+			""".trimMargin("|")
+			}.joinToString(",\n")}
+			|    )
+			|
+			|    val inputDatasets = mapOf<String, List<DatasetItem>>(
+			|${activity.getInputDatasets().map {
+			"""|       "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+			|        	.map { datasetItemFrom(it) }
+			|    """.trimMargin("|")
+			}.joinToString(",\n")}
+			|    )
+			|
+			|    val outputDatasets = mapOf<String, List<DatasetItem>>(
+			|${activity.getOutputDatasets().map {
+					"""|       "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+			|            		.map { datasetItemFrom(it) }
+			|        """.trimMargin("|")
+					}.joinToString(",\n")}
+			|    )
+			|
+			|
+			|    val instance = ActivityInstance(
+			|        state = ActivityInstanceState.CREATED,
+			|        parameters = parameters,
+			|        inputDatasets = inputDatasets,
+			|        outputDatasets = outputDatasets
+			|    )
+			|
+			|    return instance
+			|} 
 			""".trimMargin("|")
 }

@@ -1,7 +1,7 @@
 @file:JvmName("App")
 @file:JvmMultifileClass
 
-package br.usp.ffclrp.dcm.lssb.activityrest.clientapp
+package br.usp.ffclrp.dcm.lssb.activityrest.client
 
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.*
 import picocli.CommandLine
@@ -12,6 +12,7 @@ import java.io.File
 import java.util.concurrent.Callable
 import org.apache.commons.io.IOUtils
 import java.io.FileWriter
+import java.net.URI
 
 
 fun main(args: Array<String>) : Unit {
@@ -24,9 +25,9 @@ fun test(args: Array<String>) = CommandLine(AppCallable()).execute(*(args.also{i
 fun execute(config: AppCallable): Int {
 
     val activityInstance = getActivityInstance(config)
+    val description = getActivityDescription()
+    val baseUrl = URI.create(config.service_url)
 
-    val executionService = ExecutionService(bpmnResources,executedProcessId)
-    val resultActivityInstance = executionService.execute(activityInstance)
     
 	val client = ActivityRestClient(baseUrl, description)
     val executedInstance = client.execute(activity);

@@ -49,11 +49,11 @@
 			<version>${activityrest.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
-			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId>
-			<version>${activityrest.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId> -->
+<!-- 			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId> -->
+<!-- 			<version>${activityrest.version}</version> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
