@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.UUID;
 
 import lombok.NonNull;
+
+import javax.el.MethodNotFoundException;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.DELETE;
@@ -35,6 +37,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.InputDatasetValidat
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 
 public class InputDatasetsResource extends AbstractDatasetResource {
 	
@@ -123,16 +126,60 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			@PathParam("datasetName") @NotNull String datasetName,
 			@HeaderParam("Content-type") String contentType,
 			InputStream fileContents) {
-		
+
 		if (!allowUpdate)
 			throw new BadRequestException();
-		
+		String fileName = UUID.randomUUID().toString();
+
 		Dataset d = aa.inputDatasetForName(datasetName);
 		
-		if (d == null)
+		if (d == null) {
 			throw new NotFoundException();
+		} 
+
+		InputDataset datasetDescription = (InputDataset)
+				d.getDescription();
 		
+		if(MultiplicityElementUtil.acceptsList(datasetDescription)) {
+			return addFileToCollection(fileName, fileContents, d);
+		} else {
+			return putFileToSingleDataset(fileName, fileContents, d);
+		}
+		
+	}
+
+	@PUT
+	@Path("{datasetName : [A-Za-z0-9-.]+}")
+	public Response putFileToDataset(
+			@PathParam("datasetName") @NotNull String datasetName,
+			@HeaderParam("Content-type") String contentType,
+			InputStream fileContents) {
+
+		if (!allowUpdate)
+			throw new BadRequestException();
 		String fileName = UUID.randomUUID().toString();
+
+		Dataset d = aa.inputDatasetForName(datasetName);
+		
+		if (d == null) {
+			throw new NotFoundException();
+		} 
+
+		InputDataset datasetDescription = (InputDataset)
+				d.getDescription();
+		
+		if(MultiplicityElementUtil.acceptsList(datasetDescription)) {
+			throw new MethodNotFoundException();
+		} else {
+			return putFileToSingleDataset(fileName, fileContents, d);
+		}
+		
+	}
+
+	private Response addFileToCollection(
+			String fileName, 
+			InputStream fileContents, 
+			Dataset d) {
 		
 		URI locationURI = null;
 		
@@ -144,10 +191,6 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			fw.flush();
 			fw.close();
 			
-			if (MultiplicityElementUtil.dontAcceptsList(d.getDescription())) {
-				if (d.getFiles().size() > 0)
-					throw new BadRequestException();
-			}
 			
 			d.getFiles().add(f);
 			
@@ -169,30 +212,13 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		}
 	}
 	
-	@PUT
-	@Path("{datasetName : [A-Za-z0-9-.]+}")
-	public Response putFileToSingleFileDataset(
-			@PathParam("datasetName") @NotNull String datasetName,
-			@HeaderParam("Content-type") String contentType,
-			InputStream fileContents) {
+
+
+	private Response putFileToSingleDataset(
+			String fileName, 
+			InputStream fileContents,
+			Dataset d) {
 		
-		
-		// Validation
-		if (!allowUpdate)
-			throw new BadRequestException();
-		
-		Dataset d = aa.inputDatasetForName(datasetName);
-		if (d == null)
-			throw new NotFoundException();
-		
-		br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset 
-			datasetDescription = d.getDescription();
-		
-		if(MultiplicityElementUtil.acceptsList(datasetDescription)) {
-			throw new BadRequestException();
-		}
-		
-		String fileName = UUID.randomUUID().toString();
 		URI locationURI = null;
 		
 		try {
@@ -225,6 +251,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			throw new ServerErrorException(500,e);
 		}
 	}
+
+
 	
 	@DELETE
 	@Path("{datasetName : [A-Za-z0-9-.]+}")
