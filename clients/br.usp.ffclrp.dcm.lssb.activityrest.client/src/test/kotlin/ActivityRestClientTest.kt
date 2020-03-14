@@ -33,7 +33,7 @@ class ActivityRestClientTest {
         description.getOutputDatasets().add(outputDataset)
         
         
-        val client = ActivityRestClient(baseUrl, description)
+        val client = ActivityRestClient(baseUrl)
 
         activity.parameters =
                 mapOf(

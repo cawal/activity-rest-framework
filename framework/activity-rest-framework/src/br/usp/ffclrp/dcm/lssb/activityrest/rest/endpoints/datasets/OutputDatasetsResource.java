@@ -2,6 +2,7 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.datasets;
 
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -51,14 +53,13 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	 * @return The datasets links for the analysis.
 	 */
 	@GET
-	@Produces({MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getOutputDatasets() {
 		
 		List<Dataset> datasetList = aa.getOutputs();
-		return getResponseForGetDatasetListRequest(uriInfo.getAbsolutePath(),datasetList, allowUpdate);
+		return getResponseForGetDatasetListRequest(uriInfo.getAbsolutePath(),
+				datasetList, allowUpdate);
 	}
-
-
 	
 	/**
 	 * 
@@ -75,8 +76,6 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 		Dataset d = aa.outputDatasetForName(datasetName);
 		return getResponseForGetDatasetRequest(d, uriInfo.getAbsolutePath());
 	}
-	
-	
 	
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
@@ -96,11 +95,49 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 		
 		File file = fileOp.get();
 		return file;
-		//return getResponseForGetDatasetFileRequest(baseUri, d, fileName);
+		// return getResponseForGetDatasetFileRequest(baseUri, d, fileName);
 		
 	}
-
 	
+	/**
+	 * Gets the Links header for underlying datasets
+	 */
+	protected List<Link> getLinksForDatasets(URI datasetListUri,
+			List<Dataset> datasetList,
+			boolean allowUpdate) {
+		
+		List<Link> links = new ArrayList<Link>();
+		
+		for (Dataset d : datasetList) {
+			br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset description =
+					d.getDescription();
+			
+			if (description.getMaximumCardinality().intValue() == 1) {
+				Link datasetLink =
+						Link.fromUri(getLocationUriForDataset(datasetListUri,
+								description.getName()))
+								.rel("outputs/" + description.getName())
+								.build();
+				links.add(datasetLink);
+				
+			} else {
+				for (File f : d.getFiles()) {
+					String rel = "outputs/" + description.getName() + "/"
+							+ f.getName();
+					Link fileLink =
+							Link.fromUri(
+									getLocationUriForDataset(datasetListUri,
+											description.getName(),
+											f.getName()))
+									.rel(rel)
+									.build();
+					links.add(fileLink);
+				}
+			}
+			
+		}
+		
+		return links;
+	}
 	
-
 }
