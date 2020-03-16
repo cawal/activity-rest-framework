@@ -28,7 +28,7 @@ fun execute(config: AppCallable): Int {
     val baseUrl = URI.create(config.service_url)
 
     
-	val client = ActivityRestClient(URI.create(config.service_url))
+	val client = ActivityRestClient(baseUrl)
     val executedInstance = client.execute(activityInstance);
     
     if(executedInstance.state == ActivityInstanceState.SUCCEEDED){
