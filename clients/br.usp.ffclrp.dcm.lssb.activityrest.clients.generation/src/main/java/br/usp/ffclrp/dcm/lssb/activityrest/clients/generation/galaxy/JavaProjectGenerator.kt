@@ -168,14 +168,14 @@ class JavaProjectGenerator {
 			|    		names = ["--${getName()}"],
 			|    		paramLabel = "${getName().toUpperCase()}",
 			|    		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
-			|    		description = ["${getRemark()}"]
+			|    		description = ["${getRemark()}"],
 			|    		required = true
 			|    	)
 			|    	var ${getName().sanitized()} : ${
 						if (getMaximumCardinality().toInt() != 1)
 							"List<File>?"
 						else "File?"
-					}
+					} = null
 			""".trimIndent()
 
 	val OutputDataset.parameterText: String
@@ -189,8 +189,10 @@ class JavaProjectGenerator {
 			|			required = true
 			|		)
 			|		var ${getName().sanitized()} : ${
-					if (getMaximumCardinality().toInt() != 1) "List<File>?" else "File?"
-            }""".trimIndent()
+						if (getMaximumCardinality().toInt() != 1) "List<File>?"
+						else "File?"
+					} = null
+			""".trimIndent()
 
     val Parameter.parameterText
         get() =
@@ -201,7 +203,7 @@ class JavaProjectGenerator {
 			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
 			|			description = ["${getRemark()}"]
 			|		)
-			|		var ${getName().sanitized()} : ${typeText}?
+			|		var ${getName().sanitized()} : ${typeText}? = null
 			""".trimIndent()
 
 
@@ -276,10 +278,12 @@ class JavaProjectGenerator {
 			|	${activity.getOutputDatasets()
 						.filter { it.getMaximumCardinality().toInt() == 1 }
 						.map {
-							"""IOUtils.write(datasets.get("${it.getName()}")?
-			|            	.first()?.content, FileWriter(config.${it.getName().sanitized()}))
+							"""
+			|				val content = datasets.get("${it.getName()}")?.first()?.content?.content
+			|				val filewriter = FileWriter(config.${it.getName().sanitized()})
+			|				IOUtils.write(content, filewriter)
 			|    		println(config.${it.getName().sanitized()}?.getAbsolutePath())
-			|       """
+			|       """.trimMargin("|")
 						}.joinToString("\n")}
 			|
 			|	${activity.getOutputDatasets()
@@ -296,14 +300,13 @@ class JavaProjectGenerator {
 			|       """
 						}.joinToString("\n")}
 			|
-			|     }
 			|}
 			 """.trimMargin("|")
 
 
     private fun createGetActivityInstance(activity: Activity) = """
 			|fun getActivityInstance(config: AppCallable): ActivityInstance {
-			|    val parameters = mapOf<String, Any>(
+			|    val parameters = mapOf<String, Any?>(
 			|${activity.getParameters().map {
 			"""|       "${it.getName()}" to config.${it.getName().sanitized()}
 			""".trimMargin("|")
@@ -329,7 +332,7 @@ class JavaProjectGenerator {
 			|
 			|    val instance = ActivityInstance(
 			|        state = ActivityInstanceState.CREATED,
-			|        parameters = parameters,
+			|        parameters = parameters as Map<String,Any>,
 			|        inputDatasets = inputDatasets,
 			|        outputDatasets = outputDatasets
 			|    )

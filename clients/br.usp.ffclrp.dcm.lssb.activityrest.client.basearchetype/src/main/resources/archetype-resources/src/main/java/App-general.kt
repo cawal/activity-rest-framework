@@ -25,12 +25,11 @@ fun test(args: Array<String>) = CommandLine(AppCallable()).execute(*(args.also{i
 fun execute(config: AppCallable): Int {
 
     val activityInstance = getActivityInstance(config)
-    val description = getActivityDescription()
     val baseUrl = URI.create(config.service_url)
 
     
-	val client = ActivityRestClient(baseUrl, description)
-    val executedInstance = client.execute(activity);
+	val client = ActivityRestClient(URI.create(config.service_url))
+    val executedInstance = client.execute(activityInstance);
     
     if(executedInstance.state == ActivityInstanceState.SUCCEEDED){
     	val outputDatasets = executedInstance.outputDatasets
@@ -39,7 +38,7 @@ fun execute(config: AppCallable): Int {
         
     } else {
         val errorReport = executedInstance.errorReport
-        System.err.prinln(errorReport)
+        System.err.println(errorReport)
         return 1;
     }
 }
