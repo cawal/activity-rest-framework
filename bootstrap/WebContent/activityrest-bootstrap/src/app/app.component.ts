@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Activity, FunctionalEntity } from 'src/model/activity-description';
-import { Deployment } from 'src/model/deployment-description';
-import { CommandLineTool } from 'src/model/tool-description';
+import { Component, OnInit } from "@angular/core";
+import { Activity, FunctionalEntity } from "src/model/activity-description";
+import { Deployment } from "src/model/deployment-description";
+import { CommandLineTool } from "src/model/tool-description";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = 'Activity-REST Bootstrap';
+  title = "Activity-REST Bootstrap";
   activity: Activity;
   functionalEntity: CommandLineTool;
   deployment: Deployment;
+  state: String = "ACTIVITY";
 
   ngOnInit() {
     console.log("executou");
@@ -24,10 +25,40 @@ export class AppComponent implements OnInit {
     this.deployment = new Deployment();
   }
 
+  showActivity() {
+    this.state = "ACTIVITY";
+  }
+
+  showFunctionalEntity() {
+    this.state = "FUNCTIONAL_ENTITY";
+  }
+
+  showDeployment() {
+    this.state = "DEPLOYMENT";
+  }
+
+  showGenerationScreen() {
+    this.state = "GENERATION";
+  }
+
+  moveToNextScreen() {
+    switch (this.state) {
+      case "ACTIVITY":
+        this.state = "FUNCTIONAL_ENTITY";
+        break;
+      case "FUNCTIONAL_ENTITY":
+        this.state = "DEPLOYMENT";
+        break;
+      case "DEPLOYMENT":
+        this.state = "GENERATION";
+        break;
+    }
+  }
 
   log() {
     console.log(this.activity);
     console.log(this.functionalEntity);
     console.log(this.deployment);
+    console.log(this.state);
   }
 }

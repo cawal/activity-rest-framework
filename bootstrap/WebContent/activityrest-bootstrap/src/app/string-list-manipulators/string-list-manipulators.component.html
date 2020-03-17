@@ -1,36 +1,34 @@
+<h4>String list manipulators</h4>
 <div *ngFor="let m of manipulators">
-
-  <div *ngIf="isJoin(m)">
+  <div *ngIf="isJoin(m)" class="string-list-manipulator">
     Join with delimiter
-    <input [(ngModel)]="m.delimiter">
+    <input [(ngModel)]="m.delimiter" />
   </div>
 
-  <div *ngIf="isPrependEach(m)">
+  <div *ngIf="isPrependEach(m)" class="string-list-manipulator">
     Prepend each with
-    <input [(ngModel)]="m.value">
+    <input [(ngModel)]="m.value" />
   </div>
 
-  <div *ngIf="isAppendEach(m)">
+  <div *ngIf="isAppendEach(m)" class="string-list-manipulator">
     Append each with
-    <input [(ngModel)]="m.value">
+    <input [(ngModel)]="m.value" />
   </div>
 
-  <div *ngIf="isPrependListWith(m)">
+  <div *ngIf="isPrependListWith(m)" class="string-list-manipulator">
     Prepend list with
-    <input [(ngModel)]="m.value">
+    <input [(ngModel)]="m.value" />
   </div>
 
-  <div *ngIf="isAppendListWith(m)">
+  <div *ngIf="isAppendListWith(m)" class="string-list-manipulator">
     Append list with
-    <input [(ngModel)]="m.value">
+    <input [(ngModel)]="m.value" />
   </div>
 
-
-  <div *ngIf="isToFlag(m)">
-    If true: <input [(ngModel)]="m.ifTrue">
-    If false: <input [(ngModel)]="m.ifFalse">
+  <div *ngIf="isToFlag(m)" class="string-list-manipulator">
+    If true: <input [(ngModel)]="m.ifTrue" /> If false:
+    <input [(ngModel)]="m.ifFalse" />
   </div>
-
 </div>
 
 <select [(ngModel)]="selectedManipulatorClass">

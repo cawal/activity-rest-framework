@@ -4,9 +4,9 @@ interface IdentifiableElement {
 }
 
 /*
-* This metaclass describes the information necessary to execute a command
-* line application, as well as its inputs and outputs.
-*/
+ * This metaclass describes the information necessary to execute a command
+ * line application, as well as its inputs and outputs.
+ */
 export class Activity implements IdentifiableElement {
   name: string;
   remark: string;
@@ -26,10 +26,10 @@ interface MultiplicityElement {
 }
 
 /*
-* This metaclass describes a parameter of a command line application.
-* A parameter is a argument that is passed by its value.
-* @SeeOther Dataset
-*/
+ * This metaclass describes a parameter of a command line application.
+ * A parameter is a argument that is passed by its value.
+ * @SeeOther Dataset
+ */
 export class Parameter implements MultiplicityElement, IdentifiableElement {
   minimumCardinality: number;
   maximumCardinality: number;
@@ -44,18 +44,18 @@ export class Parameter implements MultiplicityElement, IdentifiableElement {
               else true endif;*/
 }
 export enum ParameterType {
-  STRING = 'STRING',
-  INTEGER = 'INTEGER',
-  REAL = 'REAL',
-  BOOLEAN = 'BOOLEAN',
+  STRING = "STRING",
+  INTEGER = "INTEGER",
+  REAL = "REAL",
+  BOOLEAN = "BOOLEAN"
 }
 
 /*
-* This metaclass describes a dataset of the command line application.
-* A Dataset is a number of related files. These files contains the data
-* of most interest for the analysis and are passed for the underlying tool
-* by their file system paths.
-*/
+ * This metaclass describes a dataset of the command line application.
+ * A Dataset is a number of related files. These files contains the data
+ * of most interest for the analysis and are passed for the underlying tool
+ * by their file system paths.
+ */
 export interface Dataset extends MultiplicityElement, IdentifiableElement {
   mimetype: string | null;
   constraints: Constraint[];
@@ -81,12 +81,11 @@ export class Constraint {
 }
 
 /*
-* Abstract class to describe a functional entity that can executes
-* an analysis activity.
-*/
+ * Abstract class to describe a functional entity that can executes
+ * an analysis activity.
+ */
 export abstract class FunctionalEntity implements IdentifiableElement {
   name: string;
   remark: string;
   activity: Activity | null;
 }
-

@@ -1,122 +1,136 @@
 <h2>Activity description</h2>
 <div *ngIf="activity">
-  <label>Name:
-    <input [(ngModel)]="activity.name"
-           placeholder="name" />
+  <label
+    >Name:
+    <input [(ngModel)]="activity.name" placeholder="name" />
   </label>
   <h3>Parameters:</h3>
 
-  <div *ngFor="let p of activity.parameters;">
-    <label>Name:
-      <input [(ngModel)]="p.name"
-             placeholder="name" />
+  <div *ngFor="let p of activity.parameters" class="parameter">
+    <label
+      >Name:
+      <input [(ngModel)]="p.name" placeholder="name" />
     </label>
 
-    <label>Type:
+    <label
+      >Type:
       <select [(ngModel)]="p.parameterType">
-        <option *ngFor="let symbol of keys(parameterTypes)"
-                [ngValue]="parameterTypes[symbol]">
-          {{symbol}}
+        <option
+          *ngFor="let symbol of keys(parameterTypes)"
+          [ngValue]="parameterTypes[symbol]"
+        >
+          {{ symbol }}
         </option>
       </select>
     </label>
 
-    <label>Minimun cardinality:
-      <input [(ngModel)]="p.minimunCardinality"
-             placeholder="Minimun cardinality" />
+    <label
+      >Minimun cardinality:
+      <input
+        [(ngModel)]="p.minimunCardinality"
+        placeholder="Minimun cardinality"
+        type="number"
+      />
     </label>
 
-    <label>Maximun cardinality:
-      <input [(ngModel)]="p.maximunCardinality"
-             placeholder="Maximun cardinality" />
+    <label
+      >Maximun cardinality:
+      <input
+        [(ngModel)]="p.maximunCardinality"
+        placeholder="Maximun cardinality"
+        type="number"
+      />
     </label>
 
-    <label>Remarks:
-      <input [(ngModel)]="p.remark"
-             placeholder="Remarks" />
+    <label
+      >Remarks:
+      <input [(ngModel)]="p.remark" placeholder="Remarks" />
     </label>
 
     <button (click)="removeParameter(p)">Remove</button>
-
   </div>
 
   <button (click)="addParameter()">Add</button>
 
-
-
-
   <h3>Input datasets:</h3>
 
-  <div *ngFor="let d of activity.inputDatasets;">
-    <label>Name:
-      <input [(ngModel)]="d.name"
-             placeholder="name" />
+  <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
+    <label
+      >Name:
+      <input [(ngModel)]="d.name" placeholder="name" />
     </label>
 
-    <label>MIME Type:
-      <input [(ngModel)]="d.mimeType"
-             placeholder="mimeType" />
+    <label
+      >MIME Type:
+      <input [(ngModel)]="d.mimeType" placeholder="mimeType" />
     </label>
 
-    <label>Minimun cardinality:
-      <input [(ngModel)]="d.minimunCardinality"
-             placeholder="Minimun cardinality" />
+    <label
+      >Minimun cardinality:
+      <input
+        [(ngModel)]="d.minimunCardinality"
+        placeholder="Minimun cardinality"
+        type="number"
+      />
     </label>
 
-    <label>Maximun cardinality:
-      <input [(ngModel)]="d.maximunCardinality"
-             placeholder="Maximun cardinality" />
+    <label
+      >Maximun cardinality:
+      <input
+        [(ngModel)]="d.maximunCardinality"
+        placeholder="Maximun cardinality"
+        type="number"
+      />
     </label>
 
-    <label>Remarks:
-      <input [(ngModel)]="d.remark"
-             placeholder="Remarks" />
+    <label
+      >Remarks:
+      <textarea [(ngModel)]="d.remark" placeholder="Remarks"></textarea>
     </label>
 
     <button (click)="removeInputDataset(d)">Remove</button>
-
   </div>
 
   <button (click)="addInputDataset()">Add</button>
 
-
-
-
   <h3>Output datasets:</h3>
 
-  <div *ngFor="let d of activity.outputDatasets;">
-    <label>Name:
-      <input [(ngModel)]="d.name"
-             placeholder="name" />
+  <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
+    <label
+      >Name:
+      <input [(ngModel)]="d.name" placeholder="name" />
     </label>
 
-
-    <label>MIME Type:
-      <input [(ngModel)]="d.mimeType"
-             placeholder="mimeType" />
+    <label
+      >MIME Type:
+      <input [(ngModel)]="d.mimeType" placeholder="mimeType" />
     </label>
 
-    <label>Minimun cardinality:
-      <input [(ngModel)]="d.minimunCardinality"
-             placeholder="Minimun cardinality" />
+    <label
+      >Minimun cardinality:
+      <input
+        [(ngModel)]="d.minimunCardinality"
+        placeholder="Minimun cardinality"
+        type="number"
+      />
     </label>
 
-    <label>Maximun cardinality:
-      <input [(ngModel)]="d.maximunCardinality"
-             placeholder="Maximun cardinality" />
+    <label
+      >Maximun cardinality:
+      <input
+        [(ngModel)]="d.maximunCardinality"
+        placeholder="Maximun cardinality"
+        type="number"
+      />
     </label>
 
-    <label>Remarks:
-      <input [(ngModel)]="d.remark"
-             placeholder="Remarks" />
+    <label
+      >Remarks:
+      <input [(ngModel)]="d.remark" placeholder="Remarks" />
     </label>
 
     <button (click)="removeOutputDataset(d)">Remove</button>
-
   </div>
 
   <button (click)="addOutputDataset()">Add</button>
-
-
 </div>
-<button (click)="log()">log</button>

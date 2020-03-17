@@ -1,0 +1,53 @@
+<h2>Command line tool</h2>
+<label
+  >Name:
+  <input [(ngModel)]="commandLineTool.name" placeholder="name" />
+</label>
+<label
+  >Remark:
+  <input [(ngModel)]="commandLineTool.remark" placeholder="remark" />
+</label>
+
+<h3>Command line template</h3>
+<app-command-line-template
+  [commandLineTemplate]="commandLineTool.commandLineTemplate"
+  [parameters]="activity.parameters"
+  [inputDatasets]="activity.inputDatasets"
+  [outputDatasets]="activity.outputDatasets"
+>
+</app-command-line-template>
+
+<h3>Exit codes:</h3>
+<div *ngFor="let e of commandLineTool.exitCodes">
+  <app-exit-code-detail [exitCode]="e"></app-exit-code-detail>
+  <button (click)="removeExitCode(e)">Remove</button>
+</div>
+<button (click)="addExitCode()">Add</button>
+
+<h3>Stream redirections</h3>
+<label
+  >Standard input stream:
+  <select [(ngModel)]="commandLineTool.standardInputStream">
+    <option *ngFor="let d of activity.inputDatasets" [ngValue]="d">
+      {{ d.name }}
+    </option>
+  </select>
+</label>
+
+<label
+  >Standard output stream:
+  <select [(ngModel)]="commandLineTool.standardOutputStream">
+    <option *ngFor="let d of activity.outputDatasets" [ngValue]="d">
+      {{ d.name }}
+    </option>
+  </select>
+</label>
+
+<label
+  >Standard error stream:
+  <select [(ngModel)]="commandLineTool.standardErrorStream">
+    <option *ngFor="let d of activity.outputDatasets" [ngValue]="d">
+      {{ d.name }}
+    </option>
+  </select>
+</label>

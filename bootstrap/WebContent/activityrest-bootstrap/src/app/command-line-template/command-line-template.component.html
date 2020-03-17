@@ -1,36 +1,41 @@
-<p>command-line-template works!</p>
-
-<div *ngFor="let t of commandLineTemplate">
-
+<div *ngFor="let t of commandLineTemplate" class="command-line-entry">
   <span *ngIf="isLiteralTemplate(t)">
     Literals:
-    <app-literal-command-line-template [literals]=t></app-literal-command-line-template>
+    <app-literal-command-line-template
+      [literals]="t"
+    ></app-literal-command-line-template>
   </span>
 
   <span *ngIf="isParameterTemplate(t)">
     Parameter:
     <select [(ngModel)]="t.parameter">
-      <option *ngFor="let p of parameters"
-              (ngValue)="p">
-        {{p.name}}
+      <option *ngFor="let p of parameters" (ngValue)="(p)">
+        {{ p.name }}
       </option>
     </select>
 
-    <app-string-list-manipulators [manipulators]="t.manipulators"></app-string-list-manipulators>
+    <app-string-list-manipulators
+      [manipulators]="t.manipulators"
+    ></app-string-list-manipulators>
   </span>
 
   <span *ngIf="isDatasetTemplate(t)">
     Dataset
     <select [(ngModel)]="t.dataset">
-      <option *ngFor="let d of inputDatasets.concat(outputDatasets)"
-              (ngValue)="d">
-        {{d.name}}
+      <option
+        *ngFor="let d of inputDatasets.concat(outputDatasets)"
+        (ngValue)="(d)"
+      >
+        {{ d.name }}
       </option>
     </select>
 
-    <app-string-list-manipulators [manipulators]="t.manipulators"></app-string-list-manipulators>
+    <app-string-list-manipulators
+      [manipulators]="t.manipulators"
+    ></app-string-list-manipulators>
   </span>
 
+  <button (click)="remove(t)">Remove</button>
 </div>
 <button (click)="addLiteralCommandLineEntry()">
   Add literal command line entry

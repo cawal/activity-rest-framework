@@ -47,11 +47,4 @@ export class ActivityDescriptionComponent implements OnInit {
     let index = this.activity.outputDatasets.indexOf(outputDataset);
     this.activity.outputDatasets.splice(index, 1);
   }
-
-
-
-  log() {
-    console.log(this.activity);
-  }
-
 }

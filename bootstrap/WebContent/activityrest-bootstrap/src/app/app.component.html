@@ -1,8 +1,37 @@
 <body>
-  <h1>{{title}}</h1>
-  <app-activity-description [activity]="activity"></app-activity-description>
-  <app-fuctional-entity [commandLineTool]="functionalEntity"
-                        [activity]="activity"></app-fuctional-entity>
-  <app-deployment-model [deploymentModel]="deployment"></app-deployment-model>
+  <h1>{{ title }}</h1>
+  <button (click)="showActivity()">Activity description</button>
+  <button (click)="showFunctionalEntity()">Functional Entity</button>
+  <button (click)="showDeployment()">Deployment description</button>
+  <button (click)="showGenerationScreen()">Generate!</button>
   <button (click)="log()">Print</button>
+
+  <div *ngIf="state == 'ACTIVITY'">
+    <app-activity-description [activity]="activity"></app-activity-description>
+  </div>
+
+  <div *ngIf="state == 'FUNCTIONAL_ENTITY'">
+    <app-functional-entity
+      [commandLineTool]="functionalEntity"
+      [activity]="activity"
+    ></app-functional-entity>
+  </div>
+
+  <div *ngIf="state == 'DEPLOYMENT'">
+    <app-deployment-model [deploymentModel]="deployment"></app-deployment-model>
+  </div>
+
+  <div *ngIf="state == 'GENERATION'">
+    <app-artifacts-generation></app-artifacts-generation>
+  </div>
+
+  <div>
+    <button
+      *ngIf="state != 'GENERATION'"
+      (click)="moveToNextScreen()"
+      class="next"
+    >
+      Next
+    </button>
+  </div>
 </body>
