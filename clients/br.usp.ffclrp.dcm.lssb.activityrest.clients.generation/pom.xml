@@ -98,10 +98,31 @@
 
 
 	<dependencies>
+        
+
+        <dependency>
+            <groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+            <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.domain</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+            <artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+            <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
 		<dependency>
-			<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
-			<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</artifactId>
+			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</groupId>

@@ -58,3 +58,8 @@ label {
 button .next {
   right: 0px;
 }
+
+.main {
+  width: 600px;
+  margin: auto;
+}

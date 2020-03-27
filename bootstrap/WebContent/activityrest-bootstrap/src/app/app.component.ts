@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Activity, FunctionalEntity } from "src/model/activity-description";
 import { Deployment } from "src/model/deployment-description";
 import { CommandLineTool } from "src/model/tool-description";
+import { ProjectGeneratorService } from "./project-generator.service";
 
 @Component({
   selector: "app-root",
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   activity: Activity;
   functionalEntity: CommandLineTool;
   deployment: Deployment;
+  generatorService: ProjectGeneratorService;
   state: String = "ACTIVITY";
 
   ngOnInit() {
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
     this.functionalEntity = new CommandLineTool();
     this.functionalEntity.name = "tool";
     this.deployment = new Deployment();
+    this.generatorService = new ProjectGeneratorService();
   }
 
   showActivity() {

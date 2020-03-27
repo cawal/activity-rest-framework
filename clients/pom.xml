@@ -17,5 +17,6 @@
 	<modules>
 		<module>br.usp.ffclrp.dcm.lssb.activityrest.domain</module>
 		<module>br.usp.ffclrp.dcm.lssb.activityrest.client</module>
+		<module>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</module>
   </modules>
 </project>

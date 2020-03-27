@@ -41,20 +41,20 @@
 				</excludes>
 			</resource>
 		</resources>
-		
-		
+
+
 		<plugins>
-		
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <warSourceDirectory>WebContent</warSourceDirectory>
-                </configuration>
-            </plugin>
-		
-		
-		
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+
+
+
 			<plugin>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<groupId>org.jetbrains.kotlin</groupId>
@@ -201,17 +201,20 @@
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.1</version> 
-<!--  			<scope>provided</scope>  -->
+			<!--  			<scope>provided</scope>  -->
 		</dependency> 
         <!-- JAX-RS RI -->
+			<dependency>
+				<groupId>org.glassfish.jersey.bundles</groupId>
+				<artifactId>jaxrs-ri</artifactId>
+				<version>2.13</version>
+			</dependency>
 
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.glassfish.jersey.containers</groupId> -->
-            <!-- if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core" -->
-<!-- 			<artifactId>jersey-container-servlet</artifactId> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+<!--             if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core" -->
+			<artifactId>jersey-container-servlet</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>

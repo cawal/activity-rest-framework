@@ -278,6 +278,7 @@
 
 	<build>
 	<plugins>
+        <!--
 		<plugin>
 			<groupId>pl.gdela</groupId>
 			<artifactId>socomo-maven</artifactId>
@@ -286,12 +287,12 @@
 					<goals>
 						<goal>analyze</goal>
 					</goals>
-<!-- 					<configuration> -->
-<!-- 						<level>com.example.myproject</level> -->
-<!-- 					</configuration> -->
+ 					<configuration>
+ 						<level>com.example.myproject</level>
+ 					</configuration>
 				</execution>
 			</executions>
-		</plugin>
+        </plugin>-->
 		</plugins>
 	</build>
 </project>
