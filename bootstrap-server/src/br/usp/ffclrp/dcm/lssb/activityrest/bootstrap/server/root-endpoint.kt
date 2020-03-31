@@ -24,7 +24,8 @@ class RootEndpoint {
     @Path("generate-galaxy-client")
     fun generateGalaxyClient(request: GenerateClientRequest): Response {
         val generator = GenerateGalaxyClient();
-        val file = generator.generate(request)
+//        val file = generator.generate(request)
+        val file = File("/tmp/cawal.rofi.pid")
         val response = Response.ok(file as Any)
         response.header("Content-Disposition", "attachment; filename=\"${file.name}\"")
         return response.build()

@@ -24,6 +24,8 @@ public class ApplicationConfig extends Application {
 	public Set<Class<?>> getClasses(){
 		Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
 		resources.add(br.usp.ffclrp.dcm.lssb.activityrest.bootstrap.server.RootEndpoint.class);
+		resources.add(CorsFilter.class);
+		resources.add(GenerateClientRequestMessageBodyReader.class);
 		return resources;
 	}
 	

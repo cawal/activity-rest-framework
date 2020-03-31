@@ -3,6 +3,7 @@ import { Activity, FunctionalEntity } from "src/model/activity-description";
 import { Deployment } from "src/model/deployment-description";
 import { CommandLineTool } from "src/model/tool-description";
 import { ProjectGeneratorService } from "./project-generator.service";
+import { HttpClient, HttpBackend } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
@@ -17,6 +18,8 @@ export class AppComponent implements OnInit {
   generatorService: ProjectGeneratorService;
   state: String = "ACTIVITY";
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit() {
     console.log("executou");
     this.activity = new Activity();
@@ -25,7 +28,7 @@ export class AppComponent implements OnInit {
     this.functionalEntity = new CommandLineTool();
     this.functionalEntity.name = "tool";
     this.deployment = new Deployment();
-    this.generatorService = new ProjectGeneratorService();
+    this.generatorService = new ProjectGeneratorService(this.http);
   }
 
   showActivity() {

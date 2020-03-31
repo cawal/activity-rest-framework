@@ -8,8 +8,8 @@ class GenerateGalaxyClient(){
 
         print(request)
         val generator = GalaxyClientGenerator();
-        val activity = DtoToActivity().transform(request.activity ?: ActivityDTO())
-        val deployment = DtoToDeployment().transform(request.deployment ?: DeploymentDTO())
+        val activity = request.activity
+        val deployment = request.deployment
         val projectDir = generator.generateClient(activity,deployment)
 
         return ZipDir.main(projectDir)
