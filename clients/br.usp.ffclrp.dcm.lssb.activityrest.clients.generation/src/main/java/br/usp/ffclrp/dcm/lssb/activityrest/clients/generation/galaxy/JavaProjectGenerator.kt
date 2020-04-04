@@ -35,8 +35,10 @@ class JavaProjectGenerator {
         val artifactVersion = deployment.getService().getApiVersion() ?: "1.0"
 
         val tempDir = createTempDir(prefix = "activityrest-client-", suffix = "")
-        val arguments = arrayOf(
+        val arguments = listOf<String>(
                 "archetype:generate",
+//                "-Dmaven.repo.local=/home/cawal/.m2",
+                "-e",
                 "-DarchetypeGroupId=${archetypeGroup}",
                 "-DarchetypeArtifactId=${archetypeId}",
                 "-DarchetypeVersion=${archetypeVersion}",
@@ -50,13 +52,22 @@ class JavaProjectGenerator {
                 "maven.multiModuleProjectDirectory",
                 tempDir.getAbsolutePath()
         )
+        println(tempDir.absolutePath)
         val cli = MavenCli();
         val baosOut = ByteArrayOutputStream();
         val baosErr = ByteArrayOutputStream();
 
         val out = PrintStream(baosOut, true);
         val err = PrintStream(baosErr, true);
-        cli.doMain(arguments, tempDir.getAbsolutePath(), out, err)
+        println(arguments)
+        val exitCode = cli.doMain(
+            arguments.toTypedArray(),
+            tempDir.getAbsolutePath(),
+//            System.out,
+//            System.err)
+            out,
+            err)
+        println("ExitCode: $exitCode")
 
         print(out.toString())
         print(err.toString())
@@ -65,6 +76,7 @@ class JavaProjectGenerator {
             println("CHILD: ${it.getAbsolutePath()}")
         };
         val projectRoot = tempDir.listFiles()[0]
+//        val projectRoot = tempDir
         println(projectRoot.getAbsolutePath())
         return projectRoot
     }

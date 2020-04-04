@@ -301,14 +301,23 @@
 		</dependency>
 
 
-
-
 		<dependency>
-			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
-			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId>
-			<version>${activityrest.version}</version>
-			<scope>test</scope>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>-->
+<!--			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId>-->
+<!--			<version>${activityrest.version}</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 
 
 		<dependency>
