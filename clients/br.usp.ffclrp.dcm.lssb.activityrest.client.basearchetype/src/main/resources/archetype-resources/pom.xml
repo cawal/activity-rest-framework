@@ -150,7 +150,7 @@
 				<artifactId>executable-packer-maven-plugin</artifactId>
 				<version>1.0.1</version>
 				<configuration>
-					<mainClass>br.usp.ffclrp.dcm.lssb.davidchartreport.jbpmclient.App</mainClass>
+					<mainClass>br.usp.ffclrp.dcm.lssb.activityrest.client.App</mainClass>
 				</configuration>
 				<executions>
 					<execution>
@@ -174,7 +174,7 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<mainClass>br.usp.ffclrp.dcm.lssb.davidchartreport.jbpmclient.App</mainClass>
+									<mainClass>br.usp.ffclrp.dcm.lssb.activityrest.client.App</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
@@ -221,7 +221,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>br.usp.ffclrp.dcm.lssb.davidchartreport.jbpmclient.App</mainClass>
+							<mainClass>br.usp.ffclrp.dcm.lssb.activityrest.client.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

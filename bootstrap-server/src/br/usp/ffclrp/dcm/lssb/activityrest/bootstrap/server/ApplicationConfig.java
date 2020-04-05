@@ -26,6 +26,7 @@ public class ApplicationConfig extends Application {
 		resources.add(br.usp.ffclrp.dcm.lssb.activityrest.bootstrap.server.RootEndpoint.class);
 		resources.add(CorsFilter.class);
 		resources.add(GenerateClientRequestMessageBodyReader.class);
+		resources.add(GenerateServiceRequestMessageBodyReader.class);
 		return resources;
 	}
 	

@@ -5,7 +5,8 @@ import javax.json.JsonObject
 import javax.json.JsonValue
 
 fun JsonObject.array(attributeName : String ) =
-    (this.getJsonArray(attributeName) ?: emptyList<JsonValue>())
+    (this.getJsonArray(attributeName)
+        ?: emptyList<JsonValue>())
 
 fun JsonObject.string(attributeName : String ) =
     if (this.containsKey(attributeName))

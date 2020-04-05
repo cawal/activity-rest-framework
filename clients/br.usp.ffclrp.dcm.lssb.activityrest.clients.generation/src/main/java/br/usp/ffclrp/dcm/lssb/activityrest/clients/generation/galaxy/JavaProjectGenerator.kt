@@ -179,7 +179,9 @@ class JavaProjectGenerator {
 			|    	@Option(
 			|    		names = ["--${getName()}"],
 			|    		paramLabel = "${getName().toUpperCase()}",
-			|    		arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|    		arity = "${getMinimumCardinality()}..${
+                        if (getMaximumCardinality().toInt() >= 0) maximumCardinality 
+                        else "*"}",
 			|    		description = ["${getRemark()}"],
 			|    		required = true
 			|    	)
@@ -196,7 +198,9 @@ class JavaProjectGenerator {
 			|		@Option(
 			|			names = ["--${getName()}"],
 			|			paramLabel = "${getName().toUpperCase()}",
-			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|    		arity = "${getMinimumCardinality()}..${
+                        if (getMaximumCardinality().toInt() >= 0) maximumCardinality
+                        else "*"}",
 			|			description = ["${getRemark()}"],
 			|			required = true
 			|		)
@@ -212,7 +216,9 @@ class JavaProjectGenerator {
 			|		@Parameters(
 			|			names = ["--${getName()}"],
 			|			paramLabel = "${getName().toUpperCase()}",
-			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|    		arity = "${getMinimumCardinality()}..${
+                        if (getMaximumCardinality().toInt() >= 0) maximumCardinality
+                        else "*"}",
 			|			description = ["${getRemark()}"]
 			|		)
 			|		var ${getName().sanitized()} : ${typeText}? = null
@@ -225,7 +231,9 @@ class JavaProjectGenerator {
 			|		@Option(
 			|			names = ["${getName()}"],
 			|			paramLabel = "${getName().toUpperCase()}",
-			|			arity = "${getMinimumCardinality()}..${getMaximumCardinality()}",
+			|    		arity = "${getMinimumCardinality()}..${
+                        if (getMaximumCardinality().toInt() >= 0) maximumCardinality
+                        else "*"}",
 			|			description = ["${getRemark()}"]
 			|		)
 			|		var ${getName().sanitized()} : ${typeText}
