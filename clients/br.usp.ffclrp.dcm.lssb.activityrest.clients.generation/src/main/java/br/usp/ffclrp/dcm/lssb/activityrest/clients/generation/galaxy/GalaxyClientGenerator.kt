@@ -14,11 +14,9 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProject
 class GalaxyClientGenerator : ClientGenerator {
 
 
-    override fun generateClient(activity: Activity, deployment: Deployment): File {
+    override fun generateClient(activity: Activity, deployment: Deployment)
+            : File {
 
-
-//        val bpmn = AadlToBpmn().generateBpmn(activity)
-//        val jBpm = BpmnToJbpm().transform(bpmn)
         val xmlWrapper = AadlToGalaxyToolWrapper().generate(activity,deployment)
         val javaProject = JavaProject(
                 JavaProjectGenerator().generate(activity, deployment)
@@ -34,18 +32,7 @@ class GalaxyClientGenerator : ClientGenerator {
 
 class JavaProject(val directory: File) {
     fun combineArtifacts( xmlWrapper: File) {
-        //addBpmnFileToProject(bpmn)
-        //addJbpmFileToProject(jbpmn)
         addXmlWrapperToProject(xmlWrapper)
-    }
-
-
-    fun addBpmnFileToProject(bpmn: File) {
-        bpmn.renameTo(File(directory,"activity.bpmn2"))
-    }
-
-    fun addJbpmFileToProject(jbpm: File) {
-    	jbpm.renameTo(File(directory,"src/main/resources/activity-jbpm.bpmn2"))
     }
 
     fun addXmlWrapperToProject(xmlWrapper: File) {

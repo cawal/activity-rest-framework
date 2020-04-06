@@ -3,10 +3,7 @@ package br.usp.ffclrp.dcm.lssb.activityrest.bootstrap.server
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.GalaxyClientGenerator
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProjectGenerator
 import java.io.File
-import javax.ws.rs.Consumes
-import javax.ws.rs.GET
-import javax.ws.rs.POST
-import javax.ws.rs.Path
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
@@ -20,8 +17,9 @@ class RootEndpoint {
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     @Path("generate-galaxy-client")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     fun generateGalaxyClient(request: GenerateClientRequest): Response {
         val generator = GenerateGalaxyClient();
         val file = generator.generate(request)
@@ -33,6 +31,8 @@ class RootEndpoint {
 
     @POST
     @Path("generate-service")
+    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     fun generateService(request: GenerateServiceRequest): Response {
         val generator = GenerateActivityRestServiceClient();
         val file = generator.generate(request)

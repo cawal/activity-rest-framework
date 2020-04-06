@@ -2,6 +2,7 @@ import { Injectable, Input } from "@angular/core";
 import { Activity, FunctionalEntity } from "src/model/activity-description";
 import { Deployment } from "src/model/deployment-description";
 import { HttpClient } from "@angular/common/http";
+import { saveAs } from "file-saver";
 
 @Injectable() //{
 //  providedIn: "root"
@@ -26,12 +27,19 @@ export class ProjectGeneratorService {
     let url = `${this.host}${this.generateGalaxyClientPath}`;
 
     this.http
-      .post(url, {
-        activity: activity,
-        deployment: deployment
-      })
-      .subscribe((data: any) => this.downloadFile(data)),
-      error => console.log(`Error downloading the file. ${error}`),
+      .post(
+        url,
+        {
+          activity: activity,
+          deployment: deployment,
+        },
+        {
+          responseType: "blob",
+        }
+      )
+      .subscribe((data: any) => saveAs(data, "client.zip")),
+      //      .subscribe((data: any) => this.downloadFile(data))),
+      (error) => console.log(`Error downloading the file. ${error}`),
       () => console.info("OK");
   }
 
@@ -48,13 +56,20 @@ export class ProjectGeneratorService {
     let url = `${this.host}${this.generateServicePath}`;
 
     this.http
-      .post(url, {
-        activity: activity,
-        functionalEntity: functionalEntity,
-        deployment: deployment
-      })
-      .subscribe((data: any) => this.downloadFile(data)),
-      error => console.log(`Error downloading the file. ${error}`),
+      .post(
+        url,
+        {
+          activity: activity,
+          functionalEntity: functionalEntity,
+          deployment: deployment,
+        },
+        {
+          responseType: "blob",
+        }
+      )
+      .subscribe((data: any) => saveAs(data, "service.zip")),
+      // .subscribe((data: any) => this.downloadFile(data)),
+      (error) => console.log(`Error downloading the file. ${error}`),
       () => console.info("OK");
   }
 

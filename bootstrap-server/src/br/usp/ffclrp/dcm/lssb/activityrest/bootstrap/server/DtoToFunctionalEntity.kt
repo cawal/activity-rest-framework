@@ -72,7 +72,7 @@ class DtoToFunctionalEntity() {
         return when (true) {
             dto.containsKey("literals") ->
                 getLiteralCommandLineEntryList(dto)
-            dto.containsKey("parameters") ->
+            dto.containsKey("parameter") ->
                 getParameterCommandLineEntryList(dto, activity)
             dto.containsKey("dataset") ->
                 getDatasetCommandLineEntryList(dto,activity)
