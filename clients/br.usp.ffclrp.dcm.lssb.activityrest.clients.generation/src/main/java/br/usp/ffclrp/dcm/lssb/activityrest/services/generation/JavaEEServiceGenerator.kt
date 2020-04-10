@@ -1,6 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.services.generation
 
-import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProjectGenerator
 import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.ModelsService
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
@@ -9,10 +8,10 @@ import org.apache.commons.io.IOUtils
 import java.io.File
 import java.io.FileOutputStream
 
-class JavaEEServiceGenerator {
+public class JavaEEServiceGenerator {
 
 
-    fun generateService(
+    public fun generateService(
         activity: Activity,
         functionalInterface: FunctionalEntity,
         deployment: Deployment
