@@ -157,7 +157,10 @@ object ModelsService {
         initializeEcoreModelsResources()
         val standaloneSetup = AnalysisActivityDSLStandaloneSetup()
         val injector = standaloneSetup.createInjectorAndDoEMFRegistration()
-//        val injector = Guice.createInjector(AnalysisActivityDSLRuntimeModule())
+        val rs = injector.getInstance(ResourceSet::class.java)
+        val resource = rs.createResource(URI.createURI("dummy/test.aadl"))
+        resource.contents += activity
+        //        val injector = Guice.createInjector(AnalysisActivityDSLRuntimeModule())
         val serializer = injector.getInstance (Serializer::class.java)
         val s = serializer.serialize(activity);
         return s

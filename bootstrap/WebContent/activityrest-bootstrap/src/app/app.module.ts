@@ -12,7 +12,6 @@ import { CommandLineTemplateComponent } from "./command-line-template/command-li
 import { LiteralCommandLineTemplateComponent } from "./literal-command-line-template/literal-command-line-template.component";
 import { StringListManipulatorsComponent } from "./string-list-manipulators/string-list-manipulators.component";
 import { ArtifactsGenerationComponent } from "./artifacts-generation/artifacts-generation.component";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +22,10 @@ import { ArtifactsGenerationComponent } from "./artifacts-generation/artifacts-g
     CommandLineTemplateComponent,
     LiteralCommandLineTemplateComponent,
     StringListManipulatorsComponent,
-    ArtifactsGenerationComponent
+    ArtifactsGenerationComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

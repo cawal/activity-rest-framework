@@ -5,7 +5,6 @@ import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.*
 import javax.json.JsonObject
 
 
-
 class DtoToFunctionalEntity() {
 
     init {
@@ -36,7 +35,7 @@ class DtoToFunctionalEntity() {
 
         functionalEntity.commandLineTemplate.addAll(
             dto.array("commandLineTemplate")
-                .map { getCommandLineEntryList(it as JsonObject,activity) }
+                .map { getCommandLineEntryList(it as JsonObject, activity) }
                 .toList()
         )
 
@@ -54,6 +53,9 @@ class DtoToFunctionalEntity() {
             ?.string("name")
         functionalEntity.standardOutputStream =
             activity.getOutputDatasetByName(standardErrorName)
+
+        activity.functionalEntity = functionalEntity
+        functionalEntity.activity = activity
 
         return functionalEntity
     }
@@ -75,7 +77,7 @@ class DtoToFunctionalEntity() {
             dto.containsKey("parameter") ->
                 getParameterCommandLineEntryList(dto, activity)
             dto.containsKey("dataset") ->
-                getDatasetCommandLineEntryList(dto,activity)
+                getDatasetCommandLineEntryList(dto, activity)
             else -> factory.createLiteralCommandLineEntryList()
         }
     }
@@ -91,16 +93,16 @@ class DtoToFunctionalEntity() {
     }
 
 
-
     fun getParameterCommandLineEntryList(dto: JsonObject, activity: Activity)
             : ParameterCommandLineEntryList {
         val clel = factory.createParameterCommandLineEntryList()
         setCommandLineEntryListFields(clel, dto)
         val parameter = dto.string("parameter")
+        println(parameter)
         clel.parameter = activity.getParameterByName(parameter)
+        println(clel.parameter)
         return clel
     }
-
 
 
     fun getDatasetCommandLineEntryList(dto: JsonObject, activity: Activity)
@@ -119,6 +121,7 @@ class DtoToFunctionalEntity() {
         clel.manipulators.addAll(
             dto.array("manipulators")
                 .map { getStringListManipulator(it as JsonObject) }
+                .also { println(it) }
                 .toList()
         )
 
