@@ -8,10 +8,10 @@ import org.apache.commons.io.IOUtils
 import java.io.File
 import java.io.FileOutputStream
 
-public class JavaEEServiceGenerator {
+class JavaEEServiceGenerator {
 
 
-    public fun generateService(
+     fun generateService(
         activity: Activity,
         functionalInterface: FunctionalEntity,
         deployment: Deployment
@@ -68,11 +68,27 @@ class JavaProject(val directory: File) {
     }
 
     fun addActivityFileToProject(activityFile: File) {
-        activityFile.renameTo(File(directory, "galaxy/tool.xml"))
+        val placeholderFile = directory.walkBottomUp()
+            .findLast { it.name == "activity.aadl" }
+
+        if (placeholderFile != null ) {
+            placeholderFile.delete()
+            activityFile.renameTo(placeholderFile)
+        } else {
+            throw Exception("Cannot find the placeholder file for activity")
+        }
     }
 
     fun addDeploymentFileToProject(deploymentFile: File) {
-        deploymentFile.renameTo(File(directory, "galaxy/tool.xml"))
+        val placeholderFile = directory.walkBottomUp()
+            .findLast { it.name == "activity.deployment" }
+
+        if (placeholderFile != null ) {
+            placeholderFile.delete()
+            deploymentFile.renameTo(placeholderFile)
+        } else {
+            throw Exception("Cannot find the placeholder file for deployment")
+        }
     }
 
 

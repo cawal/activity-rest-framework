@@ -1,5 +1,6 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.services.generation
 
+import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.sanitized
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.*
 import org.apache.maven.cli.MavenCli
@@ -24,7 +25,7 @@ class JavaProjectGenerator {
     fun generateBaseMavenProject(activity: Activity, deployment: Deployment)
             : File {
         val artifactId = "${activity.name}-service"
-        val artifactGroupId = activity.name
+        val artifactGroupId = activity.name.sanitized()
         val artifactVersion = deployment.getService().getApiVersion() ?: "1.0"
 
         val tempDir = createTempDir(prefix = "activityrest-service-", suffix = "")

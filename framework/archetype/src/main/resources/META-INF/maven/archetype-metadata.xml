@@ -15,8 +15,11 @@
       <directory>src</directory>
       <includes>
         <include>**/*.java</include>
+        <include>**/*.kt</include>
         <include>**/*.properties</include>
         <include>**/*.aadl</include>
+        <include>**/*.deployment</include>
+        <include>**/*.*</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
