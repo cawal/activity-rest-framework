@@ -1,0 +1,14 @@
+<p>functional-entity-detail works!</p>
+<div *ngIf="this.isExitCode(this.detailedComponent)">
+  <app-exit-code-detail
+    [exitCode]="this.detailedComponent"
+  ></app-exit-code-detail>
+</div>
+
+<app-command-line-template
+  *ngIf="this.isCommandLineEntryList(this.detailedComponent)"
+  [commandLineTemplate]="this.detailedComponent"
+  [parameters]="this.activity.parameters"
+  [inputDatasets]="this.activity.inputDatasets"
+  [outputDatasets]="this.activity.outputDatasets"
+></app-command-line-template>

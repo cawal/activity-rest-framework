@@ -1,48 +1,35 @@
-<div *ngFor="let t of commandLineTemplate" class="command-line-entry">
-  <span *ngIf="isLiteralTemplate(t)">
-    Literals:
-    <app-literal-command-line-template
-      [literals]="t"
-    ></app-literal-command-line-template>
-  </span>
+<span *ngIf="isLiteralTemplate(commandLineTemplate)">
+  Literals:
+  <app-literal-command-line-template
+    [literals]="commandLineTemplate"
+  ></app-literal-command-line-template>
+</span>
 
-  <span *ngIf="isParameterTemplate(t)">
-    Parameter:
-    <select [(ngModel)]="t.parameter">
-      <option *ngFor="let p of parameters" (ngValue)="(p)">
-        {{ p.name }}
-      </option>
-    </select>
+<span *ngIf="isParameterTemplate(commandLineTemplate)">
+  Parameter:
+  <select [(ngModel)]="commandLineTemplate.parameter">
+    <option *ngFor="let p of parameters" (ngValue)="(p)">
+      {{ p.name }}
+    </option>
+  </select>
 
-    <app-string-list-manipulators
-      [manipulators]="t.manipulators"
-    ></app-string-list-manipulators>
-  </span>
+  <app-string-list-manipulators
+    [manipulators]="commandLineTemplate.manipulators"
+  ></app-string-list-manipulators>
+</span>
 
-  <span *ngIf="isDatasetTemplate(t)">
-    Dataset
-    <select [(ngModel)]="t.dataset">
-      <option
-        *ngFor="let d of inputDatasets.concat(outputDatasets)"
-        (ngValue)="(d)"
-      >
-        {{ d.name }}
-      </option>
-    </select>
+<span *ngIf="isDatasetTemplate(commandLineTemplate)">
+  Dataset
+  <select [(ngModel)]="commandLineTemplate.dataset">
+    <option
+      *ngFor="let d of inputDatasets.concat(outputDatasets)"
+      (ngValue)="(d)"
+    >
+      {{ d.name }}
+    </option>
+  </select>
 
-    <app-string-list-manipulators
-      [manipulators]="t.manipulators"
-    ></app-string-list-manipulators>
-  </span>
-
-  <button (click)="remove(t)">Remove</button>
-</div>
-<button (click)="addLiteralCommandLineEntry()">
-  Add literal command line entry
-</button>
-<button (click)="addParameterCommandLineEntry()">
-  Add parameter command line entry
-</button>
-<button (click)="addDatasetCommandLineEntry()">
-  Add dataset command line entry
-</button>
+  <app-string-list-manipulators
+    [manipulators]="commandLineTemplate.manipulators"
+  ></app-string-list-manipulators>
+</span>

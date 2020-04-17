@@ -1,1 +1,9 @@
 @import "../app.component.css";
+
+.model {
+  width: 30%;
+}
+
+.detail {
+  width: 70%;
+}

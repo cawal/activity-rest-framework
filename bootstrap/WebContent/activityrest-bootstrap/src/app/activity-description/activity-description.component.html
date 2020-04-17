@@ -1,136 +1,45 @@
-<h2>Activity description</h2>
-<div *ngIf="activity">
-  <label
-    >Name:
-    <input [(ngModel)]="activity.name" placeholder="name" />
-  </label>
-  <h3>Parameters:</h3>
-
-  <div *ngFor="let p of activity.parameters" class="parameter">
+<div class="main">
+  <div *ngIf="activity" class="model">
+    <h3>Activity description</h3>
     <label
       >Name:
-      <input [(ngModel)]="p.name" placeholder="name" />
+      <input [(ngModel)]="activity.name" placeholder="name" />
     </label>
+    <h3>Parameters:</h3>
 
-    <label
-      >Type:
-      <select [(ngModel)]="p.parameterType">
-        <option
-          *ngFor="let symbol of keys(parameterTypes)"
-          [ngValue]="parameterTypes[symbol]"
-        >
-          {{ symbol }}
-        </option>
-      </select>
-    </label>
+    <div *ngFor="let p of activity.parameters" class="parameter">
+      <div>
+        <button (click)="this.showDetail(p)">{{ p.name }}</button>
+        <button (click)="removeParameter(p)">Remove</button>
+      </div>
+    </div>
 
-    <label
-      >Minimun cardinality:
-      <input
-        [(ngModel)]="p.minimunCardinality"
-        placeholder="Minimun cardinality"
-        type="number"
-      />
-    </label>
+    <button (click)="addParameter()">Add</button>
 
-    <label
-      >Maximun cardinality:
-      <input
-        [(ngModel)]="p.maximunCardinality"
-        placeholder="Maximun cardinality"
-        type="number"
-      />
-    </label>
+    <h3>Input datasets:</h3>
 
-    <label
-      >Remarks:
-      <input [(ngModel)]="p.remark" placeholder="Remarks" />
-    </label>
+    <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
+      <div>
+        <button (click)="this.showDetail(d)">{{ d.name }}</button>
+        <button (click)="removeInputDataset(d)">Remove</button>
+      </div>
+    </div>
 
-    <button (click)="removeParameter(p)">Remove</button>
+    <button (click)="addInputDataset()">Add</button>
+
+    <h3>Output datasets:</h3>
+
+    <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
+      <div>
+        <button (click)="this.showDetail(d)">{{ d.name }}</button>
+        <button (click)="removeOutputDataset(d)">Remove</button>
+      </div>
+    </div>
+
+    <button (click)="addOutputDataset()">Add</button>
   </div>
-
-  <button (click)="addParameter()">Add</button>
-
-  <h3>Input datasets:</h3>
-
-  <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
-    <label
-      >Name:
-      <input [(ngModel)]="d.name" placeholder="name" />
-    </label>
-
-    <label
-      >MIME Type:
-      <input [(ngModel)]="d.mimeType" placeholder="mimeType" />
-    </label>
-
-    <label
-      >Minimun cardinality:
-      <input
-        [(ngModel)]="d.minimunCardinality"
-        placeholder="Minimun cardinality"
-        type="number"
-      />
-    </label>
-
-    <label
-      >Maximun cardinality:
-      <input
-        [(ngModel)]="d.maximunCardinality"
-        placeholder="Maximun cardinality"
-        type="number"
-      />
-    </label>
-
-    <label
-      >Remarks:
-      <textarea [(ngModel)]="d.remark" placeholder="Remarks"></textarea>
-    </label>
-
-    <button (click)="removeInputDataset(d)">Remove</button>
-  </div>
-
-  <button (click)="addInputDataset()">Add</button>
-
-  <h3>Output datasets:</h3>
-
-  <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
-    <label
-      >Name:
-      <input [(ngModel)]="d.name" placeholder="name" />
-    </label>
-
-    <label
-      >MIME Type:
-      <input [(ngModel)]="d.mimeType" placeholder="mimeType" />
-    </label>
-
-    <label
-      >Minimun cardinality:
-      <input
-        [(ngModel)]="d.minimunCardinality"
-        placeholder="Minimun cardinality"
-        type="number"
-      />
-    </label>
-
-    <label
-      >Maximun cardinality:
-      <input
-        [(ngModel)]="d.maximunCardinality"
-        placeholder="Maximun cardinality"
-        type="number"
-      />
-    </label>
-
-    <label
-      >Remarks:
-      <input [(ngModel)]="d.remark" placeholder="Remarks" />
-    </label>
-
-    <button (click)="removeOutputDataset(d)">Remove</button>
-  </div>
-
-  <button (click)="addOutputDataset()">Add</button>
+  <app-activity-description-detail
+    [detailedComponent]="this.detail"
+    class="detail"
+  ></app-activity-description-detail>
 </div>

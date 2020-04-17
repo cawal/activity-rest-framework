@@ -1,11 +1,14 @@
 @import "../app.component.css";
 
-div .parameter,
-.input-dataset,
-.output-dataset {
-  border: 1px;
-  border-color: black;
-  border-style: dashed;
-  padding: 1em;
-  margin-bottom: 0.5em;
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.model {
+  width: 30%;
+}
+
+.detail {
+  width: 70%;
 }

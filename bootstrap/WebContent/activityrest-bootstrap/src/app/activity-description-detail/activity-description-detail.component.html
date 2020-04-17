@@ -1,0 +1,124 @@
+<div *ngIf="this.isParameter(this.detailedComponent)" class="parameter">
+  <h3>Parameter:</h3>
+
+  <label
+    >Name:
+    <input [(ngModel)]="this.detailedComponent.name" placeholder="name" />
+  </label>
+
+  <label
+    >Type:
+    <select [(ngModel)]="this.detailedComponent.parameterType">
+      <option
+        *ngFor="let symbol of keys(parameterTypes)"
+        [ngValue]="parameterTypes[symbol]"
+      >
+        {{ symbol }}
+      </option>
+    </select>
+  </label>
+
+  <label
+    >Minimun cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.minimunCardinality"
+      placeholder="Minimun cardinality"
+      type="number"
+    />
+  </label>
+
+  <label
+    >Maximun cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.maximunCardinality"
+      placeholder="Maximun cardinality"
+      type="number"
+    />
+  </label>
+
+  <label
+    >Remarks:
+    <input [(ngModel)]="this.detailedComponent.remark" placeholder="Remarks" />
+  </label>
+</div>
+
+<div *ngIf="this.isInputDataset(this.detailedComponent)">
+  <h3>Input dataset:</h3>
+  <label
+    >Name:
+    <input [(ngModel)]="this.detailedComponent.name" placeholder="name" />
+  </label>
+
+  <label
+    >MIME Type:
+    <input
+      [(ngModel)]="this.detailedComponent.mimeType"
+      placeholder="mimeType"
+    />
+  </label>
+
+  <label
+    >Minimun cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.minimunCardinality"
+      placeholder="Minimun cardinality"
+      type="number"
+    />
+  </label>
+
+  <label
+    >Maximun cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.maximunCardinality"
+      placeholder="Maximun cardinality"
+      type="number"
+    />
+  </label>
+
+  <label
+    >Remarks:
+    <textarea
+      [(ngModel)]="this.detailedComponent.remark"
+      placeholder="Remarks"
+    ></textarea>
+  </label>
+</div>
+
+<div *ngIf="this.isOutputDataset(this.detailedComponent)">
+  <h3>Output dataset:</h3>
+  <label
+    >Name:
+    <input [(ngModel)]="this.detailedComponent.name" placeholder="name" />
+  </label>
+
+  <label
+    >MIME Type:
+    <input
+      [(ngModel)]="this.detailedComponent.mimeType"
+      placeholder="mimeType"
+    />
+  </label>
+
+  <label
+    >Minimun cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.minimunCardinality"
+      placeholder="Minimun cardinality"
+      type="number"
+    />
+  </label>
+
+  <label
+    >Maximun cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.maximunCardinality"
+      placeholder="Maximun cardinality"
+      type="number"
+    />
+  </label>
+
+  <label
+    >Remarks:
+    <input [(ngModel)]="this.detailedComponent.remark" placeholder="Remarks" />
+  </label>
+</div>

@@ -1,53 +1,76 @@
-<h2>Command line tool</h2>
-<label
-  >Name:
-  <input [(ngModel)]="commandLineTool.name" placeholder="name" />
-</label>
-<label
-  >Remark:
-  <input [(ngModel)]="commandLineTool.remark" placeholder="remark" />
-</label>
+<div class="main">
+  <div class="model">
+    <h2>Command line tool</h2>
+    <label
+      >Name:
+      <input [(ngModel)]="commandLineTool.name" placeholder="name" />
+    </label>
+    <label
+      >Remark:
+      <input [(ngModel)]="commandLineTool.remark" placeholder="remark" />
+    </label>
 
-<h3>Command line template</h3>
-<app-command-line-template
-  [commandLineTemplate]="commandLineTool.commandLineTemplate"
-  [parameters]="activity.parameters"
-  [inputDatasets]="activity.inputDatasets"
-  [outputDatasets]="activity.outputDatasets"
->
-</app-command-line-template>
+    <h3>Command line template</h3>
+    <div
+      *ngFor="let t of commandLineTool.commandLineTemplate"
+      class="command-line-entry"
+    >
+      <button (click)="showDetails(t)">Details</button>
+      <button (click)="remove(t)">Remove</button>
+    </div>
 
-<h3>Exit codes:</h3>
-<div *ngFor="let e of commandLineTool.exitCodes">
-  <app-exit-code-detail [exitCode]="e"></app-exit-code-detail>
-  <button (click)="removeExitCode(e)">Remove</button>
+    <div>
+      <button (click)="addLiteralCommandLineEntry()">
+        Add literal command line entry
+      </button>
+      <button (click)="addParameterCommandLineEntry()">
+        Add parameter command line entry
+      </button>
+      <button (click)="addDatasetCommandLineEntry()">
+        Add dataset command line entry
+      </button>
+    </div>
+
+    <h3>Exit codes:</h3>
+    <div *ngFor="let e of commandLineTool.exitCodes">
+      <button (click)="this.showDetails(e)">
+        {{ e.code }} ({{ e.status }})
+      </button>
+      <button (click)="removeExitCode(e)">Remove</button>
+    </div>
+    <button (click)="addExitCode()">Add</button>
+
+    <h3>Stream redirections</h3>
+    <label
+      >Standard input stream:
+      <select [(ngModel)]="commandLineTool.standardInputStream">
+        <option *ngFor="let d of activity.inputDatasets" [ngValue]="d">
+          {{ d.name }}
+        </option>
+      </select>
+    </label>
+
+    <label
+      >Standard output stream:
+      <select [(ngModel)]="commandLineTool.standardOutputStream">
+        <option *ngFor="let d of activity.outputDatasets" [ngValue]="d">
+          {{ d.name }}
+        </option>
+      </select>
+    </label>
+
+    <label
+      >Standard error stream:
+      <select [(ngModel)]="commandLineTool.standardErrorStream">
+        <option *ngFor="let d of activity.outputDatasets" [ngValue]="d">
+          {{ d.name }}
+        </option>
+      </select>
+    </label>
+  </div>
+  <app-functional-entity-detail
+    [detailedComponent]="this.detail"
+    [activity]="this.activity"
+    class="detail"
+  ></app-functional-entity-detail>
 </div>
-<button (click)="addExitCode()">Add</button>
-
-<h3>Stream redirections</h3>
-<label
-  >Standard input stream:
-  <select [(ngModel)]="commandLineTool.standardInputStream">
-    <option *ngFor="let d of activity.inputDatasets" [ngValue]="d">
-      {{ d.name }}
-    </option>
-  </select>
-</label>
-
-<label
-  >Standard output stream:
-  <select [(ngModel)]="commandLineTool.standardOutputStream">
-    <option *ngFor="let d of activity.outputDatasets" [ngValue]="d">
-      {{ d.name }}
-    </option>
-  </select>
-</label>
-
-<label
-  >Standard error stream:
-  <select [(ngModel)]="commandLineTool.standardErrorStream">
-    <option *ngFor="let d of activity.outputDatasets" [ngValue]="d">
-      {{ d.name }}
-    </option>
-  </select>
-</label>

@@ -1,15 +1,21 @@
-<label>Code:
-  <input type="number" [(ngModel)]="exitCode.code">
+<label
+  >Code:
+  <input type="number" [(ngModel)]="exitCode.code" />
 </label>
 
-<label>Status:
-  <select>
-    <option *ngFor="let t of keys(terminationStatus);" (ngValue)="terminationStatus[t]">
-      {{t}}
+<label
+  >Status:
+  <select [(ngModel)]="this.exitCode.status">
+    <option
+      *ngFor="let t of keys(terminationStatus)"
+      (ngValue)="(terminationStatus[t])"
+    >
+      {{ t }}
     </option>
   </select>
 </label>
 
-<label>Description:
-  <input [(ngModel)]="exitCode.reportMessage">
+<label
+  >Description:
+  <input [(ngModel)]="exitCode.reportMessage" />
 </label>

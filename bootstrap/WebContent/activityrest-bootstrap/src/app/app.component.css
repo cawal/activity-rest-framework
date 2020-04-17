@@ -30,6 +30,17 @@ button {
   margin-top: 1em;
 }
 
+/* button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 5px 5px 5px 5px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+} */
+
 input {
   width: 100%;
 }
@@ -60,6 +71,19 @@ button .next {
 }
 
 .main {
-  width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   margin: auto;
+}
+
+.navigation {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.model {
+  width: 80%;
 }
