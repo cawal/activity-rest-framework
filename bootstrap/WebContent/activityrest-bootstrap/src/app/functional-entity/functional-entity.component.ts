@@ -73,4 +73,16 @@ export class FunctionalEntityComponent implements OnInit {
     let index = this.commandLineTool.commandLineTemplate.indexOf(t);
     this.commandLineTool.commandLineTemplate.splice(index, 1);
   }
+
+  moveEntryListUp(t: CommandLineEntryList): void {
+    let index = this.commandLineTool.commandLineTemplate.indexOf(t);
+    this.remove(t);
+    this.commandLineTool.commandLineTemplate.splice(index - 1, 0, t);
+  }
+
+  moveEntryListDown(t: CommandLineEntryList): void {
+    let index = this.commandLineTool.commandLineTemplate.indexOf(t);
+    this.remove(t);
+    this.commandLineTool.commandLineTemplate.splice(index + 1, 0, t);
+  }
 }

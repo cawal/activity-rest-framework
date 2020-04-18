@@ -18,6 +18,8 @@
       <button (click)="showDetails(t)">
         {{ t.getCommandLineEntries(["a", "b", "c"]).join(" ") }}
       </button>
+      <button (click)="moveEntryListUp(t)">Move up</button>
+      <button (click)="moveEntryListDown(t)">Move Down</button>
       <button (click)="remove(t)">Remove</button>
     </div>
 
