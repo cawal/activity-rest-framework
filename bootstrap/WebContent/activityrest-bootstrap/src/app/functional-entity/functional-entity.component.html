@@ -15,7 +15,9 @@
       *ngFor="let t of commandLineTool.commandLineTemplate"
       class="command-line-entry"
     >
-      <button (click)="showDetails(t)">Details</button>
+      <button (click)="showDetails(t)">
+        {{ t.getCommandLineEntries(["a", "b", "c"]).join(" ") }}
+      </button>
       <button (click)="remove(t)">Remove</button>
     </div>
 

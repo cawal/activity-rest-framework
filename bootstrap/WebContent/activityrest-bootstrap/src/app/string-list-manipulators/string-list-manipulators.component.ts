@@ -1,29 +1,48 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { StringListManipulator, StringListManipulatorFactory, Join, PrependEach, AppendEach, AppendListWith, PrependListWith, ToFlag } from 'src/model/tool-description';
+import { Component, OnInit, Input } from "@angular/core";
+import {
+  StringListManipulator,
+  StringListManipulatorFactory,
+  Join,
+  PrependEach,
+  AppendEach,
+  AppendListWith,
+  PrependListWith,
+  ToFlag,
+} from "src/model/tool-description";
 
 @Component({
-  selector: 'app-string-list-manipulators',
-  templateUrl: './string-list-manipulators.component.html',
-  styleUrls: ['./string-list-manipulators.component.css']
+  selector: "app-string-list-manipulators",
+  templateUrl: "./string-list-manipulators.component.html",
+  styleUrls: ["./string-list-manipulators.component.css"],
 })
 export class StringListManipulatorsComponent implements OnInit {
-
   @Input() manipulators: StringListManipulator[];
   selectedManipulatorClass: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   add(): void {
     let m = StringListManipulatorFactory.create(this.selectedManipulatorClass);
     this.manipulators.push(m);
   }
 
-  delete(m: StringListManipulator): void {
+  remove(m: StringListManipulator): StringListManipulator {
     let index = this.manipulators.indexOf(m);
-    this.manipulators.splice(index, 1);
+    return this.manipulators.splice(index, 1)[0];
+  }
+
+  moveUp(m: StringListManipulator): void {
+    let index = this.manipulators.indexOf(m);
+    this.remove(m);
+    this.manipulators.splice(index - 1, 0, m);
+  }
+
+  moveDown(m: StringListManipulator): void {
+    let index = this.manipulators.indexOf(m);
+    this.remove(m);
+    this.manipulators.splice(index + 1, 0, m);
   }
 
   isJoin(m: StringListManipulator): m is Join {
@@ -49,6 +68,4 @@ export class StringListManipulatorsComponent implements OnInit {
   isToFlag(m: StringListManipulator): m is ToFlag {
     return m instanceof ToFlag;
   }
-
-
 }

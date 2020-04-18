@@ -35,6 +35,13 @@ export enum TerminationStatus {
  */
 export abstract class CommandLineEntryList {
   manipulators: StringListManipulator[] = [];
+  getCommandLineEntries(base: string[]) {
+    let aux: string[] = base;
+    for (let m of this.manipulators) {
+      aux = m.transform(aux);
+    }
+    return aux;
+  }
 }
 class ToolNameCommandLineEntry extends CommandLineEntryList {}
 export class LiteralCommandLineEntryList extends CommandLineEntryList {
@@ -77,7 +84,7 @@ export class PrependEach extends StringListManipulator {
   value: string;
   identifier = "PrependEach";
   transform(stringList: string[]): string[] {
-    return this.flatten(stringList.map((e) => [this.value, e]));
+    return this.flatten(stringList.map((e) => this.value + e));
   }
 }
 export class AppendEach extends StringListManipulator {
@@ -85,7 +92,7 @@ export class AppendEach extends StringListManipulator {
   identifier = "AppendEach";
 
   transform(stringList: string[]): string[] {
-    return this.flatten(stringList.map((e) => [e, this.value]));
+    return this.flatten(stringList.map((e) => e + this.value));
   }
 }
 export class AppendListWith extends StringListManipulator {

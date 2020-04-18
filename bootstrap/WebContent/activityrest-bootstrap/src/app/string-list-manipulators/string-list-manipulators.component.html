@@ -29,6 +29,9 @@
     If true: <input [(ngModel)]="m.ifTrue" /> If false:
     <input [(ngModel)]="m.ifFalse" />
   </div>
+  <button (click)="moveUp(m)">Move up</button>
+  <button (click)="moveDown(m)">Move down</button>
+  <button (click)="remove(m)">Remove</button>
 </div>
 
 <select [(ngModel)]="selectedManipulatorClass">
