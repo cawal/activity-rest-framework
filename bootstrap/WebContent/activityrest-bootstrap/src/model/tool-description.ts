@@ -35,6 +35,7 @@ export enum TerminationStatus {
  */
 export abstract class CommandLineEntryList {
   manipulators: StringListManipulator[] = [];
+
   getCommandLineEntries(base: string[]) {
     let aux: string[] = base;
     for (let m of this.manipulators) {
@@ -50,10 +51,10 @@ export class LiteralCommandLineEntryList extends CommandLineEntryList {
   literals -> size() > 0;*/
 }
 export class DatasetCommandLineEntryList extends CommandLineEntryList {
-  dataset: Dataset;
+  dataset: string;
 }
 export class ParameterCommandLineEntryList extends CommandLineEntryList {
-  parameter: Parameter;
+  parameter: string;
 }
 
 /*
