@@ -1,26 +1,26 @@
-<span *ngIf="isLiteralTemplate(commandLineTemplate)">
+<span *ngIf="isLiteralTemplate(entryList)">
   Literals:
   <app-literal-command-line-template
-    [literals]="commandLineTemplate"
+    [literals]="entryList"
   ></app-literal-command-line-template>
 </span>
 
-<span *ngIf="isParameterTemplate(commandLineTemplate)">
+<span *ngIf="isParameterTemplate(entryList)">
   Parameter:
-  <select [(ngModel)]="commandLineTemplate.parameter">
+  <select [(ngModel)]="entryList.parameter">
     <option *ngFor="let p of parameters" (ngValue)="(p)">
       {{ p.name }}
     </option>
   </select>
 
   <app-string-list-manipulators
-    [manipulators]="commandLineTemplate.manipulators"
+    [manipulators]="entryList.manipulators"
   ></app-string-list-manipulators>
 </span>
 
-<span *ngIf="isDatasetTemplate(commandLineTemplate)">
+<span *ngIf="isDatasetTemplate(entryList)">
   Dataset
-  <select [(ngModel)]="commandLineTemplate.dataset">
+  <select [(ngModel)]="entryList.dataset">
     <option
       *ngFor="let d of inputDatasets.concat(outputDatasets)"
       (ngValue)="(d)"
@@ -30,6 +30,6 @@
   </select>
 
   <app-string-list-manipulators
-    [manipulators]="commandLineTemplate.manipulators"
+    [manipulators]="entryList.manipulators"
   ></app-string-list-manipulators>
 </span>

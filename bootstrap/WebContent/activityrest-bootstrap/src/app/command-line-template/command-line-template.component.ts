@@ -17,7 +17,7 @@ import {
   styleUrls: ["./command-line-template.component.css"],
 })
 export class CommandLineTemplateComponent implements OnInit {
-  @Input() commandLineTemplate: CommandLineEntryList;
+  @Input() entryList: CommandLineEntryList;
   @Input() parameters: Parameter[];
   @Input() inputDatasets: InputDataset[];
   @Input() outputDatasets: OutputDataset[];
