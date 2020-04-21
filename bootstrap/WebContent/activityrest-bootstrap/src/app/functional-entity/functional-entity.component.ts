@@ -1,4 +1,14 @@
 import { Component, OnInit, Input } from "@angular/core";
+
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import {
+  fas,
+  faPlus,
+  faTimes,
+  faArrowUp,
+  faArrowDown,
+} from "@fortawesome/free-solid-svg-icons";
+
 import { FunctionalEntity, Activity } from "src/model/activity-description";
 import {
   CommandLineTool,
@@ -20,6 +30,11 @@ export class FunctionalEntityComponent implements OnInit {
   @Input() activity: Activity;
 
   detail: any = null;
+
+  iconAdd = faPlus;
+  iconRemove = faTimes;
+  iconUp = faArrowUp;
+  iconDown = faArrowDown;
 
   constructor() {}
 
@@ -56,11 +71,9 @@ export class FunctionalEntityComponent implements OnInit {
   }
 
   addParameterCommandLineEntry() {
-    console.log("entrou");
     let entry = new ParameterCommandLineEntryList();
     this.commandLineTool.commandLineTemplate.push(entry);
     this.showDetails(entry);
-    console.log("saiu");
   }
 
   addDatasetCommandLineEntry() {
@@ -84,5 +97,35 @@ export class FunctionalEntityComponent implements OnInit {
     let index = this.commandLineTool.commandLineTemplate.indexOf(t);
     this.remove(t);
     this.commandLineTool.commandLineTemplate.splice(index + 1, 0, t);
+  }
+
+  getExampleCommandLine(l: CommandLineEntryList): string {
+    if (l instanceof LiteralCommandLineEntryList) {
+      return l.getCommandLineEntries(l.literals).join(" ");
+    } else if (l instanceof ParameterCommandLineEntryList) {
+      this.getParameterExample(l);
+    } else if (l instanceof DatasetCommandLineEntryList) {
+      this.getDatasetExample(l);
+    }
+  }
+
+  getParameterExample(l: ParameterCommandLineEntryList): string {
+    if (l.parameter) {
+      let parameter = this.activity.parameters.find(
+        (e) => e.name == l.parameter
+      );
+      return l.getCommandLineEntries(parameter.getExampleValues()).join(" ");
+    } else {
+      return "PARAMETER";
+    }
+  }
+
+  getDatasetExample(l: DatasetCommandLineEntryList): string {
+    if (l.dataset) {
+      let dataset = this.activity.parameters.find((e) => e.name == l.dataset);
+      return l.getCommandLineEntries(dataset.getExampleValues()).join(" ");
+    } else {
+      return "DATASET";
+    }
   }
 }

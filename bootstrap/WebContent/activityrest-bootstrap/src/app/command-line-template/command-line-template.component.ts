@@ -1,4 +1,13 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import {
+  fas,
+  faPlus,
+  faTimes,
+  faArrowUp,
+  faArrowDown,
+} from "@fortawesome/free-solid-svg-icons";
+
 import {
   Parameter,
   InputDataset,
@@ -21,6 +30,11 @@ export class CommandLineTemplateComponent implements OnInit {
   @Input() parameters: Parameter[];
   @Input() inputDatasets: InputDataset[];
   @Input() outputDatasets: OutputDataset[];
+
+  iconAdd = faPlus;
+  iconRemove = faTimes;
+  iconUp = faArrowUp;
+  iconDown = faArrowDown;
 
   constructor() {}
 

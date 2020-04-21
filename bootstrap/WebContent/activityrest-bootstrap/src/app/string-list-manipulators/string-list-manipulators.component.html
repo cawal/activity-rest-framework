@@ -29,9 +29,15 @@
     If true: <input [(ngModel)]="m.ifTrue" /> If false:
     <input [(ngModel)]="m.ifFalse" />
   </div>
-  <button (click)="moveUp(m)">Move up</button>
-  <button (click)="moveDown(m)">Move down</button>
-  <button (click)="remove(m)">Remove</button>
+  <button (click)="moveUp(m)">
+    <fa-icon [icon]="iconUp"></fa-icon>
+  </button>
+  <button (click)="moveDown(m)">
+    <fa-icon [icon]="iconDown"></fa-icon>
+  </button>
+  <button (click)="remove(m)">
+    <fa-icon [icon]="iconRemove"></fa-icon>
+  </button>
 </div>
 
 <select [(ngModel)]="selectedManipulatorClass">
@@ -42,4 +48,6 @@
   <option value="PrependListWith">PrependListWith</option>
   <option value="ToFlag">ToFlag</option>
 </select>
-<button (click)="add(this.selectedManipulator)">Add</button>
+<button (click)="add(this.selectedManipulator)">
+  <fa-icon [icon]="iconAdd"></fa-icon>
+</button>

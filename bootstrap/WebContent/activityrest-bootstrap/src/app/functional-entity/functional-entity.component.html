@@ -18,9 +18,15 @@
       <button (click)="showDetails(t)">
         {{ t.getCommandLineEntries(["a", "b", "c"]).join(" ") }}
       </button>
-      <button (click)="moveEntryListUp(t)">Move up</button>
-      <button (click)="moveEntryListDown(t)">Move Down</button>
-      <button (click)="remove(t)">Remove</button>
+      <button (click)="moveEntryListUp(t)">
+        <fa-icon [icon]="iconUp"></fa-icon>
+      </button>
+      <button (click)="moveEntryListDown(t)">
+        <fa-icon [icon]="iconDown"></fa-icon>
+      </button>
+      <button (click)="remove(t)">
+        <fa-icon [icon]="iconRemove"></fa-icon>
+      </button>
     </div>
 
     <div>
@@ -40,9 +46,13 @@
       <button (click)="this.showDetails(e)">
         {{ e.code }} ({{ e.status }})
       </button>
-      <button (click)="removeExitCode(e)">Remove</button>
+      <button (click)="removeExitCode(e)">
+        <fa-icon [icon]="iconRemove"></fa-icon>
+      </button>
     </div>
-    <button (click)="addExitCode()">Add</button>
+    <button (click)="addExitCode()">
+      <fa-icon [icon]="iconAdd"></fa-icon>
+    </button>
 
     <h3>Stream redirections</h3>
     <label

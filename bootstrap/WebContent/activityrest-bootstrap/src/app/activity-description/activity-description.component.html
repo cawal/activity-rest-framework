@@ -1,42 +1,56 @@
 <div class="main">
   <div *ngIf="activity" class="model">
-    <h3>Activity description</h3>
-    <label
-      >Name:
-      <input [(ngModel)]="activity.name" placeholder="name" />
-    </label>
-    <h3>Parameters:</h3>
+    <form>
+      <h3>Activity description</h3>
+      <label
+        >Name:
+        <input [(ngModel)]="activity.name" placeholder="name" />
+      </label>
+      <h3>Parameters:</h3>
 
-    <div *ngFor="let p of activity.parameters" class="parameter">
-      <div>
-        <button (click)="this.showDetail(p)">{{ p.name }}</button>
-        <button (click)="removeParameter(p)">Remove</button>
+      <div *ngFor="let p of activity.parameters" class="parameter">
+        <div>
+          <button (click)="this.showDetail(p)">{{ p.name }}</button>
+          <button (click)="removeParameter(p)">
+            <fa-icon [icon]="iconRemove"></fa-icon>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <button (click)="addParameter()">Add</button>
+      <button (click)="addParameter()">
+        <fa-icon [icon]="iconAdd"></fa-icon>
+      </button>
 
-    <h3>Input datasets:</h3>
+      <h3>Input datasets:</h3>
 
-    <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
-      <div>
-        <button (click)="this.showDetail(d)">{{ d.name }}</button>
-        <button (click)="removeInputDataset(d)">Remove</button>
+      <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
+        <div>
+          <button (click)="this.showDetail(d)">{{ d.name }}</button>
+          <button (click)="removeInputDataset(d)">
+            <fa-icon [icon]="iconRemove"></fa-icon>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <button (click)="addInputDataset()">Add</button>
+      <button (click)="addInputDataset()">
+        <fa-icon [icon]="iconAdd"></fa-icon>
+      </button>
 
-    <h3>Output datasets:</h3>
+      <h3>Output datasets:</h3>
 
-    <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
-      <div>
-        <button (click)="this.showDetail(d)">{{ d.name }}</button>
-        <button (click)="removeOutputDataset(d)">Remove</button>
+      <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
+        <div>
+          <button (click)="this.showDetail(d)">{{ d.name }}</button>
+          <button (click)="removeOutputDataset(d)">
+            <fa-icon [icon]="iconRemove"></fa-icon>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <button (click)="addOutputDataset()">Add</button>
+      <button (click)="addOutputDataset()">
+        <fa-icon [icon]="iconAdd"></fa-icon>
+      </button>
+    </form>
   </div>
   <app-activity-description-detail
     [detailedComponent]="this.detail"

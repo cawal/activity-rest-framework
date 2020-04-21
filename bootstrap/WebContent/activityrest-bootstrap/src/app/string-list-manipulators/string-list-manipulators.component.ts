@@ -1,4 +1,14 @@
 import { Component, OnInit, Input } from "@angular/core";
+
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import {
+  fas,
+  faPlus,
+  faTimes,
+  faArrowUp,
+  faArrowDown,
+} from "@fortawesome/free-solid-svg-icons";
+
 import {
   StringListManipulator,
   StringListManipulatorFactory,
@@ -19,9 +29,16 @@ export class StringListManipulatorsComponent implements OnInit {
   @Input() manipulators: StringListManipulator[];
   selectedManipulatorClass: string;
 
+  iconAdd = faPlus;
+  iconRemove = faTimes;
+  iconUp = faArrowUp;
+  iconDown = faArrowDown;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.selectedManipulatorClass = "Join";
+  }
 
   add(): void {
     let m = StringListManipulatorFactory.create(this.selectedManipulatorClass);

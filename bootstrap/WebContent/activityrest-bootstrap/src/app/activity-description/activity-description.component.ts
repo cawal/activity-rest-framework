@@ -6,6 +6,10 @@ import {
   InputDataset,
   OutputDataset,
 } from "src/model/activity-description";
+
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { fas, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+
 import { ParameterCommandLineEntryList } from "src/model/tool-description";
 
 @Component({
@@ -22,6 +26,9 @@ export class ActivityDescriptionComponent implements OnInit {
   parameterIdSequence = 0;
   inputDatasetIdSequence = 0;
   outputDatasetIdSequence = 0;
+
+  iconAdd = faPlus;
+  iconRemove = faTimes;
 
   constructor() {}
 

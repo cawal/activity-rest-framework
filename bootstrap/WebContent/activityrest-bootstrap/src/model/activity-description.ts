@@ -38,6 +38,20 @@ export class Parameter implements MultiplicityElement, IdentifiableElement {
   parameterType: ParameterType;
   defaultValue: string[];
   constraints: Constraint[];
+  getExampleValues(): string[] {
+    let values = [];
+    if (this.maximumCardinality != 1) {
+      values = [
+        this.name.toUpperCase() + "_0",
+        "...",
+        this.name.toUpperCase() + "_N",
+      ];
+    } else {
+      values = [this.name.toUpperCase()];
+    }
+
+    return values;
+  }
   /*invariant defaultValueCardinalityMustBeLessThanMaximun:
   if maximumCardinality > 1 then
   defaultValue -> size() <= maximumCardinality
@@ -47,7 +61,7 @@ export enum ParameterType {
   STRING = "STRING",
   INTEGER = "INTEGER",
   REAL = "REAL",
-  BOOLEAN = "BOOLEAN"
+  BOOLEAN = "BOOLEAN",
 }
 
 /*
@@ -59,6 +73,7 @@ export enum ParameterType {
 export interface Dataset extends MultiplicityElement, IdentifiableElement {
   mimetype: string | null;
   constraints: Constraint[];
+  getExampleValues(): string[];
 }
 export class InputDataset implements Dataset {
   mimetype: string;
@@ -67,6 +82,20 @@ export class InputDataset implements Dataset {
   maximumCardinality: number;
   name: string;
   remark: string;
+  getExampleValues(): string[] {
+    let values = [];
+    if (this.maximumCardinality != 1) {
+      values = [
+        this.name.toUpperCase() + "_0",
+        "...",
+        this.name.toUpperCase() + "_N",
+      ];
+    } else {
+      values = [this.name.toUpperCase()];
+    }
+
+    return values;
+  }
 }
 export class OutputDataset implements Dataset {
   mimetype: string;
@@ -75,6 +104,20 @@ export class OutputDataset implements Dataset {
   maximumCardinality: number;
   name: string;
   remark: string;
+  getExampleValues(): string[] {
+    let values = [];
+    if (this.maximumCardinality != 1) {
+      values = [
+        this.name.toUpperCase() + "_0",
+        "...",
+        this.name.toUpperCase() + "_N",
+      ];
+    } else {
+      values = [this.name.toUpperCase()];
+    }
+
+    return values;
+  }
 }
 export class Constraint {
   name: string;

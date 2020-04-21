@@ -87,3 +87,7 @@ button .next {
 .model {
   width: 80%;
 }
+
+input:invalid {
+  border: red solid 3px;
+}

@@ -1,7 +1,12 @@
-<div *ngFor="let l of literals.literals">
-  <input type="text"
-         [(ngModel)]="l">
+<div *ngFor="let l of literals.literals; let i = index; trackBy: trackByIndex">
+  <input type="text" [(ngModel)]="literals.literals[i]" />
+  <button (click)="removeLiteral(literals.literals[i])">
+    <fa-icon [icon]="iconRemove"></fa-icon>
+  </button>
 </div>
-<button (click)="addLiteral()">Add</button>
-<button (click)="removeLiteral()">Remove last</button>
-<app-string-list-manipulators [manipulators]="literals.manipulators"></app-string-list-manipulators>
+<button (click)="addLiteral()">
+  <fa-icon [icon]="iconAdd"></fa-icon>
+</button>
+<app-string-list-manipulators
+  [manipulators]="literals.manipulators"
+></app-string-list-manipulators>
