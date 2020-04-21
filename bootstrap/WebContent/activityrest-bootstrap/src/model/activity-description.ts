@@ -40,19 +40,19 @@ export class Parameter implements MultiplicityElement, IdentifiableElement {
   constraints: Constraint[];
   getExampleValues(): string[] {
     let values = [];
-    if (this.maximumCardinality != 1) {
+    if (this.maximumCardinality == 1) {
+      values = [this.name.toUpperCase()];
+    } else {
       values = [
         this.name.toUpperCase() + "_0",
         "...",
         this.name.toUpperCase() + "_N",
       ];
-    } else {
-      values = [this.name.toUpperCase()];
     }
 
     return values;
   }
-  /*invariant defaultValueCardinalityMustBeLessThanMaximun:
+  /*invariant defaultValueCardinalityMustBeLessThanMaximum:
   if maximumCardinality > 1 then
   defaultValue -> size() <= maximumCardinality
               else true endif;*/
@@ -78,44 +78,45 @@ export interface Dataset extends MultiplicityElement, IdentifiableElement {
 export class InputDataset implements Dataset {
   mimetype: string;
   constraints: Constraint[];
-  minimumCardinality: number;
-  maximumCardinality: number;
+  minimumCardinality: number = 1;
+  maximumCardinality: number = 1;
   name: string;
   remark: string;
+
   getExampleValues(): string[] {
     let values = [];
-    if (this.maximumCardinality != 1) {
+    console.log(this.maximumCardinality);
+    if (this.maximumCardinality === 1) {
+      values = [this.name.toUpperCase()];
+    } else {
       values = [
         this.name.toUpperCase() + "_0",
         "...",
         this.name.toUpperCase() + "_N",
       ];
-    } else {
-      values = [this.name.toUpperCase()];
     }
-
     return values;
   }
 }
 export class OutputDataset implements Dataset {
   mimetype: string;
   constraints: Constraint[];
-  minimumCardinality: number;
-  maximumCardinality: number;
+  minimumCardinality: number = 1;
+  maximumCardinality: number = 1;
   name: string;
   remark: string;
+
   getExampleValues(): string[] {
     let values = [];
-    if (this.maximumCardinality != 1) {
+    if (this.maximumCardinality == 1) {
+      values = [this.name.toUpperCase()];
+    } else {
       values = [
         this.name.toUpperCase() + "_0",
         "...",
         this.name.toUpperCase() + "_N",
       ];
-    } else {
-      values = [this.name.toUpperCase()];
     }
-
     return values;
   }
 }

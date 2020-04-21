@@ -4,6 +4,7 @@ import {
   Dataset,
   InputDataset,
   OutputDataset,
+  Activity,
 } from "./activity-description";
 /*
  * A command line tool that can be called to execute the activity.
@@ -36,6 +37,8 @@ export enum TerminationStatus {
 export abstract class CommandLineEntryList {
   manipulators: StringListManipulator[] = [];
 
+  abstract getExample(activity: Activity): string;
+
   getCommandLineEntries(base: string[]) {
     let aux: string[] = base;
     for (let m of this.manipulators) {
@@ -44,17 +47,42 @@ export abstract class CommandLineEntryList {
     return aux;
   }
 }
-class ToolNameCommandLineEntry extends CommandLineEntryList {}
+class ToolNameCommandLineEntry extends CommandLineEntryList {
+  getExample(activity: Activity): string {
+    return "";
+  }
+}
 export class LiteralCommandLineEntryList extends CommandLineEntryList {
   literals: string[] = [];
+  getExample(activity: Activity): string {
+    return this.getCommandLineEntries(this.literals).join(" ");
+  }
   /*invariant OneOrMoreLiterals:
   literals -> size() > 0;*/
 }
 export class DatasetCommandLineEntryList extends CommandLineEntryList {
   dataset: string;
+  getExample(activity: Activity): string {
+    if (this.dataset) {
+      let aux = activity.inputDatasets
+        .concat(activity.outputDatasets)
+        .find((e) => e.name == this.dataset);
+      return this.getCommandLineEntries(aux.getExampleValues()).join(" ");
+    } else {
+      return "";
+    }
+  }
 }
 export class ParameterCommandLineEntryList extends CommandLineEntryList {
   parameter: string;
+  getExample(activity: Activity): string {
+    if (this.parameter) {
+      let aux = activity.parameters.find((e) => e.name == this.parameter);
+      return this.getCommandLineEntries(aux.getExampleValues()).join(" ");
+    } else {
+      return "";
+    }
+  }
 }
 
 /*

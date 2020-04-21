@@ -16,7 +16,7 @@
       class="command-line-entry"
     >
       <button (click)="showDetails(t)">
-        {{ t.getCommandLineEntries(["a", "b", "c"]).join(" ") }}
+        {{ t.getExample(this.activity) }}
       </button>
       <button (click)="moveEntryListUp(t)">
         <fa-icon [icon]="iconUp"></fa-icon>
