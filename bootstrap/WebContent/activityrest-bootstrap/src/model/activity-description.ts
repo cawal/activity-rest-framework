@@ -31,11 +31,11 @@ interface MultiplicityElement {
  * @SeeOther Dataset
  */
 export class Parameter implements MultiplicityElement, IdentifiableElement {
-  minimumCardinality: number;
-  maximumCardinality: number;
+  minimumCardinality: number = 1;
+  maximumCardinality: number = 1;
   name: string;
   remark: string | null;
-  parameterType: ParameterType;
+  parameterType: ParameterType = ParameterType.STRING;
   defaultValue: string[];
   constraints: Constraint[];
   getExampleValues(): string[] {

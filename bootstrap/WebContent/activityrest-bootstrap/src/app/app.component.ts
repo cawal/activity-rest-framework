@@ -8,7 +8,7 @@ import { HttpClient, HttpBackend } from "@angular/common/http";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
   title = "Activity-REST Bootstrap";
@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
   deployment: Deployment;
   generatorService: ProjectGeneratorService;
   state: String = "ACTIVITY";
+
+  isFunctionalEntityEnabled = false;
+  isDeploymentEnabled = false;
+  isGenerationEnabled = false;
 
   constructor(private http: HttpClient) {}
 
@@ -50,12 +54,15 @@ export class AppComponent implements OnInit {
   moveToNextScreen() {
     switch (this.state) {
       case "ACTIVITY":
+        this.isFunctionalEntityEnabled = true;
         this.state = "FUNCTIONAL_ENTITY";
         break;
       case "FUNCTIONAL_ENTITY":
+        this.isDeploymentEnabled = true;
         this.state = "DEPLOYMENT";
         break;
       case "DEPLOYMENT":
+        this.isGenerationEnabled = true;
         this.state = "GENERATION";
         break;
     }

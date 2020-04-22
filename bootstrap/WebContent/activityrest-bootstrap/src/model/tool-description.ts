@@ -62,6 +62,7 @@ export class LiteralCommandLineEntryList extends CommandLineEntryList {
 }
 export class DatasetCommandLineEntryList extends CommandLineEntryList {
   dataset: string;
+
   getExample(activity: Activity): string {
     if (this.dataset) {
       let aux = activity.inputDatasets
@@ -75,6 +76,7 @@ export class DatasetCommandLineEntryList extends CommandLineEntryList {
 }
 export class ParameterCommandLineEntryList extends CommandLineEntryList {
   parameter: string;
+
   getExample(activity: Activity): string {
     if (this.parameter) {
       let aux = activity.parameters.find((e) => e.name == this.parameter);
@@ -90,6 +92,7 @@ export class ParameterCommandLineEntryList extends CommandLineEntryList {
  */
 export abstract class StringListManipulator {
   abstract transform(stringList: string[]): string[];
+
   flatten(listOfStringList): string[] {
     var flattened = [];
     for (var i = 0; i < listOfStringList.length; i++) {

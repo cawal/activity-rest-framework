@@ -10,7 +10,7 @@
     <div *ngFor="let p of activity.parameters" class="parameter">
       <div>
         <button (click)="this.showDetail(p)">{{ p.name }}</button>
-        <button (click)="removeParameter(p)">
+        <button (click)="removeParameter(p)" class="icon">
           <fa-icon [icon]="iconRemove"></fa-icon>
         </button>
       </div>

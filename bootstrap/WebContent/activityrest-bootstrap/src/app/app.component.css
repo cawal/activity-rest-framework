@@ -24,25 +24,15 @@ button {
   color: #333;
   font-family: Cambria, Georgia;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 1em;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-top: 1em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
 }
 
-/* button {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 5px 5px 5px 5px;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-} */
-
-input {
-  width: 100%;
+input[type="text"] {
+  width: 90%;
+  display: block;
 }
 
 select {
@@ -50,7 +40,7 @@ select {
 }
 
 textarea {
-  width: 100%;
+  width: 90%;
   resize: vertical;
 }
 
@@ -66,15 +56,15 @@ label {
   margin-bottom: 1em;
 }
 
-button .next {
+button.next {
   right: 0px;
+  color: #369;
 }
 
 .main {
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin: auto;
 }
 
 .navigation {

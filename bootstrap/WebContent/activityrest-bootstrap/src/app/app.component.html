@@ -3,9 +3,21 @@
   <div class="main">
     <div class="navigation">
       <button (click)="showActivity()">Activity description</button>
-      <button (click)="showFunctionalEntity()">Functional Entity</button>
-      <button (click)="showDeployment()">Deployment description</button>
-      <button (click)="showGenerationScreen()">Generate!</button>
+      <button
+        (click)="showFunctionalEntity()"
+        [disabled]="!this.isFunctionalEntityEnabled"
+      >
+        Command line tool
+      </button>
+      <button (click)="showDeployment()" [disabled]="!this.isDeploymentEnabled">
+        Deployment description
+      </button>
+      <button
+        (click)="showGenerationScreen()"
+        [disabled]="!this.isGenerationEnabled"
+      >
+        Generate!
+      </button>
       <button (click)="log()">Print</button>
     </div>
     <div class="model">
