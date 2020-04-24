@@ -1,16 +1,27 @@
-/* Application-wide Styles */
+@import "./tooltip.css";
 
+* {
+  color: #ddd;
+  background-color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  border-color: #ddd;
+}
+
+/* Application-wide Styles */
 h1 {
-  color: #369;
+  color: rgb(74, 165, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
 
-h2,
-h3 {
-  color: #444;
+h2 {
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  font-weight: bolder;
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
   padding-top: 1em;
 }
 
@@ -18,30 +29,81 @@ body {
   margin: 2em;
 }
 
-body,
+input,
+textarea,
+select {
+  font-size: large;
+  color: rgb(61, 228, 192);
+  border-top-style: hidden;
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+
 input[type="text"],
-button {
-  color: #333;
-  font-family: Cambria, Georgia;
-  font-family: Arial, Helvetica, sans-serif;
+input[type="url"],
+textarea {
   margin-bottom: 0.5em;
   margin-left: 0.5em;
   margin-right: 0.5em;
-  margin-top: 0.5em;
-}
-
-input[type="text"] {
+  margin-top: none;
+  border-top-width: 0px;
+  border-top-style: hidden;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  border-left-width: 0px;
+  border-right-width: 0px;
   width: 90%;
   display: block;
 }
 
-select {
-  min-width: 10em;
+input[type="number"] {
+  width: 50px;
+  text-align: center;
+  appearance: textfield;
 }
 
 textarea {
   width: 90%;
   resize: vertical;
+}
+
+button {
+  color: #ddd;
+  color: rgb(61, 228, 192);
+  background-color: rgb(61, 228, 192);
+  background-color: #222;
+  color: rgb(61, 228, 192);
+  border-color: #ddd;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  border-radius: 5px;
+  min-height: 30px;
+  text-overflow: clip;
+}
+
+button > fa-icon {
+  color: inherit;
+  background-color: inherit;
+}
+
+button:disabled {
+  color: #aaa;
+  background-color: #222;
+  font-weight: lighter;
+}
+
+button.next {
+  right: 0px;
+  color: rgb(61, 228, 192);
+  border-color: rgb(61, 228, 192);
+}
+
+select {
+  min-width: 10em;
 }
 
 /* everywhere else */
@@ -55,11 +117,6 @@ label {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/*
-button.next {
-  right: 0px;
-  color: #369;
-}*/
 
 .main {
   width: 100%;
@@ -72,11 +129,41 @@ button.next {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  margin-right: 20px;
 }
 
-.model {
+.step-detail {
   width: 80%;
+  border: 1px;
+  border-left-style: dashed;
+  border-right-style: hidden;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+  padding: 1em;
+  margin-bottom: 0.5em;
 }
+
+/* .step-detail {
+  width: 80%;
+  border: 1px;
+  border-left-style: dashed;
+  border-right-style: hidden;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+  padding: 1em;
+  margin-bottom: 0.5em;
+} */
+
+/* .model {
+  width: 80%;
+  border: 1px;
+  border-left-style: dashed;
+  border-right-style: hidden;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+  padding: 1em;
+  margin-bottom: 0.5em;
+} */
 
 input:invalid {
   border: red solid 3px;

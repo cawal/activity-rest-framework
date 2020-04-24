@@ -2,25 +2,25 @@
   <h1>{{ title }}</h1>
   <div class="main">
     <div class="navigation">
-      <button (click)="showActivity()">Activity description</button>
+      <button (click)="showActivity()">Step 1: Activity description</button>
       <button
         (click)="showFunctionalEntity()"
         [disabled]="!this.isFunctionalEntityEnabled"
       >
-        Command line tool
+        Step 2: Command line tool description
       </button>
       <button (click)="showDeployment()" [disabled]="!this.isDeploymentEnabled">
-        Deployment description
+        Step 3: Deployment description
       </button>
       <button
         (click)="showGenerationScreen()"
         [disabled]="!this.isGenerationEnabled"
       >
-        Generate!
+        Step 4: Generate!
       </button>
       <button (click)="log()">Print</button>
     </div>
-    <div class="model">
+    <div class="step-detail">
       <div *ngIf="state == 'ACTIVITY'">
         <app-activity-description
           [activity]="activity"

@@ -7,6 +7,8 @@ import {
   OutputDataset,
 } from "src/model/activity-description";
 
+import { Lang } from "../lang";
+
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import { fas, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,6 +31,7 @@ export class ActivityDescriptionComponent implements OnInit {
 
   iconAdd = faPlus;
   iconRemove = faTimes;
+  lang = Lang.getInstance();
 
   constructor() {}
 

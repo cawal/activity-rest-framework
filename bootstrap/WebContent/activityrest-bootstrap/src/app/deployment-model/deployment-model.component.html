@@ -1,36 +1,47 @@
 <h2>Deployment information</h2>
 <h3>Service information</h3>
 <div>
-  <label>Name: <input [(ngModel)]="deploymentModel.service.name"/></label>
   <label
-    >API version: <input [(ngModel)]="deploymentModel.service.apiVersion"
+    >Name: <input [(ngModel)]="deploymentModel.service.name" type="text"
   /></label>
   <label
-    >Description: <input [(ngModel)]="deploymentModel.service.description"
+    >API version:
+    <input [(ngModel)]="deploymentModel.service.apiVersion" type="text"
   /></label>
+  <label
+    >Description:
+    <textarea [(ngModel)]="deploymentModel.service.description"></textarea>
+  </label>
 </div>
 
 <h3>Container information</h3>
 <div>
-  <label>Name: <input [(ngModel)]="deploymentModel.container.name"/></label>
   <label
-    >Base URL: <input [(ngModel)]="deploymentModel.container.baseUrl" type="url"
+    >Name: <input [(ngModel)]="deploymentModel.container.name" type="text"
+  /></label>
+  <label
+    >Base URL:
+    <input [(ngModel)]="deploymentModel.container.baseUrl" type="url"
   /></label>
 
   <label
-    >Description: <input [(ngModel)]="deploymentModel.container.description"
-  /></label>
+    >Description:
+    <textarea [(ngModel)]="deploymentModel.container.description"></textarea>
+  </label>
 </div>
 
 <h3>Contact information</h3>
 <div>
   <label
-    >Name: <input [(ngModel)]="deploymentModel.contactInformation.name"
+    >Name:
+    <input [(ngModel)]="deploymentModel.contactInformation.name" type="text"
   /></label>
   <label
-    >Email: <input [(ngModel)]="deploymentModel.contactInformation.email"
+    >Email:
+    <input [(ngModel)]="deploymentModel.contactInformation.email" type="text"
   /></label>
   <label
-    >URL: <input [(ngModel)]="deploymentModel.contactInformation.url" type="url"
+    >URL:
+    <input [(ngModel)]="deploymentModel.contactInformation.url" type="url"
   /></label>
 </div>

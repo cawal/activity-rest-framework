@@ -1,11 +1,13 @@
 <div class="main">
   <div *ngIf="activity" class="model">
-    <h3>Activity description</h3>
+    <h2 [attr.data-descr]="lang.activity">Activity</h2>
     <label
       >Name:
-      <input [(ngModel)]="activity.name" placeholder="name" />
+      <input [(ngModel)]="activity.name" placeholder="name" type="text" />
     </label>
-    <h3>Parameters:</h3>
+    <h3 [attr.data-descr]="lang.parameter">
+      Parameters:
+    </h3>
 
     <div *ngFor="let p of activity.parameters" class="parameter">
       <div>
@@ -20,7 +22,9 @@
       <fa-icon [icon]="iconAdd"></fa-icon>
     </button>
 
-    <h3>Input datasets:</h3>
+    <h3 [attr.data-descr]="lang.inputDataset">
+      Input datasets:
+    </h3>
 
     <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
       <div>
@@ -35,7 +39,9 @@
       <fa-icon [icon]="iconAdd"></fa-icon>
     </button>
 
-    <h3>Output datasets:</h3>
+    <h3 [attr.data-descr]="lang.outputDataset">
+      Output datasets:
+    </h3>
 
     <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
       <div>

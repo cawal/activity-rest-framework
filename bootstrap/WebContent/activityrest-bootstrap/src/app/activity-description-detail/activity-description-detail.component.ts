@@ -5,6 +5,7 @@ import {
   OutputDataset,
   ParameterType,
 } from "src/model/activity-description";
+import { Lang } from "../lang";
 
 @Component({
   selector: "app-activity-description-detail",
@@ -15,6 +16,8 @@ export class ActivityDescriptionDetailComponent implements OnInit {
   @Input() detailedComponent: any;
   keys = Object.keys;
   parameterTypes = ParameterType;
+
+  lang = Lang.getInstance();
 
   constructor() {}
 

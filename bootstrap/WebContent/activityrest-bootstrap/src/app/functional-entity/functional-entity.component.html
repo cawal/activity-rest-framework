@@ -1,16 +1,28 @@
 <div class="main">
   <div class="model">
-    <h2>Command line tool</h2>
+    <h2 [attr.data-descr]="lang.commandLineTool">
+      Command line tool
+    </h2>
     <label
       >Name:
-      <input [(ngModel)]="commandLineTool.name" placeholder="name" />
+      <input
+        [(ngModel)]="commandLineTool.name"
+        placeholder="name"
+        type="text"
+      />
     </label>
     <label
       >Remark:
-      <input [(ngModel)]="commandLineTool.remark" placeholder="remark" />
+      <input
+        [(ngModel)]="commandLineTool.remark"
+        placeholder="remark"
+        type="text"
+      />
     </label>
 
-    <h3>Command line template</h3>
+    <h3 [attr.data-descr]="lang.commandLineTemplate">
+      Command line template:
+    </h3>
     <div
       *ngFor="let t of commandLineTool.commandLineTemplate"
       class="command-line-entry"
@@ -41,7 +53,9 @@
       </button>
     </div>
 
-    <h3>Exit codes:</h3>
+    <h3 [attr.data-descr]="lang.exitCodes">
+      Exit codes:
+    </h3>
     <div *ngFor="let e of commandLineTool.exitCodes">
       <button (click)="this.showDetails(e)">
         {{ e.code }} ({{ e.status }})
@@ -54,7 +68,9 @@
       <fa-icon [icon]="iconAdd"></fa-icon>
     </button>
 
-    <h3>Stream redirections</h3>
+    <h3 [attr.data-descr]="lang.streamRedirections">
+      Stream redirections:
+    </h3>
     <label
       >Standard input stream:
       <select [(ngModel)]="commandLineTool.standardInputStream">

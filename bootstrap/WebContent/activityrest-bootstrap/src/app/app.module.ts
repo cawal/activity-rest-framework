@@ -18,6 +18,7 @@ import { StringListManipulatorsComponent } from "./string-list-manipulators/stri
 import { ArtifactsGenerationComponent } from "./artifacts-generation/artifacts-generation.component";
 import { ActivityDescriptionDetailComponent } from "./activity-description-detail/activity-description-detail.component";
 import { FunctionalEntityDetailComponent } from "./functional-entity-detail/functional-entity-detail.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,13 @@ import { FunctionalEntityDetailComponent } from "./functional-entity-detail/func
     ActivityDescriptionDetailComponent,
     FunctionalEntityDetailComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

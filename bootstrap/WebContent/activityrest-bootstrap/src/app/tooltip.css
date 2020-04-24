@@ -1,0 +1,87 @@
+*[data-descr] {
+  position: relative;
+  cursor: help;
+}
+
+*[data-descr]:after {
+  vertical-align: top;
+  color: inherit;
+  font-size: small;
+  content: "?";
+}
+
+*[data-descr]:hover::after,
+*[data-descr]:focus::after {
+  content: attr(data-descr);
+
+  position: absolute;
+  left: auto;
+  min-width: 200px;
+  border: 1px #aaaaaa solid;
+  border-radius: 10px;
+  background-color: #0b4a92;
+  padding: 12px;
+  color: #e0e0e0;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: lighter;
+  z-index: 1;
+  text-align: center;
+  opacity: 0.9;
+  transition: opacity 1s;
+}
+
+/* Tooltip container
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip text
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 6px;
+  margin: 10px;
+  font-size: small;
+
+  /* Position the tooltip text
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+
+  /* Fade in tooltip
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.tooltip::after {
+  vertical-align: top;
+  color: inherit;
+  font-size: small;
+  content: "?";
+}
+
+/* Tooltip arrow
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+} */

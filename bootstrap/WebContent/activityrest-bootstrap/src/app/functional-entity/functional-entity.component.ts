@@ -19,6 +19,7 @@ import {
   DatasetCommandLineEntryList,
   CommandLineEntryList,
 } from "src/model/tool-description";
+import { Lang } from '../lang';
 
 @Component({
   selector: "app-functional-entity",
@@ -35,6 +36,7 @@ export class FunctionalEntityComponent implements OnInit {
   iconRemove = faTimes;
   iconUp = faArrowUp;
   iconDown = faArrowDown;
+  lang = Lang.getInstance();
 
   constructor() {}
 

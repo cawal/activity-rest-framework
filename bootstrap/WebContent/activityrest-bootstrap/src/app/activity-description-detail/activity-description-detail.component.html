@@ -3,7 +3,11 @@
 
   <label
     >Name:
-    <input [(ngModel)]="this.detailedComponent.name" placeholder="name" />
+    <input
+      [(ngModel)]="this.detailedComponent.name"
+      placeholder="name"
+      type="text"
+    />
   </label>
 
   <label
@@ -18,7 +22,7 @@
     </select>
   </label>
 
-  <label
+  <label [attr.data-descr]="lang.parameterMinimumCardinality"
     >Minimum cardinality:
     <input
       [(ngModel)]="this.detailedComponent.minimumCardinality"
@@ -28,7 +32,7 @@
     />
   </label>
 
-  <label
+  <label [attr.data-descr]="lang.parameterMaximumCardinality"
     >Maximum cardinality:
     <input
       [(ngModel)]="this.detailedComponent.maximumCardinality"
@@ -51,7 +55,11 @@
   <h3>Input dataset:</h3>
   <label
     >Name:
-    <input [(ngModel)]="this.detailedComponent.name" placeholder="name" />
+    <input
+      [(ngModel)]="this.detailedComponent.name"
+      placeholder="name"
+      type="text"
+    />
   </label>
 
   <label
@@ -59,10 +67,11 @@
     <input
       [(ngModel)]="this.detailedComponent.mimeType"
       placeholder="mimeType"
+      type="text"
     />
   </label>
 
-  <label
+  <label [attr.data-descr]="lang.datasetMinimumCardinality"
     >Minimum cardinality:
     <input
       [(ngModel)]="this.detailedComponent.minimumCardinality"
@@ -72,7 +81,7 @@
     />
   </label>
 
-  <label
+  <label [attr.data-descr]="lang.datasetMaximumCardinality"
     >Maximum cardinality:
     <input
       [(ngModel)]="this.detailedComponent.maximumCardinality"
@@ -95,7 +104,11 @@
   <h3>Output dataset:</h3>
   <label
     >Name:
-    <input [(ngModel)]="this.detailedComponent.name" placeholder="name" />
+    <input
+      [(ngModel)]="this.detailedComponent.name"
+      placeholder="name"
+      type="text"
+    />
   </label>
 
   <label
@@ -103,10 +116,11 @@
     <input
       [(ngModel)]="this.detailedComponent.mimeType"
       placeholder="mimeType"
+      type="text"
     />
   </label>
 
-  <label
+  <label [attr.data-descr]="lang.datasetMinimumCardinality"
     >Minimum cardinality:
     <input
       [(ngModel)]="this.detailedComponent.minimumCardinality"
@@ -116,7 +130,7 @@
     />
   </label>
 
-  <label
+  <label [attr.data-descr]="lang.datasetMaximumCardinality"
     >Maximum cardinality:
     <input
       [(ngModel)]="this.detailedComponent.maximumCardinality"
@@ -128,6 +142,9 @@
 
   <label
     >Remarks:
-    <input [(ngModel)]="this.detailedComponent.remark" placeholder="Remarks" />
+    <textarea
+      [(ngModel)]="this.detailedComponent.remark"
+      placeholder="Remarks"
+    ></textarea>
   </label>
 </div>
