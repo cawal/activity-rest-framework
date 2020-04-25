@@ -32,6 +32,11 @@
   transition: opacity 1s;
 }
 
+option[title]:hover:after,
+option[title]:focus:after {
+  content: attr(title);
+}
+
 /* Tooltip container
 .tooltip {
   position: relative;

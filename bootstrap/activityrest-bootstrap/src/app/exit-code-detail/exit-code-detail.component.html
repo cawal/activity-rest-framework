@@ -1,9 +1,9 @@
-<label
+<label [attr.title]="lang.exitCodeCode"
   >Code:
   <input type="number" [(ngModel)]="exitCode.code" />
 </label>
 
-<label
+<label [attr.title]="lang.exitCodeStatus"
   >Status:
   <select [(ngModel)]="this.exitCode.status">
     <option
@@ -15,7 +15,7 @@
   </select>
 </label>
 
-<label
+<label [attr.title]="lang.exitCodeDescription"
   >Description:
   <textarea [(ngModel)]="exitCode.reportMessage"></textarea>
 </label>

@@ -1,9 +1,9 @@
 <div class="main">
   <div class="model">
-    <h2 [attr.data-descr]="lang.commandLineTool">
+    <h2 [attr.title]="lang.commandLineTool">
       Command line tool
     </h2>
-    <label
+    <label [attr.title]="lang.toolName"
       >Name:
       <input
         [(ngModel)]="commandLineTool.name"
@@ -11,7 +11,7 @@
         type="text"
       />
     </label>
-    <label
+    <label [attr.title]="lang.remarks"
       >Remark:
       <input
         [(ngModel)]="commandLineTool.remark"
@@ -20,55 +20,73 @@
       />
     </label>
 
-    <h3 [attr.data-descr]="lang.commandLineTemplate">
+    <h3 [attr.title]="lang.commandLineTemplate">
       Command line template:
     </h3>
     <div
       *ngFor="let t of commandLineTool.commandLineTemplate"
       class="command-line-entry"
     >
-      <button (click)="showDetails(t)">
+      <button
+        (click)="showDetails(t)"
+        [attr.title]="lang.commandLineTemplateEdit"
+      >
         {{ t.getExample(this.activity) }}
       </button>
-      <button (click)="moveEntryListUp(t)">
+      <button
+        (click)="moveEntryListUp(t)"
+        [attr.title]="lang.commandLineTemplateMoveUp"
+      >
         <fa-icon [icon]="iconUp"></fa-icon>
       </button>
-      <button (click)="moveEntryListDown(t)">
+      <button
+        (click)="moveEntryListDown(t)"
+        [attr.title]="lang.commandLineTemplateMoveDown"
+      >
         <fa-icon [icon]="iconDown"></fa-icon>
       </button>
-      <button (click)="remove(t)">
+      <button (click)="remove(t)" [attr.title]="lang.commandLineTemplateRemove">
         <fa-icon [icon]="iconRemove"></fa-icon>
       </button>
     </div>
 
     <div>
-      <button (click)="addLiteralCommandLineEntry()">
+      <button
+        (click)="addLiteralCommandLineEntry()"
+        [attr.title]="lang.commandLineTemplateAddLiterals"
+      >
         <fa-icon [icon]="iconAdd"></fa-icon> Literals
       </button>
-      <button (click)="addParameterCommandLineEntry()">
+      <button
+        (click)="addParameterCommandLineEntry()"
+        [attr.title]="lang.commandLineTemplateAddParameter"
+      >
         <fa-icon [icon]="iconAdd"></fa-icon> Parameter
       </button>
-      <button (click)="addDatasetCommandLineEntry()">
+      <button
+        (click)="addDatasetCommandLineEntry()"
+        [attr.title]="lang.commandLineTemplateAddDataset"
+      >
         <fa-icon [icon]="iconAdd"></fa-icon> Dataset
       </button>
     </div>
 
-    <h3 [attr.data-descr]="lang.exitCodes">
+    <h3 [attr.title]="lang.exitCodes">
       Exit codes:
     </h3>
     <div *ngFor="let e of commandLineTool.exitCodes">
-      <button (click)="this.showDetails(e)">
+      <button (click)="this.showDetails(e)" [attr.title]="lang.exitCodeEdit">
         {{ e.code }} ({{ e.status }})
       </button>
-      <button (click)="removeExitCode(e)">
+      <button (click)="removeExitCode(e)" [attr.title]="lang.exitCodeRemove">
         <fa-icon [icon]="iconRemove"></fa-icon>
       </button>
     </div>
-    <button (click)="addExitCode()">
+    <button (click)="addExitCode()" [attr.title]="lang.exitCodeAdd">
       <fa-icon [icon]="iconAdd"></fa-icon>
     </button>
 
-    <h3 [attr.data-descr]="lang.streamRedirections">
+    <h3 [attr.title]="lang.streamRedirections">
       Stream redirections:
     </h3>
     <label

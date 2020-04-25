@@ -9,6 +9,7 @@ import {
 
 import { Component, OnInit, Input } from "@angular/core";
 import { LiteralCommandLineEntryList } from "src/model/tool-description";
+import { Lang } from "../lang";
 
 @Component({
   selector: "app-literal-command-line-template",
@@ -22,6 +23,8 @@ export class LiteralCommandLineTemplateComponent implements OnInit {
   iconRemove = faTimes;
   iconUp = faArrowUp;
   iconDown = faArrowDown;
+
+  lang: Lang = Lang.getInstance();
 
   constructor() {}
 

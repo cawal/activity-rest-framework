@@ -1,18 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Deployment } from 'src/model/deployment-description';
+import { Component, OnInit, Input } from "@angular/core";
+import { Deployment } from "src/model/deployment-description";
+import { Lang } from "../lang";
 
 @Component({
-  selector: 'app-deployment-model',
-  templateUrl: './deployment-model.component.html',
-  styleUrls: ['./deployment-model.component.css']
+  selector: "app-deployment-model",
+  templateUrl: "./deployment-model.component.html",
+  styleUrls: ["./deployment-model.component.css"],
 })
 export class DeploymentModelComponent implements OnInit {
-
   @Input() deploymentModel: Deployment;
 
-  constructor() { }
+  lang: Lang = Lang.getInstance();
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }

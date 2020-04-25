@@ -19,6 +19,7 @@ import {
   PrependListWith,
   ToFlag,
 } from "src/model/tool-description";
+import { Lang } from "../lang";
 
 @Component({
   selector: "app-string-list-manipulators",
@@ -33,6 +34,8 @@ export class StringListManipulatorsComponent implements OnInit {
   iconRemove = faTimes;
   iconUp = faArrowUp;
   iconDown = faArrowDown;
+
+  lang = Lang.getInstance();
 
   constructor() {}
 
