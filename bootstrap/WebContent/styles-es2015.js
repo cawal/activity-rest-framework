@@ -338,7 +338,7 @@ if (content.locals) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/cawal/git/lssb/activity-rest-framework/bootstrap/WebContent/activityrest-bootstrap/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /home/cawal/git/lssb/activity-rest-framework/bootstrap/activityrest-bootstrap/src/styles.css */"./src/styles.css");
 
 
 /***/ })
