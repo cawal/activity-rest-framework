@@ -25,6 +25,7 @@ public interface JobManager {
 	 */
 	public void submit(String jobId, Job job) throws JobCantStartException;
 	
+	
 	/**
 	 * Retrieves the state of a running/finished Job.
 	 * 
@@ -36,6 +37,16 @@ public interface JobManager {
 	 *             any job.
 	 */
 	public JobState getState(String jobId) throws JobNotFoundException;
+	
+	
+	/**
+	 * Retrieves a Job by its associated identifier.
+	 * 
+	 * @param jobId the id associated to the job
+	 * @return the job associated to this jobId
+	 * @throws JobNotFoundException
+	 */
+	public Job getJob(String jobId) throws JobNotFoundException;
 	
 	
 	/**

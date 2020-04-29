@@ -2,6 +2,9 @@ package br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 
@@ -17,6 +20,7 @@ public class JobManagerImpl implements JobManager {
 	
 	File stateManagementDirectory;
 	JobObserver jobObserver = new MyJobObserver();
+	Map<String,Job> jobs = Collections.synchronizedMap(new HashMap<String,Job>());
 	
 	class MyJobObserver implements JobObserver{
 			
@@ -87,6 +91,9 @@ public class JobManagerImpl implements JobManager {
 		// add  the instance observer to the job
 		job.addObserver(jobObserver);
 		
+		// hold a reference to the job
+		jobs.put(jobId, job);
+		
 		// start the new thread
 		Thread t = new Thread(job);
 		t.setName(jobId);
@@ -94,38 +101,6 @@ public class JobManagerImpl implements JobManager {
 	}
 	
 	
-	/*@Override
-	public void submit(String jobId, JobConfig jobConfig)
-			throws JobCantStartException {
-		
-		CommandLineToolJob job = CommandLineToolJob.builder()
-				.id(jobId)
-				.jobConfig(jobConfig)
-				.observer(jobObserver)
-				.build();
-		
-		try {
-			File stateFile = retrieveStateFileForId(jobId);
-			if(stateFile.exists()) {
-				boolean jobIsNotCanceled = 
-						JobState.CANCELED != 
-						JobState.valueOf(FileUtils.readFileToString(stateFile));
-				if(jobIsNotCanceled) {// job exists!
-					throw new JobCantStartException(jobId);
-				}
-			} else {
-				stateFile.createNewFile();
-			}
-			FileUtils.writeStringToFile(stateFile, JobState.RUNNING.toString());
-		} catch (Exception e) {
-			throw new JobCantStartException(jobId);
-		}
-		
-		Thread t = new Thread(job);
-		t.setName(jobId);
-		t.start();
-		
-	}*/
 	
 	@Override
 	public JobState getState(String jobId) throws JobNotFoundException {
@@ -139,6 +114,16 @@ public class JobManagerImpl implements JobManager {
 		} catch (IOException e) {
 			throw new JobNotFoundException(jobId);
 		}
+	}
+	
+	
+	@Override
+	public Job getJob(String jobId) throws JobNotFoundException {
+		Job job = jobs.get(jobId);
+		if (job == null) {
+			throw new JobNotFoundException(jobId);
+		}
+		return job;
 	}
 	
 	@Override
