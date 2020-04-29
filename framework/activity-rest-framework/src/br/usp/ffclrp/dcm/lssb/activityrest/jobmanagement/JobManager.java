@@ -37,6 +37,7 @@ public interface JobManager {
 	 */
 	public JobState getState(String jobId) throws JobNotFoundException;
 	
+	
 	/**
 	 * Tries to cancel a running Job.
 	 * 

@@ -28,11 +28,11 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobCreationFail;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.exceptions.JobNotFoundException;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobFactoryImpl;
-import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobManagerImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.exceptions.JobCantStartException;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
@@ -48,15 +48,15 @@ public class JobCollection {
 	FileSystemActivityRepository runningDao;
 	ActivityRepository succeededDAO;
 	ActivityRepository failedDAO;
-	br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager jobManager =
-			new JobManagerImpl();
-	
+	JobManager jobManager;	
+
 	public JobCollection(Activity activityDescription,
 			UriInfo uriInfo,
 			ActivityRepository nonExecutedAnalysisActivityDao,
 			FileSystemActivityRepository runningAnalysisActivityDao,
 			ActivityRepository succeededAnalysisActivityDao,
-			ActivityRepository failedAnalysisActivityDao) {
+			ActivityRepository failedAnalysisActivityDao,
+			JobManager jobManager) {
 		
 		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
@@ -64,6 +64,7 @@ public class JobCollection {
 		this.runningDao = runningAnalysisActivityDao;
 		this.succeededDAO = succeededAnalysisActivityDao;
 		this.failedDAO = failedAnalysisActivityDao;
+		this.jobManager = jobManager;
 	}
 	
 	@POST

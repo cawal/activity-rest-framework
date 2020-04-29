@@ -6,6 +6,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.InputDatasetValidator;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ParameterValidator;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import lombok.Data;
 
@@ -19,5 +20,6 @@ public class ActivityRestConfig {
 	ActivityRepository runningAnalysisRepository;
 	Map<String,ParameterValidator> parameterConstraints;
 	Map<String,InputDatasetValidator> inputDatasetConstraints;
+	JobManager jobManager;
 	
 }

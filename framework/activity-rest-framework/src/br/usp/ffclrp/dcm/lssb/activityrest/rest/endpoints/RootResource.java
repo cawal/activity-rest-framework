@@ -17,6 +17,8 @@ import javax.ws.rs.core.UriInfo;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobManagerImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses.FailedAnalysesCollection;
@@ -56,6 +58,7 @@ public class RootResource {
 	ActivityRepository succeededDao;
 	ActivityRepository failedDao;
 	ActivityRepository runningDao;
+	JobManager jobManager;
 	
 	
 	public RootResource() {	};
@@ -72,6 +75,11 @@ public class RootResource {
 		succeededDao = config.getSuccededAnalysisRepository();
 		failedDao = config.getFailedAnalysisRepository();
 		runningDao = config.getRunningAnalysisRepository();
+		if(config.getJobManager() == null) {
+			config.setJobManager(new JobManagerImpl());
+		}
+		jobManager = config.getJobManager();
+		
 	}
 	
 	@GET
@@ -116,7 +124,8 @@ public class RootResource {
 				nonExecutedDao,
 				(FileSystemActivityRepository) runningDao,
 				succeededDao,
-				failedDao);
+				failedDao,
+				jobManager);
 	}
 	
 	@GET @Path("/xsd")
