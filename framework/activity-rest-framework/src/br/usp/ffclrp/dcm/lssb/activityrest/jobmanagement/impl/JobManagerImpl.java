@@ -22,6 +22,13 @@ public class JobManagerImpl implements JobManager {
 	JobObserver jobObserver = new MyJobObserver();
 	Map<String,Job> jobs = Collections.synchronizedMap(new HashMap<String,Job>());
 	
+	
+	/**
+	 * This class is responsible to write the file that
+	 * records the state of the activity.
+	 * @author cawal
+	 *
+	 */
 	class MyJobObserver implements JobObserver{
 			
 		@Override
