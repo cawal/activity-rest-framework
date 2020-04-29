@@ -49,16 +49,17 @@ public class JobManagerImpl implements JobManager {
 		}
 		
 		
-			@Override
-			public void notifySuccess(Job job) {
-				File stateFile = new File(stateManagementDirectory,job.getId());
-				try {
-					FileUtils.writeStringToFile(stateFile, JobState.SUCCEEDED.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		@Override
+		public void notifySuccess(Job job) {
+			File stateFile = new File(stateManagementDirectory, job.getId());
+			try {
+				FileUtils.writeStringToFile(stateFile,
+						JobState.SUCCEEDED.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
+	}
 	
 	public JobManagerImpl() {
 		stateManagementDirectory = new File("/tmp/JobManager");
