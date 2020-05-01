@@ -67,6 +67,8 @@ public class JobCollection {
 		this.jobManager = jobManager;
 	}
 	
+
+	
 	@POST
 	@Path("{analysisID}")
 	public Response
@@ -93,6 +95,17 @@ public class JobCollection {
 				Job job = jobFactory.createJob(analysis,
 						analysis.getDescription().getFunctionalEntity(),
 						workingDirectory);
+				
+				// register a observe to move the job to the correct 
+				// collection after it is finished
+				MoveInstanceJobObserver observer = new MoveInstanceJobObserver(
+						nonExecutedDao, 
+						runningDao, 
+						succeededDAO, 
+						failedDAO
+					);
+				job.addObserver(observer);
+				
 				// start the analysis job or send a batch job and return the
 				// link for polling
 				jobManager.submit(analysisId, job);
@@ -175,7 +188,6 @@ public class JobCollection {
 		
 		try {
 			jobManager.cancel(analysisId);
-			//nonExecutedDao.moveFrom(analysisId, runningDao);
 			RepositoryTransferService.moveInstance(analysisId, runningDao,
 					nonExecutedDao);
 			URI analysisURI = uriInfo.getBaseUriBuilder()
