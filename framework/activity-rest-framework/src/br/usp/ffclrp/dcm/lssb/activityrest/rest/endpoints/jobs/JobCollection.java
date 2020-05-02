@@ -10,12 +10,16 @@ import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Link;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.sse.Sse;
+import javax.ws.rs.sse.SseEventSink;
 
 import org.apache.commons.io.FileUtils;
 
@@ -48,8 +52,8 @@ public class JobCollection {
 	FileSystemActivityRepository runningDao;
 	ActivityRepository succeededDAO;
 	ActivityRepository failedDAO;
-	JobManager jobManager;	
-
+	JobManager jobManager;
+	
 	public JobCollection(Activity activityDescription,
 			UriInfo uriInfo,
 			ActivityRepository nonExecutedAnalysisActivityDao,
@@ -67,7 +71,7 @@ public class JobCollection {
 		this.jobManager = jobManager;
 	}
 	
-
+	
 	
 	@POST
 	@Path("{analysisID}")
@@ -96,14 +100,13 @@ public class JobCollection {
 						analysis.getDescription().getFunctionalEntity(),
 						workingDirectory);
 				
-				// register a observe to move the job to the correct 
+				// register a observe to move the job to the correct
 				// collection after it is finished
 				MoveInstanceJobObserver observer = new MoveInstanceJobObserver(
-						nonExecutedDao, 
-						runningDao, 
-						succeededDAO, 
-						failedDAO
-					);
+						nonExecutedDao,
+						runningDao,
+						succeededDAO,
+						failedDAO);
 				job.addObserver(observer);
 				
 				// start the analysis job or send a batch job and return the
@@ -130,7 +133,7 @@ public class JobCollection {
 			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR, e);
 		} catch (AnalysisActivityUpdateFailure e) {
 			e.printStackTrace();
-			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR,e);
+			throw new ServerErrorException(Status.INTERNAL_SERVER_ERROR, e);
 		}
 	}
 	
@@ -165,11 +168,31 @@ public class JobCollection {
 		}
 	}
 	
+
+	@GET
+	@Path("{analysisID}")
+	@Produces(MediaType.SERVER_SENT_EVENTS)
+	public void registerClientToJobEvents(
+			@PathParam("analysisId") String analysisId,
+			@Context SseEventSink eventSink,
+			@Context Sse sse) {
+		
+		try {
+			Job job = jobManager.getJob(analysisId);
+			SSENotifierJobObserver observer =
+					new SSENotifierJobObserver(eventSink, sse);
+			job.addObserver(observer);
+		} catch (JobNotFoundException e) {
+			throw new NotFoundException(e);
+		}
+	}
+	
+	
 	@DELETE
 	@Path("{analysisID}")
 	public Response
 			cancelProcessing(@PathParam("analysisID") String analysisId) {
-
+		
 		try {
 			JobState jobState = jobManager.getState(analysisId);
 			switch (jobState) {
