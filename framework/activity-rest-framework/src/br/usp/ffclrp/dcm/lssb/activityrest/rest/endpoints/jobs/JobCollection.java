@@ -100,7 +100,7 @@ public class JobCollection {
 						analysis.getDescription().getFunctionalEntity(),
 						workingDirectory);
 				
-				// register a observe to move the job to the correct
+				// register a observer to move the job to the correct
 				// collection after it is finished
 				MoveInstanceJobObserver observer = new MoveInstanceJobObserver(
 						nonExecutedDao,
@@ -169,6 +169,13 @@ public class JobCollection {
 	}
 	
 
+	/**
+	 * Register cliente to receive server sent events 
+	 * about the activity states.
+	 * @param analysisId The activity ID
+	 * @param eventSink Injected by JAX-RS
+	 * @param sse Injected by JAX-RS
+	 */
 	@GET
 	@Path("{analysisID}")
 	@Produces(MediaType.SERVER_SENT_EVENTS)
