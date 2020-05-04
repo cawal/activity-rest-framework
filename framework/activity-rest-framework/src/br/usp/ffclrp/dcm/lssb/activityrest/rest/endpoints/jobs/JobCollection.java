@@ -168,13 +168,17 @@ public class JobCollection {
 		}
 	}
 	
-
+	
 	/**
-	 * Register cliente to receive server sent events 
+	 * Register cliente to receive server sent events
 	 * about the activity states.
-	 * @param analysisId The activity ID
-	 * @param eventSink Injected by JAX-RS
-	 * @param sse Injected by JAX-RS
+	 * 
+	 * @param analysisId
+	 *            The activity ID
+	 * @param eventSink
+	 *            Injected by JAX-RS
+	 * @param sse
+	 *            Injected by JAX-RS
 	 */
 	@GET
 	@Path("{analysisID}")
@@ -188,7 +192,15 @@ public class JobCollection {
 			Job job = jobManager.getJob(analysisId);
 			SSENotifierJobObserver observer =
 					new SSENotifierJobObserver(eventSink, sse);
-			job.addObserver(observer);
+			// add observer if activity not ended, provide event otherwise
+			if (job.getState() == JobState.RUNNING
+					|| job.getState() == JobState.CREATED) {
+				job.addObserver(observer);
+			} else {
+				observer.notifyState(job);
+				
+			}
+			
 		} catch (JobNotFoundException e) {
 			throw new NotFoundException(e);
 		}

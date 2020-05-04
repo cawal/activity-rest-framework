@@ -14,6 +14,12 @@ public interface Job extends Runnable {
 	 */
 	public String getId();
 	
+	/**
+	 * Return the state of the job.
+	 * @return
+	 */
+	public JobState getState();
+	
 
 	/**
 	 * Add a observer to job. Implementations MUST allow the 

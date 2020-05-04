@@ -18,9 +18,31 @@ public class SSENotifierJobObserver implements JobObserver {
 		this.eventSink = eventSink;
 	}
 	
+	public void notifyState(Job job) {
+		switch(job.getState()) {
+		case CREATED:
+			break;
+		case RUNNING:
+			notifyStarted(job);
+			break;
+		case SUCCEEDED:
+			notifySuccess(job);
+		case FAILED:
+			notifyFailure(job);
+		case CANCELED:
+			notifyFailure(job);
+		}
+		
+	}
+	
 	@Override
 	public void notifyStarted(Job job) {
-		// TODO Auto-generated method stub
+		final OutboundSseEvent event = sse.newEventBuilder()
+				.name("activity-state")
+				.mediaType(MediaType.TEXT_PLAIN_TYPE)
+				.data(String.class, "RUNNING")
+				.build();
+		eventSink.send(event);
 		
 	}
 	
