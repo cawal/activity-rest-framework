@@ -1,44 +1,44 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.client
 
-import java.net.URI
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
+import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.ActivityCannotBeCreated
+import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.InvalidActivityInstance
+import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.ServiceUnavailable
+import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.UnexpectedResponseStatus
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstance
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstanceState as State
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.DatasetItem
+import org.glassfish.jersey.client.ClientProperties
+import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider
+import java.net.URI
+import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 import javax.ws.rs.client.Client
 import javax.ws.rs.client.ClientBuilder
-import org.glassfish.jersey.client.ClientConfig
-import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider
-import javax.ws.rs.core.MediaType
-import javax.ws.rs.core.GenericType
-import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.ActivityCannotBeCreated
-import sun.security.provider.certpath.OCSPResponse.ResponseStatus
-import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.ServiceUnavailable
-import javax.ws.rs.core.Link
 import javax.ws.rs.client.Entity
+import javax.ws.rs.core.GenericType
+import javax.ws.rs.core.Link
+import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
-import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.UnexpectedResponseStatus
-import org.glassfish.jersey.client.ClientProperties
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset
-import br.usp.ffclrp.dcm.lssb.activityrest.domain.DatasetContent
-import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.InstanceExecutionFailed
-import br.usp.ffclrp.dcm.lssb.activityrest.client.exceptions.InvalidActivityInstance
+import javax.ws.rs.sse.InboundSseEvent
+import javax.ws.rs.sse.SseEventSource
+import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstanceState as State
 
 typealias HateoasControls = MutableMap<String, URI>
 
+
 class ActivityRestClient(
-        val baseUrl: URI
+    val baseUrl: URI
 ) {
 
     val restClient: Client = ClientBuilder.newBuilder()
-            .property(ClientProperties.FOLLOW_REDIRECTS, false)
-            .register(JacksonJsonProvider::class.java)
-            .build()
+        .property(ClientProperties.FOLLOW_REDIRECTS, false)
+        .register(JacksonJsonProvider::class.java)
+        .build()
 
     val target = restClient.target(baseUrl)
 
 
-    fun execute(instance: ActivityInstance): ActivityInstance {
+    fun execute(instance: ActivityInstance, useSSE: Boolean = false)
+            : ActivityInstance {
 
         validate(instance)
 
@@ -48,30 +48,32 @@ class ActivityRestClient(
         when (validate(instance)) {
             true -> {
                 val createdInstance =
-                        createInstanceOnService(instance, hateoasControls)
+                    createInstanceOnService(instance, hateoasControls)
 
                 sendInputs(createdInstance.inputDatasets, hateoasControls)
                 sendParameters(createdInstance.parameters, hateoasControls)
 
                 val readyInstance =
-                        updateInstance(createdInstance, hateoasControls)
+                    updateInstance(createdInstance, hateoasControls)
                 val runningInstance =
-                        submitForProcessing(readyInstance, hateoasControls)
-
-                waitForProcessingAndReturnState(runningInstance, hateoasControls)
-
+                    submitForProcessing(readyInstance, hateoasControls)
+                if (useSSE) {
+                    waitForProcessingAndReturnStateAsync(runningInstance, hateoasControls)
+                } else {
+                    waitForProcessingAndReturnState(runningInstance, hateoasControls)
+                }
                 val completedInstance =
-                        updateInstance(runningInstance, hateoasControls)
+                    updateInstance(runningInstance, hateoasControls)
                 when (completedInstance.state) {
                     State.SUCCEEDED -> {
                         println("SUCCEEDED! =)")
                         instance.outputDatasets =
-                                retrieveOutputs(hateoasControls)
+                            retrieveOutputs(hateoasControls)
                     }
                     State.FAILED -> {
                         println("FAILED! =(")
                         instance.errorReport =
-                                retrieveErrorLog(hateoasControls)
+                            retrieveErrorLog(hateoasControls)
                     }
                     else -> {
                     }
@@ -97,10 +99,10 @@ class ActivityRestClient(
 
     public fun connectToService(): HateoasControls {
         val response = restClient
-                .target(baseUrl)
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .get()
+            .target(baseUrl)
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .get()
 
         return when (response.getStatus()) {
             200 -> getHateoasControls(response.getLinks(), HashMap<String, URI>())
@@ -109,8 +111,10 @@ class ActivityRestClient(
     }
 
 
-    fun getHateoasControls(links: Set<Link>,
-                           hateoasControls: HateoasControls)
+    fun getHateoasControls(
+        links: Set<Link>,
+        hateoasControls: HateoasControls
+    )
             : HateoasControls {
         links.forEach {
             hateoasControls.set(it.getRel(), it.getUri())
@@ -120,15 +124,17 @@ class ActivityRestClient(
     }
 
 
-    public fun createInstanceOnService(instance: ActivityInstance,
-                                       hateoasControls: HateoasControls)
+    public fun createInstanceOnService(
+        instance: ActivityInstance,
+        hateoasControls: HateoasControls
+    )
             : ActivityInstance {
 
         val response = restClient
-                .target(hateoasControls.get("create-instance"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .post(null)
+            .target(hateoasControls.get("create-instance"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .post(null)
 
         if (response.getStatus() in listOf(200, 201)) {
 
@@ -147,8 +153,10 @@ class ActivityRestClient(
     }
 
 
-    private fun sendInputs(datasets: Map<String, List<DatasetItem>>,
-                           hateoasControls: HateoasControls): Boolean {
+    private fun sendInputs(
+        datasets: Map<String, List<DatasetItem>>,
+        hateoasControls: HateoasControls
+    ): Boolean {
         getInputDatasetsHateoasControls(hateoasControls)
 
         println(datasets);
@@ -161,19 +169,22 @@ class ActivityRestClient(
     }
 
 
-    fun sendInputDataset(name: String, items: List<DatasetItem>,
-                         hateoasControls: HateoasControls)
+    fun sendInputDataset(
+        name: String, items: List<DatasetItem>,
+        hateoasControls: HateoasControls
+    )
             : Boolean {
         val sended = items.map {
             restClient
-                    .target(hateoasControls.get(inputDatasetControlFor(name)))
-                    .request(MediaType.APPLICATION_JSON)
-                    .accept(MediaType.APPLICATION_JSON)
-                    .post(
-                            Entity.entity(
-                                    it.content.content,
-                                    MediaType.APPLICATION_JSON
-                            ))
+                .target(hateoasControls.get(inputDatasetControlFor(name)))
+                .request(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .post(
+                    Entity.entity(
+                        it.content.content,
+                        MediaType.APPLICATION_JSON
+                    )
+                )
         }.map {
             getHateoasControls(it.getLinks(), hateoasControls)
             it.getStatus() in listOf(200, 201)
@@ -188,101 +199,109 @@ class ActivityRestClient(
 
     fun getInputDatasetsHateoasControls(hateoasControls: HateoasControls) {
         val inputsResourceResponse = restClient
-                .target(hateoasControls.get("inputs"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .get()
+            .target(hateoasControls.get("inputs"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .get()
         getHateoasControls(inputsResourceResponse.getLinks(), hateoasControls)
 
         println(hateoasControls)
     }
 
 
-    private fun sendParameters(parameters: Map<String, Any>,
-                               hateoasControls: HateoasControls): Boolean {
+    private fun sendParameters(
+        parameters: Map<String, Any>,
+        hateoasControls: HateoasControls
+    ): Boolean {
 
         getParametersHateoasControls(hateoasControls)
 
         return restClient.target(hateoasControls.get("parameters"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .put(Entity.entity(parameters, MediaType.APPLICATION_JSON))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .put(Entity.entity(parameters, MediaType.APPLICATION_JSON))
 
-                .also { getHateoasControls(it.getLinks(), hateoasControls) }
-                .let {
-                    it.getStatus() in listOf(200, 201)
-                }
+            .also { getHateoasControls(it.getLinks(), hateoasControls) }
+            .let {
+                it.getStatus() in listOf(200, 201)
+            }
     }
 
 
     private fun getParametersHateoasControls(hateoasControls: HateoasControls) {
         val parameterResourceResponse = restClient
-                .target(hateoasControls.get("parameters"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .get()
+            .target(hateoasControls.get("parameters"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .get()
         getHateoasControls(parameterResourceResponse.getLinks(), hateoasControls)
 
         println(hateoasControls)
     }
 
 
-    private fun updateInstance(instance: ActivityInstance,
-                               hateoasControls: HateoasControls): ActivityInstance {
+    private fun updateInstance(
+        instance: ActivityInstance,
+        hateoasControls: HateoasControls
+    ): ActivityInstance {
         println(hateoasControls.get("instance"))
         restClient
-                .target(hateoasControls.get("instance"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .get()
-                .also { println(it.getStatus()) }
-                .also { getHateoasControls(it.getLinks(), hateoasControls) }
-                .also {
-                    println(hateoasControls)
-                    val serviceInstance = it.readEntity(object : GenericType<ActivityInstance>() {})
-                    println(serviceInstance)
-                    instance.state = serviceInstance.state
-                }.let {
-                    return instance
-                }
+            .target(hateoasControls.get("instance"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .get()
+            .also { println(it.getStatus()) }
+            .also { getHateoasControls(it.getLinks(), hateoasControls) }
+            .also {
+                println(hateoasControls)
+                val serviceInstance = it.readEntity(object : GenericType<ActivityInstance>() {})
+                println(serviceInstance)
+                instance.state = serviceInstance.state
+            }.let {
+                return instance
+            }
     }
 
 
-    fun submitForProcessing(instance: ActivityInstance,
-                            hateoasControls: HateoasControls): ActivityInstance {
+    fun submitForProcessing(
+        instance: ActivityInstance,
+        hateoasControls: HateoasControls
+    ): ActivityInstance {
         restClient
-                .target(hateoasControls.get("start-execution"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .post(null)
+            .target(hateoasControls.get("start-execution"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .post(null)
 
-                .also { getHateoasControls(it.getLinks(), hateoasControls) }
-                .also {
-                    println(hateoasControls)
-                    println(it.getStatus())
-                    //println(it.getEntity())
-                    val serviceInstance = it.readEntity(object : GenericType<ActivityInstance>() {})
-                    //println(serviceInstance)
-                    instance.state = serviceInstance.state
-                    println(instance.state)
-                }.let {
-                    return instance
-                }
+            .also { getHateoasControls(it.getLinks(), hateoasControls) }
+            .also {
+                println(hateoasControls)
+                println(it.getStatus())
+                //println(it.getEntity())
+                val serviceInstance = it.readEntity(object : GenericType<ActivityInstance>() {})
+                //println(serviceInstance)
+                instance.state = serviceInstance.state
+                println(instance.state)
+            }.let {
+                return instance
+            }
     }
 
 
-    private fun waitForProcessingAndReturnState(instance: ActivityInstance,
-                                                hateoasControls: HateoasControls)
+    private fun waitForProcessingAndReturnState(
+        instance: ActivityInstance,
+        hateoasControls: HateoasControls
+    )
             : ActivityInstance {
 
         var response: Response;
         do {
             Thread.sleep(500)
             response = restClient
-                    .target(hateoasControls.get("start-execution"))
-                    .request(MediaType.APPLICATION_JSON)
-                    .accept(MediaType.APPLICATION_JSON)
-                    .get()
+                .target(hateoasControls.get("start-execution"))
+                .request(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .get()
         } while (response.getStatus() in listOf(200))
 
         if (response.getStatus() == 410) {
@@ -302,26 +321,82 @@ class ActivityRestClient(
     }
 
 
+    private fun waitForProcessingAndReturnStateAsync(
+        instance: ActivityInstance,
+        hateoasControls: HateoasControls
+    )
+            : ActivityInstance {
+
+        val completable: CompletableFuture<JobRepresentation> = CompletableFuture();
+
+        //Client client = ClientBuilder.newBuilder().build();
+        val target = restClient.target(hateoasControls.get("start-execution"));
+
+        // o método build cria um source sem conectar automaticamente ao target
+        val sseEventSource = SseEventSource.target(target).build();
+
+
+        // Subscreve o lambda que serve de listener do evento.
+        //  Esse lambda implementa `java.util.function.Consumer<InboundSseEvent>`
+        // .`readData()` e executa internamente um `MessageBodyReader<T>`
+        //  para desserializar o campo `data` do evento.
+        sseEventSource.register(
+            MessageConsumer(completable),
+            ErrorConsumer(completable)
+        )
+        sseEventSource.open()
+
+        // do other stuff, block here and continue when done
+        CompletableFuture.allOf(completable)
+        sseEventSource.close()
+
+        val jobResult = completable.get()
+        instance.state = jobResult.state
+        getHateoasControls(jobResult.links.toSet(), hateoasControls)
+        hateoasControls.put("instance",
+            hateoasControls.get("Location") as URI)
+        instance.state = State.SUCCEEDED
+
+//    if (response.getStatus() == 410)
+//    {
+//        instance.state = State.FAILED
+//
+//    } else if (response.getStatus() == 303)
+//    {
+//        val location = response.getLocation()
+//        hateoasControls.put("instance", location)
+//        instance.state = State.SUCCEEDED
+//        println(hateoasControls)
+//
+//    } else
+//    {
+//        throw UnexpectedResponseStatus(response.getStatus().toString())
+//    }
+
+        return instance
+    }
+
+
     private fun retrieveOutputs(hateoasControls: HateoasControls)
             : Map<String, List<DatasetItem>> {
 
         getOutputDatasetsHateoasControls(hateoasControls)
 
         val items = hateoasControls.filter { it.key.startsWith("outputs/") }
-                .map {
-                    val rel = it.key
-                    val uri = it.value
-                    val datasetName = rel.split("/").get(1);
-                    val datasetItem = retrieveDatasetItem(uri)
-                    Pair(datasetName, datasetItem)
-                }.toList().also { println(it) }
+            .map {
+                val rel = it.key
+                val uri = it.value
+                val datasetName = rel.split("/").get(1);
+                val datasetItem = retrieveDatasetItem(uri)
+                Pair(datasetName, datasetItem)
+            }.toList().also { println(it) }
 
 
         val outputDatasets = HashMap<String, MutableList<DatasetItem>>()
 
         for (pair in items) {
             val dataset = outputDatasets.get(pair.component1())
-                    ?: ArrayList<DatasetItem>()
+                ?: ArrayList<DatasetItem>()
 
             dataset.add(pair.component2())
             outputDatasets.put(pair.component1(), dataset)
@@ -335,14 +410,14 @@ class ActivityRestClient(
     private fun retrieveDatasetItem(uri: URI): DatasetItem {
 
         val datasetResponse =
-                restClient
-                        .target(uri)
-                        .request(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .get()
+            restClient
+                .target(uri)
+                .request(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .get()
 
         val datasetItem = datasetResponse.readEntity(
-                object : GenericType<DatasetItem>() {})
+            object : GenericType<DatasetItem>() {})
 
         println(datasetItem.content.content)
         return datasetItem
@@ -350,16 +425,17 @@ class ActivityRestClient(
 
 
     private fun outputDatasetControlFor(datasetName: String) =
-            "outputs/" + datasetName;
+        "outputs/" + datasetName;
 
 
     private fun getOutputDatasetsHateoasControls(
-            hateoasControls: HateoasControls) {
+        hateoasControls: HateoasControls
+    ) {
         val inputsResourceResponse = restClient
-                .target(hateoasControls.get("outputs"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .get()
+            .target(hateoasControls.get("outputs"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .get()
         getHateoasControls(inputsResourceResponse.getLinks(), hateoasControls)
 
         println(hateoasControls)
@@ -368,20 +444,52 @@ class ActivityRestClient(
 
     private fun retrieveErrorLog(hateoasControls: HateoasControls): String {
         return restClient
-                .target(hateoasControls.get("instance"))
-                .request(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .get()
-                .also { println(it.getStatus()) }
-                .also { getHateoasControls(it.getLinks(), hateoasControls) }
-                .let {
-                    println(hateoasControls)
-                    val serviceInstance =
-                            it.readEntity(
-                                    object : GenericType<ActivityInstance>() {})
+            .target(hateoasControls.get("instance"))
+            .request(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .get()
+            .also { println(it.getStatus()) }
+            .also { getHateoasControls(it.getLinks(), hateoasControls) }
+            .let {
+                println(hateoasControls)
+                val serviceInstance =
+                    it.readEntity(
+                        object : GenericType<ActivityInstance>() {})
 
-                    serviceInstance.errorReport ?: ""
-                }
+                serviceInstance.errorReport ?: ""
+            }
     }
 
+}
+
+
+class JobRepresentation() {
+    var id: String = ""
+    var state: State = State.CREATED
+    var links: List<Link> = listOf()
+}
+
+
+class MessageConsumer(val completable: CompletableFuture<JobRepresentation>) : Consumer<InboundSseEvent> {
+    override fun accept(event: InboundSseEvent) {
+        val data = event.readData(JobRepresentation::class.java)
+
+        when (data.state) {
+            State.SUCCEEDED, State.FAILED -> {
+                completable.complete(data);
+            }
+            else -> {
+            }
+        }
+    }
+}
+
+class ErrorConsumer(val completable: CompletableFuture<JobRepresentation>) : Consumer<Throwable> {
+    override fun accept(throwable: Throwable) {
+        val job = JobRepresentation();
+        job.state = State.FAILED
+        job.links = emptyList()
+
+        completable.complete(job)
+    }
 }

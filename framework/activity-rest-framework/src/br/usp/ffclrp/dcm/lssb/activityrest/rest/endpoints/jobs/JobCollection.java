@@ -191,7 +191,7 @@ public class JobCollection {
 		try {
 			Job job = jobManager.getJob(analysisId);
 			SSENotifierJobObserver observer =
-					new SSENotifierJobObserver(eventSink, sse);
+					new SSENotifierJobObserver(eventSink, sse, uriInfo);
 			// add observer if activity not ended, provide event otherwise
 			if (job.getState() == JobState.RUNNING
 					|| job.getState() == JobState.CREATED) {

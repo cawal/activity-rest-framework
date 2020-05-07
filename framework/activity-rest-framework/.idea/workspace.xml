@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.client/src/main/kotlin/ActivityRestClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.client/src/main/kotlin/ActivityRestClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/endpoints/jobs/JobCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/endpoints/jobs/JobCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/endpoints/jobs/SSENotifierJobObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/endpoints/jobs/SSENotifierJobObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/JobInstanceRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/JobInstanceRepresentation.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1bT1QTaHQYPQ4Hr4k7vBstd6HAE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="" />
+      <created>1588641253394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588641253394</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
