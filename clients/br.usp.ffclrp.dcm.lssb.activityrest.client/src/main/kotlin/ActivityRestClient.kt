@@ -8,6 +8,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstance
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.DatasetItem
 import org.glassfish.jersey.client.ClientProperties
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider
+import java.lang.Exception
 import java.net.URI
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
@@ -57,21 +58,22 @@ class ActivityRestClient(
                     updateInstance(createdInstance, hateoasControls)
                 val runningInstance =
                     submitForProcessing(readyInstance, hateoasControls)
+
                 if (useSSE) {
                     waitForProcessingAndReturnStateAsync(runningInstance, hateoasControls)
                 } else {
                     waitForProcessingAndReturnState(runningInstance, hateoasControls)
                 }
+
                 val completedInstance =
                     updateInstance(runningInstance, hateoasControls)
+
                 when (completedInstance.state) {
                     State.SUCCEEDED -> {
-                        println("SUCCEEDED! =)")
                         instance.outputDatasets =
                             retrieveOutputs(hateoasControls)
                     }
                     State.FAILED -> {
-                        println("FAILED! =(")
                         instance.errorReport =
                             retrieveErrorLog(hateoasControls)
                     }
@@ -328,6 +330,7 @@ class ActivityRestClient(
             : ActivityInstance {
 
         val completable: CompletableFuture<JobRepresentation> = CompletableFuture();
+        val sseExceptionCompletable: CompletableFuture<Throwable> = CompletableFuture();
 
         //Client client = ClientBuilder.newBuilder().build();
         val target = restClient.target(hateoasControls.get("start-execution"));
@@ -336,44 +339,34 @@ class ActivityRestClient(
         val sseEventSource = SseEventSource.target(target).build();
 
 
-        // Subscreve o lambda que serve de listener do evento.
+        // Registra o lambda que serve de listener do evento.
         //  Esse lambda implementa `java.util.function.Consumer<InboundSseEvent>`
         // .`readData()` e executa internamente um `MessageBodyReader<T>`
         //  para desserializar o campo `data` do evento.
         sseEventSource.register(
             MessageConsumer(completable),
-            ErrorConsumer(completable)
+            ErrorConsumer(sseExceptionCompletable)
         )
         sseEventSource.open()
 
-        // do other stuff, block here and continue when done
-        CompletableFuture.allOf(completable)
+        // do other stuff, block here and continue when done or error
+        CompletableFuture.anyOf(completable,sseExceptionCompletable)
         sseEventSource.close()
 
-        val jobResult = completable.get()
-        instance.state = jobResult.state
-        getHateoasControls(jobResult.links.toSet(), hateoasControls)
-        hateoasControls.put("instance",
-            hateoasControls.get("Location") as URI)
-        instance.state = State.SUCCEEDED
+        if(sseExceptionCompletable.isDone){
+            throw UnexpectedResponseStatus()
 
-//    if (response.getStatus() == 410)
-//    {
-//        instance.state = State.FAILED
-//
-//    } else if (response.getStatus() == 303)
-//    {
-//        val location = response.getLocation()
-//        hateoasControls.put("instance", location)
-//        instance.state = State.SUCCEEDED
-//        println(hateoasControls)
-//
-//    } else
-//    {
-//        throw UnexpectedResponseStatus(response.getStatus().toString())
-//    }
+        } else {
+            val jobResult = completable.get()
+            instance.state = jobResult.state
+            getHateoasControls(jobResult.links.toSet(), hateoasControls)
+            hateoasControls.put("instance",
+                hateoasControls.get("Location") as URI)
+            instance.state = State.SUCCEEDED
 
-        return instance
+            return instance
+        }
+
     }
 
 
@@ -484,12 +477,8 @@ class MessageConsumer(val completable: CompletableFuture<JobRepresentation>) : C
     }
 }
 
-class ErrorConsumer(val completable: CompletableFuture<JobRepresentation>) : Consumer<Throwable> {
+class ErrorConsumer(val completable: CompletableFuture<Throwable>) : Consumer<Throwable> {
     override fun accept(throwable: Throwable) {
-        val job = JobRepresentation();
-        job.state = State.FAILED
-        job.links = emptyList()
-
-        completable.complete(job)
+        completable.complete(throwable)
     }
 }

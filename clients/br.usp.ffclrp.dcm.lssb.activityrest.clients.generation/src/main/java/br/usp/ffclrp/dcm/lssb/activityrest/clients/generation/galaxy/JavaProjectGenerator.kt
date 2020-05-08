@@ -171,7 +171,17 @@ class JavaProjectGenerator {
                         .filter { it.getDefaultValue().size > 0 }
                         .map { it.optionText }
                         .joinToString("\n\n")
-                }""".trimMargin("|")
+                }
+            |
+			|    @Option(
+			|    	names = ["--use-sse"],
+			|    	paramLabel = "BOOLEAN",
+			|    	arity = "1..1",
+			|    	description = ["Use Server-Side Events instead of RESTful polling during execution."]
+			|    )
+			|    var use_sse : Boolean = false
+            |   
+            |   """.trimMargin("|")
 
     val InputDataset.parameterText: String
         get() =

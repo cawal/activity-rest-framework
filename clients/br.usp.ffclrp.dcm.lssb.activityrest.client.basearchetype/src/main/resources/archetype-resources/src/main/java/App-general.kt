@@ -29,7 +29,7 @@ fun execute(config: AppCallable): Int {
 
     
 	val client = ActivityRestClient(baseUrl)
-    val executedInstance = client.execute(activityInstance);
+    val executedInstance = client.execute(activityInstance,config.use_sse);
     
     if(executedInstance.state == ActivityInstanceState.SUCCEEDED){
     	val outputDatasets = executedInstance.outputDatasets
