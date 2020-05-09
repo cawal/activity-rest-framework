@@ -39,12 +39,12 @@ class AadlToGalaxyToolWrapperTest {
     private val transformationEngine = AadlToGalaxyToolWrapper();
 
     val activity by lazy {  
-        var inputStream = this::class.java.getResourceAsStream("./david.aadl")
+        var inputStream = this::class.java.getResourceAsStream("./activity.aadl")
         ModelsService.retrieveAADLModel(inputStream)
     }
 
     val deployment by lazy {
-        var inputStream = this::class.java.getResourceAsStream("./david.deployment")
+        var inputStream = this::class.java.getResourceAsStream("./activity.deployment")
         ModelsService.retrieveDeploymentModel(inputStream)
     }
     

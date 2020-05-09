@@ -99,7 +99,7 @@ class ActivityRestClient(
 
     private fun validInputDatasets(instance: ActivityInstance) = true;
 
-    public fun connectToService(): HateoasControls {
+    fun connectToService(): HateoasControls {
         val response = restClient
             .target(baseUrl)
             .request(MediaType.APPLICATION_JSON)

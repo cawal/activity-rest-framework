@@ -11,13 +11,13 @@ import org.junit.Ignore
 class GalaxyClientGeneratorTests {
 
     val activity by lazy {
-        var inputStream = this::class.java.getResourceAsStream("./david.aadl")
+        var inputStream = this::class.java.getResourceAsStream("./activity.aadl")
         ModelsService.retrieveAADLModel(inputStream)
     }
 
 
     val deployment by lazy {
-        var inputStream = this::class.java.getResourceAsStream("./david.deployment")
+        var inputStream = this::class.java.getResourceAsStream("./activity.deployment")
         ModelsService.retrieveDeploymentModel(inputStream)
     }
 
@@ -48,18 +48,4 @@ class GalaxyClientGeneratorTests {
         assertTrue(toolFile.exists())
     }
 
-    
-    @Test
-    fun `Execution includes basic BPMN2 file`() {
-        val bpmn = File(generatedProject,"activity.bpmn2")
-        assertTrue(bpmn.exists())
-    }
-    
-    
-    @Test
-    fun `Execution includes jBPM BPMN2 file`() {
-        val jbpm = File(generatedProject,"src/main/resources/activity-jbpm.bpmn2")
-        assertTrue(jbpm.exists())
-    }
-    
 }
