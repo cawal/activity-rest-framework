@@ -11,6 +11,6 @@ public class JobInstanceRepresentation {
 	private final String id;
 	private AnalysisActivityStateRepresentation state;
 	private final String errorReport;
-	private final List<Link> links;
+	private final List<LinkRepresentation> links;
 }
 

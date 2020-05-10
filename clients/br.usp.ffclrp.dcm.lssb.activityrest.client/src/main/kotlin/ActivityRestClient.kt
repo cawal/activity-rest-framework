@@ -177,11 +177,15 @@ class ActivityRestClient(
     )
             : Boolean {
         val sended = items.map {
+            println(name)
+            println(inputDatasetControlFor(name))
+           println(hateoasControls.get(inputDatasetControlFor(name)))
+            println(hateoasControls.get((name)))
             restClient
                 .target(hateoasControls.get(inputDatasetControlFor(name)))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .post(
+                .put(
                     Entity.entity(
                         it.content.content,
                         MediaType.APPLICATION_JSON
@@ -328,13 +332,16 @@ class ActivityRestClient(
         hateoasControls: HateoasControls
     )
             : ActivityInstance {
+        println("Começando SSE")
+        println(hateoasControls);
 
         val completable: CompletableFuture<JobRepresentation> = CompletableFuture();
         val sseExceptionCompletable: CompletableFuture<Throwable> = CompletableFuture();
 
         //Client client = ClientBuilder.newBuilder().build();
-        val target = restClient.target(hateoasControls.get("start-execution"));
+        val target = restClient.target(hateoasControls.get("polling-events"));
 
+        println(target)
         // o método build cria um source sem conectar automaticamente ao target
         val sseEventSource = SseEventSource.target(target).build();
 
@@ -349,20 +356,31 @@ class ActivityRestClient(
         )
         sseEventSource.open()
 
+        println("Thread esperando...")
         // do other stuff, block here and continue when done or error
-        CompletableFuture.anyOf(completable,sseExceptionCompletable)
-        sseEventSource.close()
+//        CompletableFuture.anyOf(completable,sseExceptionCompletable)
+//        println("terminou a espera")
 
         if(sseExceptionCompletable.isDone){
+            println("Deu falha")
             throw UnexpectedResponseStatus()
 
         } else {
+            println("deu certo")
             val jobResult = completable.get()
+            sseEventSource.close()
+            println("E pegou o resultado")
+            println(jobResult)
             instance.state = jobResult.state
-            getHateoasControls(jobResult.links.toSet(), hateoasControls)
+            val links = jobResult.links.forEach{
+                hateoasControls.put(it.rel,URI.create(it.uri))
+            }
+//            getHateoasControls(jobResult.links.toSet(), hateoasControls)
             hateoasControls.put("instance",
                 hateoasControls.get("Location") as URI)
             instance.state = State.SUCCEEDED
+
+            println(hateoasControls)
 
             return instance
         }
@@ -459,13 +477,22 @@ class ActivityRestClient(
 class JobRepresentation() {
     var id: String = ""
     var state: State = State.CREATED
-    var links: List<Link> = listOf()
+    var links: List<LinkRepresentation> = listOf()
+    var errorReport : String? = "";
+}
+
+class LinkRepresentation() {
+    var rel : String = ""
+    var uri : String = ""
 }
 
 
 class MessageConsumer(val completable: CompletableFuture<JobRepresentation>) : Consumer<InboundSseEvent> {
     override fun accept(event: InboundSseEvent) {
+        println(event)
+        println(event.readData(String::class.java))
         val data = event.readData(JobRepresentation::class.java)
+        println(data)
 
         when (data.state) {
             State.SUCCEEDED, State.FAILED -> {
@@ -479,6 +506,7 @@ class MessageConsumer(val completable: CompletableFuture<JobRepresentation>) : C
 
 class ErrorConsumer(val completable: CompletableFuture<Throwable>) : Consumer<Throwable> {
     override fun accept(throwable: Throwable) {
+        println(throwable)
         completable.complete(throwable)
     }
 }

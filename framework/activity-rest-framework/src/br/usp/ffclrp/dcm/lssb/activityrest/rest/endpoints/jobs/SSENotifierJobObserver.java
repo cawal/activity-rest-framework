@@ -15,6 +15,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.Job;
 import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobObserver;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.JobInstanceRepresentation;
+import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.LinkRepresentation;
 
 public class SSENotifierJobObserver implements JobObserver {
 	
@@ -49,8 +50,10 @@ public class SSENotifierJobObserver implements JobObserver {
 	
 	@Override
 	public void notifyStarted(Job job) {
+
+		System.err.println("SSE notify STARTED");
 		
-		List<Link> links = new ArrayList<>();
+		List<LinkRepresentation> links = new ArrayList<>();
 		
 		final JobInstanceRepresentation representation =
 				new JobInstanceRepresentation(job.getId(),
@@ -69,16 +72,15 @@ public class SSENotifierJobObserver implements JobObserver {
 	
 	@Override
 	public void notifyFailure(Job job) {
-		List<Link> links = new ArrayList<>();
-			URI failedURI = uriInfo.getBaseUriBuilder()
-					.path("failed-instances")
-					.path(job.getId())
-					.build();
-		Link failedLink = Link.fromUri(failedURI)
-					.rel("Location")
-					.build();
-		links.add(failedLink);
-		
+		System.err.println("SSE notify FAILURE");
+		List<LinkRepresentation> links = new ArrayList<>();
+		String locationUri = uriInfo.getBaseUriBuilder()
+				.path("failed-instances")
+				.path(job.getId())
+				.build().toString();
+		LinkRepresentation locationLink = new LinkRepresentation("Location",locationUri);
+		links.add(locationLink);
+
 		final JobInstanceRepresentation representation =
 				new JobInstanceRepresentation(job.getId(),
 						null, 
@@ -98,27 +100,28 @@ public class SSENotifierJobObserver implements JobObserver {
 	
 	@Override
 	public void notifySuccess(Job job) {
-		List<Link> links = new ArrayList<>();
-			URI failedURI = uriInfo.getBaseUriBuilder()
-					.path("succeeded-instances")
-					.path(job.getId())
-					.build();
-		Link failedLink = Link.fromUri(failedURI)
-					.rel("Location")
-					.build();
-		links.add(failedLink);
-		
+		System.err.println("SSE notify SUCCEEDED");
+		System.err.println(sse);
+		List<LinkRepresentation> links = new ArrayList<>();
+		String locationUri = uriInfo.getBaseUriBuilder()
+				.path("succeeded-instances")
+				.path(job.getId())
+				.build().toString();
+		LinkRepresentation locationLink = new LinkRepresentation("Location",locationUri);
+		links.add(locationLink);
+
 		final JobInstanceRepresentation representation =
 				new JobInstanceRepresentation(job.getId(),
 						null, 
 						links);
 		representation.setState(AnalysisActivityStateRepresentation.SUCCEEDED);
+		System.err.println(sse);
 		final OutboundSseEvent event = sse.newEventBuilder()
 				.name("activity-state")
 				.mediaType(MediaType.APPLICATION_JSON_TYPE)
 				.data(JobInstanceRepresentation.class, representation)
 				.build();
-		eventSink.send(event);
+		System.err.println(eventSink.send(event));
 	
 		// nothing to do after it
 		eventSink.close();

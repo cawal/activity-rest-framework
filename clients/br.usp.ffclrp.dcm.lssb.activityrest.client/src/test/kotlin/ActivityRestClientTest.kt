@@ -7,6 +7,7 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstance
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstanceState
 import br.usp.ffclrp.dcm.lssb.activityrest.client.ActivityRestClient
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory
+import org.junit.Ignore
 import java.net.URI
 import java.io.File
 import java.math.BigInteger
