@@ -185,7 +185,7 @@ class ActivityRestClient(
                 .target(hateoasControls.get(inputDatasetControlFor(name)))
                 .request(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .put(
+                .post(
                     Entity.entity(
                         it.content.content,
                         MediaType.APPLICATION_JSON
@@ -357,9 +357,6 @@ class ActivityRestClient(
         sseEventSource.open()
 
         println("Thread esperando...")
-        // do other stuff, block here and continue when done or error
-//        CompletableFuture.anyOf(completable,sseExceptionCompletable)
-//        println("terminou a espera")
 
         if(sseExceptionCompletable.isDone){
             println("Deu falha")
@@ -372,10 +369,11 @@ class ActivityRestClient(
             println("E pegou o resultado")
             println(jobResult)
             instance.state = jobResult.state
+
+            // save links
             val links = jobResult.links.forEach{
                 hateoasControls.put(it.rel,URI.create(it.uri))
             }
-//            getHateoasControls(jobResult.links.toSet(), hateoasControls)
             hateoasControls.put("instance",
                 hateoasControls.get("Location") as URI)
             instance.state = State.SUCCEEDED
