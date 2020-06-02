@@ -152,13 +152,13 @@ class StringListManipulatorsLang {
     "AppendListWith adds a new item to the end of the list it receives. The number of items in the new list is the number of items of the previous list plus 1.";
 
   ToFlag =
-    "ToFlag substitutes the boolean values provided for a parameter into two different values: one if the value is true and other if the value is false. The number of items in the list remains constant.";
+    "ToFlag substitutes the boolean values received into one of the different strings setted on its attributes 'IfTrue' and 'IfFalse'. The number of items in the list remains constant.";
 
   remove = "Remove this manipulator";
 
-  up = "Execute this manipulator early.";
+  up = "Move this manipulator as the previous step of the processing pipeline.";
 
-  down = "Execute this manipulator later.";
+  down = "Move this manipulator as the next step of the processing pipeline.";
 
   stringListManipulators =
     "A list of operations to transform the initial list before adding it to the tool's execution arguments.";

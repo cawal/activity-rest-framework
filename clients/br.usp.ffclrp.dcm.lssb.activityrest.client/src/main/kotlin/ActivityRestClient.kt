@@ -38,7 +38,9 @@ class ActivityRestClient(
     val target = restClient.target(baseUrl)
 
 
-    fun execute(instance: ActivityInstance, useSSE: Boolean = false)
+    fun execute(instance: ActivityInstance,
+                useSSE: Boolean = false,
+                deleteCompleted : Boolean = false)
             : ActivityInstance {
 
         validate(instance)
@@ -79,6 +81,10 @@ class ActivityRestClient(
                     }
                     else -> {
                     }
+                }
+
+                if(deleteCompleted){
+                    deleteInstance(hateoasControls);
                 }
 
                 return instance
@@ -467,6 +473,12 @@ class ActivityRestClient(
 
                 serviceInstance.errorReport ?: ""
             }
+    }
+
+    private fun deleteInstance(hateoasControls: HateoasControls) {
+        restClient.target(hateoasControls.get("instance"))
+            .request()
+            .delete()
     }
 
 }

@@ -4,12 +4,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.ClientGenerator
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
 import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 import java.io.File
-import java.nio.file.Files
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.util.AnalysisActivityDescriptionAdapterFactory
-import AadlToBpmn
-import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.BpmnToJbpm
-import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.AadlToGalaxyToolWrapper
-import br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy.JavaProjectGenerator
 
 class GalaxyClientGenerator : ClientGenerator {
 

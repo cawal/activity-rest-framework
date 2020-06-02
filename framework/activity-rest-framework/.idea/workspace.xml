@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.client/src/main/kotlin/ActivityRestClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.client/src/main/kotlin/ActivityRestClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bootstrap/activityrest-bootstrap/src/app/lang.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../bootstrap/activityrest-bootstrap/src/app/lang.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../GEAS/geas-rim/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -62,10 +61,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1826" y="89" width="428" height="474" key="FileChooserDialogImpl" timestamp="1589072128144">
+    <state x="1822" y="53" width="428" height="474" key="FileChooserDialogImpl" timestamp="1590864965250">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
-    <state x="1826" y="89" width="428" height="474" key="FileChooserDialogImpl/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589072128144" />
+    <state x="1822" y="53" width="428" height="474" key="FileChooserDialogImpl/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1590864965250" />
     <state x="1661" y="7" width="766" height="711" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589053953653">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
@@ -74,9 +73,9 @@
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1753" y="124" width="784" height="522" key="find.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589054003282" />
-    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1589052676189">
+    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1589081691793">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
-    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589052676189" />
+    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589081691793" />
   </component>
 </project>

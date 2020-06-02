@@ -166,7 +166,15 @@ class JavaProjectGenerator {
 			|    )
 			|    var service_url : String
 			|    = "${deployment.getContainer().getBaseUrl()}"
- 
+            |    
+			|    @Option(
+			|    	names = ["--delete-after-completion"],
+			|    	paramLabel = "BOOLEAN",
+			|    	arity = "1..1",
+			|    	description = ["Remove completed activity from service?"]
+			|    )
+			|    var delete_completed : Boolean = false
+            |    
 			|    ${activity.getParameters()
                         .filter { it.getDefaultValue().size > 0 }
                         .map { it.optionText }
@@ -195,12 +203,15 @@ class JavaProjectGenerator {
 			|    		description = ["${getRemark()}"],
 			|    		required = true
 			|    	)
+			|    	var ${getName().sanitized()} : List<File> = emptyList()
+            """/*
 			|    	var ${getName().sanitized()} : ${
 						if (getMaximumCardinality().toInt() != 1)
 							"List<File>?"
 						else "File?"
 					} = null
-			""".trimIndent()
+			"""*/
+        .trimIndent()
 
 	val OutputDataset.parameterText: String
         get() =
@@ -305,12 +316,14 @@ class JavaProjectGenerator {
 			|    config: AppCallable,
 			|    datasets: Map<String, List<DatasetItem>>
 			|): Unit {
+            |   var content : String? = null;
+            |   var filewriter : FileWriter? = null;
 			|	${activity.getOutputDatasets()
 						.filter { it.getMaximumCardinality().toInt() == 1 }
 						.map {
 							"""
-			|				val content = datasets.get("${it.getName()}")?.first()?.content?.content
-			|				val filewriter = FileWriter(config.${it.getName().sanitized()})
+			|				content = datasets.get("${it.getName()}")?.first()?.content?.content
+			|				filewriter = FileWriter(config.${it.getName().sanitized()})
 			|				IOUtils.write(content, filewriter)
 			|    		println(config.${it.getName().sanitized()}?.getAbsolutePath())
 			|       """.trimMargin("|")
@@ -345,7 +358,8 @@ class JavaProjectGenerator {
 			|
 			|    val inputDatasets = mapOf<String, List<DatasetItem>>(
 			|${activity.getInputDatasets().map {
-			"""|       "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+        //"""|       "${it.getName()}" to listOfNotNull(config.${it.getName().sanitized()})
+			"""|       "${it.getName()}" to config.${it.getName().sanitized()}
 			|        	.map { datasetItemFrom(it) }
 			|    """.trimMargin("|")
 			}.joinToString(",\n")}

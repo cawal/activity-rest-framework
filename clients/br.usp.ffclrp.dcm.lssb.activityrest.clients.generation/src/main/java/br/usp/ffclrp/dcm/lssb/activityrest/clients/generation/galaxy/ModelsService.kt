@@ -1,22 +1,17 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.galaxy
 
-import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.*
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DSLSyntaxStandaloneSetup
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DSLSyntaxStandaloneSetupGenerated
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSLRuntimeModule
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSLStandaloneSetup
 import br.usp.ffclrp.dcm.lssb.restaurant.stringlistmanipulators.StringListManipulatorsPackage
-import com.google.inject.Guice
-import com.google.inject.internal.asm.`$ClassWriter`
-import org.eclipse.bpmn2.Bpmn2Package
-import org.eclipse.bpmn2.DocumentRoot
-import org.eclipse.bpmn2.util.Bpmn2ResourceFactoryImpl
-import org.eclipse.bpmn2.util.Bpmn2XMIResourceFactoryImpl
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.ecore.xmi.XMIResource
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.resource.XtextResourceSet
@@ -41,7 +36,7 @@ object ModelsService {
         AnalysisActivityDescriptionPackage.eINSTANCE.eClass()
         StringListManipulatorsPackage.eINSTANCE.eClass()
         DeploymentModelPackage.eINSTANCE.eClass()
-        Bpmn2Package.eINSTANCE.eClass()
+//        Bpmn2Package.eINSTANCE.eClass()
     }
 
     /**
@@ -254,103 +249,103 @@ object ModelsService {
         return `in`
     }
 
-    fun retrieveBPMN(resourceUri: URI?): DocumentRoot {
-
-        // Initialize the model
-        initializeEcoreModelsResources()
-
-        // Register the XMI resource factory for the .xmi extension
-        val reg =
-            Resource.Factory.Registry.INSTANCE
-        val m = reg.extensionToFactoryMap
-        m["bpmn2"] = Bpmn2ResourceFactoryImpl()
-
-        // Obtain a new resource set
-        val resSet: ResourceSet = ResourceSetImpl()
-        resSet.packageRegistry[Bpmn2Package.eNS_URI] = Bpmn2Package.eINSTANCE
-        // Get the resource
-        val resource = resSet.getResource(resourceUri, true)
-        // Get the first model element and cast it to the right type, in my
-        // example everything is hierarchical included in this first node
-        return resource.contents[0] as DocumentRoot
-    }
-
-    fun retrieveBpmnFromXmi(resourceUri: URI?): DocumentRoot {
-
-        // Initialize the model
-        initializeEcoreModelsResources()
-
-        // Register the XMI resource factory for the .xmi extension
-        val reg =
-            Resource.Factory.Registry.INSTANCE
-        val m = reg.extensionToFactoryMap
-        m["bpmn2"] = Bpmn2XMIResourceFactoryImpl()
-        m["bpmn2"] = Bpmn2XMIResourceFactoryImpl()
-
-        // Obtain a new resource set
-        val resSet: ResourceSet = ResourceSetImpl()
-
-        // Get the resource
-        val resource = resSet.getResource(resourceUri, true)
-        // Get the first model element and cast it to the right type, in my
-        // example everything is hierarchical included in this first node
-        return resource.contents[0] as DocumentRoot
-    }
-
-    fun writeBpmn2Model(
-        documentRoot: DocumentRoot?,
-        outputPath: String?
-    ) {
-        // TODO Auto-generated method stub i
-        initializeEcoreModelsResources()
-        val reg =
-            Resource.Factory.Registry.INSTANCE
-        val m = reg.extensionToFactoryMap
-        m["bpmn2"] = Bpmn2ResourceFactoryImpl()
-
-        // Obtain a new resource set
-        val resSet: ResourceSet = ResourceSetImpl()
-
-//        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
-//            (Resource.Factory.Registry.DEFAULT_EXTENSION,
-//             new DroolsResourceFactoryImpl());
-//        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
-//            ("bpmn2",
-//             new DroolsResourceFactoryImpl());
-//        resSet.getPackageRegistry().put
-//            (DroolsPackage.eNS_URI,
-//            		DroolsPackage.eINSTANCE);
-        resSet.resourceFactoryRegistry.extensionToFactoryMap["bpmn2"] = Bpmn2ResourceFactoryImpl()
-        resSet.packageRegistry[Bpmn2Package.eNS_URI] = Bpmn2Package.eINSTANCE
-        // create a resource
-        val resource = resSet.createResource(
-            URI
-                .createURI(outputPath)
-        )
-
-
-//	    re.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-//	    result.getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, 80);
-//	    result.getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER,
-//	    		new URIHandlerImpl.PlatformSchemeAware());
-        // Get the first model element and cast it to the right type, in my
-        // example everything is hierarchical included in this first node
-        resource.contents.add(documentRoot)
-
-        // now save the content.
-        try {
-            val saveOptions: MutableMap<Any?, Any?> =
-                HashMap()
-            //			final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-//			final Map<Object, Object> saveOptions = xmiresource.getDefaultSaveOptions();
-            saveOptions[XMIResource.OPTION_SCHEMA_LOCATION] = true;//Boolean.TRUE
-            //			saveOptions.put(XMLResource.OPTIOOPTION_PROXY_ATTRIBUTES, Boolean.TRUE);
-            resource.save(saveOptions)
-            //			resource.save(Collections.EMPTY_MAP);
-            println(resource.toString() + "is saved")
-        } catch (e: IOException) {
-            // TODO Auto-generated catch block
-            e.printStackTrace()
-        }
-    }
+//    fun retrieveBPMN(resourceUri: URI?): DocumentRoot {
+//
+//        // Initialize the model
+//        initializeEcoreModelsResources()
+//
+//        // Register the XMI resource factory for the .xmi extension
+//        val reg =
+//            Resource.Factory.Registry.INSTANCE
+//        val m = reg.extensionToFactoryMap
+//        m["bpmn2"] = Bpmn2ResourceFactoryImpl()
+//
+//        // Obtain a new resource set
+//        val resSet: ResourceSet = ResourceSetImpl()
+//        resSet.packageRegistry[Bpmn2Package.eNS_URI] = Bpmn2Package.eINSTANCE
+//        // Get the resource
+//        val resource = resSet.getResource(resourceUri, true)
+//        // Get the first model element and cast it to the right type, in my
+//        // example everything is hierarchical included in this first node
+//        return resource.contents[0] as DocumentRoot
+//    }
+//
+//    fun retrieveBpmnFromXmi(resourceUri: URI?): DocumentRoot {
+//
+//        // Initialize the model
+//        initializeEcoreModelsResources()
+//
+//        // Register the XMI resource factory for the .xmi extension
+//        val reg =
+//            Resource.Factory.Registry.INSTANCE
+//        val m = reg.extensionToFactoryMap
+//        m["bpmn2"] = Bpmn2XMIResourceFactoryImpl()
+//        m["bpmn2"] = Bpmn2XMIResourceFactoryImpl()
+//
+//        // Obtain a new resource set
+//        val resSet: ResourceSet = ResourceSetImpl()
+//
+//        // Get the resource
+//        val resource = resSet.getResource(resourceUri, true)
+//        // Get the first model element and cast it to the right type, in my
+//        // example everything is hierarchical included in this first node
+//        return resource.contents[0] as DocumentRoot
+//    }
+//
+//    fun writeBpmn2Model(
+//        documentRoot: DocumentRoot?,
+//        outputPath: String?
+//    ) {
+//        // TODO Auto-generated method stub i
+//        initializeEcoreModelsResources()
+//        val reg =
+//            Resource.Factory.Registry.INSTANCE
+//        val m = reg.extensionToFactoryMap
+//        m["bpmn2"] = Bpmn2ResourceFactoryImpl()
+//
+//        // Obtain a new resource set
+//        val resSet: ResourceSet = ResourceSetImpl()
+//
+////        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+////            (Resource.Factory.Registry.DEFAULT_EXTENSION,
+////             new DroolsResourceFactoryImpl());
+////        resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+////            ("bpmn2",
+////             new DroolsResourceFactoryImpl());
+////        resSet.getPackageRegistry().put
+////            (DroolsPackage.eNS_URI,
+////            		DroolsPackage.eINSTANCE);
+//        resSet.resourceFactoryRegistry.extensionToFactoryMap["bpmn2"] = Bpmn2ResourceFactoryImpl()
+//        resSet.packageRegistry[Bpmn2Package.eNS_URI] = Bpmn2Package.eINSTANCE
+//        // create a resource
+//        val resource = resSet.createResource(
+//            URI
+//                .createURI(outputPath)
+//        )
+//
+//
+////	    re.getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+////	    result.getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, 80);
+////	    result.getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER,
+////	    		new URIHandlerImpl.PlatformSchemeAware());
+//        // Get the first model element and cast it to the right type, in my
+//        // example everything is hierarchical included in this first node
+//        resource.contents.add(documentRoot)
+//
+//        // now save the content.
+//        try {
+//            val saveOptions: MutableMap<Any?, Any?> =
+//                HashMap()
+//            //			final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+////			final Map<Object, Object> saveOptions = xmiresource.getDefaultSaveOptions();
+//            saveOptions[XMIResource.OPTION_SCHEMA_LOCATION] = true;//Boolean.TRUE
+//            //			saveOptions.put(XMLResource.OPTIOOPTION_PROXY_ATTRIBUTES, Boolean.TRUE);
+//            resource.save(saveOptions)
+//            //			resource.save(Collections.EMPTY_MAP);
+//            println(resource.toString() + "is saved")
+//        } catch (e: IOException) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace()
+//        }
+//    }
 }
