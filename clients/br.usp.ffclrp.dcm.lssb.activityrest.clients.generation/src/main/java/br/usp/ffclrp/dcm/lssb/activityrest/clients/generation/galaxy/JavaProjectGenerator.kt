@@ -303,7 +303,11 @@ class JavaProjectGenerator {
     val Parameter.formatedDefaultValue
         get() : String {
             return when (this.getMaximumCardinality().toInt()) {
-                1 -> this.getDefaultValue().first()
+                1 -> if(this.parameterType == ParameterType.STRING) {
+                    """"${this.getDefaultValue().first()}""""
+                } else {
+                    this.getDefaultValue().first()
+                }
                 else -> "listOf(${this.getDefaultValue()
                         .joinToString(",", "\"", "\"")})"
             }
