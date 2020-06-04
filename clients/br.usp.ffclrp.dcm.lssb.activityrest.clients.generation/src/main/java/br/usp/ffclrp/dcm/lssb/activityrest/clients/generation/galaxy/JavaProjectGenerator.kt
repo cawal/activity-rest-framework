@@ -203,7 +203,7 @@ class JavaProjectGenerator {
 			|    		description = ["${getRemark()}"],
 			|    		required = true
 			|    	)
-			|    	var ${getName().sanitized()} : List<File> = emptyList()
+			|    	var ${getName().sanitized()} : List<File> = ArrayList()
             """/*
 			|    	var ${getName().sanitized()} : ${
 						if (getMaximumCardinality().toInt() != 1)
@@ -234,13 +234,14 @@ class JavaProjectGenerator {
     val Parameter.parameterText
         get() =
             """
-			|		@Parameters(
+			|		@Option(
 			|			names = ["--${getName()}"],
 			|			paramLabel = "${getName().toUpperCase()}",
 			|    		arity = "${getMinimumCardinality()}..${
                         if (getMaximumCardinality().toInt() >= 0) maximumCardinality
                         else "*"}",
-			|			description = ["${getRemark()}"]
+			|			description = ["${getRemark()}"],
+            |           required = true
 			|		)
 			|		var ${getName().sanitized()} : ${typeText}? = null
 			""".trimIndent()
