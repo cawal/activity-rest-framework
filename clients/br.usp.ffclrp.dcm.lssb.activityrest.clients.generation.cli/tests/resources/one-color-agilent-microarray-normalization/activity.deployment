@@ -1,0 +1,7 @@
+deployment { 
+        of service "agilent-one-color-microarray-normalization" { api-version "1.1" }
+        into container 'kode' {
+                base-url 'http://kode.ffcrp.usp.br:8081/agilent-one-color-microarray-normalization'
+                description 'Nice description' 
+            }
+}
