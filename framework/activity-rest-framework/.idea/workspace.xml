@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../bootstrap/activityrest-bootstrap/src/app/lang.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../bootstrap/activityrest-bootstrap/src/app/lang.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/clients/generation/galaxy/JavaProjectGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/clients/generation/galaxy/JavaProjectGenerator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +37,28 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="br.usp.ffclrp.dcm.lssb.activityrest.rest.representations" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ArchitectureTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activity-rest-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.architecture.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.architecture" />
+      <option name="MAIN_CLASS_NAME" value="tests.architecture.ArchitectureTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ArchitectureTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

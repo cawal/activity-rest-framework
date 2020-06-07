@@ -117,6 +117,7 @@ class JavaProjectGenerator {
 			|import java.util.concurrent.Callable
 			|import org.apache.commons.io.IOUtils
 			|import java.io.FileWriter
+			|import java.util.ArrayList
     		""".trimMargin("|")
 
 
