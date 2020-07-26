@@ -6,15 +6,16 @@
 >
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
 	<artifactId>activity-rest-root</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<parent>
-		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
-		<artifactId>tycho-configuration</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>./releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration</relativePath>
-	</parent>
+<!--	<parent>-->
+<!--		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>-->
+<!--		<artifactId>tycho-configuration</artifactId>-->
+<!--		<version>1.0.0-SNAPSHOT</version>-->
+<!--		<relativePath>./releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration</relativePath>-->
+<!--	</parent>-->
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -37,8 +38,8 @@
 
 
 	<modules>
-		<module>dsl</module>
-		<module>deployment-model</module>
+<!--		<module>dsl</module>-->
+<!--		<module>deployment-model</module>-->
 		<module>framework</module>
 		<module>clients</module>
 	</modules>
