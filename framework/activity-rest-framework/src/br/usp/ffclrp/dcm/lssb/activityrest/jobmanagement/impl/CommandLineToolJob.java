@@ -5,8 +5,11 @@ import java.lang.ProcessBuilder.Redirect;
 
 import org.apache.commons.io.FileUtils;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobState;
+
 public class CommandLineToolJob extends AbstractJob {
 	protected JobConfig jobConfig; 
+	
 
 	public void setJobConfig(JobConfig jobConfig) {
 		this.jobConfig = jobConfig;
@@ -14,7 +17,6 @@ public class CommandLineToolJob extends AbstractJob {
 	
 	public void run() {
 		try {
-			notifyStarted();
 			
 			
 			// Create a process builder with the command line
@@ -29,6 +31,9 @@ public class CommandLineToolJob extends AbstractJob {
 					jobConfig.standardOutputPipedFile()));
 			pb.redirectInput(Redirect.from(jobConfig.standardInputPipedFile()));
 			
+			setState(JobState.RUNNING);
+//			notifyStarted();
+
 			Process process = pb.start();
 			process.waitFor();
 			
@@ -48,13 +53,18 @@ public class CommandLineToolJob extends AbstractJob {
 			switch (exitCodeDescription.getStatus()) {
 			// If the process was successfully finished
 			case SUCCEEDED:
-				notifySuccess();
+				setState(JobState.SUCCEEDED);
+//				notifySuccess();
 				break;
 	
 			// If the process was not successfully finished
 			case FAILED:
+				setState(JobState.FAILED);
+//				notifyFailure();
+				break;
 			default:
-				notifyFailure();
+				setState(JobState.SUCCEEDED);
+//				notifySuccess();
 				break;
 			}
 			
@@ -62,7 +72,8 @@ public class CommandLineToolJob extends AbstractJob {
 			e.printStackTrace();
 			try {
 				FileUtils.writeStringToFile(jobConfig.getErrorReportFile(), e.getMessage(),true);
-				notifyFailure();
+				setState(JobState.FAILED);
+//				notifyFailure();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

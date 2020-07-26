@@ -1,19 +1,17 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+
 	<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.feature</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>eclipse-feature</packaging>
 
 	<parent>
 		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
 		<artifactId>restaurant-features</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-        	<relativePath>..</relativePath>
+		<relativePath>..</relativePath>
 
 	</parent>
 
 	<modules>
 	</modules>
 </project>
-

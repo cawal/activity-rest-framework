@@ -1,0 +1,7 @@
+deployment { 
+        of service "gene-set-enrichment" { api-version "1.1" }
+        into container 'kode' {
+                base-url 'http://kode.ffcrp.usp.br:8081/egene-set-enrichment'
+                description 'Nice description' 
+            }
+}

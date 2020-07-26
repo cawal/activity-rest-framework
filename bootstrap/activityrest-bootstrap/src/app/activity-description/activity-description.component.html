@@ -1,0 +1,79 @@
+<div class="main">
+  <div *ngIf="activity" class="model">
+    <h2 [attr.title]="lang.activity">Activity</h2>
+    <label [attr.title]="lang.activityName"
+      >Name:
+      <input [(ngModel)]="activity.name" placeholder="name" type="text" />
+    </label>
+    <h3 [attr.title]="lang.parameter">
+      Parameters:
+    </h3>
+
+    <div *ngFor="let p of activity.parameters" class="parameter">
+      <div>
+        <button (click)="this.showDetail(p)" [attr.title]="lang.parameterEdit">
+          {{ p.name }}
+        </button>
+        <button
+          (click)="removeParameter(p)"
+          [attr.title]="lang.parameterRemove"
+          class="icon"
+        >
+          <fa-icon [icon]="iconRemove"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+    <button (click)="addParameter()" [attr.title]="lang.parameterAdd">
+      <fa-icon [icon]="iconAdd"></fa-icon>
+    </button>
+
+    <h3 [attr.title]="lang.inputDataset">
+      Input datasets:
+    </h3>
+
+    <div *ngFor="let d of activity.inputDatasets" class="input-dataset">
+      <div>
+        <button (click)="this.showDetail(d)" [attr.title]="lang.datasetEdit">
+          {{ d.name }}
+        </button>
+        <button
+          (click)="removeInputDataset(d)"
+          [attr.title]="lang.datasetRemove"
+        >
+          <fa-icon [icon]="iconRemove"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+    <button (click)="addInputDataset()" [attr.title]="lang.datasetAdd">
+      <fa-icon [icon]="iconAdd"></fa-icon>
+    </button>
+
+    <h3 [attr.title]="lang.outputDataset">
+      Output datasets:
+    </h3>
+
+    <div *ngFor="let d of activity.outputDatasets" class="output-dataset">
+      <div>
+        <button (click)="this.showDetail(d)" [attr.title]="lang.datasetEdit">
+          {{ d.name }}
+        </button>
+        <button
+          (click)="removeOutputDataset(d)"
+          [attr.title]="lang.datasetRemove"
+        >
+          <fa-icon [icon]="iconRemove"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+    <button (click)="addOutputDataset()">
+      <fa-icon [icon]="iconAdd" [attr.title]="lang.datasetAdd"></fa-icon>
+    </button>
+  </div>
+  <app-activity-description-detail
+    [detailedComponent]="this.detail"
+    class="detail"
+  ></app-activity-description-detail>
+</div>

@@ -1,0 +1,35 @@
+<span *ngIf="isLiteralTemplate(entryList)">
+  Literals:
+  <app-literal-command-line-template
+    [literals]="entryList"
+  ></app-literal-command-line-template>
+</span>
+
+<span *ngIf="isParameterTemplate(entryList)">
+  Parameter:
+  <select [(ngModel)]="entryList.parameter">
+    <option *ngFor="let p of parameters" (ngValue)="(p)">
+      {{ p.name }}
+    </option>
+  </select>
+
+  <app-string-list-manipulators
+    [manipulators]="entryList.manipulators"
+  ></app-string-list-manipulators>
+</span>
+
+<span *ngIf="isDatasetTemplate(entryList)">
+  Dataset
+  <select [(ngModel)]="entryList.dataset">
+    <option
+      *ngFor="let d of inputDatasets.concat(outputDatasets)"
+      (ngValue)="(d)"
+    >
+      {{ d.name }}
+    </option>
+  </select>
+
+  <app-string-list-manipulators
+    [manipulators]="entryList.manipulators"
+  ></app-string-list-manipulators>
+</span>

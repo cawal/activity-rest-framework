@@ -1,0 +1,151 @@
+<div *ngIf="this.isParameter(this.detailedComponent)" class="parameter">
+  <h3>Parameter:</h3>
+
+  <label [attr.title]="lang.parameterName"
+    >Name:
+    <input
+      [(ngModel)]="this.detailedComponent.name"
+      placeholder="name"
+      type="text"
+    />
+  </label>
+
+  <label [attr.title]="lang.parameterType"
+    >Type:
+    <select [(ngModel)]="this.detailedComponent.parameterType">
+      <option
+        *ngFor="let symbol of keys(parameterTypes)"
+        [ngValue]="parameterTypes[symbol]"
+        [attr.title]="lang.paramsTypes[symbol]"
+      >
+        {{ symbol }}
+      </option>
+    </select>
+  </label>
+
+  <label [attr.title]="lang.parameterMinimumCardinality"
+    >Minimum cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.minimumCardinality"
+      placeholder="Minimum cardinality"
+      type="number"
+      min="1"
+    />
+  </label>
+
+  <label [attr.title]="lang.parameterMaximumCardinality"
+    >Maximum cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.maximumCardinality"
+      placeholder="Maximum cardinality"
+      type="number"
+      min="-1"
+    />
+  </label>
+
+  <label [attr.title]="lang.remarks"
+    >Remarks:
+    <textarea
+      [(ngModel)]="this.detailedComponent.remark"
+      placeholder="Remarks"
+    ></textarea>
+  </label>
+</div>
+
+<div *ngIf="this.isInputDataset(this.detailedComponent)">
+  <h3>Input dataset:</h3>
+  <label [attr.title]="lang.datasetName"
+    >Name:
+    <input
+      [(ngModel)]="this.detailedComponent.name"
+      placeholder="name"
+      type="text"
+    />
+  </label>
+
+  <label [attr.title]="lang.datasetMimeType"
+    >MIME Type:
+    <input
+      [(ngModel)]="this.detailedComponent.mimeType"
+      placeholder="mimeType"
+      type="text"
+    />
+  </label>
+
+  <label [attr.title]="lang.datasetMinimumCardinality"
+    >Minimum cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.minimumCardinality"
+      placeholder="Minimum cardinality"
+      type="number"
+      min="1"
+    />
+  </label>
+
+  <label [attr.title]="lang.datasetMaximumCardinality"
+    >Maximum cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.maximumCardinality"
+      placeholder="Maximum cardinality"
+      type="number"
+      min="-1"
+    />
+  </label>
+
+  <label [attr.title]="lang.remarks"
+    >Remarks:
+    <textarea
+      [(ngModel)]="this.detailedComponent.remark"
+      placeholder="Remarks"
+    ></textarea>
+  </label>
+</div>
+
+<div *ngIf="this.isOutputDataset(this.detailedComponent)">
+  <h3>Output dataset:</h3>
+  <label [attr.title]="lang.datasetName"
+    >Name:
+    <input
+      [(ngModel)]="this.detailedComponent.name"
+      placeholder="name"
+      type="text"
+    />
+  </label>
+
+  <label [attr.title]="lang.datasetMimeType"
+    >MIME Type:
+    <input
+      [(ngModel)]="this.detailedComponent.mimeType"
+      placeholder="mimeType"
+      type="text"
+    />
+  </label>
+
+  <label [attr.title]="lang.datasetMinimumCardinality"
+    >Minimum cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.minimumCardinality"
+      placeholder="Minimum cardinality"
+      type="number"
+      min="1"
+    />
+  </label>
+
+  <label [attr.title]="lang.datasetMaximumCardinality"
+    >Maximum cardinality:
+    <input
+      [(ngModel)]="this.detailedComponent.maximumCardinality"
+      placeholder="Maximum cardinality"
+      type="number"
+      min="-1"
+    />
+  </label>
+
+  <label [attr.title]="lang.remarks"
+    >Remarks:
+    <textarea
+      [(ngModel)]="this.detailedComponent.remark"
+      placeholder="Remarks"
+    ></textarea>
+  </label>
+</div>

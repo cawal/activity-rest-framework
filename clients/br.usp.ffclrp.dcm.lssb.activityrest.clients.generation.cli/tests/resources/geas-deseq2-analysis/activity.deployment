@@ -1,0 +1,7 @@
+deployment { 
+        of service "deseq2-analysis" { api-version "1.1" }
+        into container 'kode' {
+                base-url 'http://kode.ffcrp.usp.br:8081/deseq2-analysis'
+                description 'Nice description' 
+            }
+}

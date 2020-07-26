@@ -95,7 +95,7 @@ public class AbstractDatasetResource {
 				if (file == null) {
 					throw new FileNotFoundException();
 				}
-					
+				
 				FileRepresentation representation = new FileRepresentation(
 						file.getName(),
 						FileUtils.readFileToString(file),
@@ -164,6 +164,14 @@ public class AbstractDatasetResource {
 				.build();
 	}
 	
+	protected URI getLocationUriForDataset(URI datasetListUri,
+			String datasetName,String filename) {
+		return UriBuilder.fromUri(datasetListUri)
+				.path(datasetName)
+				.path(filename)
+				.build();
+	}
+	
 	protected List<Link> getLinksForDatasets(URI datasetListUri,
 			List<Dataset> datasetList,
 			boolean allowUpdate) {
@@ -180,25 +188,25 @@ public class AbstractDatasetResource {
 							.build();
 			links.add(datasetLink);
 			
-//			if (allowUpdate) {
-//				if (MultiplicityElementUtil.acceptsList(description)) {
-//					Link postDatasetLink =
-//							Link.fromUri(getLocationUriForDataset(
-//									datasetListUri, description.getName()))
-//									.rel(description.getName())
-//									.build();
-//					links.add(postDatasetLink);
-//					
-//				} else {
-//					Link putDatasetLink =
-//							Link.fromUri(getLocationUriForDataset(
-//									datasetListUri, description.getName()))
-//									.rel(description.getName())
-//									.build();
-//					links.add(putDatasetLink);
-//					
-//				}
-//			}
+			// if (allowUpdate) {
+			// if (MultiplicityElementUtil.acceptsList(description)) {
+			// Link postDatasetLink =
+			// Link.fromUri(getLocationUriForDataset(
+			// datasetListUri, description.getName()))
+			// .rel(description.getName())
+			// .build();
+			// links.add(postDatasetLink);
+			//
+			// } else {
+			// Link putDatasetLink =
+			// Link.fromUri(getLocationUriForDataset(
+			// datasetListUri, description.getName()))
+			// .rel(description.getName())
+			// .build();
+			// links.add(putDatasetLink);
+			//
+			// }
+			// }
 		}
 		
 		return links;

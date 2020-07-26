@@ -2,7 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.newanalyses;
 
 import java.net.URI;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -26,9 +25,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivity
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
-@Api
 public class NewAnalysisResource {
 	ActivityRestConfig config;
 	UriInfo uriInfo;
@@ -37,15 +35,15 @@ public class NewAnalysisResource {
 	
 	AnalysisActivity aa;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public NewAnalysisResource(
-			@Nonnull Activity aaDesc,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao,
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull AnalysisActivity aa,
+			@NonNull ActivityRepository analysisActivityDao,
 			ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
@@ -128,12 +126,12 @@ public class NewAnalysisResource {
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc,uriInfo, aa, analysisActivityDao,true,config);
+		return new ParameterSetResource(activityDescription,uriInfo, aa, analysisActivityDao,true,config);
 	}
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc,uriInfo, aa,
+		return new InputDatasetsResource(activityDescription,uriInfo, aa,
 				analysisActivityDao,config,true);
 	}
 	
@@ -152,7 +150,7 @@ public class NewAnalysisResource {
 	}
 	
 	private URI getJobManagerUri() {
-		return UriBuilder.fromUri(this.baseApplicationURI).path("/instances/").build();
+		return UriBuilder.fromUri(this.baseApplicationURI).path("/executions/").build();
 	}
 	
 	private URI getJobInstanceUri() {

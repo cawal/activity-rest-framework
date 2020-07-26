@@ -8,17 +8,18 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset
 import java.net.InetAddress
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment
 
 
 val xsdCommonElementsResource = "./activity-xsd.commons"
 
 
-fun toXsd(activity: Activity, deploymentModel: DeploymentModel): String {
+fun toXsd(activity: Activity, deploymentModel: Deployment): String {
 	return """<?xml version="1.0" encoding="UTF-8"?>
 			<xs:schema
 				 xmlns="http://www.w3.org/2001/XMLSchema"
 				 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-				 xmlns:aa="${deploymentModel.serviceRootPath()}/xsd"
+				 xmlns:aa="${deploymentModel.getContainer().getBaseUrl()}/xsd"
 				 elementFormDefault="unqualified"
 				 >
 				 

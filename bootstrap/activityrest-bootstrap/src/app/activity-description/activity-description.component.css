@@ -1,0 +1,14 @@
+@import "../app.component.css";
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.model {
+  width: 40%;
+}
+
+.detail {
+  width: 60%;
+}

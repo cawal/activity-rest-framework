@@ -16,6 +16,9 @@ import javax.ws.rs.core.UriInfo;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.ActivityRepository;
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.JobManager;
+import br.usp.ffclrp.dcm.lssb.activityrest.jobmanagement.impl.JobManagerImpl;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ResourceRelations;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.failedanalyses.FailedAnalysesCollection;
@@ -23,8 +26,10 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.jobs.JobCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.newanalyses.NewAnalysesCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.succeededanalyses.SucceededAnalysesCollection;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
+import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
+import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+
 
 /**
  * Root resource of the API.
@@ -33,7 +38,7 @@ import io.swagger.annotations.Api;
  * @author cawal
  *
  */
-@Api
+//@Api
 @Path("/")
 @RequestScoped
 public class RootResource {
@@ -45,29 +50,36 @@ public class RootResource {
 	UriInfo uriInfo;
 	
 	ActivityRestConfig config;
+	Deployment deploymentModel;
 	
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	ActivityRepository nonExecutedDao;
 	ActivityRepository succeededDao;
 	ActivityRepository failedDao;
 	ActivityRepository runningDao;
+	JobManager jobManager;
 	
-	public RootResource() {
-		
-	};
+	
+	public RootResource() {	};
 	
 	protected void initialize() {
 		config =
 				(ActivityRestConfig) app.getProperties()
 						.get("activityrest.config");
 		
-		aaDesc = config.getActivityModel();
+		activityDescription = config.getActivityModel();
+		deploymentModel = config.getDeploymentModel();
 		
 		nonExecutedDao = config.getNewAnalysisRepository();
 		succeededDao = config.getSuccededAnalysisRepository();
 		failedDao = config.getFailedAnalysisRepository();
 		runningDao = config.getRunningAnalysisRepository();
+		if(config.getJobManager() == null) {
+			config.setJobManager(new JobManagerImpl());
+		}
+		jobManager = config.getJobManager();
+		
 	}
 	
 	@GET
@@ -86,36 +98,60 @@ public class RootResource {
 	
 	
 	// SUB-RESOURCES ----------------------------------------------------------
-	@Path("/new-analyses")
+	@Path("/non-executed-instances")
 	public NewAnalysesCollection getNewAnalysisCollection() {
 		initialize();
-		return new NewAnalysesCollection(aaDesc, uriInfo, nonExecutedDao, config);
+		return new NewAnalysesCollection(activityDescription, uriInfo, nonExecutedDao, config);
 	}
 	
-	@Path("/failed-analyses")
+	@Path("/failed-instances")
 	public FailedAnalysesCollection getFailedAnalysisCollection() {
 		initialize();
-		return new FailedAnalysesCollection(aaDesc, uriInfo, failedDao,config);
+		return new FailedAnalysesCollection(activityDescription, uriInfo, failedDao,config);
 	}
 	
-	@Path("/succeeded-analyses")
+	@Path("/succeeded-instances")
 	public SucceededAnalysesCollection getSucceededAnalysesCollection() {
 		initialize();
-		return new SucceededAnalysesCollection(aaDesc, uriInfo, succeededDao,config);
+		return new SucceededAnalysesCollection(activityDescription, uriInfo, succeededDao,config);
 	}
 	
-	@Path("/instances")
+	@Path("/executions")
 	public JobCollection getJobManager() {
 		initialize();
-		return new JobCollection(aaDesc,
+		return new JobCollection(activityDescription,
 				uriInfo,
 				nonExecutedDao,
 				(FileSystemActivityRepository) runningDao,
 				succeededDao,
-				failedDao);
+				failedDao,
+				jobManager);
 	}
 	
+	@GET @Path("/xsd")
+	public Response getServiceXsd() {
+		initialize();
+		if(deploymentModel != null) {
+			String xsd = ActivityToXsdTransformationService.toXsd(activityDescription, deploymentModel);
+			return Response.ok(xsd).build();
+		} else {
+			return Response.serverError().build();
+		}
+		
+	}
 	
+
+	@GET @Path("/wsdl")
+	public Response getServiceWsdl() {
+		initialize();
+		if(deploymentModel != null) {
+			String wsdl = ActivityToWsdlTransformationService.toWsdl(activityDescription, deploymentModel);
+			return Response.ok(wsdl).build();
+		} else {
+			return Response.serverError().build();
+		}
+		
+	}
 
 	
 	private List<Link> getRootResourceHateoasControls() {
@@ -129,7 +165,7 @@ public class RootResource {
 		
 		uriBuilder = uriInfo.getAbsolutePathBuilder();
 		Link createAnalysislink = Link.fromUri(uriBuilder
-				.path("new-analyses").build())
+				.path("non-executed-instances").build())
 				.rel(ResourceRelations.ROOT_2_NEW_ANALYSES_COLLECTION)
 				.build();
 		links.add(createAnalysislink);

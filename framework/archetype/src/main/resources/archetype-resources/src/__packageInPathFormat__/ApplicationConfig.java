@@ -14,6 +14,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 
 import br.usp.ffclrp.dcm.lssb.activityrest.dao.FileSystemActivityRepository;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.BasicApplicationJAXRSConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
@@ -24,45 +25,56 @@ public class ApplicationConfig extends BasicApplicationJAXRSConfig {
 	
 	final String ACTIVITYREST_PROPERTIES = "activityrest.properties";
 	static final String ACTIVITY_DESCRIPTION = "activity.aadl";
-
+	static final String DEPLOYMENT_MODEL = "activity.deployment";
+	
 	ActivityRestConfig config;
 	
 	public ApplicationConfig() {
 		super();
-
+		
 		this.config = new ActivityRestConfig();
 		try {
 			Activity activityModel = ModelsService.retrieveAADLModel(
 					this.getClass().getResourceAsStream(
 							ACTIVITY_DESCRIPTION));
 			
+			Deployment deploymentModel = ModelsService.retrieveDeploymentModel(
+					this.getClass().getResourceAsStream(DEPLOYMENT_MODEL));
+			
 			this.config.setActivityModel(activityModel);
+			this.config.setDeploymentModel(deploymentModel);
+			
 			Properties deploymentProperties = new Properties();
 			deploymentProperties.load(
-					this.getClass().getResourceAsStream(ACTIVITYREST_PROPERTIES));
+					this.getClass()
+							.getResourceAsStream(ACTIVITYREST_PROPERTIES));
 			
-			File nonExecutedActivityStorage = 
-					new File(deploymentProperties.getProperty("activityrest.repositories.nonExecuted"));
+			File nonExecutedActivityStorage = new File(
+					deploymentProperties.getProperty(
+							"activityrest.repositories.nonExecuted"));
 			this.config.setNewAnalysisRepository(
-					new FileSystemActivityRepository(nonExecutedActivityStorage, activityModel));
+					new FileSystemActivityRepository(nonExecutedActivityStorage,
+							activityModel));
 			
-			File runningActivityStorage = 
-					new File(deploymentProperties.getProperty("activityrest.repositories.running"));
+			File runningActivityStorage = new File(deploymentProperties
+					.getProperty("activityrest.repositories.running"));
 			this.config.setRunningAnalysisRepository(
-					new FileSystemActivityRepository(runningActivityStorage, activityModel));
+					new FileSystemActivityRepository(runningActivityStorage,
+							activityModel));
 			
-			File failedActivityStorage = 
-					new File(deploymentProperties.getProperty("activityrest.repositories.failed"));
+			File failedActivityStorage = new File(deploymentProperties
+					.getProperty("activityrest.repositories.failed"));
 			this.config.setFailedAnalysisRepository(
-					new FileSystemActivityRepository(failedActivityStorage, activityModel));
+					new FileSystemActivityRepository(failedActivityStorage,
+							activityModel));
 			
-			File succeededActivityStorage = 
-					new File(deploymentProperties.getProperty("activityrest.repositories.succeeded"));
+			File succeededActivityStorage = new File(deploymentProperties
+					.getProperty("activityrest.repositories.succeeded"));
 			this.config.setSuccededAnalysisRepository(
-					new FileSystemActivityRepository(succeededActivityStorage, activityModel));
+					new FileSystemActivityRepository(succeededActivityStorage,
+							activityModel));
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

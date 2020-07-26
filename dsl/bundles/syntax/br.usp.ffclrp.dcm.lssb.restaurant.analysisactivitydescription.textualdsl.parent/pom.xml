@@ -12,18 +12,18 @@
     <!-- Link to the parent pom -->
 	<parent>
 		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
-		<artifactId>restaurant-syntaxes</artifactId>
+		<artifactId>restaurant-syntax</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 
 	<properties>
 		<xtextVersion>2.14.0</xtextVersion>
+		<tycho-version>1.4.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- Tycho settings -->
-		<tycho-version>1.4.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>

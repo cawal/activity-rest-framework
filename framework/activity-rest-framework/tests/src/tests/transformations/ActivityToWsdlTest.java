@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.net.InetAddress;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +37,12 @@ import org.xmlunit.builder.Input;
 import org.xmlunit.xpath.JAXPXPathEngine;
 import org.xmlunit.xpath.XPathEngine;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Service;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.ServiceContainer;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToWsdlTransformationService;
-import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.DeploymentModel;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.OutputDataset;
@@ -48,7 +51,7 @@ import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Parameter;
 @DisplayName("A WSDL document can be obtained from an AADL model")
 class ActivityToWsdlTest {
 	
-	static DeploymentModel deploymentModel;
+	static Deployment deploymentModel;
 	static Activity activityModel;
 	static String xmlString;
 	static DocumentBuilder builder;
@@ -67,15 +70,42 @@ class ActivityToWsdlTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		deploymentModel = new DeploymentModel("http",
-				InetAddress.getByName("localhost"),
-				8080,
-				"test");
-		serviceLocation = deploymentModel.serviceRootPath();
+		DeploymentModelFactory factory = DeploymentModelFactory.eINSTANCE;
+		
 		activityModel =
 				ModelsService.retrieveAADLModel(
 						ActivityToWsdlTest.class
 								.getResourceAsStream("./activity.aadl"));
+		
+		deploymentModel = factory.createDeployment();
+		
+		ServiceContainer container = factory.createServiceContainer();
+		container.setBaseUrl(new URL("http://localhost:8080/test"));
+		deploymentModel.setContainer(container);
+		
+		Service service = factory.createService();
+		service.setName(activityModel.getName());
+		deploymentModel.setService(service);
+		
+//		deploymentModel = new DeploymentModel("http",
+//				InetAddress.getByName("localhost"),
+//				8080,
+//				"test");
+//		serviceLocation = deploymentModel.serviceRootPath();
+//		
+//		xmlString = ActivityToWsdlTransformationService
+//				.toWsdl(activityModel, deploymentModel);
+//		
+//		setXmlDocumentBuilder();
+//		
+//		source = Input.fromString(xmlString).build();
+//		
+//		xsdLocation = deploymentModel.serviceRootPath() + "/xsd";
+//		wsdlLocation = deploymentModel.serviceRootPath() + "/wsdl";
+//		setXPathEngine();
+		
+		serviceLocation = deploymentModel.getContainer().getBaseUrl().toString();
+		
 		xmlString = ActivityToWsdlTransformationService
 				.toWsdl(activityModel, deploymentModel);
 		
@@ -83,8 +113,8 @@ class ActivityToWsdlTest {
 		
 		source = Input.fromString(xmlString).build();
 		
-		xsdLocation = deploymentModel.serviceRootPath() + "/xsd";
-		wsdlLocation = deploymentModel.serviceRootPath() + "/wsdl";
+		xsdLocation = serviceLocation + "/xsd";
+		wsdlLocation = serviceLocation + "/wsdl";
 		setXPathEngine();
 		
 		System.out.println(xmlString);
@@ -166,7 +196,7 @@ class ActivityToWsdlTest {
 			String tnsNamespaceValue = xpathEngine
 					.evaluate("/*/namespace::*[name()='tns']", source);
 			
-			assertEquals(deploymentModel.serviceRootPath() + "/wsdl",
+			assertEquals(wsdlLocation,
 					tnsNamespaceValue);
 			assertEquals(targetNamespace, tnsNamespaceValue,
 					"Target namespace and xmlns:tns are different");
@@ -338,7 +368,7 @@ class ActivityToWsdlTest {
 			assertEquals("tns:" + wsdlBindingName, binding);
 			
 			String address = wsdlEndpoint.getAttribute("address");
-			assertEquals(deploymentModel.serviceRootPath(), address,
+			assertEquals(serviceLocation, address,
 					"wsdl:endpoint@address is wrong");
 			
 		}
@@ -356,9 +386,9 @@ class ActivityToWsdlTest {
 		
 		void providesRetrievalInterface(Parameter p) {
 			String[] prefixes = new String[] {
-					"get-failed-activity-",
-					"get-new-activity-",
-					"get-succeded-activity-" };
+					"get-failed-instance-",
+					"get-non-executed-instance-",
+					"get-succeeded-instance-" };
 			
 			for (String prefix : prefixes) {
 				String operationIdentifier = prefix + xsdElementName(p);
@@ -410,7 +440,7 @@ class ActivityToWsdlTest {
 		}
 		
 		void providesUpdateInterface(Parameter p) {
-			String operationIdentifier = "put-new-activity-"
+			String operationIdentifier = "put-non-executed-instance-"
 					+ xsdElementName(p);
 			
 			String xpathQuery = "/wsdl:description/wsdl:interface"
@@ -447,14 +477,16 @@ class ActivityToWsdlTest {
 		}
 		
 		void providesBindings(Parameter p) {
-			providesBindings(p, "tns:put-new-activity-" + xsdElementName(p),
+			providesBindings(p,
+					"tns:put-non-executed-instance-" + xsdElementName(p),
 					"PUT");
-			providesBindings(p, "tns:get-failed-activity-" + xsdElementName(p),
-					"GET");
-			providesBindings(p, "tns:get-new-activity-" + xsdElementName(p),
+			providesBindings(p, "tns:get-failed-instance-" + xsdElementName(p),
 					"GET");
 			providesBindings(p,
-					"tns:get-succeded-activity-" + xsdElementName(p), "GET");
+					"tns:get-non-executed-instance-" + xsdElementName(p),
+					"GET");
+			providesBindings(p,
+					"tns:get-succeeded-instance-" + xsdElementName(p), "GET");
 		}
 		
 		void providesBindings(Parameter p, String operationIdentifier,
@@ -599,7 +631,7 @@ class ActivityToWsdlTest {
 							: "put";
 			
 			String operationIdentifier = method
-					+ "-new-activity-input-"
+					+ "-non-executed-instance-input-"
 					+ xsdElementName(dataset);
 			return operationIdentifier;
 		}
@@ -610,19 +642,16 @@ class ActivityToWsdlTest {
 					: HttpMethod.PUT;
 		}
 		
-
-		
 		private void providesRetrievalBindingsForMultipleOutputDataset(
 				OutputDataset d) {
 			provideRetrievalBinding(d,
-					"tns:"+getMultipleOutputDatasetLinksRetrievalOperation(d));
+					"tns:" + getMultipleOutputDatasetLinksRetrievalOperation(
+							d));
 			provideRetrievalBinding(d,
-					"tns:"+getMultipleOutputDatasetFileRetrievalOperation(d));
+					"tns:" + getMultipleOutputDatasetFileRetrievalOperation(d));
 			
 		}
-
-
-
+		
 		private void providesRetrievalInterfaceForMultipleOutputDataset(
 				OutputDataset d) {
 			provideLinksRetrievalInterface(d);
@@ -630,9 +659,6 @@ class ActivityToWsdlTest {
 			
 		}
 		
-		
-		
-
 		private void provideFileRetrievalInterface(OutputDataset dataset) {
 			String operationIdentifier =
 					getMultipleOutputDatasetFileRetrievalOperation(dataset);
@@ -668,7 +694,7 @@ class ActivityToWsdlTest {
 			
 			assertEquals(inputIdentifier, inputReference);
 			
-			String outputIdentifier = "aa:"+xsdElementName(dataset);
+			String outputIdentifier = "aa:" + xsdElementName(dataset);
 			String outputReference = wsdlOperation
 					.getElementsByTagName("wsdl:output").item(0)
 					.getAttributes().getNamedItem("element").getNodeValue();
@@ -676,7 +702,7 @@ class ActivityToWsdlTest {
 			assertEquals(outputIdentifier, outputReference);
 			
 		}
-
+		
 		private void provideLinksRetrievalInterface(OutputDataset dataset) {
 			String operationIdentifier =
 					getMultipleOutputDatasetLinksRetrievalOperation(dataset);
@@ -719,10 +745,10 @@ class ActivityToWsdlTest {
 			
 			assertEquals(outputIdentifier, outputReference);
 		}
-
 		
-		private void provideRetrievalBinding(OutputDataset d,String operationIdentifier) {
-					
+		private void provideRetrievalBinding(OutputDataset d,
+				String operationIdentifier) {
+			
 			String xpathQuery = "/wsdl:description/wsdl:binding"
 					+ "/wsdl:operation[contains(@ref,"
 					+ "\"" + operationIdentifier + "\")]";
@@ -836,19 +862,19 @@ class ActivityToWsdlTest {
 	}
 	
 	private String getSingleOutputDatasetRetrievalOperation(OutputDataset d) {
-		return "get-succeded-activity-output-"
+		return "get-succeeded-instance-output-"
 				+ xsdElementName(d);
 	}
 	
 	private String
 			getMultipleOutputDatasetLinksRetrievalOperation(OutputDataset d) {
-		return "get-succeded-activity-output-"
+		return "get-succeeded-instance-output-"
 				+ xsdElementName(d) + "-links";
 	}
 	
 	private String
 			getMultipleOutputDatasetFileRetrievalOperation(OutputDataset d) {
-		return "get-succeded-activity-output-"
+		return "get-succeeded-instance-output-"
 				+ xsdElementName(d) + "-file";
 	}
 	

@@ -14,8 +14,8 @@ import io.restassured.http.Headers;
 public class TestBase {
 	
 	public static final int MAX_TIME_TO_JOB_COMPLETION = 60;
-	public static final String NEW_ANALYSES_URI_FRAGMENT = "new-analyses/";
-	public static final String JOB_MANAGER_URI_FRAGMENT = "instances/";
+	public static final String NEW_ANALYSES_URI_FRAGMENT = "non-executed-instances";
+	public static final String JOB_MANAGER_URI_FRAGMENT = "executions";
 	
 	/**
 	 * 

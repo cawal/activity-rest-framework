@@ -14,7 +14,6 @@
 	</parent>
 
 	<modules>
-		<module>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</module>
-		<module>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent</module>
+		<module>bundles</module>
 	</modules>
 </project>

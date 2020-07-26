@@ -73,7 +73,7 @@ public class RootResourceTest extends TestBase {
 				RestAssured.baseURI
 				+ ":"+RestAssured.port
 				+ RestAssured.basePath
-				+ "/new-analyses")
+				+ NEW_ANALYSES_URI_FRAGMENT)
 			.normalize();
 		
 		RequestSpecification request = given()
@@ -99,7 +99,9 @@ public class RootResourceTest extends TestBase {
 				selfLink.getUri().normalize().equals(baseUri.normalize()));
 		
 		assertNotNull(newAnalysisLink);
-		assertTrue(newAnalysisLink.getUri().normalize()
+		assertTrue(newAnalysisLink.getUri().normalize().toString() 
+				+ "!=" + newAnalysisUri.normalize().toString(),
+				newAnalysisLink.getUri().normalize()
 				.equals(newAnalysisUri.normalize()));
 		
 	}

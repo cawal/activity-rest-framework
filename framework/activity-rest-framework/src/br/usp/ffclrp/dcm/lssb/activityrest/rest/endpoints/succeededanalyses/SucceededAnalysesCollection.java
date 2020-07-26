@@ -1,6 +1,5 @@
 package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.succeededanalyses;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,24 +13,23 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFou
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
-@Api
 public class SucceededAnalysesCollection {
 	ActivityRestConfig config;
 	@Context
 	UriInfo uriInfo;
 	UriBuilder uriBuilder;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
-	public SucceededAnalysesCollection(Activity aaDesc,
+	public SucceededAnalysesCollection(Activity activityDescription,
 			UriInfo uriInfo,
 			ActivityRepository succeededAnalysisActivityDao,
 			ActivityRestConfig config) {
 		this.uriInfo = uriInfo;
 		this.analysisActivityDao = succeededAnalysisActivityDao;
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.config = config;
 	}
 	
@@ -39,17 +37,17 @@ public class SucceededAnalysesCollection {
 	
 	@Path("/{analysisID}")
 	public SucceededAnalysisResource getSucceededAnalysisResource(
-			@PathParam("analysisID") @Nonnull String analysisID) {
+			@PathParam("analysisID") @NonNull String analysisID) {
 
 		try {
 			AnalysisActivity aa;
 			aa = analysisActivityDao.get(analysisID);
 			
-			return new SucceededAnalysisResource(aaDesc,uriInfo, aa, 
+			return new SucceededAnalysisResource(activityDescription,uriInfo, aa, 
 												analysisActivityDao,config);
 
 		} catch (AnalysisActivityNotFoundException e) {
-			throw new NotFoundException();
+			throw new NotFoundException("for id" + analysisID);
 		} catch (Exception e) {
 			throw new ServerErrorException(500, e);
 		}

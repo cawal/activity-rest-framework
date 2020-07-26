@@ -1,0 +1,1095 @@
+-- @nsURI aadl=http://dcm.ffclrp.usp.br/lssb/metamodels/analysis-activity-description.ecore
+-- @nsURI slm=http://dcm.ffclrp.usp.br/lssb/metamodels/string-list-manipulator.ecore
+-- @nsURI deployment=http://dcm.ffclrp.usp.br/lssb/metamodels/deployment-model.ecore
+-- @nsURI openapi=http://som.uoc.edu/openapi/2.0.0
+
+--- OpenAPI metamodel at commit 47f4f688ab89dfb29ad9003aff20500c1708cd25
+module aadl2openAPI;
+create OUT: openapi from IN: aadl, DM : deployment;
+
+helper def: port(): String =
+	'8081';
+
+helper def: host(): String =
+	'kode.ffclrp.usp.br:' + thisModule.port();
+
+helper def: basePath(path: String): String =
+	'/' + path ;
+
+helper def: apiVersion(): String =
+	'0.8.0';
+
+helper def: contact(): String =
+	'ricardo.cawal@gmail.com';
+
+--- This map helps when setting the type of a Schema from the Parameter::type
+helper def: typeMap : Map(String, String) =
+	Map {
+		('STRING','string'),
+		('REAL', 'number'),
+		('INTEGER','integer'),
+		('BOOLEAN','boolean')
+	};
+
+	
+helper def: stringSchema : openapi!Schema = OclUndefined; 
+	
+helper def: primitiveTypeSchemaMap : Map(String, openapi!Schema) =
+	Map {
+		('STRING',thisModule.stringShema)
+--		('REAL', 'number'),
+--		('INTEGER','integer'),
+--		('BOOLEAN','boolean')
+	};
+
+--entrypoint rule start(){
+--	to	
+--		stringSchema : openapi!Schema(
+--			type <- #string
+--		)
+--	do {
+--		thisModule.stringSchema <- stringSchema;
+--	}
+--}
+
+	
+endpoint rule finish(){
+    do {
+        'Finished'.debug();
+    }
+}
+
+rule Activity {
+	from
+		activity: aadl!Activity in IN
+	using {
+	
+	}
+	to
+		root : openapi!Root (
+			api <-api
+--			schemas <- OclUndefined,
+--			paramters <- OclUndefined,
+--			responses <- OclUndefined
+		),
+		
+		apiInfo: openapi!Info (
+			title <- activity.name,
+			version <- thisModule.apiVersion(),
+			license <- OclUndefined,
+			termsOfService <- '',
+			description <- if activity.remark.oclIsUndefined()
+							then ''
+							else activity.remark endif,
+			description <- ''
+		),
+		
+		api: openapi!API (
+			swagger <- '2.0',
+			host <- thisModule.host(),
+			basePath <- thisModule.basePath(activity.name),
+			
+			schemes <- 'http',
+			consumes <- 'application/json',
+			consumes <- 'application/xml',
+			produces <- 'application/json',
+			produces <- 'application/xml',
+			info <- apiInfo,
+			
+			paths <- rootPath,
+			paths <- newAnalysisCollectionPath,
+			
+			paths <-  nonExecutedAnalysisPath,
+			paths <- nonExecutedAnalysisParametersPath,
+			paths <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'nonExecutedAnalysisPath')),
+			    
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'nonExecutedAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'nonExecutedAnalysisCollectionPath')),
+		
+			paths <- jobPath,
+			
+			paths <- succededAnalysisPath,
+			paths <- succededAnalysisParametersPath,
+			paths <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'succeededAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'succededAnalysisCollectionPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
+			paths <- activity.outputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'nonExecutedAnalysisCollectionPath')),
+			paths <- activity.outputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'succeededAnalysisPath')),
+			
+			paths <- failedAnalysisPath,
+			paths <- failedAnalysisParametersPath,
+			paths <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'failedAnalysisPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'failedAnalysisCollectionPath')),
+			paths <- activity.inputDatasets->collect(d |
+			    thisModule.resolveTemp(d,'failedAnalysisPath')),
+			
+
+			
+			definitions <- activityDefinition,
+			definitions <- parameterSetDefinition,
+			definitions <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'schema')),
+			definitions <- fileDefinition,
+			definitions <- jobInstanceDefinition
+			
+--			parameters <- activityIdentifier,
+			
+--			responses <- okResponse,
+--			responses <- deleteOkResponse
+		),
+		
+		-- Schemas
+		activityDefinition: openapi!Schema (
+			referenceName <- 'AnalysisActivity',
+			type <- #object,
+			declaringContext <- api,
+			properties <- analysisIdProperty,
+			properties <- analysisStateProperty,
+			properties <- errorReportProperty
+		),
+		analysisIdProperty: openapi!Property (
+			referenceName <- 'id',
+			schema <- stringSchema
+		),
+		analysisStateProperty: openapi!Property (
+			referenceName <- 'state',
+			schema <- stateSchema 
+		),
+		errorReportProperty: openapi!Property (
+		    referenceName <- 'errorReport',
+		    schema <- stringSchema
+		),
+		
+		
+		parameterSetDefinition :  openapi!Schema (
+    	    referenceName <- 'ParameterMap',
+			type <- #object,
+			declaringContext <- api,
+    	    properties <- activity.parameters->collect(p |
+			    thisModule.resolveTemp(p,'property'))
+    	        ->flatten()
+    	),
+		
+		
+		jobInstanceDefinition: openapi!Schema (
+			referenceName <- 'JobInstance',
+			type <- #object,
+			declaringContext <- api,
+			properties <- jobIdProperty,
+			properties <- jobStateProperty,
+			properties <- jobErrorReportProperty
+			-- required <- jobIdProperty
+		),
+		jobIdProperty: openapi!Property (
+			referenceName <- 'id',
+			schema <- stringSchema
+		),
+		jobStateProperty: openapi!Property (
+			referenceName <- 'state',
+			schema <- stateSchema 
+		),
+		jobErrorReportProperty: openapi!Property (
+		    referenceName <- 'errorReport',
+		    schema <- stringSchema
+		),
+		
+		
+		fileDefinition: openapi!Schema (
+			referenceName <- 'File',
+			type <- #object,
+			declaringContext <- api,
+			properties <- nameProperty,
+			properties <- contentTypeProperty,
+			properties <- fileContentProperty
+		),
+		nameProperty : openapi!Property (
+			referenceName <- 'name',
+			schema <- stringSchema
+		),
+		contentTypeProperty : openapi!Property (
+			referenceName <- 'contentType',
+			schema <- stringSchema
+		),
+		fileContentProperty : openapi!Property (
+			referenceName <- 'content',
+			schema <- fileContentsSchema
+		),
+		
+		
+		stringSchema: openapi!Schema (
+			type <- #string
+		),
+		stateSchema: openapi!Schema (
+			type <- #string,
+			enum <- 'CREATED',
+			enum <- 'READY',
+			enum <- 'RUNNING',
+			enum <- 'SUCCEEDED',
+			enum <- 'FAILED',
+			enum <- 'REMOVED'
+		),
+		fileContentsSchema : openapi!Schema (
+			type <- #string,
+			format <- 'application/octet-stream'
+		),
+		genericParameterValueSchema : openapi!Schema (
+			type <- #unspecified
+		),
+		activityIdentifierParameter: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			description <- 'The analysis activity identifier.',
+			location <- #path
+		),
+		fileIdentifierParameter: openapi!Parameter (
+			name <- 'file-id',
+			type <- 'string',
+			required <- true,
+			description <- 'The dataset\' file identifier.',
+			location <- #path
+		),
+		parameterSetBodyParameter : openapi!Parameter (
+			name <- 'parameter values',
+			schema <- parameterSetDefinition,
+			required <- true,
+			location <- #body
+		),
+		fileBodyParameter : openapi!Parameter (
+			name <- 'Dataset\'s file values',
+			schema <- fileDefinition,
+			required <- true,
+			location <- #body
+		),
+		
+		
+		-- paths
+		rootPath: openapi!Path (
+			relativePath <- '/',
+			get <- getRoot
+		),
+		getRoot : openapi!Operation (
+			operationId <- 'get-service-root-resource',
+			description <- activity.remark,
+			responses <- getRootOkResponse			
+		),
+		
+    	newAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/new-analyses',
+			post <- createNewAnalysis
+		),
+		createNewAnalysis : openapi!Operation (
+			operationId <- 'create-new-analysis-resource',
+			description <- activity.remark,
+			responses <- getActivityOkResponse
+		),
+		
+		
+		nonExecutedAnalysisPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}',
+			parameters <- activityIdentifier,
+			get <- getInNewActivity,
+			delete <- deleteNewAnalysis
+		),
+		getInNewActivity : openapi!Operation (
+			operationId <- 'get-non-executed-analysis',
+			description <- activity.remark,
+			parameters <- activityIdentifier,
+			responses <- getActivityOkResponse			
+		),
+		deleteNewAnalysis : openapi!Operation (
+			operationId <- 'remove-non-executed-analysis',
+			description <- activity.remark,
+			parameters <- activityIdentifier,
+			responses <- deleteActivityOkResponse			
+		),	
+
+		nonExecutedAnalysisParametersPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/parameters',
+			parameters <- activityIdentifier,
+			get <- getNEAParameters,
+			put <- putNEAParameters
+		),
+		getNEAParameters : openapi!Operation (
+			operationId <- 'get-non-executed-analysis-parameters',
+			description <- 'Get activity\'s parameters.',
+			parameters <- activityIdentifier,
+			responses <- getParametersOkResponse			
+		),
+		putNEAParameters : openapi!Operation (
+			operationId <- 'put-non-executed-analysis-parameters',
+			description <- 'Update all parameters values at once',
+			parameters <- activityIdentifier,
+			parameters <- parameterSetBodyParameter,
+			responses <- putParametersOkResponse,
+			responses <- putParametersBadRequestResponse
+		),	
+
+		succededAnalysisParametersPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/parameters',
+			parameters <- activityIdentifier,
+			get <- getSAParameters
+		),
+		getSAParameters : openapi!Operation (
+			operationId <- 'get-succeded-analysis-parameters',
+			description <- 'Get activity\'s parameters.',
+			parameters <- activityIdentifier,
+			responses <- getParametersOkResponse			
+		),
+		failedAnalysisParametersPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/parameters',
+			parameters <- activityIdentifier,
+			get <- getFAParameters
+		),
+		getFAParameters : openapi!Operation (
+			operationId <- 'get-failed-analysis-parameters',
+			description <- 'Get activity\'s parameters.',
+			parameters <- activityIdentifier,
+			responses <- getParametersOkResponse			
+		),
+		getParametersOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameters representation is retrieved',
+			schema <- parameterSetDefinition,
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putParametersOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameters values are accepted and updated.',
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putParametersBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Parameters values are not accepted.',
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+
+		
+		jobPath: openapi!Path (
+			relativePath <- '/jobs/{id}',
+			parameters <- activityIdentifier,
+			get <- getJob,
+			delete <- deleteJob,
+			put <- putJob
+		),
+		putJob : openapi!Operation (
+			operationId <- 'put-job',
+			description <- 'Create a new job for the activity identified by {id}.',
+			parameters <- activityIdentifier,
+			responses <- putJobCreatedResponse,			
+			responses <- putJobBadRequestResponse
+		),
+		putJobCreatedResponse: openapi!Response (
+			code <- '201',
+			description <- 'The activity is ready for processing and a new job is started.'
+					+'The location of the new job is also returned in the headers. ',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		putJobBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'The activity is was not ready for its execution'
+							+'and was not started.',
+			declaringContext <- api
+		),
+
+		getJob : openapi!Operation (
+			operationId <- 'get-job',
+			description <- 'Get the processing state.',
+			parameters <- activityIdentifier,
+			responses <- getJobOkResponse,
+			responses <- getJobGoneResponse,
+			responses <- getJobSeeOtherResponse			
+		),
+		getJobOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'The job is runnning. Poll the processing again'+
+				' after a small ammout of time.',
+			schema <- activityDefinition,
+			declaringContext <- api
+		),
+		getJobGoneResponse: openapi!Response (
+			code <- '410',
+			description <- 'The job failed. The location of the results is' +
+			' provided in headers.',
+			schema <- activityDefinition,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		getJobSeeOtherResponse: openapi!Response (
+			code <- '303',
+			description <- 'The job succeeded. The location of the results is' +
+			' provided in headers.',
+			schema <- activityDefinition,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+
+		deleteJob: openapi!Operation (
+			operationId <- 'cancel-job',
+			description <- 'Try to cancel the job.',
+			parameters <- activityIdentifier,
+--			responses <- deleteJobOkResponse,
+			responses <- deleteJobSeeOtherResponse,
+			responses <- deleteJobFailedResponse			
+		),
+--		deleteJobOkResponse: openapi!Response (
+--			code <- '200',
+--			description <- 'The job is removed from proccessing.',
+--			declaringContext <- api
+--		),
+		deleteJobFailedResponse: openapi!Response (
+			code <- '510',
+			description <- 'The job could not be canceled.',
+			schema <- activityDefinition,
+			declaringContext <- api
+		),
+		deleteJobSeeOtherResponse: openapi!Response (
+			code <- '303',
+			description <- 'The job was canceled and the resource was returned'
+					+' to the READY state. Location is returned in headers.',
+			schema <- activityDefinition,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		
+		
+		succededAnalysisPath: openapi!Path (
+			relativePath <- '/succeded-analyses/{id}',
+			parameters <- activityIdentifier,
+			get <- getSuccededAnalysis,
+			delete <- deleteSuccededAnalysis
+		),
+		getSuccededAnalysis : openapi!Operation (
+			operationId <- 'get-succeeded-analysis',
+			description <- activity.remark,
+			parameters <- activityIdentifier,
+			responses <- getActivityOkResponse			
+		),
+		deleteSuccededAnalysis : openapi!Operation (
+			operationId <- 'remove-succeded-analysis',
+			description <- activity.remark,
+			parameters <- activityIdentifier,
+			responses <- deleteActivityOkResponse			
+		),	
+		
+		
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}',
+			parameters <- activityIdentifier,
+			get <- getFailedAnalysis,
+			delete <- deleteFailedAnalysis
+		),
+		getFailedAnalysis : openapi!Operation (
+			operationId <- 'get-failed-analysis',
+			description <- activity.remark,
+			parameters <- activityIdentifier,
+			responses <- getActivityOkResponse			
+		),
+		deleteFailedAnalysis : openapi!Operation (
+			operationId <- 'remove-failed-analysis',
+			description <- activity.remark,
+			parameters <- activityIdentifier,
+			responses <- deleteActivityOkResponse			
+		),
+		
+		-- common parameters
+		activityIdentifier: openapi!Parameter (
+			name <- 'id',
+			type <- 'string',
+			required <- true,
+			description <- 'The analysis activity identifier.',
+			location <- #path
+		),
+		
+			
+			
+		
+		
+		-- commom responses
+		getRootOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Retrieve links for other accessible resources',
+			headers <- thisModule.getLinkHeader(),
+			declaringContext <- api
+		),
+		
+		getActivityOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Analysis activity representation is retrieved',
+			schema <- activityDefinition,
+			declaringContext <- api,
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		
+		deleteActivityOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Analysis activity is removed from server.'
+		)
+		
+	do {
+	}
+}
+
+
+rule getLocationHeader() {
+	to 
+		header : openapi!Header (
+			name <- 'Location',
+			description <- 'The location of the resource.',
+			type <- #string
+		)
+	do {
+		header;
+	}
+}
+
+
+rule getLinkHeader() {
+	to 
+		header : openapi!Header (
+			name <- 'Link',
+			description <- 'Link for another accessible resource.',
+			type <- #string
+		)
+	do {
+		header;
+	}
+}
+
+--- All elements created from a Parameter Element
+rule Parameter {
+	from 
+		parameter : aadl!Parameter
+    to
+    	schema : openapi!Schema (
+    	    referenceName <- parameter.name,
+    	    properties <- localProperty,
+			declaringContext <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'api'
+			),
+			type <- #object
+
+    	),
+    	property : openapi!Property (
+    	    referenceName <- parameter.name,
+			schema <- propertySchema -- thisModule.getJsonSchemaFromParameter(parameter)
+    	),
+    	localProperty : openapi!Property (
+    	    referenceName <- parameter.name,
+			schema <- propertySchema
+    	),
+		
+		propertySchema : openapi!Schema (),
+		
+		arrayItemSchema : openapi!Schema(),
+		
+    	nonExecutedAnalysisPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/parameters/' + parameter.name,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInNewActivity,
+			put <- putNewAnalysis
+		),
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeded-analyses/{id}/parameters/' + parameter.name,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getSucceededAnalysis
+		),
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/parameters/' + parameter.name,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getFailedAnalysis
+		),
+		getInNewActivity : openapi!Operation (
+			operationId <- 'get-' + parameter.name + 'from-non-executed-analysis',
+			description <- parameter.remark,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- notFoundResponse,
+			responses <- getOkResponse			
+		),
+		getSucceededAnalysis : openapi!Operation (
+			operationId <- 'get-' + parameter.name + 'from-succeded-analysis',
+			description <- parameter.remark,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- notFoundResponse,
+			responses <- getOkResponse			
+		),
+		getFailedAnalysis : openapi!Operation (
+			operationId <- 'get-' + parameter.name + 'from-failed-analysis',
+			description <- parameter.remark,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- notFoundResponse,
+			responses <- getOkResponse			
+		),
+		putNewAnalysis : openapi!Operation (
+			operationId <- 'put-' + parameter.name + 'for-non-executed-analysis',
+			description <- parameter.remark,
+			parameters <- thisModule.resolveTemp(
+			    	parameter.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- putOkResponse,
+			responses <- putBadRequestResponse,
+			responses <- notFoundResponse
+		),
+		getOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameter value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			schema <- schema
+		),
+		putOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Parameter value is set',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Bad values for parameter.'
+		),
+		notFoundResponse: openapi!Response (
+			code <- '404',
+			description <- 'Resource not found.'
+		)
+
+    do {
+    	if (parameter.maximumCardinality.toString() = '1') {
+    		propertySchema.type <- thisModule.typeMap.get(parameter.parameterType.toString()); 
+    	} else {
+    		propertySchema.type <- #array.debug();
+    		propertySchema.items <- arrayItemSchema;
+    		arrayItemSchema.type <- thisModule.typeMap.get(parameter.parameterType.toString());
+    	}
+        -- return
+        schema;
+    }
+}
+
+
+
+
+
+
+rule InputDatasetSingleFile {
+	from
+		dataset: aadl!InputDataset ( 1 = dataset.maximumCardinality)
+
+	to 
+		nonExecutedAnalysisPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInNewActivity,
+			put <- putInNewActivity,
+			delete <- deleteInNewActivity
+		),
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededActivity
+		),
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInFailedActivity
+		),
+		
+		
+		
+		getInNewActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		putInNewActivity : openapi!Operation (
+			operationId <- 'put-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileBodyParameter'
+			),
+			responses <- putOkResponse,
+			responses <- putBadRequestResponse
+		),
+		deleteInNewActivity : openapi!Operation (
+			operationId <- 'delete-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		
+		getInFailedActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-failed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
+		),
+		
+		putOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is updated',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Dataset value is not accepted.',
+			headers <- thisModule.getLinkHeader()
+		)
+		
+}
+
+
+rule InputDatasetMultipleFile {
+	from
+		dataset: aadl!InputDataset (not (1 = dataset.maximumCardinality))
+
+	to 
+		nonExecutedAnalysisPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name + '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInNewActivity,
+			put <- putInNewActivity,
+			delete <- deleteInNewActivity
+		),
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/inputs/' + dataset.name+ '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInSuccededActivity
+		),
+		failedAnalysisPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/inputs/' + dataset.name+ '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInFailedActivity
+		),
+		
+
+		getInNewActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		putInNewActivity : openapi!Operation (
+			operationId <- 'put-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileBodyParameter'
+			),
+			responses <- okResponse			
+		),
+		deleteInNewActivity : openapi!Operation (
+			operationId <- 'delete-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		
+		
+		getInFailedActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-failed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
+		),
+		putOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is updated',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		putBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'Dataset value is not accepted.',
+			headers <- thisModule.getLinkHeader()
+		),
+		postOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'File is created in the dataset.',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader()
+		),
+		postBadRequestResponse: openapi!Response (
+			code <- '400',
+			description <- 'File is not accepted.',
+			headers <- thisModule.getLinkHeader()
+		),
+		nonExecutedAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/new-analyses/{id}/inputs/' + dataset.name ,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInNewCollection,
+			post <- postInCollection
+		),
+		succeededAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededCollection
+		),
+		failedAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/failed-analyses/{id}/inputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInFailedCollection
+		),
+		postInCollection : openapi!Operation (
+			operationId <- 'post-' + dataset.name + '-into-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- postOkResponse,
+			responses <- postBadRequestResponse
+		),	
+		getInNewCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-non-executed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		getInSuccededCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		getInFailedCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-failed-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		collectionOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Links for dataset files are retrieved',
+			headers <- thisModule.getLinkHeader()
+		)
+}
+
+rule OutputDatasetSingleFile {
+	from
+		dataset: aadl!OutputDataset ( 1 = dataset.maximumCardinality)
+
+	to 
+		
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededActivity
+		),
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
+		)
+}
+
+
+rule OutputDatasetMultipleFile {
+	from
+		dataset: aadl!OutputDataset (not (1 = dataset.maximumCardinality))
+
+	to 
+		succeededAnalysisPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name+ '/{fileId}',
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			get <- getInSuccededActivity
+		),
+		getInSuccededActivity : openapi!Operation (
+			operationId <- 'get-' + dataset.name + '-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			responses <- okResponse			
+		),
+		okResponse: openapi!Response (
+			code <- '200',
+			description <- 'Dataset value is retrieved',
+			headers <- thisModule.getLocationHeader(),
+			headers <- thisModule.getLinkHeader(),
+			schema <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileDefinition'
+			)
+		),
+		
+		
+		succeededAnalysisCollectionPath: openapi!Path (
+			relativePath <- '/succeeded-analyses/{id}/outputs/' + dataset.name,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			get <- getInSuccededCollection
+		),
+		getInSuccededCollection : openapi!Operation (
+			operationId <- 'get-' + dataset.name + 'collection-from-succeded-analysis',
+			description <- dataset.remark,
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'activityIdentifierParameter'
+			),
+			parameters <- thisModule.resolveTemp(
+			    	dataset.refImmediateComposite(),'fileIdentifierParameter'
+			),
+			responses <- collectionOkResponse			
+		),
+		collectionOkResponse: openapi!Response (
+			code <- '200',
+			description <- 'Links for dataset files are retrieved',
+			headers <- thisModule.getLinkHeader()
+		)
+}

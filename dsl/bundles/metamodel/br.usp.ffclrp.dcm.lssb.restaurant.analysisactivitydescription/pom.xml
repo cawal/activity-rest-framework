@@ -1,0 +1,16 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>eclipse-plugin</packaging>
+
+	<parent>
+		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+		<artifactId>analysis-activity-description-metamodel-root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+</project>
+

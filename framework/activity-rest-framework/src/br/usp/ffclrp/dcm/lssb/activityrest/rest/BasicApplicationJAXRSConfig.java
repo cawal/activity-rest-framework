@@ -36,8 +36,8 @@ public class BasicApplicationJAXRSConfig extends Application {
 				br.usp.ffclrp.dcm.lssb.activityrest.rest.providers.CorsFilter.class);
 		
 		// for auto-generate swagger descriptions
-		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
-		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+//		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
+//		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 		
 		return resources;
 	}

@@ -12,7 +12,7 @@
 	</parent>
 
 	<modules>
-		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</module>
+		<module>metamodel</module>
 		<module>syntax</module>
 	</modules>
 </project>

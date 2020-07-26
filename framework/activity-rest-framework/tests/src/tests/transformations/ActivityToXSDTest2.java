@@ -1,8 +1,8 @@
 package tests.transformations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.net.InetAddress;
+import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,27 +17,46 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelFactory;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Service;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.ServiceContainer;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.ModelsService;
 import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.ActivityToXsdTransformationService;
-import br.usp.ffclrp.dcm.lssb.activityrest.wsdl.DeploymentModel;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 
 class ActivityToXSDTest2 {
 	
-	static DeploymentModel deploymentModel;
+	static Deployment deploymentModel;
 	static Activity activityModel;
 	static String xmlString;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		deploymentModel = new DeploymentModel("http",
-				InetAddress.getByName("localhost"),
-				8080,
-				"test");
+
+		
+//		Model("http",
+//				InetAddress.getByName("localhost"),
+//				8080,
+//				"test");
 		activityModel =
 				ModelsService.retrieveAADLModel(
 						ActivityToXSDTest2.class
 								.getResourceAsStream("./activity.aadl"));
+		
+		DeploymentModelFactory factory = DeploymentModelFactory.eINSTANCE;
+		
+		deploymentModel =  factory.createDeployment();
+		
+		ServiceContainer  container = factory.createServiceContainer();
+		container.setBaseUrl(new URL("http://localhost:8080/test"));
+		deploymentModel.setContainer(container);
+		
+		Service service = factory.createService();
+		service.setName(activityModel.getName());
+		deploymentModel.setService(service);
+		
+
 		xmlString = ActivityToXsdTransformationService
 				.toXsd(activityModel, deploymentModel);
 	}

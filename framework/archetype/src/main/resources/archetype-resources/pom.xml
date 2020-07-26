@@ -18,6 +18,14 @@
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>tests/src</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -39,6 +47,10 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.12.v20180830</version>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+            </plugin>
 		</plugins>
 	</build>
 	<dependencies>

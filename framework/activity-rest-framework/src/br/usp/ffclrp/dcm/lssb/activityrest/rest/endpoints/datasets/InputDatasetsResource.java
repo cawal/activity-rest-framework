@@ -5,10 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Nonnull;
+import lombok.NonNull;
+
+import javax.el.MethodNotFoundException;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.DELETE;
@@ -20,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.ServerErrorException;
+import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
@@ -35,9 +39,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.InputDatasetValidat
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.InputDataset;
 
-@Api
 public class InputDatasetsResource extends AbstractDatasetResource {
 	
 	ActivityRestConfig config;
@@ -48,10 +51,10 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public InputDatasetsResource(
-			@NotNull Activity aaDesc,
+			@NotNull Activity activityDescription,
 			@NotNull UriInfo uriInfo,
 			@NotNull AnalysisActivity aa,
 			@NotNull ActivityRepository analysisActivityDao,
@@ -62,7 +65,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		this.analysisActivityDao = analysisActivityDao;
 		this.baseApplicationURI = uriInfo.getBaseUri();
 		this.absolutePathURI = uriInfo.getAbsolutePath();
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.config = config;
 		this.allowUpdate = allowUpdate;
 	}
@@ -89,7 +92,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}")
 	public Response getDataset(
-			@PathParam("datasetName") @Nonnull String datasetName) {
+			@PathParam("datasetName") @NonNull String datasetName) {
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		return getResponseForGetDatasetRequest(d, uriInfo.getAbsolutePath());
@@ -98,8 +101,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
 	public Response getFileFromCollectionDataset(
-			@PathParam("datasetName") @Nonnull String datasetName,
-			@PathParam("fileName") @Nonnull String fileName) {
+			@PathParam("datasetName") @NonNull String datasetName,
+			@PathParam("fileName") @NonNull String fileName) {
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		URI baseUri = uriInfo.getAbsolutePath();
@@ -128,13 +131,55 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		
 		if (!allowUpdate)
 			throw new BadRequestException();
+		String fileName = UUID.randomUUID().toString();
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		
-		if (d == null)
+		if (d == null) {
 			throw new NotFoundException();
+		}
 		
+		InputDataset datasetDescription = (InputDataset) d.getDescription();
+		
+		if (MultiplicityElementUtil.acceptsList(datasetDescription)) {
+			return addFileToCollection(fileName, fileContents, d);
+		} else {
+			return putFileToSingleDataset(fileName, fileContents, d);
+		}
+		
+	}
+	
+	@PUT
+	@Path("{datasetName : [A-Za-z0-9-.]+}")
+	public Response putFileToDataset(
+			@PathParam("datasetName") @NotNull String datasetName,
+			@HeaderParam("Content-type") String contentType,
+			InputStream fileContents) {
+		
+		if (!allowUpdate)
+			throw new BadRequestException();
 		String fileName = UUID.randomUUID().toString();
+		
+		Dataset d = aa.inputDatasetForName(datasetName);
+		
+		if (d == null) {
+			throw new NotFoundException();
+		}
+		
+		InputDataset datasetDescription = (InputDataset) d.getDescription();
+		
+		if (MultiplicityElementUtil.acceptsList(datasetDescription)) {
+			throw new MethodNotFoundException();
+		} else {
+			return putFileToSingleDataset(fileName, fileContents, d);
+		}
+		
+	}
+	
+	private Response addFileToCollection(
+			String fileName,
+			InputStream fileContents,
+			Dataset d) {
 		
 		URI locationURI = null;
 		
@@ -146,15 +191,10 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			fw.flush();
 			fw.close();
 			
-			if (MultiplicityElementUtil.dontAcceptsList(d.getDescription())) {
-				if (d.getFiles().size() > 0)
-					throw new BadRequestException();
-			}
-			
 			d.getFiles().add(f);
 			
-			ValidationService.validateInputDataset(d, aa, 
-					aa.getDescription().getInputDatasets(), 
+			ValidationService.validateInputDataset(d, aa,
+					aa.getDescription().getInputDatasets(),
 					config.getInputDatasetConstraints());
 			
 			analysisActivityDao.save(aa);
@@ -167,34 +207,15 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
 		} catch (IOException | InputDatasetValidatorNotFoundException e) {
-			throw new ServerErrorException(500,e);
+			throw new ServerErrorException(500, e);
 		}
 	}
 	
-	@PUT
-	@Path("{datasetName : [A-Za-z0-9-.]+}")
-	public Response putFileToSingleFileDataset(
-			@PathParam("datasetName") @NotNull String datasetName,
-			@HeaderParam("Content-type") String contentType,
-			InputStream fileContents) {
+	private Response putFileToSingleDataset(
+			String fileName,
+			InputStream fileContents,
+			Dataset d) {
 		
-		
-		// Validation
-		if (!allowUpdate)
-			throw new BadRequestException();
-		
-		Dataset d = aa.inputDatasetForName(datasetName);
-		if (d == null)
-			throw new NotFoundException();
-		
-		br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset 
-			datasetDescription = d.getDescription();
-		
-		if(MultiplicityElementUtil.acceptsList(datasetDescription)) {
-			throw new BadRequestException();
-		}
-		
-		String fileName = UUID.randomUUID().toString();
 		URI locationURI = null;
 		
 		try {
@@ -210,10 +231,10 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 			old.delete();
 			d.getFiles().add(f);
 			
-			ValidationService.validateInputDataset(d, aa, 
-					aa.getDescription().getInputDatasets(), 
+			ValidationService.validateInputDataset(d, aa,
+					aa.getDescription().getInputDatasets(),
 					config.getInputDatasetConstraints());
-
+			
 			analysisActivityDao.save(aa);
 			
 			locationURI = UriBuilder.fromUri(this.absolutePathURI)
@@ -224,7 +245,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		} catch (AnalysisActivityUpdateFailure e) {
 			throw new NotFoundException();
 		} catch (IOException | InputDatasetValidatorNotFoundException e) {
-			throw new ServerErrorException(500,e);
+			throw new ServerErrorException(500, e);
 		}
 	}
 	
@@ -283,6 +304,47 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 		}
 		
 		return Response.ok().build();
+	}
+	
+	/**
+	 * Gets the Links header for underlying datasets
+	 */
+	protected List<Link> getLinksForDatasets(URI datasetListUri,
+			List<Dataset> datasetList,
+			boolean allowUpdate) {
+		
+		List<Link> links = new ArrayList<Link>();
+		
+		for (Dataset d : datasetList) {
+			br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Dataset description =
+					d.getDescription();
+			
+			
+				Link datasetLink =
+						Link.fromUri(getLocationUriForDataset(datasetListUri,
+								description.getName()))
+								.rel("inputs/" + description.getName())
+								.build();
+				links.add(datasetLink);
+				
+			if (description.getMaximumCardinality().intValue() != 1) {
+				for (File f : d.getFiles()) {
+					String rel = "inputs/" + description.getName() + "/"
+							+ f.getName();
+					Link fileLink =
+							Link.fromUri(
+									getLocationUriForDataset(datasetListUri,
+											description.getName(),
+											f.getName()))
+									.rel(rel)
+									.build();
+					links.add(fileLink);
+				}
+			}
+			
+		}
+		
+		return links;
 	}
 	
 }

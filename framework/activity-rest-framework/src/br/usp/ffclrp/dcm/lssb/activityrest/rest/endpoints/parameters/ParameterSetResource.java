@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
@@ -31,9 +30,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
-@Api()
 public class ParameterSetResource {
 	
 	ActivityRestConfig config;
@@ -43,17 +41,17 @@ public class ParameterSetResource {
 	
 	private AnalysisActivity aa;
 	private ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	boolean allowUpdates;
 	
 	public ParameterSetResource(
-			@Nonnull Activity aaDesc,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao,
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull AnalysisActivity aa,
+			@NonNull ActivityRepository analysisActivityDao,
 			boolean allowUpdates,
 			ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+		this.activityDescription = activityDescription;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
 		
@@ -177,7 +175,7 @@ public class ParameterSetResource {
 
 	private boolean existsParameterForName(String parameterName) {
 		boolean parameterExist = 
-				aaDesc.getParameters().stream()
+				activityDescription.getParameters().stream()
 					.anyMatch(p -> p.getName().equalsIgnoreCase(parameterName));
 		return parameterExist;
 	}

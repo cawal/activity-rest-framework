@@ -1,8 +1,7 @@
 <project>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
-	<artifactId>restaurant-syntaxes</artifactId>
+	<artifactId>restaurant-syntax</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -10,10 +9,10 @@
 		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
 		<artifactId>restaurant-bundles</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-       		 <relativePath>..</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 
 	<modules>
-        <module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent</module>
+		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent</module>
 	</modules>
 </project>

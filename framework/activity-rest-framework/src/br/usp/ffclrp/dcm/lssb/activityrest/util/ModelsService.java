@@ -15,6 +15,9 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DSLSyntaxStandaloneSetupGenerated;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.Deployment;
+import br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.DeploymentModelPackage;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
@@ -32,6 +35,7 @@ public class ModelsService {
 	 */
 	private static void initializeEcoreModelsResources() {
 		AnalysisActivityModelPackage.eINSTANCE.eClass();
+		DeploymentModelPackage.eINSTANCE.eClass();
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
 	}
 
@@ -93,6 +97,32 @@ public class ModelsService {
 
         // now save the content.
         resource.save(Collections.EMPTY_MAP);
+		
+	}
+	
+	
+	
+	public static Deployment retrieveDeploymentModel(InputStream inputStream)
+			throws IOException {
+		
+		String uri = "dummy:/example.deployment";
+		Deployment dep = null;
+		// Needed because Xtext only loads its generated grammar
+		initializeEcoreModelsResources();
+		
+		// Register the grammar
+		Injector injector = new DSLSyntaxStandaloneSetupGenerated()
+				.createInjectorAndDoEMFRegistration();
+		XtextResourceSet resourceSet =
+				injector.getInstance(XtextResourceSet.class);
+		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL,
+				Boolean.TRUE);
+		
+		Resource resource = resourceSet.createResource(URI.createURI(uri));
+		resource.load(inputStream, resourceSet.getLoadOptions());
+		dep = (Deployment) resource.getContents().get(0);
+		
+		return dep;
 		
 	}
 	

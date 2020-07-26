@@ -2,7 +2,6 @@ package br.usp.ffclrp.dcm.lssb.activityrest.rest.endpoints.succeededanalyses;
 
 import java.net.URI;
 
-import javax.annotation.Nonnull;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -27,10 +26,8 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivity
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import io.swagger.annotations.Api;
+import lombok.NonNull;
 
-@Api
-@Path("/succeeded-analyses/{analysisID}")
 public class SucceededAnalysisResource {
 	
 	ActivityRestConfig config;
@@ -40,15 +37,15 @@ public class SucceededAnalysisResource {
 	
 	AnalysisActivity aa;
 	ActivityRepository analysisActivityDao;
-	Activity aaDesc;
+	Activity activityDescription;
 	
 	public SucceededAnalysisResource(
-			@Nonnull Activity aaDesc,
-			@Nonnull UriInfo uriInfo,
-			@Nonnull AnalysisActivity aa,
-			@Nonnull ActivityRepository analysisActivityDao,
-			@Nonnull ActivityRestConfig config) {
-		this.aaDesc = aaDesc;
+			@NonNull Activity activityDescription,
+			@NonNull UriInfo uriInfo,
+			@NonNull AnalysisActivity aa,
+			@NonNull ActivityRepository analysisActivityDao,
+			@NonNull ActivityRestConfig config) {
+		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
 		this.aa = aa;
 		this.analysisActivityDao = analysisActivityDao;
@@ -122,19 +119,19 @@ public class SucceededAnalysisResource {
 	
 	@Path("/parameters/")
 	public ParameterSetResource getParameterSetResource() {
-		return new ParameterSetResource(aaDesc, uriInfo, aa,
+		return new ParameterSetResource(activityDescription, uriInfo, aa,
 				analysisActivityDao, false,null);
 	}
 	
 	@Path("/inputs/")
 	public InputDatasetsResource getInputDatasetsResource() {
-		return new InputDatasetsResource(aaDesc, uriInfo, aa,
+		return new InputDatasetsResource(activityDescription, uriInfo, aa,
 				analysisActivityDao, config, false);
 	}
 	
 	@Path("/outputs/")
 	public AbstractDatasetResource getOutputDatasetsResource() {
-		return new OutputDatasetsResource(aaDesc, uriInfo, aa,
+		return new OutputDatasetsResource(activityDescription, uriInfo, aa,
 				analysisActivityDao, false);
 	}
 	

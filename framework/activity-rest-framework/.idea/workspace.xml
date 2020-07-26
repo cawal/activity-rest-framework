@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/clients/generation/galaxy/JavaProjectGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/clients/generation/galaxy/JavaProjectGenerator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1bT1QTaHQYPQ4Hr4k7vBstd6HAE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="br.usp.ffclrp.dcm.lssb.activityrest.rest.representations" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ArchitectureTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activity-rest-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.architecture.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.architecture" />
+      <option name="MAIN_CLASS_NAME" value="tests.architecture.ArchitectureTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ArchitectureTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="" />
+      <created>1588641253394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588641253394</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1822" y="53" width="428" height="474" key="FileChooserDialogImpl" timestamp="1590864965250">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1822" y="53" width="428" height="474" key="FileChooserDialogImpl/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1590864965250" />
+    <state x="1661" y="7" width="766" height="711" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589053953653">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1661" y="7" width="766" height="711" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589053953653" />
+    <state x="1753" y="124" width="784" height="522" key="find.popup" timestamp="1589054003282">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1753" y="124" width="784" height="522" key="find.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589054003282" />
+    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1589081691793">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589081691793" />
+  </component>
+</project>
