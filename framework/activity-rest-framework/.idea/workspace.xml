@@ -2,8 +2,85 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a5dc85-9fb3-43e2-b981-f96df1cf0415" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/clients/generation/galaxy/JavaProjectGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java/br/usp/ffclrp/dcm/lssb/activityrest/clients/generation/galaxy/JavaProjectGenerator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/deployment-model-bundles.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/metamodel/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/metamodel/deployment-metamodel-root.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide (1).iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.target/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.target.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.tests/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.tests/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/bundles/syntax/deployment-model-syntax.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../deployment-model/deployment-model-root.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_activation_jakarta_activation_1_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_ws_rs_jakarta_ws_rs_api_2_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bootstrap/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../bootstrap/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/activity-rest-framework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/activity-rest-framework.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_9_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_9_9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_emf_org_eclipse_emf_codegen_2_19_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_emf_org_eclipse_emf_codegen_2_20_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_emf_org_eclipse_emf_codegen_ecore_2_21_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_emf_org_eclipse_emf_codegen_ecore_2_22_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_org_eclipse_jdt_core_3_21_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_org_eclipse_jdt_core_3_22_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_org_eclipse_jdt_debug_3_15_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_org_eclipse_jdt_debug_3_15_100.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_org_eclipse_jdt_launching_3_17_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_org_eclipse_jdt_launching_3_17_100.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_contenttype_3_7_600.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_contenttype_3_7_700.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_expressions_3_6_700.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_expressions_3_6_800.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_jobs_3_10_700.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_jobs_3_10_800.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_runtime_3_17_100.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_core_runtime_3_18_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_debug_core_3_15_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_debug_core_3_15_100.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_app_1_4_400.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_app_1_4_500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_common_3_11_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_common_3_12_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_preferences_3_7_700.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_preferences_3_8_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_registry_3_8_700.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_equinox_registry_3_8_800.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_osgi_3_15_200.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_osgi_3_15_300.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_text_3_10_100.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_platform_org_eclipse_text_3_10_200.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_aopalliance_repackaged_2_5_0_b32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_javax_inject_2_5_0_b32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_jakarta_inject_2_6_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_api_2_5_0_b32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_locator_2_5_0_b32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_utils_2_5_0_b32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_bundles_repackaged_jersey_guava_2_25_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_core_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_core_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_server_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_server_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_ext_jersey_entity_filtering_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_ext_jersey_entity_filtering_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_jaxb_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_jaxb_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_json_jackson_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_json_jackson_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_sse_2_25_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_sse_2_29_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_20_0_GA.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/domain/validation/ValidationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/domain/validation/ValidationResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/jobmanagement/impl/ExitCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/jobmanagement/impl/ExitCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/jobmanagement/impl/JobConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/jobmanagement/impl/JobConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/ActivityRestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/ActivityRestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/AnalysisActivityRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/AnalysisActivityRepresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/FileRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/FileRepresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/JobInstanceRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/JobInstanceRepresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/LinkRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/LinkRepresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/ParameterRepresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/rest/representations/ParameterRepresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/wsdl/ActivityToWSDL.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/usp/ffclrp/dcm/lssb/activityrest/wsdl/ActivityToWSDL.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +97,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="/usr/share/maven" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1bT1QTaHQYPQ4Hr4k7vBstd6HAE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -28,15 +117,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="LombokPluginEnabledInProject" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="br.usp.ffclrp.dcm.lssb.activityrest.rest.representations" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="ArchitectureTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -83,10 +179,34 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1642" y="11" width="804" height="702" key="#Plugins" timestamp="1596300288254">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1642" y="11" width="804" height="702" key="#Plugins/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596300288254" />
     <state x="1822" y="53" width="428" height="474" key="FileChooserDialogImpl" timestamp="1590864965250">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1822" y="53" width="428" height="474" key="FileChooserDialogImpl/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1590864965250" />
+    <state width="1318" height="186" key="GridCell.Tab.0.bottom" timestamp="1596300545014">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state width="1318" height="186" key="GridCell.Tab.0.bottom/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596300545014" />
+    <state width="1318" height="186" key="GridCell.Tab.0.center" timestamp="1596300545014">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state width="1318" height="186" key="GridCell.Tab.0.center/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596300545014" />
+    <state width="1318" height="186" key="GridCell.Tab.0.left" timestamp="1596300545013">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state width="1318" height="186" key="GridCell.Tab.0.left/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596300545013" />
+    <state width="1318" height="186" key="GridCell.Tab.0.right" timestamp="1596300545014">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state width="1318" height="186" key="GridCell.Tab.0.right/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596300545014" />
+    <state x="1543" y="2" key="SettingsEditor" timestamp="1596299779384">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1543" y="2" key="SettingsEditor/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596299779384" />
     <state x="1661" y="7" width="766" height="711" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589053953653">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
@@ -95,9 +215,13 @@
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1753" y="124" width="784" height="522" key="find.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589054003282" />
-    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1589081691793">
+    <state x="1711" y="172" width="672" height="677" key="run.anything.popup" timestamp="1596299706183">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
-    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1589081691793" />
+    <state x="1711" y="172" width="672" height="677" key="run.anything.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596299706183" />
+    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1596300441384">
+      <screen x="1366" y="0" width="1366" height="768" />
+    </state>
+    <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup/1366.0.1366.768/0.0.1366.768@1366.0.1366.768" timestamp="1596300441384" />
   </component>
 </project>

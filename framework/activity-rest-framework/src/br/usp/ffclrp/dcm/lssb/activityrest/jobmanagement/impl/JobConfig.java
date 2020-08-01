@@ -4,9 +4,6 @@ import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
-import lombok.Builder;
-
-@Builder(builderClassName = "Builder")
 public class JobConfig {
 
 	private final List<String> commandLine;
@@ -41,7 +38,11 @@ public class JobConfig {
 		this.defaultTerminationStatus = defaultTerminationStatus;
 
 	}
-	
+
+	public static Builder builder() {
+		return new Builder();
+	}
+
 	/**
 	 * @return the commandLine
 	 */
@@ -86,5 +87,67 @@ public class JobConfig {
 
 	public ExitCode getDefaultTerminationStatus() {
 		return defaultTerminationStatus;
+	}
+
+	public static class Builder {
+		private List<String> commandLine;
+		private File standardInputPipedFile;
+		private File standardOutputPipedFile;
+		private File standardErrorPipedFile;
+		private File workingDirectory;
+		private File errorReportFile;
+		private List<ExitCode> exitCodes;
+		private ExitCode defaultTerminationStatus;
+
+		Builder() {
+		}
+
+		public Builder commandLine(List<String> commandLine) {
+			this.commandLine = commandLine;
+			return this;
+		}
+
+		public Builder standardInputPipedFile(File standardInputPipedFile) {
+			this.standardInputPipedFile = standardInputPipedFile;
+			return this;
+		}
+
+		public Builder standardOutputPipedFile(File standardOutputPipedFile) {
+			this.standardOutputPipedFile = standardOutputPipedFile;
+			return this;
+		}
+
+		public Builder standardErrorPipedFile(File standardErrorPipedFile) {
+			this.standardErrorPipedFile = standardErrorPipedFile;
+			return this;
+		}
+
+		public Builder workingDirectory(File workingDirectory) {
+			this.workingDirectory = workingDirectory;
+			return this;
+		}
+
+		public Builder errorReportFile(File errorReportFile) {
+			this.errorReportFile = errorReportFile;
+			return this;
+		}
+
+		public Builder exitCodes(List<ExitCode> exitCodes) {
+			this.exitCodes = exitCodes;
+			return this;
+		}
+
+		public Builder defaultTerminationStatus(ExitCode defaultTerminationStatus) {
+			this.defaultTerminationStatus = defaultTerminationStatus;
+			return this;
+		}
+
+		public JobConfig build() {
+			return new JobConfig(commandLine, standardInputPipedFile, standardOutputPipedFile, standardErrorPipedFile, workingDirectory, errorReportFile, exitCodes, defaultTerminationStatus);
+		}
+
+		public String toString() {
+			return "JobConfig.Builder(commandLine=" + this.commandLine + ", standardInputPipedFile=" + this.standardInputPipedFile + ", standardOutputPipedFile=" + this.standardOutputPipedFile + ", standardErrorPipedFile=" + this.standardErrorPipedFile + ", workingDirectory=" + this.workingDirectory + ", errorReportFile=" + this.errorReportFile + ", exitCodes=" + this.exitCodes + ", defaultTerminationStatus=" + this.defaultTerminationStatus + ")";
+		}
 	}
 }

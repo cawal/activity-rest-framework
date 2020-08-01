@@ -7,7 +7,10 @@
     <file url="file://$PROJECT_DIR$/applications/aadlXmiToJsonOpenApi" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/applications/aadlXmiToJsonOpenApi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadlXmiToOpenAPI" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clients" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.client/src/main/kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.domain/src/main/kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/deployment-model" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/deployment-model/bundles" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/deployment-model/bundles/metamodel" charset="UTF-8" />
@@ -44,6 +47,7 @@
     <file url="file://$PROJECT_DIR$/framework" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/activity-rest-framework" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/activity-rest-framework-testing" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/activity-rest-framework-testing/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/activity-rest-framework/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/releng" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration" charset="UTF-8" />

@@ -13,7 +13,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.dao.exceptions.AnalysisActivityNotFou
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import lombok.NonNull;
 
 
 public class FailedAnalysesCollection {
@@ -38,7 +37,7 @@ public class FailedAnalysesCollection {
 	
 	@Path("/{analysisID}")
 	public FailedAnalysisResource getSucceededAnalysisResource(
-			@PathParam("analysisID") @NonNull String analysisID) {
+			@PathParam("analysisID")  String analysisID) {
 
 		try {
 			AnalysisActivity aa;
