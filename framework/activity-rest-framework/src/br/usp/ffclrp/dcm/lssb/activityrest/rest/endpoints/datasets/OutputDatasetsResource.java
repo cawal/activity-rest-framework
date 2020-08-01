@@ -20,7 +20,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivity;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.Dataset;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import lombok.NonNull;
 
 public class OutputDatasetsResource extends AbstractDatasetResource {
 	
@@ -34,10 +33,10 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	Activity activityDescription;
 	
 	public OutputDatasetsResource(
-			@NonNull Activity activityDescription,
-			@NonNull UriInfo uriInfo,
-			@NonNull AnalysisActivity aa,
-			@NonNull ActivityRepository analysisActivityDao,
+			Activity activityDescription,
+			UriInfo uriInfo,
+			AnalysisActivity aa,
+			ActivityRepository analysisActivityDao,
 			boolean allowUpdate) {
 		this.uriInfo = uriInfo;
 		this.aa = aa;
@@ -71,7 +70,7 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("/{datasetName : [A-Za-z0-9-.]+}")
 	public Response getDataset(
-			@PathParam("datasetName") @NonNull String datasetName) {
+			@PathParam("datasetName") String datasetName) {
 		
 		Dataset d = aa.outputDatasetForName(datasetName);
 		return getResponseForGetDatasetRequest(d, uriInfo.getAbsolutePath());
@@ -80,8 +79,8 @@ public class OutputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
 	public File getFileFromCollectionDataset(
-			@PathParam("datasetName") @NonNull String datasetName,
-			@PathParam("fileName") @NonNull String fileName) {
+			@PathParam("datasetName") String datasetName,
+			@PathParam("fileName") String fileName) {
 		
 		Dataset d = aa.outputDatasetForName(datasetName);
 		URI baseUri = uriInfo.getAbsolutePath();

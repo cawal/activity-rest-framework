@@ -21,7 +21,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivity
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.AnalysisActivityStateRepresentation;
 import br.usp.ffclrp.dcm.lssb.activityrest.util.MediaType;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import lombok.NonNull;
 
 public class NewAnalysesCollection {
 	ActivityRestConfig config;
@@ -31,9 +30,9 @@ public class NewAnalysesCollection {
 	Activity activityDescription;
 	
 	public NewAnalysesCollection(
-			@NonNull Activity activityDescription,
-			@NonNull UriInfo uriInfo,
-			@NonNull ActivityRepository analysisActivityDao,
+			Activity activityDescription,
+			UriInfo uriInfo,
+			ActivityRepository analysisActivityDao,
 			ActivityRestConfig config) {
 		this.activityDescription = activityDescription;
 		this.uriInfo = uriInfo;
@@ -80,7 +79,7 @@ public class NewAnalysesCollection {
 	
 	@Path("/{analysisID}")
 	public NewAnalysisResource getNewAnalysisResource(
-			@PathParam("analysisID") @NonNull String analysisID) {
+			@PathParam("analysisID") String analysisID) {
 
 		try {
 			AnalysisActivity aa;

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import lombok.NonNull;
-
 import javax.el.MethodNotFoundException;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
@@ -92,7 +90,7 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}")
 	public Response getDataset(
-			@PathParam("datasetName") @NonNull String datasetName) {
+			@PathParam("datasetName") String datasetName) {
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		return getResponseForGetDatasetRequest(d, uriInfo.getAbsolutePath());
@@ -101,8 +99,8 @@ public class InputDatasetsResource extends AbstractDatasetResource {
 	@GET
 	@Path("{datasetName : [A-Za-z0-9-.]+}/{fileName : [A-Za-z0-9-.]+}")
 	public Response getFileFromCollectionDataset(
-			@PathParam("datasetName") @NonNull String datasetName,
-			@PathParam("fileName") @NonNull String fileName) {
+			@PathParam("datasetName") String datasetName,
+			@PathParam("fileName") String fileName) {
 		
 		Dataset d = aa.inputDatasetForName(datasetName);
 		URI baseUri = uriInfo.getAbsolutePath();

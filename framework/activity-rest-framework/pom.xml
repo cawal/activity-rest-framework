@@ -270,14 +270,6 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-
-
         <!-- emf -->
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>

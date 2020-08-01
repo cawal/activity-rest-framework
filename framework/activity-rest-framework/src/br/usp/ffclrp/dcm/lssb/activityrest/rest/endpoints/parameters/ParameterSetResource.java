@@ -30,7 +30,6 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.validation.ValidationService;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.ActivityRestConfig;
 import br.usp.ffclrp.dcm.lssb.activityrest.rest.representations.ParameterRepresentation;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
-import lombok.NonNull;
 
 public class ParameterSetResource {
 	
@@ -45,10 +44,10 @@ public class ParameterSetResource {
 	boolean allowUpdates;
 	
 	public ParameterSetResource(
-			@NonNull Activity activityDescription,
-			@NonNull UriInfo uriInfo,
-			@NonNull AnalysisActivity aa,
-			@NonNull ActivityRepository analysisActivityDao,
+			Activity activityDescription,
+			UriInfo uriInfo,
+			AnalysisActivity aa,
+			ActivityRepository analysisActivityDao,
 			boolean allowUpdates,
 			ActivityRestConfig config) {
 		this.activityDescription = activityDescription;
@@ -64,9 +63,6 @@ public class ParameterSetResource {
 	/**
 	 * Returns all parameters for a activity.
 	 * 
-	 * @param analysisID
-	 * @param parameters
-	 * @return
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, })
@@ -118,9 +114,6 @@ public class ParameterSetResource {
 	/**
 	 * Returns one parameters for a activity.
 	 * 
-	 * @param analysisID
-	 * @param parameters
-	 * @return
 	 */
 	@GET
 	@Path("/{parameterName : [A-Za-z0-9-.]+}")
@@ -139,10 +132,6 @@ public class ParameterSetResource {
 	
 	/**
 	 * 
-	 * @param analysisID
-	 * @param parameterName
-	 * @param parameterValue
-	 * @return
 	 */
 	@PUT
 	@Path("/{parameterName  : [A-Za-z0-9-.]+}")
