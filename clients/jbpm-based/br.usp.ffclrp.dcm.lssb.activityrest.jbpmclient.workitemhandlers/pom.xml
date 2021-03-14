@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kotlin.version>1.3.61</kotlin.version>
 		<kotlin.code.style>official</kotlin.code.style>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<version.org.drools>7.26.0.Final</version.org.drools>
 		<version.org.jbpm>7.26.0.Final</version.org.jbpm><!-- 6.0 doesn't work with shaded jar -->
 		
