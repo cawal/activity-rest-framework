@@ -29,7 +29,7 @@ public class ArchitectureTest {
 			classes().that().areAnnotatedWith(Provider.class)
 					.should().resideInAPackage("..providers..");
 	
-
+	
 	
 	@ArchTest
 	public static ArchRule rule = layeredArchitecture()
@@ -38,7 +38,8 @@ public class ArchitectureTest {
 			.layer("job").definedBy("..jobmanagement..")
 			.layer("persistence").definedBy("..dao..")
 			
-			.whereLayer("rest interface").mayNotBeAccessedByAnyLayer()
+			.whereLayer("rest interface")
+			.mayNotBeAccessedByAnyLayer()
 			
 			.whereLayer("job")
 			.mayOnlyBeAccessedByLayers("rest interface")
@@ -53,13 +54,15 @@ public class ArchitectureTest {
 			.layer("endpoints").definedBy("..endpoints..")
 			.layer("representations").definedBy("..representations..")
 			.layer("messageBodyProviders").definedBy("..messagebodyparsers..")
-
-			.whereLayer("messageBodyProviders").mayNotBeAccessedByAnyLayer()
-			.whereLayer("endpoints").mayNotBeAccessedByAnyLayer()
+			
+			.whereLayer("messageBodyProviders")
+			.mayNotBeAccessedByAnyLayer()
+			
+			.whereLayer("endpoints")
+			.mayNotBeAccessedByAnyLayer()
 			
 			.whereLayer("representations")
-			.mayOnlyBeAccessedByLayers("endpoints","messageBodyProviders")
-			;
+			.mayOnlyBeAccessedByLayers("endpoints", "messageBodyProviders");
 	
 	@ArchTest
 	public static ArchRule messageBodyParsersAreIsolated =
