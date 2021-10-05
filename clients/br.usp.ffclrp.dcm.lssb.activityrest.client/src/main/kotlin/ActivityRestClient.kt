@@ -182,7 +182,10 @@ class ActivityRestClient(
         hateoasControls: HateoasControls
     )
             : Boolean {
+        println("ENVIANDO")
+        println(items)
         val sended = items.map {
+            println("ENVIANDO:")
             println(name)
             println(inputDatasetControlFor(name))
            println(hateoasControls.get(inputDatasetControlFor(name)))

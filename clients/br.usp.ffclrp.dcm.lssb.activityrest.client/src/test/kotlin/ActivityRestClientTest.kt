@@ -7,13 +7,16 @@ import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstance
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.ActivityInstanceState
 import br.usp.ffclrp.dcm.lssb.activityrest.client.ActivityRestClient
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionFactory
+import org.apache.commons.io.IOUtils
 import org.junit.Ignore
 import java.net.URI
 import java.io.File
+import java.io.FileWriter
 import java.math.BigInteger
 
 class ActivityRestClientTest {
 
+    @Ignore
     @Test
     fun `Creates new activities`() {
         val activity = ActivityInstance();
@@ -73,6 +76,7 @@ class ActivityRestClientTest {
         assertEquals(ActivityInstanceState.SUCCEEDED, activity.state)
     }
 
+    @Ignore
     @Test
     fun `Creates new activities SSE`() {
         val activity = ActivityInstance();
@@ -132,4 +136,55 @@ class ActivityRestClientTest {
         assertEquals(ActivityInstanceState.SUCCEEDED, activity.state)
     }
 
+
+    @Test
+    fun `Run @Ramesh2021 `() {
+
+        val one_c_uarray_t_test = "http://localhost:8080" +
+                "/one-color-microarray-t-test"
+        val baseDir =  File("/home/cawal/git/lssb/activity-rest/analyses" +
+                "/Ramesh2021/input/GSE1739/matrix_table/")
+
+        print(one_c_uarray_t_test)
+        val baseUrl = URI.create(one_c_uarray_t_test)
+
+        val instance = ActivityInstance()
+
+        instance.parameters = mapOf(
+            "cutoff" to 1.5,
+            "correction-method" to "bonferroni",
+            "p-value" to 0.05
+        )
+
+         val cond1File = "cond1.tsv"
+         val cond2File = "cond2.tsv"
+         val cond1Dataset = listOf(datasetItemFrom(File(baseDir,cond1File)))
+         val cond2Dataset = listOf(datasetItemFrom(File(baseDir,cond2File)))
+
+        instance.inputDatasets = mapOf(
+            "condition1-input-file" to cond1Dataset,
+            "condition2-input-file" to cond2Dataset
+        )
+
+        val client = ActivityRestClient(baseUrl)
+        client.execute(instance, true)
+        assertEquals(ActivityInstanceState.SUCCEEDED, instance.state)
+
+
+        instance.outputDatasets.entries.forEach {
+            val outputDir = File(baseDir,"output/${it.key}")
+            outputDir.mkdirs()
+            it.value.forEach{
+                val outputFile = File(outputDir, it.name)
+                val fileWriter = FileWriter(outputFile)
+                IOUtils.write(it.content.content, fileWriter)
+                fileWriter.flush()
+                fileWriter.close()
+
+            }
+        }
+
+
+
+    }
 }
