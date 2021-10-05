@@ -2,3 +2,4 @@
 **/.*.java._trace
 **/*.class
 target/
+.idea
