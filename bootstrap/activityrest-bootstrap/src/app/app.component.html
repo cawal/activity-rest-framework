@@ -1,63 +1,48 @@
-<body>
-  <h1>{{ title }}</h1>
-  <div class="main">
-    <div class="navigation">
-      <button (click)="showActivity()">Step 1: Activity description</button>
-      <button
-        (click)="showFunctionalEntity()"
-        [disabled]="!this.isFunctionalEntityEnabled"
-      >
-        Step 2: Command line tool description
-      </button>
-      <button (click)="showDeployment()" [disabled]="!this.isDeploymentEnabled">
-        Step 3: Deployment description
-      </button>
-      <button
-        (click)="showGenerationScreen()"
-        [disabled]="!this.isGenerationEnabled"
-      >
-        Step 4: Generate!
-      </button>
-      <button (click)="log()">Print</button>
+<h1>{{ title }}</h1>
+<div class="main">
+  <div class="navigation">
+    <button (click)="showActivity()">Step 1: Activity description</button>
+    <button (click)="showFunctionalEntity()"
+            [disabled]="!this.isFunctionalEntityEnabled">
+      Step 2: Command line tool description
+    </button>
+    <button (click)="showDeployment()"
+            [disabled]="!this.isDeploymentEnabled">
+      Step 3: Deployment description
+    </button>
+    <button (click)="showGenerationScreen()"
+            [disabled]="!this.isGenerationEnabled">
+      Step 4: Generate!
+    </button>
+    <button (click)="log()">Print</button>
+  </div>
+  <div class="step-detail">
+    <div *ngIf="state == 'ACTIVITY'">
+      <app-activity-description [activity]="activity"></app-activity-description>
     </div>
-    <div class="step-detail">
-      <div *ngIf="state == 'ACTIVITY'">
-        <app-activity-description
-          [activity]="activity"
-        ></app-activity-description>
-      </div>
 
-      <div *ngIf="state == 'FUNCTIONAL_ENTITY'">
-        <app-functional-entity
-          [commandLineTool]="functionalEntity"
-          [activity]="activity"
-        ></app-functional-entity>
-      </div>
+    <div *ngIf="state == 'FUNCTIONAL_ENTITY'">
+      <app-functional-entity [commandLineTool]="functionalEntity"
+                             [activity]="activity"></app-functional-entity>
+    </div>
 
-      <div *ngIf="state == 'DEPLOYMENT'">
-        <app-deployment-model
-          [deploymentModel]="deployment"
-        ></app-deployment-model>
-      </div>
+    <div *ngIf="state == 'DEPLOYMENT'">
+      <app-deployment-model [deploymentModel]="deployment"></app-deployment-model>
+    </div>
 
-      <div *ngIf="state == 'GENERATION'">
-        <app-artifacts-generation
-          [generatorService]="generatorService"
-          [activity]="activity"
-          [deployment]="deployment"
-          [functionalEntity]="functionalEntity"
-        ></app-artifacts-generation>
-      </div>
+    <div *ngIf="state == 'GENERATION'">
+      <app-artifacts-generation [generatorService]="generatorService"
+                                [activity]="activity"
+                                [deployment]="deployment"
+                                [functionalEntity]="functionalEntity"></app-artifacts-generation>
+    </div>
 
-      <div>
-        <button
-          *ngIf="state != 'GENERATION'"
-          (click)="moveToNextScreen()"
-          class="next"
-        >
-          Next
-        </button>
-      </div>
+    <div>
+      <button *ngIf="state != 'GENERATION'"
+              (click)="moveToNextScreen()"
+              class="next">
+        Next
+      </button>
     </div>
   </div>
-</body>
+</div>

@@ -38,10 +38,13 @@
 
 
 	<modules>
+            <!--<module>openapi-metamodel/openapi2</module>-->
+                <!--<module>ActDL</module>-->
 <!--		<module>dsl</module>-->
 <!--		<module>deployment-model</module>-->
-		<module>framework</module>
-		<module>clients</module>
+        <!--<module>SDDM</module>
+        <module>framework</module>
+        <module>clients</module>-->
 	</modules>
 
 	<dependencyManagement>
@@ -96,8 +99,8 @@
 				<artifactId>jersey-container-servlet</artifactId>
 				<version>${jersey.version}</version>
 			</dependency>
-			
-			
+
+
 			<dependency>
 				<groupId>org.glassfish.jersey.media</groupId>
 				<artifactId>jersey-media-sse</artifactId>

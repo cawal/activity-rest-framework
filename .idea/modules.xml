@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/clients/galaxy-client-base-archetype/src/main/resources/archetype-resources/archetype-resources.iml" filepath="$PROJECT_DIR$/clients/galaxy-client-base-archetype/src/main/resources/archetype-resources/archetype-resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/activity-rest-framework/activity-rest-framework.iml" filepath="$PROJECT_DIR$/framework/activity-rest-framework/activity-rest-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/activity-rest-framework-root.iml" filepath="$PROJECT_DIR$/framework/activity-rest-framework-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/activity-rest-framework-testing/activity-rest-framework-testing.iml" filepath="$PROJECT_DIR$/framework/activity-rest-framework-testing/activity-rest-framework-testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/activity-rest-root.iml" filepath="$PROJECT_DIR$/activity-rest-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.client/br.usp.ffclrp.dcm.lssb.activityrest.client.iml" filepath="$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.client/br.usp.ffclrp.dcm.lssb.activityrest.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.iml" filepath="$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.domain/br.usp.ffclrp.dcm.lssb.activityrest.domain.iml" filepath="$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.domain/br.usp.ffclrp.dcm.lssb.activityrest.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clients/client-support-infrastructure.iml" filepath="$PROJECT_DIR$/clients/client-support-infrastructure.iml" />
     </modules>
   </component>
 </project>

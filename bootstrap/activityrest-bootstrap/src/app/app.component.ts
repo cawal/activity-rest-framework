@@ -11,7 +11,7 @@ import { HttpClient, HttpBackend } from "@angular/common/http";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = "Activity-REST Bootstrap";
+  title = "Activity-REST Boot";
   activity: Activity;
   functionalEntity: CommandLineTool;
   deployment: Deployment;
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   isDeploymentEnabled = false;
   isGenerationEnabled = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     console.log("executou");

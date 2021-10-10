@@ -1,55 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/applications/aadlDescToaadlXmi" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/applications/aadlDescToaadlXmi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadl2openAPI" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/applications/aadlXmiToJsonOpenApi" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/applications/aadlXmiToJsonOpenApi/target/classes/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest/aadlXmiToOpenAPI" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/clients" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.client/src/main/kotlin" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.clients.generation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clients/br.usp.ffclrp.dcm.lssb.activityrest.domain/src/main/kotlin" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/metamodel" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/metamodel/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ide/target/com.googlecode.addjars.mojo.AddJarsMojo" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.target" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.tests" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.ui.tests" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/deployment-model/bundles/syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.parent/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web/target/m2e-wtp/web-resources/META-INF/maven/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax/br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax.web" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/metamodel" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/metamodel/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ide/target/com.googlecode.addjars.mojo.AddJarsMojo" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.target" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.tests" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.tests" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/bundles/syntax/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.parent/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web/target/m2e-wtp/web-resources/META-INF/maven/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl/br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/features" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/features/br.usp.ffclrp.dcm.lssb.restaurant.feature" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dsl/tests" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/framework" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/framework/activity-rest-framework" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/framework/activity-rest-framework-testing" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/activity-rest-framework-testing/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/activity-rest-framework/src" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/releng" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration" charset="UTF-8" />
   </component>
 </project>

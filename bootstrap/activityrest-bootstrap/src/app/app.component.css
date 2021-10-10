@@ -1,15 +1,8 @@
 @import "./tooltip.css";
 
-* {
-  color: #ddd;
-  background-color: #222;
-  font-family: Arial, Helvetica, sans-serif;
-  border-color: #ddd;
-}
-
 /* Application-wide Styles */
 h1 {
-  color: rgb(74, 165, 255);
+  color:var(--secondary-fg-color);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
@@ -33,7 +26,7 @@ input,
 textarea,
 select {
   font-size: large;
-  color: rgb(61, 228, 192);
+  color: var(--accent-fg-color);
   border-top-style: hidden;
   border-left-style: hidden;
   border-right-style: hidden;
@@ -68,12 +61,12 @@ textarea {
 }
 
 button {
-  color: #ddd;
-  color: rgb(61, 228, 192);
-  background-color: rgb(61, 228, 192);
-  background-color: #222;
-  color: rgb(61, 228, 192);
-  border-color: #ddd;
+  color: var(--main-fg-color);
+  color:var(--accent-fg-color);
+  background-color:var(--accent-fg-color);
+  background-color: var(--main-bg-color);
+  color:var(--accent-fg-color);
+  border-color: var(--main-fg-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   margin-bottom: 0.5em;
@@ -91,15 +84,15 @@ button > fa-icon {
 }
 
 button:disabled {
-  color: #aaa;
-  background-color: #222;
+  color: var(--disabled-fg-color);
+  background-color: var(--main-bg-color);
   font-weight: lighter;
 }
 
 button.next {
   right: 0px;
-  color: rgb(61, 228, 192);
-  border-color: rgb(61, 228, 192);
+  color:var(--accent-fg-color);
+  border-color:var(--accent-fg-color);
 }
 
 select {

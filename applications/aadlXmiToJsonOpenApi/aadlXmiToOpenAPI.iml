@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: br.usp.ffclrp.dcm.lssb.restaurant:br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription:0.1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.uoc.som.openapi:edu.uoc.som.openapi:1.0.2-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.uoc.som.openapi:edu.uoc.som.openapi.io:1.0.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.core:org.eclipse.core.resources:3.9.1.v20140825-1431" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.core:org.eclipse.core.runtime:3.10.0.v20140318-2214" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.equinox:org.eclipse.equinox.common:3.6.200.v20130402-1505" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.common:2.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.ecore:2.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.ecore.change:2.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.12.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.m2m.atl:org.eclipse.m2m.atl.core:4.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.m2m.atl:org.eclipse.m2m.atl.common:4.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.m2m.atl:org.eclipse.m2m.atl.core.emf:4.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.m2m.atl:org.eclipse.m2m.atl.emftvm:4.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.m2m.atl:org.eclipse.m2m.atl.emftvm.trace:4.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:9.0-beta" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.m2m.atl:org.eclipse.m2m.atl.engine.emfvm:4.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
+    <orderEntry type="library" name="Maven: info.picocli:picocli:4.0.0-beta-2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+  </component>
+</module>

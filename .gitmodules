@@ -1,0 +1,4 @@
+[submodule "openapi-metamodel"]
+	path = openapi-metamodel
+	url = https://github.com/cawal/openapi-metamodel.git
+	branch = activity-rest
