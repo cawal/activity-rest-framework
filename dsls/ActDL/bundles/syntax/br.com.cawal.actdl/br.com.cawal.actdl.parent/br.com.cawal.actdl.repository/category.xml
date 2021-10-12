@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<feature id="br.com.cawal.actdl.feature" version="0.0.0">
+		<category name="main"/>
+	</feature>
+	<feature id="br.com.cawal.actdl.feature.source" version="0.0.0">
+		<category name="main.source"/>
+	</feature>
+	<category-def name="main" label="ActDL"/>
+	<category-def name="main.source" label="ActDL (Sources)"/>
+</site>

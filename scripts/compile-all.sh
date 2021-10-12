@@ -15,13 +15,13 @@ pushd openapi-metamodel/openapi2
 mvn compile package install
 popd
 
-pushd ActDL/
+pushd dsls/ActDL/
 mvn clean
 mvn compile package
 mvn install
 popd
 
-pushd SDDL/
+pushd dsls/SDDL/
 mvn clean
 mvn compile package
 mvn install

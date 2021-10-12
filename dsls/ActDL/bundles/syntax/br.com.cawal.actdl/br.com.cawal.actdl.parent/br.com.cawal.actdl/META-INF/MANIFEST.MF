@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: br.com.cawal.actdl
+Bundle-ManifestVersion: 2
+Bundle-Name: br.com.cawal.actdl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: br.com.cawal.actdl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: br.com.cawal,
+ br.com.cawal.parser.antlr.internal,
+ br.com.cawal.validation,
+ br.com.cawal.parser.antlr,
+ br.com.cawal.formatting2,
+ br.com.cawal.services,
+ br.com.cawal.serializer,
+ br.com.cawal.generator,
+ br.com.cawal.scoping
+Import-Package: org.apache.log4j
