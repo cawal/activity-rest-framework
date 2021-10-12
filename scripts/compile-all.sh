@@ -21,5 +21,10 @@ mvn compile package
 mvn install
 popd
 
+pushd SDDL/
+mvn clean
+mvn compile package
+mvn install
+popd
 
 pwd

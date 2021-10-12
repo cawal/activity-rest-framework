@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: br.com.cawal.sddl
+Bundle-ManifestVersion: 2
+Bundle-Name: br.com.cawal.sddl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: br.com.cawal.sddl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: br.com.cawal.parser.antlr,
+ br.com.cawal.parser.antlr.internal,
+ br.com.cawal.sddl.formatting2,
+ br.com.cawal.sddl.generator,
+ br.com.cawal.sddl.scoping,
+ br.com.cawal.sddl.sddl,
+ br.com.cawal.sddl.validation,
+ br.com.cawal.serializer,
+ br.com.cawal.services,
+ br.com.cawal.sddl.services,
+ br.com.cawal.sddl,
+ br.com.cawal.sddl.parser.antlr,
+ br.com.cawal.sddl.parser.antlr.internal,
+ br.com.cawal.sddl.serializer
+Import-Package: org.apache.log4j
