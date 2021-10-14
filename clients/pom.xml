@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
-	<artifactId>client-support-infrastructure</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
+    <artifactId>client-support-infrastructure</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<parent>
-		<groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
-		<artifactId>activity-rest-root</artifactId>
-		<version>0.2.0-SNAPSHOT</version>
-		<relativePath>..</relativePath>
-	</parent>
+    <parent>
+        <groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
+        <artifactId>activity-rest-root</artifactId>
+        <version>0.2.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
 
-	<modules>
-		<module>br.usp.ffclrp.dcm.lssb.activityrest.domain</module>
-		<module>br.usp.ffclrp.dcm.lssb.activityrest.client</module>
-		<module>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</module>
-  </modules>
+    <modules>
+        <module>br.usp.ffclrp.dcm.lssb.activityrest.domain</module>
+        <module>br.usp.ffclrp.dcm.lssb.activityrest.client</module>
+        <module>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</module>
+    </modules>
 </project>

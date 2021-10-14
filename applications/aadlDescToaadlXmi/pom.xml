@@ -31,31 +31,6 @@
 		<atlVersion>4.0.1</atlVersion>
 	</properties>
 
-	<repositories>
-<!-- 		<repository> -->
-<!-- 			<id>eclipse-release</id> -->
-<!-- 			<url>https://repo.eclipse.org/content/groups/releases/</url> -->
-<!-- 			<layout>p2</layout> -->
-<!-- 		</repository> -->
-
-<!-- 		<repository> -->
-<!-- 			<id>eclipse-oxygen</id> -->
-<!-- 			<url>http://download.eclipse.org/releases/oxygen</url> -->
-<!-- 			<layout>p2</layout> -->
-<!-- 		</repository> -->
-
-<!-- 		<repository> -->
-<!-- 			<id>Eclipse</id> -->
-<!-- 			<url>https://repo.eclipse.org/content/groups/releases/</url> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</repository> -->
-
-	</repositories>
 
 
 	<dependencies>
