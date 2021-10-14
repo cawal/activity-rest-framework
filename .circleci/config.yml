@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: cimg/openjdk:11.0
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,6 +23,8 @@ jobs:
     steps:
       - checkout
       - run: pwd
+      - run: git submodule init
+      - run: git submodule update
       # Download and cache dependencies
 #      - restore_cache:
 #          keys:
@@ -36,7 +38,7 @@ jobs:
 #          key: activityrest-dependencies-{{ checksum "pom.xml" }}
       # run tests!
       - run:
-           command: mvn -DskipTests clean verify
+           command: ./scripts/compile-all.sh
 #      - run: mvn integration-test
 
   test_archetype:
