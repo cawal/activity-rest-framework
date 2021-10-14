@@ -28,8 +28,8 @@
 		<module>br.com.cawal.sddl.target</module>
 		<module>br.com.cawal.sddl.feature</module>
 		<module>br.com.cawal.sddl.repository</module>
-            <!--<module>br.com.cawal.sddl.tests</module>-->
-		<module>br.com.cawal.sddl.ui.tests</module>
+            <module>br.com.cawal.sddl.tests</module>
+<!--		<module>br.com.cawal.sddl.ui.tests</module>-->
 	</modules>
 	<dependencyManagement>
 		<dependencies>

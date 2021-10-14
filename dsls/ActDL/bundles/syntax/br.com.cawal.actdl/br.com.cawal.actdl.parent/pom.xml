@@ -29,7 +29,7 @@
 		<module>br.com.cawal.actdl.feature</module>
 		<module>br.com.cawal.actdl.repository</module>
 		<module>br.com.cawal.actdl.tests</module>
-		<module>br.com.cawal.actdl.ui.tests</module>
+<!--		<module>br.com.cawal.actdl.ui.tests</module>-->
 	</modules>
 	<dependencyManagement>
 		<dependencies>
