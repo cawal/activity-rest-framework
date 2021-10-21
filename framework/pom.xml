@@ -22,7 +22,7 @@
 
 	<modules>
 		<module>activity-rest-framework</module>
-		<module>activity-rest-framework-testing</module>
+<!--		<module>activity-rest-framework-testing</module>-->
 	</modules>
 
 

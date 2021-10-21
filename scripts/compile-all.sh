@@ -27,4 +27,19 @@ mvn compile package
 mvn install
 popd
 
+pushd framework/activity-rest-framework/
+mvn clean
+mvn compile package
+mvn install
+popd
+
+#applications/aadlDescToaadlXmi/
+#applications/aadlXmiToJsonOpenApi/
+#
+#bootstrap-server/
+#
+#clients/br.usp.ffclrp.dcm.lssb.activityrest.client/
+
+
+
 pwd
