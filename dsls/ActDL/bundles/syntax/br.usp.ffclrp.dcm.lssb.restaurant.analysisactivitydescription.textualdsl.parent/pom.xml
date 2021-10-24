@@ -38,7 +38,6 @@
 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.web</module>
 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.target</module>
 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.tests</module>
-<!-- 		<module>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.ui.tests</module> -->
 	</modules>
 	<dependencyManagement>
 		<dependencies>

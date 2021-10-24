@@ -15,6 +15,12 @@ pushd openapi-metamodel/openapi2
 mvn compile package install
 popd
 
+pushd dsls/ActDL/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration/
+mvn clean
+mvn compile package
+mvn install
+popd
+
 pushd dsls/ActDL/
 mvn clean
 mvn compile package
@@ -22,6 +28,12 @@ mvn install
 popd
 
 pushd dsls/SDDL/
+mvn clean
+mvn compile package
+mvn install
+popd
+
+pushd dsls/SDDL/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration/
 mvn clean
 mvn compile package
 mvn install
