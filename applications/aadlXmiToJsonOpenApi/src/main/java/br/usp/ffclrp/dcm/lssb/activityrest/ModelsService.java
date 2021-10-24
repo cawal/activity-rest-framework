@@ -10,9 +10,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import edu.uoc.som.openapi.API;
-import edu.uoc.som.openapi.OpenAPIPackage;
-import edu.uoc.som.openapi.Root;
+import edu.uoc.som.openapi2.API;
+import edu.uoc.som.openapi2.OpenAPI2Package;
+import edu.uoc.som.openapi2.Root;
 
 /**
  * A number of utility methods for dealing with the Ecore-based models.
@@ -27,7 +27,7 @@ public class ModelsService {
 	 */
 	private static void initializeEcoreModelsResources() {
 		AnalysisActivityDescriptionPackage.eINSTANCE.eClass();
-		OpenAPIPackage.eINSTANCE.eClass();
+		OpenAPI2Package.eINSTANCE.eClass();
 	}
 
 	public static Activity retrieveActivityFromXmi(URI resourceUri) {

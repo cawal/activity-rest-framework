@@ -18,7 +18,7 @@ import com.google.inject.Injector;
 import br.usp.ffclrp.dcm.lssb.activityrest.domain.AnalysisActivityModelPackage;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.Activity;
 import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.AnalysisActivityDescriptionPackage;
-import br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl.AnalysisActivityDSLStandaloneSetup;
+import br.com.cawal.ActDLStandaloneSetup;
 
 /**
  * A number of utility methods for dealing with the Ecore-based models.
@@ -50,7 +50,7 @@ public class ModelsService {
 		initializeEcoreModelsResources();
 		
 		// Register the grammar
-		Injector injector = new AnalysisActivityDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
+		Injector injector = new ActDLStandaloneSetup().createInjectorAndDoEMFRegistration();
 		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 		
