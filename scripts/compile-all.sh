@@ -27,17 +27,18 @@ mvn compile package
 mvn install
 popd
 
+pushd clients/
+mvn clean
+mvn compile package -DskipTests
+mvn install -DskipTests
+popd
+
 pushd framework/activity-rest-framework/
 mvn clean
 mvn compile package -DskipTests
 mvn install -DskipTests
 popd
 
-#pushd clients/
-#mvn clean
-#mvn compile package -DskipTests
-#mvn install-DskipTests
-#popd
 
 #applications/aadlDescToaadlXmi/
 #applications/aadlXmiToJsonOpenApi/
