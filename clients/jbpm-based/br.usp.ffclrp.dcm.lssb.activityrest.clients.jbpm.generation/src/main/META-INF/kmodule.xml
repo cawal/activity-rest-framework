@@ -1,6 +1,0 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-<!-- NOT USED YET. Info at https://docs.jboss.org/jbpm/release/7.26.0.Final/jbpm-docs/html_single/${symbol_pound}_maven_artifacts_as_deployment_units -->
-<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.drools.org/xsd/kmodule">
-</kmodule>

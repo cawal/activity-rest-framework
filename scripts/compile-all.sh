@@ -15,6 +15,12 @@ pushd openapi-metamodel/openapi2
 mvn compile package install
 popd
 
+pushd dsls/ActDL/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration/
+mvn clean
+mvn compile package
+mvn install
+popd
+
 pushd dsls/ActDL/
 mvn clean
 mvn compile package
@@ -26,5 +32,32 @@ mvn clean
 mvn compile package
 mvn install
 popd
+
+pushd dsls/SDDL/releng/br.usp.ffclrp.dcm.lssb.restaurant.tycho.configuration/
+mvn clean
+mvn compile package
+mvn install
+popd
+
+pushd clients/
+mvn clean
+mvn compile package -DskipTests
+mvn install -DskipTests
+popd
+
+pushd framework/activity-rest-framework/
+mvn clean
+mvn compile package -DskipTests
+mvn install -DskipTests
+popd
+
+
+#applications/aadlDescToaadlXmi/
+#applications/aadlXmiToJsonOpenApi/
+#
+#bootstrap-server/
+#
+
+
 
 pwd

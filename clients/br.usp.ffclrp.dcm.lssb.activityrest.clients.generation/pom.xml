@@ -22,9 +22,6 @@
 
 
     <properties>
-        <version.org.drools>7.26.0.Final</version.org.drools>
-        <version.org.jbpm>7.26.0.Final</version.org.jbpm><!-- 6.0 doesn't work with shaded jar -->
-
         <hibernate.version>4.2.0.Final</hibernate.version>
         <hibernate.core.version>4.2.0.Final</hibernate.core.version>
         <slf4j.version>1.6.4</slf4j.version>
@@ -33,7 +30,6 @@
         <h2.version>1.3.161</h2.version>
         <narayana.version>5.9.0.Final</narayana.version>
         <jta.version>1.0.1.Final</jta.version>
-
     </properties>
 
     <repositories>
@@ -48,55 +44,10 @@
             </snapshots>
         </repository>
 
-<!--        <repository>-->
-<!--            <id>atl</id>-->
-<!--            <url>https://repo.eclipse.org/content/groups/atl</url>-->
-<!--            <releases>-->
-<!--                <enabled>true</enabled>-->
-<!--            </releases>-->
-<!--            <snapshots>-->
-<!--                <enabled>true</enabled>-->
-<!--            </snapshots>-->
-<!--        </repository>-->
-
-<!--        <repository>-->
-<!--            <id>eclipse-bpmn2</id>-->
-<!--            <url>http://download.eclipse.org/modeling/mdt/bpmn2/updates/photon/1.5.0/</url>-->
-<!--            <layout>p2</layout>-->
-<!--            <snapshots>-->
-<!--                <enabled>true</enabled>-->
-<!--            </snapshots>-->
-<!--            <releases>-->
-<!--                <enabled>true</enabled>-->
-<!--            </releases>-->
-<!--        </repository>-->
-
     </repositories>
 
 
-<!--    <dependencyManagement>-->
-<!--        <dependencies>-->
-<!--            <dependency>-->
-<!--                <groupId>org.drools</groupId>-->
-<!--                <artifactId>drools-bom</artifactId>-->
-<!--                <type>pom</type>-->
-<!--                <version>${version.org.drools}</version>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.jbpm</groupId>-->
-<!--                <artifactId>jbpm-bom</artifactId>-->
-<!--                <type>pom</type>-->
-<!--                <version>${version.org.jbpm}</version>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-<!--        </dependencies>-->
-<!--    </dependencyManagement>-->
-
-
     <dependencies>
-
-
         <dependency>
             <groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
             <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.domain</artifactId>
@@ -106,54 +57,22 @@
         <dependency>
             <groupId>br.usp.ffclrp.dcm.lssb.restaurant</groupId>
             <artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>-->
-        <!--            <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</artifactId>-->
-        <!--            <version>0.0.1-SNAPSHOT</version>-->
-        <!--        </dependency>-->
-
-        <!--		<dependency>-->
-        <!--			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>-->
-        <!--			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</artifactId>-->
-        <!--		</dependency>-->
-
 
         <dependency>
-            <groupId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</groupId>
-            <artifactId>br.usp.ffclrp.dcm.lssb.restaurant.analysisactivitydescription.textualdsl</artifactId>
+            <groupId>br.com.cawal.actdl</groupId>
+            <artifactId>br.com.cawal.actdl</artifactId>
         </dependency>
+
         <dependency>
             <groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>
             <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax</groupId>
-            <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.deploymentmodel.syntax</artifactId>
+            <groupId>br.com.cawal.sddl</groupId>
+            <artifactId>br.com.cawal.sddl</artifactId>
         </dependency>
-
-
-        <!-- <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>4.0.3</version>
-        </dependency> -->
-
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.bpmn2</groupId>-->
-<!--            <artifactId>org.eclipse.bpmn2</artifactId>-->
-<!--            <version>[1.5.0-SNAPSHOT,)</version>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.jbpm/jbpm-bpmn2-emfextmodel &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.jbpm</groupId>-->
-<!--            <artifactId>jbpm-bpmn2-emfextmodel</artifactId>-->
-<!--            <version>7.28.0.Final</version>-->
-<!--        </dependency>-->
 
         <!-- Embedded Maven -->
         <dependency>
@@ -254,48 +173,6 @@
             <artifactId>xtext-antlr-generator</artifactId>
         </dependency>
 
-<!--        &lt;!&ndash; org.eclipse.m2m.atl.core_3.6.0.v201505180909.jar &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.m2m.atl</groupId>-->
-<!--            <artifactId>org.eclipse.m2m.atl.core</artifactId>-->
-<!--            <version>${atlVersion}</version>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash;         org.eclipse.m2m.atl.common_3.6.0.v201505180909.jar &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.m2m.atl</groupId>-->
-<!--            <artifactId>org.eclipse.m2m.atl.common</artifactId>-->
-<!--            <version>${atlVersion}</version>-->
-<!--        </dependency>-->
-
-        <!-- org.eclipse.m2m.atl.core.emf_3.6.0.v201505180909.jar -->
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.m2m.atl</groupId>-->
-<!--            <artifactId>org.eclipse.m2m.atl.core.emf</artifactId>-->
-<!--            <version>${atlVersion}</version>-->
-<!--        </dependency>-->
-
-        <!-- org.eclipse.m2m.atl.engine_3.8.0.v201705182014.jar -->
-        <!-- 		<dependency> -->
-        <!-- 			<groupId>org.eclipse.m2m.atl</groupId> -->
-        <!-- 			<artifactId>org.eclipse.m2m.atl.engine</artifactId> -->
-        <!-- 			<version>${atlVersion}</version> -->
-        <!-- 		</dependency> -->
-
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.m2m.atl</groupId>-->
-<!--            <artifactId>org.eclipse.m2m.atl.emftvm</artifactId>-->
-<!--            <version>${atlVersion}</version>-->
-<!--        </dependency>-->
-
-
-        <!-- org.eclipse.m2m.atl.engine.emfvm_3.8.0.v201705182014.jar -->
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.m2m.atl</groupId>-->
-<!--            <artifactId>org.eclipse.m2m.atl.engine.emfvm</artifactId>-->
-<!--            <version>${atlVersion}</version>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
@@ -312,42 +189,6 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.1</version>
         </dependency>
-
-        <!--		<dependency>-->
-        <!--			<groupId>br.usp.ffclrp.dcm.lssb.activityrest</groupId>-->
-        <!--			<artifactId>br.usp.ffclrp.dcm.lssb.activityrest.jbpmclient.infrastructure</artifactId>-->
-        <!--			<version>${activityrest.version}</version>-->
-        <!--			<scope>test</scope>-->
-        <!--		</dependency>-->
-
-
-<!--        <dependency>-->
-<!--            <groupId>org.jbpm</groupId>-->
-<!--            <artifactId>jbpm-bpmn2</artifactId>-->
-<!--            <version>${version.org.jbpm}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.jbpm</groupId>-->
-<!--            <artifactId>jbpm-test</artifactId>-->
-<!--            <version>${version.org.jbpm}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.jbpm</groupId>-->
-<!--            <artifactId>jbpm-human-task-core</artifactId>-->
-<!--            <version>${version.org.jbpm}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.jbpm</groupId>-->
-<!--            <artifactId>jbpm-runtime-manager</artifactId>-->
-<!--            <version>${version.org.jbpm}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-
 
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -429,50 +270,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
                 <configuration>
                     <!-- 					<redirectTestOutputToFile>true</redirectTestOutputToFile> -->
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>de.ntcomputer</groupId>-->
-<!--                <artifactId>executable-packer-maven-plugin</artifactId>-->
-<!--                <version>1.0.1</version>-->
-<!--                <configuration>-->
-<!--                    <mainClass>br.usp.ffclrp.dcm.lssb.activityrest.client.App</mainClass>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>pack-executable-jar</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <version>2.6</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>make-assembly</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <archive>-->
-<!--                                <manifest>-->
-<!--                                    <mainClass>br.usp.ffclrp.dcm.lssb.activityrest.generation.cli.JavaProjectGeneratorCLI</mainClass>-->
-<!--                                </manifest>-->
-<!--                            </archive>-->
-<!--                            <descriptorRefs>-->
-<!--                                <descriptorRef>jar-with-dependencies</descriptorRef>-->
-<!--                            </descriptorRefs>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
         </plugins>
 
     </build>
