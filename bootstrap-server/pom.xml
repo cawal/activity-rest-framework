@@ -112,13 +112,10 @@
     </build>
 
 
-
-
     <dependencies>
         <dependency>
-        <groupId>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</groupId>
-        <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</groupId>
+            <artifactId>br.usp.ffclrp.dcm.lssb.activityrest.clients.generation</artifactId>
         </dependency>
 
         <dependency>
@@ -131,7 +128,6 @@
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
-            <!--  			<scope>provided</scope>  -->
         </dependency>
         <!-- JAX-RS RI -->
         <dependency>

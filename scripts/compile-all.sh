@@ -51,6 +51,25 @@ mvn compile package -DskipTests
 mvn install -DskipTests
 popd
 
+pushd bootstrap-server/
+mvn clean
+mvn compile package -DskipTests
+mvn install -DskipTests
+popd
+
+
+pushd applications/aadlDescToaadlXmi/
+mvn clean
+mvn compile package -DskipTests
+mvn install -DskipTests
+popd
+
+pushd applications/aadlXmiToJsonOpenApi/
+mvn clean
+mvn compile package -DskipTests
+mvn install -DskipTests
+popd
+
 
 #applications/aadlDescToaadlXmi/
 #applications/aadlXmiToJsonOpenApi/

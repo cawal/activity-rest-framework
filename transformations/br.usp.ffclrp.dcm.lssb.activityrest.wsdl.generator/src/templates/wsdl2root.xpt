@@ -1,9 +1,0 @@
-«IMPORT analysisactivitydescription»
-
-«DEFINE Root FOR Activity»
-«FILE "teste.wsdl"»
-<wsdl:description>
-<a>«name»</a>
-</wsdl:description>
-«ENDFILE»
-«ENDDEFINE»
